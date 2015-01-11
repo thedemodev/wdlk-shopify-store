@@ -1,13 +1,13 @@
 {
-  "name": "timber",
-  "version": "2.0.1",
+  "name": "wdlk-ocean",
+  "version": "0.1.0",
   "keywords": [
+    "swimwear",
+    "store",
     "shopify",
-    "theme",
-    "framework",
-    "css",
-    "js",
+    "acss",
     "sass",
+    "js",
     "mobile-first",
     "responsive",
     "front-end"
@@ -23,10 +23,10 @@
   "ignore": [
     ".*"
   ],
-  "homepage": "https://github.com/Shopify/Timber",
+  "homepage": "http://wdkl-ocean.myshopify.com/",
   "authors": [
-    "Carson Shold <carson.shold@shopify.com>"
+    "Mauricio Palma <me@palmaswell.com>"
   ],
-  "description": "The Ultimate Shopify Theme Framework",
+  "description": "WDLK Ocean fabulos and bold online store for recycled swimwear",
   "license": "MIT"
 }
