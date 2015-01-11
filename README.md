@@ -33,10 +33,5 @@ Basic structure
 ```
 
 
-
-License
----------------------
-Timber is released under the [MIT License](LICENSE).
-
 [1]: http://docs.shopify.com/themes
 [2]: https://github.com/Palmaswell/
