@@ -1,10 +1,26 @@
-WDLK Ocean Fabulous Online Store
-=====================
+WDLK Ocean Store Launch
+=======================
+
+## Getting Started
+
+### Syncing & Watching With the shopify_theme
+In shopify you develop locally and use a syncing utility to push your changes to the server instantly, where you can view them.
+
+The shopify them gem comes to rescue!!
+
+#### Installation
+1. Get the `[secret theme id]` from product owner: mauricio.palma@woodlikeocean.com
+2. `gem install shopify_theme [secret theme id]`
+
+#### Usage
+[Check the site docu:](http://shopify.github.io/shopify_theme/)
 
 
 
-Basic structure
----------------
+
+
+## shopify Production File Structure
+
 ```
 ├── assets
 │   └── Javascript, CSS, and theme images
