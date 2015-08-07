@@ -9,10 +9,11 @@ In shopify you develop locally and use a syncing utility to push your changes to
 The shopify them gem comes to rescue!!
 
 #### Installation
-1. Get the `[secret theme id]` from product owner: mauricio.palma@woodlikeocean.com
-2. `gem install shopify_theme [secret theme id]`
+1. `gem install shopify_theme`
+2. Get the `confing.yml` file from product owner: mauricio.palma@woodlikeocean.com
+3. Run `theme watch` to start watching and syncing
 
-#### Usage
+#### Documentation
 [Check the site docu:](http://shopify.github.io/shopify_theme/)
 
 
