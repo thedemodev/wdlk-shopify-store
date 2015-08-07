@@ -1,4 +1,4 @@
-WDLK Ocean Fabulos Online Store
+WDLK Ocean Fabulous Online Store
 =====================
 
 
