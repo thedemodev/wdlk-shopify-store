@@ -30,7 +30,7 @@ shopify_theme documentation:[http://shopify.github.io/shopify_theme/](http://sho
 7. Note the theme ID in the URL (example: /admin/themes/**9542224**/settings)
 8. Edit the `theme_id` in `config.yml` to point to your branched theme
 9. `theme watch` and do your work
-10. Preview your work by navigating to that theme in Shopify admin and clicking preview
+10. Preview your work by navigating to that theme in Shopify admin and clicking preview `theme open`
 11. Make a pull request
 12. Rebase onto master, push to master repo
 13. Delete your branch (local and server)

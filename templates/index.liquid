@@ -7,7 +7,7 @@
     - http://docs.shopify.com/themes/liquid-variables/global
 {% endcomment %}
 
-<h2>{{ 'home_page.sections.frontpage_title' | t }}</h2>
+<h2>{{ 'homepage.sections.frontpage_title' | t }}</h2>
 
 {% comment %}
   Use class grid-uniform to have evenly sized columns clear
@@ -32,35 +32,15 @@
     {% include 'product-grid-item' %}
 
   {% else %}
-
+    {% comment %}
+      For onboarding new users to your theme, we add some default products and onboarding tutorials to help populate their store
+    {% endcomment %}
     {% unless emptyState %}
       {{ 'theme-onboarding.css' | global_asset_url | stylesheet_tag }}
       {% assign emptyState = true %}
     {% endunless %}
 
-    <div class="grid__item">
-      <div class="helper-section">
-        <div class="helper-note">
-          <span class="helper-icon"></span>
-          <h3>{{ 'home_page.onboarding.modal_title' | t }}</h3>
-          <p>{{ 'home_page.onboarding.no_products_html' | t }}</p>
-          <p><a class="admin-btn-primary" href="/admin/collections?tutorial=Frontpage">{{ 'home_page.onboarding.add_product' | t }}</a></p>
-        </div>
-
-        <div class="grid-uniform helper-content">
-          {% for i in (1..4) %}
-            <div class="grid__item one-half large--one-quarter">
-              <a href="/admin/products" class="grid__image">
-                {% capture imageUrl %}http://cdn.shopify.com/s/images/themes/product-{{ i }}.png{% endcapture %}
-                {{ imageUrl | img_tag }}
-              </a>
-              <p class="h6"><a href="/admin/products">{{ 'home_page.onboarding.product_title' | t }}</a></p>
-              <p>$19.99</p>
-            </div>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
+    {% include 'onboarding-featured-products' %}
 
   {% endfor %}
 
@@ -68,7 +48,7 @@
 
 <hr>
 
-<h2>{{ 'home_page.sections.featured_title' | t }}</h2>
+<h2>{{ 'homepage.sections.featured_title' | t }}</h2>
 
 <div class="grid-uniform">
 
@@ -90,12 +70,34 @@
       {% unless collection.handle == 'frontpage' %}
         {% assign isEmpty = false %}
         {% assign collection_item_width = 'large--one-fifth medium--one-third' %}
-        {% include 'collection-grid-item' %}
+        <div class="grid__item {{ collection_item_width }} text-center">
+          {% comment %}
+            Use capture to put the collection title in a variable that is used in liquid filters
+          {% endcomment %}
+          {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
+
+          <a href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: collection_title }}" class="grid__image">
+            {% if collection.image %}
+              {{ collection.image.src | img_url: 'large' | img_tag: collection_title }}
+            {% else %}
+              {{ collection.products.first.featured_image | img_url: 'large' | img_tag: collection_title }}
+            {% endif %}
+          </a>
+
+          <p>
+            <a href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: collection_title }}">{{ collection.title }}</a><br>
+            {{ 'collections.general.items_with_count' | t: count: collection.all_products_count }}
+          </p>
+        </div>
         {% assign index = index | plus: 1 %}
       {% endunless %}
 
     {% endunless %}
   {% endfor %}
+
+  {% comment %}
+    For onboarding new users to your theme, we add some default collections and onboarding tutorials to help populate their store
+  {% endcomment %}
 
   {% if isEmpty %}
     {% unless emptyState %}
@@ -103,31 +105,7 @@
       {% assign emptyState = true %}
     {% endunless %}
 
-    <div class="grid__item">
-      <div class="helper-section">
-        <div class="helper-note">
-          <span class="helper-icon"></span>
-          <h3>{{ 'home_page.onboarding.modal_title' | t }}</h3>
-          <p>{{ 'home_page.onboarding.no_collections_html' | t }}</p>
-          <p><a class="admin-btn-primary" href="/admin/custom_collections">{{ 'home_page.onboarding.add_collection' | t }}</a></p>
-        </div>
-
-        <div class="grid-uniform text-center helper-content">
-          {% for i in (1..5) %}
-            <div class="grid__item large--one-fifth medium--one-half">
-              <a href="#" class="grid__image">
-                {% capture imageUrl %}http://cdn.shopify.com/s/images/themes/product-{{ i }}.png{% endcapture %}
-                {{ imageUrl | img_tag }}
-              </a>
-              <p>
-                <a href="#">{{ 'home_page.onboarding.collection_title' | t }}</a><br>
-                {{ 'collections.general.items_with_count' | t: count: i }}
-              </p>
-            </div>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
+    {% include 'onboarding-featured-collections' %}
   {% endif %}
 
 </div>
@@ -141,7 +119,7 @@
   handle we want to focus on. For this example we'll use the default 'news',
   but you can create a blog page-specific content if you want.
 {% endcomment %}
-<h2>{{ 'home_page.sections.news_title' | t }}</h2>
+<h2>{{ 'homepage.sections.news_title' | t }}</h2>
 
 <div class="grid">
   {% for article in blogs['news'].articles limit:3 %}

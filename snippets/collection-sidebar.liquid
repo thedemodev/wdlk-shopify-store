@@ -11,50 +11,6 @@
 {% endcomment %}
 
 {% comment %}
-  Product types in the current collection
-    - List all of the shop's types with collections.all.all_types
-    - List the current collection's types with collection.all_types
-{% endcomment %}
-{% if collection.all_types.size > 0 %}
-<h3>{{ 'collections.sidebar.types' | t }}</h3>
-  <ul>
-    {% for type in collection.all_types %}
-      {% if collection.current_type == type %}
-        <li class="filter--active">
-          {{ type }}
-        </li>
-      {% else %}
-        <li>
-          {{ type | link_to_type }}
-        </li>
-      {% endif %}
-    {% endfor %}
-  </ul>
-{% endif %}
-
-{% comment %}
-  Product vendors in the current collection
-    - List all of the shop's vendors with collections.all.all_vendors
-    - List the current collection's vendors with collection.all_vendors
-{% endcomment %}
-{% if collection.all_vendors.size > 1 %}
-  <h3>{{ 'collections.sidebar.vendors' | t }}</h3>
-  <ul>
-    {% for vendor in collection.all_vendors %}
-      {% if collection.current_vendor == vendor %}
-        <li class="filter--active">
-          {{ vendor }}
-        </li>
-      {% else %}
-        <li>
-          {{ vendor | link_to_vendor }}
-        </li>
-      {% endif %}
-    {% endfor %}
-  </ul>
-{% endif %}
-
-{% comment %}
   Product tags in the current collection
 {% endcomment %}
 {% if collection.all_tags.size > 0 %}
@@ -64,27 +20,32 @@
     To provide a 'catch-all' link at the top of the list,
     check against the collection.handle, product type, and vendor.
   {% endcomment %}
-  <ul>
+  <ul class="no-bullets">
     <li{% unless current_tags %} class="filter--active"{% endunless %}>
 
       {% comment %}
         Good for /collections/all collection and regular collections
       {% endcomment %}
       {% if collection.handle %}
-        <a href="/collections/{{ collection.handle }}">All {{ collection.title }}</a>
+        <a href="/collections/{{ collection.handle }}">
+          {{ 'collections.general.all_of_collection' | t: collection: collection.title }}
+        </a>
 
       {% comment %}
         Good for automatic type collections
       {% endcomment %}
       {% elsif collection.current_type %}
-        <a href="{{ collection.current_type | url_for_type }}">All {{ collection.title }}</a>
+        <a href="{{ collection.current_type | url_for_type }}">
+          {{ 'collections.general.all_of_collection' | t: collection: collection.title }}
+        </a>
 
       {% comment %}
         Good for automatic vendor collections
       {% endcomment %}
       {% elsif collection.current_vendor %}
-        <a href="{{ collection.current_vendor | url_for_vendor }}">All {{ collection.title }}</a>
-
+        <a href="{{ collection.current_vendor | url_for_vendor }}">
+          {{ 'collections.general.all_of_collection' | t: collection: collection.title }}
+        </a>
       {% endif %}
     </li>
 

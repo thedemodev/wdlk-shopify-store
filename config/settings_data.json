@@ -1,5 +1,36 @@
 {
-  "current": "Default",
+  "current": {
+    "customer_layout": "theme",
+    "color_primary": "#204a80",
+    "color_secondary": "#dcdcdc",
+    "color_body_bg": "#ffffff",
+    "color_borders": "#e5e5e5",
+    "color_body_text": "#333333",
+    "color_footer_bg": "#f2f2f2",
+    "color_footer_text": "#636363",
+    "color_footer_social_link": "#bbbbbb",
+    "logo_max_width": "450",
+    "newsletter_form_action": "",
+    "twittercard_handle": "@",
+    "checkout_banner_background_color": "#fff",
+    "checkout_accent_color": "#2a9dcc",
+    "checkout_button_color": "#2a9dcc",
+    "checkout_call_to_action_color": "#8fc243",
+    "ajax_cart_method": "Drawer",
+    "checkout_logo": "",
+    "logo_use_image": false,
+    "favicon_enable": true,
+    "footer_quicklinks_enable": true,
+    "footer_social_enable": true,
+    "footer_newsletter_enable": true,
+    "cart_notes_enable": true,
+    "cart_vendor_enable": false,
+    "ajax_cart_enable": true,
+    "checkout_use_header_image": false,
+    "footer_quicklinks_linklist": "footer",
+    "social_facebook_link": "https:\/\/www.facebook.com\/shopify",
+    "social_twitter_link": "https:\/\/twitter.com\/shopify"
+  },
   "presets": {
     "Default": {
       "ajax_cart_enable": true,
@@ -13,8 +44,8 @@
       "footer_social_enable": true,
       "logo_max_width": "450",
       "logo_use_image": false,
-      "social_facebook_link": "https://www.facebook.com/shopify",
-      "social_twitter_link": "https://twitter.com/shopify"
+      "social_facebook_link": "https:\/\/www.facebook.com\/shopify",
+      "social_twitter_link": "https:\/\/twitter.com\/shopify"
     }
   }
 }
