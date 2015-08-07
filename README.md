@@ -37,7 +37,18 @@ shopify_theme documentation:[http://shopify.github.io/shopify_theme/](http://sho
 14. Delete your branched theme in Shopify Admin
 
 
-## shopify Production File Structure
+## Deployment
+
+When it’s time to deploy, force-deploy the theme in the master branch onto the production site:
+
+1. Make sure to kill your local theme watcher
+2. Remove your theme ID (to point it to the published theme)
+3. theme upload to push master onto the primary theme. If you have deleted files you can also run theme replace.
+
+If you’re doing it right, you should always be confident in pushing master onto the published theme, provided you blacklisted the settings_data.json.
+
+
+## Shopify Production File Structure
 
 ```
 ├── assets
@@ -67,4 +78,5 @@ shopify_theme documentation:[http://shopify.github.io/shopify_theme/](http://sho
 ```
 
 [Shopify Docs](http://docs.shopify.com/themes)
+
 [Shopify Theme Development](https://robots.thoughtbot.com/shopify-theme-development)
