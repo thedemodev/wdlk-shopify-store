@@ -45,7 +45,7 @@ grunt-config.json
 config.yml
 /_site
 assets/logo.png
+config/settings_data.json
 
 # Documentation #
 ######################
-/docs
