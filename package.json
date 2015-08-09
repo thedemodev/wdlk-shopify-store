@@ -1,0 +1,30 @@
+{
+  "name": "wdlk-ocean-store",
+  "version": "1.0.0",
+  "description": "WDLK Ocean Shopify Store",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/PalmaSwell/wdlk-ocean.git"
+  },
+  "author": "Woodlike Ocean <info@woodlikeocean.com> (http://woodlikeocean.com/)",
+  "contributors": [{
+      "name": "Mauricio Palma",
+      "email": "mauricio.palma@woodlikeocean.com"
+  },
+  {
+      "name": "Maximilian Heiz",
+      "email": "heinzmaximilian@googlemail.com"
+  }],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/PalmaSwell/wdlk-ocean/issues"
+  },
+  "homepage": "https://gitlab.com/PalmaSwell/wdlk-ocean#README"
+}
