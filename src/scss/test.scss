@@ -1,0 +1,12 @@
+body {
+    display: flex;
+    flex-direction: row;
+    
+    a {
+        color: magenta;
+
+        &:hover {
+            color: red;
+        }
+    }
+}

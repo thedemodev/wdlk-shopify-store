@@ -1,0 +1,6 @@
+@import 'test';
+
+$test: green;
+body {
+    background: $test;
+}

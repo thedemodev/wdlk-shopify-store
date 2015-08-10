@@ -7,24 +7,36 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node tasks/config/sass.js"
+  },
+  "bin": {
+    "sass": "tasks/config/sass.js"
   },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@gitlab.com/PalmaSwell/wdlk-ocean.git"
   },
   "author": "Woodlike Ocean <info@woodlikeocean.com> (http://woodlikeocean.com/)",
-  "contributors": [{
+  "contributors": [
+    {
       "name": "Mauricio Palma",
       "email": "mauricio.palma@woodlikeocean.com"
-  },
-  {
+    },
+    {
       "name": "Maximilian Heiz",
       "email": "heinzmaximilian@googlemail.com"
-  }],
+    }
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://gitlab.com/PalmaSwell/wdlk-ocean/issues"
   },
-  "homepage": "https://gitlab.com/PalmaSwell/wdlk-ocean#README"
+  "homepage": "https://gitlab.com/PalmaSwell/wdlk-ocean#README",
+  "dependencies": {
+    "autoprefixer": "^5.2.0",
+    "autoprefixer-core": "^5.2.1",
+    "chokidar": "^1.0.5",
+    "node-sass": "^3.2.0",
+    "postcss": "^4.1.16"
+  }
 }
