@@ -11,7 +11,7 @@ function scss (cb) {
 
     sass.render({
         file: srcFile,
-        outputStyle: 'compressed',
+        outputStyle: 'nested',
         outFile: buildFile,
         sourceMap: true,
         includePaths: [libsPath]

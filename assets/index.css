@@ -1,1 +1,14 @@
-body{display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row}body a{color:magenta}body a:hover{color:red}body{background:green}
+body {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row; }
+  body a {
+    color: magenta; }
+    body a:hover {
+      color: red; }
+
+body {
+  background: green; }
