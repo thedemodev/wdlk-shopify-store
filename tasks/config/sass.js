@@ -6,7 +6,7 @@ var autoprefixer = require('autoprefixer-core');
 
 function scss (cb) {
     var srcFile   = path.resolve( __dirname, '..', '..', 'src/scss/index.scss');
-    var buildFile = path.resolve( __dirname, '..', '..', 'assets/index.css');
+    var buildFile = path.resolve( __dirname, '..', '..', 'assets/index.scss');
     var libsPath  = path.resolve( __dirname, '..', '..', 'src/scss/libs');
 
     sass.render({
@@ -17,10 +17,9 @@ function scss (cb) {
         includePaths: [libsPath]
     }, function (err, result) {
         if (err) {
-            console.log(error.status);
-            console.log(error.column);
-            console.log(error.message);
-            console.log(error.line);
+            console.log('Error status:', err.status);
+            console.log('Error column:', err.column, 'Error Line:', err.line);
+            console.log(err.message);
         } else {
                 var results = postcss([autoprefixer({ browsers: ['last 2 versions'] })]).process(result.css);
 
