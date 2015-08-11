@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "node tasks/config/sass.js"
+    "scss": "node tasks/config/sass.js"
   },
   "bin": {
     "sass": "tasks/config/sass.js"

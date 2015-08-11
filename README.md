@@ -2,21 +2,32 @@ WDLK Ocean Store Launch
 =======================
 
 ## Getting Started
+This project has two divisions:
+1. The shopify framework and CDN build process responsible to sync production assets in the shopify environment.
+2. Our local development environment responsible for the modularization of the projects scss, js and other static assets and the generation of production assets in the adequate shopify production file `assets/`;
 
+### Shopify Framework & Timber
 
-### Syncing & Watching With the shopify_theme
+#### Syncing & Watching With the shopify_theme
 In shopify you develop locally and use a syncing utility to push your changes to the server instantly, where you can view them.
 
 The shopify_theme gem comes to rescue!!
 
-#### Installation
+##### Installation
 
 1. `gem install shopify_theme`
 2. Get the `confing.yml` file from product owner: mauricio.palma@woodlikeocean.com
 
-#### Documentation
+##### Documentation
 
 shopify_theme documentation:[http://shopify.github.io/shopify_theme/](http://shopify.github.io/shopify_theme/)
+
+
+### Local Development Environment
+
+1. `npm install`
+2. `npm start`
+3. `npm run scss` (optional)
 
 
 ## Theme Development Workflow
