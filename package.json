@@ -8,12 +8,15 @@
   },
   "scripts": {
     "build-sass": "node-sass src/scss/index.scss > assets/app.css",
-    "build-js": "browserify src/scripts/index.js -o assets/app.js",
+    "build-js": "npm run browserify-js && npm run concat-timber && npm run concat-js",
     "build-min-js": "browserify src/scripts/index.js | uglifyjs -o assets/app.min.js",
     "build-min-sass": "node-sass src/scss/index.scss | cleancss -o assets/app.min.css",
     "watch-js": "nodemon -e js -w src/scripts -x 'npm run build-js'",
     "watch-sass": "nodemon -e scss -w src/scss -x 'npm run build-sass'",
     "build": "npm run build-js & npm run build-sass",
+    "browserify-js": "browserify src/scripts/app.js -o src/scripts/app-browserified.js",
+    "concat-timber": "cat src/scripts/timber-modules/* > src/scripts/timber-modules/timber.js.liquid",
+    "concat-js": "cat src/scripts/ext/* src/scripts/timber-modules/timber.js.liquid src/scripts/app-browserified.js > assets/index.js.liquid",
     "watch": "npm run watch-js & npm run watch-sass"
   },
   "repository": {
