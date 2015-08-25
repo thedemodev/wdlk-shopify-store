@@ -6,7 +6,7 @@ var autoprefixer = require('autoprefixer-core');
 
 function scss (cb) {
     var srcFile   = path.resolve( __dirname, '..', '..', 'src/scss/index.scss');
-    var buildFile = path.resolve( __dirname, '..', '..', 'assets/index.scss');
+    var buildFile = path.resolve( __dirname, '..', '..', 'assets/index.scss.liquid');
     var libsPath  = path.resolve( __dirname, '..', '..', 'src/scss/libs');
 
 
