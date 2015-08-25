@@ -8,7 +8,7 @@ function scss (cb) {
     var srcFile   = path.resolve( __dirname, '..', '..', 'src/scss/index.scss');
     var buildFile = path.resolve( __dirname, '..', '..', 'assets/index.scss');
     var libsPath  = path.resolve( __dirname, '..', '..', 'src/scss/libs');
-    var bourbonPath = path.resolve( __dirname, '..', '..', 'node_modules/bourbon/app/assets/stylesheets/');
+
 
     sass.render({
         file: srcFile,
@@ -26,9 +26,8 @@ function scss (cb) {
                 var results = postcss([autoprefixer({ browsers: ['last 2 versions'] })]).process(result.css);
 
                 fs.writeFile(buildFile, results);
-                // console.log(results.css.toString());
                 console.log(results.messages.toString());
-                console.log(results);
+                console.log('SASS compilation was successfully completed');
         }
     });
 
