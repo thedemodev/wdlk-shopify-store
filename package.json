@@ -7,7 +7,11 @@
     "doc": "docs"
   },
   "scripts": {
-    "scss": "node tasks/config/sass.js"
+    "watch": "node tasks/watch.js",
+    "tasks": "node tasks/run.js",
+    "watch-tasks": "npm run babel -- --watch",
+    "babel": "npm run clean && babel --optional runtime source-tasks --out-dir ./tasks",
+    "clean": "rm -rf tasks"
   },
   "bin": {
     "sass": "tasks/config/sass.js"
@@ -33,10 +37,16 @@
   },
   "homepage": "https://gitlab.com/PalmaSwell/wdlk-ocean#README",
   "dependencies": {
+    "async": "^1.4.2",
     "autoprefixer": "^5.2.0",
     "autoprefixer-core": "^5.2.1",
+    "babel": "^5.8.21",
+    "babel-runtime": "^5.8.20",
+    "bourbon": "^4.2.4",
     "chokidar": "^1.0.5",
+    "colors": "^1.1.2",
     "node-sass": "^3.2.0",
-    "postcss": "^4.1.16"
+    "postcss": "^4.1.16",
+    "require-all": "^1.1.0"
   }
 }
