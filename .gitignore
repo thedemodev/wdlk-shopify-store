@@ -20,3 +20,6 @@ config/settings_data.json
 
 # Ignore .DS_store file
 .DS_Store
+
+# Example files
+/examples
