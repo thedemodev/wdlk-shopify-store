@@ -2,8 +2,8 @@ import requireAll from 'require-all';
 import log from './log';
 import async from 'async';
 
-export default (function run (cb) {
-    cb = cb || () => {};
+export default function run (cb) {
+    // cb = cb || () => {};
 
     let tasks = requireAll({
         dirname: __dirname + '/configuration',
@@ -23,4 +23,4 @@ export default (function run (cb) {
       tasks[taskName](callback);
     }, cb);
 
-})();
+}
