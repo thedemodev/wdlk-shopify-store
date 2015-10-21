@@ -1,41 +1,18 @@
-'use strict';
+import path from 'path';
+import chokidar from 'chokidar';
+import run from './run';
 
-var _interopRequireDefault = require('babel-runtime/helpers/interop-require-default')['default'];
 
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
+function onError(err) {
+    if (err) console.error(err);
+}
 
-var _path = require('path');
+export default (function watch () {
+    let watcher = chokidar.watch(path.resolve('./src/'), {
+        ignoreInitial: true});
 
-var _path2 = _interopRequireDefault(_path);
-
-var _chokidar = require('chokidar');
-
-var _chokidar2 = _interopRequireDefault(_chokidar);
-
-var _run = require('./run');
-
-var _run2 = _interopRequireDefault(_run);
-
-var _log = require('./log');
-
-var _log2 = _interopRequireDefault(_log);
-
-var onError = function onError(err) {
-    if (err) console.error(_log2['default'].error('Error: ') + err);
-};
-
-var watch = function watch(cb) {
-    var watcher = _chokidar2['default'].watch(_path2['default'].resolve('./src'), { ignoreInitial: true });
-
-    console.log(watcher);
-    watcher.on('all', function () {
-        // run(onError)
+    watcher.on('all', () => {
+        run(onError);
     });
 
-    cb();
-};
-
-exports.watch = watch;
-watch();
+})();

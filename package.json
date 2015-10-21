@@ -7,10 +7,9 @@
     "doc": "docs"
   },
   "scripts": {
-    "watch": "node tasks/watch.js",
-    "tasks": "node tasks/run.js",
-    "watch-tasks": "npm run babel -- --watch",
-    "babel": "npm run clean && babel --optional runtime source-tasks --out-dir ./tasks",
+    "watch": "babel-node tasks/watch.js",
+    "tasks": "babel-node tasks/run.js",
+    "sass": "babel-node tasks/configuration/sass.js",
     "clean": "rm -rf tasks"
   },
   "bin": {
