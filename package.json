@@ -7,17 +7,13 @@
     "doc": "docs"
   },
   "scripts": {
-    "build-sass": "node-sass src/scss/index.scss > assets/app.css",
-    "build-js": "npm run browserify-js && npm run concat-timber && npm run concat-js",
-    "build-min-js": "browserify src/scripts/index.js | uglifyjs -o assets/app.min.js",
-    "build-min-sass": "node-sass src/scss/index.scss | cleancss -o assets/app.min.css",
-    "watch-js": "nodemon -e js -w src/scripts -x 'npm run build-js'",
-    "watch-sass": "nodemon -e scss -w src/scss -x 'npm run build-sass'",
-    "build": "npm run build-js & npm run build-sass",
-    "browserify-js": "browserify src/scripts/app.js -o src/scripts/app-browserified.js",
-    "concat-timber": "cat src/scripts/timber-modules/* > src/scripts/timber-modules/timber.js.liquid",
-    "concat-js": "cat src/scripts/ext/* src/scripts/timber-modules/timber.js.liquid src/scripts/app-browserified.js > assets/index.js.liquid",
-    "watch": "npm run watch-js & npm run watch-sass"
+    "watch": "babel-node tasks/watch.js",
+    "tasks": "babel-node tasks/run.js",
+    "sass": "babel-node tasks/configuration/sass.js",
+    "clean": "rm -rf tasks"
+  },
+  "bin": {
+    "sass": "tasks/config/sass.js"
   },
   "repository": {
     "type": "git",
@@ -28,10 +24,6 @@
     {
       "name": "Mauricio Palma",
       "email": "mauricio.palma@woodlikeocean.com"
-    },
-    {
-      "name": "Maximilian Heiz",
-      "email": "heinzmaximilian@googlemail.com"
     }
   ],
   "license": "ISC",
@@ -40,10 +32,16 @@
   },
   "homepage": "https://gitlab.com/PalmaSwell/wdlk-ocean#README",
   "devDependencies": {
-    "browserify": "^11.0.1",
-    "clean-css": "^3.3.9",
-    "node-sass": "latest",
-    "nodemon": "^1.4.1",
-    "uglifyjs": "^2.4.10"
+    "async": "^1.4.2",
+    "autoprefixer": "^5.2.0",
+    "autoprefixer-core": "^5.2.1",
+    "babel": "^5.8.21",
+    "babel-runtime": "^5.8.20",
+    "bourbon": "^4.2.4",
+    "chokidar": "^1.0.5",
+    "colors": "^1.1.2",
+    "node-sass": "^3.2.0",
+    "postcss": "^4.1.16",
+    "require-all": "^1.1.0"
   }
 }

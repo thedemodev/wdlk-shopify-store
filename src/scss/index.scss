@@ -1,7 +1,10 @@
-@import 'test';
+//-- Bourboun mixins
+@import "libs/bourbon/bourbon";
 
 $test: red;
 
 body {
     background: $test;
 }
+//-- Shopify Timber
+@import "libs/timber/timber";
