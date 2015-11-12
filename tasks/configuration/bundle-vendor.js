@@ -7,8 +7,9 @@ export default function vendor () {
     var outputBundle = resolve('./assets/vendor.js');
 
     var libs = [
-        libsPath + '/handlebars.min.js', // Is it really necessary?
-        libsPath + '/fastclick.min.js', // Is it really necessary?
+        'jquery',
+        'handlebars', // Is it really necessary?
+        'fastclick',
         libsPath + '/prepare-transition.js', // Check what does it do
         libsPath + '/replace-url-params.js',
         libsPath + '/respond.min.js', // Most probably I don't need it

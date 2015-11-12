@@ -17,5 +17,3 @@ export default function bundle () {
             console.log('Index Bundle: was successfully completed');
         });
 };
-
-bundle();
