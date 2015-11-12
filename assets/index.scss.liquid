@@ -1,6 +1,9 @@
 h2, .h2 {
   color: red; }
 
+body {
+  background: yellow; }
+
 /*============================================================================
   #Breakpoint and Grid Variables
 ==============================================================================*/
@@ -50,14 +53,10 @@ input[type="search"]::-webkit-search-decoration {
     - Note the inclusion of .grid-uniform to take care of clearfixes on evenly sized grid items
 ==============================================================================*/
 /* Force clearfix on grids */
-.grid,
-.grid--rev,
-.grid--full,
+.grid, .grid--rev, .grid--full,
 .grid-uniform {
   *zoom: 1; }
-  .grid:after,
-  .grid--rev:after,
-  .grid--full:after,
+  .grid:after, .grid--rev:after, .grid--full:after,
   .grid-uniform:after {
     content: '';
     display: table;
@@ -77,9 +76,7 @@ input[type="search"]::-webkit-search-decoration {
     2. Remove any margins and paddings that might affect the grid system.
     3. Apply a negative `margin-left` to negate the columns' gutters.
 ==============================================================================*/
-.grid,
-.grid--rev,
-.grid--full,
+.grid, .grid--rev, .grid--full,
 .grid-uniform {
   list-style: none;
   margin: 0;
@@ -1422,8 +1419,7 @@ hr {
     display: table-cell;
     vertical-align: middle;
     margin-bottom: 0; }
-    .section-header__left h1, .section-header__left .h1, .section-header__left h2, .section-header__left .h2, .section-header__left h3, .section-header__left .h3, .section-header__left h4,
-    .section-header__left .h4,
+    .section-header__left h1, .section-header__left .h1, .section-header__left h2, .section-header__left .h2, .section-header__left h3, .section-header__left .h3, .section-header__left h4, .section-header__left .h4,
     .section-header__left .h1, .section-header__left .h2, .section-header__left .h3, .section-header__left .h4 {
       margin-bottom: 0; }
   .section-header__right {
@@ -1465,8 +1461,7 @@ hr {
   padding: 10px 8px;
   color: white;
   line-height: 1; }
-  .change-view:hover,
-  .change-view:focus {
+  .change-view:hover, .change-view:focus {
     color: gray; }
 
 .change-view--active {
@@ -1514,10 +1509,10 @@ button[disabled],
 html input[disabled] {
   cursor: default; }
 
-.btn,
-.btn--secondary,
+.btn, .btn--secondary,
 .rte .btn--secondary,
-.rte .btn, .rte .btn--secondary {
+.rte .btn,
+.rte .btn--secondary {
   display: inline-block;
   padding: 8px 10px;
   width: auto;
@@ -1540,25 +1535,23 @@ html input[disabled] {
   /*================ Set primary button colors - can override later ================*/
   background-color: gray;
   color: #fff; }
-  .btn:hover,
-  .btn--secondary:hover,
-  .rte .btn:hover, .rte .btn--secondary:hover {
+  .btn:hover, .btn--secondary:hover,
+  .rte .btn:hover,
+  .rte .btn--secondary:hover {
     background-color: #676767;
     color: #fff; }
-  .btn:active,
-  .btn--secondary:active,
-  .btn:focus,
-  .btn--secondary:focus,
+  .btn:active, .btn--secondary:active, .btn:focus, .btn--secondary:focus,
   .rte .btn:active,
-  .rte .btn--secondary:active, .rte .btn:focus, .rte .btn--secondary:focus {
+  .rte .btn--secondary:active,
+  .rte .btn:focus,
+  .rte .btn--secondary:focus {
     background-color: #4d4d4d;
     color: #fff; }
-  .btn[disabled],
-  [disabled].btn--secondary,
-  .btn.disabled,
-  .disabled.btn--secondary,
+  .btn[disabled], [disabled].btn--secondary, .btn.disabled, .disabled.btn--secondary,
   .rte .btn[disabled],
-  .rte [disabled].btn--secondary, .rte .btn.disabled, .rte .disabled.btn--secondary {
+  .rte [disabled].btn--secondary,
+  .rte .btn.disabled,
+  .rte .disabled.btn--secondary {
     cursor: default;
     color: #b6b6b6;
     background-color: #f6f6f6; }
@@ -1570,8 +1563,7 @@ html input[disabled] {
   .rte .btn--secondary:hover {
     background-color: #cc00cc;
     color: #fff; }
-  .btn--secondary:active,
-  .btn--secondary:focus,
+  .btn--secondary:active, .btn--secondary:focus,
   .rte .btn--secondary:active,
   .rte .btn--secondary:focus {
     background-color: #990099;
@@ -1822,8 +1814,7 @@ select {
   textarea:focus,
   select:focus {
     border: 1px solid #e6e6e6; }
-  input[disabled],
-  input.disabled,
+  input[disabled], input.disabled,
   textarea[disabled],
   textarea.disabled,
   select[disabled],
@@ -1939,12 +1930,19 @@ label.error {
   .input-group .input-group-btn:first-child,
   .input-group .input-group-btn:first-child > .btn,
   .input-group .input-group-btn:first-child > .btn--secondary,
-  .input-group .rte .input-group-btn:first-child > .btn--secondary,
+  .input-group
+  .rte .input-group-btn:first-child > .btn--secondary,
   .input-group input[type="hidden"]:first-child + .input-group-field,
-  .input-group input[type="hidden"]:first-child + .input-group-btn > .btn, .input-group input[type="hidden"]:first-child + .input-group-btn > .btn--secondary, .input-group .rte input[type="hidden"]:first-child + .input-group-btn > .btn--secondary {
+  .input-group input[type="hidden"]:first-child + .input-group-btn > .btn,
+  .input-group input[type="hidden"]:first-child + .input-group-btn > .btn--secondary,
+  .input-group
+  .rte input[type="hidden"]:first-child + .input-group-btn > .btn--secondary {
     border-radius: 3px 0 0 3px; }
   .input-group .input-group-field:last-child,
-  .input-group .input-group-btn:last-child > .btn, .input-group .input-group-btn:last-child > .btn--secondary, .input-group .rte .input-group-btn:last-child > .btn--secondary {
+  .input-group .input-group-btn:last-child > .btn,
+  .input-group .input-group-btn:last-child > .btn--secondary,
+  .input-group
+  .rte .input-group-btn:last-child > .btn--secondary {
     border-radius: 0 3px 3px 0; }
   .input-group input::-moz-focus-inner {
     border: 0;
@@ -1958,8 +1956,7 @@ label.error {
   vertical-align: middle;
   margin: 0; }
 
-.input-group .btn,
-.input-group .btn--secondary,
+.input-group .btn, .input-group .btn--secondary,
 .input-group .input-group-field {
   height: 37px; }
 
@@ -2271,9 +2268,7 @@ label.error {
   padding: 15px;
   white-space: nowrap;
   color: #333; }
-  .site-nav__link:hover,
-  .site-nav__link:active,
-  .site-nav__link:focus {
+  .site-nav__link:hover, .site-nav__link:active, .site-nav__link:focus {
     color: #0d0d0d; }
   .site-nav__link .icon-arrow-down {
     position: relative;
@@ -2298,9 +2293,7 @@ label.error {
     display: block; }
   .site-nav__dropdown a {
     background-color: #f2f2f2; }
-    .site-nav__dropdown a:hover,
-    .site-nav__dropdown a:active,
-    .site-nav__dropdown a:focus {
+    .site-nav__dropdown a:hover, .site-nav__dropdown a:active, .site-nav__dropdown a:focus {
       background-color: #d8d8d8; }
 
 /*================ Search bar in header ================*/
@@ -2350,15 +2343,12 @@ label.error {
   color: #333;
   padding: 15px;
   text-decoration: none; }
-  .mobile-nav__item a:hover,
-  .mobile-nav__item a:active,
-  .mobile-nav__item a:focus,
+  .mobile-nav__item a:hover, .mobile-nav__item a:active, .mobile-nav__item a:focus,
   .mobile-nav__toggle button:hover,
   .mobile-nav__toggle button:active,
   .mobile-nav__toggle button:focus {
     color: #0d0d0d; }
-  .mobile-nav__item a:active,
-  .mobile-nav__item a:focus,
+  .mobile-nav__item a:active, .mobile-nav__item a:focus,
   .mobile-nav__toggle button:active,
   .mobile-nav__toggle button:focus {
     background-color: #e9e9e9; }
@@ -2428,8 +2418,7 @@ label.error {
   transition: all 0.4s cubic-bezier(0.46, 0.01, 0.32, 1); }
   .drawer a {
     color: #333; }
-    .drawer a:hover,
-    .drawer a:focus {
+    .drawer a:hover, .drawer a:focus {
       opacity: 0.7; }
   .drawer input,
   .drawer textarea {
@@ -2495,8 +2484,7 @@ label.error {
   height: 100%;
   padding: 0 20px;
   color: inherit; }
-  .drawer__close button:active,
-  .drawer__close button:focus {
+  .drawer__close button:active, .drawer__close button:focus {
     background-color: #e9e9e9; }
 
 /*============================================================================
@@ -2626,9 +2614,7 @@ label.error {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
-  .js-qty__adjust:hover,
-  .ajaxcart__qty-adjust:hover,
-  .js-qty__adjust:focus, .ajaxcart__qty-adjust:focus {
+  .js-qty__adjust:hover, .ajaxcart__qty-adjust:hover, .js-qty__adjust:focus, .ajaxcart__qty-adjust:focus {
     color: gray; }
 
 .js-qty__adjust--plus, .ajaxcart__qty--plus {
@@ -2700,9 +2686,9 @@ label.error {
 .product-single__photos {
   margin-bottom: 30px; }
 
-.product-single__photos a,
-.product-single__photos img,
-.product-single__thumbnails a, .product-single__thumbnails img {
+.product-single__photos a, .product-single__photos img,
+.product-single__thumbnails a,
+.product-single__thumbnails img {
   display: block;
   margin: 0 auto; }
 
