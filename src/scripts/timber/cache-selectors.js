@@ -1,3 +1,5 @@
+window.timber = window.timber || {};
+
 timber.cacheSelectors = function () {
   timber.cache = {
     // General

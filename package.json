@@ -7,14 +7,14 @@
     "doc": "docs"
   },
   "scripts": {
+    "start": "npm run clean && npm run watch",
     "watch": "babel-node tasks/watch.js",
     "tasks": "babel-node tasks/run.js",
     "sass": "babel-node tasks/configuration/sass.js",
     "bundle": "babel-node tasks/configuration/bundle-index.js",
-    "vendor": "babel-node tasks/configuration/bundle-vendor.js"
-  },
-  "bin": {
-    "sass": "tasks/config/sass.js"
+    "timber": "babel-node tasks/configuration/timber.js",
+    "deploy": "theme watch",
+    "clean": "rm -rf assets/vendor.js assets/index.js.liquid"
   },
   "repository": {
     "type": "git",
@@ -33,7 +33,7 @@
   },
   "homepage": "https://gitlab.com/PalmaSwell/wdlk-ocean#README",
   "devDependencies": {
-    "async": "^1.4.2",
+    "async": "^1.5.0",
     "autoprefixer": "^5.2.0",
     "autoprefixer-core": "^5.2.1",
     "babel": "^5.8.29",
@@ -54,6 +54,7 @@
   },
   "dependencies": {
     "fastclick": "^1.0.6",
+    "handlebars": "^4.0.5",
     "jquery": "^2.1.4"
   }
 }

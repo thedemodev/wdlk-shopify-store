@@ -1,4 +1,3 @@
-// Timber functions
 window.timber = window.timber || {};
 
 timber.accessibleNav = function () {

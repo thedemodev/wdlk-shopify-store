@@ -1,10 +1,7 @@
 <!doctype html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-
-  <!-- Basic page needs ================================================== -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
@@ -12,7 +9,7 @@
   <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/png" />
   {% endif %}
 
-  <!-- Title and description ================================================== -->
+
   <title>
   {{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
   </title>
@@ -27,15 +24,15 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="{{ settings.color_primary }}">
 
-  <!-- CSS ================================================== -->
+  {% comment %}
+       CSS
+ {% endcomment %}
   {{ 'index.scss.css' | asset_url | stylesheet_tag }}
 
-  <!-- Header hook for plugins ================================================== -->
+  {% comment %}
+        Header hook for plugins
+  {% endcomment %}
   {{ content_for_header }}
-  {% include 'oldIE-js' %}
-
-  {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | script_tag }}
-  {{ 'modernizr.min.js' | asset_url | script_tag }}
 
   {% comment %}
     If you store has customer accounts disabled, you can remove the following JS file
@@ -374,27 +371,9 @@
         </div>
       </div>
     </footer>
-    <!-- //site-footer -->
   </div>
+  {{ 'timber.js' | asset_url | script_tag }}
 
-  {{ 'fastclick.min.js' | asset_url | script_tag }}
-  {{ 'index.js' | asset_url | script_tag }}
-
-  {% comment %}
-    Template-specific js
-  {% endcomment %}
-  <script>
-    {% if newHash %}
-      $(function() {
-        timber.updateHash('{{ newHash }}');
-      });
-    {% endif %}
-    {% if resetPassword %}
-      $(function() {
-        timber.resetPasswordSuccess();
-      });
-    {% endif %}
-  </script>
 
   {% comment %}
     Ajaxify your cart with this plugin.
@@ -402,9 +381,7 @@
       - http://shopify.com/timber#ajax-cart
   {% endcomment %}
   {% if settings.ajax_cart_enable %}
-    {{ 'handlebars.min.js' | asset_url | script_tag }}
     {% include 'ajax-cart-template' %}
-    {{ 'ajax-cart.js' | asset_url | script_tag }}
     <script>
       jQuery(function($) {
         ajaxCart.init({

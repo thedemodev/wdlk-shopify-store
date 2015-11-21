@@ -1,3 +1,4 @@
+// Warning!!!! With Liquid Code
 timber.productPage = function (options) {
   var moneyFormat = options.money_format,
       variant = options.variant,

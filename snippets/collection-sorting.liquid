@@ -47,7 +47,7 @@
     }
   }
 
-  $(function() {
+  (function($) {
     $('#SortBy')
       .val('{{ collection.sort_by | default: collection.default_sort_by }}')
       .bind('change', function() {

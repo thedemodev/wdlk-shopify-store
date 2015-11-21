@@ -27,7 +27,7 @@ export default async function scss () {
 
                 fs.writeFile(BUILDFILE, results);
                 console.log(results.messages.toString());
-                console.log(log.silly('info: ') + 'SASS compilation was successfully completed');
+                console.log(log.info('info: ') + 'SASS compilation was successfully completed');
         }
     })
 }
