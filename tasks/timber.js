@@ -1,7 +1,7 @@
 import fs from 'fs';
 import {resolve} from 'path';
 import async from 'async';
-import log from '../log';
+import log from './log';
 
 export default function timber () {
     var timberPath = resolve('./src/scripts/timber');
@@ -45,5 +45,3 @@ export default function timber () {
         console.log(log.info('Timber Concat:'), 'concatenation was successfull');
     });
 };
-
-timber();

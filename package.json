@@ -7,14 +7,11 @@
     "doc": "docs"
   },
   "scripts": {
-    "start": "npm run clean && npm run watch",
     "watch": "babel-node tasks/watch.js",
-    "tasks": "babel-node tasks/run.js",
-    "sass": "babel-node tasks/configuration/sass.js",
-    "bundle": "babel-node tasks/configuration/bundle-index.js",
-    "timber": "babel-node tasks/configuration/timber.js",
-    "deploy": "theme watch",
-    "clean": "rm -rf assets/vendor.js assets/index.js.liquid"
+    "sass": "babel-node tasks/sass.js",
+    "timber": "babel-node tasks/timber.js",
+    "bundle": "babel-node tasks/bundle.js",
+    "deploy": "theme watch"
   },
   "repository": {
     "type": "git",
@@ -50,7 +47,8 @@
     "handlebars": "^4.0.4",
     "node-sass": "^3.2.0",
     "postcss": "^4.1.16",
-    "require-all": "^1.1.0"
+    "require-all": "^1.1.0",
+    "watch": "^0.16.0"
   },
   "dependencies": {
     "fastclick": "^1.0.6",

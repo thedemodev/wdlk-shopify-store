@@ -1,26 +1,42 @@
-import path from 'path';
-import chokidar from 'chokidar';
-import run from './run';
+import {resolve, dirname, basename} from 'path';
+import watch from 'watch';
+import timber from './timber';
+import bundle from './bundle';
+import sass from './sass';
+import log from './log';
 
+export default function watchFolders () {
+    var rootFolder = resolve('./src/');
+    var timberFolder = rootFolder + '/scripts/timber';
+    var sassFolder = rootFolder + '/scss';
+    var bundleFolder = rootFolder + 'scripts/modules';
 
-function onError(err) {
-  if (err) console.error(err);
+    function findTask (path, file, cb) {
+        if (path === dirname(file)) {
+            cb();
+        }
+    };
+
+    watch.createMonitor(rootFolder,  monitor => {
+        monitor.on('created', (file, stat) => {
+            console.log(log.info('Created File:'), file , stat);
+
+        })
+
+        monitor.on('changed', (file, curr, prev) => {
+            findTask(timberFolder, file, timber);
+            findTask(sassFolder, file, sass);
+            findTask(bundleFolder, file, bundle);
+            if (basename(file) === 'index.js') {
+                bundle();
+            }
+            console.log(log.info('Changed File:'), file);
+        })
+
+        monitor.on('removed', (file, stat) => {
+            console.log(log.info('Removed File'), file, stat);
+        })
+    });
 }
 
-const test = "some random text";
-
-export default (function watch () {
-    let watcher = chokidar.watch(path.resolve('./src/'), {
-        ignoreInitial: true});
-
-    watcher.on('all', () => {
-        run(err => {
-            if(err) console.log(err);
-        });
-    });
-
-    run(err => {
-        if(err) console.log(err);
-    });
-
-})();
+watchFolders();

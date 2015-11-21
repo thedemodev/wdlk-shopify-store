@@ -1,14 +1,14 @@
-import path from 'path';
+import {resolve} from 'path';
 import fs from 'fs';
 import sass from 'node-sass';
 import postcss from 'postcss';
 import autoprefixer from 'autoprefixer-core';
-import log from '../log';
+import log from './log';
 
-export default async function scss () {
-    const SRCFILE   = path.resolve( __dirname, '..', '..', 'src/scss/index.scss');
-    const BUILDFILE = path.resolve( __dirname, '..', '..', 'assets/index.scss.liquid');
-    const LIBSPATH  = path.resolve( __dirname, '..', '..', 'src/scss/libs');
+export default function scss () {
+    const SRCFILE   = resolve('./src/scss/index.scss');
+    const BUILDFILE = resolve('./assets/index.scss.liquid');
+    const LIBSPATH  = resolve('./src/scss/libs');
 
     sass.render({
         file: SRCFILE,

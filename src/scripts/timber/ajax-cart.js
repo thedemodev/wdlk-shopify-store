@@ -14,7 +14,7 @@
     - snippet/ajax-cart-template.liquid
 
   Customized version of Shopify's jQuery API
-  (c) Copyright 2009-2015 Shopify Inc. Author: Caroline Schnapp. All Rights Reserved.
+  (c) Copyright 2009-2015 Shopify Inc. Author: Caroline Schnapp. All Rights Reserved..
 ==============================================================================*/
 if ((typeof ShopifyAPI) === 'undefined') { ShopifyAPI = {}; }
 
