@@ -11,6 +11,7 @@
     "sass": "babel-node tasks/sass.js",
     "timber": "babel-node tasks/timber.js",
     "bundle": "babel-node tasks/bundle.js",
+    "scripts": "babel-node tasks/scripts.js",
     "deploy": "theme watch"
   },
   "repository": {

@@ -5,7 +5,7 @@ import log from './log';
 
 export default function bundle () {
     var entryFile = resolve('./src/scripts/index.js');
-    var outputFile = resolve('./assets/index.js.liquid');
+    var outputFile = resolve('./src/scripts/index.js.liquid');
 
     browserify(entryFile)
         .transform('babelify', {presets: ['es2015', 'stage-0']})

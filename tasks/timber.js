@@ -1,12 +1,12 @@
-import fs from 'fs';
+import readFiles from './utils/read-files';
+import {writeFile} from 'fs';
 import {resolve} from 'path';
-import async from 'async';
 import log from './log';
 
 export default function timber () {
     var timberPath = resolve('./src/scripts/timber');
     var libsPath = resolve('./src/scripts/libs');
-    var outputFile = resolve('./assets/timber.js.liquid');
+    var outputFile = resolve('./src/scripts/timber.js.liquid');
 
     var files = [
         'node_modules/jquery/dist/jquery.min.js',
@@ -33,15 +33,9 @@ export default function timber () {
         timberPath + '/ajax-cart.js'
     ];
 
-    function readFiles (files, callback) {
-        async.map(files, ((f, cb) => {
-            fs.readFile(f, 'utf-8', cb)
-        }), callback);
-    };
-
     readFiles(files, (err, data) => {
         if (err) console.error(log.error('Timber Concat Read File Error:'), err);
-        fs.writeFile(outputFile, data.join('\r\n'));
+        writeFile(outputFile, data.join('\r\n'));
         console.log(log.info('Timber Concat:'), 'concatenation was successfull');
     });
 };
