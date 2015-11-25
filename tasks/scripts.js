@@ -16,5 +16,3 @@ export default function scripts () {
         console.log(log.info('Scripts:'), 'concatenation was successfull');
     });
 }
-
-scripts();

@@ -49,6 +49,8 @@
     "node-sass": "^3.2.0",
     "postcss": "^4.1.16",
     "require-all": "^1.1.0",
+    "uglify-js": "^2.6.1",
+    "uglifyify": "^3.0.1",
     "watch": "^0.16.0"
   },
   "dependencies": {

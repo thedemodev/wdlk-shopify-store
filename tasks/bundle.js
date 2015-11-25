@@ -9,6 +9,7 @@ export default function bundle () {
 
     browserify(entryFile)
         .transform('babelify', {presets: ['es2015', 'stage-0']})
+        .transform('uglifyify')
         .bundle()
         .on('error', err => {
             console.error(log.error('Index Bundle Error:'), err);
