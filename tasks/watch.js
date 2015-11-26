@@ -1,4 +1,4 @@
-import {resolve, dirname, basename} from 'path';
+import {resolve, dirname, basename, extname} from 'path';
 import watch from 'watch';
 import timber from './timber';
 import bundle from './bundle';
@@ -12,8 +12,8 @@ export default function watchFolders () {
     var sassFolder = rootFolder + '/scss';
     var bundleFolder = rootFolder + '/scripts/modules';
 
-    function findTask (path, file, cb) {
-        if (path === dirname(file)) {
+    function findTask (path, file, cb, ext) {
+        if (path === dirname(file) || '.' + ext === extname(file)) {
             cb();
         }
     };
@@ -26,7 +26,7 @@ export default function watchFolders () {
 
         monitor.on('changed', (file, curr, prev) => {
             findTask(timberFolder, file, timber);
-            findTask(sassFolder, file, sass);
+            findTask(sassFolder, file, sass, 'scss');
             findTask(bundleFolder, file, bundle);
             if (basename(file) === 'index.js') {
                 bundle();

@@ -1,2 +1,3 @@
 import example from './modules/example';
- example();
+example();
+console.log('this is working');
