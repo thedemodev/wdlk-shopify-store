@@ -1,0 +1,14 @@
+//-- Bourbon Font Face Mixin
+@import "./node_modules/bourbon/app/assets/stylesheets/settings/_asset-pipeline";
+@import "./node_modules/bourbon/app/assets/stylesheets/css3/_font-face";
+
+@include font-face("museo-sans", "/assets/MuseoSans_300-webfont", 300);
+@include font-face("museo-sans", "/assets/MuseoSans_300-webfont", 300);
+@include font-face("museo-sans-bold", "/assets/montserrat-light-webfont");
+@include font-face("lombok", "/assets/lombok-webfont");
+
+body {
+    font-family: "museo-sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}

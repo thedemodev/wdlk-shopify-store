@@ -1,10 +1,11 @@
-//-- Bourboun mixins
-@import "libs/bourbon/bourbon";
-
-$test: green;
-
-body {
-    background: $test;
-}
-//-- Shopify Timber
+//-- Shopify Timber (Legacy styling)
+//-- $todo: the ultimate goal is to completely remove the timber styling
 @import "libs/timber/timber";
+
+//-- Bourboun mixins
+//@import "libs/bourbon/bourbon";
+
+//-- WDLK Custom Styling
+//--
+//-- Typography
+@import "typography/index";
