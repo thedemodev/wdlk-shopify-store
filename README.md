@@ -9,7 +9,7 @@ This project has two divisions:
 ### Shopify Framework & Timber
 
 #### Syncing & Watching With the shopify_theme
-In shopify you develop locally and use a syncing utility to push your changes to the server instantly, where you can view them.
+In Shopify you develop locally and use a syncing utility to push your changes to the server instantly, where you can view them.
 
 The shopify_theme gem comes to rescue!!
 
@@ -27,7 +27,7 @@ shopify_theme documentation:[http://shopify.github.io/shopify_theme/](http://sho
 
 1. `npm install`
 2. `npm start`
-3. `npm run scss` (optional)
+3. `npm run watch`
 
 
 ## Theme Development Workflow
