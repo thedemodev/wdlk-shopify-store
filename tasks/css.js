@@ -21,7 +21,7 @@ export default function css () {
     });
 
     const PROCESSOR = [
-        autoprefixer({ browsers: ['last 3 versions']}),
+        autoprefixer({ browsers: ['last 2 versions']}),
         cssnext(),
         reporter({
             plugins: [
