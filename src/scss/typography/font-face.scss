@@ -7,8 +7,18 @@
 @include font-face("museo-sans-bold", "/assets/montserrat-light-webfont");
 @include font-face("lombok", "/assets/lombok-webfont");
 
-body {
+html {
     font-family: "museo-sans", sans-serif;
+    font-size: 62.5%; // Equivalent to 10px
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+    --copy-size: 1.6rem;
+}
+
+.CopyText {
+    font-size: var(--copy-size);
 }
