@@ -2,6 +2,7 @@ import {resolve} from 'path';
 import fs from 'fs';
 import sass from 'node-sass';
 import postcss from 'postcss';
+import selector from 'postcss-custom-selectors';
 import autoprefixer from 'autoprefixer-core';
 import log from './log';
 
@@ -23,7 +24,8 @@ export default function scss () {
             console.error(log.error('Error found in the file: '), err.file );
             console.error(err.message);
         } else {
-                var results = postcss([autoprefixer({ browsers: ['last 2 versions'] })]).process(result.css);
+                var results = postcss([autoprefixer({ browsers: ['last 2 versions'] })]).use(selector()).process(result.css);
+                console.log(results );
 
                 fs.writeFile(BUILDFILE, results);
                 console.log(results.messages.toString());
