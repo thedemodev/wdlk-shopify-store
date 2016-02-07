@@ -1,13 +1,6 @@
 /*============================================================================
   #Basic Styles
 ==============================================================================*/
-html {
-  background-color: $colorFooterBg;
-}
-
-body {
-  background-color: $colorBody;
-}
 
 [tabindex='-1']:focus {
   outline: none;

@@ -1,0 +1,14 @@
+//-- Base Colors
+:root {
+    --white-hex: white;
+    --light-gray-hex: #999999;
+    --dark-asphalt-hex: #222222;
+    --sand-hex: #cc9966;
+}
+
+//-- Typo Colors
+:root {
+    --typo-hex: var(--dark-asphalt-hex);
+    --typo-secondary: var(--white-hex);
+    --typo-highlight: var(--sand-hex);
+}
