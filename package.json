@@ -12,7 +12,8 @@
     "timber": "babel-node tasks/timber.js",
     "bundle": "babel-node tasks/bundle.js",
     "scripts": "babel-node tasks/scripts.js",
-    "theme-watch": "theme watch"
+    "theme-watch": "theme watch",
+    "api": "babel-node tasks/shopify-api/api.js"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
     "chokidar": "^1.0.5",
     "colors": "^1.1.2",
     "postcss-reporter": "^1.3.1",
+    "shopify-node-api": "^1.6.1",
     "watch": "^0.16.0"
   },
   "dependencies": {
