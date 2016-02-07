@@ -1,0 +1,9 @@
+{
+  "metafield": {
+    "namespace": "bikini",
+    "key": "features",
+    "value": "Features text of the bikinis",
+    "description": "Provides the field for the product features text.",
+    "value_type": "string"
+  }
+}

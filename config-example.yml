@@ -1,0 +1,7 @@
+---
+:api_key: your api key
+:password: your api password
+:store: wdkl-ocean.myshopify.com/
+:theme_id: theme ide
+:ignore_files:
+   - config/settings_data.json
