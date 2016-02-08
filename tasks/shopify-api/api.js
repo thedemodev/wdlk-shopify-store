@@ -1,11 +1,11 @@
 import config from './config';
-import metaFields from './data/product.json'
+import metaFields from '../../config/products.json'
 
 export default function api () {
     const SHOPIFY = config();
     console.log(metaFields);
 
-    SHOPIFY.post('/admin/products/414034396/metafields.json', metaFields,  (err, data, headers) => {
+    SHOPIFY.post('/admin/metafields.json', metaFields,  (err, data, headers) => {
         console.log(data); // Data contains product json information
         console.log(headers); // Headers returned from request
     });
