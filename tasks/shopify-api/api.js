@@ -1,5 +1,5 @@
 import config from './config';
-import metaFields from '../../config/products.json'
+import metaFields from '../../config/meta_products.json'
 
 export default function api () {
     const SHOPIFY = config();
