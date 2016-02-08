@@ -1,9 +1,9 @@
 import config from './config';
-import metaFields from '../../config/meta_products.json'
+import {material} from './data/meta_products.js'
 
 export default function api () {
     const SHOPIFY = config();
-    console.log(metaFields);
+    console.log(material);
 
     SHOPIFY.post('/admin/metafields.json', metaFields,  (err, data, headers) => {
         console.log(data); // Data contains product json information
