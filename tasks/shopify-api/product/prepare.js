@@ -12,16 +12,16 @@ export function prepareMetafields () {
     const TIME = new Date();
 
 
-     let handleMetafields = cb => {
+     let handlepreparation = cb => {
         SHOPIFY.get('/admin/products.json', (err, data, headers) =>  {
             if (err) {
-                console.error(log.error(`[Product GET request ${TIME}]: `), err);
+                console.error(log.error(`${TIME} [Product GET request]: `), err);
             }
             cb(data);
         });
     }
 
-    handleMetafields((data) => {
+    handlepreparation((data) => {
         writeFile(LISTFILE, JSON.stringify(data, null, '\t'), err => {
             if (err) {
                 console.error(`${TIME} [Product writeFile]: `, log.error(err));
@@ -32,7 +32,6 @@ export function prepareMetafields () {
             readFile(LISTFILE, (err, data) => {
                 if (err) {
                     console.error(`${TIME} [Product readFile]: `, log.error(err));
-                    return;
                 }
                 const READABLEPRODUCTS = JSON.parse(data);
                 let id;
@@ -53,7 +52,6 @@ export function prepareMetafields () {
                 writeFile(BULKFILE, READABLEBULK, err => {
                     if (err) {
                         console.error(`${TIME} [Product readFile]: `, log.error(err));
-                        return;
                     }
                     console.log(`${TIME} [Product readFile]: `, log.info('bulk-metafields.json was created'));
                 });
