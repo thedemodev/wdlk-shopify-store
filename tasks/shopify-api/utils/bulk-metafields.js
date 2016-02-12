@@ -3,13 +3,13 @@ import {writeFile, readFile} from 'fs';
 import {CONFIG} from '../config';
 import log from '../../log';
 
-export default function sendMetaFields (file, endPoint) {
+export default function sendMetaFields (/*endPoint,*/ postData) {
     const SHOPIFY = new shopifyAPI(CONFIG);
     const TIME = new Date();
 
 
     let handleData = cb => {
-        readFile(file, (err, data) => {
+        readFile(postData, (err, data) => {
             if (err) {
                 console.error(`${TIME} [Bulk Metafields readFile]: `, log.error(err));
             }
@@ -18,11 +18,12 @@ export default function sendMetaFields (file, endPoint) {
     };
 
     handleData(data => {
-        const DATAJSON = JSON.parse(data);
-        console.log(DATAJSON);
-        // let fieldList = data.map((obj, i) => {
-        //     console.log(obj.metafield)
-        // });
+        const DATAOBJ = JSON.parse(data);
+
+        let fieldList = DATAOBJ.map((obj, i) => {
+            return obj['metafield'];
+        });
+        console.log(fieldList);
     });
 
     // let sendBulk = cb => {
