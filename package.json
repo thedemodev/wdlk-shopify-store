@@ -13,7 +13,8 @@
     "bundle": "babel-node tasks/bundle.js",
     "scripts": "babel-node tasks/scripts.js",
     "theme-watch": "theme watch",
-    "product-meta": "babel-node tasks/shopify-api/products-metafields.js"
+    "product-data": "babel-node tasks/shopify-api/product/prepare-data.js",
+    "product-meta": "babel-node tasks/shopify-api/product/metafields.js"
   },
   "repository": {
     "type": "git",
