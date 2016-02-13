@@ -1,0 +1,9 @@
+{
+  "metafield": {
+    "namespace": "Material",
+    "key": "product",
+    "value": "Material",
+    "description": "Provides detail information about the material features and properties",
+    "value_type": "string"
+  }
+}

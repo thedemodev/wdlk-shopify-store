@@ -11,7 +11,7 @@
 
 # Ignore cache
 node_modules
-config.yml
+
 /_site
 /.sass-cache
 /.cache
@@ -23,3 +23,7 @@ config/settings_data.json
 
 # Example files
 /examples
+
+# Sensitive Information
+config.yml
+tasks/shopify-api/config.js

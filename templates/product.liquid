@@ -116,6 +116,10 @@
         {{ product.description }}
       </div>
 
+      {% assign foo = shop.metafields.products %}
+      {% assign key = 'Its working dude!' %}
+      <h1>Features: {{ foo.features }}</h1>
+
       {% comment %}
         If the user is on a collection product page (ie with /collections/collection-handle/products/product-handle)
         in the URL, we can show next/previous links to other products in the collection.
