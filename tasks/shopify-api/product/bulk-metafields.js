@@ -3,9 +3,12 @@ import {resolve} from 'path';
 
 export default function sendBulk () {
     const BASEPATH = resolve(__dirname, '..', 'data/product/');
-    const BULKFILE = `${BASEPATH}/send-bulk.json`;
+    const BULKFILE = `${BASEPATH}/bulk.json`;
+    const ENDPOINT = '/admin/products/';
 
-    send(BULKFILE);
+    send(BULKFILE, ENDPOINT);
+
+    console.log(ENDPOINT);
 
 }
 sendBulk();

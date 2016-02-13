@@ -33,12 +33,12 @@ export function prepareMetafields () {
                 if (err) {
                     console.error(`${TIME} [Product readFile]: `, log.error(err));
                 }
-                const READABLEPRODUCTS = JSON.parse(data);
+                const PRODUCTSOBJ = JSON.parse(data);
                 let id;
                 let title;
                 let description;
 
-                let bulkData = READABLEPRODUCTS.products.map((obj, i) => {
+                let bulkData = PRODUCTSOBJ.products.map((obj, i) => {
                     let product = {};
                     product.id = obj.id;
                     product.title = obj.title;

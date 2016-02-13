@@ -3,10 +3,9 @@ import {writeFile, readFile} from 'fs';
 import {CONFIG} from '../config';
 import log from '../../log';
 
-export default function sendMetaFields (/*endPoint,*/ postData) {
+export default function sendMetaFields (postData, endPoint) {
     const SHOPIFY = new shopifyAPI(CONFIG);
     const TIME = new Date();
-
 
     let handleData = cb => {
         readFile(postData, (err, data) => {
@@ -20,19 +19,21 @@ export default function sendMetaFields (/*endPoint,*/ postData) {
     handleData(data => {
         const DATAOBJ = JSON.parse(data);
 
-        let fieldList = DATAOBJ.map((obj, i) => {
-            return obj['metafield'];
+        let postBulkFields = DATAOBJ.forEach((obj, i) => {
+            const METAFIELD = {'metafield': obj['metafield']};
+            const ENDPOINTUNIQUE = `${endPoint}${obj['id']}/metafields.json`;
+
+            SHOPIFY.post(ENDPOINTUNIQUE, METAFIELD, (err, data, headers) => {
+                    if (err) {
+                        console.error(log.error(`${TIME} [Metafields POST request]: `), err);
+                        return;
+                    }
+
+                    console.log(`${TIME} [Metafields POST request]:`, log.info('was successful'));
+            });
         });
-        console.log(fieldList);
+
+
     });
 
-    // let sendBulk = cb => {
-    //     SHOPIFY.post(endPoint, postData, (err, data, headers) => {
-    //         if (err) {
-    //             if (err) {
-    //                 console.error(log.error(`${TIME} [Metafields POST request]: `), err);
-    //         }
-    //         console.log(`${TIME} [Metafields POST request]:`, log.info('was successful'));
-    //     });
-    // };
 }
