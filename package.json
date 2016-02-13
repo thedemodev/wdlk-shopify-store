@@ -14,7 +14,9 @@
     "scripts": "babel-node tasks/scripts.js",
     "theme-watch": "theme watch",
     "product-data": "babel-node tasks/shopify-api/product/prepare-metafields.js",
-    "product-meta": "babel-node tasks/shopify-api/product/send-metafields.js"
+    "product-meta": "babel-node tasks/shopify-api/product/send-metafields.js",
+    "product-meta-global": "babel-node tasks/shopify-api/product/send-global-metafields.js",
+    "delete-meta": "babel-node tasks/shopify-api/utils/delete-metafields.js"
   },
   "repository": {
     "type": "git",
