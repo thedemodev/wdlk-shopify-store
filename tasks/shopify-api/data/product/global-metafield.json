@@ -1,4 +1,4 @@
-export let material = {
+{
   "metafield": {
     "namespace": "swimwear",
     "key": "Material",

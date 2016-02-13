@@ -32,8 +32,6 @@ export default function sendMetaFields (postData, endPoint) {
                     console.log(`${TIME} [Metafields POST request]:`, log.info('was successful'));
             });
         });
-
-
     });
 
 }
