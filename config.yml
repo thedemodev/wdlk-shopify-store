@@ -2,6 +2,6 @@
 :api_key: 001ce559f2b4d3f7225d1b0c6fe25c48
 :password: 7794d5b83cffe34144b12f84d200b302
 :store: wdkl-ocean.myshopify.com/
-:theme_id: 79401284
+:theme_id: 
 :ignore_files:
    - config/settings_data.json
