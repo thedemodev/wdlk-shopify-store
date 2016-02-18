@@ -3,9 +3,9 @@
 		"id": 414021500,
 		"title": "High Waist Bottom",
 		"metafield": {
-			"namespace": "Features",
+			"namespace": "features",
 			"key": "product",
-			"value": "Features",
+			"value": "features",
 			"description": "default description programmatically generated",
 			"value_type": "string"
 		}
@@ -14,9 +14,9 @@
 		"id": 414018012,
 		"title": "High Waist Bottoms",
 		"metafield": {
-			"namespace": "Features",
+			"namespace": "features",
 			"key": "product",
-			"value": "Features",
+			"value": "features",
 			"description": "default description programmatically generated",
 			"value_type": "string"
 		}
@@ -25,9 +25,9 @@
 		"id": 414034396,
 		"title": "Long Sleeve One Piece",
 		"metafield": {
-			"namespace": "Features",
+			"namespace": "features",
 			"key": "product",
-			"value": "Features",
+			"value": "features",
 			"description": "default description programmatically generated",
 			"value_type": "string"
 		}
@@ -36,9 +36,9 @@
 		"id": 414023808,
 		"title": "Printed Neoprene Top",
 		"metafield": {
-			"namespace": "Features",
+			"namespace": "features",
 			"key": "product",
-			"value": "Features",
+			"value": "features",
 			"description": "default description programmatically generated",
 			"value_type": "string"
 		}
@@ -47,9 +47,9 @@
 		"id": 402801932,
 		"title": "test",
 		"metafield": {
-			"namespace": "Features",
+			"namespace": "features",
 			"key": "product",
-			"value": "Features",
+			"value": "features",
 			"description": "default description programmatically generated",
 			"value_type": "string"
 		}
@@ -58,9 +58,9 @@
 		"id": 414029792,
 		"title": "Wrap Top",
 		"metafield": {
-			"namespace": "Features",
+			"namespace": "features",
 			"key": "product",
-			"value": "Features",
+			"value": "features",
 			"description": "default description programmatically generated",
 			"value_type": "string"
 		}

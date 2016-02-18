@@ -3,10 +3,9 @@
 		"id": 414021500,
 		"title": "High Waist Bottom",
 		"metafield": {
-			"namespace": "Features",
+			"namespace": "features",
 			"key": "product",
-			"value": "Features",
-			"description": "<p>Provides detailed information about the product features</p>\n<h3>Detail</h3>\n<ul><li>One</li><li>Two</li><li>Three</li></ul>",
+			"value": "<p>Provides detailed information about the product features</p>\n<h3>Detail</h3>\n<ul><li>One</li><li>Two</li><li>Three</li></ul>",
 			"value_type": "string"
 		}
 	},
@@ -14,10 +13,9 @@
 		"id": 414018012,
 		"title": "High Waist Bottoms",
 		"metafield": {
-			"namespace": "Features",
+			"namespace": "features",
 			"key": "product",
-			"value": "Features",
-			"description": "<p>Provides detailed information about the product features</p>\n<h3>Detail</h3>\n<ul><li>Uno</li><li>Dos</li><li>Tres</li></ul>",
+			"value": "<p>Provides detailed information about the product features</p>\n<h3>Detail</h3>\n<ul><li>Uno</li><li>Dos</li><li>Tres</li></ul>",
 			"value_type": "string"
 		}
 	},
@@ -25,10 +23,9 @@
 		"id": 414034396,
 		"title": "Long Sleeve One Piece",
 		"metafield": {
-			"namespace": "Features",
+			"namespace": "features",
 			"key": "product",
-			"value": "Features",
-			"description": "<p>Provides detailed information about the product features</p>\n<h3>Detail</h3>\n<ul><li>Eins</li><li>Zwei</li><li>Drei</li></ul>",
+			"value": "<p>Provides detailed information about the product features</p>\n<h3>Detail</h3>\n<ul><li>Eins</li><li>Zwei</li><li>Drei</li></ul>",
 			"value_type": "string"
 		}
 	},
@@ -36,10 +33,9 @@
 		"id": 414023808,
 		"title": "Printed Neoprene Top",
 		"metafield": {
-			"namespace": "Features",
+			"namespace": "features",
 			"key": "product",
-			"value": "Features",
-			"description": "<p>Provides detailed information about the product features</p>\n<h3>Detail</h3>\n<ul><li>A</li><li>B</li><li>C</li></ul>",
+			"value": "<p>Provides detailed information about the product features</p>\n<h3>Detail</h3>\n<ul><li>A</li><li>B</li><li>C</li></ul>",
 			"value_type": "string"
 		}
 	},
@@ -47,10 +43,9 @@
 		"id": 402801932,
 		"title": "test",
 		"metafield": {
-			"namespace": "Features",
+			"namespace": "features",
 			"key": "product",
-			"value": "Features",
-			"description": "<p>Provides detailed information about the product features</p>\n<h3>Detail</h3>\n<ul><li>I</li><li>II</li><li>II</li></ul>",
+			"value": "<p>Provides detailed information about the product features</p>\n<h3>Detail</h3>\n<ul><li>I</li><li>II</li><li>II</li></ul>",
 			"value_type": "string"
 		}
 	},
@@ -58,10 +53,9 @@
 		"id": 414029792,
 		"title": "Wrap Top",
 		"metafield": {
-			"namespace": "Features",
+			"namespace": "features",
 			"key": "product",
-			"value": "Features",
-			"description": "<p>Provides detailed information about the product features</p>\n<h3>Detail</h3>\n<ul><li>Foo</li><li>Foo</li><li>Foo</li></ul>",
+			"value": "<p>Provides detailed information about the product features</p>\n<h3>Detail</h3>\n<ul><li>Foo</li><li>Foo</li><li>Foo</li></ul>",
 			"value_type": "string"
 		}
 	}
