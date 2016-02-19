@@ -3,12 +3,17 @@
     --white-hex: white;
     --light-gray-hex: #999999;
     --dark-asphalt-hex: #222222;
+    --asphalt-hex: #4d4d4f;
     --sand-hex: #cc9966;
+    --warm-sand-hex: #e0bcb0;
+    --ocean-blue-hex: #d3dde6;
 }
 
 //-- Typo Colors
 :root {
     --typo-hex: var(--dark-asphalt-hex);
-    --typo-secondary: var(--white-hex);
-    --typo-highlight: var(--sand-hex);
+    --typo-hex--secondary: var(--asphalt-hex);
+    --typo-hex--tertiary: var(--white-hex);
+    //--typo-hex--highlight: var(--sand-hex);
+    --typo-hex--highlight: var(--warm-sand-hex);
 }

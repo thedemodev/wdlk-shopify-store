@@ -2451,20 +2451,20 @@ figure {
 @font-face {
   font-family: "museo-sans";
   font-style: normal;
-  font-weight: 300;
+  font-weight: normal;
   src: font-source-declaration("museo-sans", "/assets/MuseoSans_300-webfont", false, eot woff2 woff ttf svg, font-url-prefixer(false)); }
 
 @font-face {
-  font-family: "museo-sans";
+  font-family: "montserrat";
   font-style: normal;
-  font-weight: 300;
-  src: font-source-declaration("museo-sans", "/assets/MuseoSans_300-webfont", false, eot woff2 woff ttf svg, font-url-prefixer(false)); }
+  font-weight: normal;
+  src: font-source-declaration("montserrat", "/assets/montserrat-light-webfont", false, eot woff2 woff ttf svg, font-url-prefixer(false)); }
 
 @font-face {
   font-family: "museo-sans-bold";
   font-style: normal;
   font-weight: normal;
-  src: font-source-declaration("museo-sans-bold", "/assets/montserrat-light-webfont", false, eot woff2 woff ttf svg, font-url-prefixer(false)); }
+  src: font-source-declaration("museo-sans-bold", "/assets/MuseoSans_500-webfont", false, eot woff2 woff ttf svg, font-url-prefixer(false)); }
 
 @font-face {
   font-family: "lombok";
@@ -2488,25 +2488,26 @@ html {
   font-size: 78px;
   font-size: 7.8rem; }
 
-.Headline-1 {
-  font-size: 44px;
-  font-size: 4.4rem; }
-
-.Headline-2 {
-  font-size: 36px;
-  font-size: 3.6rem; }
-
-.Headline-3 {
-  font-size: 26px;
-  font-size: 2.6rem; }
-
-.Headline-4 {
-  font-size: 26px;
-  font-size: 2.6rem; }
-
-.CopyText {
-  font-size: 16px;
-  font-size: 1.6rem; }
+.Headline {
+  margin: 20px 0;
+  margin: 2rem 0;
+  font-family: "montserrat", sans-serif;
+  font-weight: 500;
+  color: #4d4d4f; }
+  .Headline--1 {
+    font-size: 44px;
+    font-size: 4.4rem; }
+  .Headline--2 {
+    font-size: 36px;
+    font-size: 3.6rem; }
+  .Headline--3 {
+    font-size: 26px;
+    font-size: 2.6rem; }
+  .Headline--4 {
+    font-size: 26px;
+    font-size: 2.6rem; }
+  .Headline--highlight {
+    color: #e0bcb0; }
 
 .Carousel {
   width: 100%; }
@@ -2529,11 +2530,19 @@ html {
   max-width: 1440px;
   margin: auto; }
 
-.Detail {
+.Article {
   width: calc(100% - 8rem);
   padding: 0 40px;
-  padding: 0 4rem; }
+  padding: 0 4rem;
+  font-size: 16px;
+  font-size: 1.6rem;
+  color: #222222; }
   @media (min-width: 770px) {
-    .Detail {
+    .Article {
       width: calc(50% - 8rem);
       padding: 0 4rem; } }
+  .Article--product {
+    text-align: center; }
+    .Article--product .Headline--2 {
+      margin-top: 40px;
+      margin-top: 4rem; }
