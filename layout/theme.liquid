@@ -290,11 +290,8 @@
       </div>
     </nav>
 
-    <main class="wrapper main-content" role="main">
-
-      {{ content_for_layout }}
-
-    </main>
+    {% comment %} MAIN LAYOUT CONTENT {% endcomment %}
+    {{ content_for_layout }}
 
     <!-- begin site-footer -->
     <footer class="site-footer small--text-center" role="contentinfo">

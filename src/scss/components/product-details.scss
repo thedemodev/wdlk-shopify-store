@@ -1,5 +1,5 @@
 .Product {
-    @include grid-wrapper();
+    @include grid-wrapper(var(--screen-xl));
 }
 
 .Detail {

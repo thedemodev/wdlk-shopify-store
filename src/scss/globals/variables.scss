@@ -1,12 +1,13 @@
 //-- DEVICE VARIABLES & CUSTOM PROPERTIES
 :root {
-  --bp-small: 768px;
-  --bp-medium: 1024px;
-  --bp-large: 1440px;
   --screen-md: 770px;
-
+  --screen-l: 1024px;
+  --screen-xl: 1440px;
 }
+
 $screen-md: 770px;
+$screen-l: 1024;
+$screen-xl: 1440px;
 
 //-- LAYOUT
 $base-spacing: 4rem;

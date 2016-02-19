@@ -1197,67 +1197,6 @@
     - Pull classes, to move grid items back to the left by certain amounts
 ==============================================================================*/
 /*============================================================================
-  #Basic Styles
-==============================================================================*/
-[tabindex='-1']:focus {
-  outline: none; }
-
-.wrapper {
-  *zoom: 1;
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 0 15px; }
-  .wrapper:after {
-    content: '';
-    display: table;
-    clear: both; }
-  @media screen and (min-width: 480px) {
-    .wrapper {
-      padding: 0 30px; } }
-
-.main-content {
-  display: block;
-  margin-top: 30px;
-  padding-bottom: 60px; }
-
-/*============================================================================
-  #Helper Classes
-==============================================================================*/
-.is-transitioning {
-  display: block !important;
-  visibility: visible !important; }
-
-.display-table {
-  display: table;
-  table-layout: fixed;
-  width: 100%; }
-
-.display-table-cell {
-  display: table-cell;
-  vertical-align: middle;
-  float: none; }
-
-@media screen and (min-width: 769px) {
-  .large--display-table {
-    display: table;
-    table-layout: fixed;
-    width: 100%; }
-  .large--display-table-cell {
-    display: table-cell;
-    vertical-align: middle;
-    float: none; } }
-
-.visually-hidden, .supports-fontface .icon-fallback-text .fallback-text {
-  position: absolute;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0; }
-
-/*============================================================================
   #Links and Buttons
 ==============================================================================*/
 a,
@@ -2505,6 +2444,7 @@ video {
   display: inline-block;
   vertical-align: baseline; }
 
+body,
 figure {
   margin: 0; }
 
@@ -2569,7 +2509,6 @@ html {
   font-size: 1.6rem; }
 
 .Carousel {
-  box-sizing: border-box;
   width: 100%; }
   @media (min-width: 770px) {
     .Carousel {
@@ -2582,14 +2521,19 @@ html {
   display: flex;
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
-          flex-wrap: wrap; }
+          flex-wrap: wrap;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          -webkit-box-pack: center;
+          justify-content: center;
+  max-width: 1440px;
+  margin: auto; }
 
 .Detail {
-  box-sizing: border-box;
-  width: calc(100% - 4rem);
+  width: calc(100% - 8rem);
   padding: 0 40px;
   padding: 0 4rem; }
   @media (min-width: 770px) {
     .Detail {
-      width: calc(50% - 4rem);
+      width: calc(50% - 8rem);
       padding: 0 4rem; } }
