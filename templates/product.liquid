@@ -18,8 +18,8 @@
 
   {% include 'breadcrumb' %}
 
-  <div class="Product Grid">
-    <figure class="Grid-cell Grid-cell--1of2 Grid-cell--small--1of1">
+  <div class="Product">
+    <figure class="Carousel">
         {% for image in product.images %}
             <img src="{{ image.src | product_img_url: 'large' }}" alt="{{ product.image.alt | escape }}" itemprop="image" content="{{ product.image.src | img_url: 'grande' }}">
         {% endfor %}
@@ -42,7 +42,7 @@
       {% endif %}
   </figure>
 
-  <div class="Grid-cell Grid-cell--1of2 Grid-cell--small--1of1">
+  <div class="Detail">
 
       <h1 itemprop="name">{{ product.title }}</h1>
 

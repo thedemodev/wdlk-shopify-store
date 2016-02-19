@@ -1,26 +1,39 @@
-$columns: 4;
-$base-gap: 12px;
-$small-gap: $base-gap / 2;
-$large-gap: $base-gap * 2;
+//--
+//-- MOBILE FIRST GRID WRAPPER
+//--
 
-.Grid {
-  display: flex;
-  flex-wrap: wrap;
+@mixin grid-wrapper () {
+    display: flex;
+    flex-wrap: wrap;
 }
+//-- The $count argument accepts the amount of necessary columns
+//-- for smartphone devices and iPad mini var(--vp-medium).
+//-- The $gap argument defaults to 0-
+//-- The factor argument defines the necessary amount of columns
+//-- based on the given $count parameter.
 
-.Grid-cell {
-  width: 100%;
+@mixin  grid-cell ($count,  $factor-count, $gap: 0) {
+  $column-width: 100% / $count;
 
-  @include grid-creator($columns, $large-gap);
+  box-sizing: border-box;
 
-  @include media(small) {
-    &--small {
-      @include grid-creator($columns, $small-gap);
-    }
+  @if ($gap != 0) {
+    width: calc(#{$column-width} - #{$gap});
+    padding: 0 $gap;
   }
-  @include media(small) {
-    &--medium {
-      @include grid-creator($columns, $base-gap);
+
+  @else {
+      width:  $column-width;
+  }
+
+  @include media(medium) {
+    @if ($gap != 0) {
+      width: calc(#{$column-width / $factor-count} - #{$gap});
+      padding: 0 $gap;
+    }
+
+    @else {
+        width:  $column-width / 2;
     }
   }
 }

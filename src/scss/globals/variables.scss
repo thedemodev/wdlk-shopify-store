@@ -1,7 +1,12 @@
-// media-queries
-
+//-- DEVICE VARIABLES & CUSTOM PROPERTIES
 :root {
   --bp-small: 768px;
   --bp-medium: 1024px;
   --bp-large: 1440px;
+  --screen-md: 770px;
+
 }
+$screen-md: 770px;
+
+//-- LAYOUT
+$base-spacing: 4rem;

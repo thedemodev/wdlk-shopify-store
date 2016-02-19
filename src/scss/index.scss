@@ -6,10 +6,6 @@
 //@import "libs/bourbon/bourbon";
 
 //-- WDLK Custom Styling
-//--
-// Globals
 @import "globals/index";
-//-- Typography
 @import "typography/index";
-//-- Product
-@import "product/index"
+@import "components/index";
