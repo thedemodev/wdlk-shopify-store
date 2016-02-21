@@ -8,12 +8,30 @@
     //-- 2. Factor column number for tablet & desktop
     //-- 3. Optional argument to define the inner padding
     @include grid-cell(1, 2, $base-spacing);
-    @include CopyText();
+    @include copy-text();
+
+    &-copytext {
+        margin: 0 0 var(--base-sapacing);
+    }
 
     &--product {
         text-align: center;
+
         .Headline--2 {
             margin-top: 4rem;
         }
+
+        .Copy-sm {
+            display: block;
+            margin-bottom: var(--base-sapacing);
+            color: var(--typo-hex--tone-down);
+            @include copy-text-sm();
+        }
+
+        .Link {
+            display: block;
+            margin-bottom: var(--base-sapacing);
+        }
     }
+
 }

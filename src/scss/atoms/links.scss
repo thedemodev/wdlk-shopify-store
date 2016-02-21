@@ -1,0 +1,12 @@
+.Link {
+    color: var(--typo-hex--tone-down);
+    font-family: "montserrat", sans-serif;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color .2s ease-in-out;
+    @include copy-text-sm();
+
+    &:hover {
+        color: var(--typo-hex--highlight);
+    }
+}

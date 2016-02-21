@@ -1,0 +1,27 @@
+{% if template contains 'product' %}
+{% assign size_options = 'size,taille' | split: ',' %}
+{% assign size_chart_text_link = 'Size chart' %}
+{% assign has_size = false %}
+{% assign size_index = 0 %}
+{% for option in product.options %}
+  {% assign downcased_option = option | downcase %}
+  {% if has_size == false and size_options contains downcased_option %}
+    {% assign has_size = true %}
+    {% assign size_index = forloop.index0 %}
+  {% endif %}
+{% endfor %}
+{% if has_size %}
+
+<aside class="Lightbox">
+    <input type="checkbox" class="Lightbox-state" id="lightbox" />
+    <div class="Lightbox-shim">
+        <label class="Lightbox-shim-close" for="lightbox">{{'products.product.close_size_chart' | t}}</label>
+        <div class="Lightbox-content">
+            <label class="Lightbox-link Link" for="lightbox">{{'products.product.close_size_chart' | t}}</label>
+            {{ pages.size-chart.content }}
+        </div>
+    </div>
+</aside>
+
+{% endif %}
+{% endif %}

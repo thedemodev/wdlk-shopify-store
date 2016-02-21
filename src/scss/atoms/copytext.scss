@@ -1,0 +1,8 @@
+@mixin copy-text ($color: var(--typo-hex)) {
+    font-size: var(--copy-size);
+    color: $color;
+}
+
+@mixin copy-text-sm ($font-size: var(--small-copy-size)) {
+    font-size: $font-size;
+}

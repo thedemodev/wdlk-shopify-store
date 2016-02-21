@@ -266,7 +266,13 @@
       "unavailable": "No disponible",
       "compare_at": " Comparar en",
       "quantity": "Cantidad",
-      "add_to_cart": "Agregar al carrito"
+      "add_to_cart": "Agregar al carrito",
+      "tax_type": "impuestos",
+      "tax_included": "incl.",
+      "label_description": "Descripción",
+      "label_size_chart": "Medidas",
+      "label_care": "Cuidado",
+      "close_size_chart": "Cerrar"
     }
   },
   "gift_cards": {

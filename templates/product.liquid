@@ -40,11 +40,17 @@
     </figure>
 
     <div class="Article Article--product">
-        <h1 class="Headline Headline--2" itemprop="name">{{ product.title }}</h1>
+        <h1 class="Headline Headline--3" itemprop="name">{{ product.title }}</h1>
         <strong class="Headline Headline--3 Headline--highlight" itemprop="price">{{ product.price | money_with_currency }}</strong>
-        <p class="product-description rte" itemprop="description">
+        <small class="Copy-sm">({{'products.product.tax_type' | t}} {{'products.product.tax_included' | t}})</small>
+
+        <p class="Article-copytext" itemprop="description">
           {{ product.description }}
         </p>
+
+        <label class="Link" for="lightbox">
+            {{'products.product.label_size_chart' | t}}
+        </label>
 
         {% comment %}
           ID addToCartForm is a selector for the ajax cart plugin
@@ -129,6 +135,7 @@
       {% endif %}
     </div>
 </section>
+{% include 'size-chart' %}
 {% comment %}
   To take advantage of a callback on the select dropdown, add option_selection.js
   and customize the JS in timber.productPage as needed.

@@ -7,6 +7,7 @@
     --h3-size: 2.6rem;
     --h4-size: 1.8rem;
     --copy-size: 1.6rem;
+    --small-copy-size: 1.2rem;
 }
 
 .HeadlineBanner {
@@ -36,16 +37,11 @@
     }
 
     &--4 {
-        font-size: var(--h3-size);
+        font-size: var(--h4-size);
     }
 
     &--highlight {
         color: var(--typo-hex--highlight)
     }
 
-}
-
-@mixin CopyText($color: var(--typo-hex)) {
-    font-size: var(--copy-size);
-    color: $color;
 }

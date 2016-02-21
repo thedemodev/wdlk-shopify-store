@@ -266,7 +266,13 @@
       "unavailable": "Nicht verfügbar",
       "compare_at": "Vergleichen bei",
       "quantity": "Menge",
-      "add_to_cart": "In den Einkaufswagen legen"
+      "add_to_cart": "In den Einkaufswagen legen",
+      "tax_type": "MwSt.",
+      "tax_included": "inkl.",
+      "label_description": "Details",
+      "label_size_chart": "Größe",
+      "label_care": "Pflege",
+      "close_size_chart": "Close"
     }
   },
   "gift_cards": {

@@ -1,0 +1,29 @@
+.TabNavigation {
+    margin:0 auto var(--base-sapacing);
+    font-family: "montserrat", sans-serif;
+
+    &-state {
+        position: absolute;
+        //-- Deprecated but useful to hide elements and keeping
+        //-- them in flow.
+        clip: rect(0px 0px 0px 0px);
+    }
+
+    &-tab {
+        display: inline-block;
+        color: var(--typo-hex--tone-down);
+        text-align: center;
+        text-transform: uppercase;
+        vertical-align: top;
+        cursor: pointer;
+
+        &:checked {
+            margin-right: 0;
+        }
+    }
+
+    &-label {
+        display: inline-block;
+        width: auto;
+    }
+}

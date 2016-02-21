@@ -2,8 +2,7 @@
 1 verbose cli [ '/Users/maupal/.nvm/versions/node/v4.2.4/bin/node',
 1 verbose cli   '/Users/maupal/.nvm/versions/node/v4.2.4/bin/npm',
 1 verbose cli   'run',
-1 verbose cli   'watch',
-1 verbose cli   'server' ]
+1 verbose cli   'watch' ]
 2 info using npm@2.14.12
 3 info using node@v4.2.4
 4 verbose run-script [ 'prewatch', 'watch', 'postwatch' ]
@@ -11,7 +10,7 @@
 6 info watch wdlk-ocean-store@1.0.0
 7 verbose unsafe-perm in lifecycle true
 8 info wdlk-ocean-store@1.0.0 Failed to exec watch script
-9 verbose stack Error: wdlk-ocean-store@1.0.0 watch: `babel-node tasks/watch.js "server"`
+9 verbose stack Error: wdlk-ocean-store@1.0.0 watch: `babel-node tasks/watch.js`
 9 verbose stack Exit status 1
 9 verbose stack     at EventEmitter.<anonymous> (/Users/maupal/.nvm/versions/node/v4.2.4/lib/node_modules/npm/lib/utils/lifecycle.js:214:16)
 9 verbose stack     at emitTwo (events.js:87:13)
@@ -24,17 +23,17 @@
 10 verbose pkgid wdlk-ocean-store@1.0.0
 11 verbose cwd /Users/maupal/Lab/wdlk-ocean-store
 12 error Darwin 15.2.0
-13 error argv "/Users/maupal/.nvm/versions/node/v4.2.4/bin/node" "/Users/maupal/.nvm/versions/node/v4.2.4/bin/npm" "run" "watch" "server"
+13 error argv "/Users/maupal/.nvm/versions/node/v4.2.4/bin/node" "/Users/maupal/.nvm/versions/node/v4.2.4/bin/npm" "run" "watch"
 14 error node v4.2.4
 15 error npm  v2.14.12
 16 error code ELIFECYCLE
-17 error wdlk-ocean-store@1.0.0 watch: `babel-node tasks/watch.js "server"`
+17 error wdlk-ocean-store@1.0.0 watch: `babel-node tasks/watch.js`
 17 error Exit status 1
-18 error Failed at the wdlk-ocean-store@1.0.0 watch script 'babel-node tasks/watch.js "server"'.
+18 error Failed at the wdlk-ocean-store@1.0.0 watch script 'babel-node tasks/watch.js'.
 18 error This is most likely a problem with the wdlk-ocean-store package,
 18 error not with npm itself.
 18 error Tell the author that this fails on your system:
-18 error     babel-node tasks/watch.js "server"
+18 error     babel-node tasks/watch.js
 18 error You can get their info via:
 18 error     npm owner ls wdlk-ocean-store
 18 error There is likely additional logging output above.
