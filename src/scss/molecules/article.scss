@@ -17,8 +17,22 @@
     &--product {
         text-align: center;
 
-        .Headline--2 {
-            margin-top: 4rem;
+        .Headline--3 {
+            &:first-child {
+                position: relative;
+                margin-top: 4rem;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    bottom: 3.9rem + (2rem - .2rem);
+                    right: 50%;
+                    height: .2rem;
+                    width: 2rem;
+                    background-color: var(--typo-hex--highlight);
+                    transform: translateX(50%);
+                }
+            }
         }
 
         .Copy-sm {

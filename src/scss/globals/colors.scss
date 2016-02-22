@@ -1,12 +1,14 @@
 //-- Base Colors
 :root {
-    --white-hex: white;
+    --white-hex: #ffffff;
     --light-gray-hex: #999999;
+    --lighter-gray-hex: #e6e6e6;
     --dark-asphalt-hex: #222222;
     --asphalt-hex: #4d4d4f;
     --sand-hex: #cc9966;
     --warm-sand-hex: #e0bcb0;
     --ocean-blue-hex: #d3dde6;
+    --beige-hex: #f7f7f7;
 }
 
 //-- Typo Colors
@@ -17,4 +19,11 @@
     //--typo-hex--highlight: var(--sand-hex);
     --typo-hex--highlight: var(--warm-sand-hex);
     --typo-hex--tone-down: var(--light-gray-hex);
+}
+
+//-- Background Colors
+:root {
+    --background-color: var(--white-hex);
+    --background-color-secondary: var(--beige-hex);
+    --container-border: var(--lighter-gray-hex);
 }

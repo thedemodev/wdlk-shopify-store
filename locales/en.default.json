@@ -270,7 +270,7 @@
       "tax_type": "VAT ",
       "tax_included": "included",
       "label_description": "Description",
-      "label_size_chart": "Size",
+      "label_size_chart": "Size Chart",
       "label_care": "Care",
       "close_size_chart": "Close"
     }

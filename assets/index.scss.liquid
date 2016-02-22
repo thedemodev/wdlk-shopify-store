@@ -2462,6 +2462,19 @@ figure {
   -webkit-animation: radio-controlled-fix 1s infinite;
           animation: radio-controlled-fix 1s infinite; }
 
+.Header {
+  width: 100%;
+  height: 60px;
+  height: 6rem;
+  border: 1px solid #e6e6e6;
+  text-align: center;
+  background-color: #ffffff; }
+  .Header .Headline {
+    margin: 0;
+    line-height: 60px;
+    line-height: 6rem;
+    text-transform: uppercase; }
+
 @font-face {
   font-family: "museo-sans";
   font-style: normal;
@@ -2535,6 +2548,42 @@ html {
   .Link:hover {
     color: #e0bcb0; }
 
+.Lightbox-shim {
+  position: fixed;
+  top: 0;
+  left: -200vw;
+  width: 100%;
+  height: 100%;
+  padding-top: 5vh;
+  background: transparent;
+  -webkit-transition: background .35s .35s ease-in-out, left 0s .70s ease-in-out;
+  transition: background .35s .35s ease-in-out, left 0s .70s ease-in-out; }
+
+.Lightbox-state:checked ~ .Lightbox-shim {
+  left: 0;
+  background: #000000;
+  background: rgba(0, 0, 0, 0.6);
+  -webkit-transition: background .35s ease-in-out;
+  transition: background .35s ease-in-out; }
+
+.Lightbox-shim-close {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent; }
+
+.Lightbox-content {
+  width: 90vw;
+  max-width: 1024px;
+  margin: 0 auto;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden; }
+
 .Carousel {
   width: 100%; }
   @media (min-width: 770px) {
@@ -2572,9 +2621,23 @@ html {
     margin: 0 0 2rem; }
   .Article--product {
     text-align: center; }
-    .Article--product .Headline--2 {
+    .Article--product .Headline--3:first-child {
+      position: relative;
       margin-top: 40px;
       margin-top: 4rem; }
+      .Article--product .Headline--3:first-child:before {
+        content: "";
+        position: absolute;
+        bottom: 57px;
+        bottom: 5.7rem;
+        right: 50%;
+        height: 2px;
+        height: .2rem;
+        width: 20px;
+        width: 2rem;
+        background-color: #e0bcb0;
+        -webkit-transform: translateX(50%);
+                transform: translateX(50%); }
     .Article--product .Copy-sm {
       display: block;
       margin-bottom: 20px;
