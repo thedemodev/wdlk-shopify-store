@@ -272,7 +272,8 @@
       "label_description": "Description",
       "label_size_chart": "Size Chart",
       "label_care": "Care",
-      "close_size_chart": "Close"
+      "close_size_chart": "Close",
+      "label_select_size": "Select size"
     }
   },
   "gift_cards": {

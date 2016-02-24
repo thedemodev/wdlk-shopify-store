@@ -1454,12 +1454,6 @@ iframe {
 /*============================================================================
   #Forms
 ==============================================================================*/
-form {
-  margin-bottom: 0; }
-
-.form-vertical {
-  margin-bottom: 15px; }
-
 /*================ Prevent zoom on touch devices in active inputs ================*/
 @media screen and (max-width: 768px) {
   input,
@@ -1510,47 +1504,8 @@ button,
 input[type="submit"] {
   cursor: pointer; }
 
-input,
-textarea,
-select {
-  border: 1px solid white;
-  max-width: 100%;
-  padding: 8px 10px;
-  border-radius: 3px; }
-  input:focus,
-  textarea:focus,
-  select:focus {
-    border: 1px solid #e6e6e6; }
-  input[disabled], input.disabled,
-  textarea[disabled],
-  textarea.disabled,
-  select[disabled],
-  select.disabled {
-    cursor: default;
-    background-color: #f6f6f6;
-    border-color: #b6b6b6; }
-  input.input-full,
-  textarea.input-full,
-  select.input-full {
-    width: 100%; }
-
-textarea {
-  min-height: 100px; }
-
 /*================ Input element overrides ================*/
 select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-position: right center;
-  background-image: url('{{ "ico-select.svg" | asset_url }}');
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-color: transparent;
-  padding-right: 28px;
-  text-indent: 0.01px;
-  text-overflow: '';
-  cursor: pointer;
   /*================ Hide the svg arrow in IE9 and below ================*/ }
   .ie9 select,
   .lt-ie9 select {
@@ -1587,17 +1542,6 @@ select::-ms-expand {
 
 label[for] {
   cursor: pointer; }
-
-/*================ Horizontal Form ================*/
-.form-vertical input,
-.form-vertical select,
-.form-vertical textarea {
-  display: block;
-  margin-bottom: 10px; }
-
-.form-vertical input[type="radio"],
-.form-vertical input[type="checkbox"] {
-  display: inline-block; }
 
 /*================ Error styles ================*/
 input.error,
@@ -2538,6 +2482,31 @@ html {
   font-size: 1.2rem; }
   .Link:hover {
     color: #e0bcb0; }
+
+.Select {
+  display: block;
+  height: 40px;
+  height: 4rem;
+  padding-left: 20px;
+  padding-left: 2rem;
+  padding-right: 40px;
+  padding-right: 4rem;
+  border-radius: 0;
+  border-color: #f0f0f0;
+  font-size: 14px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  background-color: #f0f0f0;
+  background-image: url('{{ "ico-select.svg" | asset_url }}');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  outline: none;
+  -webkit-appearance: none;
+  text-indent: 0.01px;
+  text-overflow: '';
+  cursor: pointer; }
+  .Select:focus, .Select:active {
+    border-color: #c8c8c8; }
 
 .Lightbox-shim {
   position: fixed;

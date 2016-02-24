@@ -1,0 +1,29 @@
+.Select {
+    display: block;
+    height: var(--form-base-height);
+    padding: {
+        left: $form-base-height / 2;
+        right: var(--form-base-height);
+    }
+    border-radius: 0;
+    border-color: var(--form-el-bg-color);
+    font-size: var(--md-copy-size);
+    font-weight: bold;
+    background: {
+        color: var(--form-el-bg-color);
+        //-- Replace with the right icon
+        image: url('{{ "ico-select.svg" | asset_url }}');
+        repeat: no-repeat;
+        position: right 10px center;
+    }
+
+    outline: none;
+    -webkit-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+    cursor: pointer;
+    &:focus,
+    &:active {
+        border-color: var(--form-el-focus-color);
+    }
+}

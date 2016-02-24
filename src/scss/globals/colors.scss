@@ -1,8 +1,10 @@
 //-- Base Colors
 :root {
     --white-hex: #ffffff;
+    --mid-gray-hex: #c8c8c8;
     --light-gray-hex: #999999;
     --lighter-gray-hex: #e6e6e6;
+    --yet-lighter-gray-hex: #f0f0f0;
     --dark-asphalt-hex: #222222;
     --asphalt-hex: #4d4d4f;
     --sand-hex: #cc9966;
@@ -26,4 +28,10 @@
     --background-color: var(--white-hex);
     --background-color-secondary: var(--beige-light-hex);
     --container-border: var(--lighter-gray-hex);
+}
+
+//-- Forms & Buttons
+:root {
+    --form-el-bg-color: var(--yet-lighter-gray-hex);
+    --form-el-focus-color: var(--mid-gray-hex);
 }

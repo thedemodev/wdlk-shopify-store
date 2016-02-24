@@ -272,7 +272,8 @@
       "label_description": "Details",
       "label_size_chart": "Größe",
       "label_care": "Pflege",
-      "close_size_chart": "Close"
+      "close_size_chart": "Close",
+      "label_select_size": "Größe auswählen"
     }
   },
   "gift_cards": {

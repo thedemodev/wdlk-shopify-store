@@ -272,7 +272,8 @@
       "label_description": "Descripción",
       "label_size_chart": "Medidas",
       "label_care": "Cuidado",
-      "close_size_chart": "Cerrar"
+      "close_size_chart": "Cerrar",
+      "label_select_size": "Selecciona talla"
     }
   },
   "gift_cards": {
