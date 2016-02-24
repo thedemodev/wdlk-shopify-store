@@ -8,7 +8,7 @@
     --sand-hex: #cc9966;
     --warm-sand-hex: #e0bcb0;
     --ocean-blue-hex: #d3dde6;
-    --beige-hex: #f7f7f7;
+    --beige-light-hex: #f7f7f7;
 }
 
 //-- Typo Colors
@@ -24,6 +24,6 @@
 //-- Background Colors
 :root {
     --background-color: var(--white-hex);
-    --background-color-secondary: var(--beige-hex);
+    --background-color-secondary: var(--beige-light-hex);
     --container-border: var(--lighter-gray-hex);
 }

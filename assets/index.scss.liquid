@@ -1538,25 +1538,6 @@ textarea {
   min-height: 100px; }
 
 /*================ Input element overrides ================*/
-input[type="checkbox"],
-input[type="radio"] {
-  display: inline;
-  margin: 0 8px 0 0;
-  padding: 0;
-  width: auto; }
-
-input[type="checkbox"] {
-  -webkit-appearance: checkbox;
-  -moz-appearance: checkbox; }
-
-input[type="radio"] {
-  -webkit-appearance: radio;
-  -moz-appearance: radio; }
-
-input[type="image"] {
-  padding-left: 0;
-  padding-right: 0; }
-
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -2462,7 +2443,17 @@ figure {
   -webkit-animation: radio-controlled-fix 1s infinite;
           animation: radio-controlled-fix 1s infinite; }
 
+input[type="checkbox"] {
+  -webkit-appearance: checkbox;
+  -moz-appearance: checkbox; }
+
+input[type="radio"] {
+  -webkit-appearance: radio;
+  -moz-appearance: radio; }
+
 .Header {
+  position: relative;
+  box-sizing: border-box;
   width: 100%;
   height: 60px;
   height: 6rem;
@@ -2556,15 +2547,22 @@ html {
   height: 100%;
   padding-top: 5vh;
   background: transparent;
-  -webkit-transition: background .35s .35s ease-in-out, left 0s .70s ease-in-out;
-  transition: background .35s .35s ease-in-out, left 0s .70s ease-in-out; }
+  -webkit-transition: background .30s .30s ease-in-out, left 0s .70s ease-in-out;
+  transition: background .30s .30s ease-in-out, left 0s .70s ease-in-out; }
 
-.Lightbox-state:checked ~ .Lightbox-shim {
-  left: 0;
-  background: #000000;
-  background: rgba(0, 0, 0, 0.6);
-  -webkit-transition: background .35s ease-in-out;
-  transition: background .35s ease-in-out; }
+.Lightbox-state {
+  display: none; }
+  .Lightbox-state:checked ~ .Lightbox-shim {
+    left: 0;
+    background: #000000;
+    background: rgba(0, 0, 0, 0.6);
+    -webkit-transition: background .30s ease-in-out;
+    transition: background .30s ease-in-out; }
+    .Lightbox-state:checked ~ .Lightbox-shim .Lightbox-content {
+      z-index: 1;
+      opacity: 1;
+      -webkit-transform: translate3d(0, 20%, 0);
+              transform: translate3d(0, 20%, 0); }
 
 .Lightbox-shim-close {
   position: absolute;
@@ -2578,11 +2576,40 @@ html {
   color: transparent; }
 
 .Lightbox-content {
+  position: absolute;
+  top: 20%;
+  left: 0;
+  right: 0;
+  z-index: -1;
   width: 90vw;
   max-width: 1024px;
   margin: 0 auto;
+  opacity: 0;
+  -webkit-transform: translate3d(0, 100%, 0);
+          transform: translate3d(0, 100%, 0);
+  transition: -webkit-transform .30s cubic-bezier(0.895, 0.03, 0.685, 0.22), opacity .30s ease-out;
+  -webkit-transition: -webkit-transform var(--transition-speed) var(--timing), opacity var(--transition-speed) ease-out;
+  transition: opacity .30s ease-out, -webkit-transform .30s cubic-bezier(0.895, 0.03, 0.685, 0.22);
+  transition: transform .30s cubic-bezier(0.895, 0.03, 0.685, 0.22), opacity .30s ease-out;
+  transition: transform .30s cubic-bezier(0.895, 0.03, 0.685, 0.22), opacity .30s ease-out, -webkit-transform .30s cubic-bezier(0.895, 0.03, 0.685, 0.22);
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden; }
+
+.Lightbox-link {
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  right: 3rem;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%); }
+
+.Lightbox-body {
+  box-sizing: border-box;
+  padding: 30px;
+  padding: 3rem;
+  border: solid #e6e6e6;
+  border-width: 0 1px 1px;
+  background-color: #f7f7f7; }
 
 .Carousel {
   width: 100%; }

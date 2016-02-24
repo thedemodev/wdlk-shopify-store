@@ -95,29 +95,6 @@ textarea {
 }
 
 /*================ Input element overrides ================*/
-input[type="checkbox"],
-input[type="radio"] {
-  display: inline;
-  margin: 0 8px 0 0;
-  padding: 0;
-  width: auto;
-}
-
-input[type="checkbox"] {
-  -webkit-appearance: checkbox;
-  -moz-appearance: checkbox;
-}
-
-input[type="radio"] {
-  -webkit-appearance: radio;
-  -moz-appearance: radio;
-}
-
-input[type="image"] {
-  padding-left: 0;
-  padding-right: 0;
-}
-
 select {
   -webkit-appearance: none;
      -moz-appearance: none;

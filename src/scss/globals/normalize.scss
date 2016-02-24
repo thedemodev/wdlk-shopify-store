@@ -36,3 +36,14 @@ figure {
     margin: 0;
     animation: radio-controlled-fix 1s infinite;
 }
+
+
+input[type="checkbox"] {
+  -webkit-appearance: checkbox;
+  -moz-appearance: checkbox;
+}
+
+input[type="radio"] {
+  -webkit-appearance: radio;
+  -moz-appearance: radio;
+}
