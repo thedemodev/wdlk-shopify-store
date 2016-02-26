@@ -10,7 +10,6 @@
     max-width: var(--qty-input-width);
     overflow: hidden;
     background-color: var(--form-el-bg-color);
-    cursor: pointer;
 
 
     &-field {
@@ -23,10 +22,10 @@
         }
         border: none;
         line-height: var(--form-base-height);
-        font-size: var(--md-copy-size);
-        font-weight: bold;
-        color: var(--form-typo-color);
+        @include copy-text(calc(var(--md-copy-size) - .1),  var(--form-typo-color), bold);
+
         background-color: var(--form-el-bg-color);
+        cursor: pointer;
 
         &:focus,
         &:active {
@@ -46,14 +45,15 @@
         font-weight: bold;
         text-align: center;
         background-color: var(--form-btn-color);
-        @include copy-text(var(--md-copy-size),  var(--typo-hex--tertiary), bold);
+        @include copy-text(calc(var(--md-copy-size) - .1),  var(--typo-hex--tertiary), bold);
 
+        cursor: pointer;
         transition: background-color var(--qty-input-timing) ease-in-out;
         -webkit-appearance: none;
         -moz-appearance: none;
 
         &:hover {
-            background-color: darken($form-btn-color, 10%);
+            background-color: color(var(--form-btn-color) blackness(50%));
         }
 
         &:focus,

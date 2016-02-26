@@ -1,0 +1,20 @@
+:root {
+    --btn-timing: .35s;
+}
+
+.Btn {
+    height: var(--form-base-height);
+    padding: {
+        left: var(--form-base-padding);
+        right: calc(var(--form-base-padding) + 1.6rem);
+    }
+    border: none;
+    background-color: var(--btn-bg-color);
+    @include copy-text(calc(var(--md-copy-size) - .1),  var(--typo-hex--tertiary), bold);
+    cursor: pointer;
+    transition: background-color var(--btn-timing) ease-in-out;
+
+    &:hover {
+        background-color: var(--btn-bg-color-hover);
+    }
+}

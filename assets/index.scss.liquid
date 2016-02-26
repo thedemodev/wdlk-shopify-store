@@ -2391,6 +2391,25 @@ html {
   .Link:hover {
     color: #e0bcb0; }
 
+.Btn {
+  height: 40px;
+  height: 4rem;
+  padding-left: 20px;
+  padding-left: 2rem;
+  padding-right: 36px;
+  padding-right: 3.6rem;
+  border: none;
+  background-color: #e0bcb0;
+  font-size: 13px;
+  font-size: 1.3rem;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  -webkit-transition: background-color .35s ease-in-out;
+  transition: background-color .35s ease-in-out; }
+  .Btn:hover {
+    background-color: #333333; }
+
 .Select {
   display: block;
   height: 40px;
@@ -2399,16 +2418,14 @@ html {
   padding-left: 2rem;
   padding-right: 40px;
   padding-right: 4rem;
-  margin-right: 10px;
-  margin-right: 1rem;
   border-radius: 0;
   border-color: #f0f0f0;
-  line-height: 40px;
-  line-height: 4rem;
-  font-size: 14px;
-  font-size: 1.4rem;
-  font-weight: bold;
+  margin-right: 10px;
+  margin-right: 1rem;
+  font-size: 13px;
+  font-size: 1.3rem;
   color: #666666;
+  font-weight: bold;
   background-color: #f0f0f0;
   background-image: url('{{ "ico-select.svg" | asset_url }}');
   background-repeat: no-repeat;
@@ -2427,8 +2444,7 @@ html {
   margin-right: 1rem;
   max-width: 70px;
   overflow: hidden;
-  background-color: #f0f0f0;
-  cursor: pointer; }
+  background-color: #f0f0f0; }
   .Qty-input-field {
     height: 40px;
     height: 4rem;
@@ -2441,11 +2457,12 @@ html {
     border: none;
     line-height: 40px;
     line-height: 4rem;
-    font-size: 14px;
-    font-size: 1.4rem;
-    font-weight: bold;
+    font-size: 13px;
+    font-size: 1.3rem;
     color: #666666;
-    background-color: #f0f0f0; }
+    font-weight: bold;
+    background-color: #f0f0f0;
+    cursor: pointer; }
     .Qty-input-field:focus, .Qty-input-field:active {
       border-color: #c8c8c8;
       outline: none; }
@@ -2463,16 +2480,17 @@ html {
     font-weight: bold;
     text-align: center;
     background-color: #c8c8c8;
-    font-size: 14px;
-    font-size: 1.4rem;
+    font-size: 13px;
+    font-size: 1.3rem;
     color: #ffffff;
     font-weight: bold;
+    cursor: pointer;
     -webkit-transition: background-color .35s ease-in-out;
     transition: background-color .35s ease-in-out;
     -webkit-appearance: none;
     -moz-appearance: none; }
     .Qty-input-btn:hover {
-      background-color: #afafaf; }
+      background-color: rgb(155, 155, 155); }
     .Qty-input-btn:focus, .Qty-input-btn:active {
       outline: none; }
     .Qty-input-btn--more {
@@ -2612,7 +2630,7 @@ html {
       font-size: 12px;
       font-size: 1.2rem; }
     .Article--product .Link {
-      display: block;
+      display: inline-block;
       margin-bottom: 20px;
       margin-bottom: 2rem; }
 

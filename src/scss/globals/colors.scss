@@ -1,4 +1,4 @@
-//-- Base Colors
+//-- Base HEX Colors
 :root {
     --white-hex: #ffffff;
     --mid-gray-hex: #c8c8c8;
@@ -8,10 +8,17 @@
     --dark-asphalt-hex: #222222;
     --asphalt-hex: #4d4d4f;
     --mid-dark-gray-hex: #666666;
+    --light-black: #333333;
     --sand-hex: #cc9966;
     --warm-sand-hex: #e0bcb0;
     --ocean-blue-hex: #d3dde6;
     --beige-light-hex: #f7f7f7;
+}
+
+//-- Base rgba colors
+:root {
+    --mid-gray-rgba: rgba(200, 200, 200, 1);
+    --light-black-rgba: rgba(51, 51, 51, 1);
 }
 
 //-- Typo Colors
@@ -36,7 +43,7 @@
     --form-el-bg-color: var(--yet-lighter-gray-hex);
     --form-el-focus-color: var(--mid-gray-hex);
     --form-typo-color: var(--mid-dark-gray-hex);
-    --form-btn-color: var(--mid-gray-hex);
+    --form-btn-color: var(--mid-gray-rgba);
+    --btn-bg-color: var(--warm-sand-hex);
+    --btn-bg-color-hover: var(--light-black-rgba);
 }
-
-$form-btn-color: #c8c8c8;

@@ -5,13 +5,10 @@
         left: $form-base-height / 2;
         right: var(--form-base-height);
     }
-    margin-right: var(--form-base-margin);
     border-radius: 0;
     border-color: var(--form-el-bg-color);
-    line-height: var(--form-base-height);
-    font-size: var(--md-copy-size);
-    font-weight: bold;
-    color: var(--form-typo-color);
+    margin-right: var(--form-base-margin);
+    @include copy-text(calc(var(--md-copy-size) - .1),  var(--form-typo-color), bold);
     background: {
         color: var(--form-el-bg-color);
         //-- Replace with the right icon
