@@ -1,0 +1,55 @@
+.ProductDetail {
+    padding: {
+        bottom: var(--base-sapacing);
+    }
+    text-align: center;
+
+    //-- GRID GENERATOR
+    //-- 1. Count column mobile first
+    //-- 2. Factor column number for tablet & desktop
+    //-- 3. Optional argument to define the inner padding
+    @include grid-cell(1, 2, $base-spacing);
+    @include copy-text();
+
+    .Headline--3 {
+        &:first-child {
+            position: relative;
+            margin-top: 4rem;
+
+            &::before {
+                content: "";
+                position: absolute;
+                bottom: 3.9rem + (2rem - .2rem);
+                right: 50%;
+                height: .2rem;
+                width: 2rem;
+                background-color: var(--typo-hex--highlight);
+                transform: translateX(50%);
+            }
+        }
+    }
+
+    .Copy-sm {
+        display: block;
+        margin-bottom: var(--base-sapacing);
+        color: var(--typo-hex--tone-down);
+        @include copy-text-sm();
+    }
+
+    .Link {
+        display: inline-block;
+        margin-bottom: var(--base-sapacing);
+    }
+    
+    &-copytext {
+        margin: 0 0 var(--base-sapacing);
+    }
+
+    &-actionRow {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+
+}

@@ -1,3 +1,8 @@
+:root {
+    --select-timing: .35s;
+    --select-timing-func: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+}
+
 .Select {
     display: block;
     height: var(--form-base-height);
@@ -16,14 +21,16 @@
         repeat: no-repeat;
         position: right 10px center;
     }
+    transition: border-color var(--select-timing) var(--select-timing-func);
 
     outline: none;
     -webkit-appearance: none;
-    text-indent: 0.01px;
-    text-overflow: '';
     cursor: pointer;
+
+
     &:focus,
-    &:active {
+    &:active,
+    &:hover {
         border-color: var(--form-el-focus-color);
     }
 }

@@ -4,7 +4,7 @@
     --mid-gray-hex: #c8c8c8;
     --light-gray-hex: #999999;
     --lighter-gray-hex: #e6e6e6;
-    --yet-lighter-gray-hex: #f0f0f0;
+    --lightest-gray-hex: #f0f0f0;
     --dark-asphalt-hex: #222222;
     --asphalt-hex: #4d4d4f;
     --mid-dark-gray-hex: #666666;
@@ -19,6 +19,7 @@
 :root {
     --mid-gray-rgba: rgba(200, 200, 200, 1);
     --light-black-rgba: rgba(51, 51, 51, 1);
+    --lightest-gray-rgba: rgba(240, 240, 240, 1);
 }
 
 //-- Typo Colors
@@ -40,7 +41,7 @@
 
 //-- Forms & Buttons
 :root {
-    --form-el-bg-color: var(--yet-lighter-gray-hex);
+    --form-el-bg-color: var(--lightest-gray-hex);
     --form-el-focus-color: var(--mid-gray-hex);
     --form-typo-color: var(--mid-dark-gray-hex);
     --form-btn-color: var(--mid-gray-rgba);

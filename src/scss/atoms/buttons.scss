@@ -1,5 +1,6 @@
 :root {
     --btn-timing: .35s;
+    --btn-timing-func: cubic-bezier(1.000, 0.000, 0.000, 1.000);
 }
 
 .Btn {
@@ -12,7 +13,7 @@
     background-color: var(--btn-bg-color);
     @include copy-text(calc(var(--md-copy-size) - .1),  var(--typo-hex--tertiary), bold);
     cursor: pointer;
-    transition: background-color var(--btn-timing) ease-in-out;
+    transition: background-color var(--btn-timing) var(--btn-timing-func);
 
     &:hover {
         background-color: var(--btn-bg-color-hover);
