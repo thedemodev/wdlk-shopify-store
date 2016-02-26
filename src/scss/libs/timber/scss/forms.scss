@@ -10,34 +10,6 @@
   }
 }
 
-input,
-textarea,
-button,
-select {
-  padding: 0;
-  margin: 0;
-  @include user-select(text);
-}
-
-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-button,
-input,
-textarea {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
-button {
-  background: none;
-  border: none;
-  display: inline-block;
-  cursor: pointer;
-}
 
 input[type="image"] {
   padding-left: 0;
@@ -52,11 +24,6 @@ fieldset {
 legend {
   border: 0;
   padding: 0;
-}
-
-button,
-input[type="submit"] {
-  cursor: pointer;
 }
 
 

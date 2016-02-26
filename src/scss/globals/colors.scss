@@ -7,6 +7,7 @@
     --yet-lighter-gray-hex: #f0f0f0;
     --dark-asphalt-hex: #222222;
     --asphalt-hex: #4d4d4f;
+    --mid-dark-gray-hex: #666666;
     --sand-hex: #cc9966;
     --warm-sand-hex: #e0bcb0;
     --ocean-blue-hex: #d3dde6;
@@ -34,4 +35,8 @@
 :root {
     --form-el-bg-color: var(--yet-lighter-gray-hex);
     --form-el-focus-color: var(--mid-gray-hex);
+    --form-typo-color: var(--mid-dark-gray-hex);
+    --form-btn-color: var(--mid-gray-hex);
 }
+
+$form-btn-color: #c8c8c8;

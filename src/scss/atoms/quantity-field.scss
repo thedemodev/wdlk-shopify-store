@@ -1,0 +1,72 @@
+:root {
+    --qty-btn-size: 1.8rem;
+    --qty-input-width: 70px;
+    --qty-input-timing: .35s;
+}
+
+.Qty-input {
+    position: relative;
+    margin-right: var(--form-base-margin);
+    max-width: var(--qty-input-width);
+    overflow: hidden;
+    background-color: var(--form-el-bg-color);
+    cursor: pointer;
+
+
+    &-field {
+        height: var(--form-base-height);
+        max-width: var(--qty-input-width);
+        box-sizing: border-box;
+        padding: {
+            left: calc(var(--form-base-height) - 2.5rem);
+            right: calc(var(--form-base-height) - 0.5rem);
+        }
+        border: none;
+        line-height: var(--form-base-height);
+        font-size: var(--md-copy-size);
+        font-weight: bold;
+        color: var(--form-typo-color);
+        background-color: var(--form-el-bg-color);
+
+        &:focus,
+        &:active {
+            border-color: var(--form-el-focus-color);
+            outline: none;
+        }
+    }
+
+    &-btn {
+        position: absolute;
+        right: 2px;
+        width: var(--qty-btn-size);
+        height: var(--qty-btn-size);
+        padding: 0;
+        border: none;
+        line-height: var(--qty-btn-size);
+        font-weight: bold;
+        text-align: center;
+        background-color: var(--form-btn-color);
+        @include copy-text(var(--md-copy-size),  var(--typo-hex--tertiary), bold);
+
+        transition: background-color var(--qty-input-timing) ease-in-out;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+
+        &:hover {
+            background-color: darken($form-btn-color, 10%);
+        }
+
+        &:focus,
+        &:active {
+            outline: none;
+        }
+
+        &--more {
+            top: 2px;
+        }
+
+        &--less {
+            bottom: 2px;
+        }
+    }
+}

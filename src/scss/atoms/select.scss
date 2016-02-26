@@ -5,10 +5,13 @@
         left: $form-base-height / 2;
         right: var(--form-base-height);
     }
+    margin-right: var(--form-base-margin);
     border-radius: 0;
     border-color: var(--form-el-bg-color);
+    line-height: var(--form-base-height);
     font-size: var(--md-copy-size);
     font-weight: bold;
+    color: var(--form-typo-color);
     background: {
         color: var(--form-el-bg-color);
         //-- Replace with the right icon

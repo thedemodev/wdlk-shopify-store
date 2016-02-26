@@ -10,6 +10,13 @@
         margin: 0 0 var(--base-sapacing);
     }
 
+    &-actionRow {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+
     &--product {
         text-align: center;
 
