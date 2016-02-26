@@ -1,7 +1,3 @@
-.Product {
-    @include grid-wrapper(var(--screen-xl));
-}
-
 .Article {
     //-- GRID GENERATOR
     //-- 1. Count column mobile first

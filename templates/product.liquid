@@ -42,6 +42,12 @@
     <div class="Article Article--product">
         <h1 class="Headline Headline--3" itemprop="name">{{ product.title }}</h1>
         <strong class="Headline Headline--3 Headline--highlight" itemprop="price">{{ product.price | money_with_currency }}</strong>
+        {% if product.compare_at_price_max > product.price %}
+        <strong class="visually-hidden">{{ 'products.general.sale_price' | t }}</strong>
+        <p id="ComparePrice">
+          {{ 'products.product.compare_at' | t }} {{ current_variant.compare_at_price | money }}
+        </p>
+        {% endif %}
         <small class="Copy-sm">({{'products.product.tax_type' | t}} {{'products.product.tax_included' | t}})</small>
 
         <p class="Article-copytext" itemprop="description">
@@ -59,18 +65,6 @@
             <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
             <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}" />
 
-
-            {% comment %}
-                CURRENTLY NOT NECESSARY
-                {% if product.compare_at_price_max > product.price %}
-                <span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
-                <p id="ComparePrice">
-                  {{ 'products.product.compare_at' | t }} {{ current_variant.compare_at_price | money }}
-                </p>
-                {% endif %}
-            {% endcomment %}
-
-
             {% comment %}
                 Add product variants as a dropdown.
                 - By default, each variant (or combination of variants) will display as its own <option>
@@ -85,19 +79,19 @@
                 - http://docs.shopify.com/support/your-website/themes/can-i-make-my-theme-use-products-with-multiple-options#update-product-liquid
             {% endcomment %}
             <select name="id" class="Select">
-                <option value="" disabled selected>{{'products.product.label_select_size' | t}}</option>
                 {% for variant in product.variants %}
                     {% if variant.available %}
-
 
                     {% comment %}
                       Note: if you use option_selection.js, your <select> tag will be overwritten, meaning what you have inside <option> will not reflect what you coded below.
                     {% endcomment %}
                     {% comment %}
+                        <option data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }}</option>
 
-                      <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }}</option>
                     {% endcomment %}
-                    <option data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }}</option>
+                    <option
+                        {% if variant == product.selected_or_first_available_variant %} selected="selected"
+                        {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }}</option>
 
                     {% else %}
                     <option disabled="disabled">
