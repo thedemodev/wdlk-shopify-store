@@ -9,35 +9,45 @@
 {% endcomment %}
 
 <main class="ProductPage" itemscope itemtype="http://schema.org/Product">
-    <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
     {% comment %} Get first variant, or deep linked one{% endcomment %}
+    <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
     {% assign current_variant = product.selected_or_first_available_variant %}
+    {% comment %} CSS only Carousel {% endcomment %}
     <figure class="Carousel">
+        {% comment %} MAIN IMAGE {% endcomment %}
         {% assign screen-md = '770px' %}
         {% for image in product.images %}
-            <picture itemprop="image">
+            {% comment %} The first input radio for the carousel must be checked {% endcomment %}
+            {% if forloop.first == true   %}
+                {% assign isChecked = 'checked' %}
+            {% else %}
+                {% assign isChecked = '' %}
+            {% endif %}
+            <input class="Carousel-btn" type="radio" name="carousel--product" value="{{forloop.index}}" id="carousel--product-{{forloop.index}}" {{isChecked}}>
+
+            <picture class="Carousel-item" itemprop="image">
                 <source srcset="{{ image.src | product_img_url: '1024x1024' }}" media="(min-width: {{screen-md}})">
                 <source srcset="{{ image.src | product_img_url: 'large' }}" media="(max-width: {{screen-md}})">
                 <img src="{{ image.src | product_img_url: '1024x1024' }}" alt="{{ product.image.alt | escape }}" content="{{ product.image.src | img_url: 'grande' }}">
             </picture>
+
+            {% if product.images.size > 2 %}
+                {% if forloop.last == true %}
+                    <label class="Carousel-btn Carousel-btn--label" for="carousel--product-1"></label>
+                {% endif %}
+            {% endif %}
+
         {% endfor %}
-
-      {% comment %}
-        Create thumbnails if we have more than one product image
-      {% endcomment %}
-      {% if product.images.size > 1 %}
-        <ul class="Thumbnail js-thumbnails" id="ProductThumbs">
-
-          {% for image in product.images %}
-            <li class="Thumbnail-item Grid-cell Grid-cell--1of4 Grid-cell--small--1of1">
-              <a href="{{ image.src | img_url: 'large' }}">
-                <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
-              </a>
-            </li>
-          {% endfor %}
-
-        </ul>
-      {% endif %}
+        {% comment %} THUMBNAILS {% endcomment %}
+        {% if product.images.size > 1 %}
+            <ul class="Thumbnail">
+                {% for image in product.images %}
+                <li class="Thumbnail-item">
+                    <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
+                </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
     </figure>
 
     <article class="ProductDetail">

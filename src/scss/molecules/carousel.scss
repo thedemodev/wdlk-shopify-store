@@ -1,7 +1,125 @@
+:root {
+    --carousel-arrow-size: 40px;
+    --carousel-arrow-size-tip: 40 * 30 / 100;
+    --carousel-arrow-border: 3px;
+    --carousel-arrow-bg: rgba(250, 250, 250, 1);
+    --carousel-arrow-margin: 1.5rem;
+}
+
 .Carousel {
     //-- GRID GENERATOR
     //-- 1. Count column mobile first
     //-- 2. Factor column number for tablet & desktop
     //-- 3. Optional argument to define the inner padding
     @include grid-cell(1, 2);
+
+    position: relative;
+    overflow: hidden;
+    z-index: 4;
+
+    &-btn {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 2;
+        width: calc(var(--carousel-arrow-size));
+        height: calc(var(--carousel-arrow-size) * 2 );
+        margin: {
+            top: auto;
+            bottom: auto;
+            left: var(--carousel-arrow-margin);
+        }
+        outline: none;
+        appearance: none;
+        cursor: pointer;
+
+        &::before,
+        &::after {
+            content: "";
+            box-sizing: border-box;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            border: solid var(--carousel-arrow-color);
+            margin: {
+                top: auto;
+                bottom: auto;
+            }
+        }
+
+        &::before {
+            z-index: 2;
+            width: var(--carousel-arrow-size);
+            height: var(--carousel-arrow-size);
+            border-width: 0 var(--carousel-arrow-border) 0 0;
+            transform: translateX(calc(var(--carousel-arrow-size) / -2  - 3));
+        }
+
+        &::after {
+            z-index: 1;
+            width: calc(var(--carousel-arrow-size) - var(--carousel-arrow-size-tip) );
+            height: calc(var(--carousel-arrow-size) - var(--carousel-arrow-size-tip) );
+            border-width: 0 0 var(--carousel-arrow-border) var(--carousel-arrow-border);
+            transform: rotate(45deg);
+            background: var(--carousel-arrow-bg);
+        }
+
+        &:checked {
+            display: none;
+
+            ~ .Carousel-btn {
+                left: auto;
+                right: 0;
+                margin-right: var(--carousel-arrow-margin);
+                transform: rotate(180deg);
+            }
+
+            + .Carousel-item {
+                transform: translate3d(0, 0, 0);
+
+                ~ .Carousel-item {
+                    transform: translate3d(100%, 0, 0);
+                }
+
+                + .Carousel-btn {
+                    z-index: 3;
+                }
+            }
+            //-- Positions the last radio input as
+            //-- first one to allow backwards
+            //-- endless sliding;
+            &:first-of-type {
+                ~ .Carousel-btn {
+                    &:not(label) {
+                        &:last-of-type {
+                            right: auto;
+                            left: 0;
+                            transform: rotate(0);
+                        }
+                    }
+                }
+            }
+            &:last-of-type {
+                ~ .Carousel-btn--label {
+                    right: 0;
+                    left: auto;
+                    display: block;
+                }
+            }
+        }
+
+    }
+
+    &-item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        text-align: center;
+        transform: translate3d(-100%, 0, 0);
+        transition: transform .4s ease-in-out;
+    }
 }

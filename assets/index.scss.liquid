@@ -2424,7 +2424,7 @@ html {
   margin-right: 1rem;
   font-size: 13px;
   font-size: 1.3rem;
-  color: #666666;
+  color: #bfbfbf;
   font-weight: bold;
   background-color: #f0f0f0;
   background-image: url('{{ "ico-select.svg" | asset_url }}');
@@ -2434,6 +2434,8 @@ html {
   transition: border-color .35s cubic-bezier(1, 0, 0, 1);
   outline: none;
   -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   cursor: pointer; }
   .Select:focus, .Select:active, .Select:hover {
     border-color: #c8c8c8; }
@@ -2457,7 +2459,7 @@ html {
     line-height: 4rem;
     font-size: 13px;
     font-size: 1.3rem;
-    color: #666666;
+    color: #bfbfbf;
     font-weight: bold;
     background-color: #f0f0f0;
     cursor: pointer;
@@ -2571,10 +2573,94 @@ html {
   background-color: #f7f7f7; }
 
 .Carousel {
-  width: 100%; }
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  z-index: 4; }
   @media (min-width: 770px) {
     .Carousel {
       width: 50%; } }
+  .Carousel-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 40px;
+    height: 80px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 15px;
+    margin-left: 1.5rem;
+    outline: none;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    cursor: pointer; }
+    .Carousel-btn:before, .Carousel-btn:after {
+      content: "";
+      box-sizing: border-box;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      border: solid #bfbfbf;
+      margin-top: auto;
+      margin-bottom: auto; }
+    .Carousel-btn:before {
+      z-index: 2;
+      width: 40px;
+      height: 40px;
+      border-width: 0 3px 0 0;
+      -webkit-transform: translateX(-23px);
+              transform: translateX(-23px); }
+    .Carousel-btn:after {
+      z-index: 1;
+      width: 28px;
+      height: 28px;
+      border-width: 0 0 3px 3px;
+      -webkit-transform: rotate(45deg);
+              transform: rotate(45deg);
+      background: #fafafa; }
+    .Carousel-btn:checked {
+      display: none; }
+      .Carousel-btn:checked ~ .Carousel-btn {
+        left: auto;
+        right: 0;
+        margin-right: 15px;
+        margin-right: 1.5rem;
+        -webkit-transform: rotate(180deg);
+                transform: rotate(180deg); }
+      .Carousel-btn:checked + .Carousel-item {
+        -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0); }
+        .Carousel-btn:checked + .Carousel-item ~ .Carousel-item {
+          -webkit-transform: translate3d(100%, 0, 0);
+                  transform: translate3d(100%, 0, 0); }
+        .Carousel-btn:checked + .Carousel-item + .Carousel-btn {
+          z-index: 3; }
+      .Carousel-btn:checked:first-of-type ~ .Carousel-btn:not(label):last-of-type {
+        right: auto;
+        left: 0;
+        -webkit-transform: rotate(0);
+                transform: rotate(0); }
+      .Carousel-btn:checked:last-of-type ~ .Carousel-btn--label {
+        right: 0;
+        left: auto;
+        display: block; }
+  .Carousel-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    text-align: center;
+    -webkit-transform: translate3d(-100%, 0, 0);
+            transform: translate3d(-100%, 0, 0);
+    transition: -webkit-transform .4s ease-in-out;
+    -webkit-transition: -webkit-transform .4s ease-in-out;
+    transition: transform .4s ease-in-out;
+    transition: transform .4s ease-in-out, -webkit-transform .4s ease-in-out; }
 
 .ProductDetail {
   padding-bottom: 20px;
