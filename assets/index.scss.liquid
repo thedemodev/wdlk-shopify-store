@@ -1508,9 +1508,6 @@ select::-ms-expand {
     clip: auto;
     clip: initial; }
 
-label[for] {
-  cursor: pointer; }
-
 /*================ Error styles ================*/
 input.error,
 select.error,
@@ -2410,6 +2407,53 @@ html {
   .Btn:hover {
     background-color: #333333; }
 
+.Carousel-btn:checked:nth-of-type(1) ~ .Indicators .Indicators-item:nth-of-type(1) {
+  background: magenta; }
+
+.Carousel-btn:checked:nth-of-type(2) ~ .Indicators .Indicators-item:nth-of-type(2) {
+  background: magenta; }
+
+.Carousel-btn:checked:nth-of-type(3) ~ .Indicators .Indicators-item:nth-of-type(3) {
+  background: magenta; }
+
+.Carousel-btn:checked:nth-of-type(4) ~ .Indicators .Indicators-item:nth-of-type(4) {
+  background: magenta; }
+
+.Carousel-btn:checked:nth-of-type(5) ~ .Indicators .Indicators-item:nth-of-type(5) {
+  background: magenta; }
+
+.Carousel-btn:checked:nth-of-type(6) ~ .Indicators .Indicators-item:nth-of-type(6) {
+  background: magenta; }
+
+.Indicators {
+  position: absolute;
+  top: 20px;
+  top: 2rem;
+  left: 20px;
+  left: 2rem;
+  z-index: 4;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          -webkit-box-orient: horizontal;
+          -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          -webkit-box-pack: center;
+          justify-content: center; }
+  .Indicators-item {
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-right: 1rem;
+    background-color: #4d4d4f;
+    cursor: pointer; }
+
 .Select {
   display: block;
   height: 40px;
@@ -2573,13 +2617,17 @@ html {
   background-color: #f7f7f7; }
 
 .Carousel {
-  width: 100%;
   position: relative;
+  height: 96.777vw;
+  min-width: 320px;
+  max-height: 750px;
+  min-height: 320px;
   overflow: hidden;
   z-index: 4; }
   @media (min-width: 770px) {
     .Carousel {
-      width: 50%; } }
+      height: 49.16vw;
+      max-height: 675px; } }
   .Carousel-btn {
     position: absolute;
     top: 0;
@@ -2741,6 +2789,36 @@ html {
     display: inline-block;
     width: auto; }
 
+.Thumbnails {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          -webkit-box-orient: horizontal;
+          -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          -webkit-box-pack: center;
+          justify-content: center;
+  display: none;
+  padding-top: 10px;
+  padding-top: 1rem;
+  padding-bottom: 10px;
+  padding-bottom: 1rem; }
+  @media (min-width: 770px) {
+    .Thumbnails {
+      display: block; } }
+  .Thumbnails-item {
+    display: inline-block;
+    margin-right: 10px;
+    margin-right: 1rem;
+    cursor: pointer; }
+    .Thumbnails-item:last-of-type {
+      margin-right: 0; }
+
 .ProductPage {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2755,3 +2833,9 @@ html {
           justify-content: center;
   max-width: 1440px;
   margin: auto; }
+  .ProductPage-display {
+    width: 100%;
+    position: relative; }
+    @media (min-width: 770px) {
+      .ProductPage-display {
+        width: 50%; } }

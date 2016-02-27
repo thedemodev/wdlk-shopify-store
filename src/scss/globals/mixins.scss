@@ -1,9 +1,14 @@
 @mixin media($size) {
-  @if ($size == medium) {
-    @media (min-width: $screen-md) {
-      @content;
+    @if ($size == small) {
+      @media (min-width: $screen-sm) {
+        @content;
+      }
     }
-  }
+    @if ($size == medium) {
+        @media (min-width: $screen-md) {
+            @content;
+        }
+    }
 }
 
 

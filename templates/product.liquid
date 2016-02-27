@@ -10,48 +10,60 @@
 
 <main class="ProductPage" itemscope itemtype="http://schema.org/Product">
     {% comment %} Get first variant, or deep linked one{% endcomment %}
-    <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
-    {% assign current_variant = product.selected_or_first_available_variant %}
-    {% comment %} CSS only Carousel {% endcomment %}
-    <figure class="Carousel">
-        {% comment %} MAIN IMAGE {% endcomment %}
-        {% assign screen-md = '770px' %}
-        {% for image in product.images %}
-            {% comment %} The first input radio for the carousel must be checked {% endcomment %}
-            {% if forloop.first == true   %}
-                {% assign isChecked = 'checked' %}
-            {% else %}
-                {% assign isChecked = '' %}
-            {% endif %}
-            <input class="Carousel-btn" type="radio" name="carousel--product" value="{{forloop.index}}" id="carousel--product-{{forloop.index}}" {{isChecked}}>
-
-            <picture class="Carousel-item" itemprop="image">
-                <source srcset="{{ image.src | product_img_url: '1024x1024' }}" media="(min-width: {{screen-md}})">
-                <source srcset="{{ image.src | product_img_url: 'large' }}" media="(max-width: {{screen-md}})">
-                <img src="{{ image.src | product_img_url: '1024x1024' }}" alt="{{ product.image.alt | escape }}" content="{{ product.image.src | img_url: 'grande' }}">
-            </picture>
-
-            {% if product.images.size > 2 %}
-                {% if forloop.last == true %}
-                    <label class="Carousel-btn Carousel-btn--label" for="carousel--product-1"></label>
+    <div class="ProductPage-display">
+        <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
+        {% assign current_variant = product.selected_or_first_available_variant %}
+        {% comment %} CSS only Carousel {% endcomment %}
+        <figure class="Carousel">
+            {% comment %} MAIN IMAGE {% endcomment %}
+            {% assign screen-md = '770px' %}
+            {% assign screen-sm = '480px'%}
+            {% for image in product.images %}
+                {% comment %} The first input radio for the carousel must be checked {% endcomment %}
+                {% if forloop.first == true   %}
+                    {% assign isChecked = 'checked' %}
+                {% else %}
+                    {% assign isChecked = '' %}
                 {% endif %}
-            {% endif %}
+                <input class="Carousel-btn" type="radio" name="carousel--product" value="{{forloop.index}}" id="carousel--product-{{forloop.index}}" {{isChecked}}>
 
-        {% endfor %}
+                <picture class="Carousel-item" itemprop="image">
+                    <source srcset="{{ image.src | product_img_url: '1024x1024' }}" media="(min-width: {{screen-md}})">
+                    <source srcset="{{ image.src | product_img_url: '1024x1024' }}" media="(max-width: {{screen-md}})">
+                    <source srcset="{{ image.src | product_img_url: 'large' }}" media="(max-width: {{screen-sm}})">
+                    <img src="{{ image.src | product_img_url: '1024x1024' }}" alt="{{ product.image.alt | escape }}" content="{{ product.image.src | img_url: 'grande' }}">
+                </picture>
+
+                {% if product.images.size > 2 %}
+                    {% if forloop.last == true %}
+                        <label class="Carousel-btn Carousel-btn--label" for="carousel--product-1"></label>
+                    {% endif %}
+                {% endif %}
+
+            {% endfor %}
+            {% comment %} Indicators {% endcomment %}
+            {% if product.images.size > 1 %}
+            <div class="Indicators">
+                {% for image in product.images %}
+                    <label class="Indicators-item" for="carousel--product-{{forloop.index}}"></label>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </figure>
         {% comment %} THUMBNAILS {% endcomment %}
         {% if product.images.size > 1 %}
-            <ul class="Thumbnail">
+            <div class="Thumbnails">
                 {% for image in product.images %}
-                <li class="Thumbnail-item">
-                    <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
-                </li>
+                    <label class="Thumbnails-item" for="carousel--product-{{forloop.index}}">
+                        <img class="Thumbnails-img" src="{{ image.src | img_url: 'small' }}" alt="{{ image.alt | escape }}">
+                    </label>
                 {% endfor %}
-            </ul>
+            </div>
         {% endif %}
-    </figure>
+    </div>
 
     <article class="ProductDetail">
-        <h1 class="Headline Headline--3" itemprop="name">{{ product.title }}</h1>
+        <h1 class="Headline Headline--2" itemprop="name">{{ product.title }}</h1>
         <strong class="Headline Headline--3 Headline--highlight" itemprop="price">{{ product.price | money_with_currency }}</strong>
         {% if product.compare_at_price_max > product.price %}
         <strong class="visually-hidden">{{ 'products.general.sale_price' | t }}</strong>

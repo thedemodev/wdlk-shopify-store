@@ -7,15 +7,18 @@
 }
 
 .Carousel {
-    //-- GRID GENERATOR
-    //-- 1. Count column mobile first
-    //-- 2. Factor column number for tablet & desktop
-    //-- 3. Optional argument to define the inner padding
-    @include grid-cell(1, 2);
-
     position: relative;
+    height: 96.777vw;
+    min-width: 320px;
+    max-height: calc(var(--screen-xl) / 2 + 30);
+    min-height: 320px;
     overflow: hidden;
     z-index: 4;
+
+    @include media(medium) {
+        height: 49.16vw;
+        max-height: calc(var(--screen-xl) / 2 - 45);
+    }
 
     &-btn {
         position: absolute;

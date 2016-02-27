@@ -1,0 +1,25 @@
+.Thumbnails {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    display: none;
+    padding: {
+        top: var(--base-margin);
+        bottom: var(--base-margin);
+    }
+
+    @include media(medium) {
+        display: block;
+    }
+
+    &-item {
+        display: inline-block;
+        margin-right: var(--base-margin);
+        cursor: pointer;
+
+        &:last-of-type {
+            margin-right: 0;
+        }
+
+    }
+}

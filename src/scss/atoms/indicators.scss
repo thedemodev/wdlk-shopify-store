@@ -1,0 +1,50 @@
+:root {
+    --indicators-size: 8px;
+}
+
+//-- Generates the necessary styling for the indicators.
+//-- Depends heavily in nth-of-type psudo class.
+//-- This mixins acceps the following parameters:
+//-- 1. The amount of indicators
+//-- 2. The class of the trigger input
+//-- 3. The parent class of the indicators
+//-- 4. The class of the indicator item
+@mixin generateIndicators ($item-amount, $trigger-selector, $target-parent, $target-selector) {
+    @for $i from 1 through $item-amount {
+      .#{$trigger-selector} {
+        &:checked {
+          &:nth-of-type(#{$i}) {
+            ~ .#{$target-parent} {
+              .#{$target-selector} {
+                &:nth-of-type(#{$i}) {
+                  @content;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+}
+@include generateIndicators(6, Carousel-btn, Indicators, Indicators-item) {
+  background: magenta;
+};
+
+.Indicators {
+    position: absolute;
+    top: var(--base-sapacing);
+    left: var(--base-sapacing);
+    z-index: 4;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    &-item {
+        height: var(--indicators-size);
+        width: var(--indicators-size);
+        border-radius: 50%;
+        margin-right: var(--base-margin);
+        background-color: var(--indicator-color);
+        cursor: pointer;
+    }
+}
