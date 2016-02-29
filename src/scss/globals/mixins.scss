@@ -9,6 +9,11 @@
             @content;
         }
     }
+    @if ($size == large) {
+        @media (min-width: $screen-l) {
+            @content;
+        }
+    }
 }
 
 

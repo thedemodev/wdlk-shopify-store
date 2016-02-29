@@ -11,7 +11,7 @@
     --mid-dark-gray-hex: #666666;
     --light-black: #333333;
     --sand-hex: #cc9966;
-    --warm-sand-hex: #e0bcb0;
+    //--sand-hex: #e0bcb0;
     --ocean-blue-hex: #d3dde6;
     --beige-light-hex: #f7f7f7;
 }
@@ -30,7 +30,7 @@
     --typo-hex--secondary: var(--asphalt-hex);
     --typo-hex--tertiary: var(--white-hex);
     //--typo-hex--highlight: var(--sand-hex);
-    --typo-hex--highlight: var(--warm-sand-hex);
+    --typo-hex--highlight: var(--sand-hex);
     --typo-hex--tone-down: var(--light-gray-hex);
 }
 
@@ -47,9 +47,15 @@
     --form-el-focus-color: var(--mid-gray-hex);
     --form-typo-color: var(--mid-dark-gray-hex);
     --form-btn-color: var(--mid-gray-rgba);
-    --btn-bg-color: var(--warm-sand-hex);
+    --btn-bg-color: var(--sand-hex);
     --btn-bg-color-hover: var(--light-black-rgba);
     --carousel-arrow-color: var(--mid-dark-gray-hex);
     --indicator-color: var(--asphalt-hex);
-    --indicator-active-color: var(--warm-sand-hex);
+    --indicator-active-color: var(--sand-hex);
+}
+
+
+//-- Images
+:root {
+    --thumbnail-border-color: var(--sand-hex);
 }

@@ -1,25 +1,55 @@
-.Thumbnails {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    display: none;
-    padding: {
-        top: var(--base-margin);
-        bottom: var(--base-margin);
-    }
+:root {
+    --thumbnail-size: 5rem;
+    --thumbnail-transition-speed: .35s;
+}
 
-    @include media(medium) {
-        display: block;
-    }
+//-- Generates the necessary styling for the active indicators.
+//-- Depends heavily in nth-of-type pseudo class
+//-- and a rigid HTML structure. The mixin should be use on the global space.
+//-- This mixins acceps the following parameters:
+//-- 1. The amount of indicators
+//-- 2. The class of the trigger input
+//-- 3. The parent class of the indicators
+//-- 4. The class of the indicator item
+
+@include generateActiveIndicator(6, Carousel-btn, Thumbnails, Thumbnails-item) {
+    border-color: var(--thumbnail-border-color);
+};
+
+
+.Thumbnails {
+    position: absolute;
+    left: calc(var(--base-margin) + .5);
+    bottom: calc(var(--base-margin) + .5);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
 
     &-item {
+        border-box: box-sizing;
         display: inline-block;
-        margin-right: var(--base-margin);
-        cursor: pointer;
-
-        &:last-of-type {
-            margin-right: 0;
+        width: var(--thumbnail-size);
+        height: var(--thumbnail-size);
+        border: {
+            width: 2px;
+            color: transparent;
+            style: solid;
         }
+        margin-top: var(--base-margin);
+        cursor: pointer;
+        transition: border var(--thumbnail-transition-speed) ease-out;
 
+        @include media(large) {
+            width: calc(var(--thumbnail-size) + 2rem);
+            height: calc(var(--thumbnail-size) + 2rem);
+        }
+    }
+
+    &-img {
+        display: none;
+
+        @include media(medium) {
+            display: block;
+        }
     }
 }

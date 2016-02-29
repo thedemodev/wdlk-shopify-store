@@ -2374,7 +2374,7 @@ html {
     font-size: 18px;
     font-size: 1.8rem; }
   .Headline--highlight {
-    color: #e0bcb0; }
+    color: #cc9966; }
 
 .Link {
   color: #999999;
@@ -2386,7 +2386,7 @@ html {
   font-size: 12px;
   font-size: 1.2rem; }
   .Link:hover {
-    color: #e0bcb0; }
+    color: #cc9966; }
 
 .Btn {
   height: 40px;
@@ -2396,7 +2396,7 @@ html {
   padding-right: 36px;
   padding-right: 3.6rem;
   border: none;
-  background-color: #e0bcb0;
+  background-color: #cc9966;
   font-size: 13px;
   font-size: 1.3rem;
   color: #ffffff;
@@ -2406,53 +2406,6 @@ html {
   transition: background-color .35s cubic-bezier(1, 0, 0, 1); }
   .Btn:hover {
     background-color: #333333; }
-
-.Carousel-btn:checked:nth-of-type(1) ~ .Indicators .Indicators-item:nth-of-type(1) {
-  background: magenta; }
-
-.Carousel-btn:checked:nth-of-type(2) ~ .Indicators .Indicators-item:nth-of-type(2) {
-  background: magenta; }
-
-.Carousel-btn:checked:nth-of-type(3) ~ .Indicators .Indicators-item:nth-of-type(3) {
-  background: magenta; }
-
-.Carousel-btn:checked:nth-of-type(4) ~ .Indicators .Indicators-item:nth-of-type(4) {
-  background: magenta; }
-
-.Carousel-btn:checked:nth-of-type(5) ~ .Indicators .Indicators-item:nth-of-type(5) {
-  background: magenta; }
-
-.Carousel-btn:checked:nth-of-type(6) ~ .Indicators .Indicators-item:nth-of-type(6) {
-  background: magenta; }
-
-.Indicators {
-  position: absolute;
-  top: 20px;
-  top: 2rem;
-  left: 20px;
-  left: 2rem;
-  z-index: 4;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: flex;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          -webkit-box-orient: horizontal;
-          -webkit-box-direction: normal;
-          flex-direction: row;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          -webkit-box-pack: center;
-          justify-content: center; }
-  .Indicators-item {
-    height: 8px;
-    width: 8px;
-    border-radius: 50%;
-    margin-right: 10px;
-    margin-right: 1rem;
-    background-color: #4d4d4f;
-    cursor: pointer; }
 
 .Select {
   display: block;
@@ -2738,7 +2691,7 @@ html {
       height: .2rem;
       width: 20px;
       width: 2rem;
-      background-color: #e0bcb0;
+      background-color: #cc9966;
       -webkit-transform: translateX(50%);
               transform: translateX(50%); }
   .ProductDetail .Copy-sm {
@@ -2789,35 +2742,64 @@ html {
     display: inline-block;
     width: auto; }
 
+.Carousel-btn:checked:nth-of-type(1) ~ .Thumbnails .Thumbnails-item:nth-of-type(1) {
+  border-color: #cc9966; }
+
+.Carousel-btn:checked:nth-of-type(2) ~ .Thumbnails .Thumbnails-item:nth-of-type(2) {
+  border-color: #cc9966; }
+
+.Carousel-btn:checked:nth-of-type(3) ~ .Thumbnails .Thumbnails-item:nth-of-type(3) {
+  border-color: #cc9966; }
+
+.Carousel-btn:checked:nth-of-type(4) ~ .Thumbnails .Thumbnails-item:nth-of-type(4) {
+  border-color: #cc9966; }
+
+.Carousel-btn:checked:nth-of-type(5) ~ .Thumbnails .Thumbnails-item:nth-of-type(5) {
+  border-color: #cc9966; }
+
+.Carousel-btn:checked:nth-of-type(6) ~ .Thumbnails .Thumbnails-item:nth-of-type(6) {
+  border-color: #cc9966; }
+
 .Thumbnails {
+  position: absolute;
+  left: 15px;
+  left: 1.5rem;
+  bottom: 15px;
+  bottom: 1.5rem;
+  z-index: 1;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          -webkit-box-orient: horizontal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          -webkit-box-orient: vertical;
           -webkit-box-direction: normal;
-          flex-direction: row;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          -webkit-box-pack: center;
-          justify-content: center;
-  display: none;
-  padding-top: 10px;
-  padding-top: 1rem;
-  padding-bottom: 10px;
-  padding-bottom: 1rem; }
-  @media (min-width: 770px) {
-    .Thumbnails {
-      display: block; } }
+          flex-direction: column; }
   .Thumbnails-item {
+    border-box: box-sizing;
     display: inline-block;
-    margin-right: 10px;
-    margin-right: 1rem;
-    cursor: pointer; }
-    .Thumbnails-item:last-of-type {
-      margin-right: 0; }
+    width: 50px;
+    width: 5rem;
+    height: 50px;
+    height: 5rem;
+    border-width: 2px;
+    border-color: transparent;
+    border-style: solid;
+    margin-top: 10px;
+    margin-top: 1rem;
+    cursor: pointer;
+    -webkit-transition: border .35s ease-out;
+    transition: border .35s ease-out; }
+    @media (min-width: 1024px) {
+      .Thumbnails-item {
+        width: 7rem;
+        height: 7rem; } }
+  .Thumbnails-img {
+    display: none; }
+    @media (min-width: 770px) {
+      .Thumbnails-img {
+        display: block; } }
 
 .ProductPage {
   display: -webkit-flex;

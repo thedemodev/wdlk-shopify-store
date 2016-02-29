@@ -41,25 +41,17 @@
                 {% endif %}
 
             {% endfor %}
-            {% comment %} Indicators {% endcomment %}
+            {% comment %} THUMBNAILS {% endcomment %}
             {% if product.images.size > 1 %}
-            <div class="Indicators">
+            <div class="Thumbnails">
                 {% for image in product.images %}
-                    <label class="Indicators-item" for="carousel--product-{{forloop.index}}"></label>
+                <label class="Thumbnails-item" for="carousel--product-{{forloop.index}}">
+                    <img class="Thumbnails-img" src="{{ image.src | img_url: 'thumg' }}" alt="{{ image.alt | escape }}">
+                </label>
                 {% endfor %}
             </div>
             {% endif %}
         </figure>
-        {% comment %} THUMBNAILS {% endcomment %}
-        {% if product.images.size > 1 %}
-            <div class="Thumbnails">
-                {% for image in product.images %}
-                    <label class="Thumbnails-item" for="carousel--product-{{forloop.index}}">
-                        <img class="Thumbnails-img" src="{{ image.src | img_url: 'small' }}" alt="{{ image.alt | escape }}">
-                    </label>
-                {% endfor %}
-            </div>
-        {% endif %}
     </div>
 
     <article class="ProductDetail">
