@@ -51,6 +51,14 @@
                 {% endfor %}
             </div>
             {% endif %}
+            {% comment %} Indicators {% endcomment %}
+            {% if product.images.size > 1 %}
+            <div class="Indicators">
+                {% for image in product.images %}
+                <label class="Indicators-item" for="carousel--product-{{forloop.index}}"></label>
+                {% endfor %}
+            </div>
+            {% endif %}
         </figure>
     </div>
 

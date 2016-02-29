@@ -11,19 +11,22 @@
 //-- 2. The class of the trigger input
 //-- 3. The parent class of the indicators
 //-- 4. The class of the indicator item
-
 @include generateActiveIndicator(6, Carousel-btn, Thumbnails, Thumbnails-item) {
     border-color: var(--thumbnail-border-color);
 };
-
 
 .Thumbnails {
     position: absolute;
     left: calc(var(--base-margin) + .5);
     bottom: calc(var(--base-margin) + .5);
     z-index: 1;
-    display: flex;
+    display: none;
     flex-direction: column;
+
+    @include media(medium) {
+        display: block;
+        display: flex;
+    }
 
     &-item {
         border-box: box-sizing;

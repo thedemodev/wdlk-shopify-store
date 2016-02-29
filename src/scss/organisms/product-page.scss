@@ -10,4 +10,16 @@
 
         position: relative;
     }
+
+    .Carousel-btn {
+        @include media(medium) {
+            display: none;
+            &:checked {
+                ~ .Carousel-btn--label {
+                  display: none;
+                }
+            }
+        }
+
+    }
 }

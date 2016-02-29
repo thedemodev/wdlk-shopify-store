@@ -16,6 +16,32 @@
     }
 }
 
+//-- Generates the necessary styling for the active indicators.
+//-- Depends heavily in nth-of-type pseudo class
+//-- and a rigid HTML structure. The mixin should be use on the global space.
+//-- This mixins acceps the following parameters:
+//-- 1. The amount of indicators
+//-- 2. The class of the trigger input
+//-- 3. The parent class of the indicators
+//-- 4. The class of the indicator item
+@mixin generateActiveIndicator ($item-amount, $trigger-selector, $target-parent, $target-selector) {
+    @for $i from 1 through $item-amount {
+      .#{$trigger-selector} {
+        &:checked {
+          &:nth-of-type(#{$i}) {
+            ~ .#{$target-parent} {
+              .#{$target-selector} {
+                &:nth-of-type(#{$i}) {
+                  @content;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+}
+
 
 // =======================================
 // GRID CREATOR

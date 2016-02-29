@@ -2407,6 +2407,66 @@ html {
   .Btn:hover {
     background-color: #333333; }
 
+.Carousel-btn:checked:nth-of-type(1) ~ .Indicators .Indicators-item:nth-of-type(1) {
+  background-color: #cc9966;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5); }
+
+.Carousel-btn:checked:nth-of-type(2) ~ .Indicators .Indicators-item:nth-of-type(2) {
+  background-color: #cc9966;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5); }
+
+.Carousel-btn:checked:nth-of-type(3) ~ .Indicators .Indicators-item:nth-of-type(3) {
+  background-color: #cc9966;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5); }
+
+.Carousel-btn:checked:nth-of-type(4) ~ .Indicators .Indicators-item:nth-of-type(4) {
+  background-color: #cc9966;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5); }
+
+.Carousel-btn:checked:nth-of-type(5) ~ .Indicators .Indicators-item:nth-of-type(5) {
+  background-color: #cc9966;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5); }
+
+.Carousel-btn:checked:nth-of-type(6) ~ .Indicators .Indicators-item:nth-of-type(6) {
+  background-color: #cc9966;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5); }
+
+.Indicators {
+  position: absolute;
+  top: 15px;
+  top: 1.5rem;
+  left: 15px;
+  left: 1.5rem;
+  z-index: 1;
+  display: block; }
+  @media (min-width: 770px) {
+    .Indicators {
+      display: none; } }
+  .Indicators-item {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-right: 1rem;
+    background-color: #4d4d4f;
+    cursor: pointer;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transition: transfrom .45s ease-out, background-color .45s ease-out;
+    transition: transfrom .45s ease-out, background-color .45s ease-out;
+    outline: none; }
+    .Indicators-item:last-child {
+      margin-right: 0; }
+    .Indicators-item:hover {
+      background-color: #cc9966; }
+
 .Select {
   display: block;
   height: 40px;
@@ -2767,15 +2827,19 @@ html {
   bottom: 15px;
   bottom: 1.5rem;
   z-index: 1;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: flex;
+  display: none;
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           -webkit-box-orient: vertical;
           -webkit-box-direction: normal;
           flex-direction: column; }
+  @media (min-width: 770px) {
+    .Thumbnails {
+      display: block;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: -webkit-box;
+      display: flex; } }
   .Thumbnails-item {
     border-box: box-sizing;
     display: inline-block;
@@ -2821,3 +2885,8 @@ html {
     @media (min-width: 770px) {
       .ProductPage-display {
         width: 50%; } }
+  @media (min-width: 770px) {
+    .ProductPage .Carousel-btn {
+      display: none; }
+      .ProductPage .Carousel-btn:checked ~ .Carousel-btn--label {
+        display: none; } }
