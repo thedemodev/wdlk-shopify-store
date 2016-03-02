@@ -2407,32 +2407,32 @@ html {
   .Btn:hover {
     background-color: #333333; }
 
-.Carousel-btn:checked:nth-of-type(1) ~ .Indicators .Indicators-item:nth-of-type(1) {
+.Carousel-trigger:checked:nth-of-type(1) ~ .Indicators .Indicators-item:nth-of-type(1) {
   background-color: #cc9966;
   -webkit-transform: scale(1.5);
           transform: scale(1.5); }
 
-.Carousel-btn:checked:nth-of-type(2) ~ .Indicators .Indicators-item:nth-of-type(2) {
+.Carousel-trigger:checked:nth-of-type(2) ~ .Indicators .Indicators-item:nth-of-type(2) {
   background-color: #cc9966;
   -webkit-transform: scale(1.5);
           transform: scale(1.5); }
 
-.Carousel-btn:checked:nth-of-type(3) ~ .Indicators .Indicators-item:nth-of-type(3) {
+.Carousel-trigger:checked:nth-of-type(3) ~ .Indicators .Indicators-item:nth-of-type(3) {
   background-color: #cc9966;
   -webkit-transform: scale(1.5);
           transform: scale(1.5); }
 
-.Carousel-btn:checked:nth-of-type(4) ~ .Indicators .Indicators-item:nth-of-type(4) {
+.Carousel-trigger:checked:nth-of-type(4) ~ .Indicators .Indicators-item:nth-of-type(4) {
   background-color: #cc9966;
   -webkit-transform: scale(1.5);
           transform: scale(1.5); }
 
-.Carousel-btn:checked:nth-of-type(5) ~ .Indicators .Indicators-item:nth-of-type(5) {
+.Carousel-trigger:checked:nth-of-type(5) ~ .Indicators .Indicators-item:nth-of-type(5) {
   background-color: #cc9966;
   -webkit-transform: scale(1.5);
           transform: scale(1.5); }
 
-.Carousel-btn:checked:nth-of-type(6) ~ .Indicators .Indicators-item:nth-of-type(6) {
+.Carousel-trigger:checked:nth-of-type(6) ~ .Indicators .Indicators-item:nth-of-type(6) {
   background-color: #cc9966;
   -webkit-transform: scale(1.5);
           transform: scale(1.5); }
@@ -2648,7 +2648,7 @@ html {
     bottom: 0;
     z-index: 2;
     width: 40px;
-    height: 80px;
+    height: 40px;
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 15px;
@@ -2658,57 +2658,34 @@ html {
        -moz-appearance: none;
             appearance: none;
     cursor: pointer; }
-    .Carousel-btn:before, .Carousel-btn:after {
-      content: "";
-      box-sizing: border-box;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      border: solid #bfbfbf;
-      margin-top: auto;
-      margin-bottom: auto; }
-    .Carousel-btn:before {
-      z-index: 2;
-      width: 40px;
-      height: 40px;
-      border-width: 0 3px 0 0;
-      -webkit-transform: translateX(-23px);
-              transform: translateX(-23px); }
-    .Carousel-btn:after {
-      z-index: 1;
-      width: 28px;
-      height: 28px;
-      border-width: 0 0 3px 3px;
-      -webkit-transform: rotate(45deg);
-              transform: rotate(45deg);
-      background: #fafafa; }
-    .Carousel-btn:checked {
-      display: none; }
-      .Carousel-btn:checked ~ .Carousel-btn {
-        left: auto;
-        right: 0;
-        margin-right: 15px;
-        margin-right: 1.5rem;
-        -webkit-transform: rotate(180deg);
-                transform: rotate(180deg); }
-      .Carousel-btn:checked + .Carousel-item {
-        -webkit-transform: translate3d(0, 0, 0);
-                transform: translate3d(0, 0, 0); }
-        .Carousel-btn:checked + .Carousel-item ~ .Carousel-item {
-          -webkit-transform: translate3d(100%, 0, 0);
-                  transform: translate3d(100%, 0, 0); }
-        .Carousel-btn:checked + .Carousel-item + .Carousel-btn {
+  .Carousel .Icon {
+    position: absolute;
+    top: 50%;
+    width: 12px;
+    height: 24px;
+    -webkit-transform: translateY(-50%) rotate(180deg);
+            transform: translateY(-50%) rotate(180deg); }
+  .Carousel-trigger {
+    clip: rect(0, 0, 0, 0); }
+    .Carousel-trigger:checked ~ .Carousel-btn {
+      left: auto;
+      right: 0;
+      margin-right: 15px;
+      margin-right: 1.5rem; }
+    .Carousel-trigger:checked + .Carousel-item {
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0); }
+      .Carousel-trigger:checked + .Carousel-item ~ .Carousel-item {
+        -webkit-transform: translate3d(100%, 0, 0);
+                transform: translate3d(100%, 0, 0); }
+      .Carousel-trigger:checked + .Carousel-item + .Carousel-btn {
+        display: none; }
+        .Carousel-trigger:checked + .Carousel-item + .Carousel-btn + .Carousel-trigger + .Carousel-item + .Carousel-btn {
           z-index: 3; }
-      .Carousel-btn:checked:first-of-type ~ .Carousel-btn:not(label):last-of-type {
-        right: auto;
-        left: 0;
-        -webkit-transform: rotate(0);
-                transform: rotate(0); }
-      .Carousel-btn:checked:last-of-type ~ .Carousel-btn--label {
-        right: 0;
-        left: auto;
-        display: block; }
+    .Carousel-trigger:checked:last-of-type ~ .Carousel-trigger--label {
+      right: 0;
+      left: auto;
+      clip: auto; }
   .Carousel-item {
     position: absolute;
     top: 0;

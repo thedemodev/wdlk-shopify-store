@@ -7,7 +7,6 @@
     - http://schema.org/docs/gs.html
 
 {% endcomment %}
-
 <main class="ProductPage" itemscope itemtype="http://schema.org/Product">
     {% comment %} Get first variant, or deep linked one{% endcomment %}
     <div class="ProductPage-display">
@@ -25,7 +24,7 @@
                 {% else %}
                     {% assign isChecked = '' %}
                 {% endif %}
-                <input class="Carousel-btn" type="radio" name="carousel--product" value="{{forloop.index}}" id="carousel--product-{{forloop.index}}" {{isChecked}}>
+                <input class="Carousel-trigger" type="radio" name="carousel--product" value="{{forloop.index}}" id="carousel--product-{{forloop.index}}" {{isChecked}}>
 
                 <picture class="Carousel-item" itemprop="image">
                     <source srcset="{{ image.src | product_img_url: '1024x1024' }}" media="(min-width: {{screen-md}})">
@@ -34,9 +33,19 @@
                     <img src="{{ image.src | product_img_url: '1024x1024' }}" alt="{{ product.image.alt | escape }}" content="{{ product.image.src | img_url: 'grande' }}">
                 </picture>
 
+                <label class="Carousel-btn" for="carousel--product-{{forloop.index }}">
+                    <svg class="Icon">
+                        <use xlink:href="#Arrow_right" />
+                    </svg>
+                </label>
+
                 {% if product.images.size > 2 %}
                     {% if forloop.last == true %}
-                        <label class="Carousel-btn Carousel-btn--label" for="carousel--product-1"></label>
+                        <label class="Carousel-trigger Carousel-trigger--label" for="carousel--product-1">
+                            <svg class="Icon">
+                                <use xlink:href="#Arrow_right" />
+                            </svg>
+                        </label>
                     {% endif %}
                 {% endif %}
 
