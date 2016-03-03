@@ -2661,17 +2661,21 @@ html {
   .Carousel .Icon {
     position: absolute;
     top: 50%;
-    width: 12px;
-    height: 24px;
-    -webkit-transform: translateY(-50%) rotate(180deg);
-            transform: translateY(-50%) rotate(180deg); }
+    left: 0;
+    width: 16px;
+    height: 32px;
+    fill: #999999;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%); }
   .Carousel-trigger {
     clip: rect(0, 0, 0, 0); }
     .Carousel-trigger:checked ~ .Carousel-btn {
       left: auto;
       right: 0;
       margin-right: 15px;
-      margin-right: 1.5rem; }
+      margin-right: 1.5rem;
+      -webkit-transform: rotate(180deg);
+              transform: rotate(180deg); }
     .Carousel-trigger:checked + .Carousel-item {
       -webkit-transform: translate3d(0, 0, 0);
               transform: translate3d(0, 0, 0); }
@@ -2682,10 +2686,6 @@ html {
         display: none; }
         .Carousel-trigger:checked + .Carousel-item + .Carousel-btn + .Carousel-trigger + .Carousel-item + .Carousel-btn {
           z-index: 3; }
-    .Carousel-trigger:checked:last-of-type ~ .Carousel-trigger--label {
-      right: 0;
-      left: auto;
-      clip: auto; }
   .Carousel-item {
     position: absolute;
     top: 0;
