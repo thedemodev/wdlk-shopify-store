@@ -11,7 +11,7 @@
 //-- 2. The class of the trigger input
 //-- 3. The parent class of the indicators
 //-- 4. The class of the indicator item
-@include generateActiveIndicator(6, Carousel-btn, Thumbnails, Thumbnails-item) {
+@include generateActiveIndicator(4, Carousel-trigger, Thumbnails, Thumbnails-item) {
     border-color: var(--thumbnail-border-color);
 };
 

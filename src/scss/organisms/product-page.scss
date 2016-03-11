@@ -1,14 +1,40 @@
 .ProductPage {
-    @include grid-wrapper(var(--screen-xl));
+    $product-img-max-height: calc(var(--screen-l) / 2) !default;
+    //@include grid-wrapper(var(--screen-xl));
 
-    &-display {
-        //-- GRID GENERATOR
-        //-- 1. Count column mobile first
-        //-- 2. Factor column number for tablet & desktop
-        //-- 3. Optional argument to define the inner padding
-        @include grid-cell(1, 2);
+    .Carousel {
+        @include media(medium) {
+            max-height: calc(var(--screen-xl) / 2);
+        }
 
-        position: relative;
+        //-- Give the product image a fixed height
+        //-- in a single column illustration.
+        //-- for ideal presentation of the products
+        @include media-range($screen-md, $screen-l) {
+            max-height: $product-img-max-height;
+
+            &-img {
+                height: $product-img-max-height;
+            }
+        };
+
+        //-- Give the product image a different height proportions
+        //-- during a small viewport range for ideal presentation.
+        @include media-range($screen-l, $screen-l + 220) {
+            .Carousel-trigger {
+                &:checked {
+                    + .Carousel-item {
+                        height: 100%;
+                        transform: translate3d(-10%, 0, 0);
+                    }
+                }
+            }
+
+            &-img {
+                height: 100%;
+                max-width: 100% * 1.5;
+            }
+        }
     }
 
     .Carousel-btn {
@@ -20,6 +46,5 @@
                 }
             }
         }
-
     }
 }

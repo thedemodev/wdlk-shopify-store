@@ -9,12 +9,12 @@
     margin: auto;
 }
 //-- The $count argument accepts the amount of necessary columns
-//-- for smartphone devices and iPad mini var(--vp-medium).
-//-- The $gap argument defaults to 0-
+//-- for smartphone devices and iPad mini defaults to var(--screen-md).
 //-- The factor argument defines the necessary amount of columns
 //-- based on the given $count parameter.
+//-- The $gap argument defaults to 0-
 
-@mixin  grid-cell ($count,  $factor-count, $gap: 0) {
+@mixin grid-cell ($count,  $factor-count, $gap: 0, $media: medium) {
   $column-width: 100% / $count;
 
   @if ($gap != 0) {
@@ -26,7 +26,7 @@
       width:  $column-width;
   }
 
-  @include media(medium) {
+  @include media($media) {
     @if ($gap != 0) {
       width: calc(#{$column-width / $factor-count} - #{$gap * 2});
       padding: 0 $gap;

@@ -12,6 +12,7 @@
     --light-black: #333333;
     --sand-hex: #cc9966;
     //--sand-hex: #e0bcb0;
+    --light-sand: #eeeae9;
     --ocean-blue-hex: #d3dde6;
     --beige-light-hex: #f7f7f7;
 }
@@ -39,6 +40,7 @@
     --background-color: var(--white-hex);
     --background-color-secondary: var(--beige-light-hex);
     --container-border: var(--lighter-gray-hex);
+    --background-color-tertiary: var(--light-sand);
 }
 
 //-- Forms & Buttons

@@ -6,7 +6,7 @@
     --screen-xl: 1440px;
 }
 
-$screen-sm: 480px;
-$screen-md: 770px;
-$screen-l: 1024px;
-$screen-xl: 1440px;
+$screen-sm: 480px !default;
+$screen-md: 770px !default;
+$screen-l: 1024px !default;
+$screen-xl: 1440px !default;

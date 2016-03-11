@@ -1,4 +1,4 @@
-@mixin media($size) {
+@mixin media ($size) {
     @if ($size == small) {
       @media (min-width: $screen-sm) {
         @content;
@@ -11,6 +11,16 @@
     }
     @if ($size == large) {
         @media (min-width: $screen-l) {
+            @content;
+        }
+    }
+}
+//-- Media Queries: range from min N value to a max N value.
+//-- Variable Arguments are unknown number of arguments.
+//-- represented by the ... operator. In this case only accepts two arguments.
+@mixin media-range ($range...) {
+    @if ($range != null) {
+        @media (min-width: nth($range, 1)) and (max-width: nth($range, 2)) {
             @content;
         }
     }

@@ -6,7 +6,7 @@
 .Btn {
     height: var(--form-base-height);
     padding: {
-        left: var(--form-base-padding);
+        left: calc(var(--form-base-padding) + 1.6rem);
         right: calc(var(--form-base-padding) + 1.6rem);
     }
     border: none;
