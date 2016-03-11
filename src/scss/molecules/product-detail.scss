@@ -48,6 +48,24 @@
         position: relative;
     }
 
+    &-headline {
+        position: relative;
+        margin: {
+            top: calc(var(--base-sapacing) * 2);
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: .2rem;
+            width: 2.5rem;
+            margin: auto;
+            background-color: var(--typo-hex--highlight);
+        }
+    }
 
     .Headline--3 {
         &:first-child {

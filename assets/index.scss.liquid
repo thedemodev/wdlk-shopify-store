@@ -2754,6 +2754,23 @@ html {
     .Product-images {
       width: 50%; } }
 
+.Product-headline {
+  position: relative;
+  margin-top: 40px;
+  margin-top: 4rem; }
+  .Product-headline:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 2px;
+    height: .2rem;
+    width: 25px;
+    width: 2.5rem;
+    margin: auto;
+    background-color: #cc9966; }
+
 .Product .Headline--3:first-child {
   position: relative;
   margin-top: 40px;
@@ -2904,3 +2921,8 @@ html {
     display: none; }
     .ProductPage .Carousel-btn:checked ~ .Carousel-btn--label {
       display: none; } }
+
+.ProductPage .Select,
+.ProductPage .Qty-input {
+  margin-bottom: 10px;
+  margin-bottom: 1rem; }
