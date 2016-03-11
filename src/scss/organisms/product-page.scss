@@ -1,6 +1,6 @@
 .ProductPage {
     $product-img-max-height: calc(var(--screen-l) / 2) !default;
-    //@include grid-wrapper(var(--screen-xl));
+    @include grid-wrapper(var(--screen-xl));
 
     .Carousel {
         @include media(medium) {
@@ -20,19 +20,25 @@
 
         //-- Give the product image a different height proportions
         //-- during a small viewport range for ideal presentation.
-        @include media-range($screen-l, $screen-l + 220) {
-            .Carousel-trigger {
-                &:checked {
-                    + .Carousel-item {
-                        height: 100%;
-                        transform: translate3d(-10%, 0, 0);
-                    }
-                }
+        @include media-range($screen-l, $screen-xl) {
+            &-item {
+                height: 100%;
+                transform: translate3d(-10%, 0, 0);
             }
 
             &-img {
                 height: 100%;
                 max-width: 100% * 1.5;
+            }
+        }
+    }
+
+    @include media-range($screen-l, $screen-l + 200) {
+        .Carousel-trigger {
+            &:checked {
+                + .Carousel-item {
+                    transform: translate3d(-10%, 0, 0);
+                }
             }
         }
     }

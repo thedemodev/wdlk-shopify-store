@@ -256,8 +256,8 @@
   },
   "products": {
     "general": {
-      "previous_product_html": "&larr; Previous Product",
-      "next_product_html": "Next Product &rarr;",
+      "previous_product_html": "Previous Product",
+      "next_product_html": "Next Product",
       "from": "From"
     },
     "product": {

@@ -94,53 +94,51 @@
             {% comment %}
             ID addToCartForm is a selector for the ajax cart plugin
             {% endcomment %}
-            <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                <div class="Product-actionRow">
-                    <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
-                    <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}" />
+            <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="Product-actionRow" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+                <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}" />
+
+                {% comment %}
+                Add product variants as a dropdown.
+                - By default, each variant (or combination of variants) will display as its own <option>
+                - To separate these into multiple steps, which we suggest, use option_selection.js (see below)
+
+                You can leverage jQuery to add a callback on page load and each time the select element changes:
+                - Include option_selection.js (as seen at the bottom of this file)
+                - This allows you to use JavaScript anytime the variant dropdown changes
+                - This also separates out your variant options (ie. size, color, etc.) to separate select elements
+
+                For more information on products with multiple options, visit:
+                - http://docs.shopify.com/support/your-website/themes/can-i-make-my-theme-use-products-with-multiple-options#update-product-liquid
+                {% endcomment %}
+                <select name="id" class="Select">
+                    {% for variant in product.variants %}
+                    {% if variant.available %}
 
                     {% comment %}
-                    Add product variants as a dropdown.
-                    - By default, each variant (or combination of variants) will display as its own <option>
-                    - To separate these into multiple steps, which we suggest, use option_selection.js (see below)
-
-                    You can leverage jQuery to add a callback on page load and each time the select element changes:
-                    - Include option_selection.js (as seen at the bottom of this file)
-                    - This allows you to use JavaScript anytime the variant dropdown changes
-                    - This also separates out your variant options (ie. size, color, etc.) to separate select elements
-
-                    For more information on products with multiple options, visit:
-                    - http://docs.shopify.com/support/your-website/themes/can-i-make-my-theme-use-products-with-multiple-options#update-product-liquid
+                    Note: if you use option_selection.js, your <select> tag will be overwritten, meaning what you have inside <option> will not reflect what you coded below.
                     {% endcomment %}
-                    <select name="id" class="Select">
-                        {% for variant in product.variants %}
-                        {% if variant.available %}
+                    {% comment %}
+                    <option data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }}</option>
 
-                        {% comment %}
-                        Note: if you use option_selection.js, your <select> tag will be overwritten, meaning what you have inside <option> will not reflect what you coded below.
-                        {% endcomment %}
-                        {% comment %}
-                        <option data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }}</option>
+                    {% endcomment %}
+                    <option
+                    {% if variant == product.selected_or_first_available_variant %} selected="selected"
+                    {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }}</option>
 
-                        {% endcomment %}
-                        <option
-                        {% if variant == product.selected_or_first_available_variant %} selected="selected"
-                        {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }}</option>
+                    {% else %}
+                    <option disabled="disabled">
+                        {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                    </option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
 
-                        {% else %}
-                        <option disabled="disabled">
-                            {{ variant.title }} - {{ 'products.product.sold_out' | t }}
-                        </option>
-                        {% endif %}
-                        {% endfor %}
-                    </select>
+                <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
 
-                    <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
-
-                    <button type="submit" name="add" id="AddToCart" class="Btn">
-                        {{ 'products.product.add_to_cart' | t }}
-                    </button>
-                </div>
+                <button type="submit" name="add" id="AddToCart" class="Btn">
+                    {{ 'products.product.add_to_cart' | t }}
+                </button>
             </form>
 
 
@@ -150,28 +148,36 @@
             {% endcomment %}
             {% if collection %}
             {% if collection.previous_product or collection.next_product %}
-            <p>
+            <div class="Product-navigator">
                 {% if collection.previous_product %}
-                <span class="left">
-                    {{ 'products.general.previous_product_html' | t | link_to: collection.previous_product }}
-                </span>
+                <a class="Link Link--secondary" href="{{collection.previous_product}}" alt="{{ 'products.general.previous_product_html' | t }}">
+                    <svg class="Icon">
+                        <use xlink:href="#Arrow_left" />
+                    </svg>
+                    {{ 'products.general.previous_product_html' | t }}
+                </a>
                 {% endif %}
                 {% if collection.next_product %}
-                <span class="right">
-                    {{ 'products.general.next_product_html' | t | link_to: collection.next_product }}
-                </span>
+                <a class="Link Link--secondary" href="{{collection.next_product}}" alt="{{ 'products.general.next_product_html' | t }}">
+                    {{ 'products.general.next_product_html' | t }}
+                    <svg class="Icon">
+                        <use xlink:href="#Arrow_right" />
+                    </svg>
+                </a>
                 {% endif %}
-            </p>
+            </div>
             {% endif %}
             {% endif %}
         </article>
 
     </div>
-
-    <aside class="ProductFeatures">
+    <aside class="Product-feature">
         {% assign productFeatures = product.metafields.features %}
         {% assign key = 'product' %}
         {{ productFeatures[key] }}
+    </aside>
+    <aside class="Product-feature Product-feature--secondary">
+
     </aside>
 </main>
 {% comment %}

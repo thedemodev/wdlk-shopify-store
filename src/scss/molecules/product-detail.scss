@@ -1,5 +1,4 @@
 .Product {
-
     &-display {
         @include grid-wrapper(var(--screen-xl));
 
@@ -27,6 +26,7 @@
         @include grid-cell(1, 2, $base-spacing, large);
         @include copy-text();
 
+        position: relative;
         padding: {
             bottom: var(--base-sapacing);
         }
@@ -67,6 +67,30 @@
         }
     }
 
+    &-navigator {
+        box-sizing: border-box;
+        width: 100%;
+        margin: 4rem auto 0;
+        padding: {
+            right: 4rem;
+            left: 4rem;
+        }
+        text-align: justify;
+
+        @include media(large) {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        &::after {
+            content: "";
+            display: inline-block;
+            width: 100%;
+        }
+    }
+
     .Headline--3 {
         &:first-child {
             position: relative;
@@ -93,7 +117,6 @@
     }
 
     .Link {
-        display: inline-block;
         margin-bottom: var(--base-sapacing);
     }
 

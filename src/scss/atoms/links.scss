@@ -1,4 +1,5 @@
 .Link {
+    display: inline-block;
     color: var(--typo-hex--tone-down);
     font-family: "montserrat", sans-serif;
     text-transform: uppercase;
@@ -8,5 +9,16 @@
 
     &:hover {
         color: var(--typo-hex--highlight);
+    }
+
+    &--secondary {
+        text-transform: lowercase;
+        
+        .Icon {
+            height: 20px;
+            width: 10px;
+            vertical-align: bottom;
+            fill: currentcolor;
+        }
     }
 }
