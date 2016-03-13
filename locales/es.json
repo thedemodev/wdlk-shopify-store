@@ -273,7 +273,14 @@
       "label_size_chart": "Medidas",
       "label_care": "Cuidado",
       "close_size_chart": "Cerrar",
-      "label_select_size": "Selecciona talla"
+      "label_select_size": "Selecciona talla",
+      "features": "Características",
+      "fit_guide": "Guia De Tallas",
+      "fit_coverage_guide": "Guia De Tallas & Cobertura",
+      "marine_protection": "Protección Marina",
+      "material": "Material",
+      "composition": "Composition",
+      "fabric_features": "Propiedades del Material"
     }
   },
   "gift_cards": {

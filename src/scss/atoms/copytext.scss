@@ -20,3 +20,7 @@
         font-weight: $weight;
     }
 }
+
+body {
+    @include copy-text();
+}

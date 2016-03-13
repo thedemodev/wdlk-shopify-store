@@ -9,7 +9,7 @@
 {% endcomment %}
 <main class="Product ProductPage" itemscope itemtype="http://schema.org/Product">
     {% comment %} Get first variant, or deep linked one{% endcomment %}
-    <div class="Product-display">
+    <article class="Product-display">
         <div class="Product-images">
         <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
         {% assign current_variant = product.selected_or_first_available_variant %}
@@ -19,7 +19,7 @@
             {% assign screen-md = '770px' %}
             {% assign screen-sm = '480px' %}
             {% assign max-thumbnails = 4 %}
-            {% for image in product.images limit: 4     %}
+            {% for image in product.images limit: 4 %}
                 {% comment %} The first input radio for the carousel must be checked {% endcomment %}
                 {% if forloop.first == true   %}
                     {% assign isChecked = 'checked' %}
@@ -72,7 +72,7 @@
             </figure>
         </div>
 
-        <article class="Product-detail">
+        <div class="Product-detail">
             <h1 class="Headline Headline--2 Product-headline" itemprop="name">{{ product.title }}</h1>
             <strong class="Headline Headline--3 Headline--highlight" itemprop="price">{{ product.price | money_with_currency }}</strong>
             {% if product.compare_at_price_max > product.price %}
@@ -168,16 +168,76 @@
             </div>
             {% endif %}
             {% endif %}
-        </article>
+        </div>
 
-    </div>
-    <aside class="Product-feature">
-        {% assign productFeatures = product.metafields.features %}
-        {% assign key = 'product' %}
-        {{ productFeatures[key] }}
-    </aside>
-    <aside class="Product-feature Product-feature--secondary">
+    </article>
+    <aside class="Product-teasers">
+        <div class="Product-teaser-img">
+            {% for image in product.images offset:4 %}
+            {% if forloop.last == true %}
+             {% break %}
+            {% else %}
+            <picture  itemprop="image">
+                <source srcset="{{ image.src | product_img_url: 'grande' }}" media="(min-width: {{screen-md}})">
+                <source srcset="{{ image.src | product_img_url: 'large' }}" media="(max-width: {{screen-sm}})">
+                <img class="Carousel-img" src="{{ image.src | product_img_url: 'grande' }}" alt="{{ product.image.alt | escape }}" content="{{ product.image.src | img_url: 'grande' }}">
+            </picture>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class="Product-teaser-description">
+            <h2 class="Headline Headline--2">{{'products.product.features' | t}}</h2>
+            <h3 class="Headline Headline--4">{{ product.type }}</h3>
+            <ul class="List">
+                {% assign productFeatures = product.metafields.features %}
+                {% assign key = 'product' %}
+                {{ productFeatures[key] }}
+                <li class="List-item">Reversible style</li>
+                <li class="List-item">Seamless</li>
+                <li class="List-item">Thin side straps providing comfort/style around the hips</li>
+                <li class="List-item">Figure flattering mini shape effect</li>
+            </ul>
+            <h3 class="Headline Headline--4">
+                {% if product.type == 'Tops' %}
+                    {{'products.product.fit_guide' | t}}
+                    {% else %}
+                    {{'products.product.fit_coverage_guide' | t}}
+                {% endif %}
+            </h3>
+            <ul class="List">
+                {% assign productFeatures = product.metafields.features %}
+                {% assign key = 'product' %}
+                {{ productFeatures[key] }}
+                <li class="List-item">High waist bottoms</li>
+                <li class="List-item">Model is wearing size small</li>
+                <li class="List-item">Model’s measurements: Height 5’ 11”, Bust 34B, Waist 25, Hips 35, Dress size 4</li>
+            </ul>
+            <h3 class="Headline Headline--4">{{'products.product.marine_protection' | t}}</h3>
+            {% assign marineProtectionList = shop.metafields.product %}
+            {{ marineProtectionList['Marine Protection'] }}
+        </div>
+        <div class="Product-teaser-description">
+            <h2 class="Headline Headline--2">{{'products.product.material' | t}}</h2>
+            {% assign fabricDescription = shop.metafields.product %}
+            {{ fabricDescription['Fabric Description'] }}
 
+            <h3 class="Headline Headline--4">{{'products.product.composition' | t}}</h3>
+            {% assign fabricComposition = shop.metafields.product %}
+            {{ fabricComposition['Fabric Composition'] }}
+
+            <h3 class="Headline Headline--4">{{'products.product.fabric_features' | t}}</h3>
+            {% assign fabricProperties = shop.metafields.product %}
+            {{ fabricProperties['Fabric Properties'] }}
+        </div>
+        <div class="Product-teaser-img">
+            {% for image in product.images offset:5 %}
+            <picture  itemprop="image">
+                <source srcset="{{ image.src | product_img_url: 'grande' }}" media="(min-width: {{screen-md}})">
+                <source srcset="{{ image.src | product_img_url: 'large' }}" media="(max-width: {{screen-sm}})">
+                <img class="Carousel-img" src="{{ image.src | product_img_url: 'grande' }}" alt="{{ product.image.alt | escape }}" content="{{ product.image.src | img_url: 'grande' }}">
+            </picture>
+            {% endfor %}
+        </div>
     </aside>
 </main>
 {% comment %}

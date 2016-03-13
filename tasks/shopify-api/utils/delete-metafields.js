@@ -27,3 +27,4 @@ export default function deleteMeta (dataType, id, metafieldId) {
 }
 
 // deleteMeta('products', 414029792, 14846254148);
+// deleteMeta('store', 14842625092);

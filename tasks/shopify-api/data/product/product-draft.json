@@ -1,29 +1,7 @@
 [
 	{
-		"id": 414021500,
-		"title": "High Waist Bottom",
-		"metafield": {
-			"namespace": "features",
-			"key": "product",
-			"value": "features",
-			"description": "default description programmatically generated",
-			"value_type": "string"
-		}
-	},
-	{
-		"id": 414018012,
-		"title": "High Waist Bottoms",
-		"metafield": {
-			"namespace": "features",
-			"key": "product",
-			"value": "features",
-			"description": "default description programmatically generated",
-			"value_type": "string"
-		}
-	},
-	{
-		"id": 414034396,
-		"title": "Long Sleeve One Piece",
+		"id": 402801932,
+		"title": "Blossom Bottoms",
 		"metafield": {
 			"namespace": "features",
 			"key": "product",
@@ -34,18 +12,7 @@
 	},
 	{
 		"id": 414023808,
-		"title": "Printed Neoprene Top",
-		"metafield": {
-			"namespace": "features",
-			"key": "product",
-			"value": "features",
-			"description": "default description programmatically generated",
-			"value_type": "string"
-		}
-	},
-	{
-		"id": 402801932,
-		"title": "test",
+		"title": "Blossom Bottoms Black",
 		"metafield": {
 			"namespace": "features",
 			"key": "product",
@@ -56,7 +23,271 @@
 	},
 	{
 		"id": 414029792,
-		"title": "Wrap Top",
+		"title": "Blossom Bottoms Print",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4542157892,
+		"title": "Coastal Meadows One Piece",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4542151940,
+		"title": "Coastal Meadows One Piece Reversible",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4517920644,
+		"title": "Dylan Bandeau Top",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4517893700,
+		"title": "Dylan Bandeau Top Black",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4517891396,
+		"title": "Dylan Bandeau Top Print",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4517518660,
+		"title": "Free Dive Hipster Bottoms",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4517537476,
+		"title": "Free Dive Hipster Bottoms Black",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4517476164,
+		"title": "Free Dive Hipster Bottoms Print",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4542033796,
+		"title": "Ikal One Piece",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4542079556,
+		"title": "Ikal One Piece Reversible",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4517802884,
+		"title": "Lani Halter Top",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4517792196,
+		"title": "Lani Halter Top Black",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4517810564,
+		"title": "Lani Halter Top Print",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 414034396,
+		"title": "Ocean Petal High Waist",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 414018012,
+		"title": "Ocean Petal High Waist Reversible",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4542204804,
+		"title": "Seagaze One Piece",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4542198276,
+		"title": "Seagaze One Piece Uni",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4473924100,
+		"title": "Sundance Triangle Bottoms",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 414021500,
+		"title": "Sundance Triangle Bottoms Reversible",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4517749828,
+		"title": "Sundance Triangle Top",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4517734660,
+		"title": "Sundance Triangle Top Black",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4517728004,
+		"title": "Sundance Triangle Top Print",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4517964932,
+		"title": "Wild Fox Bustier Top",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4517968964,
+		"title": "Wild Fox Bustier Top Reversible",
 		"metafield": {
 			"namespace": "features",
 			"key": "product",
