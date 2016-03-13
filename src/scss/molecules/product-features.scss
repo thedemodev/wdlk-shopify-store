@@ -1,0 +1,23 @@
+.Product {
+    &-teasers {
+        @include grid-wrapper(undefined);
+
+    }
+    &-teaser {
+        &-description {
+            //-- GRID GENERATOR
+            //-- 1. Count column mobile first
+            //-- 2. Factor column number for tablet & desktop
+            //-- 3. Optional argument to define the inner padding
+            @include grid-cell(1, 2, $base-spacing, large);
+        }
+
+        &-img {
+            //-- GRID GENERATOR
+            //-- 1. Count column mobile first
+            //-- 2. Factor column number for tablet & desktop
+            //-- 3. Optional argument to define the inner padding
+            @include grid-cell(1, 2, 0, large);
+        }
+    }
+}
