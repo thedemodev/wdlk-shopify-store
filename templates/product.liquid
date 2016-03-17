@@ -18,6 +18,7 @@
             {% comment %} MAIN IMAGE {% endcomment %}
             {% assign screen-md = '770px' %}
             {% assign screen-sm = '480px' %}
+            {% assign screen-l = '1024px' %}
             {% assign max-thumbnails = 4 %}
             {% for image in product.images limit: 4 %}
                 {% comment %} The first input radio for the carousel must be checked {% endcomment %}
@@ -28,11 +29,17 @@
                 {% endif %}
                 <input class="Carousel-trigger" type="radio" name="carousel--product" value="{{forloop.index}}" id="carousel--product-{{forloop.index}}" {{isChecked}}>
 
-                <picture class="Carousel-item" itemprop="image">
-                    <source srcset="{{ image.src | product_img_url: '1024x1024' }}" media="(min-width: {{screen-md}})">
-                    <source srcset="{{ image.src | product_img_url: 'large' }}" media="(max-width: {{screen-sm}})">
-                    <img class="Carousel-img" src="{{ image.src | product_img_url: '1024x1024' }}" alt="{{ product.image.alt | escape }}" content="{{ product.image.src | img_url: '1024x1024' }}">
-                </picture>
+                <div class="Carousel-item" itemprop="image">
+                    <img class="Carousel-img"
+                    sizes="(max-width: {{screen-sm}}) 100vw,
+                            (max-width: {{screen-md}}) 100vw,
+                            (min-width: {{screen-l}}) 50vw"
+                    srcset="{{ image.src | product_img_url: 'large' }} 200w,
+                            {{ image.src | product_img_url: 'grande' }} 400w,
+                            {{ image.src | product_img_url: '1024x1024' }} 800w"
+                    src="{{ image.src | product_img_url: 'grande' }}"
+                    alt="{{ product.image.alt | escape }}" itemprop="image" />
+                </div>
 
                 <label class="Carousel-btn" for="carousel--product-{{forloop.index }}">
                     <svg class="Icon">
@@ -177,11 +184,14 @@
             {% if forloop.last == true %}
              {% break %}
             {% else %}
-            <picture  itemprop="image">
-                <source srcset="{{ image.src | product_img_url: 'grande' }}" media="(min-width: {{screen-md}})">
-                <source srcset="{{ image.src | product_img_url: 'large' }}" media="(max-width: {{screen-sm}})">
-                <img class="Carousel-img" src="{{ image.src | product_img_url: 'grande' }}" alt="{{ product.image.alt | escape }}" content="{{ product.image.src | img_url: 'grande' }}">
-            </picture>
+            <img sizes="(max-width: {{screen-sm}}) 100vw,
+                        (min-width: {{screen-md}}) 100vw,
+                        (min-width: {{screen-l}}) 50vw"
+                srcset="{{ image.src | product_img_url: 'large' }} 200w,
+                        {{ image.src | product_img_url: 'grande' }} 400w,
+                        {{ image.src | product_img_url: '1024x1024' }} 800w"
+                src="{{ image.src | product_img_url: 'grande' }}"
+                alt="{{ product.image.alt | escape }}" itemprop="image" />
             {% endif %}
             {% endfor %}
         </div>
@@ -220,13 +230,14 @@
         </div>
         <div class="Product-teaser-img">
             {% for image in product.images offset:5 %}
-            <!-- <img src="{{ image.src | product_img_url: 'grande' }}" srcset="medium.jpg 1000w, large.jpg 2000w" alt="{{ product.image.alt | escape }}" itemprop="image" /> -->
-
-            <picture  itemprop="image">
-                <source srcset="{{ image.src | product_img_url: '1024x1024' }}" media="(min-width: {{screen-md}})">
-                <source srcset="{{ image.src | product_img_url: 'large' }}" media="(max-width: {{screen-sm}})">
-                <img class="Carousel-img" src="{{ image.src | product_img_url: 'grande' }}" alt="{{ product.image.alt | escape }}" content="{{ product.image.src | img_url: 'grande' }}">
-            </picture>
+            <img sizes="(max-width: {{screen-sm}}) 100vw,
+                        (min-width: {{screen-md}}) 100vw,
+                        (min-width: {{screen-l}}) 50vw"
+                srcset="{{ image.src | product_img_url: 'large' }} 200w,
+                        {{ image.src | product_img_url: 'grande' }} 400w,
+                        {{ image.src | product_img_url: '1024x1024' }} 800w"
+                src="{{ image.src | product_img_url: 'grande' }}"
+                alt="{{ product.image.alt | escape }}" itemprop="image" />
             {% endfor %}
         </div>
     </aside>
