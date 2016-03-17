@@ -1,0 +1,272 @@
+[
+	{
+		"id": 402801932,
+		"title": "Blossom Bottoms",
+		"metafield": {
+			"namespace": "product",
+			"key": "Product Features",
+			"value": "<ul class=\"List\"><li class=\"List-item\">Seamless<\/li><li class=\"List-item\">Double lined improved shape for outstanding support<\/li><li class=\"List-item\">Back ruffles for a better shape<\/li><\/ul>",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 414023808,
+		"title": "Blossom Bottoms Black",
+		"metafield": {
+			"namespace": "product",
+			"key": "Product Features",
+			"value": "<ul class=\"List\"><li class=\"List-item\">Seamless<\/li><li class=\"List-item\">Double lined improved shape for outstanding support<\/li><li class=\"List-item\">Back ruffles for a better shape<\/li><\/ul>",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 414029792,
+		"title": "Blossom Bottoms Print",
+		"metafield": {
+			"namespace": "product",
+			"key": "Product Features",
+			"value": "<ul class=\"List\"><li class=\"List-item\">Seamless<\/li><li class=\"List-item\">Double lined improved shape for outstanding support<\/li><li class=\"List-item\">Back ruffles for a better shape<\/li><\/ul>",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4542157892,
+		"title": "Coastal Meadows One Piece",
+		"metafield": {
+			"namespace": "product",
+			"key": "Product Features",
+			"value": "<ul class=\"List\"><li class=\"List-item\">Reversible style (2 colors)<\/li><li class=\"List-item\">Seamless<\/li><li class=\"List-item\">Round neckline<\/li><li class=\"List-item\">Shoulder covered for better sun protection<\/li><li class=\"List-item\">Open back<\/li><\/ul>",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4542151940,
+		"title": "Coastal Meadows One Piece Reversible",
+		"metafield": {
+			"namespace": "product",
+			"key": "Product Features",
+			"value": "<ul class=\"List\"><li class=\"List-item\">Reversible style (2 colors)<\/li><li class=\"List-item\">Seamless<\/li><li class=\"List-item\">Round neckline<\/li><li class=\"List-item\">Shoulder covered for better sun protection<\/li><li class=\"List-item\">Open back<\/li><\/ul>",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4517920644,
+		"title": "Dylan Bandeau Top",
+		"metafield": {
+			"namespace": "product",
+			"key": "Product Features",
+			"value": "<ul class=\"List\"><li class=\"List-item\">Seamless<\/li><li class=\"List-item\">Shoulder straps can be removed<\/li><li class=\"List-item\">Double lined improved shape for outstanding support<\/li><li class=\"List-item\">Extra thin removable soft cups for more support & nip coverage<\/li><li class=\"List-item\">Elastic back strings for more flexibility<\/li><\/ul>",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4517893700,
+		"title": "Dylan Bandeau Top Black",
+		"metafield": {
+			"namespace": "product",
+			"key": "Product Features",
+			"value": "<ul class=\"List\"><li class=\"List-item\">Seamless<\/li><li class=\"List-item\">Shoulder straps can be removed<\/li><li class=\"List-item\">Double lined improved shape for outstanding support<\/li><li class=\"List-item\">Extra thin removable soft cups for more support & nip coverage<\/li><li class=\"List-item\">Elastic back strings for more flexibility<\/li><\/ul>",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4517891396,
+		"title": "Dylan Bandeau Top Print",
+		"metafield": {
+			"namespace": "product",
+			"key": "Product Features",
+			"value": "<ul class=\"List\"><li class=\"List-item\">Seamless<\/li><li class=\"List-item\">Shoulder straps can be removed<\/li><li class=\"List-item\">Double lined improved shape for outstanding support<\/li><li class=\"List-item\">Extra thin removable soft cups for more support & nip coverage<\/li><li class=\"List-item\">Elastic back strings for more flexibility<\/li><\/ul>",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4517518660,
+		"title": "Free Dive Hipster Bottoms",
+		"metafield": {
+			"namespace": "product",
+			"key": "Product Features",
+			"value": "<ul class=\"List\"><li class=\"List-item\">Seamless<\/li><li class=\"List-item\">Double lined improved shape for outstanding support<\/li><li class=\"List-item\">Side cut outs<\/li><\/ul>",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4517537476,
+		"title": "Free Dive Hipster Bottoms Black",
+		"metafield": {
+			"namespace": "product",
+			"key": "Product Features",
+			"value": "<ul class=\"List\"><li class=\"List-item\">Seamless<\/li><li class=\"List-item\">Double lined improved shape for outstanding support<\/li><li class=\"List-item\">Side cut outs<\/li><\/ul>",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4517476164,
+		"title": "Free Dive Hipster Bottoms Print",
+		"metafield": {
+			"namespace": "product",
+			"key": "Product Features",
+			"value": "<ul class=\"List\"><li class=\"List-item\">Seamless<\/li><li class=\"List-item\">Double lined improved shape for outstanding support<\/li><li class=\"List-item\">Side cut outs<\/li><\/ul>",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4542033796,
+		"title": "Ikal One Piece",
+		"metafield": {
+			"namespace": "product",
+			"key": "Product Features",
+			"value": "<ul class=\"List\"><li class=\"List-item\">Reversible style<\/li><li class=\"List-item\">Seamless<\/li><li class=\"List-item\">Plunging neckline<\/li><li class=\"List-item\">Extra long crossed back straps<\/li><\/ul>",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4542079556,
+		"title": "Ikal One Piece Reversible",
+		"metafield": {
+			"namespace": "product",
+			"key": "Product Features",
+			"value": "<ul class=\"List\"><li class=\"List-item\">Reversible style<\/li><li class=\"List-item\">Seamless<\/li><li class=\"List-item\">Plunging neckline<\/li><li class=\"List-item\">Extra long crossed back straps<\/li><\/ul>",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4517802884,
+		"title": "Lani Halter Top",
+		"metafield": {
+			"namespace": "product",
+			"key": "Product Features",
+			"value": "<ul class=\"List\"><li class=\"List-item\">High halter top neckline<\/li><li class=\"List-item\">Seamless style<\/li><li class=\"List-item\">Double lined improved shape for outstanding support<\/li><li class=\"List-item\">Extra thin removable soft cups for more support & nip coverage<\/li><li class=\"List-item\">Adjustable shoulder straps<\/li><\/ul>",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4517792196,
+		"title": "Lani Halter Top Black",
+		"metafield": {
+			"namespace": "product",
+			"key": "Product Features",
+			"value": "<ul class=\"List\"><li class=\"List-item\">High halter top neckline<\/li><li class=\"List-item\">Seamless style<\/li><li class=\"List-item\">Double lined improved shape for outstanding support<\/li><li class=\"List-item\">Extra thin removable soft cups for more support & nip coverage<\/li><li class=\"List-item\">Adjustable shoulder straps<\/li><\/ul>",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4517810564,
+		"title": "Lani Halter Top Print",
+		"metafield": {
+			"namespace": "product",
+			"key": "Product Features",
+			"value": "<ul class=\"List\"><li class=\"List-item\">High halter top neckline<\/li><li class=\"List-item\">Seamless style<\/li><li class=\"List-item\">Double lined improved shape for outstanding support<\/li><li class=\"List-item\">Extra thin removable soft cups for more support & nip coverage<\/li><li class=\"List-item\">Adjustable shoulder straps<\/li><\/ul>",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 414034396,
+		"title": "Ocean Petal High Waist",
+		"metafield": {
+			"namespace": "product",
+			"key": "Product Features",
+			"value": "<ul class=\"List\"><li class=\"List-item\">Reversible style<\/li><li class=\"List-item\">Seamless<\/li><li class=\"List-item\">Thin side straps providing comfort/style around the hips<\/li><li class=\"List-item\">Figure flattering mini shape effect<\/li><\/ul>",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 414018012,
+		"title": "Ocean Petal High Waist Reversible",
+		"metafield": {
+			"namespace": "product",
+			"key": "Product Features",
+			"value": "<ul class=\"List\"><li class=\"List-item\">Reversible style<\/li><li class=\"List-item\">Seamless<\/li><li class=\"List-item\">Thin side straps providing comfort/style around the hips<\/li><li class=\"List-item\">Figure flattering mini shape effect<\/li><\/ul>",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4542204804,
+		"title": "Seagaze One Piece",
+		"metafield": {
+			"namespace": "product",
+			"key": "Product Features",
+			"value": "<ul class=\"List\"><li class=\"List-item\">Rash guard with full covered sleeves<\/li><li class=\"List-item\">Round neckline<\/li><li class=\"List-item\">Lined inside<\/li><li class=\"List-item\">Maximum sun protection<\/li><li class=\"List-item\">2 color combination<\/li><li class=\"List-item\">Easy opening back zipper<\/li><\/ul>",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4542198276,
+		"title": "Seagaze One Piece Uni",
+		"metafield": {
+			"namespace": "product",
+			"key": "Product Features",
+			"value": "<ul class=\"List\"><li class=\"List-item\">Rash guard with full covered sleeves<\/li><li class=\"List-item\">Round neckline<\/li><li class=\"List-item\">Lined inside<\/li><li class=\"List-item\">Maximum sun protection<\/li><li class=\"List-item\">Easy opening back zipper<\/li><\/ul>",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4473924100,
+		"title": "Sundance Triangle Bottoms",
+		"metafield": {
+			"namespace": "product",
+			"key": "Product Features",
+			"value": "<ul class=\"List\"><li class=\"List-item\">Reversible<\/li><li class=\"List-item\">Seamless<\/li><li class=\"List-item\">Thin side straps providing comfort/style around the hips<\/li><li class=\"List-item\">Low rise for you to enjoy a perfect tan<\/li><\/ul>",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 414021500,
+		"title": "Sundance Triangle Bottoms Reversible",
+		"metafield": {
+			"namespace": "product",
+			"key": "Product Features",
+			"value": "<ul class=\"List\"><li class=\"List-item\">Reversible<\/li><li class=\"List-item\">Seamless<\/li><li class=\"List-item\">Thin side straps providing comfort/style around the hips<\/li><li class=\"List-item\">Low rise for you to enjoy a perfect tan<\/li><\/ul>",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4517749828,
+		"title": "Sundance Triangle Top",
+		"metafield": {
+			"namespace": "product",
+			"key": "Product Features",
+			"value": "<ul class=\"List\"><li class=\"List-item\">Adjustable triangle top<\/li><li class=\"List-item\">Seamless<\/li><li class=\"List-item\">The adjustable back straps can be easily switched from a kriss-kross back to over the shoulders<\/li><li class=\"List-item\">Extra thin removable soft cups for more support & nip coverage<\/li><li class=\"List-item\">Back ties<\/li><\/ul>",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4517734660,
+		"title": "Sundance Triangle Top Black",
+		"metafield": {
+			"namespace": "product",
+			"key": "Product Features",
+			"value": "<ul class=\"List\"><li class=\"List-item\">Adjustable triangle top<\/li><li class=\"List-item\">Seamless<\/li><li class=\"List-item\">The adjustable back straps can be easily switched from a kriss-kross back to over the shoulders<\/li><li class=\"List-item\">Extra thin removable soft cups for more support & nip coverage<\/li><li class=\"List-item\">Back ties<\/li><\/ul>",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4517728004,
+		"title": "Sundance Triangle Top Print",
+		"metafield": {
+			"namespace": "product",
+			"key": "Product Features",
+			"value": "<ul class=\"List\"><li class=\"List-item\">Adjustable triangle top<\/li><li class=\"List-item\">Seamless<\/li><li class=\"List-item\">The adjustable back straps can be easily switched from a kriss-kross back to over the shoulders<\/li><li class=\"List-item\">Extra thin removable soft cups for more support & nip coverage<\/li><li class=\"List-item\">Back ties<\/li><\/ul>",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4517964932,
+		"title": "Wild Fox Bustier Top",
+		"metafield": {
+			"namespace": "product",
+			"key": "Product Features",
+			"value": "<ul class=\"List\"><li class=\"List-item\">Reversible style<\/li><li class=\"List-item\">Seamless<\/li><li class=\"List-item\">Sporty fit with low neckline<\/li><li class=\"List-item\">Sporty racer back<\/li><li class=\"List-item\">Adjustable shoulder straps<\/li><\/ul>",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4517968964,
+		"title": "Wild Fox Bustier Top Reversible",
+		"metafield": {
+			"namespace": "product",
+			"key": "Product Features",
+			"value": "<ul class=\"List\"><li class=\"List-item\">Reversible style<\/li><li class=\"List-item\">Seamless<\/li><li class=\"List-item\">Sporty fit with low neckline<\/li><li class=\"List-item\">Sporty racer back<\/li><li class=\"List-item\">Adjustable shoulder straps<\/li><\/ul>",
+			"value_type": "string"
+		}
+	}
+]

@@ -188,15 +188,9 @@
         <div class="Product-teaser-description">
             <h2 class="Headline Headline--2">{{'products.product.features' | t}}</h2>
             <h3 class="Headline Headline--4">{{ product.type }}</h3>
-            <ul class="List">
-                {% assign productFeatures = product.metafields.features %}
-                {% assign key = 'product' %}
-                {{ productFeatures[key] }}
-                <li class="List-item">Reversible style</li>
-                <li class="List-item">Seamless</li>
-                <li class="List-item">Thin side straps providing comfort/style around the hips</li>
-                <li class="List-item">Figure flattering mini shape effect</li>
-            </ul>
+            {% assign productFeatures = product.metafields.product %}
+            {{ productFeatures['Product Features'] }}
+
             <h3 class="Headline Headline--4">
                 {% if product.type == 'Tops' %}
                     {{'products.product.fit_guide' | t}}
@@ -204,11 +198,9 @@
                     {{'products.product.fit_coverage_guide' | t}}
                 {% endif %}
             </h3>
-            <ul class="List">
-                <li class="List-item">High waist bottoms</li>
-                <li class="List-item">Model is wearing size small</li>
-                <li class="List-item">Model’s measurements: Height 5’ 11”, Bust 34B, Waist 25, Hips 35, Dress size 4</li>
-            </ul>
+            {% assign productFit = product.metafields.product %}
+            {{ productFit['Product Fit & Guide'] }}
+
             <h3 class="Headline Headline--4">{{'products.product.marine_protection' | t}}</h3>
             {% assign marineProtectionList = shop.metafields.product %}
             {{ marineProtectionList['Marine Protection'] }}
