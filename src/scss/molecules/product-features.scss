@@ -10,14 +10,60 @@
             //-- 2. Factor column number for tablet & desktop
             //-- 3. Optional argument to define the inner padding
             @include grid-cell(1, 2, $base-spacing, medium);
+
+            position: relative;
+            padding-bottom: calc(var(--base-sapacing) * 2);
+
+            @include create-pointer() {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+            };
+
+            &:nth-of-type(2) {
+                &::before {
+                    left: -1.5rem;
+                }
+            }
+
+            &:nth-of-type(3) {
+                &::before {
+                    right: -1.5rem;
+                }
+            }
+
+            @include media(medium, max-width) {
+                &::before {
+                    content: normal;
+                }
+
+                &:nth-of-type(3) {
+                    order: 4;
+                }
+            }
+
         }
 
-        &-img {
+        &-imgContainer {
             //-- GRID GENERATOR
             //-- 1. Count column mobile first
             //-- 2. Factor column number for tablet & desktop
             //-- 3. Optional argument to define the inner padding
             @include grid-cell(1, 2, 0, medium);
+
+            background: {
+                position: center;
+                repeat: no-repeat;
+                size: cover;
+            }
+        }
+
+        &-img {
+            @include media(medium) {
+                display: none;
+            }
         }
     }
+
 }

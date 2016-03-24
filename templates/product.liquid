@@ -187,7 +187,7 @@
         {% if forloop.index >= 2 %}
         {% break %}
         {% else %}
-        <div class="Product-teaser-img" style="background-image: url({{ image.src | product_img_url: 'grande' }});">
+        <div class="Product-teaser-imgContainer" style="background-image: url({{ image.src | product_img_url: 'grande' }});">
             <img sizes="(max-width: {{screen-sm}}) 100vw,
                         (min-width: {{screen-md}}) 100vw,
                         (min-width: {{screen-l}}) 50vw"
@@ -195,7 +195,8 @@
                         {{ image.src | product_img_url: 'grande' }} 400w,
                         {{ image.src | product_img_url: '1024x1024' }} 800w"
                 src="{{ image.src | product_img_url: 'grande' }}"
-                alt="{{ product.image.alt | escape }}" itemprop="image" />
+                alt="{{ product.image.alt | escape }}"
+                class="Product-teaser-img" itemprop="image" />
         </div>
         {% endif %}
         {% endfor %}
@@ -232,15 +233,15 @@
             {% assign fabricProperties = shop.metafields.product %}
             {{ fabricProperties['Fabric Properties'] }}
         </div>
-        <div class="Product-teaser-img" style="background-image: url({{ image.src | product_img_url: 'grande' }});">
-            {% comment %}
-            Starts the image loop at the 5th item and
-            breaks after the second iteration
-            {% endcomment %}
-            {% for image in product.images offset:5 %}
-            {% if forloop.index >= 2 %}
-            {% break %}
-            {% else %}
+        {% comment %}
+        Starts the image loop at the 5th item and
+        breaks after the second iteration
+        {% endcomment %}
+        {% for image in product.images offset:5 %}
+        {% if forloop.index >= 2 %}
+        {% break %}
+        {% else %}
+        <div class="Product-teaser-imgContainer" style="background-image: url({{ image.src | product_img_url: 'grande' }});">
             <img sizes="(max-width: {{screen-sm}}) 100vw,
                         (min-width: {{screen-md}}) 100vw,
                         (min-width: {{screen-l}}) 50vw"
@@ -248,10 +249,11 @@
                         {{ image.src | product_img_url: 'grande' }} 400w,
                         {{ image.src | product_img_url: '1024x1024' }} 800w"
                 src="{{ image.src | product_img_url: 'grande' }}"
-                alt="{{ product.image.alt | escape }}" itemprop="image" />
-            {% endif %}
-            {% endfor %}
+                alt="{{ product.image.alt | escape }}"
+                class="Product-teaser-img" itemprop="image" />
         </div>
+        {% endif %}
+        {% endfor %}
     </aside>
 </main>
 {% comment %}

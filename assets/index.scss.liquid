@@ -2869,17 +2869,54 @@ body {
 .Product-teaser-description {
   width: calc(100% - 8rem);
   padding: 0 40px;
-  padding: 0 4rem; }
+  padding: 0 4rem;
+  position: relative;
+  padding-bottom: 40px;
+  padding-bottom: 4rem; }
   @media (min-width: 770px) {
     .Product-teaser-description {
       width: calc(50% - 8rem);
       padding: 0 4rem; } }
+  .Product-teaser-description:before {
+    content: "";
+    width: 30px;
+    width: 3rem;
+    height: 30px;
+    height: 3rem;
+    background-color: #ffffff;
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto; }
+  .Product-teaser-description:nth-of-type(2):before {
+    left: -15px;
+    left: -1.5rem; }
+  .Product-teaser-description:nth-of-type(3):before {
+    right: -15px;
+    right: -1.5rem; }
+  @media (max-width: 770px) {
+    .Product-teaser-description:before {
+      content: normal; }
+    .Product-teaser-description:nth-of-type(3) {
+      -webkit-order: 4;
+          -ms-flex-order: 4;
+              -webkit-box-ordinal-group: 5;
+              order: 4; } }
 
-.Product-teaser-img {
-  width: 100%; }
+.Product-teaser-imgContainer {
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; }
   @media (min-width: 770px) {
-    .Product-teaser-img {
+    .Product-teaser-imgContainer {
       width: 50%; } }
+
+@media (min-width: 770px) {
+  .Product-teaser-img {
+    display: none; } }
 
 .TabNavigation {
   margin: 0 auto 20px;

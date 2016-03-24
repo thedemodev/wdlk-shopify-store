@@ -1,16 +1,16 @@
-@mixin media ($size) {
+@mixin media ($size, $limitor: min-width) {
     @if ($size == small) {
-      @media (min-width: $screen-sm) {
+      @media (#{$limitor}: $screen-sm) {
         @content;
       }
     }
     @if ($size == medium) {
-        @media (min-width: $screen-md) {
+        @media (#{$limitor}: $screen-md) {
             @content;
         }
     }
     @if ($size == large) {
-        @media (min-width: $screen-l) {
+        @media (#{$limitor}: $screen-l) {
             @content;
         }
     }
@@ -49,6 +49,17 @@
           }
         }
       }
+    }
+}
+
+@mixin create-pointer ($size: 3rem, $color: var(--background-color), $pseudo-el: before) {
+    &::#{$pseudo-el} {
+        content: "";
+        width: $size;
+        height: $size;
+        background-color: $color;
+        transform: rotate(45deg);
+        @content;
     }
 }
 
