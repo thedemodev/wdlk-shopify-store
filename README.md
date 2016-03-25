@@ -44,8 +44,9 @@ shopify_theme documentation:[http://shopify.github.io/shopify_theme/](http://sho
 10. Preview your work by navigating to that theme in Shopify admin and clicking preview `theme open`
 11. Make a pull request
 12. Rebase onto master, push to master repo
-13. Delete your branch (local and server)
-14. Delete your branched theme in Shopify Admin
+13. Make your theme your master theme
+14. Delete your branch (local and server)
+15. Delete your branched theme in Shopify Admin
 
 
 ## Deployment

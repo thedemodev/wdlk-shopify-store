@@ -12,7 +12,6 @@
             @include grid-cell(1, 2, $base-spacing, medium);
 
             position: relative;
-            padding-bottom: calc(var(--base-sapacing) * 2);
 
             @include create-pointer() {
                 position: absolute;
