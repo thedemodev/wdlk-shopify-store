@@ -1,0 +1,19 @@
+:root {
+    --container-height: 6rem;
+}
+
+.Header {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: var(--container-height);
+    border: 1px solid var(--container-border);
+    text-align: center;
+    background-color: var(--background-color);
+
+    .Headline {
+        margin: 0;
+        line-height: var(--container-height);
+        text-transform: uppercase;
+    }
+}

@@ -1,0 +1,71 @@
+:root {
+    --qty-btn-size: 1.8rem;
+    --qty-input-width: 70px;
+    --qty-input-timing: .35s;
+    --qty-input-timing-func: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+}
+
+.Qty-input {
+    position: relative;
+    margin-right: var(--form-base-margin);
+    overflow: hidden;
+
+    &-field {
+        box-sizing: border-box;
+        height: var(--form-base-height);
+        max-width: var(--qty-input-width);
+        padding: {
+            left: calc(var(--form-base-height) - 2.5rem);
+            right: calc(var(--form-base-height) - 0.5rem);
+        }
+        border: 1px solid var(--form-el-bg-color);
+        line-height: var(--form-base-height);
+        @include copy-text(calc(var(--md-copy-size) - .1),  var(--form-typo-color), bold);
+        background-color: var(--form-el-bg-color);
+        cursor: pointer;
+        transition: border-color var(--qty-input-timing) var(--qty-input-timing-func);
+
+        &:focus,
+        &:hover,
+        &:active {
+            border-color: var(--form-el-focus-color);
+            outline: none;
+        }
+    }
+
+    &-btn {
+        position: absolute;
+        right: 2px;
+        width: var(--qty-btn-size);
+        height: var(--qty-btn-size);
+        padding: 0;
+        border: none;
+        line-height: var(--qty-btn-size);
+        font-weight: bold;
+        text-align: center;
+        background-color: var(--form-btn-color);
+        @include copy-text(calc(var(--md-copy-size) - .1),  var(--typo-hex--tertiary), bold);
+
+        cursor: pointer;
+        transition: background-color var(--qty-input-timing) ease-in-out;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+
+        &:hover {
+            background-color: color(var(--form-btn-color) blackness(50%));
+        }
+
+        &:focus,
+        &:active {
+            outline: none;
+        }
+
+        &--more {
+            top: 2px;
+        }
+
+        &--less {
+            bottom: 2px;
+        }
+    }
+}

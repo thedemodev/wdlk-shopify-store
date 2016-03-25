@@ -5,6 +5,7 @@ import postcss from 'postcss';
 import syntax from 'postcss-scss';
 import cssnext from 'postcss-cssnext';
 import selector from 'postcss-custom-selectors';
+import colorFunction from 'postcss-color-function';
 import autoprefixer from 'autoprefixer-core';
 import reporter from 'postcss-reporter';
 import log from './log';
@@ -26,7 +27,8 @@ export default function css () {
         reporter({
             plugins: [
                 'postcss-cssnext',
-                'postcss-custom-selectors'
+                'postcss-custom-selectors',
+                'colorFunction'
                 ]
             })
     ];

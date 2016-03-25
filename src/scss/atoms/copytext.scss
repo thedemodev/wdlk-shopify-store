@@ -1,0 +1,26 @@
+:root {
+    --copy-size: 1.6rem;
+    --md-copy-size: 1.4rem;
+    --small-copy-size: 1.2rem;
+}
+
+@mixin copy-text ($color: var(--typo-hex)) {
+    font-size: var(--copy-size);
+    color: $color;
+}
+
+@mixin copy-text-sm ($font-size: var(--small-copy-size)) {
+    font-size: $font-size;
+}
+
+@mixin copy-text ($font-size: var(--copy-size), $color: var(--typo-hex), $weight: normal) {
+    font-size: $font-size;
+    color: $color;
+    @if ($weight != normal) {
+        font-weight: $weight;
+    }
+}
+
+body {
+    @include copy-text();
+}

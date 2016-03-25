@@ -1,0 +1,36 @@
+:root {
+    --select-timing: .35s;
+    --select-timing-func: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+}
+
+.Select {
+    display: block;
+    height: var(--form-base-height);
+    padding: {
+        left: $form-base-height / 2;
+        right: var(--form-base-height);
+    }
+    border-radius: 0;
+    border-color: var(--form-el-bg-color);
+    margin-right: var(--form-base-margin);
+    @include copy-text(calc(var(--md-copy-size) - .1),  var(--form-typo-color), bold);
+    background: {
+        color: var(--form-el-bg-color);
+        //-- Replace with the right icon
+        image: url('{{ "ico-select.svg" | asset_url }}');
+        repeat: no-repeat;
+        position: right 10px center;
+    }
+    transition: border-color var(--select-timing) var(--select-timing-func);
+
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+
+
+    &:focus,
+    &:active,
+    &:hover {
+        border-color: var(--form-el-focus-color);
+    }
+}

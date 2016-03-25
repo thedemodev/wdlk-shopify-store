@@ -1,26 +1,39 @@
-$columns: 4;
-$base-gap: 12px;
-$small-gap: $base-gap / 2;
-$large-gap: $base-gap * 2;
-
-.Grid {
-  display: flex;
-  flex-wrap: wrap;
+//--
+//-- MOBILE FIRST GRID WRAPPER
+//--
+@mixin grid-wrapper ($max-width: undefined, $justify-content: center) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: $justify-content;
+    max-width: if($max-width == undefined, 100%, $max-width);
+    margin: auto;
 }
+//-- The $count argument accepts the amount of necessary columns
+//-- for smartphone devices and iPad mini defaults to var(--screen-md).
+//-- The factor argument defines the necessary amount of columns
+//-- based on the given $count parameter.
+//-- The $gap argument defaults to 0-
 
-.Grid-cell {
-  width: 100%;
+@mixin grid-cell ($count,  $factor-count, $gap: 0, $media: medium) {
+  $column-width: 100% / $count;
 
-  @include grid-creator($columns, $large-gap);
-
-  @include media(small) {
-    &--small {
-      @include grid-creator($columns, $small-gap);
-    }
+  @if ($gap != 0) {
+    width: calc(#{$column-width} - #{$gap * 2});
+    padding: 0 $gap;
   }
-  @include media(small) {
-    &--medium {
-      @include grid-creator($columns, $base-gap);
+
+  @else {
+      width:  $column-width;
+  }
+
+  @include media($media) {
+    @if ($gap != 0) {
+      width: calc(#{$column-width / $factor-count} - #{$gap * 2});
+      padding: 0 $gap;
+    }
+
+    @else {
+        width:  $column-width / 2;
     }
   }
 }

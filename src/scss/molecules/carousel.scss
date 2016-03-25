@@ -1,0 +1,119 @@
+:root {
+    --carousel-arrow-size: 40px;
+    --carousel-arrow-size-tip: 40 * 30 / 100;
+    --carousel-arrow-border: 3px;
+    --carousel-arrow-margin: 1.5rem;
+}
+
+.Carousel {
+    position: relative;
+    height: 96.777vw;
+    min-width: 320px;
+    min-height: 320px;
+    overflow: hidden;
+    //z-index: 4;
+
+    &-btn {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 2;
+        width: var(--carousel-arrow-size);
+        height: var(--carousel-arrow-size);
+        margin: {
+            top: auto;
+            bottom: auto;
+            left: var(--carousel-arrow-margin);
+        }
+        outline: none;
+        appearance: none;
+        cursor: pointer;
+    }
+
+    .Icon {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 16px;
+        height: 32px;
+        fill: var(--carousel-arrow-color);
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+
+    &-trigger {
+        clip: rect(0, 0, 0, 0);
+        visibility: hidden;
+
+        &:checked {
+            ~ .Carousel-btn {
+                left: auto;
+                right: 0;
+                margin-right: var(--carousel-arrow-margin);
+                transform: rotate(180deg);
+            }
+
+            + .Carousel-item {
+                z-index: 1;
+                transform: translate3d(0, 0, 0);
+
+                ~ .Carousel-item {
+                    transform: translate3d(100%, 0, 0);
+                }
+
+                + .Carousel-btn {
+                    display: none;
+
+                    + .Carousel-trigger {
+                        + .Carousel-item {
+                            + .Carousel-btn {
+                                z-index: 3;
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            //-- Positions the last radio input as
+            //-- first one to allow backwards
+            //-- endless sliding;
+            //&:first-of-type {
+            //    ~ .Carousel-trigger {
+            //        &:not(label) {
+            //            &:last-of-type {
+            //                right: auto;
+            //                left: 0;
+            //                transform: rotate(0);
+            //            }
+            //        }
+            //    }
+            //}
+            //&:last-of-type {
+            //    ~ .Carousel-trigger--label {
+            //        right: 0;
+            //        left: auto;
+            //        clip: auto;
+            //    }
+            //}
+        }
+
+    }
+
+    &-item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        width: 100%;
+        margin: {
+            left: auto;
+            right: auto;
+        }
+        text-align: center;
+        transform: translate3d(-100%, 0, 0);
+        transition: transform .7s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+    }
+}

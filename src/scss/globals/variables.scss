@@ -1,7 +1,14 @@
-// media-queries
-
+//-- LAYOUT
 :root {
-  --bp-small: 500px;
-  --bp-medium: 1024px;
-  --bp-large: 1440px;
+    --base-sapacing: 2rem;
+    --base-margin: 1rem;
+}
+$base-spacing: 4rem;
+
+//-- FORMS
+$form-base-height: 4rem;
+:root {
+    --form-base-height: 4rem;
+    --form-base-margin: 1rem;
+    --form-base-padding: 2rem;
 }

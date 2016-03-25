@@ -1,14 +1,63 @@
-//-- Base Colors
+//-- Base HEX Colors
 :root {
-    --white-hex: white;
+    --white-hex: #ffffff;
+    --mid-gray-hex: #c8c8c8;
+    --mid-dark-gray-hex: #bfbfbf;
     --light-gray-hex: #999999;
+    --lighter-gray-hex: #e6e6e6;
+    --lightest-gray-hex: #f0f0f0;
     --dark-asphalt-hex: #222222;
+    --asphalt-hex: #4d4d4f;
+    --mid-dark-gray-hex: #666666;
+    --light-black: #333333;
     --sand-hex: #cc9966;
+    //--sand-hex: #e0bcb0;
+    --light-sand: #eeeae9;
+    --ocean-blue-hex: #d3dde6;
+    --beige-light-hex: #f7f7f7;
+}
+
+//-- Base rgba colors
+:root {
+    --mid-gray-rgba: rgba(200, 200, 200, 1);
+    --light-black-rgba: rgba(51, 51, 51, 1);
+    --lightest-gray-rgba: rgba(240, 240, 240, 1);
+    --mid-dark-gray-hex: rgba(191, 191, 191, 1);
 }
 
 //-- Typo Colors
 :root {
     --typo-hex: var(--dark-asphalt-hex);
-    --typo-secondary: var(--white-hex);
-    --typo-highlight: var(--sand-hex);
+    --typo-hex--secondary: var(--asphalt-hex);
+    --typo-hex--tertiary: var(--white-hex);
+    //--typo-hex--highlight: var(--sand-hex);
+    --typo-hex--highlight: var(--sand-hex);
+    --typo-hex--tone-down: var(--light-gray-hex);
+}
+
+//-- Background Colors
+:root {
+    --background-color: var(--white-hex);
+    --background-color-secondary: var(--beige-light-hex);
+    --container-border: var(--lighter-gray-hex);
+    --background-color-tertiary: var(--light-sand);
+}
+
+//-- Forms & Buttons
+:root {
+    --form-el-bg-color: var(--lightest-gray-hex);
+    --form-el-focus-color: var(--mid-gray-hex);
+    --form-typo-color: var(--mid-dark-gray-hex);
+    --form-btn-color: var(--mid-gray-rgba);
+    --btn-bg-color: var(--sand-hex);
+    --btn-bg-color-hover: var(--light-black-rgba);
+    --carousel-arrow-color: var(--light-gray-hex);
+    --indicator-color: var(--asphalt-hex);
+    --indicator-active-color: var(--sand-hex);
+}
+
+
+//-- Images
+:root {
+    --thumbnail-border-color: var(--sand-hex);
 }

@@ -256,8 +256,8 @@
   },
   "products": {
     "general": {
-      "previous_product_html": "&larr; Producto anterior",
-      "next_product_html": "Siguiente producto &rarr;",
+      "previous_product_html": "Producto anterior",
+      "next_product_html": "Siguiente producto",
       "from": "De"
     },
     "product": {
@@ -266,7 +266,21 @@
       "unavailable": "No disponible",
       "compare_at": " Comparar en",
       "quantity": "Cantidad",
-      "add_to_cart": "Agregar al carrito"
+      "add_to_cart": "Agregar al carrito",
+      "tax_type": "impuestos",
+      "tax_included": "incl.",
+      "label_description": "Descripción",
+      "label_size_chart": "Medidas",
+      "label_care": "Cuidado",
+      "close_size_chart": "Cerrar",
+      "label_select_size": "Selecciona talla",
+      "features": "Características",
+      "fit_guide": "Guia De Tallas",
+      "fit_coverage_guide": "Guia De Tallas & Cobertura",
+      "marine_protection": "Protección Marina",
+      "material": "Material",
+      "composition": "Composition",
+      "fabric_features": "Propiedades del Material"
     }
   },
   "gift_cards": {

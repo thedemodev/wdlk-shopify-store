@@ -1,9 +1,8 @@
 {
-  "metafield": {
-    "namespace": "Material",
-    "key": "product",
-    "value": "Material",
-    "description": "Provides detail information about the material features and properties",
-    "value_type": "string"
-  }
+    "metafield": {
+        "namespace": "product",
+        "key": "Fabric Description",
+        "value": "<p class=\"List\">Premium Italian fabric made with the regenerative ECONYL® yarn.<br \/>ECONYL® utilizes reclaimed fishing nets and other waste in the production process turning these materials into new premium-grade regenerative nylon fabric.<\/p>",
+        "value_type": "string"
+    }
 }

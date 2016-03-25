@@ -1,0 +1,133 @@
+.Product {
+    &-display {
+        @include grid-wrapper(var(--screen-xl));
+
+        position: relative;
+        background-color: var(--background-color-tertiary);
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            z-index: -1;
+            width: 100vw;
+            height: 100%;
+            background-color: var(--background-color-tertiary);
+            transform: translateX(-50%);
+        }
+    }
+
+    &-detail {
+        //-- GRID GENERATOR
+        //-- 1. Count column mobile first
+        //-- 2. Factor column number for tablet & desktop
+        //-- 3. Optional argument to define the inner padding
+        @include grid-cell(1, 2, $base-spacing, large);
+
+        position: relative;
+        padding: {
+            bottom: var(--base-sapacing);
+        }
+        text-align: center;
+        background-color: var(--background-color);
+
+        @include media(large) {
+            background-color: var(--background-color-tertiary);
+        }
+    }
+
+    &-images {
+        //-- GRID GENERATOR
+        //-- 1. Count column mobile first
+        //-- 2. Factor column number for tablet & desktop
+        //-- 3. Optional argument to define the inner padding
+        @include grid-cell(1, 2, 0, large);
+
+        position: relative;
+    }
+
+    &-headline {
+        position: relative;
+        margin: {
+            top: calc(var(--base-sapacing) * 2);
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: .2rem;
+            width: 2.5rem;
+            margin: auto;
+            background-color: var(--typo-hex--highlight);
+        }
+    }
+
+    &-navigator {
+        box-sizing: border-box;
+        width: 100%;
+        margin: 4rem auto 0;
+        padding: {
+            right: 4rem;
+            left: 4rem;
+        }
+        text-align: justify;
+
+        @include media(large) {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        &::after {
+            content: "";
+            display: inline-block;
+            width: 100%;
+        }
+    }
+
+    .Headline--3 {
+        &:first-child {
+            position: relative;
+            margin-top: 4rem;
+
+            &::before {
+                content: "";
+                position: absolute;
+                bottom: 3.9rem + (2rem - .2rem);
+                right: 50%;
+                height: .2rem;
+                width: 2rem;
+                background-color: var(--typo-hex--highlight);
+                transform: translateX(50%);
+            }
+        }
+    }
+
+    .Copy-sm {
+        display: block;
+        margin-bottom: var(--base-sapacing);
+        color: var(--typo-hex--tone-down);
+        @include copy-text-sm();
+    }
+
+    .Link {
+        margin-bottom: var(--base-sapacing);
+    }
+
+    &-copytext {
+        margin: 0 0 var(--base-sapacing);
+    }
+
+    &-actionRow {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+
+}

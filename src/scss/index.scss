@@ -2,12 +2,9 @@
 //-- $todo: the ultimate goal is to completely remove the timber styling
 @import "libs/timber/timber";
 
-//-- Bourboun mixins
-//@import "libs/bourbon/bourbon";
 
 //-- WDLK Custom Styling
-//--
-// Globals
 @import "globals/index";
-//-- Typography
-@import "typography/index";
+@import "atoms/index";
+@import "molecules/index";
+@import "organisms/index"

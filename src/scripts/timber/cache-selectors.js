@@ -14,8 +14,8 @@ timber.cacheSelectors = function () {
     $changeView              : $('.change-view'),
 
     // Product Page
-    $productImage            : $('#ProductPhotoImg'),
-    $thumbImages             : $('#ProductThumbs').find('a.product-single__thumbnail'),
+    $productImage            : $('.js-product-image'),
+    $thumbImages             : $('.js-thumbnails').find('.js-thumbnail'),
 
     // Customer Pages
     $recoverPasswordLink     : $('#RecoverPassword'),

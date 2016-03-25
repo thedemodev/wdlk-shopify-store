@@ -1,0 +1,26 @@
+{
+    "metafield": {
+        "namespace": "product",
+        "key": "Marine Protection",
+        "value": "<ul class=\"List\"><li class=\"List-item\">1% for the Planet® donation<\/li><li class=\"List-item\">Donation goes to the environmental organisation Healthy Seas®<\/li><li class=\"List-item\">Healthy Seas® removes ghost fishing nets from our oceans. The same fishing nets  used to create part of the ECONYL® yarn.<\/li><li class=\"List-item\">Sustainable - regenerative product<\/li><\/ul>",
+        "value_type": "string"
+    },
+    "metafield": {
+        "namespace": "product",
+        "key": "Fabric Description",
+        "value": "<p class=\"List\">Premium Italian fabric made with the regenerative ECONYL® yarn.<br \/>ECONYL® utilizes reclaimed fishing nets and other waste in the production process turning these materials into new premium-grade regenerative nylon fabric.<\/p>",
+        "value_type": "string"
+    },
+    "metafield": {
+        "namespace": "product",
+        "key": "Fabric Composition",
+        "value": "<ul class=\"List\"><li class=\"List-item\">78% ECONYL® regenerated Nylon<\/li><li class=\"List-item\">22% Elastane<\/li><\/ul>",
+        "value_type": "string"
+    },
+    "metafield": {
+        "namespace": "product",
+        "key": "Fabric Properties",
+        "value": "<ul class=\"List\"><li class=\"List-item\">Shape retention<\/li><li class=\"List-item\">Excellent coverage (absolutely non see-through)<\/li><li class=\"List-item\">UPF 50+ UV protection factor<\/li><li class=\"List-item\">Sun tan creams & oils resistant<\/li><li class=\"List-item\">Ultra chlorine resistant<\/li><li class=\"List-item\">Soft and smooth<\/li><li class=\"List-item\">Made in Italy<\/li><\/ul>",
+        "value_type": "string"
+    }
+}

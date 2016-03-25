@@ -1,0 +1,21 @@
+:root {
+    --btn-timing: .35s;
+    --btn-timing-func: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+}
+
+.Btn {
+    height: var(--form-base-height);
+    padding: {
+        left: calc(var(--form-base-padding) + 1.6rem);
+        right: calc(var(--form-base-padding) + 1.6rem);
+    }
+    border: none;
+    background-color: var(--btn-bg-color);
+    @include copy-text(calc(var(--md-copy-size) - .1),  var(--typo-hex--tertiary), bold);
+    cursor: pointer;
+    transition: background-color var(--btn-timing) var(--btn-timing-func);
+
+    &:hover {
+        background-color: var(--btn-bg-color-hover);
+    }
+}

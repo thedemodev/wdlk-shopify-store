@@ -3,7 +3,7 @@ import shopifyAPI from 'shopify-node-api';
 
 export default function prepareBulk () {
     const ENDPOINT = '/admin/products.json';
-    prepare('product', ENDPOINT, 'Features', 'string');
+    prepare('product', ENDPOINT, 'features', 'string');
 }
 
 prepareBulk();

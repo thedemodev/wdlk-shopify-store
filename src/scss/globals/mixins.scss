@@ -1,55 +1,101 @@
-@mixin media($size) {
-  @if $size == small {
-    @media (max-width: 500px) {
-      @content;
-    }
-  }
-  @else if $size == medium {
-    @media (max-width: var(--bp-medium)) {
-      @content;
-    }
-  }
-  @else if $size == large {
-    @media (max-width: var(--bp-large)) {
-      @content;
-    }
-  }
-}
-
-/**
-* =======================================
-* GRID CREATOR
-* =======================================
-* The grid-creator mixin automatically creates CSS grid classes in the form of:
-*
-* *parentclass*--1of2 {
-*   width: calc(50% - *gap*);
-* }
-*
-* It takes two arguments:
-*   $column-count:   the amount of columns generated
-*   $gap:            the width of the gap between the columns
-*
-* =======================================
-**/
-@mixin grid-creator($column-count, $gap) {
-  // Loop through all columns
-  @for $current-column from 1 to $column-count + 1 {
-    // Loop through the parts of the column (1of4, 2of4, etc.)
-    @for $current-column-part from 1 to $current-column + 1 {
-      // '&--' is used to attach the parent class to the created modifier
-      &--#{$current-column-part}of#{$current-column} {
-        $column-width: ((100% / $current-column) * $current-column-part);
-        // full width columns don't need gaps
-        @if $current-column > 1 {
-          $column-gap: $gap / 2;
-        }
-        @else {
-          $column-gap: 0px;
-        }
-        width: calc(#{$column-width} - #{$column-gap});
-        padding: ($gap / 4);
+@mixin media ($size, $limitor: min-width) {
+    @if ($size == small) {
+      @media (#{$limitor}: $screen-sm) {
+        @content;
       }
     }
-  }
+    @if ($size == medium) {
+        @media (#{$limitor}: $screen-md) {
+            @content;
+        }
+    }
+    @if ($size == large) {
+        @media (#{$limitor}: $screen-l) {
+            @content;
+        }
+    }
 }
+//-- Media Queries: range from min N value to a max N value.
+//-- Variable Arguments are unknown number of arguments.
+//-- represented by the ... operator. In this case only accepts two arguments.
+@mixin media-range ($range...) {
+    @if ($range != null) {
+        @media (min-width: nth($range, 1)) and (max-width: nth($range, 2)) {
+            @content;
+        }
+    }
+}
+
+//-- Generates the necessary styling for the active indicators.
+//-- Depends heavily in nth-of-type pseudo class
+//-- and a rigid HTML structure. The mixin should be use on the global space.
+//-- This mixins acceps the following parameters:
+//-- 1. The amount of indicators
+//-- 2. The class of the trigger input
+//-- 3. The parent class of the indicators
+//-- 4. The class of the indicator item
+@mixin generateActiveIndicator ($item-amount, $trigger-selector, $target-parent, $target-selector) {
+    @for $i from 1 through $item-amount {
+      .#{$trigger-selector} {
+        &:checked {
+          &:nth-of-type(#{$i}) {
+            ~ .#{$target-parent} {
+              .#{$target-selector} {
+                &:nth-of-type(#{$i}) {
+                  @content;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+}
+
+@mixin create-pointer ($size: 3rem, $color: var(--background-color), $pseudo-el: before) {
+    &::#{$pseudo-el} {
+        content: "";
+        width: $size;
+        height: $size;
+        background-color: $color;
+        transform: rotate(45deg);
+        @content;
+    }
+}
+
+
+// =======================================
+// GRID CREATOR
+// =======================================
+// The grid-creator mixin automatically creates CSS grid classes in the form of:
+//
+//   parentclass*--1of2 {
+//   width: calc(50% - *gap*);
+// }
+//
+// It takes two arguments:
+//   $column-count:   the amount of columns generated
+//   $gap:            the width of the gap between the columns
+//
+// =======================================
+//@mixin grid-creator ($column-count, $gap) {
+//  // Loop through all columns
+//  @for $current-column from 1 to $column-count + 1 {
+//    // Loop through the parts of the column (1of4, 2of4, etc.)
+//    @for $current-column-part from 1 to $current-column + 1 {
+//      // '&--' is used to attach the parent class to the created modifier
+//      &--#{$current-column-part}of#{$current-column} {
+//        $column-width: ((100% / $current-column) * $current-column-part);
+//        // full width columns don't need gaps
+//        @if $current-column > 1 {
+//          $column-gap: $gap / 2;
+//        }
+//        @else {
+//          $column-gap: 0px;
+//        }
+//        width: calc(#{$column-width} - #{$column-gap});
+//        padding: ($gap / 4);
+//      }
+//    }
+//  }
+//}
