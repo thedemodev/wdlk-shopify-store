@@ -1,6 +1,5 @@
 .ProductPage {
     $product-img-max-height: calc(var(--screen-l) / 2) !default;
-    @include grid-wrapper(var(--screen-xl));
 
     .Carousel {
         @include media(medium) {

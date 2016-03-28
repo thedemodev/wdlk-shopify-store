@@ -4,6 +4,7 @@
     --position-percentage-factor: 20%;
     --timing: cubic-bezier(0.895, 0.030, 0.685, 0.220);
     --lightbox-base-spacing: 3rem;
+    --container-height: 6rem;
 }
 
 .Lightbox {
@@ -71,6 +72,22 @@
         top: 50%;
         right: 3rem;
         transform: translateY(-50%);
+    }
+
+    &-header {
+        position: relative;
+        box-sizing: border-box;
+        width: 100%;
+        height: var(--container-height);
+        border: 1px solid var(--container-border);
+        text-align: center;
+        background-color: var(--background-color);
+
+        .Headline {
+            margin: 0;
+            line-height: var(--container-height);
+            text-transform: uppercase;
+        }
     }
 
     &-body {

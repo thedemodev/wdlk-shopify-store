@@ -42,6 +42,14 @@
                 }
             }
 
+            .Headline--2 {
+                margin-top: calc(var(--base-sapacing) * 2);
+            }
+
+            .List {
+                margin-bottom: calc(var(--base-sapacing) * 2);
+            }
+
         }
 
         &-imgContainer {

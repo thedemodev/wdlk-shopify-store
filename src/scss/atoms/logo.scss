@@ -1,0 +1,15 @@
+:root {
+    --logo-height: 46px;
+    --logo-width: 150px;
+    --logo-color: var(--coral);
+}
+
+.Logo {
+    line-height: 1;
+    
+    &-img {
+        width: var(--logo-width);
+        height: var(--logo-height);
+        fill: var(--logo-color);
+    }
+}
