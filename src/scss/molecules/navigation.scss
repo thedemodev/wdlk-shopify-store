@@ -1,0 +1,25 @@
+.Navigation {
+    margin: 0;
+    list-style: none;
+
+    &-item {
+        display: inline-block;
+        margin-right: calc(var(--base-sapacing) * 2);
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    &-link {
+        @include copy-text(var(--md-copy-size));
+
+        font-family: "museo_sans500", sans-serif;
+        text-transform: uppercase;
+    }
+
+    &-dropdown {
+        display: none;
+        position: absolute;
+    }
+}
