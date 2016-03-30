@@ -1,10 +1,11 @@
 .Navigation {
-    margin: 0;
+    margin: 0 0 -.4rem;
     list-style: none;
 
     &-item {
         display: inline-block;
         margin-right: calc(var(--base-sapacing) * 2);
+        overflow-x: hidden;
 
         &:last-child {
             margin-right: 0;
@@ -14,8 +15,29 @@
     &-link {
         @include copy-text(var(--md-copy-size));
 
-        font-family: "museo_sans500", sans-serif;
+        position: relative;
+        display: inline-block;
+        font-family: "museo-sans-bold", sans-serif;
         text-transform: uppercase;
+        letter-spacing: .05rem;
+
+        &::after {
+            content: "";
+            display: block;
+            height: .1rem;
+            width: 100%;
+            background-color: var(--typo-hex);
+            transform: translateX(-102%);
+            transition: transform .8s cubic-bezier(0.075, 0.820, 0.165, 1.000)
+        }
+
+        &:hover {
+            color: currentColor;
+
+            &::after {
+                transform: none;
+            }
+        }
     }
 
     &-dropdown {

@@ -3,7 +3,7 @@
 @import "./node_modules/bourbon/app/assets/stylesheets/css3/_font-face";
 
 @include font-face("museo-sans", "/assets/MuseoSans_300-webfont");
-@include font-face("museo_sans500", "/assets/MuseoSans_500-webfont");
+@include font-face("museo-sans-bold", "/assets/MuseoSans_500-webfont");
 @include font-face("montserrat", "/assets/montserrat-light-webfont");
 @include font-face("lombok", "/assets/lombok-webfont");
 

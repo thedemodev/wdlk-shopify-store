@@ -2107,10 +2107,10 @@ input[type="radio"] {
   src: font-source-declaration("museo-sans", "/assets/MuseoSans_300-webfont", false, eot woff2 woff ttf svg, font-url-prefixer(false)); }
 
 @font-face {
-  font-family: "museo_sans500";
+  font-family: "museo-sans-bold";
   font-style: normal;
   font-weight: normal;
-  src: font-source-declaration("museo_sans500", "/assets/MuseoSans_500-webfont", false, eot woff2 woff ttf svg, font-url-prefixer(false)); }
+  src: font-source-declaration("museo-sans-bold", "/assets/MuseoSans_500-webfont", false, eot woff2 woff ttf svg, font-url-prefixer(false)); }
 
 @font-face {
   font-family: "montserrat";
@@ -2356,20 +2356,44 @@ body {
       bottom: 2px; }
 
 .Navigation {
-  margin: 0;
+  margin: 0 0 -4px;
+  margin: 0 0 -.4rem;
   list-style: none; }
   .Navigation-item {
     display: inline-block;
     margin-right: 40px;
-    margin-right: 4rem; }
+    margin-right: 4rem;
+    overflow-x: hidden; }
     .Navigation-item:last-child {
       margin-right: 0; }
   .Navigation-link {
     font-size: 14px;
     font-size: 1.4rem;
     color: #222222;
-    font-family: "museo_sans500", sans-serif;
-    text-transform: uppercase; }
+    position: relative;
+    display: inline-block;
+    font-family: "museo-sans-bold", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    letter-spacing: .05rem; }
+    .Navigation-link:after {
+      content: "";
+      display: block;
+      height: 1px;
+      height: .1rem;
+      width: 100%;
+      background-color: #222222;
+      -webkit-transform: translateX(-102%);
+              transform: translateX(-102%);
+      transition: -webkit-transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+      -webkit-transition: -webkit-transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+      transition: transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+      transition: transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1), -webkit-transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1); }
+    .Navigation-link:hover {
+      color: currentColor; }
+      .Navigation-link:hover:after {
+        -webkit-transform: none;
+                transform: none; }
   .Navigation-dropdown {
     display: none;
     position: absolute; }
