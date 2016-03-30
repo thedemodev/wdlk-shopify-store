@@ -1,29 +1,25 @@
 <nav class="Navigation" role="navigation">
-    {% comment %}
-    List out your main-menu linklist (default)
-
-    More info on linklists:
-      - http://docs.shopify.com/themes/liquid-variables/linklists
-    {% endcomment %}
     <ul class="Navigation" id="AccessibleNav">
         {% for link in linklists.main-menu.links %}
           {% assign child_list_handle = link.title | handleize %}
           {% if linklists[child_list_handle].links != blank %}
-            <li class="Navigation-item{% if link.active %} is-active{% endif %}" aria-haspopup="true">
-              <a href="{{ link.url }}" class="Navigation-link">
+            <li class="Navigation-item" aria-haspopup="true">
+              <a href="{{ link.url }}" class="Navigation-link {% if link.active %} is-active{% endif %}">
                 {{ link.title }}
               </a>
-              <ul class="Navigation-dropdown">
-                {% for childlink in linklists[child_list_handle].links %}
-                  <li class="Navigation-item{% if link.active %} is-active{% endif %}">
-                    <a href="{{ childlink.url }}" class="Navigation-link">{{ childlink.title | escape }}</a>
-                  </li>
-                {% endfor %}
-              </ul>
+              <div class="Navigation-dropdown">
+                  <ul class="Navigation--sub">
+                    {% for childlink in linklists[child_list_handle].links %}
+                      <li class="Navigation-item">
+                        <a href="{{ childlink.url }}" class="Navigation-link {% if link.active %} is-active{% endif %}">{{ childlink.title | escape }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+              </div>
             </li>
           {% else %}
-            <li class="Navigation-item{% if link.active %} is-active{% endif %}">
-              <a href="{{ link.url }}" class="Navigation-link">{{ link.title }}</a>
+            <li class="Navigation-item">
+              <a href="{{ link.url }}" class="Navigation-link {% if link.active %} is-active{% endif %}">{{ link.title }}</a>
             </li>
           {% endif %}
         {% endfor %}
