@@ -2,7 +2,7 @@
     --navi-transition-function: cubic-bezier(0.075, 0.820, 0.165, 1.000);
     --navi-bg-color: rgba(255, 255, 255, .98);
     --navi-pointer-size: 2rem;
-    --navi-pointer-position: calc(var(--navi-pointer-size) + .05rem);
+    --navi-pointer-position: calc(var(--navi-pointer-size) + .1rem);
 }
 
 .Navigation {
