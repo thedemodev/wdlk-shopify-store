@@ -3,18 +3,33 @@
         {% for link in linklists.main-menu.links %}
           {% assign child_list_handle = link.title | handleize %}
           {% if linklists[child_list_handle].links != blank %}
-            <li class="Navigation-item" aria-haspopup="true">
+            <li class="Navigation-item has-dropdown" aria-haspopup="true">
               <a href="{{ link.url }}" class="Navigation-link {% if link.active %} is-active{% endif %}">
                 {{ link.title }}
               </a>
               <div class="Navigation-dropdown">
-                  <ul class="Navigation--sub">
-                    {% for childlink in linklists[child_list_handle].links %}
-                      <li class="Navigation-item">
-                        <a href="{{ childlink.url }}" class="Navigation-link {% if link.active %} is-active{% endif %}">{{ childlink.title | escape }}</a>
-                      </li>
-                    {% endfor %}
-                  </ul>
+                <ul class="Navigation--secondary">
+                {% for childlink in linklists[child_list_handle].links %}
+                    <li class="Navigation-item">
+                        <a href="{{ childlink.url }}" class="Navigation-link ">{{ childlink.title | escape }}</a>
+                    </li>
+                {% endfor %}
+                </ul>
+                  {% comment %}
+                  -- Secondary Navigation Teaser Module
+                  The link handle must be the same as the
+                  collection handle in order to display the teaser.
+                  {% endcomment %}
+                  {% if link.handle == collections[link.handle].handle %}
+                  <a class="Navigation-teaser"  href="{{collections[link.handle].url}}" >
+                      <figure>
+                          <img  class="Navigation-teaser-image" alt="{{collections[link.handle].title}}" src="{{collections[link.handle].image.src | img_url: 'large'}}" />
+                          <figurecaption class="Navigation-teaser-headline Headline--4">
+                              {{'collections.general.shop' | t}} {{collections[link.handle].title}}
+                          </figurecaption>
+                      </figure>
+                  </a>
+                  {% endif %}
               </div>
             </li>
           {% else %}
@@ -24,6 +39,7 @@
           {% endif %}
         {% endfor %}
       </ul>
+
 
 
     <div class="large--hide medium-down--show">

@@ -57,7 +57,7 @@
         content: "";
         width: $size;
         height: $size;
-        background-color: $color;
+        background: $color;
         transform: rotate(45deg);
         @content;
     }

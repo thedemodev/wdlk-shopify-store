@@ -79,6 +79,7 @@
       "link_title": "Navegue por nuestra colección {{ title }}",
       "grid_view": "Tabla",
       "list_view": "Lista",
+      "shop": "Shop",
       "items_count": {
         "one": "artículo",
         "other": "artículos"

@@ -1,8 +1,8 @@
 :root {
     --navi-transition-function: cubic-bezier(0.075, 0.820, 0.165, 1.000);
     --navi-bg-color: rgba(255, 255, 255, .98);
-    --navi-pointer-size: 2rem;
-    --navi-pointer-position: calc(var(--navi-pointer-size) + .1rem);
+    --navi-pointer-size: 1.5rem;
+    --navi-secondary-max-size: 700px;
 }
 
 .Navigation {
@@ -14,11 +14,13 @@
     &-item {
         position: relative;
         display: inline-block;
-        padding-bottom: 1rem;
-        margin-right: calc(var(--base-sapacing) * 2);
+        padding: {
+            right: calc(var(--base-sapacing) * 2);
+            bottom: var(--base-sapacing);
+        }
 
         &:last-child {
-            margin-right: 0;
+            padding-right: 0;
         }
 
         &:hover {
@@ -28,6 +30,20 @@
                 pointer-events: initial;
             }
         }
+
+        &.has-dropdown{
+            &:hover {
+                @include create-pointer(var(--navi-pointer-size), var(--navi-bg-color)) {
+                    position: absolute;
+                    bottom: var(--navi-pointer-size);
+                    right: 50%;
+                    border: solid var(--nav-border-color);
+                    border-width: 1px 0px 0px 1px ;
+                    transform: translateX(calc(50% - var(--base-sapacing))) rotate(45deg);
+                }
+            }
+        }
+
     }
 
     &-link {
@@ -36,7 +52,7 @@
         position: relative;
         display: inline-block;
         width: auto;
-        margin-bottom: -.4rem;
+        margin-bottom: -.5rem;
         line-height: 1.5;
         font-family: "museo-sans-bold", sans-serif;
         text-transform: uppercase;
@@ -71,7 +87,13 @@
     &-dropdown {
         position: absolute;
         left: calc(-var(--base-sapacing) * 2);
-        padding: calc(var(--base-sapacing) * 2);
+        display: flex;
+        justify-content: space-between;
+        width: var(--navi-secondary-max-size);
+        //-- The height orientates on the teaser image aspect ratio.
+        //-- The teaser image has an aspect ration 5:4,
+        //-- Speak 1,25 wider than the height
+        height: calc((var(--navi-secondary-max-size) / 2) / 1.25);
         border: solid var(--nav-border-color);
         border-width: 0 1px 1px 1px;
         margin: -2px 0 0;
@@ -81,18 +103,40 @@
         background: var(--navi-bg-color);
         transition: opacity .8s var(--navi-transition-function);
 
-        @include create-pointer(var(--navi-pointer-size)) {
-            position: absolute;
-            top: calc(-var(--navi-pointer-position) / 2);
-            left: calc(var(--navi-pointer-size) * 2);
-            border: solid var(--nav-border-color);
-            border-width: 1px 0px 0px 1px ;
-        }
-
         .Navigation-item {
             display: block;
             line-height: 1.5;
             padding-bottom: -var(--base-sapacing);
+        }
+    }
+
+    &--secondary {
+        box-sizing: border-box;
+        width: 50%;
+        padding: calc(var(--base-sapacing) * 2);
+    }
+
+    &-teaser {
+        position: relative;
+        display: inline-block;
+        width: 50%;
+        height: 100%;
+        overflow: hidden;
+
+        &-headline {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            color: var(--typo-hex--tertiary);
+            text-align: center;
+            text-transform: uppercase;
+            transform: translateY(100%);
+        }
+
+        &-image {
+            max-width: calc(var(--navi-secondary-max-size) / 2);
+            max-height: calc((var(--navi-secondary-max-size) / 2) / 1.25);
         }
     }
 }
