@@ -1,0 +1,23 @@
+:root {
+    --shopping-cart-size: 30px;
+    --shoping-cart-color: var(--coral);
+}
+
+.ShoppingCart {
+    display: inline-block;
+
+    &-icon {
+        width: calc(var(--shopping-cart-size) + 2px);
+        height: var(--shopping-cart-size);
+        margin-bottom: -3px;
+        fill: var(--typo-hex--tertiary);
+        stroke: currentColor;
+        stroke-width: 2px;
+        color: var(--typo-hex);
+        vertical-align: text-bottom;
+    }
+
+    &-count {
+        font-weight: normal;
+    }
+}

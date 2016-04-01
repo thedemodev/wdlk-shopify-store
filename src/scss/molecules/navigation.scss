@@ -7,9 +7,14 @@
 
 .Navigation {
     height: 100%;
-    margin: 0 0 -.4rem;
-    line-height: var(--nav-height);
-    list-style: none;
+
+    &-list {
+        height: 100%;
+        padding-left: 0;
+        margin: 0 auto;
+        line-height: var(--nav-height);
+        list-style: none;
+    }
 
     &-item {
         position: relative;
@@ -35,7 +40,7 @@
             &:hover {
                 @include create-pointer(var(--navi-pointer-size), var(--navi-bg-color)) {
                     position: absolute;
-                    bottom: var(--navi-pointer-size);
+                    bottom: calc(var(--navi-pointer-size) - .2rem);
                     right: 50%;
                     border: solid var(--nav-border-color);
                     border-width: 1px 0px 0px 1px ;
@@ -86,6 +91,7 @@
 
     &-dropdown {
         position: absolute;
+        top: calc(var(--nav-height) + .2);
         left: calc(-var(--base-sapacing) * 2);
         display: flex;
         justify-content: space-between;
@@ -103,6 +109,12 @@
         background: var(--navi-bg-color);
         transition: opacity .8s var(--navi-transition-function);
 
+        &-list {
+            box-sizing: border-box;
+            width: 50%;
+            padding: calc(var(--base-sapacing) * 2);
+        }
+
         .Navigation-item {
             display: block;
             line-height: 1.5;
@@ -110,11 +122,6 @@
         }
     }
 
-    &--secondary {
-        box-sizing: border-box;
-        width: 50%;
-        padding: calc(var(--base-sapacing) * 2);
-    }
 
     &-teaser {
         position: relative;

@@ -2086,6 +2086,20 @@ input[type="radio"] {
     height: 46px;
     fill: #FF6C54; }
 
+.ShoppingCart {
+  display: inline-block; }
+  .ShoppingCart-icon {
+    width: 32px;
+    height: 30px;
+    margin-bottom: -3px;
+    fill: #ffffff;
+    stroke: currentColor;
+    stroke-width: 2px;
+    color: #222222;
+    vertical-align: text-bottom; }
+  .ShoppingCart-count {
+    font-weight: normal; }
+
 @font-face {
   font-family: "museo-sans";
   font-style: normal;
@@ -2345,12 +2359,14 @@ body {
       bottom: 2px; }
 
 .Navigation {
-  height: 100%;
-  margin: 0 0 -4px;
-  margin: 0 0 -.4rem;
-  line-height: 100px;
-  line-height: 10rem;
-  list-style: none; }
+  height: 100%; }
+  .Navigation-list {
+    height: 100%;
+    padding-left: 0;
+    margin: 0 auto;
+    line-height: 100px;
+    line-height: 10rem;
+    list-style: none; }
   .Navigation-item {
     position: relative;
     display: inline-block;
@@ -2375,8 +2391,8 @@ body {
       -webkit-transform: rotate(45deg);
               transform: rotate(45deg);
       position: absolute;
-      bottom: 15px;
-      bottom: 1.5rem;
+      bottom: 13px;
+      bottom: 1.3rem;
       right: 50%;
       border: solid #e6e6e6;
       border-width: 1px 0px 0px 1px;
@@ -2420,6 +2436,8 @@ body {
               transform: none; }
   .Navigation-dropdown {
     position: absolute;
+    top: 102px;
+    top: 10.2rem;
     left: -40px;
     left: -4rem;
     display: -webkit-flex;
@@ -2442,16 +2460,16 @@ body {
     background: rgba(255, 255, 255, 0.98);
     -webkit-transition: opacity 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
     transition: opacity 0.8s cubic-bezier(0.075, 0.82, 0.165, 1); }
+    .Navigation-dropdown-list {
+      box-sizing: border-box;
+      width: 50%;
+      padding: 40px;
+      padding: 4rem; }
     .Navigation-dropdown .Navigation-item {
       display: block;
       line-height: 1.5;
       padding-bottom: -20px;
       padding-bottom: -2rem; }
-  .Navigation--secondary {
-    box-sizing: border-box;
-    width: 50%;
-    padding: 40px;
-    padding: 4rem; }
   .Navigation-teaser {
     position: relative;
     display: inline-block;
@@ -2858,6 +2876,34 @@ body {
   .TabNavigation-label {
     display: inline-block;
     width: auto; }
+
+.AccountNavigation {
+  height: 100px;
+  height: 10rem;
+  line-height: 100px;
+  line-height: 10rem; }
+  .AccountNavigation-list {
+    display: inline-block;
+    margin-right: 20px;
+    margin-right: 2rem;
+    font-size: 0;
+    line-height: 0; }
+  .AccountNavigation-item {
+    display: inline-block;
+    color: #999999;
+    font-size: 12px;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+    letter-spacing: 0.05rem; }
+    .AccountNavigation-item:first-of-type {
+      padding-right: 10px;
+      padding-right: 1rem;
+      border: solid currentColor;
+      border-width: 0 1px 0 0; }
+    .AccountNavigation-item:last-of-type {
+      padding-left: 10px;
+      padding-left: 1rem; }
 
 .Carousel-trigger:checked:nth-of-type(1) ~ .Thumbnails .Thumbnails-item:nth-of-type(1) {
   border-color: #cc9966; }

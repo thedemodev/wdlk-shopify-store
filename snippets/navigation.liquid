@@ -1,5 +1,5 @@
 <nav class="Navigation" role="navigation">
-    <ul class="Navigation" id="AccessibleNav">
+    <ul class="Navigation-list" id="AccessibleNav">
         {% for link in linklists.main-menu.links %}
           {% assign child_list_handle = link.title | handleize %}
           {% if linklists[child_list_handle].links != blank %}
@@ -8,7 +8,7 @@
                 {{ link.title }}
               </a>
               <div class="Navigation-dropdown">
-                <ul class="Navigation--secondary">
+                <ul class="Navigation-dropdown-list">
                 {% for childlink in linklists[child_list_handle].links %}
                     <li class="Navigation-item">
                         <a href="{{ childlink.url }}" class="Navigation-link ">{{ childlink.title | escape }}</a>
