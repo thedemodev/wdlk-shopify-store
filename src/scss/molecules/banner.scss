@@ -1,0 +1,36 @@
+.Banner {
+    overflow: hidden;
+    line-height: 0;
+
+    &--main {
+        width: 100vw;
+        height: auto;
+
+        @include media(large) {
+            .Banner-image {
+                width: 100vw;
+            }
+        }
+    }
+
+    &--oneThird {
+        width: 100vw / 3 * 1;
+        height: 50vh;
+    }
+
+    &--twoThirds {
+        width: 100vw / 3 * 2;
+        height: calc(50vh - (var(--nav-height) / 2));
+    }
+
+    &--half {
+        //-- GRID GENERATOR
+        //-- 1. Count column mobile first
+        //-- 2. Factor column number for tablet & desktop
+        //-- 3. Optional argument to define the inner padding
+        @include grid-cell(1, 2, 0, small);
+
+        width: 100vw;
+        height: 50vh;
+    }
+}

@@ -1,12 +1,8 @@
 :root {
-    --nav-height: 10rem;
+    --nav-height: 8rem;
     --nav-border-color: var(--lighter-gray-hex);
 }
 
-//-- Necessary for the fixed navigation to work
-body {
-    margin-top: var(--nav-height);
-}
 
 .Header {
     @include grid-wrapper(undefined, space-between);
