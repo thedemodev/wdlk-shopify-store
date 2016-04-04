@@ -3,12 +3,17 @@
     line-height: 0;
 
     &--main {
-        width: 100vw;
-        height: auto;
+        .Banner-image {
+            width: 100vw;
+            height: auto;
+            transform: none;
+        }
 
-        @include media(large) {
+        @include media(small, max-width) {
             .Banner-image {
-                width: 100vw;
+                width: auto;
+                height: 100vh;
+                transform: translateX(-15%);
             }
         }
     }
@@ -30,7 +35,16 @@
         //-- 3. Optional argument to define the inner padding
         @include grid-cell(1, 2, 0, small);
 
-        width: 100vw;
-        height: 50vh;
+        .Banner-image {
+            width: 50vw;
+        }
+
+        @include media(small, max-width) {
+            .Banner-image {
+                width: auto;
+                height: 50vh;
+                transform: translateX(-15%);
+            }
+        }
     }
 }

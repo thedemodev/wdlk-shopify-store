@@ -1419,7 +1419,6 @@ img {
 svg:not(:root) {
   overflow: hidden; }
 
-img,
 iframe {
   max-width: 100%; }
 
@@ -2493,12 +2492,17 @@ body {
 .Banner {
   overflow: hidden;
   line-height: 0; }
-  .Banner--main {
+  .Banner--main .Banner-image {
     width: 100vw;
-    height: auto; }
-    @media (min-width: 1024px) {
-      .Banner--main .Banner-image {
-        width: 100vw; } }
+    height: auto;
+    -webkit-transform: none;
+            transform: none; }
+  @media (max-width: 480px) {
+    .Banner--main .Banner-image {
+      width: auto;
+      height: 100vh;
+      -webkit-transform: translateX(-15%);
+              transform: translateX(-15%); } }
   .Banner--oneThird {
     width: 33.33333vw;
     height: 50vh; }
@@ -2506,12 +2510,18 @@ body {
     width: 66.66667vw;
     height: calc(50vh - 4rem); }
   .Banner--half {
-    width: 100%;
-    width: 100vw;
-    height: 50vh; }
+    width: 100%; }
     @media (min-width: 480px) {
       .Banner--half {
         width: 50%; } }
+    .Banner--half .Banner-image {
+      width: 50vw; }
+    @media (max-width: 480px) {
+      .Banner--half .Banner-image {
+        width: auto;
+        height: 50vh;
+        -webkit-transform: translateX(-15%);
+                transform: translateX(-15%); } }
 
 .Lightbox-shim {
   position: fixed;

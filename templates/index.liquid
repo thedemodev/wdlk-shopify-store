@@ -19,8 +19,14 @@
     <article class="Banner Banner--half">
         <picture>
             <source
-            media="(max-width: 768px)"
+            media="(max-width: 480px)"
             srcset="{{ 'dummy-half-banner-two-smart.jpeg' | asset_url }}">
+            <source
+            media="(max-width: 768px)"
+            srcset="{{ 'dummy-half-banner-two-mobile.jpeg' | asset_url }}">
+            <source
+            media="(min-width: 770px)"
+            srcset="{{ 'dummy-half-banner-two.jpeg' | asset_url }}">
             <img class="Banner-image"
             src="{{ 'dummy-half-banner-two.jpeg' | asset_url }}"
             alt="Woodlike Ocean - swimwear crafted out of ocean recovered fishing nets">
@@ -29,8 +35,14 @@
     <article class="Banner Banner--half">
         <picture>
             <source
-            media="(max-width: 768px)"
+            media="(max-width: 480px)"
             srcset="{{ 'dummy-half-banner-smart.jpg' | asset_url }}">
+            <source
+            media="(max-width: 768px)"
+            srcset="{{ 'dummy-half-banner-mobile.jpg' | asset_url }}">
+            <source
+            media="(min-width: 770px)"
+            srcset="{{ 'dummy-half-banner.jpg' | asset_url }}">
             <img class="Banner-image"
             src="{{ 'dummy-half-banner.jpg' | asset_url }}"
             alt="Woodlike Ocean - swimwear crafted out of ocean recovered fishing nets">
@@ -40,7 +52,7 @@
         <picture>
             <source
             media="(min-width: 650px)"
-            srcset="{{ 'dummy-twothird-banner.jpg' | asset_url }}">
+            srcset="{{ 'dummy-twothird-smart.jpg' | asset_url }}">
             <source
             media="(min-width: 465px)"
             srcset="{{ 'dummy-twothird-banner.jpg' | asset_url }}">
