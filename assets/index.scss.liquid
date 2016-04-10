@@ -2511,6 +2511,15 @@ body {
     width: 66.66667vw; }
     .Banner--twoThirds .Banner-image {
       width: 100%; }
+  @media (max-width: 480px) {
+    .Banner--oneThird, .Banner--twoThirds {
+      width: auto;
+      height: 50vh; }
+      .Banner--oneThird .Banner-image, .Banner--twoThirds .Banner-image {
+        width: auto;
+        height: 50vh;
+        -webkit-transform: translateX(-15%);
+                transform: translateX(-15%); } }
   .Banner--half {
     width: 100%; }
     @media (min-width: 480px) {
