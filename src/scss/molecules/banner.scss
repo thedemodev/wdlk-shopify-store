@@ -20,12 +20,18 @@
 
     &--oneThird {
         width: 100vw / 3 * 1;
-        height: 50vh;
+
+        .Banner-image {
+            width: 100%;
+        }
     }
 
     &--twoThirds {
         width: 100vw / 3 * 2;
-        height: calc(50vh - (var(--nav-height) / 2));
+
+        .Banner-image {
+            width: 100%;
+        }
     }
 
     &--half {

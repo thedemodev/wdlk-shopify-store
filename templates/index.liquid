@@ -51,10 +51,13 @@
     <article class="Banner Banner--twoThirds">
         <picture>
             <source
-            media="(min-width: 650px)"
-            srcset="{{ 'dummy-twothird-smart.jpg' | asset_url }}">
+            media="(max-width: 480px)"
+            srcset="{{ 'dummy-twothird-banner-smart.jpg' | asset_url }}">
             <source
-            media="(min-width: 465px)"
+            media="(max-width: 768px)"
+            srcset="{{ 'dummy-twothird-banner-mobile.jpg' | asset_url }}">
+            <source
+            media="(min-width: 770px)"
             srcset="{{ 'dummy-twothird-banner.jpg' | asset_url }}">
             <img class="Banner-image"
             src="{{ 'dummy-twothird-banner.jpg' | asset_url }}"
@@ -64,10 +67,13 @@
     <article class="Banner Banner--oneThird">
         <picture>
             <source
-            media="(min-width: 650px)"
-            srcset="{{ 'dummy-onethird-banner.jpeg' | asset_url }}">
+            media="(max-width: 480px)"
+            srcset="{{ 'dummy-onethird-banner-smart.jpeg' | asset_url }}">
             <source
-            media="(min-width: 465px)"
+            media="(max-width: 768px)"
+            srcset="{{ 'dummy-onethird-banner-mobile.jpeg' | asset_url }}">
+            <source
+            media="(min-width: 770px)"
             srcset="{{ 'dummy-onethird-banner.jpeg' | asset_url }}">
             <img class="Banner-image"
             src="{{ 'dummy-onethird-banner.jpeg' | asset_url }}"

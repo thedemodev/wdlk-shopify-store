@@ -92,3 +92,29 @@ If you’re doing it right, you should always be confident in pushing master ont
 [Shopify Docs](http://docs.shopify.com/themes)
 
 [Shopify Theme Development](https://robots.thoughtbot.com/shopify-theme-development)
+
+## Photography Art Direction
+
+The banners for the home site stage are defined in 3 different breakpoints to deliver the best possible visual composition and site performance.
+
+### Banners Measurements
+
+#### Main Banner
+* Desktop: 1440 x 810 (16:9)
+* Tablet: 768 x 1024 (4:3)
+* Smart Phone: 380 x 568 (3:2)
+
+#### Half Banner
+* Desktop: 720 x 405 (16:9)
+* Tablet: 384 x 512 (4:3)
+* Smart Phone : 568 x 320  (3:2)
+
+#### Two Thirds Banner
+* Desktop: 960 x 405
+* Tablet: 512 x 512
+* Smart Phone : 568 x 320  (3:2)
+
+#### One Third Banner
+* Desktop: 480 x 405 (16:9)
+* Tablet: 256 x 512
+* Smart Phone : 568 x 320  (3:2)
