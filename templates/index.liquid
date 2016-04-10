@@ -1,83 +1,134 @@
 <section class="Stage">
     <article class="Banner Banner--main">
-        <picture>
-            <source
-            media="(max-width: 480px)"
-            srcset="{{ 'dummy-main-banner-mobile.jpg' | asset_url }}">
-            <source
-            media="(max-width: 768px)"
-            srcset="{{ 'dummy-main-banner-mobile.jpg' | asset_url }}">
-            <source
-            media="(min-width: 770px)"
-            srcset="{{ 'dummy-main-banner.jpg' | asset_url }}">
-            <img class="Banner-image"
-            src="{{ 'dummy-main-banner.jpg' | asset_url }}"
-            alt="Woodlike Ocean - swimwear crafted out of ocean recovered fishing nets">
-        </picture>
-
+        {% assign mainBannerSmart = '' | asset_url %}
+        {% assign mainBannerSmart2x = '' | asset_url  %}
+        {% assign mainBannerMobile = '' | asset_url %}
+        {% assign mainBannerMobile2x = '' | asset_url %}
+        {% assign mainBanner = '' | asset_url  %}
+        {% assign mainBanner2x = '' | asset_url  %}
+        <a href="/" >
+            <picture>
+                <source
+                media="(max-width: 480px)"
+                srcset="{{ 'dummy-main-banner-mobile.jpg' | asset_url }}">
+                <source
+                media="(max-width: 768px)"
+                srcset="{{ 'dummy-main-banner-mobile.jpg' | asset_url }}">
+                <source
+                media="(min-width: 770px)"
+                srcset="{{ 'dummy-main-banner.jpg' | asset_url }}">
+                <img class="Banner-image"
+                src="{{ 'dummy-main-banner.jpg' | asset_url }}"
+                alt="Woodlike Ocean - swimwear crafted out of ocean recovered fishing nets">
+            </picture>
+        </a>
     </article>
     <article class="Banner Banner--half">
-        <picture>
-            <source
-            media="(max-width: 480px)"
-            srcset="{{ 'dummy-half-banner-two-smart.jpeg' | asset_url }}">
-            <source
-            media="(max-width: 768px)"
-            srcset="{{ 'dummy-half-banner-two-mobile.jpeg' | asset_url }}">
-            <source
-            media="(min-width: 770px)"
-            srcset="{{ 'dummy-half-banner-two.jpeg' | asset_url }}">
-            <img class="Banner-image"
-            src="{{ 'dummy-half-banner-two.jpeg' | asset_url }}"
-            alt="Woodlike Ocean - swimwear crafted out of ocean recovered fishing nets">
-        </picture>
+        {% assign halfBannerSmart =
+            'WDLK_Half-Banner1_Smartphone_1x.jpg' | asset_url %}
+        {% assign halfBannerSmart2x =
+            'WDLK_Half-Banner1_Smartphone_2x.jpg' | asset_url  %}
+        {% assign halfBannerMobile =
+            'WDLK_Half-Banner1_Tablet_1x.jpg' | asset_url %}
+        {% assign halfBannerMobile2x =
+            'WDLK_Half-Banner1_Tablet_2x.jpg' | asset_url %}
+        {% assign halfBanner =
+            'WDLK_Half-Banner1_Desktop_1x.jpg' | asset_url  %}
+        {% assign halfBanner2x =
+            'WDLK_Half-Banner1_Desktop_2x.jpg' | asset_url  %}
+        <a href="/" >
+            <picture>
+                <source
+                media="(max-width: 480px)"
+                srcset="{{halfBannerSmart}}, {{ halfBannerSmart2x }} 2x">
+                <source
+                media="(max-width: 768px)"
+                srcset="{{ halfBannerMobile }}, {{ halfBannerMobile2x }} 2x">
+                <source
+                media="(min-width: 770px)"
+                srcset="{{ halfBanner }}, {{ halfBanner2x}} 2x">
+                <img class="Banner-image"
+                src="{{ halfBanner }}"
+                alt="One woodlike ocean bikini (100 g): Eliminates 126 g of ocean waste">
+            </picture>
+        </a>
     </article>
     <article class="Banner Banner--half">
-        <picture>
-            <source
-            media="(max-width: 480px)"
-            srcset="{{ 'WDLK_Half-Banner2_568x320_Smartphone.png' | asset_url }}">
-            <source
-            media="(max-width: 768px)"
-            srcset="{{ 'WDLK_Half-Banner2_384x512_Tablet.png' | asset_url }}">
-            <source
-            media="(min-width: 770px)"
-            srcset="{{ 'WDLK_Half-Banner2_720x405_Desktop.png' | asset_url }}">
-            <img class="Banner-image"
-            src="{{ 'WDLK_Half-Banner2_720x405_Desktop.png' | asset_url }}"
-            alt="One woodlike ocean bikini (100 g): Eliminates 126 g of ocean waste">
-        </picture>
+        {% assign halfBanner2Smart =
+            'WDLK_Half-Banner2_Smartphone_1x.jpg' | asset_url %}
+        {% assign halfBanner2Smart2x =
+            'WDLK_Half-Banner2_Smartphone_2x.jpg' | asset_url  %}
+        {% assign halfBanner2Mobile =
+            'WDLK_Half-Banner2_Tablet_1x.jpg' | asset_url %}
+        {% assign halfBanner2Mobile2x =
+            'WDLK_Half-Banner2_Tablet_2x.jpg' | asset_url %}
+        {% assign halfBanner2 =
+            'WDLK_Half-Banner2_Desktop_1x.jpg' | asset_url  %}
+        {% assign halfBanner22x =
+            'WDLK_Half-Banner2_Desktop_2x.jpg' | asset_url  %}
+        <a href="/" >
+            <picture>
+                <source
+                media="(max-width: 480px)"
+                srcset="{{halfBanner2Smart}}, {{ halfBanner2Smart2x }} 2x">
+                <source
+                media="(max-width: 768px)"
+                srcset="{{ halfBanner2Mobile }}, {{ halfBanner2Mobile2x }} 2x">
+                <source
+                media="(min-width: 770px)"
+                srcset="{{ halfBanner2 }}, {{ halfBanner22x}} 2x">
+                <img class="Banner-image"
+                src="{{ halfBanner2 }}"
+                alt="One woodlike ocean bikini (100 g): Eliminates 126 g of ocean waste">
+            </picture>
+        </a>
     </article>
     <article class="Banner Banner--oneThird">
-        <picture>
-            <source
-            media="(max-width: 480px)"
-            srcset="{{ 'dummy-onethird-banner-smart.jpeg' | asset_url }}">
-            <source
-            media="(max-width: 768px)"
-            srcset="{{ 'dummy-onethird-banner-mobile.jpeg' | asset_url }}">
-            <source
-            media="(min-width: 770px)"
-            srcset="{{ 'dummy-onethird-banner.jpeg' | asset_url }}">
-            <img class="Banner-image"
-            src="{{ 'dummy-onethird-banner.jpeg' | asset_url }}"
-            alt="Woodlike Ocean - swimwear crafted out of ocean recovered fishing nets">
-        </picture>
+        {% assign oneThirdBannerSmart = '' | asset_url %}
+        {% assign oneThirdBannerSmart2x = '' | asset_url  %}
+        {% assign oneThirdBannerMobile = '' | asset_url %}
+        {% assign oneThirdBannerMobile2x = '' | asset_url %}
+        {% assign oneThirdBanner = '' | asset_url  %}
+        {% assign oneThirdBanner2x = '' | asset_url  %}
+        <a href="/" >
+            <picture>
+                <source
+                media="(max-width: 480px)"
+                srcset="{{ 'dummy-onethird-banner-smart.jpeg' | asset_url }}">
+                <source
+                media="(max-width: 768px)"
+                srcset="{{ 'dummy-onethird-banner-mobile.jpeg' | asset_url }}">
+                <source
+                media="(min-width: 770px)"
+                srcset="{{ 'dummy-onethird-banner.jpeg' | asset_url }}">
+                <img class="Banner-image"
+                src="{{ 'dummy-onethird-banner.jpeg' | asset_url }}"
+                alt="Woodlike Ocean - swimwear crafted out of ocean recovered fishing nets">
+            </picture>
+        </a>
     </article>
     <article class="Banner Banner--twoThirds">
-        <picture>
-            <source
-            media="(max-width: 480px)"
-            srcset="{{ 'WDLK_TwoThirds-Banner_568x320_Smartphone.png' | asset_url }}">
-            <source
-            media="(max-width: 768px)"
-            srcset="{{ 'WDLK_TwoThirds-Banner_512x512_Tablet.png' | asset_url }}">
-            <source
-            media="(min-width: 770px)"
-            srcset="{{ 'WDLK_TwoThirds-Banner_960x405_Desktop.png' | asset_url }}">
-            <img class="Banner-image"
-            src="{{ 'WDLK_TwoThirds-Banner_960x405_Desktop.png' | asset_url }}"
-            alt="Woodlike Ocean - swimwear crafted out of ocean recovered fishing nets">
-        </picture>
+        <a href="/" >
+            {% assign twoThirdBannerSmart = '' | asset_url %}
+            {% assign twoThirdBannerSmart2x = '' | asset_url  %}
+            {% assign twoThirdBannerMobile = '' | asset_url %}
+            {% assign twoThirdBannerMobile2x = '' | asset_url %}
+            {% assign twoThirdBanner = '' | asset_url  %}
+            {% assign twoThirdBanner2x = '' | asset_url  %}
+            <picture>
+                <source
+                media="(max-width: 480px)"
+                srcset="{{ 'WDLK_TwoThirds-Banner_568x320_Smartphone.png' | asset_url }}">
+                <source
+                media="(max-width: 768px)"
+                srcset="{{ 'WDLK_TwoThirds-Banner_512x512_Tablet.png' | asset_url }}">
+                <source
+                media="(min-width: 770px)"
+                srcset="{{ 'WDLK_TwoThirds-Banner_960x405_Desktop.png' | asset_url }}">
+                <img class="Banner-image"
+                src="{{ 'WDLK_TwoThirds-Banner_960x405_Desktop.png' | asset_url }}"
+                alt="Woodlike Ocean - swimwear crafted out of ocean recovered fishing nets">
+            </picture>
+        </a>
     </article>
 </section>

@@ -34,9 +34,7 @@
             <use xlink:href="#Shopping_cart" />
         </svg>
 
-        {{ 'layout.cart.title' | t }}
-        <span id="CartCount">{{ cart.item_count }}</span>
-        {{ 'layout.cart.items_count' | t: count: cart.item_count }}
+        <strong class="ShoppingCart-count">{{ 'layout.cart.items_count' | t: count: cart.item_count }}</strong>
         {% if cart.item_count >= 1 %}
         <strong class="ShoppingCart-count">{{ 'layout.cart.items_count' | t: count: cart.item_count }}</strong>
         {% endif %}
