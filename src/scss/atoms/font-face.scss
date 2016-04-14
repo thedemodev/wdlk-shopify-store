@@ -2,10 +2,10 @@
 @import "./node_modules/bourbon/app/assets/stylesheets/settings/_asset-pipeline";
 @import "./node_modules/bourbon/app/assets/stylesheets/css3/_font-face";
 
-@include font-face("museo-sans", "/assets/MuseoSans_300-webfont");
-@include font-face("museo-sans-bold", "/assets/MuseoSans_500-webfont");
-@include font-face("montserrat", "/assets/montserrat-light-webfont");
-@include font-face("lombok", "/assets/lombok-webfont");
+@include font-face("museo-sans", "/assets/museo300-regular-webfont");
+@include font-face("museo-sans-bold", "/assets/museosans_700-webfont");
+@include font-face("museo", "/assets/museosans_300-webfont");
+
 
 html {
     font-family: "museo-sans", sans-serif;
