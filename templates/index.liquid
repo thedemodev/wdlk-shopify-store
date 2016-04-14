@@ -12,7 +12,7 @@
             'WDLK_Main-Banner_Desktop_1x.jpg' | asset_url  %}
         {% assign mainBanner2x =
             'WDLK_Main-Banner_Desktop_2x.jpg' | asset_url  %}
-        <a href="/" >
+        <a href="{{ collections['bikinis'].url}}" >
             <picture>
                 <source
                 media="(max-width: 480px)"
@@ -28,6 +28,14 @@
                 alt="One woodlike ocean bikini (100 g): Eliminates 126 g of ocean waste">
             </picture>
         </a>
+    </article>
+    <article class="Banner Banner--teaser">
+        <strong class="Headline Headline--1">
+            {{'home_page.sections.claim_1' | t}}<br/>
+            {{'home_page.sections.claim_2' | t}}
+        </br/>
+        </strong>
+        <small>{{'home_page.sections.claim_side' | t}}</small>
     </article>
     <article class="Banner Banner--half">
         {% assign halfBannerSmart =

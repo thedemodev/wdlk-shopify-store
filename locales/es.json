@@ -219,9 +219,14 @@
   },
   "home_page": {
     "sections": {
-      "frontpage_title": "Colección de portada",
-      "featured_title": "Colecciones destacadas",
-      "news_title": "Últimas noticias"
+        "claim_1": "Nosotros confeccionamos trajes de baño de alta costura",
+        "claim_2": "con de redes de pescar recicladas",
+        "claim_side": "and other recycled materials",
+        "claim": "Nosotros confeccionamos trajes de baño de alta costura <br /> hechos c",
+        "claim_side": "y otros residuos",
+        "frontpage_title": "Colección de portada",
+        "featured_title": "Colecciones destacadas",
+        "news_title": "Últimas noticias"
     },
     "onboarding": {
       "modal_title": "Casi allí...",

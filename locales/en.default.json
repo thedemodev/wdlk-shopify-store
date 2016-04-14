@@ -219,9 +219,12 @@
   },
   "home_page": {
     "sections": {
-      "frontpage_title": "Frontpage Collection",
-      "featured_title": "Featured Collections",
-      "news_title": "Latest News"
+        "claim_1": "We craft premium swimwear",
+        "claim_2": "out of ocean recovered fishing nets",
+        "claim_side": "and other recycled materials",
+        "frontpage_title": "Frontpage Collection",
+        "featured_title": "Featured Collections",
+        "news_title": "Latest News"
     },
     "onboarding": {
       "modal_title": "Almost there...",
