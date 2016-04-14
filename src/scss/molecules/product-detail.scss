@@ -27,7 +27,7 @@
 
         position: relative;
         padding: {
-            bottom: var(--base-sapacing);
+            bottom: var(--base-spacing);
         }
         text-align: center;
         background-color: var(--background-color);
@@ -50,7 +50,7 @@
     &-headline {
         position: relative;
         margin: {
-            top: calc(var(--base-sapacing) * 2);
+            top: calc(var(--base-spacing) * 2);
         }
 
         &::after {
@@ -110,17 +110,17 @@
 
     .Copy-sm {
         display: block;
-        margin-bottom: var(--base-sapacing);
+        margin-bottom: var(--base-spacing);
         color: var(--typo-hex--tone-down);
         @include copy-text-sm();
     }
 
     .Link {
-        margin-bottom: var(--base-sapacing);
+        margin-bottom: var(--base-spacing);
     }
 
     &-copytext {
-        margin: 0 0 var(--base-sapacing);
+        margin: 0 0 var(--base-spacing);
     }
 
     &-actionRow {

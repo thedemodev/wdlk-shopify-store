@@ -20,8 +20,8 @@
         position: relative;
         display: inline-block;
         padding: {
-            right: calc(var(--base-sapacing) * 2);
-            bottom: var(--base-sapacing);
+            right: calc(var(--base-spacing) * 2);
+            bottom: var(--base-spacing);
         }
 
         &:last-child {
@@ -44,7 +44,7 @@
                     right: 50%;
                     border: solid var(--nav-border-color);
                     border-width: 1px 0px 0px 1px ;
-                    transform: translateX(calc(50% - var(--base-sapacing))) rotate(45deg);
+                    transform: translateX(calc(50% - var(--base-spacing))) rotate(45deg);
                 }
             }
         }
@@ -59,7 +59,6 @@
         width: auto;
         margin-bottom: -.5rem;
         line-height: 1.5;
-        font-family: "museo-sans-bold";
         text-transform: uppercase;
         letter-spacing: .05rem;
         overflow-x: hidden;
@@ -92,7 +91,7 @@
     &-dropdown {
         position: absolute;
         top: calc(var(--nav-height) + .2);
-        left: calc(-var(--base-sapacing) * 2);
+        left: calc(-var(--base-spacing) * 2);
         display: flex;
         justify-content: space-between;
         width: var(--navi-secondary-max-size);
@@ -112,13 +111,13 @@
         &-list {
             box-sizing: border-box;
             width: 50%;
-            padding: calc(var(--base-sapacing) * 2);
+            padding: calc(var(--base-spacing) * 2);
         }
 
         .Navigation-item {
             display: block;
             line-height: 1.5;
-            padding-bottom: -var(--base-sapacing);
+            padding-bottom: -var(--base-spacing);
         }
     }
 

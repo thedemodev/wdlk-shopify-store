@@ -2,8 +2,8 @@
 @import "./node_modules/bourbon/app/assets/stylesheets/settings/_asset-pipeline";
 @import "./node_modules/bourbon/app/assets/stylesheets/css3/_font-face";
 
-@include font-face("museo-sans", "/assets/museo300-regular-webfont");
-@include font-face("museo-sans-bold", "/assets/museosans_700-webfont");
+@include font-face("museo-sans", "/assets/museo300-regular-webfont", normal);
+@include font-face("museo-sans", "/assets/museosans_500-webfont", bold);
 @include font-face("museo", "/assets/museosans_300-webfont");
 
 

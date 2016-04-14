@@ -1,6 +1,6 @@
 //-- Font sizes tablets and desktops
 :root {
-    --h-stage-size: 13rem;
+    --h-stage-size: 8.4rem;
     --h-stage-secondary-size: 7.8rem;
     --h1-size: 4.4rem;
     --h2-size: 3.6rem;
@@ -19,8 +19,7 @@
 
 .Headline {
     margin: 2rem 0;
-    font-family: "montserrat", sans-serif;
-    font-weight: 500;
+    font-weight: normal;
     color: var(--typo-hex--secondary);
 
     &--1 {

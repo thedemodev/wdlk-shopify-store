@@ -2106,10 +2106,10 @@ input[type="radio"] {
   src: font-source-declaration("museo-sans", "/assets/museo300-regular-webfont", false, eot woff2 woff ttf svg, font-url-prefixer(false)); }
 
 @font-face {
-  font-family: "museo-sans-bold";
+  font-family: "museo-sans";
   font-style: normal;
-  font-weight: normal;
-  src: font-source-declaration("museo-sans-bold", "/assets/museosans_700-webfont", false, eot woff2 woff ttf svg, font-url-prefixer(false)); }
+  font-weight: bold;
+  src: font-source-declaration("museo-sans", "/assets/museosans_500-webfont", false, eot woff2 woff ttf svg, font-url-prefixer(false)); }
 
 @font-face {
   font-family: "museo";
@@ -2126,8 +2126,8 @@ html {
   -moz-osx-font-smoothing: grayscale; }
 
 .HeadlineBanner {
-  font-size: 130px;
-  font-size: 13rem; }
+  font-size: 84px;
+  font-size: 8.4rem; }
 
 .HeadlineBanner-secondary {
   font-size: 78px;
@@ -2136,8 +2136,7 @@ html {
 .Headline {
   margin: 20px 0;
   margin: 2rem 0;
-  font-family: "montserrat", sans-serif;
-  font-weight: 500;
+  font-weight: normal;
   color: #4d4d4f; }
   .Headline--1 {
     font-size: 44px;
@@ -2401,7 +2400,6 @@ body {
     margin-bottom: -5px;
     margin-bottom: -.5rem;
     line-height: 1.5;
-    font-family: "museo-sans-bold";
     text-transform: uppercase;
     letter-spacing: 0.5px;
     letter-spacing: .05rem;
@@ -2486,6 +2484,17 @@ body {
 .Banner {
   overflow: hidden;
   line-height: 0; }
+  .Banner-content {
+    box-sizing: border-box;
+    width: 100vw;
+    text-align: center;
+    line-height: 1.5; }
+    @media (max-width: 770px) {
+      .Banner-content .Headline--1 {
+        font-size: 3.40476rem; } }
+    @media (max-width: 480px) {
+      .Banner-content .Headline--1 {
+        font-size: 2.35714rem; } }
   .Banner--main .Banner-image {
     width: 100vw;
     height: auto;
@@ -2497,8 +2506,13 @@ body {
       height: 100vh;
       -webkit-transform: translateX(-15%);
               transform: translateX(-15%); } }
-  .Banner--teaser {
-    line-height: 1.5; }
+  .Banner--teaser .Banner-content {
+    padding: 20px;
+    padding: 2rem; }
+    @media (min-width: 770px) {
+      .Banner--teaser .Banner-content {
+        padding: 4rem;
+        max-width: 1440px; } }
   .Banner--oneThird {
     width: 33.33333vw; }
     .Banner--oneThird .Banner-image {

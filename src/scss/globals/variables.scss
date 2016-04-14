@@ -1,6 +1,6 @@
 //-- LAYOUT
 :root {
-    --base-sapacing: 2rem;
+    --base-spacing: 2rem;
     --base-margin: 1rem;
 }
 $base-spacing: 4rem;
@@ -11,4 +11,12 @@ $form-base-height: 4rem;
     --form-base-height: 4rem;
     --form-base-margin: 1rem;
     --form-base-padding: 2rem;
+}
+
+//-- Typography
+//-- Increments the size of the typography
+//-- according to the device width.
+:root {
+    --typo-tablet-factor: 1.444444444;
+    --typo-desktop-factor: 1.292307692;
 }

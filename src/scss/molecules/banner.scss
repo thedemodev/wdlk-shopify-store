@@ -2,6 +2,25 @@
     overflow: hidden;
     line-height: 0;
 
+    &-content {
+        box-sizing: border-box;
+        width: 100vw;
+        text-align: center;
+        line-height: 1.5;
+
+        @include media(medium, max-width) {
+            .Headline--1 {
+                font-size: calc(var(--h1-size) / var(--typo-desktop-factor))
+            }
+        }
+
+        @include media(small, max-width) {
+            .Headline--1 {
+                font-size: calc(var(--h1-size) / var(--typo-tablet-factor) / var(--typo-desktop-factor))
+            }
+        }
+    }
+
     &--main {
         .Banner-image {
             width: 100vw;
@@ -19,7 +38,15 @@
     }
 
     &--teaser {
-        line-height: 1.5;
+
+        .Banner-content {
+            padding: var(--base-spacing);
+
+            @include media (medium) {
+                padding: calc(var(--base-spacing) * 2);
+                max-width: var(--screen-xl);
+            }
+        }
     }
 
     &--oneThird {
