@@ -1,2 +1,2 @@
-import example from './modules/example';
-example();
+import stickyNavigation from './modules/sticky-navigation';
+stickyNavigation();
