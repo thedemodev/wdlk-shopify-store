@@ -4,18 +4,26 @@
 }
 
 .Btn {
-    height: var(--form-base-height);
+    display: inline-block;
+    height: calc(var(--form-base-height) + 1);
     padding: {
         left: calc(var(--form-base-padding) + 1.6rem);
         right: calc(var(--form-base-padding) + 1.6rem);
     }
     border: none;
     background-color: var(--btn-bg-color);
-    @include copy-text(calc(var(--md-copy-size) - .1),  var(--typo-hex--tertiary), bold);
+    line-height: calc(var(--form-base-height) + 1);
+    letter-spacing: .16rem;
     cursor: pointer;
     transition: background-color var(--btn-timing) var(--btn-timing-func);
 
+    @include copy-text(var(--md-copy-size), var(--typo-hex--tertiary), bold);
+
     &:hover {
         background-color: var(--btn-bg-color-hover);
+    }
+
+    &--secondary {
+        background-color: var(--btn-bg-color-secondary);
     }
 }

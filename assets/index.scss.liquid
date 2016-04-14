@@ -2126,8 +2126,25 @@ html {
   -moz-osx-font-smoothing: grayscale; }
 
 .HeadlineBanner {
-  font-size: 84px;
-  font-size: 8.4rem; }
+  margin-top: 16px;
+  margin-top: 1.6rem;
+  margin-bottom: 26px;
+  margin-bottom: 2.6rem;
+  font-family: "museo";
+  font-size: 64px;
+  font-size: 6.4rem;
+  font-weight: 100;
+  line-height: 1;
+  letter-spacing: 10px;
+  letter-spacing: 1rem;
+  text-transform: uppercase; }
+  @media (min-width: 770px) {
+    .HeadlineBanner {
+      font-size: 8.4rem;
+      letter-spacing: 1.6rem; } }
+  @media (min-width: 1024px) {
+    .HeadlineBanner {
+      font-size: 11.2rem; } }
 
 .HeadlineBanner-secondary {
   font-size: 78px;
@@ -2182,23 +2199,30 @@ body {
       fill: currentcolor; }
 
 .Btn {
-  height: 40px;
-  height: 4rem;
+  display: inline-block;
+  height: 50px;
+  height: 5rem;
   padding-left: 36px;
   padding-left: 3.6rem;
   padding-right: 36px;
   padding-right: 3.6rem;
   border: none;
   background-color: #cc9966;
-  font-size: 13px;
-  font-size: 1.3rem;
-  color: #ffffff;
-  font-weight: bold;
+  line-height: 50px;
+  line-height: 5rem;
+  letter-spacing: 1.6px;
+  letter-spacing: .16rem;
   cursor: pointer;
   -webkit-transition: background-color .35s cubic-bezier(1, 0, 0, 1);
-  transition: background-color .35s cubic-bezier(1, 0, 0, 1); }
+  transition: background-color .35s cubic-bezier(1, 0, 0, 1);
+  font-size: 14px;
+  font-size: 1.4rem;
+  color: #ffffff;
+  font-weight: bold; }
   .Btn:hover {
     background-color: #333333; }
+  .Btn--secondary {
+    background-color: #FF6C54; }
 
 .Carousel-trigger:checked:nth-of-type(1) ~ .Indicators .Indicators-item:nth-of-type(1) {
   background-color: #cc9966;
@@ -2482,33 +2506,57 @@ body {
       max-height: 280px; }
 
 .Banner {
+  position: relative;
   overflow: hidden;
   line-height: 0; }
   .Banner-content {
     box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
     width: 100vw;
     text-align: center;
-    line-height: 1.5; }
+    line-height: 1.5;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%); }
     @media (max-width: 770px) {
       .Banner-content .Headline--1 {
         font-size: 3.40476rem; } }
     @media (max-width: 480px) {
       .Banner-content .Headline--1 {
         font-size: 2.35714rem; } }
-  .Banner--main .Banner-image {
-    width: 100vw;
-    height: auto;
+  .Banner-introText {
+    font-size: 14px;
+    font-size: 1.4rem;
+    letter-spacing: 3px;
+    letter-spacing: .3rem; }
+    @media (min-width: 770px) {
+      .Banner-introText {
+        font-size: 2.002rem; } }
+  .Banner--main {
+    text-transform: uppercase; }
+    .Banner--main .Banner-image {
+      width: 100vw;
+      height: auto;
+      -webkit-transform: none;
+              transform: none; }
+    @media (max-width: 480px) {
+      .Banner--main .Banner-image {
+        width: auto;
+        height: 100vh;
+        -webkit-transform: translateX(-15%);
+                transform: translateX(-15%); } }
+    .Banner--main .Banner-content {
+      line-height: 1;
+      -webkit-transform: translateX(-50%) translateY(-35%);
+              transform: translateX(-50%) translateY(-35%); }
+  .Banner--teaser .Banner-content {
+    position: static;
+    padding: 20px;
+    padding: 2rem;
     -webkit-transform: none;
             transform: none; }
-  @media (max-width: 480px) {
-    .Banner--main .Banner-image {
-      width: auto;
-      height: 100vh;
-      -webkit-transform: translateX(-15%);
-              transform: translateX(-15%); } }
-  .Banner--teaser .Banner-content {
-    padding: 20px;
-    padding: 2rem; }
     @media (min-width: 770px) {
       .Banner--teaser .Banner-content {
         padding: 4rem;

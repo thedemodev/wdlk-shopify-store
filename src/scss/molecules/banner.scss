@@ -1,13 +1,25 @@
+:root {
+    --banner-intro-text-size: 1.4rem;
+}
+
 .Banner {
+    position: relative;
     overflow: hidden;
     line-height: 0;
 
     &-content {
         box-sizing: border-box;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 1;
         width: 100vw;
         text-align: center;
         line-height: 1.5;
+        transform: translateX(-50%) translateY(-50%);
 
+        //-- Calculation based on the global headlines
+        //-- that is why the calculation happens backwards
         @include media(medium, max-width) {
             .Headline--1 {
                 font-size: calc(var(--h1-size) / var(--typo-desktop-factor))
@@ -21,7 +33,18 @@
         }
     }
 
+    &-introText {
+        font-size: var(--banner-intro-text-size);
+        letter-spacing: .3rem;
+
+        @include media(medium) {
+            font-size: calc(var(--banner-intro-text-size) * 1.43);
+        }
+    }
+
     &--main {
+        text-transform: uppercase;
+
         .Banner-image {
             width: 100vw;
             height: auto;
@@ -35,12 +58,18 @@
                 transform: translateX(-15%);
             }
         }
+
+        .Banner-content {
+            line-height: 1;
+            transform: translateX(-50%) translateY(-35%);
+        }
     }
 
     &--teaser {
-
         .Banner-content {
+            position: static;
             padding: var(--base-spacing);
+            transform: none;
 
             @include media (medium) {
                 padding: calc(var(--base-spacing) * 2);

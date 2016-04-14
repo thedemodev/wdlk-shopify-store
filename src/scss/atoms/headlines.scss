@@ -1,6 +1,7 @@
 //-- Font sizes tablets and desktops
 :root {
-    --h-stage-size: 8.4rem;
+    --h-stage-size: 11.2rem;
+    --h-stage-base-spacing: 1.6rem;
     --h-stage-secondary-size: 7.8rem;
     --h1-size: 4.4rem;
     --h2-size: 3.6rem;
@@ -10,7 +11,26 @@
 }
 
 .HeadlineBanner {
-    font-size: var(--h-stage-size);
+    margin: {
+        top: var(--h-stage-base-spacing);
+        bottom: calc(var(--h-stage-base-spacing) + 1);
+    }
+    font-family: "museo";
+    font-size: calc(var(--h-stage-size) / 1.75);
+    font-weight: 100;
+    line-height: 1;
+    letter-spacing: 1rem;
+    text-transform: uppercase;
+
+
+    @include media(medium) {
+        font-size: calc(var(--h-stage-size) / 1.333333333);
+        letter-spacing: 1.6rem;
+    }
+
+    @include media(large) {
+        font-size: var(--h-stage-size);
+    }
 }
 
 .HeadlineBanner-secondary {

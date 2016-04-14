@@ -219,6 +219,10 @@
   },
   "home_page": {
     "sections": {
+        "main_small": "Season 2016",
+        "main_headline": "Swim with us",
+        "main_button_copy": "Shop the collection",
+        "main_scroll_tip": "Scroll down",
         "claim_1": "We craft premium swimwear",
         "claim_2": "out of ocean recovered fishing nets",
         "claim_side": "and other recycled materials",
