@@ -39,3 +39,4 @@ export default function timber () {
         console.log(log.info('Timber Concat:'), 'concatenation was successfull');
     });
 };
+timber();
