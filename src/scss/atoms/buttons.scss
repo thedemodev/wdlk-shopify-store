@@ -17,9 +17,14 @@
     cursor: pointer;
     transition: background-color var(--btn-timing) var(--btn-timing-func);
 
-    @include copy-text(var(--md-copy-size), var(--typo-hex--tertiary), bold);
+    @include copy-text(
+        var(--md-copy-size),
+        var(--typo-hex--tertiary),
+        bold
+    );
 
     &:hover {
+        color: var(--typo-hex--tertiary);
         background-color: var(--btn-bg-color-hover);
     }
 

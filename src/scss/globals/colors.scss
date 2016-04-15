@@ -16,6 +16,7 @@
     --ocean-blue-hex: #d3dde6;
     --beige-light-hex: #f7f7f7;
     --coral: #FF6C54;
+    --light-orange: #FFCA54;
 }
 
 //-- Base rgba colors
@@ -59,8 +60,12 @@
     --indicator-active-color: var(--sand-hex);
 }
 
-
 //-- Images
 :root {
     --thumbnail-border-color: var(--sand-hex);
+}
+
+//-- Icons
+:root {
+    --icon-primary-color: var(--white-hex);
 }

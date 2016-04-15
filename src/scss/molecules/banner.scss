@@ -36,9 +36,38 @@
     &-introText {
         font-size: var(--banner-intro-text-size);
         letter-spacing: .3rem;
+        background: -webkit-linear-gradient(to left, var(--coral), var(--light-orange));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
 
         @include media(medium) {
             font-size: calc(var(--banner-intro-text-size) * 1.43);
+        }
+    }
+
+    &-lead {
+        position: absolute;
+        right: 50%;
+        bottom: 2.6rem;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        cursor: pointer;
+        transform: translateX(50%);
+
+        @include copy-text(
+            var(--small-copy-size), var(--typo-hex--tertiary),
+            bold
+        );
+
+        .Icon {
+            display: block;
+            width: 16px;
+            height: 16px;
+            margin-bottom: 8px;
+            fill: var(--icon-primary-color);
         }
     }
 

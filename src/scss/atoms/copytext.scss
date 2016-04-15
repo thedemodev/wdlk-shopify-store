@@ -2,6 +2,7 @@
     --copy-size: 1.6rem;
     --md-copy-size: 1.4rem;
     --small-copy-size: 1.2rem;
+    --xs-copy-size: 1rem;
 }
 
 @mixin copy-text ($color: var(--typo-hex)) {

@@ -2137,7 +2137,11 @@ html {
   line-height: 1;
   letter-spacing: 10px;
   letter-spacing: 1rem;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  background: -webkit-linear-gradient(right, #FF6C54, #FFCA54);
+  background: linear-gradient(to left, #FF6C54, #FFCA54);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; }
   @media (min-width: 770px) {
     .HeadlineBanner {
       font-size: 8.4rem;
@@ -2220,6 +2224,7 @@ body {
   color: #ffffff;
   font-weight: bold; }
   .Btn:hover {
+    color: #ffffff;
     background-color: #333333; }
   .Btn--secondary {
     background-color: #FF6C54; }
@@ -2530,10 +2535,46 @@ body {
     font-size: 14px;
     font-size: 1.4rem;
     letter-spacing: 3px;
-    letter-spacing: .3rem; }
+    letter-spacing: .3rem;
+    background: -webkit-linear-gradient(to left, #FF6C54, #FFCA54);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; }
     @media (min-width: 770px) {
       .Banner-introText {
         font-size: 2.002rem; } }
+  .Banner-lead {
+    position: absolute;
+    right: 50%;
+    bottom: 26px;
+    bottom: 2.6rem;
+    z-index: 1;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            flex-direction: column;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            -webkit-box-align: center;
+            align-items: center;
+    text-align: center;
+    cursor: pointer;
+    -webkit-transform: translateX(50%);
+            transform: translateX(50%);
+    font-size: 12px;
+    font-size: 1.2rem;
+    color: #ffffff;
+    font-weight: bold; }
+    .Banner-lead .Icon {
+      display: block;
+      width: 16px;
+      height: 16px;
+      margin-bottom: 8px;
+      fill: #ffffff; }
   .Banner--main {
     text-transform: uppercase; }
     .Banner--main .Banner-image {

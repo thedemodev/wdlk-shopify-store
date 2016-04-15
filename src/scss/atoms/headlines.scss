@@ -21,6 +21,9 @@
     line-height: 1;
     letter-spacing: 1rem;
     text-transform: uppercase;
+    background: linear-gradient(to left, var(--coral), var(--light-orange));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 
 
     @include media(medium) {
