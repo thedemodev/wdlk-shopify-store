@@ -17,9 +17,27 @@
             <small class="Banner-introText">
                 {{'home_page.sections.main_small' | t}}
             </small>
-            <h1 class="HeadlineBanner Banner-mainHeadline">
-                {{'home_page.sections.main_headline' | t}}
-            </h1>
+            <svg class="HeadlineBanner Banner-mainHeadline">
+                <title>{{'home_page.sections.main_headline' | t}}</title>
+                <desc>Woodlike Ocean sustainable swimwear hashtag</desc>
+                <defs>
+                    <linearGradient id="Gradient" x1="0" x2="1" y1="0" y2="0">
+                        <stop offset="0%" stop-color="#FFCA54"/>
+                        <stop offset="100%" stop-color="#FF6C54"/>
+                    </linearGradient>
+                </defs>
+                <text class="HeadlineBanner-text" y="50%" x="50%" fill="url(#Gradient)" dy=".2em">
+                    <tspan class="HeadlineBanner-tspan">
+                        {{'home_page.sections.main_headline_svg_1' | t}}
+                    </tspan>
+                    <tspan class="HeadlineBanner-tspan">
+                        {{'home_page.sections.main_headline_svg_2' | t}}
+                    </tspan>
+                </text>
+                <text class="HeadlineBanner-text" y="100%" x="50%" fill="url(#Gradient)">
+                    {{'home_page.sections.main_headline_svg_2' | t}}
+                </text>
+            </svg>
             <a class="Btn Btn--secondary Banner-btn" href="{{ collections['bikinis'].url}}">
                 {{'home_page.sections.main_button_copy' | t}}
             </a>

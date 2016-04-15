@@ -2126,8 +2126,10 @@ html {
   -moz-osx-font-smoothing: grayscale; }
 
 .HeadlineBanner {
-  margin-top: 16px;
-  margin-top: 1.6rem;
+  display: block;
+  width: 100vw;
+  height: 138px;
+  height: 13.8rem;
   margin-bottom: 26px;
   margin-bottom: 2.6rem;
   font-family: "museo";
@@ -2138,16 +2140,28 @@ html {
   letter-spacing: 10px;
   letter-spacing: 1rem;
   text-transform: uppercase;
-  background: -webkit-linear-gradient(right, #FF6C54, #FFCA54);
-  background: linear-gradient(to left, #FF6C54, #FFCA54);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; }
+  pointer-events: none; }
+  .HeadlineBanner-text {
+    text-anchor: middle;
+    pointer-events: auto;
+    dominant-baseline: text-after-edge; }
+  .HeadlineBanner-tspan:last-of-type {
+    display: none; }
   @media (min-width: 770px) {
     .HeadlineBanner {
+      height: 8.4rem;
+      margin-top: 1.6rem;
       font-size: 8.4rem;
-      letter-spacing: 1.6rem; } }
+      letter-spacing: 1.6rem; }
+      .HeadlineBanner-text {
+        dominant-baseline: initial; }
+        .HeadlineBanner-text:last-of-type {
+          display: none; }
+      .HeadlineBanner-tspan:last-of-type {
+        display: block; } }
   @media (min-width: 1024px) {
     .HeadlineBanner {
+      height: 11.2rem;
       font-size: 11.2rem; } }
 
 .HeadlineBanner-secondary {
@@ -2535,10 +2549,7 @@ body {
     font-size: 14px;
     font-size: 1.4rem;
     letter-spacing: 3px;
-    letter-spacing: .3rem;
-    background: -webkit-linear-gradient(to left, #FF6C54, #FFCA54);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; }
+    letter-spacing: .3rem; }
     @media (min-width: 770px) {
       .Banner-introText {
         font-size: 2.002rem; } }

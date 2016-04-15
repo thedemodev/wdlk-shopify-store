@@ -36,9 +36,6 @@
     &-introText {
         font-size: var(--banner-intro-text-size);
         letter-spacing: .3rem;
-        background: -webkit-linear-gradient(to left, var(--coral), var(--light-orange));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
 
         @include media(medium) {
             font-size: calc(var(--banner-intro-text-size) * 1.43);
