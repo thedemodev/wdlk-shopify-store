@@ -36,6 +36,7 @@
     &-introText {
         font-size: var(--banner-intro-text-size);
         letter-spacing: .3rem;
+        color: var(--coral);
 
         @include media(medium) {
             font-size: calc(var(--banner-intro-text-size) * 1.43);

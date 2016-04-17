@@ -2141,6 +2141,8 @@ html {
   letter-spacing: 1rem;
   text-transform: uppercase;
   pointer-events: none; }
+  .HeadlineBanner:not(:root) {
+    overflow: visible; }
   .HeadlineBanner-text {
     text-anchor: middle;
     pointer-events: auto; }
@@ -2153,7 +2155,7 @@ html {
       font-size: 8.4rem;
       letter-spacing: 1.6rem; }
       .HeadlineBanner-text {
-        dominant-baseline: initial; }
+        dominant-baseline: middle; }
         .HeadlineBanner-text:last-of-type {
           display: none; }
       .HeadlineBanner-tspan:last-of-type {
@@ -2548,7 +2550,8 @@ body {
     font-size: 14px;
     font-size: 1.4rem;
     letter-spacing: 3px;
-    letter-spacing: .3rem; }
+    letter-spacing: .3rem;
+    color: #FF6C54; }
     @media (min-width: 770px) {
       .Banner-introText {
         font-size: 2.002rem; } }

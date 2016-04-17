@@ -25,6 +25,10 @@
     text-transform: uppercase;
     pointer-events: none;
 
+    &:not(:root) {
+        overflow: visible;
+    }
+
     &-text {
         text-anchor: middle;
         pointer-events: auto;
@@ -43,7 +47,7 @@
         letter-spacing: 1.6rem;
 
         &-text {
-            dominant-baseline: initial;
+            dominant-baseline: middle;
 
             &:last-of-type {
                 display: none;
