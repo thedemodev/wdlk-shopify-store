@@ -4,7 +4,7 @@
     --h-stage-base-spacing: 1.6rem;
     --h-stage-secondary-size: 7.8rem;
     --h1-size: 4.4rem;
-    --h2-size: 3.6rem;
+    --h2-size: 3.2rem;
     --h3-size: 2.6rem;
     --h4-size: 2.2rem;
     --h5-size: 1.8rem;
@@ -72,6 +72,7 @@
 }
 
 .Headline {
+    display: block;
     margin: 2rem 0;
     font-weight: normal;
     color: var(--typo-hex--secondary);
@@ -82,6 +83,7 @@
 
     &--2 {
         font-size: var(--h2-size);
+        letter-spacing: .2rem;
     }
 
     &--3 {

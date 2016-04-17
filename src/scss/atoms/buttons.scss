@@ -5,14 +5,14 @@
 
 .Btn {
     display: inline-block;
-    height: calc(var(--form-base-height) + 1);
+    height: var(--form-base-height);
     padding: {
         left: calc(var(--form-base-padding) + 1.6rem);
         right: calc(var(--form-base-padding) + 1.6rem);
     }
     border: none;
     background-color: var(--btn-bg-color);
-    line-height: calc(var(--form-base-height) + 1);
+    line-height: var(--form-base-height);
     letter-spacing: .16rem;
     cursor: pointer;
     transition: background-color var(--btn-timing) var(--btn-timing-func);

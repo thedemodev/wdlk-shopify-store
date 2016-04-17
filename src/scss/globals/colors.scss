@@ -1,6 +1,8 @@
 //-- Base HEX Colors
 :root {
     --white-hex: #ffffff;
+    --blue-gray: #9FBCD0;
+    --blue-gray-light: #8E959A;
     --mid-gray-hex: #c8c8c8;
     --mid-dark-gray-hex: #bfbfbf;
     --light-gray-hex: #999999;
@@ -36,6 +38,7 @@
     --typo-hex--highlight: var(--sand-hex);
     --typo-hex--tone-down: var(--light-gray-hex);
     --typo-hex--lightest: var(--lighter-gray-hex);
+    --typo-hex--banner-secondary: var(--blue-gray-light);
 }
 
 //-- Background Colors
@@ -68,4 +71,5 @@
 //-- Icons
 :root {
     --icon-primary-color: var(--white-hex);
+    --banner-teaser-logo-icon: var(--blue-gray);
 }

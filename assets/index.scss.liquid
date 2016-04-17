@@ -2170,6 +2170,7 @@ html {
   font-size: 7.8rem; }
 
 .Headline {
+  display: block;
   margin: 20px 0;
   margin: 2rem 0;
   font-weight: normal;
@@ -2178,8 +2179,10 @@ html {
     font-size: 44px;
     font-size: 4.4rem; }
   .Headline--2 {
-    font-size: 36px;
-    font-size: 3.6rem; }
+    font-size: 32px;
+    font-size: 3.2rem;
+    letter-spacing: 2px;
+    letter-spacing: .2rem; }
   .Headline--3 {
     font-size: 26px;
     font-size: 2.6rem; }
@@ -2219,16 +2222,16 @@ body {
 
 .Btn {
   display: inline-block;
-  height: 50px;
-  height: 5rem;
+  height: 40px;
+  height: 4rem;
   padding-left: 36px;
   padding-left: 3.6rem;
   padding-right: 36px;
   padding-right: 3.6rem;
   border: none;
   background-color: #cc9966;
-  line-height: 50px;
-  line-height: 5rem;
+  line-height: 40px;
+  line-height: 4rem;
   letter-spacing: 1.6px;
   letter-spacing: .16rem;
   cursor: pointer;
@@ -2529,6 +2532,8 @@ body {
   position: relative;
   overflow: hidden;
   line-height: 0; }
+  .Banner .Headline {
+    font-family: "museo"; }
   .Banner-content {
     box-sizing: border-box;
     position: absolute;
@@ -2547,14 +2552,13 @@ body {
       .Banner-content .Headline--1 {
         font-size: 2.35714rem; } }
   .Banner-introText {
+    display: block;
     font-size: 14px;
     font-size: 1.4rem;
+    line-height: 1.5;
     letter-spacing: 3px;
     letter-spacing: .3rem;
-    color: #FF6C54; }
-    @media (min-width: 770px) {
-      .Banner-introText {
-        font-size: 2.002rem; } }
+    text-transform: uppercase; }
   .Banner-lead {
     position: absolute;
     right: 50%;
@@ -2590,6 +2594,11 @@ body {
       fill: #ffffff; }
   .Banner--main {
     text-transform: uppercase; }
+    .Banner--main .Banner-introText {
+      color: #FF6C54; }
+      @media (min-width: 770px) {
+        .Banner--main .Banner-introText {
+          font-size: 2.002rem; } }
     .Banner--main .Banner-image {
       width: 100vw;
       height: auto;
@@ -2606,16 +2615,42 @@ body {
       -webkit-transform: translateX(-50%) translateY(-35%);
               transform: translateX(-50%) translateY(-35%); }
   .Banner--teaser {
-    padding: 60px 20px 90px;
-    padding: 6rem 2rem 9rem; }
+    box-sizing: border-box;
+    width: 100vw; }
     .Banner--teaser .Banner-content {
       position: static;
-      font-family: "museo";
+      padding: 60px 0 90px;
+      padding: 6rem 0 9rem;
+      margin: 0 auto;
+      color: #8E959A;
       -webkit-transform: none;
               transform: none; }
       @media (min-width: 770px) {
         .Banner--teaser .Banner-content {
-          max-width: 1440px; } }
+          max-width: 70rem; } }
+    .Banner--teaser .Icon--logo {
+      display: block;
+      width: 30px;
+      width: 3rem;
+      max-height: 30px;
+      max-height: 3rem;
+      margin: 0 auto 20px;
+      margin: 0 auto 2rem;
+      fill: #9FBCD0; }
+    .Banner--teaser .Banner-introText {
+      margin-bottom: 20px;
+      margin-bottom: 2rem; }
+      @media (max-width: 480px) {
+        .Banner--teaser .Banner-introText {
+          font-size: 1.2rem; } }
+    .Banner--teaser .Headline {
+      color: #8E959A;
+      line-height: 1.3;
+      font-weight: 100;
+      text-transform: uppercase; }
+      @media (max-width: 480px) {
+        .Banner--teaser .Headline {
+          font-size: 2.21538rem; } }
   .Banner--oneThird {
     width: 33.33333vw; }
     .Banner--oneThird .Banner-image {
