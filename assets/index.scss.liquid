@@ -2319,7 +2319,61 @@ body {
       background-color: #cc9966; }
 
 .BurgerBtn {
+  width: 24px;
+  width: 2.4rem;
+  padding-top: 15px;
+  padding-top: 1.5rem;
+  padding-bottom: 15px;
+  padding-bottom: 1.5rem;
   cursor: pointer; }
+  .BurgerBtn-line {
+    position: absolute;
+    width: inherit;
+    height: 2px;
+    height: .2rem;
+    opacity: 1;
+    background-color: #4d4d4f;
+    -webkit-transition: opacity .3s 2s ease;
+    transition: opacity .3s 2s ease; }
+    .BurgerBtn-line:before, .BurgerBtn-line:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: inherit;
+      height: inherit;
+      background-color: inherit;
+      -webkit-transform-origin: 50% 50%;
+              transform-origin: 50% 50%;
+      -webkit-transform: rotate3d(0, 0, 1, 0);
+              transform: rotate3d(0, 0, 1, 0);
+      transition: top .3s .6s ease, -webkit-transform .3s ease;
+      -webkit-transition: top .3s .6s ease, -webkit-transform .3s ease;
+      transition: top .3s .6s ease, transform .3s ease;
+      transition: top .3s .6s ease, transform .3s ease, -webkit-transform .3s ease; }
+    .BurgerBtn-line:before {
+      top: -8px;
+      top: -0.8rem; }
+    .BurgerBtn-line:after {
+      top: 8px;
+      top: 0.8rem; }
+
+.Navigation-state:checked ~ .BurgerBtn .BurgerBtn-line {
+  opacity: 0;
+  -webkit-transition: opacity .3s 0s ease;
+  transition: opacity .3s 0s ease; }
+  .Navigation-state:checked ~ .BurgerBtn .BurgerBtn-line:before, .Navigation-state:checked ~ .BurgerBtn .BurgerBtn-line:after {
+    top: 0;
+    transition: top .3s ease, -webkit-transform .3s .5s ease;
+    -webkit-transition: top .3s ease, -webkit-transform .3s .5s ease;
+    transition: top .3s ease, transform .3s .5s ease;
+    transition: top .3s ease, transform .3s .5s ease, -webkit-transform .3s .5s ease; }
+  .Navigation-state:checked ~ .BurgerBtn .BurgerBtn-line:before {
+    -webkit-transform: rotate3d(0, 0, 1, 45deg);
+            transform: rotate3d(0, 0, 1, 45deg); }
+  .Navigation-state:checked ~ .BurgerBtn .BurgerBtn-line:after {
+    top: 0;
+    -webkit-transform: rotate3d(0, 0, 1, -45deg);
+            transform: rotate3d(0, 0, 1, -45deg); }
 
 .Select {
   display: block;
@@ -3255,7 +3309,8 @@ body {
 
 .Page {
   margin-top: 80px;
-  margin-top: 8rem; }
+  margin-top: 8rem;
+  overflow: hidden; }
   @media (min-width: 770px) {
     .Page {
       margin-top: 0; } }
