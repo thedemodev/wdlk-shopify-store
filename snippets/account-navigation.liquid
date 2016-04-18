@@ -29,16 +29,14 @@
         - #cartCost updates the total cost of the cart
         - Documentation:  http://shopify.com/timber#ajax-cart
     {% endcomment %}
-    <a href="/cart" class="ShoppingCart js-drawer-open-right {% if cart.item_count >= 1 %}is-filled{% endif %}" aria-controls="CartDrawer" aria-expanded="false">
-        <svg class="ShoppingCart-icon">
+    <a href="/cart" class="ShoppingCart js_cartCountComponent js-drawer-open-right {% if cart.item_count > 0 %} is-filled {% endif %}" aria-controls="CartDrawer" aria-expanded="false">
+        <svg class="ShoppingCart-icon ">
             <use xlink:href="#Shopping_cart" />
+            <text data-cart="counter">
+                 {% if cart.item_count > 0 %}
+                    {{ cart.item_count }}
+                 {% endif %}
+             </text>
         </svg>
-
-
-        <span id="CartCount">{{ cart.item_count }}</span>
-        {{ 'layout.cart.items_count' | t: count: cart.item_count }}
-        {% if cart.item_count >= 1 %}
-        <strong class="ShoppingCart-count">{{ 'layout.cart.items_count' | t: count: cart.item_count }}</strong>
-        {% endif %}
     </a>
 </div>

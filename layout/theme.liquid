@@ -147,10 +147,8 @@
     <div id="CartContainer"></div>
   </div>
   <div id="PageContainer" class="is-moved-by-drawer">
-      {% comment %}
-        Header
-      {% endcomment %}
-      {% include 'header' %}
+    {% comment %} Header {% endcomment %}
+    {% include 'header' %}
 
     {% comment %} MAIN LAYOUT CONTENT {% endcomment %}
     {{ content_for_layout }}
@@ -247,7 +245,6 @@
           formSelector: '#AddToCartForm',
           cartContainer: '#CartContainer',
           addToCartSelector: '#AddToCart',
-          cartCountSelector: '#CartCount',
           cartCostSelector: '#CartCost',
           moneyFormat: {{ shop.money_format | json }}
         });
