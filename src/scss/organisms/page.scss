@@ -1,0 +1,7 @@
+.Page {
+    margin-top: var(--nav-height);
+
+    @include media (medium) {
+        margin-top: 0;
+    }
+}

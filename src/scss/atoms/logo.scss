@@ -9,7 +9,9 @@
 
     &-img {
         width: var(--logo-width);
-        height: var(--logo-height);
+        height: calc(var(--logo-height) - 6);
         fill: var(--logo-color);
+        //-- For tablet styles
+        //height: var(--logo-height);
     }
 }
