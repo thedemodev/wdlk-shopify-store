@@ -2086,18 +2086,27 @@ input[type="radio"] {
     fill: #FF6C54; }
 
 .ShoppingCart {
-  display: inline-block; }
+  display: inline-block;
+  padding-left: 10px;
+  padding-left: 1rem; }
   .ShoppingCart-icon {
     width: 32px;
     height: 30px;
-    margin-bottom: -3px;
-    fill: #ffffff;
+    fill-opacity: 0;
     stroke: currentColor;
     stroke-width: 2px;
-    color: #222222;
-    vertical-align: text-bottom; }
+    color: #222222; }
+    .is-filled .ShoppingCart-icon {
+      fill: #FF6C54;
+      fill-opacity: 1;
+      color: #FF6C54; }
   .ShoppingCart-count {
-    font-weight: normal; }
+    font-size: 14px;
+    font-size: 1.4rem;
+    font-weight: 100;
+    stroke-width: 1px;
+    color: #ffffff;
+    text-anchor: middle; }
 
 @font-face {
   font-family: "museo-sans";
@@ -3072,16 +3081,27 @@ body {
     width: auto; }
 
 .AccountNavigation {
-  height: 80px;
-  height: 8rem;
-  line-height: 80px;
-  line-height: 8rem; }
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          -webkit-box-orient: horizontal;
+          -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          -webkit-box-align: center;
+          align-items: center;
+  height: 100%;
+  font-size: 0;
+  line-height: 0;
+  vertical-align: middle; }
   .AccountNavigation-list {
     display: inline-block;
-    margin-right: 20px;
-    margin-right: 2rem;
-    font-size: 0;
-    line-height: 0; }
+    margin-right: 10px;
+    margin-right: 1rem; }
   .AccountNavigation-item {
     display: inline-block;
     color: #999999;

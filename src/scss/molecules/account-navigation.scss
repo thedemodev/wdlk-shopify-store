@@ -1,12 +1,15 @@
 .AccountNavigation {
-    height: var(--nav-height);
-    line-height: var(--nav-height);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    font-size: 0;
+    line-height: 0;
+    vertical-align: middle;
 
     &-list {
         display: inline-block;
-        margin-right: var(--base-spacing);
-        font-size: 0;
-        line-height: 0;
+        margin-right: calc(var(--base-spacing) / 2);
     }
 
     &-item {
