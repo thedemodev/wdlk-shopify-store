@@ -18,8 +18,14 @@
     background-color: var(--navi-mobile-bg-color);
     transition: opacity .5s ease;
 
-    //-- For tablet styles
-    //height: 100%;
+    @include media (medium) {
+        position: static;
+        width: auto;
+        height: 100%;
+        opacity: 1;
+        text-align: left;
+        background-color: transparent;
+    }
 
     //-- Mobile Navigation Trigger
     &-state {
@@ -44,45 +50,53 @@
         transform: scale(.85);
         transition: transform .3s ease;
 
-        //-- For tablet styles
-        //line-height: var(--nav-height);
+        @include media (medium) {
+            margin-top: 0;
+            line-height: var(--nav-height);
+            transform: none;
+        }
     }
 
     &-item {
         position: relative;
-        //-- For tablet styles
-        //display: inline-block;
-        //padding: {
-        //    right: calc(var(--base-spacing) * 2);
-        //    bottom: var(--base-spacing);
-        //}
 
-        //-- For tablet styles
-        //&:last-child {
-        //    padding-right: 0;
-        //}
+        @include media (medium) {
+            display: inline-block;
+            padding: {
+                right: calc(var(--base-spacing) * 2);
+                bottom: var(--base-spacing);
+            }
 
-        //&:hover {
-        //    .Navigation-dropdown {
-        //        opacity: 1;
-        //        visibility: visible;
-        //        pointer-events: initial;
-        //    }
-        //}
+            &:last-child {
+                padding-right: 0;
+            }
 
-        //&.has-dropdown{
-        //    &:hover {
-        //        @include create-pointer(var(--navi-pointer-size), var(--navi-bg-color)) {
-        //            position: absolute;
-        //            bottom: calc(var(--navi-pointer-size) - .2rem);
-        //            right: 50%;
-        //            border: solid var(--nav-border-color);
-        //            border-width: 1px 0px 0px 1px ;
-        //            transform: translateX(calc(50% - var(--base-spacing))) rotate(45deg);
-        //        }
-        //    }
-        //}
+            &:hover {
+                .Navigation-dropdown {
+                    opacity: 1;
+                    visibility: visible;
+                    pointer-events: initial;
+                }
+            }
 
+            &.has-dropdown{
+                &:hover {
+                    @include create-pointer(var(--navi-pointer-size), var(--navi-bg-color)) {
+                        position: absolute;
+                        bottom: calc(var(--navi-pointer-size) - .2rem);
+                        right: 50%;
+                        border: solid var(--nav-border-color);
+                        border-width: 1px 0px 0px 1px ;
+                        transform: translateX(calc(50% - var(--base-spacing))) rotate(45deg);
+                    }
+                }
+            }
+
+            &--mobile {
+                display: none;
+            }
+
+        }
     }
 
     &-link {
@@ -97,10 +111,11 @@
         letter-spacing: .05rem;
         overflow-x: hidden;
 
-        //-- For tablet styles
-        //display: inline-block;
-        //margin-bottom: -.5rem;
-        //@include copy-text(var(--md-copy-size));
+        @include media (medium) {
+            display: inline-block;
+            margin-bottom: -.5rem;
+            @include copy-text(var(--md-copy-size));
+        }
 
         &::after {
             content: "";

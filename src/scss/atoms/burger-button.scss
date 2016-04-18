@@ -7,12 +7,17 @@
 }
 
 .BurgerBtn {
+    display: block;
     width: var(--burger-size-width);
     padding: {
         top: calc(var(--burger-size-height) - (var(--burger-line-height) / 2) );
         bottom: calc(var(--burger-size-height) - (var(--burger-line-height) / 2) );
     }
     cursor: pointer;
+
+    @include media (medium) {
+        display: none;
+    }
 
     &-line {
         position: absolute;

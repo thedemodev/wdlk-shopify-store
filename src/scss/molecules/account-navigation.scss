@@ -10,8 +10,10 @@
     &-list {
         display: none;
         margin-right: calc(var(--base-spacing) / 2);
-        //-- For tablet styles
-        //display: inline-block;
+
+        @include media (medium) {
+            display: inline-block;
+        }
     }
 
     &-item {

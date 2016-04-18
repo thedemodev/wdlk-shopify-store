@@ -2319,6 +2319,7 @@ body {
       background-color: #cc9966; }
 
 .BurgerBtn {
+  display: block;
   width: 24px;
   width: 2.4rem;
   padding-top: 15px;
@@ -2326,6 +2327,9 @@ body {
   padding-bottom: 15px;
   padding-bottom: 1.5rem;
   cursor: pointer; }
+  @media (min-width: 770px) {
+    .BurgerBtn {
+      display: none; } }
   .BurgerBtn-line {
     position: absolute;
     width: inherit;
@@ -2474,6 +2478,14 @@ body {
   background-color: rgba(250, 250, 250, 0.9);
   -webkit-transition: opacity .5s ease;
   transition: opacity .5s ease; }
+  @media (min-width: 770px) {
+    .Navigation {
+      position: static;
+      width: auto;
+      height: 100%;
+      opacity: 1;
+      text-align: left;
+      background-color: transparent; } }
   .Navigation-state {
     display: none; }
     .Navigation-state:checked ~ .Navigation {
@@ -2493,8 +2505,42 @@ body {
     -webkit-transition: -webkit-transform .3s ease;
     transition: transform .3s ease;
     transition: transform .3s ease, -webkit-transform .3s ease; }
+    @media (min-width: 770px) {
+      .Navigation-list {
+        margin-top: 0;
+        line-height: 8rem;
+        -webkit-transform: none;
+                transform: none; } }
   .Navigation-item {
     position: relative; }
+    @media (min-width: 770px) {
+      .Navigation-item {
+        display: inline-block;
+        padding-right: 4rem;
+        padding-bottom: 2rem; }
+        .Navigation-item:last-child {
+          padding-right: 0; }
+        .Navigation-item:hover .Navigation-dropdown {
+          opacity: 1;
+          visibility: visible;
+          pointer-events: initial; }
+        .Navigation-item.has-dropdown:hover:before {
+          content: "";
+          width: 1.5rem;
+          height: 1.5rem;
+          background: #ffffff;
+          background: rgba(255, 255, 255, 0.98);
+          -webkit-transform: rotate(45deg);
+                  transform: rotate(45deg);
+          position: absolute;
+          bottom: 1.3rem;
+          right: 50%;
+          border: solid #e6e6e6;
+          border-width: 1px 0px 0px 1px;
+          -webkit-transform: translateX(calc(50% - 2rem)) rotate(45deg);
+                  transform: translateX(calc(50% - 2rem)) rotate(45deg); }
+        .Navigation-item--mobile {
+          display: none; } }
   .Navigation-link {
     position: relative;
     display: inline-block;
@@ -2509,6 +2555,12 @@ body {
     letter-spacing: 0.5px;
     letter-spacing: .05rem;
     overflow-x: hidden; }
+    @media (min-width: 770px) {
+      .Navigation-link {
+        display: inline-block;
+        margin-bottom: -.5rem;
+        font-size: 1.4rem;
+        color: #222222; } }
     .Navigation-link:after {
       content: "";
       display: block;
@@ -3146,6 +3198,9 @@ body {
     display: none;
     margin-right: 10px;
     margin-right: 1rem; }
+    @media (min-width: 770px) {
+      .AccountNavigation-list {
+        display: inline-block; } }
   .AccountNavigation-item {
     display: inline-block;
     color: #999999;
