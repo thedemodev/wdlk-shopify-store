@@ -18,9 +18,7 @@
         position: absolute;
         width: inherit;
         height: var(--burger-line-height);
-        opacity: 1;
         background-color: var(--burger-color);
-        transition: opacity .3s 2s ease;
 
         &::before,
         &::after {
@@ -29,7 +27,7 @@
             left: 0;
             width: inherit;
             height: inherit;
-            background-color: inherit;
+            background-color: var(--burger-color);
             transform-origin: 50% 50%;
             transform: rotate3d(0, 0, 1, 0);
             transition: top .3s .6s ease, transform .3s ease;
@@ -50,8 +48,8 @@
         &:checked {
             ~ .BurgerBtn {
                 .BurgerBtn-line {
-                    opacity: 0;
-                    transition: opacity .3s 0s ease;
+                    background-color: transparent;
+
 
                     &::before,
                     &::after {
