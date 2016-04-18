@@ -113,7 +113,8 @@
 
         @include media (medium) {
             display: inline-block;
-            margin-bottom: -.5rem;
+            margin-bottom: -1.6rem;
+            vertical-align: middle;
             @include copy-text(var(--md-copy-size));
         }
 
