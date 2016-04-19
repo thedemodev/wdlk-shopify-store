@@ -1,19 +1,44 @@
+:root {
+    --link-icon-width: .7rem;
+    --link-icon-height: 1.4rem;
+}
+
 .Link {
     display: inline-block;
     color: var(--typo-hex--tone-down);
-    font-family: "montserrat", sans-serif;
+    font-size: var(--md-copy-size);
+    font-weight: 600;
     text-transform: uppercase;
+    letter-spacing: .1rem;
     cursor: pointer;
-    transition: color .2s ease-in-out;
-    @include copy-text-sm();
+    transition: color .3s ease;
 
     &:hover {
         color: var(--typo-hex--highlight);
     }
 
+    &--btn {
+        color: var(--btn-bg-color-secondary);
+
+        .Icon--right {
+            width: var(--link-icon-width);
+            height: var(--link-icon-height);
+            margin: {
+                bottom: 2px;
+                left: 5px;
+            }
+            vertical-align: middle;
+            fill: currentColor;
+        }
+
+        &:hover {
+            color: var(--btn-bg-color-secondary);
+        }
+    }
+
     &--secondary {
         text-transform: lowercase;
-        
+
         .Icon {
             height: 20px;
             width: 10px;

@@ -2214,15 +2214,30 @@ body {
 .Link {
   display: inline-block;
   color: #999999;
-  font-family: "montserrat", sans-serif;
+  font-size: 14px;
+  font-size: 1.4rem;
+  font-weight: 600;
   text-transform: uppercase;
+  letter-spacing: 1px;
+  letter-spacing: .1rem;
   cursor: pointer;
-  -webkit-transition: color .2s ease-in-out;
-  transition: color .2s ease-in-out;
-  font-size: 12px;
-  font-size: 1.2rem; }
+  -webkit-transition: color .3s ease;
+  transition: color .3s ease; }
   .Link:hover {
     color: #cc9966; }
+  .Link--btn {
+    color: #FF6C54; }
+    .Link--btn .Icon--right {
+      width: 7px;
+      width: .7rem;
+      height: 14px;
+      height: 1.4rem;
+      margin-bottom: 2px;
+      margin-left: 5px;
+      vertical-align: middle;
+      fill: currentColor; }
+    .Link--btn:hover {
+      color: #FF6C54; }
   .Link--secondary {
     text-transform: lowercase; }
     .Link--secondary .Icon {

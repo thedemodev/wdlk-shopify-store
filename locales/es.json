@@ -4,6 +4,9 @@
       "tags": "Etiquetado \"{{ tags }}\"",
       "page": "Página {{ page }}"
     },
+    "buttons": {
+      "link_learn_more": "Aprende mas al respecto"
+    },
     "404": {
       "title": "404 Página no encontrada",
       "subtext_html": "La página que ha solicitado no existe. Haga clic <a href=\"\/collections\/all\">aquí<\/a> para continuar la compra."
