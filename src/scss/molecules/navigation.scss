@@ -86,7 +86,7 @@
                 &:hover {
                     @include create-pointer(var(--navi-pointer-size), var(--navi-bg-color)) {
                         position: absolute;
-                        bottom: calc(var(--navi-pointer-size) - .2rem);
+                        bottom: calc(var(--navi-pointer-size) - .3rem);
                         right: 50%;
                         border: solid var(--nav-border-color);
                         border-width: 1px 0px 0px 1px ;
@@ -116,7 +116,7 @@
 
         @include media (medium) {
             display: inline-block;
-            margin-bottom: -1.6rem;
+            margin-bottom: -1.8rem;
             vertical-align: middle;
             @include copy-text(var(--md-copy-size));
         }
@@ -148,7 +148,7 @@
 
     &-dropdown {
         position: absolute;
-        top: calc(var(--nav-height) + .2);
+        top: calc(var(--nav-height) + .3);
         left: calc(-var(--base-spacing) * 2);
         display: flex;
         justify-content: space-between;

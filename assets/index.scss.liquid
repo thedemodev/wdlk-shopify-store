@@ -2535,7 +2535,7 @@ body {
           -webkit-transform: rotate(45deg);
                   transform: rotate(45deg);
           position: absolute;
-          bottom: 1.3rem;
+          bottom: 1.2rem;
           right: 50%;
           border: solid #e6e6e6;
           border-width: 1px 0px 0px 1px;
@@ -2560,7 +2560,7 @@ body {
     @media (min-width: 770px) {
       .Navigation-link {
         display: inline-block;
-        margin-bottom: -1.6rem;
+        margin-bottom: -1.8rem;
         vertical-align: middle;
         font-size: 1.4rem;
         color: #222222; } }
@@ -2587,8 +2587,8 @@ body {
               transform: none; }
   .Navigation-dropdown {
     position: absolute;
-    top: 82px;
-    top: 8.2rem;
+    top: 83px;
+    top: 8.3rem;
     left: -40px;
     left: -4rem;
     display: -webkit-flex;
@@ -3308,9 +3308,33 @@ body {
   height: 80px;
   height: 8rem;
   padding: 0 20px;
-  padding: 0 2rem;
-  border-bottom: 1px solid #e6e6e6;
-  background-color: #ffffff; }
+  padding: 0 2rem; }
+  .Header:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100vw;
+    height: inherit;
+    border-bottom: 1px solid #e6e6e6;
+    background-color: #ffffff;
+    transition: -webkit-transform .4s ease, opacity .4s ease;
+    -webkit-transition: -webkit-transform .4s ease, opacity .4s ease;
+    transition: opacity .4s ease, -webkit-transform .4s ease;
+    transition: transform .4s ease, opacity .4s ease;
+    transition: transform .4s ease, opacity .4s ease, -webkit-transform .4s ease; }
+  @media (min-width: 770px) {
+    .Header:before {
+      border-bottom-width: 0;
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+              transform: translate3d(0, -100%, 0); }
+    .Header.is-undocked:before {
+      border-bottom-width: 1px;
+      opacity: 1;
+      -webkit-transform: none;
+              transform: none; } }
 
 .Stage {
   display: -webkit-flex;

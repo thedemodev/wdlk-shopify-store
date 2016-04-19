@@ -1,13 +1,35 @@
 export default function stickyNavigation () {
-    //-- How does the API should be
-    //-- 1. get the navigation dom element
-    //-- 2. on scroll get the current window position
-    //-- 3. if the window position if higher than the
-    //-- navigation hight then remove the event listener
-    //-- 4. Use the FLIP method for the navigation
-    //-- this part belongs to the styling of the sticky navigation
+    //-- Read Values Only !!!!!
+    //-- First keep track of the scroll value
+    //-- without triggering unnecessary draw calls
+    const NAV_NODE = document.getElementsByClassName('js_sticky-nav')[0];
+    const NAV_NODE_HEIGHT = NAV_NODE.offsetHeight * 2;
+    let lastScrollPositionY = 0;
+    let ticking = false;
 
-    // const NAVIGATION = document.getElementByClassName('js_sticky_nav')[0];
-    console.log('here comes the sticky script');
+    const ON_SCROLL = () => {
+        lastScrollPositionY = window.scrollY;
+        REQUEST_TICK();
+    }
 
+    //-- Triggers requestAnimationFrame when it's necessary only
+    const  REQUEST_TICK = () => {
+        if (!ticking) {
+            requestAnimationFrame(UPDATE);
+        }
+        ticking = true;
+    }
+
+    //-- Visual Updates Callback
+    //-- Use rAf to handle visual updates and write values
+    const UPDATE = () => {
+        //-- Pull the latest value when we need it
+        let currentScrollPositionY = lastScrollPositionY;
+
+        NAV_NODE.classList.toggle('is-undocked', currentScrollPositionY >= NAV_NODE_HEIGHT);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', ON_SCROLL, false);
 }
