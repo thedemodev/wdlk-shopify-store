@@ -161,10 +161,8 @@
             color: var(--typo-hex--banner-secondary);
         }
 
-        @include media (medium) {
-            .Banner-image {
-                width: 100vw;
-            }
+        .Banner-image {
+            width: 100vw;
         }
     }
 
