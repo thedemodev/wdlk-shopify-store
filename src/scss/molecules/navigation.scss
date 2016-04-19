@@ -16,6 +16,7 @@
     text-align: center;
     opacity: 0;
     background-color: var(--navi-mobile-bg-color);
+    pointer-events: none;
     transition: opacity .5s ease;
 
     @include media (medium) {
@@ -25,6 +26,7 @@
         opacity: 1;
         text-align: left;
         background-color: transparent;
+        pointer-events: auto;
     }
 
     //-- Mobile Navigation Trigger
@@ -34,6 +36,7 @@
         &:checked {
             ~ .Navigation {
                 opacity: 1;
+                pointer-events: auto;
 
                 .Navigation-list {
                     transform: none;
