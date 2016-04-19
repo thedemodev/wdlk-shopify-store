@@ -67,6 +67,16 @@
         color: var(--typo-hex--tertiary);
     }
 
+    &-copy {
+        margin-bottom: calc(var(--base-spacing) + 2);
+        color: var(--typo-hex--banner-secondary);
+        font-family: "museo";
+        font-size: var(--md-copy-size);
+        line-height: 1.5;
+        font-weight: 100;
+        letter-spacing: .1rem;
+    }
+
     &--main {
         .Banner-introText {
             color: var(--coral);
@@ -140,6 +150,98 @@
         }
     }
 
+    &--principles {
+        .Headline {
+            font-weight: 100;
+        }
+    }
+
+    &--full {
+        .Headline {
+            color: var(--typo-hex--banner-secondary);
+        }
+
+        @include media (medium) {
+            .Banner-image {
+                width: 100vw;
+            }
+        }
+    }
+
+    &--informative {
+        .Banner-content {
+            position: relative;
+            top: auto;
+            left: auto;
+            padding: calc(var(--base-spacing) * 3)
+            calc(var(--base-spacing) * 2) calc(var(--base-spacing) * 4.5);
+            transform: none;
+
+            @include media (medium) {
+                box-sizing: border-box;
+                position: absolute;
+                top: 6rem;
+                left: 5rem;
+                max-width: 320px;
+                padding: {
+                    top: 3.5rem;
+                    right: 4rem;
+                    left: 4rem;
+                    bottom: 4rem;
+                }
+                overflow: hidden;
+                background-color: var(--background-color);
+            }
+        }
+
+        .Link {
+            display: block;
+            margin-bottom: calc(var(--base-spacing) * 2);
+        }
+
+        .Icon--social {
+            display: inline-block;
+            height: 2rem;
+            width: 2rem;
+            margin: 0 var(--base-spacing);
+            vertical-align: bottom;
+            fill: var(--btn-bg-color-secondary);
+            cursor: pointer;
+        }
+
+    }
+
+    &--collection {
+        &:last-of-type {
+            .Banner-content {
+                max-width: 350px;
+                right: 4rem;
+                left: auto;
+                transform: translateY(-50%);
+            }
+        }
+    }
+
+    &--half {
+        //-- GRID GENERATOR
+        //-- 1. Count column mobile first
+        //-- 2. Factor column number for tablet & desktop
+        //-- 3. Optional argument to define the inner padding
+        @include grid-cell(1, 2, 0, small);
+
+        .Banner-image {
+            width: 50vw;
+        }
+
+        @include media(small, max-width) {
+            .Banner-image {
+                width: auto;
+                height: 50vh;
+                transform: translateX(-15%);
+            }
+        }
+    }
+
     &--oneThird {
         width: 100vw / 3 * 1;
 
@@ -162,26 +264,6 @@
             width: auto;
             height: 50vh;
 
-            .Banner-image {
-                width: auto;
-                height: 50vh;
-                transform: translateX(-15%);
-            }
-        }
-    }
-
-    &--half {
-        //-- GRID GENERATOR
-        //-- 1. Count column mobile first
-        //-- 2. Factor column number for tablet & desktop
-        //-- 3. Optional argument to define the inner padding
-        @include grid-cell(1, 2, 0, small);
-
-        .Banner-image {
-            width: 50vw;
-        }
-
-        @include media(small, max-width) {
             .Banner-image {
                 width: auto;
                 height: 50vh;

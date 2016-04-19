@@ -6,7 +6,8 @@
     },
     "buttons": {
       "link_learn_more": "Mehr erfahren",
-      "link_read_more": "Mehr dazu"
+      "link_read_more": "Mehr dazu",
+      "link_shop_now": "Jetzt Kaufen"
     },
     "404": {
       "title": "404 Seite nicht gefunden",
@@ -232,6 +233,7 @@
         "claim_intro": "mit Respekt zur Natur",
         "claim": "We craft premium swimwear out of ocean recovered fishing nets and other recycled materials",
         "full_banner_1_headline": "Meticulous handcraft meets environmental protection",
+        "full_banner_2_headline": "Seamless athletic one pieces",
         "frontpage_title": "Startseite-Zusammenstellung",
         "featured_title": "Ausgewählte Zusammenstellungen",
         "news_title": "Neueste Nachrichten"

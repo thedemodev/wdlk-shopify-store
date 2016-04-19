@@ -82,7 +82,7 @@
             </a>
         </div>
     </article>
-    <article class="Banner Banner--half">
+    <article class="Banner Banner--half Banner--collection">
         {% assign halfBannerSmart =
             'WDLK_Half-Banner1_Smartphone_1x.jpg' | asset_url %}
         {% assign halfBannerSmart2x =
@@ -115,7 +115,7 @@
             </picture>
         </a>
     </article>
-    <article class="Banner Banner--half">
+    <article class="Banner Banner--half Banner--principles">
         {% assign halfBanner2Smart =
             'WDLK_Half-Banner2_Smartphone_1x.jpg' | asset_url %}
         {% assign halfBanner2Smart2x =
@@ -148,7 +148,7 @@
             </picture>
         </a>
     </article>
-    <article class="Banner Banner--full">
+    <article class="Banner Banner--full Banner--principles Banner--informative">
         {% assign fullBanner1Smart =
             'WDLK_Full-Banner1_Smartphone_1x.jpg' | asset_url %}
         {% assign fullBanner1Smart2x =
@@ -161,21 +161,8 @@
             'WDLK_Full-Banner1_Desktop_1x.jpg' | asset_url  %}
         {% assign fullBanner12x =
             'WDLK_Full-Banner1_Desktop_2x.jpg' | asset_url  %}
-        <a href="{{ pages['about-us'].url }}" >
-            <div class="Banner-content">
-                <h3 class="Headline Headline--4">
-                    {{'home_page.sections.full_banner_1_headline' | t}}
-                </h3>
-                <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor voluptua. At vero eos accusam et justo duo dolores  rebu. Diam nonumy eirmod tempor magna voluptua. At vero eos accusam et justo duo dolores  rebu. Diam nonumy eirmod tempor magna voluptua vero eos accusam.
-                </p>
-                <a class="Link Link--btn" href="{{ pages['about-us'].url }}">
-                    {{'general.buttons.link_read_more' | t}}
-                    <svg class="Icon Icon--right">
-                        <use xlink:href="#Arrow_right" />
-                    </svg>
-                </a>
-            </div>
+
+        <a href="{{ pages['about-us'].url }}">
             <picture>
                 <source
                 media="(max-width: 480px)"
@@ -191,31 +178,67 @@
                 alt="One woodlike ocean bikini (100 g): Eliminates 126 g of ocean waste">
             </picture>
         </a>
+        <div class="Banner-content">
+            <h3 class="Headline Headline--4">
+                {{'home_page.sections.full_banner_1_headline' | t}}
+            </h3>
+            <p class="Banner-copy">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor voluptua. At vero eos accusam et justo duo dolores  rebu. Diam nonumy eirmod tempor magna voluptua. At vero eos accusam et justo duo dolores  rebu.
+            </p>
+            <a class="Link Link--btn" href="{{ pages['about-us'].url }}">
+                {{'general.buttons.link_read_more' | t}}
+                <svg class="Icon Icon--right">
+                    <use xlink:href="#Arrow_right" />
+                </svg>
+            </a>
+
+            <svg class="Icon Icon--social Icon--facebook">
+                <use xlink:href="#Facebook" />
+            </svg>
+
+            <svg class="Icon Icon--social Icon--instagram">
+                <use xlink:href="#Instagram" />
+            </svg>
+
+            <svg class="Icon Icon--social Icon--pinterest">
+                <use xlink:href="#Pinterest" />
+            </svg>
+        </div>
     </article>
-    <article class="Banner Banner--full">
-        {% assign twoThirdBannerSmart = 'WDLK_TwoThirds-Banner_Smartphone_1x.jpg' | asset_url %}
-        {% assign twoThirdBannerSmart2x = 'WDLK_TwoThirds-Banner_Smartphone_2x.jpg' | asset_url  %}
-        {% assign twoThirdBannerMobile = 'WDLK_TwoThirds-Banner_Tablet_1x.jpg' | asset_url %}
-        {% assign twoThirdBannerMobile2x =
-        'WDLK_TwoThirds-Banner_Tablet_2x.jpg' | asset_url %}
-        {% assign twoThirdBanner =
-        'WDLK_TwoThirds-Banner_Desktop_1x.jpg' | asset_url  %}
-        {% assign twoThirdBanner2x =
-        'WDLK_TwoThirds-Banner_Desktop_2x.jpg' | asset_url  %}
+    <article class="Banner Banner--full Banner--collection">
+        {% assign fullBanner2Smart =
+            'WDLK_Full-Banner2_Smartphone_1x.jpg' | asset_url %}
+        {% assign fullBanner2Smart2x =
+            'WDLK_Full-Banner2_Smartphone_2x.jpg' | asset_url  %}
+        {% assign fullBanner2Mobile =
+            'WDLK_Full-Banner2_Tablet_1x.jpg' | asset_url %}
+        {% assign fullBanner2Mobile2x =
+            'WDLK_Full-Banner2_Tablet_2x.jpg' | asset_url %}
+        {% assign fullBanner2 =
+            'WDLK_Full-Banner2_Desktop_1x.jpg' | asset_url  %}
+        {% assign fullBanner22x =
+            'WDLK_Full-Banner2_Desktop_2x.jpg' | asset_url  %}
+
         <a href="{{ collections['one-pieces'].url }}" >
             <div class="Banner-content">
-                <h3 class="Headline Headline--4">{{ collections['one-pieces'].title }}</h3>
+                <h3 class="Headline Headline--3">{{'home_page.sections.full_banner_2_headline' | t}}</h3>
+                <span class="Link Link--btn">
+                    {{'general.buttons.link_shop_now' | t}}
+                    <svg class="Icon Icon--right">
+                        <use xlink:href="#Arrow_right" />
+                    </svg>
+                </span>
             </div>
             <picture>
                 <source
                 media="(max-width: 480px)"
-                srcset="{{ twoThirdBannerSmart}}, {{ twoThirdBannerSmart2x }} 2x">
+                srcset="{{ fullBanner2Smart}}, {{ fullBanner2Smart2x }} 2x">
                 <source
                 media="(max-width: 768px)"
-                srcset="{{ twoThirdBannerMobile }}, {{ twoThirdBannerMobile2x }} 2x">
+                srcset="{{ fullBanner2Mobile }}, {{ fullBanner2Mobile2x }} 2x">
                 <source
                 media="(min-width: 770px)"
-                srcset="{{ twoThirdBanner }}, {{ twoThirdBanner2x}} 2x">
+                srcset="{{ fullBanner2 }}, {{ fullBanner22x}} 2x">
                 <img class="Banner-image"
                 src="{{ twoThirdBanner }}"
                 alt="One woodlike ocean bikini (100 g): Eliminates 126 g of ocean waste">

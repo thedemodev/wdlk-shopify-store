@@ -6,7 +6,8 @@
     },
     "buttons": {
       "link_learn_more": "Aprende mas al respecto",
-      "link_read_more": "Aprende mas"
+      "link_read_more": "Aprende mas",
+      "link_shop_now": "Compra ahora"
     },
     "404": {
       "title": "404 Página no encontrada",
@@ -232,6 +233,7 @@
         "claim_intro": "Respeto a la naturaleza",
         "claim": "Nosotros confeccionamos trajes de baño de alta costura hechos de redes de pescar",
         "full_banner_1_headline": "Costura meticulosa se encuentra con la protección al medio ambiente",
+        "full_banner_2_headline": "Seamless athletic one pieces",
         "frontpage_title": "Colección de portada",
         "featured_title": "Colecciones destacadas",
         "news_title": "Últimas noticias"
