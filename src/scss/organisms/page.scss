@@ -5,4 +5,8 @@
     @include media (medium) {
         margin-top: 0;
     }
+
+    .template-index & {
+        margin-top: 0;
+    }
 }

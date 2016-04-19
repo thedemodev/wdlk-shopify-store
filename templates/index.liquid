@@ -82,7 +82,7 @@
             </a>
         </div>
     </article>
-    <article class="Banner Banner--half Banner--collection">
+    <article class="Banner Banner--half">
         {% assign halfBannerSmart =
             'WDLK_Half-Banner1_Smartphone_1x.jpg' | asset_url %}
         {% assign halfBannerSmart2x =
@@ -115,7 +115,7 @@
             </picture>
         </a>
     </article>
-    <article class="Banner Banner--half Banner--usp">
+    <article class="Banner Banner--half">
         {% assign halfBanner2Smart =
             'WDLK_Half-Banner2_Smartphone_1x.jpg' | asset_url %}
         {% assign halfBanner2Smart2x =
@@ -148,40 +148,51 @@
             </picture>
         </a>
     </article>
-    <article class="Banner Banner--oneThird Banner--usp">
-        {% assign oneThirdBannerSmart =
-            'WDLK_OneThird-Banner_Smartphone_1x.jpg' | asset_url %}
-        {% assign oneThirdBannerSmart2x =
-             'WDLK_OneThird-Banner_Smartphone_2x.jpg' | asset_url  %}
-        {% assign oneThirdBannerMobile =
-            'WDLK_OneThird-Banner_Tablet_1x.jpg' | asset_url %}
-        {% assign oneThirdBannerMobile2x =
-            'WDLK_OneThird-Banner_Tablet_2x.jpg' | asset_url %}
-        {% assign oneThirdBanner =
-            'WDLK_OneThird-Banner_Desktop_1x.jpg' | asset_url  %}
-        {% assign oneThirdBanner2x =
-            'WDLK_OneThird-Banner_Desktop_2x.jpg' | asset_url  %}
+    <article class="Banner Banner--full">
+        {% assign fullBanner1Smart =
+            'WDLK_Full-Banner1_Smartphone_1x.jpg' | asset_url %}
+        {% assign fullBanner1Smart2x =
+             'WDLK_Full-Banner1_Smartphone_2x.jpg' | asset_url  %}
+        {% assign fullBanner1Mobile =
+            'WDLK_Full-Banner1_Tablet_1x.jpg' | asset_url %}
+        {% assign fullBanner1Mobile2x =
+            'WDLK_Full-Banner1_Tablet_2x.jpg' | asset_url %}
+        {% assign fullBanner1 =
+            'WDLK_Full-Banner1_Desktop_1x.jpg' | asset_url  %}
+        {% assign fullBanner12x =
+            'WDLK_Full-Banner1_Desktop_2x.jpg' | asset_url  %}
         <a href="{{ pages['about-us'].url }}" >
             <div class="Banner-content">
-                <h3 class="Headline Headline--4">Hello World</h3>
+                <h3 class="Headline Headline--4">
+                    {{'home_page.sections.full_banner_1_headline' | t}}
+                </h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor voluptua. At vero eos accusam et justo duo dolores  rebu. Diam nonumy eirmod tempor magna voluptua. At vero eos accusam et justo duo dolores  rebu. Diam nonumy eirmod tempor magna voluptua vero eos accusam.
+                </p>
+                <a class="Link Link--btn" href="{{ pages['about-us'].url }}">
+                    {{'general.buttons.link_read_more' | t}}
+                    <svg class="Icon Icon--right">
+                        <use xlink:href="#Arrow_right" />
+                    </svg>
+                </a>
             </div>
             <picture>
                 <source
                 media="(max-width: 480px)"
-                srcset="{{ oneThirdBannerSmart}}, {{ oneThirdBannerSmart2x }} 2x">
+                srcset="{{ fullBanner1Smart}}, {{ fullBanner1Smart2x }} 2x">
                 <source
                 media="(max-width: 768px)"
-                srcset="{{ oneThirdBannerMobile }}, {{ oneThirdBannerMobile2x }} 2x">
+                srcset="{{ fullBanner1Mobile }}, {{ fullBanner1Mobile2x }} 2x">
                 <source
                 media="(min-width: 770px)"
-                srcset="{{ oneThirdBanner }}, {{ oneThirdBanner2x}} 2x">
+                srcset="{{ fullBanner1 }}, {{ fullBanner12x}} 2x">
                 <img class="Banner-image"
-                src="{{ oneThirdBanner }}"
+                src="{{ fullBanner1 }}"
                 alt="One woodlike ocean bikini (100 g): Eliminates 126 g of ocean waste">
             </picture>
         </a>
     </article>
-    <article class="Banner Banner--twoThirds Banner--collection">
+    <article class="Banner Banner--full">
         {% assign twoThirdBannerSmart = 'WDLK_TwoThirds-Banner_Smartphone_1x.jpg' | asset_url %}
         {% assign twoThirdBannerSmart2x = 'WDLK_TwoThirds-Banner_Smartphone_2x.jpg' | asset_url  %}
         {% assign twoThirdBannerMobile = 'WDLK_TwoThirds-Banner_Tablet_1x.jpg' | asset_url %}

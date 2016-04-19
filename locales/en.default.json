@@ -5,7 +5,8 @@
       "page": "Page {{ page }}"
     },
     "buttons": {
-      "link_learn_more": "Learn more about this"
+      "link_learn_more": "Learn more about this",
+      "link_read_more": "Read more"
     },
     "404": {
       "title": "404 Page Not Found",
@@ -230,6 +231,7 @@
         "main_scroll_tip": "Scroll down",
         "claim_intro": "Respect to nature",
         "claim": "We craft premium swimwear out of ocean recovered fishing nets and other recycled materials",
+        "full_banner_1_headline": "Meticulous handcraft meets environmental protection",
         "frontpage_title": "Frontpage Collection",
         "featured_title": "Featured Collections",
         "news_title": "Latest News"

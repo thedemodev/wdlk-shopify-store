@@ -5,7 +5,8 @@
       "page": "Página {{ page }}"
     },
     "buttons": {
-      "link_learn_more": "Aprende mas al respecto"
+      "link_learn_more": "Aprende mas al respecto",
+      "link_read_more": "Aprende mas"
     },
     "404": {
       "title": "404 Página no encontrada",
@@ -230,6 +231,7 @@
         "main_scroll_tip": "Scroll down",
         "claim_intro": "Respeto a la naturaleza",
         "claim": "Nosotros confeccionamos trajes de baño de alta costura hechos de redes de pescar",
+        "full_banner_1_headline": "Costura meticulosa se encuentra con la protección al medio ambiente",
         "frontpage_title": "Colección de portada",
         "featured_title": "Colecciones destacadas",
         "news_title": "Últimas noticias"
