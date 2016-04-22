@@ -2956,7 +2956,7 @@ body {
 
 .Carousel {
   position: relative;
-  height: 96.777vw;
+  height: 100vw;
   min-width: 320px;
   min-height: 320px;
   overflow: hidden; }
@@ -3426,40 +3426,41 @@ body {
   max-width: 100%;
   margin: auto; }
 
-@media (min-width: 770px) {
-  .ProductPage .Carousel {
-    max-height: 720px; } }
-
-@media (min-width: 770px) and (max-width: 1024px) {
-  .ProductPage .Carousel {
-    max-height: 512px; }
+.ProductPage {
+  border-top: 1px solid #e6e6e6; }
+  @media (min-width: 770px) {
+    .ProductPage {
+      margin-top: 8rem; } }
+  @media (min-width: 770px) {
+    .ProductPage .Carousel {
+      max-height: 720px; } }
+  @media (min-width: 770px) and (max-width: 1024px) {
+    .ProductPage .Carousel {
+      max-height: 512px; }
+      .ProductPage .Carousel-img {
+        height: 512px; } }
+  @media (min-width: 1024px) {
+    .ProductPage .Carousel-item {
+      height: 100%; }
     .ProductPage .Carousel-img {
-      height: 512px; } }
-
-@media (min-width: 1024px) and (max-width: 1440px) {
-  .ProductPage .Carousel-item {
-    height: 100%;
-    -webkit-transform: translate3d(-10%, 0, 0);
-            transform: translate3d(-10%, 0, 0); }
-  .ProductPage .Carousel-img {
-    height: 100%;
-    max-width: 150%; } }
-
-@media (min-width: 1024px) and (max-width: 1224px) {
-  .ProductPage .Carousel-trigger:checked + .Carousel-item {
-    -webkit-transform: translate3d(-10%, 0, 0);
-            transform: translate3d(-10%, 0, 0); } }
-
-@media (min-width: 770px) {
-  .ProductPage .Carousel-btn {
-    display: none; }
-    .ProductPage .Carousel-btn:checked ~ .Carousel-btn--label {
-      display: none; } }
-
-.ProductPage .Select,
-.ProductPage .Qty-input {
-  margin-bottom: 10px;
-  margin-bottom: 1rem; }
+      height: 720px;
+      max-width: 150%; } }
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    .ProductPage .Carousel-img {
+      position: absolute;
+      top: 0;
+      right: 50%;
+      -webkit-transform: translateX(50%);
+              transform: translateX(50%); } }
+  @media (min-width: 770px) {
+    .ProductPage .Carousel-btn {
+      display: none; }
+      .ProductPage .Carousel-btn:checked ~ .Carousel-btn--label {
+        display: none; } }
+  .ProductPage .Select,
+  .ProductPage .Qty-input {
+    margin-bottom: 10px;
+    margin-bottom: 1rem; }
 
 .Page {
   margin-top: 80px;

@@ -30,13 +30,14 @@
                 <input class="Carousel-trigger" type="radio" name="carousel--product" value="{{forloop.index}}" id="carousel--product-{{forloop.index}}" {{isChecked}}>
 
                 <div class="Carousel-item" itemprop="image">
+                    {% comment %}
+                        Sizes attribute: if not defined it asumes that the image is 100 vw. In this case we are saying: If the browser window is wider than 1024px  , this image is probably going to be displayed about half the size of that. If it's smaller, it'll probably be full-width.
+                    {% endcomment %}
                     <img class="Carousel-img"
-                    sizes="(max-width: {{screen-sm}}) 100vw,
-                            (max-width: {{screen-md}}) 100vw,
-                            (min-width: {{screen-l}}) 50vw"
-                    srcset="{{ image.src | product_img_url: 'large' }} 200w,
-                            {{ image.src | product_img_url: 'grande' }} 400w,
-                            {{ image.src | product_img_url: '1024x1024' }} 800w"
+                    sizes="(min-width: {{screen-l}}) 50vw, 100vw"
+                    srcset="{{ image.src | product_img_url: 'large' }} 480w,
+                            {{ image.src | product_img_url: 'grande' }} 600w,
+                            {{ image.src | product_img_url: '1024x1024' }} 1024w"
                     src="{{ image.src | product_img_url: 'grande' }}"
                     alt="{{ product.image.alt | escape }}" itemprop="image" />
                 </div>
