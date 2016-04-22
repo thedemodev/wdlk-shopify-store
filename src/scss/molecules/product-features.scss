@@ -43,10 +43,12 @@
             }
 
             .Headline--2 {
+                max-width: calc(var(--screen-l) / 2);
                 margin-top: calc(var(--base-spacing) * 2);
             }
 
             .List {
+                max-width: calc(var(--screen-l) / 2);
                 margin-bottom: calc(var(--base-spacing) * 2);
             }
 
