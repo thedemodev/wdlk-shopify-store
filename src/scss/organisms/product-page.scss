@@ -1,9 +1,9 @@
 .ProductPage {
     $product-img-max-height: calc(var(--screen-l) / 2) !default;
 
-    border-top: 1px solid var(--nav-border-color);
-    @include media (medium) {
-        margin-top: var(--nav-height);
+    @include media(medium) {
+        padding-top: var(--nav-height);
+        background-color: var(--background-color-tertiary);
     }
 
     .Carousel {

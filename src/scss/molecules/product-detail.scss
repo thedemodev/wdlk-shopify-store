@@ -2,6 +2,10 @@
     &-display {
         @include grid-wrapper(var(--screen-xl));
 
+        @include media (medium) {
+            align-items: flex-end;
+        }
+
         position: relative;
         background-color: var(--background-color-tertiary);
 
@@ -75,12 +79,12 @@
         }
         text-align: justify;
 
-        @include media(large) {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            left: 0;
-        }
+        //@include media(large) {
+        //    position: absolute;
+        //    right: 0;
+        //    bottom: 0;
+        //    left: 0;
+        //}
 
         &::after {
             content: "";

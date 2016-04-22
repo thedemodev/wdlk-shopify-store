@@ -12,6 +12,7 @@
             @include grid-cell(1, 2, $base-spacing, medium);
 
             position: relative;
+            background-color: var(--background-color);
 
             @include create-pointer() {
                 position: absolute;
