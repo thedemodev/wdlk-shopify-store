@@ -2080,23 +2080,28 @@ input[type="radio"] {
   .Logo-img {
     width: 150px;
     height: 40px;
-    fill: var(--coral); }
+    fill: #FF6C54;
+    -webkit-transition: fill .35s ease;
+    transition: fill .35s ease; }
+    .Logo-img:hover {
+      fill: #EC4024; }
 
 .ShoppingCart {
   display: inline-block;
   padding-left: 10px;
-  padding-left: 1rem; }
+  padding-left: 1rem;
+  margin-bottom: 12px; }
   .ShoppingCart-icon {
     width: 32px;
     height: 30px;
     fill-opacity: 0;
     stroke: currentColor;
     stroke-width: 2px;
-    color: #596771; }
+    color: #FF6C54; }
     .is-filled .ShoppingCart-icon {
-      fill: var(--coral);
+      fill: #FF6C54;
       fill-opacity: 1;
-      color: var(--coral); }
+      color: #FF6C54; }
   .ShoppingCart-count {
     font-size: 14px;
     font-size: 1.4rem;
@@ -3217,10 +3222,14 @@ body {
           -ms-flex-order: 4;
               -webkit-box-ordinal-group: 5;
               order: 4; } }
+  .Product-teaser-description .Headline {
+    text-transform: none; }
   .Product-teaser-description .Headline--2 {
     max-width: 512px;
     margin-top: 40px;
     margin-top: 4rem; }
+  .Product-teaser-description .Headline--4 {
+    font-weight: 500; }
   .Product-teaser-description .List {
     max-width: 512px;
     margin-bottom: 40px;

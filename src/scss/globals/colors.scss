@@ -1,7 +1,7 @@
 //-- Base HEX Colors
 :root {
-    --white-hex: #ffffff;
-    --blue-gray: #9FBCD0;
+    --hex-white: #ffffff;
+    --hex-blue-gray: #9FBCD0;
     --hex-coral: #FF6C54;
     --hex-coral-dark: #EC4024;
     --hex-blue-gray-light: #8E959A;
@@ -37,7 +37,7 @@
 :root {
     --typo-hex: var(--hex-blue-gray-dark);
     --typo-hex--secondary: var(--hex-blue-gray-light);
-    --typo-hex--tertiary: var(--white-hex);
+    --typo-hex--tertiary: var(--hex-white);
     --typo-hex--highlight: var(--hex-blue-gray-ultra-dark);
     --typo-hex--tone-down: var(--light-gray-hex);
     --typo-hex--lightest: var(--lighter-gray-hex);
@@ -46,7 +46,7 @@
 
 //-- Background Colors
 :root {
-    --background-color: var(--white-hex);
+    --background-color: var(--hex-white);
     --background-color-secondary: var(--beige-light-hex);
     --container-border: var(--lighter-gray-hex);
     --background-color-tertiary: var(--light-sand);
@@ -75,6 +75,9 @@
 
 //-- Icons
 :root {
-    --icon-primary-color: var(--white-hex);
-    --banner-teaser-logo-icon: var(--blue-gray);
+    --hex-logo-color: var(--hex-coral);
+    --hex-logo-hover-color: var(--hex-coral-dark);
+    --hex-shoping-cart-color: var(--hex-coral);
+    --icon-primary-color: var(--hex-white);
+    --banner-teaser-logo-icon: var(--hex-blue-gray);
 }

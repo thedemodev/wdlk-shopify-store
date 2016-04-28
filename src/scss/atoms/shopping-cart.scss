@@ -1,12 +1,11 @@
 :root {
     --shopping-cart-size: 30px;
-    --shoping-cart-active-color: var(--coral);
 }
 
 .ShoppingCart {
     display: inline-block;
     padding-left: calc(var(--base-spacing) / 2);
-
+    margin-bottom: 12px;
 
     &-icon {
         width: calc(var(--shopping-cart-size) + 2px);
@@ -14,12 +13,12 @@
         fill-opacity: 0;
         stroke: currentColor;
         stroke-width: 2px;
-        color: var(--typo-hex);
+        color: var(--hex-shoping-cart-color);
 
         .is-filled & {
-            fill: var(--shoping-cart-active-color);
+            fill: var(--hex-shoping-cart-color);
             fill-opacity: 1;
-            color: var(--shoping-cart-active-color);
+            color: var(--hex-shoping-cart-color);
         }
     }
 
