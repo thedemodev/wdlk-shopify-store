@@ -2080,7 +2080,7 @@ input[type="radio"] {
   .Logo-img {
     width: 150px;
     height: 40px;
-    fill: #FF6C54; }
+    fill: var(--coral); }
 
 .ShoppingCart {
   display: inline-block;
@@ -2092,11 +2092,11 @@ input[type="radio"] {
     fill-opacity: 0;
     stroke: currentColor;
     stroke-width: 2px;
-    color: #222222; }
+    color: #596771; }
     .is-filled .ShoppingCart-icon {
-      fill: #FF6C54;
+      fill: var(--coral);
       fill-opacity: 1;
-      color: #FF6C54; }
+      color: var(--coral); }
   .ShoppingCart-count {
     font-size: 14px;
     font-size: 1.4rem;
@@ -2127,7 +2127,7 @@ html {
   font-family: "museo-sans", sans-serif;
   font-size: 62.5%;
   line-height: 1.5;
-  color: #222222;
+  color: #596771;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
@@ -2185,8 +2185,7 @@ html {
   font-weight: normal;
   text-transform: uppercase;
   letter-spacing: 2px;
-  letter-spacing: .2rem;
-  color: #4d4d4f; }
+  letter-spacing: .2rem; }
   .Headline--1 {
     font-size: 44px;
     font-size: 4.4rem; }
@@ -2204,40 +2203,36 @@ html {
     font-size: 18px;
     font-size: 1.8rem; }
   .Headline--highlight {
-    color: #cc9966; }
+    color: #384852; }
 
 body {
   font-size: 16px;
   font-size: 1.6rem;
-  color: #222222; }
+  color: #596771; }
 
 .Link {
   display: inline-block;
-  color: #999999;
+  color: #FF6C54;
   font-size: 14px;
   font-size: 1.4rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  letter-spacing: .1rem;
+  letter-spacing: 1.6px;
+  letter-spacing: .16rem;
   cursor: pointer;
   -webkit-transition: color .3s ease;
   transition: color .3s ease; }
   .Link:hover {
-    color: #cc9966; }
-  .Link--btn {
-    color: #cc9966; }
-    .Link--btn .Icon--right {
-      width: 7px;
-      width: .7rem;
-      height: 14px;
-      height: 1.4rem;
-      margin-bottom: 2px;
-      margin-left: 5px;
-      vertical-align: middle;
-      fill: currentColor; }
-    .Link--btn:hover {
-      color: #cc9966; }
+    color: #EC4024; }
+  .Link--btn .Icon--right {
+    width: 7px;
+    width: .7rem;
+    height: 14px;
+    height: 1.4rem;
+    margin-bottom: 2px;
+    margin-left: 5px;
+    vertical-align: middle;
+    fill: currentColor; }
   .Link--secondary {
     text-transform: lowercase; }
     .Link--secondary .Icon {
@@ -2268,7 +2263,7 @@ body {
   font-weight: bold; }
   .Btn:hover {
     color: #ffffff;
-    background-color: #cc9966; }
+    background-color: #EC4024; }
   .Btn--secondary {
     background-color: #cc9966; }
 
@@ -2564,7 +2559,7 @@ body {
     width: auto;
     padding-bottom: 20px;
     padding-bottom: 2rem;
-    color: #222222;
+    color: #596771;
     font-size: 18px;
     font-size: 1.8rem;
     line-height: 1.5;
@@ -2578,14 +2573,14 @@ body {
         margin-bottom: -1.8rem;
         vertical-align: middle;
         font-size: 1.4rem;
-        color: #222222; } }
+        color: #596771; } }
     .Navigation-link:after {
       content: "";
       display: block;
       height: 1px;
       height: .1rem;
       width: 100%;
-      background-color: #222222;
+      background-color: #596771;
       -webkit-transform: translateX(-102%);
               transform: translateX(-102%);
       transition: -webkit-transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -2732,7 +2727,7 @@ body {
     letter-spacing: 1px;
     letter-spacing: .1rem; }
   .Banner--main .Banner-introText {
-    color: #FF6C54; }
+    color: var(--coral); }
     @media (min-width: 770px) {
       .Banner--main .Banner-introText {
         font-size: 2.002rem; } }
@@ -2790,7 +2785,8 @@ body {
   .Banner--principles .Headline {
     font-weight: 100; }
   .Banner--full .Headline {
-    color: #8E959A; }
+    color: #8E959A;
+    line-height: 1.2; }
   .Banner--full .Banner-image {
     width: 100vw; }
   .Banner--informative .Banner-content {
@@ -2827,7 +2823,7 @@ body {
     margin: 0 20px;
     margin: 0 2rem;
     vertical-align: bottom;
-    fill: #cc9966;
+    fill: #FF6C54;
     cursor: pointer; }
   .Banner--collection:last-of-type .Banner-content {
     max-width: 350px;
@@ -3043,11 +3039,11 @@ body {
   background-color: #f9f6f1; }
   @media (min-width: 770px) {
     .Product-display {
-      -webkit-align-items: flex-end;
-          -ms-flex-align: end;
-              -webkit-box-align: end;
-                  -ms-grid-row-align: flex-end;
-              align-items: flex-end; } }
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              -webkit-box-align: center;
+                  -ms-grid-row-align: center;
+              align-items: center; } }
   .Product-display:after {
     content: "";
     position: absolute;
@@ -3076,6 +3072,8 @@ body {
   @media (min-width: 1024px) {
     .Product-detail {
       background-color: #f9f6f1; } }
+  .Product-detail .Headline--3 {
+    margin-bottom: 0; }
 
 .Product-images {
   width: 100%;
@@ -3086,22 +3084,23 @@ body {
 
 .Product-headline {
   position: relative;
+  padding-bottom: 13.333px;
+  padding-bottom: 1.33333rem;
   margin-top: 40px;
   margin-top: 4rem;
-  padding-top: 20px;
-  padding-top: 2rem; }
+  text-transform: none; }
   .Product-headline:after {
     content: "";
     position: absolute;
-    top: 0;
     right: 0;
+    bottom: 0;
     left: 0;
     height: 2px;
     height: .2rem;
-    width: 25px;
-    width: 2.5rem;
+    width: 60px;
+    width: 6rem;
     margin: auto;
-    background-color: #cc9966; }
+    background-color: #596771; }
 
 .Product-navigator {
   box-sizing: border-box;
@@ -3132,7 +3131,7 @@ body {
     height: .2rem;
     width: 20px;
     width: 2rem;
-    background-color: #cc9966;
+    background-color: #384852;
     -webkit-transform: translateX(50%);
             transform: translateX(50%); }
 
@@ -3145,8 +3144,8 @@ body {
   font-size: 1.2rem; }
 
 .Product .Link {
-  margin-bottom: 20px;
-  margin-bottom: 2rem; }
+  margin-bottom: 30px;
+  margin-bottom: 3rem; }
 
 .Product-copytext {
   margin: 0 0 20px;
@@ -3429,11 +3428,6 @@ body {
           justify-content: center;
   max-width: 100%;
   margin: auto; }
-
-@media (min-width: 770px) {
-  .ProductPage {
-    padding-top: 8rem;
-    background-color: #f9f6f1; } }
 
 @media (min-width: 770px) {
   .ProductPage .Carousel {

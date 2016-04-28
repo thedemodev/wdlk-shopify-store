@@ -88,7 +88,7 @@
 
         <div class="Product-detail">
             <h1 class="Headline Headline--2 Product-headline" itemprop="name">{{ product.title }}</h1>
-            <strong class="Headline Headline--3 Headline--highlight" itemprop="price">{{ product.price | money_with_currency }}</strong>
+            <strong class="Headline Headline--3" itemprop="price">{{ product.price | money_with_currency }}</strong>
             {% if product.compare_at_price_max > product.price %}
             <strong class="visually-hidden">{{ 'products.general.sale_price' | t }}</strong>
             <p id="ComparePrice">
@@ -154,34 +154,6 @@
                     {{ 'products.product.add_to_cart' | t }}
                 </button>
             </form>
-
-
-            {% comment %}
-            If the user is on a collection product page (ie with /collections/collection-handle/products/product-handle)
-            in the URL, we can show next/previous links to other products in the collection.
-            {% endcomment %}
-            {% if collection %}
-            {% if collection.previous_product or collection.next_product %}
-            <div class="Product-navigator">
-                {% if collection.previous_product %}
-                <a class="Link Link--secondary" href="{{collection.previous_product}}" alt="{{ 'products.general.previous_product_html' | t }}">
-                    <svg class="Icon">
-                        <use xlink:href="#Arrow_left" />
-                    </svg>
-                    {{ 'products.general.previous_product_html' | t }}
-                </a>
-                {% endif %}
-                {% if collection.next_product %}
-                <a class="Link Link--secondary" href="{{collection.next_product}}" alt="{{ 'products.general.next_product_html' | t }}">
-                    {{ 'products.general.next_product_html' | t }}
-                    <svg class="Icon">
-                        <use xlink:href="#Arrow_right" />
-                    </svg>
-                </a>
-                {% endif %}
-            </div>
-            {% endif %}
-            {% endif %}
         </div>
 
     </article>

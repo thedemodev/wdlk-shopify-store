@@ -159,6 +159,7 @@
     &--full {
         .Headline {
             color: var(--typo-hex--banner-secondary);
+            line-height: 1.2;
         }
 
         .Banner-image {
@@ -203,7 +204,7 @@
             width: 2rem;
             margin: 0 var(--base-spacing);
             vertical-align: bottom;
-            fill: var(--btn-bg-color-secondary);
+            fill: var(--btn-bg-color);
             cursor: pointer;
         }
 
