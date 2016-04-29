@@ -16,7 +16,9 @@
         <div class="Banner-content">
             <svg class="HeadlineBanner Banner-mainHeadline">
                 <title>{{'home_page.sections.main_headline' | t}}</title>
-                <desc>Woodlike Ocean sustainable swimwear hashtag</desc>
+                <desc>
+                    {{'home_page.section.main_banner_description | t'}}
+                </desc>
                 <defs>
                     <linearGradient id="Gradient" x1="0" x2="1" y1="0" y2="0">
                         <stop offset="0%" stop-color="#FFCA54"/>
@@ -57,7 +59,7 @@
             srcset="{{ mainBanner }}, {{ mainBanner2x }} 2x">
             <img class="Banner-image"
             src="{{ mainBanner }}"
-            alt="One woodlike ocean bikini (100 g): Eliminates 126 g of ocean waste">
+            alt="Woodlike Ocean - {{'home_page.sections.main_headline' | t}}">
         </picture>
     </article>
     <article class="Banner Banner--teaser" id="Banner-teaser">
@@ -108,7 +110,7 @@
                 srcset="{{ halfBanner }}, {{ halfBanner2x}} 2x">
                 <img class="Banner-image"
                 src="{{ halfBanner }}"
-                alt="One woodlike ocean bikini (100 g): Eliminates 126 g of ocean waste">
+                alt="{{ 'home_page.sections.collection_banner_1'}} | t">
             </picture>
         </a>
     </article>
@@ -127,7 +129,7 @@
             'WDLK_Half-Banner2_Desktop_2x.jpg' | asset_url  %}
         <a href="{{ pages['sustainability'].url}}" >
             <div class="Banner-content">
-                <h3 class="Headline Headline--4">Hello World</h3>
+                <h3 class="Headline Headline--3">{{'home_page.sections.principles_banner_1' | t}}</h3>
             </div>
             <picture>
                 <source
@@ -141,7 +143,7 @@
                 srcset="{{ halfBanner2 }}, {{ halfBanner22x}} 2x">
                 <img class="Banner-image"
                 src="{{ halfBanner2 }}"
-                alt="One woodlike ocean bikini (100 g): Eliminates 126 g of ocean waste">
+                alt="{{'home_page.sections.principles_banner_1' | t}}">
             </picture>
         </a>
     </article>
@@ -172,7 +174,7 @@
                 srcset="{{ fullBanner1 }}, {{ fullBanner12x}} 2x">
                 <img class="Banner-image"
                 src="{{ fullBanner1 }}"
-                alt="One woodlike ocean bikini (100 g): Eliminates 126 g of ocean waste">
+                alt="{{'home_page.sections.full_banner_1_headline' | t}}">
             </picture>
         </a>
         <div class="Banner-content">
@@ -180,7 +182,7 @@
                 {{'home_page.sections.full_banner_1_headline' | t}}
             </h3>
             <p class="Banner-copy">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor voluptua. At vero eos accusam et justo duo dolores  rebu. Diam nonumy eirmod tempor magna voluptua. At vero eos accusam et justo duo dolores  rebu.
+                {{ 'home_page.sections.principle_banner_2' | t}}
             </p>
             <a class="Link Link--btn" href="{{ pages['about-us'].url }}">
                 {{'general.buttons.link_read_more' | t}}
@@ -188,18 +190,20 @@
                     <use xlink:href="#Arrow_right" />
                 </svg>
             </a>
-
-            <svg class="Icon Icon--social Icon--facebook">
+            {% comment %}
+              $todo: once the site setup include the share functionality for the banner.
+                <svg class="Icon Icon--social Icon--facebook">
                 <use xlink:href="#Facebook" />
-            </svg>
+                </svg>
 
-            <svg class="Icon Icon--social Icon--instagram">
+                <svg class="Icon Icon--social Icon--instagram">
                 <use xlink:href="#Instagram" />
-            </svg>
+                </svg>
 
-            <svg class="Icon Icon--social Icon--pinterest">
+                <svg class="Icon Icon--social Icon--pinterest">
                 <use xlink:href="#Pinterest" />
-            </svg>
+                </svg>
+            {% endcomment %}
         </div>
     </article>
     <article class="Banner Banner--full Banner--collection">
@@ -238,7 +242,7 @@
                 srcset="{{ fullBanner2 }}, {{ fullBanner22x}} 2x">
                 <img class="Banner-image"
                 src="{{ twoThirdBanner }}"
-                alt="One woodlike ocean bikini (100 g): Eliminates 126 g of ocean waste">
+                alt="{{'home_page.sections.full_banner_2_headline' | t}}">
             </picture>
         </a>
     </article>
