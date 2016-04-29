@@ -27,8 +27,8 @@ export default function smoothScrolling () {
 
 
     const SCROLL_TO = (scrollLayer, el, duration, cb = cb || function (){}) => {
-        let startPosition = scrollLayer.scrollTop - 20;
-        let positionDelta = el.offsetTop - startPosition;
+        let startPosition = scrollLayer.scrollTop;
+        let positionDelta = el.offsetTop - startPosition - 40;
         let startTime = null;
 
 
