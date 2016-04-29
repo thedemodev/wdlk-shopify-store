@@ -14,6 +14,12 @@
             @content;
         }
     }
+
+    @if ($size == xlarge) {
+        @media (#{$limitor}: $screen-xl) {
+            @content;
+        }
+    }
 }
 //-- Media Queries: range from min N value to a max N value.
 //-- Variable Arguments are unknown number of arguments.

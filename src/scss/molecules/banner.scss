@@ -1,3 +1,6 @@
+:root {
+    --informative-content-width: 32rem;
+}
 .Banner {
     position: relative;
     overflow: hidden;
@@ -78,6 +81,8 @@
     }
 
     &--main {
+        max-height: 100vh;
+
         .Banner-introText {
             color: var(--hex-coral);
 
@@ -157,17 +162,27 @@
     }
 
     &--full {
+        @include media(large) {
+            max-height: calc(100vh - var(--nav-height));
+        }
+
         .Headline {
             color: var(--typo-hex--banner-secondary);
             line-height: 1.2;
         }
 
         .Banner-image {
-            width: 100vw;
+            max-height: calc(100vh - var(--nav-height));
+
+            @include media(large) {
+                width: 100vw;
+                max-height: none;
+            }
         }
     }
 
     &--informative {
+
         .Banner-content {
             position: relative;
             top: auto;
@@ -181,7 +196,7 @@
                 position: absolute;
                 top: 6rem;
                 left: 5rem;
-                max-width: 320px;
+                max-width: var(--informative-content-width);
                 padding: {
                     top: 3.5rem;
                     right: 4rem;
@@ -190,6 +205,10 @@
                 }
                 overflow: hidden;
                 background-color: var(--background-color);
+            }
+
+            @include media(xlarge) {
+                left: calc(50% - var(--informative-content-width) * 2);
             }
         }
 
