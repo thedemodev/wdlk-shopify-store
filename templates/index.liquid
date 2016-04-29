@@ -14,9 +14,6 @@
             'WDLK_Main-Banner_Desktop_2x.jpg' | asset_url  %}
 
         <div class="Banner-content">
-            <small class="Banner-introText">
-                {{'home_page.sections.main_small' | t}}
-            </small>
             <svg class="HeadlineBanner Banner-mainHeadline">
                 <title>{{'home_page.sections.main_headline' | t}}</title>
                 <desc>Woodlike Ocean sustainable swimwear hashtag</desc>
@@ -42,12 +39,12 @@
                 {{'home_page.sections.main_button_copy' | t}}
             </a>
         </div>
-        <div class="Banner-lead">
+        <a href="#Banner-teaser" class="Banner-lead">
             <svg class="Icon">
                 <use xlink:href="#Arrow_down" />
             </svg>
             {{'home_page.sections.main_scroll_tip' | t}}
-        </div>
+        </a>
         <picture>
             <source
             media="(max-width: 480px)"
@@ -63,7 +60,7 @@
             alt="One woodlike ocean bikini (100 g): Eliminates 126 g of ocean waste">
         </picture>
     </article>
-    <article class="Banner Banner--teaser">
+    <article class="Banner Banner--teaser" id="Banner-teaser">
         <div class="Banner-content">
             <svg class="Icon Icon--logo">
                 <use xlink:href="#Logo" />

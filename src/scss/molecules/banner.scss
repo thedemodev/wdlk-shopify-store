@@ -79,7 +79,7 @@
 
     &--main {
         .Banner-introText {
-            color: var(--coral);
+            color: var(--hex-coral);
 
             @include media(medium) {
                 font-size: calc(var(--md-copy-size) * 1.43);

@@ -1197,198 +1197,6 @@
     - Pull classes, to move grid items back to the left by certain amounts
 ==============================================================================*/
 /*============================================================================
-  #Links and Buttons
-==============================================================================*/
-a,
-.text-link {
-  color: gray;
-  text-decoration: none;
-  background: transparent; }
-
-a:hover,
-a:focus {
-  color: #a6a6a6; }
-
-button {
-  overflow: visible; }
-
-button[disabled],
-html input[disabled] {
-  cursor: default; }
-
-.btn, .btn--secondary,
-.rte .btn--secondary,
-.rte .btn,
-.rte .btn--secondary {
-  display: inline-block;
-  padding: 8px 10px;
-  width: auto;
-  margin: 0;
-  line-height: 1.42;
-  font-weight: bold;
-  text-decoration: none;
-  text-align: center;
-  vertical-align: middle;
-  white-space: nowrap;
-  cursor: pointer;
-  border: 1px solid transparent;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  border-radius: 3px;
-  /*================ Set primary button colors - can override later ================*/
-  background-color: gray;
-  color: #fff; }
-  .btn:hover, .btn--secondary:hover,
-  .rte .btn:hover,
-  .rte .btn--secondary:hover {
-    background-color: #676767;
-    color: #fff; }
-  .btn:active, .btn--secondary:active, .btn:focus, .btn--secondary:focus,
-  .rte .btn:active,
-  .rte .btn--secondary:active,
-  .rte .btn:focus,
-  .rte .btn--secondary:focus {
-    background-color: #4d4d4d;
-    color: #fff; }
-  .btn[disabled], [disabled].btn--secondary, .btn.disabled, .disabled.btn--secondary,
-  .rte .btn[disabled],
-  .rte [disabled].btn--secondary,
-  .rte .btn.disabled,
-  .rte .disabled.btn--secondary {
-    cursor: default;
-    color: #b6b6b6;
-    background-color: #f6f6f6; }
-
-.btn--secondary,
-.rte .btn--secondary {
-  background-color: magenta; }
-  .btn--secondary:hover,
-  .rte .btn--secondary:hover {
-    background-color: #cc00cc;
-    color: #fff; }
-  .btn--secondary:active, .btn--secondary:focus,
-  .rte .btn--secondary:active,
-  .rte .btn--secondary:focus {
-    background-color: #990099;
-    color: #fff; }
-
-.btn--small {
-  padding: 4px 5px;
-  font-size: 0.85714em; }
-
-.btn--large {
-  padding: 12px 15px;
-  font-size: 1.14286em; }
-
-.btn--full {
-  width: 100%; }
-
-/*================ Force an input/button to look like a text link ================*/
-.text-link {
-  display: inline;
-  border: 0 none;
-  background: none;
-  padding: 0;
-  margin: 0; }
-
-/*============================================================================
-  #Lists
-==============================================================================*/
-ul.square {
-  list-style: square outside; }
-
-ul.disc {
-  list-style: disc outside; }
-
-ol.alpha {
-  list-style: lower-alpha outside; }
-
-.no-bullets {
-  list-style: none outside;
-  margin-left: 0; }
-
-.inline-list {
-  margin-left: 0; }
-  .inline-list li {
-    display: inline-block;
-    margin-bottom: 0; }
-
-/*============================================================================
-  #Tables
-==============================================================================*/
-table {
-  width: 100%;
-  border-collapse: collapse;
-  border-spacing: 0; }
-
-table.full {
-  width: 100%;
-  margin-bottom: 1em; }
-
-.table-wrap {
-  max-width: 100%;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch; }
-
-th {
-  font-weight: bold; }
-
-th, td {
-  text-align: left;
-  padding: 15px;
-  border: 1px solid white; }
-
-/*============================================================================
-  Responsive tables, defined with .table--responsive on table element.
-  Only defined for IE9+
-==============================================================================*/
-@media screen and (max-width: 480px) {
-  .table--responsive thead {
-    display: none; }
-  .table--responsive tr {
-    display: block; }
-  .table--responsive tr,
-  .table--responsive td {
-    float: left;
-    clear: both;
-    width: 100%; }
-  .table--responsive th,
-  .table--responsive td {
-    display: block;
-    text-align: right;
-    padding: 15px; }
-  .table--responsive td:before {
-    content: attr(data-label);
-    float: left;
-    text-align: center;
-    font-size: 12px;
-    padding-right: 10px; }
-  .table--responsive.cart-table img {
-    margin: 0 auto; }
-  .table--responsive.cart-table .js-qty {
-    float: right; } }
-
-@media screen and (max-width: 480px) {
-  .table--small-hide {
-    display: none !important; }
-  .table__section + .table__section {
-    position: relative;
-    margin-top: 10px;
-    padding-top: 15px; }
-    .table__section + .table__section:after {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 15px;
-      right: 15px;
-      border-bottom: 1px solid white; } }
-
-/*============================================================================
   #OOCSS Media Object
     - http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/
 ==============================================================================*/
@@ -1512,20 +1320,11 @@ label.error {
   .input-group .input-group-field:first-child,
   .input-group .input-group-btn:first-child,
   .input-group .input-group-btn:first-child > .btn,
-  .input-group .input-group-btn:first-child > .btn--secondary,
-  .input-group
-  .rte .input-group-btn:first-child > .btn--secondary,
   .input-group input[type="hidden"]:first-child + .input-group-field,
-  .input-group input[type="hidden"]:first-child + .input-group-btn > .btn,
-  .input-group input[type="hidden"]:first-child + .input-group-btn > .btn--secondary,
-  .input-group
-  .rte input[type="hidden"]:first-child + .input-group-btn > .btn--secondary {
+  .input-group input[type="hidden"]:first-child + .input-group-btn > .btn {
     border-radius: 3px 0 0 3px; }
   .input-group .input-group-field:last-child,
-  .input-group .input-group-btn:last-child > .btn,
-  .input-group .input-group-btn:last-child > .btn--secondary,
-  .input-group
-  .rte .input-group-btn:last-child > .btn--secondary {
+  .input-group .input-group-btn:last-child > .btn {
     border-radius: 0 3px 3px 0; }
   .input-group input::-moz-focus-inner {
     border: 0;
@@ -1539,7 +1338,7 @@ label.error {
   vertical-align: middle;
   margin: 0; }
 
-.input-group .btn, .input-group .btn--secondary,
+.input-group .btn,
 .input-group .input-group-field {
   height: 37px; }
 
@@ -2066,6 +1865,9 @@ figure {
   margin: 0;
   -webkit-animation: radio-controlled-fix 1s infinite;
           animation: radio-controlled-fix 1s infinite; }
+
+a {
+  text-decoration: none; }
 
 input[type="checkbox"] {
   -webkit-appearance: checkbox;
@@ -2732,7 +2534,7 @@ body {
     letter-spacing: 1px;
     letter-spacing: .1rem; }
   .Banner--main .Banner-introText {
-    color: var(--coral); }
+    color: #FF6C54; }
     @media (min-width: 770px) {
       .Banner--main .Banner-introText {
         font-size: 2.002rem; } }
