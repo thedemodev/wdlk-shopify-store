@@ -13,6 +13,10 @@
         left: 50%;
         z-index: 1;
         width: 100%;
+        padding: {
+            right: var(--base-spacing);
+            left: var(--base-spacing);
+        }
         text-align: center;
         line-height: 1.5;
         transform: translateX(-50%) translateY(-50%);
@@ -101,7 +105,12 @@
             .Banner-image {
                 width: auto;
                 height: 100vh;
-                transform: translateX(-15%);
+            }
+        }
+
+        @include media(xsmall, max-width) {
+            .Banner-image {
+                transform: translateX(-8%);
             }
         }
 
@@ -174,15 +183,17 @@
         .Banner-image {
             max-height: calc(100vh - var(--nav-height));
 
-            @include media(large) {
+            @include media (medium) {
                 width: 100vw;
+            }
+
+            @include media(large) {
                 max-height: none;
             }
         }
     }
 
     &--informative {
-
         .Banner-content {
             position: relative;
             top: auto;
@@ -227,15 +238,29 @@
             cursor: pointer;
         }
 
+        @media(max-width: $screen-xs) {
+            .Banner-image {
+                transform: translateX(-10%);
+            }
+        }
+
     }
 
     &--collection {
         &:last-of-type {
             .Banner-content {
                 max-width: 350px;
-                right: 4rem;
-                left: auto;
-                transform: translateY(-50%);
+
+                @include media (small, max-width) {
+                    top: auto;
+                    bottom: 0;
+                }
+
+                @include media(medium) {
+                    right: 4rem;
+                    left: auto;
+                    transform: translateY(-50%);
+                }
             }
         }
     }

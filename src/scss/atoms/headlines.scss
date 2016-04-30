@@ -12,7 +12,7 @@
 
 .HeadlineBanner {
     display: block;
-    width: 100vw;
+    width: 100%;
     //-- Fixes the height in different browsers to the
     //-- lack of dominant-baseline: middle
     height: calc((var(--h-stage-size) / 1.75) * 2 + 1);

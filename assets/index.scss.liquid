@@ -1905,8 +1905,8 @@ input[type="radio"] {
       fill-opacity: 1;
       color: #FF6C54; }
   .ShoppingCart-count {
-    font-size: 14px;
-    font-size: 1.4rem;
+    font-size: 12px;
+    font-size: 1.2rem;
     font-weight: 100;
     stroke-width: 1px;
     color: #ffffff;
@@ -1940,7 +1940,7 @@ html {
 
 .HeadlineBanner {
   display: block;
-  width: 100vw;
+  width: 100%;
   height: 138px;
   height: 13.8rem;
   margin-bottom: 26px;
@@ -2469,6 +2469,10 @@ body {
     left: 50%;
     z-index: 1;
     width: 100%;
+    padding-right: 20px;
+    padding-right: 2rem;
+    padding-left: 20px;
+    padding-left: 2rem;
     text-align: center;
     line-height: 1.5;
     -webkit-transform: translateX(-50%) translateY(-50%);
@@ -2549,8 +2553,8 @@ body {
       .Banner--main .Banner-image {
         width: auto;
         height: 100vh;
-        -webkit-transform: translateX(-15%);
-                transform: translateX(-15%); } }
+        -webkit-transform: translateX(-8%);
+                transform: translateX(-8%); } }
     .Banner--main .Banner-content {
       line-height: 1;
       -webkit-transform: translateX(-50%) translateY(-35%);
@@ -2601,9 +2605,11 @@ body {
     line-height: 1.2; }
   .Banner--full .Banner-image {
     max-height: calc(100vh - 8rem); }
+    @media (min-width: 770px) {
+      .Banner--full .Banner-image {
+        width: 100vw; } }
     @media (min-width: 1024px) {
       .Banner--full .Banner-image {
-        width: 100vw;
         max-height: none; } }
   .Banner--informative .Banner-content {
     position: relative;
@@ -2644,13 +2650,22 @@ body {
     vertical-align: bottom;
     fill: #FF6C54;
     cursor: pointer; }
+  @media (max-width: 375px) {
+    .Banner--informative .Banner-image {
+      -webkit-transform: translateX(-10%);
+              transform: translateX(-10%); } }
   .Banner--collection:last-of-type .Banner-content {
-    max-width: 350px;
-    right: 40px;
-    right: 4rem;
-    left: auto;
-    -webkit-transform: translateY(-50%);
-            transform: translateY(-50%); }
+    max-width: 350px; }
+    @media (max-width: 480px) {
+      .Banner--collection:last-of-type .Banner-content {
+        top: auto;
+        bottom: 0; } }
+    @media (min-width: 770px) {
+      .Banner--collection:last-of-type .Banner-content {
+        right: 4rem;
+        left: auto;
+        -webkit-transform: translateY(-50%);
+                transform: translateY(-50%); } }
   .Banner--half {
     width: 100%; }
     @media (min-width: 480px) {

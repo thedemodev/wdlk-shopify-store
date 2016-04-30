@@ -1,4 +1,9 @@
 @mixin media ($size, $limitor: min-width) {
+    @if ($size == xsmall) {
+      @media (#{$limitor}: $screen-xs) {
+        @content;
+      }
+    }
     @if ($size == small) {
       @media (#{$limitor}: $screen-sm) {
         @content;
