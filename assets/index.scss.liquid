@@ -1,3 +1,62 @@
+/*
+ * Web Fonts from fontspring.com
+ *
+ * All OpenType features and all extended glyphs have been removed.
+ * Fully installable fonts can be purchased at http://www.fontspring.com
+ *
+ * The fonts included in this stylesheet are subject to the End User License you purchased
+ * from Fontspring. The fonts are protected under domestic and international trademark and
+ * copyright law. You are prohibited from modifying, reverse engineering, duplicating, or
+ * distributing this font software.
+ *
+ * (c) 2010-2016 Fontspring
+ *
+ *
+ *
+ *
+ * The fonts included are copyrighted by the vendor listed below.
+ *
+ * Vendor:      exljbris Font Foundry
+ * License URL: http://www.fontspring.com/licenses/exljbris/webfont
+ *
+ *
+ */
+
+@font-face {
+    font-family: 'museo-sans';
+    src: url('{{'MuseoSans_300-webfont.eot' | asset_url}}');
+    src: url('{{'MuseoSans_300-webfont.eot?#iefix' | asset_url}}') format('embedded-opentype'),
+         url('{{'MuseoSans_300-webfont.woff2' | asset_url}}') format('woff2'),
+         url('{{'MuseoSans_300-webfont.woff' | asset_url}}') format('woff'),
+         url('{{'MuseoSans_300-webfont.ttf' | asset_url}}') format('truetype'),
+         url('{{'MuseoSans_300-webfont.svg#museo_sans300' | asset_url}}') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'museo-sans-bold';
+    src: url('{{'MuseoSans_500-webfont.eot' | asset_url}}');
+    src: url('{{'MuseoSans_500-webfont.eot?#iefix' | asset_url}}') format('embedded-opentype'),
+         url('{{'MuseoSans_500-webfont.woff2' | asset_url}}') format('woff2'),
+         url('{{'MuseoSans_500-webfont.woff' | asset_url}}') format('woff'),
+         url('{{'MuseoSans_500-webfont.ttf' | asset_url}}') format('truetype'),
+         url('{{'MuseoSans_500-webfont.svg#museo_sans300' | asset_url}}') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'museo';
+    src: url('{{'Museo300-Regular-webfont.eot' | asset_url}}');
+    src: url('{{'Museo300-Regular-webfont.eot?#iefix' | asset_url}}') format('embedded-opentype'),
+         url('{{'Museo300-Regular-webfont.woff2' | asset_url}}') format('woff2'),
+         url('{{'Museo300-Regular-webfont.woff' | asset_url}}') format('woff'),
+         url('{{'Museo300-Regular-webfont.ttf' | asset_url}}') format('truetype'),
+         url('{{'Museo300-Regular-webfont.svg#museo_sans300' | asset_url}}') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 /*============================================================================
   #Breakpoint and Grid Variables
 ==============================================================================*/
@@ -1912,32 +1971,6 @@ input[type="radio"] {
     color: #ffffff;
     text-anchor: middle; }
 
-@font-face {
-  font-family: "museo-sans";
-  font-style: normal;
-  font-weight: normal;
-  src: font-source-declaration("museo-sans", "/assets/museo300-regular-webfont", false, eot woff2 woff ttf svg, font-url-prefixer(false)); }
-
-@font-face {
-  font-family: "museo-sans";
-  font-style: normal;
-  font-weight: bold;
-  src: font-source-declaration("museo-sans", "/assets/museosans_500-webfont", false, eot woff2 woff ttf svg, font-url-prefixer(false)); }
-
-@font-face {
-  font-family: "museo";
-  font-style: normal;
-  font-weight: normal;
-  src: font-source-declaration("museo", "/assets/museosans_300-webfont", false, eot woff2 woff ttf svg, font-url-prefixer(false)); }
-
-html {
-  font-family: "museo-sans", sans-serif;
-  font-size: 62.5%;
-  line-height: 1.5;
-  color: #596771;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
-
 .HeadlineBanner {
   display: block;
   width: 100%;
@@ -2011,6 +2044,14 @@ html {
     font-size: 1.8rem; }
   .Headline--highlight {
     color: #384852; }
+
+html {
+  font-family: "museo-sans", sans-serif;
+  font-size: 62.5%;
+  line-height: 1.5;
+  color: #596771;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
 
 body {
   font-size: 16px;
@@ -2552,7 +2593,9 @@ body {
     @media (max-width: 480px) {
       .Banner--main .Banner-image {
         width: auto;
-        height: 100vh;
+        height: 100vh; } }
+    @media (max-width: 375px) {
+      .Banner--main .Banner-image {
         -webkit-transform: translateX(-8%);
                 transform: translateX(-8%); } }
     .Banner--main .Banner-content {

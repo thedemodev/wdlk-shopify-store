@@ -22,6 +22,15 @@
     }
 }
 
+html {
+    font-family: "museo-sans", sans-serif;
+    font-size: 62.5%; // Equivalent to 10px
+    line-height: 1.5;
+    color: var(--typo-hex);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 body {
     @include copy-text();
 }

@@ -1,5 +1,5 @@
 import {resolve} from 'path';
-import {readFileSync, writeFile} from 'fs';
+import {writeFile, readFile} from 'fs';
 import sass from 'node-sass';
 import postcss from 'postcss';
 import syntax from 'postcss-scss';
@@ -11,6 +11,7 @@ import reporter from 'postcss-reporter';
 import log from './log';
 
 export default function css () {
+    const LIQUIDFONTFILE = resolve('./src/scss/atoms/font-face.scss.liquid');
     const SRCFILE   = resolve('./src/scss/index.scss');
     const BUILDFILE = resolve('./assets/index.scss.liquid');
     const LIBSPATH  = resolve('./src/scss/libs');
@@ -33,10 +34,21 @@ export default function css () {
             })
     ];
 
+
+    const HANDLEEXTERNALFILE = cb => {
+        readFile(LIQUIDFONTFILE, 'utf8', (err, data) => {
+             cb(data);
+        })
+    };
+
     let futureCSS = postcss(PROCESSOR).process(SCSS.css, {parcer: syntax})
     .then(result => {
-        writeFile(BUILDFILE, result);
-        console.log(result.messages.toString());
+        HANDLEEXTERNALFILE(data => {
+            console.log(result.messages.toString());
+            const RESULTFILE = `${data}${result}`;
+            writeFile(BUILDFILE, RESULTFILE);
+            console.log(log.info('[CSS build task]: ') + 'Liquid syntax css (font-face.scss.liquid) was successfully concatenated');
+        });
         console.log(log.info('[CSS build task]: ') + 'compilation and transformation was successfully completed');
     }, err => {
             console.error(log.error('[CSS build task error]: '), err);
