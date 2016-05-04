@@ -1,0 +1,25 @@
+.LinkList {
+    list-style: none;
+    padding-left: 0;
+
+    &-item {
+        margin-bottom: 1rem;
+    }
+
+    &-link {
+        color: var(--link-hex-color);
+        font-family: "museo-sans-bold";
+        font-size: var(--md-copy-size);
+        text-transform: uppercase;
+        letter-spacing: .1rem;
+        transition: color .5s ease;
+
+        &:hover {
+            color: var(--link-hex-hover-color);
+        }
+
+        &.is-active {
+            color: var(--link-hex-hover-color);
+        }
+    }
+}

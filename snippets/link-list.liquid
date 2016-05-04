@@ -1,0 +1,9 @@
+<ul class="LinkList">
+    {% for link in linklists.footer.links %}
+    <li class="LinkList-item">
+        <a href="{{ link.url }}" class="LinkList-link {% if link.active %} is-active{% endif %}">
+            {{ link.title }}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
