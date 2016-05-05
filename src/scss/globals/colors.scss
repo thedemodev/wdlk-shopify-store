@@ -54,6 +54,7 @@
 
 //-- Forms & Buttons
 :root {
+    --input-hex-placeholder: var(--hex-blue-gray);
     --form-el-bg-color: var(--lightest-gray-hex);
     --form-el-focus-color: var(--mid-gray-hex);
     --form-typo-color: var(--mid-dark-gray-hex);

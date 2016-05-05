@@ -18,8 +18,9 @@
       "home_link_title": "Zurück zur Startseite"
     },
     "newsletter_form": {
-      "newsletter_email": "ihre-email@beispiel.com",
-      "submit": "Abonnieren"
+      "newsletter_email": "Ihre E-Mail Adresse",
+      "submit": "Abonnieren",
+      "img_alt": "Sign up for WDLK news"
     },
     "search": {
       "no_results_html": "Ihre Suche nach \"{{ terms }}\" hat keine Ergebnisse hervorgebracht.",
@@ -269,7 +270,7 @@
     "footer": {
       "linklist_title": "Quick Links",
       "social_title": "Bleiben Sie auf dem Laufenden",
-      "newsletter_title": "Newsletter",
+      "newsletter_title": "Sign up for WDLK news",
       "accepted_payments": "Akzeptierte Zahlungen",
       "copyright": "© WOODLIKE 2016. All rights reserved."
     }
