@@ -25,6 +25,30 @@
     }
 
     &--secondary {
+        @include media(medium) {
+            margin-bottom: 0;
+
+            .LinkList-item {
+                display: inline-block;
+                border-right: 1px solid var(--link-hex-secondary-color);
+                padding: {
+                    right: var(--base-spacing);
+                    left: var(--base-spacing);
+                }
+                margin-bottom: 0;
+                line-height: .8;
+                vertical-align: bottom;
+
+                &:first-child {
+                    padding-left: 0;
+                }
+                &:last-child {
+                    border-right: none;
+                    padding-right: 0;
+                }
+            }
+        }
+
         .LinkList-link {
             font-size: var(--small-copy-size);
             color: var(--link-hex-secondary-color);
@@ -33,5 +57,6 @@
                 color: var(--link-hex-secondary-hover-color);
             }
         }
+
     }
 }

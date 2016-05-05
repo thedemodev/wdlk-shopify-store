@@ -1971,6 +1971,13 @@ input[type="radio"] {
     color: #ffffff;
     text-anchor: middle; }
 
+.Copyright {
+  display: inline-block;
+  margin-top: 77px;
+  margin-top: 7.7rem;
+  font-size: 12px;
+  font-size: 1.2rem; }
+
 .HeadlineBanner {
   display: block;
   width: 100%;
@@ -3289,6 +3296,22 @@ body {
       color: #EC4024; }
     .LinkList-link.is-active {
       color: #EC4024; }
+  @media (min-width: 770px) {
+    .LinkList--secondary {
+      margin-bottom: 0; }
+      .LinkList--secondary .LinkList-item {
+        display: inline-block;
+        border-right: 1px solid #8E959A;
+        padding-right: 2rem;
+        padding-left: 2rem;
+        margin-bottom: 0;
+        line-height: .8;
+        vertical-align: bottom; }
+        .LinkList--secondary .LinkList-item:first-child {
+          padding-left: 0; }
+        .LinkList--secondary .LinkList-item:last-child {
+          border-right: none;
+          padding-right: 0; } }
   .LinkList--secondary .LinkList-link {
     font-size: 12px;
     font-size: 1.2rem;
@@ -3303,18 +3326,19 @@ body {
     margin-right: 20px;
     margin-right: 2rem; }
 
-.SocialList-item {
-  fill: #FF6C54;
-  cursor: pointer;
-  -webkit-transition: fill .5s ease;
-  transition: fill .5s ease; }
-  .SocialList-item:hover {
-    fill: #EC4024; }
-
-.SocialList--tonedown .SocialList-item {
-  fill: #8E959A; }
-  .SocialList--tonedown .SocialList-item:hover {
-    fill: #596771; }
+.SocialList {
+  text-align: center; }
+  .SocialList-item {
+    fill: #FF6C54;
+    cursor: pointer;
+    -webkit-transition: fill .5s ease;
+    transition: fill .5s ease; }
+    .SocialList-item:hover {
+      fill: #EC4024; }
+  .SocialList--tonedown .SocialList-item {
+    fill: #8E959A; }
+    .SocialList--tonedown .SocialList-item:hover {
+      fill: #596771; }
 
 .Header {
   display: -webkit-flex;
@@ -3442,3 +3466,37 @@ body {
   padding-left: 50px;
   padding-left: 5rem;
   text-align: center; }
+  @media (min-width: 770px) {
+    .Footer {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: -webkit-box;
+      display: flex;
+      -webkit-flex-wrap: wrap;
+          -ms-flex-wrap: wrap;
+              flex-wrap: wrap;
+      -webkit-justify-content: space-between;
+          -ms-flex-pack: justify;
+              -webkit-box-pack: justify;
+              justify-content: space-between;
+      max-width: 100%;
+      margin: auto;
+      text-align: left; }
+      .Footer .LinkList {
+        width: calc(50vw - 5rem); }
+        .Footer .LinkList--secondary {
+          -webkit-align-self: flex-end;
+              -ms-flex-item-align: end;
+                  align-self: flex-end;
+          width: 33.33333vw; }
+      .Footer .PaymentList {
+        width: calc(50vw - 5rem);
+        text-align: right; }
+      .Footer .SocialList,
+      .Footer .Copyright {
+        -webkit-align-self: flex-end;
+            -ms-flex-item-align: end;
+                align-self: flex-end;
+        width: calc(100vw / 3 - 5rem); }
+      .Footer .Copyright {
+        text-align: right; } }
