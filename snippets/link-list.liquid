@@ -1,5 +1,12 @@
-<ul class="LinkList">
-    {% for link in linklists.footer.links %}
+{% comment %}
+   There should be two types of link-list components:
+   1. primary
+   2. secondary
+{% endcomment %}
+{% if link-list %}
+<ul class="LinkList {% if link-list != 'primary' %}LinkList--{{link-list}}{% endif %}">
+
+    {% for link in linklists.[{{linkListHandle}}].links %}
     <li class="LinkList-item">
         <a href="{{ link.url }}" class="LinkList-link {% if link.active %} is-active{% endif %}">
             {{ link.title }}
@@ -7,3 +14,4 @@
     </li>
     {% endfor %}
 </ul>
+{% endif %}

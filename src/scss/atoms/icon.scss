@@ -1,0 +1,38 @@
+:root {
+    --payment-icons-height: 2.8rem;
+    --advanced-icon-width: 7.4rem;
+    --paypal-icon-width: 11.4rem;
+    --mastercard-icon-width: 4.5rem;
+    --visa-icon-width: 7.2rem;
+}
+
+.Icon {
+    &--payment {
+        height: var( --payment-icons-height);
+        margin: {
+            right: var(--base-spacing);
+            bottom: var(--base-spacing);
+        }
+
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+
+    &--paypal {
+        width: var(--paypal-icon-width);
+    }
+
+    &--advanced {
+        width: var(--advanced-icon-width);
+    }
+
+    &--masterCard {
+        width: var(--mastercard-icon-width);
+    }
+
+    &--visaCard {
+        width: var(--visa-icon-width);
+    }
+
+}
