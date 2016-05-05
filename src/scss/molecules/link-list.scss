@@ -23,4 +23,15 @@
             color: var(--link-hex-hover-color);
         }
     }
+
+    &--secondary {
+        .LinkList-link {
+            font-size: var(--small-copy-size);
+            color: var(--link-hex-secondary-color);
+
+            &:hover {
+                color: var(--link-hex-secondary-hover-color);
+            }
+        }
+    }
 }
