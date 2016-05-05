@@ -2,6 +2,7 @@
     --copy-size: 1.6rem;
     --md-copy-size: 1.4rem;
     --small-copy-size: 1.2rem;
+    --xs-copy-size: 1rem;
 }
 
 @mixin copy-text ($color: var(--typo-hex)) {
@@ -19,6 +20,15 @@
     @if ($weight != normal) {
         font-weight: $weight;
     }
+}
+
+html {
+    font-family: "museo-sans", sans-serif;
+    font-size: 62.5%; // Equivalent to 10px
+    line-height: 1.5;
+    color: var(--typo-hex);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {

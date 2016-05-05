@@ -1,0 +1,27 @@
+{% comment %}
+  WDLK Mailchimp newsletter intergration.
+  The most important piece for the news letter to work it is
+  the action url.
+  * '//woodlike.us10.list-manage.com/subscribe/post?u=fc45d5bd59cd2e9dcfeeec732&amp;id=1af7e2c2b9'
+{% endcomment %}
+{% assign actionUrl = '//woodlike.us10.list-manage.com/subscribe/post?u=fc45d5bd59cd2e9dcfeeec732&amp;id=1af7e2c2b9'%}
+<form class="NewsletterForm" action="{{actionUrl}}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+    <h3 class="Headline Headline--4">{{ 'layout.footer.newsletter_title' | t }}</h3>
+    <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" name="EMAIL" class="InputField" id="mce-EMAIL" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
+	<div id="mce-responses">
+		<div class="response" id="mce-error-response" style="display:none"></div>
+		<div class="response" id="mce-success-response" style="display:none"></div>
+	</div>
+    {% comment %}
+      real people should not fill this in and expect good things - do not remove this or risk form bot signups
+    {% endcomment %}
+    <div class="NewsletterForm-security" aria-hidden="true"><input type="text" name="b_fc45d5bd59cd2e9dcfeeec732_1af7e2c2b9" tabindex="-1" value=""></div>
+    <input type="submit" value="{{ 'general.newsletter_form.submit' | t }}" name="subscribe" id="mc-embedded-subscribe" class="Btn">
+    <img class="NewsletterForm-img"
+    srcset="{{ 'newsletter-footer-background-smart.jpg' | asset_url }} 320w,
+            {{ 'newsletter-footer-background-mobile.jpg' | asset_url }} 768w,
+            {{ 'newsletter-footer-background.jpg' | asset_url }} 1024w,
+            {{ 'newsletter-footer-background-retina.jpg' | asset_url }} 2x"
+    src="{{ 'newsletter-footer-background.jpg' | asset_url }}"
+    alt="{{ 'general.newsletter_form.img_alt' | t }}"  />
+</form>

@@ -4,6 +4,11 @@
       "tags": "Tagged \"{{ tags }}\"",
       "page": "Page {{ page }}"
     },
+    "buttons": {
+      "link_learn_more": "Learn more about this",
+      "link_read_more": "Read more",
+      "link_shop_now": "Shop now"
+    },
     "404": {
       "title": "404 Page Not Found",
       "subtext_html": "The page you requested does not exist. Click <a href=\"\/collections\/all\">here<\/a> to continue shopping."
@@ -13,8 +18,9 @@
       "home_link_title": "Back to the frontpage"
     },
     "newsletter_form": {
-      "newsletter_email": "your-email@example.com",
-      "submit": "Subscribe"
+      "newsletter_email": "Your E-Mail Address",
+      "submit": "Sign in",
+      "img_alt": "Sign up for WDLK news"
     },
     "search": {
       "no_results_html": "Your search for \"{{ terms }}\" did not yield any results.",
@@ -79,6 +85,7 @@
       "link_title": "Browse our {{ title }} collection",
       "grid_view": "Grid view",
       "list_view": "List view",
+      "shop": "Shop",
       "items_count": {
         "one": "item",
         "other": "items"
@@ -218,9 +225,22 @@
   },
   "home_page": {
     "sections": {
-      "frontpage_title": "Frontpage Collection",
-      "featured_title": "Featured Collections",
-      "news_title": "Latest News"
+        "main_banner_description": "Woodlike Ocean sustainable swimwear.",
+        "main_headline": "Swim with us",
+        "main_headline_svg_1": "Swim",
+        "main_headline_svg_2": "with us",
+        "main_button_copy": "Shop the collection",
+        "main_scroll_tip": "Scroll down",
+        "claim_intro": "Respect to nature",
+        "claim": "We craft premium swimwear out of ocean recovered fishing nets and other recycled materials",
+        "full_banner_1_headline": "Meticulous handcraft meets environmental protection",
+        "full_banner_2_headline": "Seamless athletic one pieces",
+        "frontpage_title": "Frontpage Collection",
+        "featured_title": "Featured Collections",
+        "principles_banner_1": "One Woodlike-Ocean bikini (100g) eliminates about 126g of waste",
+        "collection_banner_1": "Figure-flattering, highly-functional fits that mirror the ever-increasing healthy lifestyle of today's conscious woman",
+        "principle_banner_2": "Woodlike Ocean is a sustainable swimwear label that stands for positive change. The brand represents those favorite memories of endless summer at the beach, sun-kissed skin and salty hair. Gorgeous swimwear committed to creating healthy oceans.",
+        "news_title": "Latest News"
     },
     "onboarding": {
       "modal_title": "Almost there...",
@@ -245,13 +265,14 @@
       "logged_in_as_html": "Logged in as {{ first_name }}",
       "log_out": "Log out",
       "log_in": "Log in",
-      "create_account": "Create account"
+      "create_account": "Register"
     },
     "footer": {
       "linklist_title": "Quick Links",
       "social_title": "Get Connected",
-      "newsletter_title": "Newsletter",
-      "accepted_payments": "Accepted Payments"
+      "newsletter_title": "Sign up for WDLK news",
+      "accepted_payments": "Accepted Payments",
+      "copyright": "© WOODLIKE 2016. All rights reserved."
     }
   },
   "products": {

@@ -1,13 +1,18 @@
 //-- Layout
-@import "header";
+@import "logo";
+@import "shopping-cart";
+@import "copyright";
 //-- Typography Styling
-@import "font-face";
 @import "headlines";
 @import "copytext";
 //-- Links & Buttons
 @import "links";
 @import "buttons";
 @import "indicators";
+@import "burger-button";
 //-- Forms
 @import "select";
 @import "quantity-field";
+@import "input";
+//-- Icons
+@import "icon";

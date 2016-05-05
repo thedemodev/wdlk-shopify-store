@@ -1,4 +1,9 @@
 @mixin media ($size, $limitor: min-width) {
+    @if ($size == xsmall) {
+      @media (#{$limitor}: $screen-xs) {
+        @content;
+      }
+    }
     @if ($size == small) {
       @media (#{$limitor}: $screen-sm) {
         @content;
@@ -11,6 +16,12 @@
     }
     @if ($size == large) {
         @media (#{$limitor}: $screen-l) {
+            @content;
+        }
+    }
+
+    @if ($size == xlarge) {
+        @media (#{$limitor}: $screen-xl) {
             @content;
         }
     }
@@ -57,7 +68,7 @@
         content: "";
         width: $size;
         height: $size;
-        background-color: $color;
+        background: $color;
         transform: rotate(45deg);
         @content;
     }

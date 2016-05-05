@@ -2,6 +2,10 @@
     &-display {
         @include grid-wrapper(var(--screen-xl));
 
+        @include media (medium) {
+            align-items: center;
+        }
+
         position: relative;
         background-color: var(--background-color-tertiary);
 
@@ -27,13 +31,18 @@
 
         position: relative;
         padding: {
-            bottom: var(--base-sapacing);
+            bottom: var(--base-spacing);
         }
         text-align: center;
         background-color: var(--background-color);
 
         @include media(large) {
             background-color: var(--background-color-tertiary);
+        }
+
+        //-- Styling for the price
+        .Headline--3 {
+            margin-bottom: 0;
         }
     }
 
@@ -43,26 +52,25 @@
         //-- 2. Factor column number for tablet & desktop
         //-- 3. Optional argument to define the inner padding
         @include grid-cell(1, 2, 0, large);
-
         position: relative;
     }
 
     &-headline {
         position: relative;
-        margin: {
-            top: calc(var(--base-sapacing) * 2);
-        }
+        padding-bottom: calc(var(--base-spacing) / 1.5);
+        margin-top: calc(var(--base-spacing) * 2);
+        text-transform: none;
 
         &::after {
             content: "";
             position: absolute;
-            top: 0;
             right: 0;
+            bottom: 0;
             left: 0;
             height: .2rem;
-            width: 2.5rem;
+            width: 6rem;
             margin: auto;
-            background-color: var(--typo-hex--highlight);
+            background-color: var(--typo-hex);
         }
     }
 
@@ -76,12 +84,12 @@
         }
         text-align: justify;
 
-        @include media(large) {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            left: 0;
-        }
+        //@include media(large) {
+        //    position: absolute;
+        //    right: 0;
+        //    bottom: 0;
+        //    left: 0;
+        //}
 
         &::after {
             content: "";
@@ -110,17 +118,17 @@
 
     .Copy-sm {
         display: block;
-        margin-bottom: var(--base-sapacing);
+        margin-bottom: var(--base-spacing);
         color: var(--typo-hex--tone-down);
         @include copy-text-sm();
     }
 
     .Link {
-        margin-bottom: var(--base-sapacing);
+        margin-bottom: calc(var(--base-spacing) * 1.5);
     }
 
     &-copytext {
-        margin: 0 0 var(--base-sapacing);
+        margin: 0 0 var(--base-spacing);
     }
 
     &-actionRow {

@@ -9,4 +9,3 @@ timber.productImageSwitch = function () {
     });
   }
 };
-console.log('this is working')

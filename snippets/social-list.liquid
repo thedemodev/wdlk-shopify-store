@@ -1,0 +1,25 @@
+{% comment %}
+   There should be two types of link-list components (modifiers):
+   1. default - It has the share functionality
+   2. link - Links to the appropriate social media channel
+   3. tonedown - changes the color of the icons. It is an additinal modifier that coexists together with the default and link modifier
+{% endcomment %}
+{% if social-list %}
+<div class="SocialList {% if social-list == 'default tonedown' or social-list == 'link tonedown' %}SocialList--tonedown{% endif %}">
+    <a href="https://www.facebook.com/woodlike" target="_blank">
+        <svg class="SocialList-item Icon Icon--social Icon--facebook">
+            <use xlink:href="#Facebook" />
+        </svg>
+    </a>
+    <a href="https://www.instagram.com/wdlk/" target="_blank">
+        <svg class="SocialList-item Icon Icon--social Icon--instagram">
+            <use xlink:href="#Instagram" />
+        </svg>
+    </a>
+    <a href="https://de.pinterest.com/woodlikeocean/" target="_blank">
+        <svg class="SocialList-item Icon Icon--social Icon--pinterest">
+            <use xlink:href="#Pinterest" />
+        </svg>
+    </a>
+</div>
+{% endif %}

@@ -1,21 +1,31 @@
 :root {
     --btn-timing: .35s;
-    --btn-timing-func: cubic-bezier(1.000, 0.000, 0.000, 1.000);
 }
 
 .Btn {
+    display: inline-block;
     height: var(--form-base-height);
-    padding: {
-        left: calc(var(--form-base-padding) + 1.6rem);
-        right: calc(var(--form-base-padding) + 1.6rem);
-    }
+    padding: 0 calc(var(--form-base-padding) + 1.6rem);
     border: none;
     background-color: var(--btn-bg-color);
-    @include copy-text(calc(var(--md-copy-size) - .1),  var(--typo-hex--tertiary), bold);
+    line-height: var(--form-base-height);
+    letter-spacing: .16rem;
+    text-transform: uppercase;
     cursor: pointer;
-    transition: background-color var(--btn-timing) var(--btn-timing-func);
+    transition: background-color var(--btn-timing) ease;
+
+    @include copy-text(
+        var(--md-copy-size),
+        var(--typo-hex--tertiary),
+        bold
+    );
 
     &:hover {
+        color: var(--typo-hex--tertiary);
         background-color: var(--btn-bg-color-hover);
+    }
+
+    &--secondary {
+        background-color: var(--btn-bg-color-secondary);
     }
 }

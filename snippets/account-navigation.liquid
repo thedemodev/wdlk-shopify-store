@@ -1,0 +1,42 @@
+<div class="AccountNavigation">
+    {% comment %}
+      If customer accounts are enabled, provide login and create account links
+    {% endcomment %}
+    {% if shop.customer_accounts_enabled %}
+    <div class="AccountNavigation-list">
+    {% if customer %}
+        {% if customer.first_name != blank %}
+        {% capture first_name %}<a href="/account" class="AccountNavigation-item">{{ customer.first_name }}</a>{% endcapture %}
+        {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
+        {% else %}
+        <a href="/account" class="AccountNavigation-item">{{ 'layout.customer.account' | t }}</a>
+        {% endif %}
+        <a href="/account/logout" class="AccountNavigation-item">{{ 'layout.customer.log_out' | t }}</a>
+    {% else %}
+        <a href="/account/login" class="AccountNavigation-item">{{ 'layout.customer.log_in' | t }}</a>
+        {% if shop.customer_accounts_optional %}
+        <a href="/account/register" class="AccountNavigation-item">{{ 'layout.customer.create_account' | t }}</a>
+        {% endif %}
+    {% endif %}
+    </div>
+    {% endif %}
+
+    {% comment %}
+      Show number of items in the cart and total cost in the /cart link
+
+      Ajax Cart Notes:
+        - #cartCount updates the total number of items in the cart
+        - #cartCost updates the total cost of the cart
+        - Documentation:  http://shopify.com/timber#ajax-cart
+    {% endcomment %}
+    <a href="/cart" class="ShoppingCart js_cartCountComponent js-drawer-open-right {% if cart.item_count > 0 %} is-filled {% endif %}" aria-controls="CartDrawer" aria-expanded="false">
+        <svg class="ShoppingCart-icon">
+            <use xlink:href="#Shopping_cart" />
+            <text class="ShoppingCart-count" data-cart="counter" y="80%" x="55%">
+                 {% if cart.item_count > 0 %}
+                    {{ cart.item_count }}
+                 {% endif %}
+             </text>
+        </svg>
+    </a>
+</div>

@@ -35,7 +35,7 @@ function attributeToString(attribute) {
   API Functions
 ==============================================================================*/
 ShopifyAPI.onCartUpdate = function(cart) {
-  // alert('There are now ' + cart.item_count + ' items in the cart.');
+  alert('There are now ' + cart.item_count + ' items in the cart.');
 };
 
 ShopifyAPI.updateCartNote = function(note, callback) {
@@ -145,7 +145,7 @@ var ajaxCart = (function(module, $) {
   var settings, isUpdating, $body;
 
   // Private plugin variables
-  var $formContainer, $addToCart, $cartCountSelector, $cartCostSelector, $cartContainer, $drawerContainer;
+  var $formContainer, $addToCart, $cartCountSelector, $cartCostSelector, $cartContainer, $drawerContainer, $cartCountComponent;
 
   // Private functions
   var updateCountPrice, formOverride, itemAddedCallback, itemErrorCallback, cartUpdateCallback, buildCart, cartCallback, adjustCart, adjustCartCallback, createQtySelectors, qtySelectors, validateQty;
@@ -153,98 +153,103 @@ var ajaxCart = (function(module, $) {
   /*============================================================================
     Initialise the plugin and define global options
   ==============================================================================*/
-  init = function (options) {
+    init = function (options) {
+        // Default settings
+        settings = {
+            formSelector       : 'form[action^="/cart/add"]',
+            cartContainer      : '#CartContainer',
+            addToCartSelector  : 'input[type="submit"]',
+            cartCountComponent : '.js_cartCountComponent',
+            cartCountSelector  : '[data-cart="counter"]',
+            cartCostSelector   : null,
+            moneyFormat        : '${{amount}}',
+            disableAjaxCart    : false,
+            enableQtySelectors : true
+        };
 
-    // Default settings
-    settings = {
-      formSelector       : 'form[action^="/cart/add"]',
-      cartContainer      : '#CartContainer',
-      addToCartSelector  : 'input[type="submit"]',
-      cartCountSelector  : null,
-      cartCostSelector   : null,
-      moneyFormat        : '${{amount}}',
-      disableAjaxCart    : false,
-      enableQtySelectors : true
+        // Override defaults with arguments
+        $.extend(settings, options);
+
+        // Select DOM elements
+        $formContainer     = $(settings.formSelector);
+        $cartContainer     = $(settings.cartContainer);
+        $addToCart         = $formContainer.find(settings.addToCartSelector);
+        $cartCountComponent= $(settings.cartCountComponent);
+        $cartCountSelector = $(settings.cartCountSelector);
+        $cartCostSelector  = $(settings.cartCostSelector);
+
+        // General Selectors
+        $body = $('body');
+
+        // Track cart activity status
+        isUpdating = false;
+
+        // Setup ajax quantity selectors on the any template if enableQtySelectors is true
+        if (settings.enableQtySelectors) {
+            qtySelectors();
+        }
+
+        // Take over the add to cart form submit action if ajax enabled
+        if (!settings.disableAjaxCart && $addToCart.length) {
+            formOverride();
+        }
+
+        // Run this function in case we're using the quantity selector outside of the cart
+            adjustCart();
     };
 
-    // Override defaults with arguments
-    $.extend(settings, options);
 
-    // Select DOM elements
-    $formContainer     = $(settings.formSelector);
-    $cartContainer     = $(settings.cartContainer);
-    $addToCart         = $formContainer.find(settings.addToCartSelector);
-    $cartCountSelector = $(settings.cartCountSelector);
-    $cartCostSelector  = $(settings.cartCostSelector);
+    loadCart = function () {
+        $body.addClass('drawer--is-loading');
+        ShopifyAPI.getCart(cartUpdateCallback);
+    };
 
-    // General Selectors
-    $body = $('body');
+    updateCountPrice = function (cart) {
+        if ($cartCountSelector) {
+            $cartCountComponent.toggleClass('is-filled', cart.item_count > 0);
 
-    // Track cart activity status
-    isUpdating = false;
+            if (cart.item_count > 0) {
+                $cartCountSelector.html(cart.item_count);
+            } else {
+                $cartCountSelector.html('');
+            }
+        }
 
-    // Setup ajax quantity selectors on the any template if enableQtySelectors is true
-    if (settings.enableQtySelectors) {
-      qtySelectors();
-    }
+        if ($cartCostSelector) {
+            $cartCostSelector.html(Shopify.formatMoney(cart.total_price, settings.moneyFormat));
+        }
+    };
 
-    // Take over the add to cart form submit action if ajax enabled
-    if (!settings.disableAjaxCart && $addToCart.length) {
-      formOverride();
-    }
+    formOverride = function () {
+        $formContainer.on('submit', function(evt) {
+            evt.preventDefault();
 
-    // Run this function in case we're using the quantity selector outside of the cart
-    adjustCart();
-  };
+            // Add class to be styled if desired
+            $addToCart.removeClass('is-added').addClass('is-adding');
 
-  loadCart = function () {
-    $body.addClass('drawer--is-loading');
-    ShopifyAPI.getCart(cartUpdateCallback);
-  };
+            // Remove any previous quantity errors
+            $('.qty-error').remove();
 
-  updateCountPrice = function (cart) {
-    if ($cartCountSelector) {
-      $cartCountSelector.html(cart.item_count).removeClass('hidden-count');
+            ShopifyAPI.addItemFromForm(evt.target, itemAddedCallback, itemErrorCallback);
+        });
+    };
 
-      if (cart.item_count === 0) {
-        $cartCountSelector.addClass('hidden-count');
-      }
-    }
-    if ($cartCostSelector) {
-      $cartCostSelector.html(Shopify.formatMoney(cart.total_price, settings.moneyFormat));
-    }
-  };
+    itemAddedCallback = function (product) {
+        $addToCart.removeClass('is-adding').addClass('is-added');
 
-  formOverride = function () {
-    $formContainer.on('submit', function(evt) {
-      evt.preventDefault();
+        ShopifyAPI.getCart(cartUpdateCallback);
+    };
 
-      // Add class to be styled if desired
-      $addToCart.removeClass('is-added').addClass('is-adding');
+    itemErrorCallback = function (XMLHttpRequest, textStatus) {
+        var data = eval('(' + XMLHttpRequest.responseText + ')');
+        $addToCart.removeClass('is-adding is-added');
 
-      // Remove any previous quantity errors
-      $('.qty-error').remove();
-
-      ShopifyAPI.addItemFromForm(evt.target, itemAddedCallback, itemErrorCallback);
-    });
-  };
-
-  itemAddedCallback = function (product) {
-    $addToCart.removeClass('is-adding').addClass('is-added');
-
-    ShopifyAPI.getCart(cartUpdateCallback);
-  };
-
-  itemErrorCallback = function (XMLHttpRequest, textStatus) {
-    var data = eval('(' + XMLHttpRequest.responseText + ')');
-    $addToCart.removeClass('is-adding is-added');
-
-    if (!!data.message) {
-      if (data.status == 422) {
-        $formContainer.after('<div class="errors qty-error">'+ data.description +'</div>')
-      }
-    }
-  };
+        if (!!data.message) {
+            if (data.status == 422) {
+                $formContainer.after('<div class="errors qty-error">'+ data.description +'</div>')
+            }
+        }
+    };
 
   cartUpdateCallback = function (cart) {
     // Update quantity and price
@@ -255,7 +260,6 @@ var ajaxCart = (function(module, $) {
   buildCart = function (cart) {
     // Start with a fresh cart div
     $cartContainer.empty();
-
     // Show empty cart
     if (cart.item_count === 0) {
       $cartContainer
@@ -317,10 +321,10 @@ var ajaxCart = (function(module, $) {
     cartCallback(cart);
   };
 
-  cartCallback = function(cart) {
-    $body.removeClass('drawer--is-loading');
-    $body.trigger('ajaxCart.afterCartLoad', cart);
-  };
+    cartCallback = function(cart) {
+        $body.removeClass('drawer--is-loading');
+        $body.trigger('ajaxCart.afterCartLoad', cart);
+    };
 
   adjustCart = function () {
     // Delegate all events because elements reload with the cart

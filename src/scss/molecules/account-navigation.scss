@@ -1,0 +1,37 @@
+.AccountNavigation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    font-size: 0;
+    line-height: 0;
+    vertical-align: middle;
+
+    &-list {
+        display: none;
+        margin-right: calc(var(--base-spacing) / 2);
+
+        @include media (medium) {
+            display: inline-block;
+        }
+    }
+
+    &-item {
+        display: inline-block;
+        color: var(--typo-hex--tone-down);
+        font-family: "museo-sans-bold";
+        font-size: var(--small-copy-size);
+        line-height: 1.5;
+        letter-spacing: 0.05rem;
+
+        &:first-of-type {
+            padding-right: var(--base-margin);
+            border: solid currentColor;
+            border-width: 0 1px 0 0;
+        }
+
+        &:last-of-type {
+            padding-left: var(--base-margin);
+        }
+    }
+}

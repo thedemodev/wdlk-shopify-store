@@ -1,0 +1,53 @@
+:root {
+    --newsletter-height: 29.6rem;
+}
+
+.NewsletterForm {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: var(--newsletter-height);
+    overflow: hidden;
+
+    @include media (medium) {
+        flex-direction: row;
+    }
+
+    &-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        height: 100%;
+        @include media (medium) {
+            height: auto;
+            width: 100%;
+        }
+    }
+
+    &-security {
+        position: absolute;
+        left: -5000px;
+    }
+
+    .Headline {
+        color: var(--typo-hex--secondary);
+
+        @include media (medium) {
+            margin-right: 2.8rem;
+        }
+    }
+
+    .InputField {
+        margin-right: 1.5rem;
+        margin-bottom: var(--base-spacing);
+
+        @include media (medium) {
+            margin-bottom: 0;
+        }
+
+    }
+}

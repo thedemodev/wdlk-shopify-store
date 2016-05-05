@@ -12,7 +12,7 @@
             @include grid-cell(1, 2, $base-spacing, medium);
 
             position: relative;
-            padding-bottom: calc(var(--base-sapacing) * 2);
+            background-color: var(--background-color);
 
             @include create-pointer() {
                 position: absolute;
@@ -41,6 +41,26 @@
                 &:nth-of-type(3) {
                     order: 4;
                 }
+            }
+
+            .Headline {
+                text-transform: none;
+            }
+
+            .Headline {
+                &--2 {
+                    max-width: calc(var(--screen-l) / 2);
+                    margin-top: calc(var(--base-spacing) * 2);
+                }
+
+                &--4 {
+                    font-weight: 500;
+                }
+            }
+
+            .List {
+                max-width: calc(var(--screen-l) / 2);
+                margin-bottom: calc(var(--base-spacing) * 2);
             }
 
         }

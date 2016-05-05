@@ -20,7 +20,14 @@
             {% assign screen-sm = '480px' %}
             {% assign screen-l = '1024px' %}
             {% assign max-thumbnails = 4 %}
-            {% for image in product.images limit: 4 %}
+            {% for image in product.images %}
+                {% if forloop.length <= 5 %}
+                    {% assign main-images-amount = 3 %}
+                {% else %}
+                    {% assign main-images-amount = 4 %}
+                {% endif %}
+            {% endfor %}
+            {% for image in product.images limit: main-images-amount %}
                 {% comment %} The first input radio for the carousel must be checked {% endcomment %}
                 {% if forloop.first == true   %}
                     {% assign isChecked = 'checked' %}
@@ -28,15 +35,15 @@
                     {% assign isChecked = '' %}
                 {% endif %}
                 <input class="Carousel-trigger" type="radio" name="carousel--product" value="{{forloop.index}}" id="carousel--product-{{forloop.index}}" {{isChecked}}>
-
                 <div class="Carousel-item" itemprop="image">
+                    {% comment %}
+                        Sizes attribute: if not defined it asumes that the image is 100 vw. In this case we are saying: If the browser window is wider than 1024px  , this image is probably going to be displayed about half the size of that. If it's smaller, it'll probably be full-width.
+                    {% endcomment %}
                     <img class="Carousel-img"
-                    sizes="(max-width: {{screen-sm}}) 100vw,
-                            (max-width: {{screen-md}}) 100vw,
-                            (min-width: {{screen-l}}) 50vw"
-                    srcset="{{ image.src | product_img_url: 'large' }} 200w,
-                            {{ image.src | product_img_url: 'grande' }} 400w,
-                            {{ image.src | product_img_url: '1024x1024' }} 800w"
+                    sizes="(min-width: {{screen-l}}) 50vw, 100vw"
+                    srcset="{{ image.src | product_img_url: 'large' }} 480w,
+                            {{ image.src | product_img_url: 'grande' }} 600w,
+                            {{ image.src | product_img_url: '1024x1024' }} 1024w"
                     src="{{ image.src | product_img_url: 'grande' }}"
                     alt="{{ product.image.alt | escape }}" itemprop="image" />
                 </div>
@@ -63,7 +70,7 @@
             {% if product.images.size > 1 %}
             {% comment %} THUMBNAILS {% endcomment %}
                 <div class="Thumbnails">
-                    {% for image in product.images limit: 4 %}
+                    {% for image in product.images limit: main-images-amount %}
                     <label class="Thumbnails-item" for="carousel--product-{{forloop.index}}">
                         <img class="Thumbnails-img" src="{{ image.src | img_url: 'thumg' }}" alt="{{ image.alt | escape }}">
                     </label>
@@ -71,7 +78,7 @@
                 </div>
                 {% comment %} Indicators {% endcomment %}
                 <div class="Indicators">
-                    {% for image in product.images limit: 4 %}
+                    {% for image in product.images limit: main-images-amount %}
                     <label class="Indicators-item" for="carousel--product-{{forloop.index}}"></label>
                     {% endfor %}
                 </div>
@@ -81,7 +88,7 @@
 
         <div class="Product-detail">
             <h1 class="Headline Headline--2 Product-headline" itemprop="name">{{ product.title }}</h1>
-            <strong class="Headline Headline--3 Headline--highlight" itemprop="price">{{ product.price | money_with_currency }}</strong>
+            <strong class="Headline Headline--3" itemprop="price">{{ product.price | money_with_currency }}</strong>
             {% if product.compare_at_price_max > product.price %}
             <strong class="visually-hidden">{{ 'products.general.sale_price' | t }}</strong>
             <p id="ComparePrice">
@@ -147,34 +154,6 @@
                     {{ 'products.product.add_to_cart' | t }}
                 </button>
             </form>
-
-
-            {% comment %}
-            If the user is on a collection product page (ie with /collections/collection-handle/products/product-handle)
-            in the URL, we can show next/previous links to other products in the collection.
-            {% endcomment %}
-            {% if collection %}
-            {% if collection.previous_product or collection.next_product %}
-            <div class="Product-navigator">
-                {% if collection.previous_product %}
-                <a class="Link Link--secondary" href="{{collection.previous_product}}" alt="{{ 'products.general.previous_product_html' | t }}">
-                    <svg class="Icon">
-                        <use xlink:href="#Arrow_left" />
-                    </svg>
-                    {{ 'products.general.previous_product_html' | t }}
-                </a>
-                {% endif %}
-                {% if collection.next_product %}
-                <a class="Link Link--secondary" href="{{collection.next_product}}" alt="{{ 'products.general.next_product_html' | t }}">
-                    {{ 'products.general.next_product_html' | t }}
-                    <svg class="Icon">
-                        <use xlink:href="#Arrow_right" />
-                    </svg>
-                </a>
-                {% endif %}
-            </div>
-            {% endif %}
-            {% endif %}
         </div>
 
     </article>
@@ -183,17 +162,15 @@
         Starts the image loop at the 4th item and
         breaks after the second iteration
         {% endcomment %}
-        {% for image in product.images offset:4 %}
+        {% for image in product.images offset: main-images-amount %}
         {% if forloop.index >= 2 %}
         {% break %}
         {% else %}
         <div class="Product-teaser-imgContainer" style="background-image: url({{ image.src | product_img_url: 'grande' }});">
-            <img sizes="(max-width: {{screen-sm}}) 100vw,
-                        (min-width: {{screen-md}}) 100vw,
-                        (min-width: {{screen-l}}) 50vw"
-                srcset="{{ image.src | product_img_url: 'large' }} 200w,
-                        {{ image.src | product_img_url: 'grande' }} 400w,
-                        {{ image.src | product_img_url: '1024x1024' }} 800w"
+            <img sizes="(min-width: {{screen-l}}) 50vw, 100vw"
+                srcset="{{ image.src | product_img_url: 'large' }} 480w,
+                        {{ image.src | product_img_url: 'grande' }} 600w,
+                        {{ image.src | product_img_url: '1024x1024' }} 1024w"
                 src="{{ image.src | product_img_url: 'grande' }}"
                 alt="{{ product.image.alt | escape }}"
                 class="Product-teaser-img" itemprop="image" />
@@ -237,21 +214,17 @@
         Starts the image loop at the 5th item and
         breaks after the second iteration
         {% endcomment %}
-        {% for image in product.images offset:5 %}
-        {% if forloop.index >= 2 %}
-        {% break %}
-        {% else %}
-        <div class="Product-teaser-imgContainer" style="background-image: url({{ image.src | product_img_url: 'grande' }});">
-            <img sizes="(max-width: {{screen-sm}}) 100vw,
-                        (min-width: {{screen-md}}) 100vw,
-                        (min-width: {{screen-l}}) 50vw"
-                srcset="{{ image.src | product_img_url: 'large' }} 200w,
-                        {{ image.src | product_img_url: 'grande' }} 400w,
-                        {{ image.src | product_img_url: '1024x1024' }} 800w"
+        {% for image in product.images offset: main-images-amount %}
+        {% if forloop.last == true %}
+            <div class="Product-teaser-imgContainer" style="background-image: url({{ image.src | product_img_url: 'grande' }});">
+                <img sizes="(min-width: {{screen-l}}) 50vw, 100vw"
+                srcset="{{ image.src | product_img_url: 'large' }} 480w,
+                {{ image.src | product_img_url: 'grande' }} 600w,
+                {{ image.src | product_img_url: '1024x1024' }} 1024 w"
                 src="{{ image.src | product_img_url: 'grande' }}"
                 alt="{{ product.image.alt | escape }}"
                 class="Product-teaser-img" itemprop="image" />
-        </div>
+            </div>
         {% endif %}
         {% endfor %}
     </aside>

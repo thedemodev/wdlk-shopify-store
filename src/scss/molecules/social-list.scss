@@ -1,0 +1,23 @@
+.SocialList {
+    text-align: center;
+    
+    &-item {
+        fill: var(--btn-bg-color);
+        cursor: pointer;
+        transition: fill .5s ease;
+
+        &:hover {
+            fill: var(--link-hex-hover-color);
+        }
+    }
+
+    &--tonedown {
+        .SocialList-item {
+            fill: var(--link-hex-secondary-color);
+
+            &:hover {
+                fill: var(--link-hex-secondary-hover-color);
+            }
+        }
+    }
+}

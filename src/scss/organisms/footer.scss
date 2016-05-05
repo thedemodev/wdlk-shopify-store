@@ -1,0 +1,45 @@
+:root {
+    --footer-side-padding: 5rem;
+}
+
+.Footer {
+    padding: {
+        top: 7.7rem;
+        right: var(--footer-side-padding);
+        bottom: 3.5rem;
+        left: var(--footer-side-padding);
+    }
+
+    text-align: center;
+
+    @include media(medium) {
+        @include grid-wrapper(undefined, space-between);
+
+        text-align: left;
+
+        .LinkList {
+            width: calc(50vw - var(--footer-side-padding));
+
+            &--secondary {
+                align-self: flex-end;
+                width: calc(100vw / 3);
+            }
+        }
+
+        .PaymentList {
+            width: calc(50vw - var(--footer-side-padding));
+            text-align: right;
+        }
+
+        .SocialList,
+        .Copyright {
+            align-self: flex-end;
+            width: calc(100vw / 3 - var(--footer-side-padding));
+        }
+
+        .Copyright {
+            text-align: right;
+        }
+    }
+
+}

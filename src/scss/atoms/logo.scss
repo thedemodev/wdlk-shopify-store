@@ -1,0 +1,22 @@
+:root {
+    --logo-height: 46px;
+    --logo-width: 150px;
+}
+
+.Logo {
+    line-height: 1;
+
+    &-img {
+        width: var(--logo-width);
+        height: calc(var(--logo-height) - 6);
+        fill: var(--link-hex-color);
+        transition: fill var(--btn-timing) ease;
+
+        &:hover {
+            fill: var(--link-hex-hover-color);
+        }
+
+        //-- For tablet styles
+        //height: var(--logo-height);
+    }
+}

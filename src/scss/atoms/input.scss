@@ -1,0 +1,15 @@
+:root {
+    --input-base-height: 4rem;
+    --input-base-width: 29.2rem;
+}
+
+.InputField {
+    width: var(--input-base-width);
+    height: var(--input-base-height);
+    padding: 0 var(--base-spacing);
+    border: none;
+    line-height: var(--input-base-height);
+    font-family: "museo-sans-bold";
+    font-size: var(--md-copy-size);
+    color: var(--input-hex-placeholder);
+}

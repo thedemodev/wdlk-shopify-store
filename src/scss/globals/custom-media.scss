@@ -1,11 +1,14 @@
 //-- DEVICE VARIABLES & CUSTOM PROPERTIES
 :root {
+    --screen-xs: 375px;
     --screen-sm: 480px;
-    --screen-md: 770px;
+    --screen-md: 768px;
     --screen-l: 1024px;
     --screen-xl: 1440px;
+
 }
 
+$screen-xs: 375px;
 $screen-sm: 480px !default;
 $screen-md: 770px !default;
 $screen-l: 1024px !default;

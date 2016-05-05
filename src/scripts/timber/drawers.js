@@ -13,7 +13,7 @@ timber.Drawers = (function () {
 
     this.$nodes = {
       parent: $('body, html'),
-      page: $('#PageContainer'),
+      page: $('.js_pageContainer'),
       moved: $('.is-moved-by-drawer')
     };
 

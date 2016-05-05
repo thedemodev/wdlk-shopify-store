@@ -53,6 +53,7 @@
 
         @include media(medium) {
             display: block;
+            width: 100%;
         }
     }
 }
