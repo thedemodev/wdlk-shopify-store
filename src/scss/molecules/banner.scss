@@ -228,16 +228,6 @@
             margin-bottom: calc(var(--base-spacing) * 2);
         }
 
-        .Icon--social {
-            display: inline-block;
-            height: 2rem;
-            width: 2rem;
-            margin: 0 var(--base-spacing);
-            vertical-align: bottom;
-            fill: var(--btn-bg-color);
-            cursor: pointer;
-        }
-
         @media(max-width: $screen-xs) {
             .Banner-image {
                 transform: translateX(-10%);

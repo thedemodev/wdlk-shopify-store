@@ -1,4 +1,5 @@
 :root {
+    --social-icons-size: 2rem;
     --payment-icons-height: 2.8rem;
     --advanced-icon-width: 7.4rem;
     --paypal-icon-width: 11.4rem;
@@ -7,6 +8,14 @@
 }
 
 .Icon {
+    &--social {
+        display: inline-block;
+        height: var(--social-icons-size);
+        width: var(--social-icons-size);
+        margin: 0 var(--base-spacing);
+        vertical-align: bottom;
+    }
+
     &--payment {
         height: var( --payment-icons-height);
         margin: {

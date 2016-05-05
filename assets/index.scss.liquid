@@ -2321,6 +2321,16 @@ body {
     .Qty-input-btn--less {
       bottom: 2px; }
 
+.Icon--social {
+  display: inline-block;
+  height: 20px;
+  height: 2rem;
+  width: 20px;
+  width: 2rem;
+  margin: 0 20px;
+  margin: 0 2rem;
+  vertical-align: bottom; }
+
 .Icon--payment {
   height: 28px;
   height: 2.8rem;
@@ -2709,17 +2719,6 @@ body {
     display: block;
     margin-bottom: 40px;
     margin-bottom: 4rem; }
-  .Banner--informative .Icon--social {
-    display: inline-block;
-    height: 20px;
-    height: 2rem;
-    width: 20px;
-    width: 2rem;
-    margin: 0 20px;
-    margin: 0 2rem;
-    vertical-align: bottom;
-    fill: #FF6C54;
-    cursor: pointer; }
   @media (max-width: 375px) {
     .Banner--informative .Banner-image {
       -webkit-transform: translateX(-10%);
@@ -3303,6 +3302,19 @@ body {
   .PaymentList-icon {
     margin-right: 20px;
     margin-right: 2rem; }
+
+.SocialList-item {
+  fill: #FF6C54;
+  cursor: pointer;
+  -webkit-transition: fill .5s ease;
+  transition: fill .5s ease; }
+  .SocialList-item:hover {
+    fill: #EC4024; }
+
+.SocialList--tonedown .SocialList-item {
+  fill: #8E959A; }
+  .SocialList--tonedown .SocialList-item:hover {
+    fill: #596771; }
 
 .Header {
   display: -webkit-flex;
