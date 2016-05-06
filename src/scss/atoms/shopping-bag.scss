@@ -2,7 +2,7 @@
     --shopping-cart-size: 30px;
 }
 
-.ShoppingCart {
+.ShoppingBag {
     display: inline-block;
     padding-left: calc(var(--base-spacing) / 2);
     margin-bottom: 12px;
@@ -13,12 +13,11 @@
         fill-opacity: 0;
         stroke: currentColor;
         stroke-width: 2px;
-        color: var(--hex-shoping-cart-color);
+        color: var(--hex-shopping-cart-color);
 
         .is-filled & {
-            fill: var(--hex-shoping-cart-color);
+            fill: currentColor;
             fill-opacity: 1;
-            color: var(--hex-shoping-cart-color);
         }
     }
 
@@ -28,5 +27,18 @@
         stroke-width: 1px;
         color: var(--typo-hex--tertiary);
         text-anchor: middle;
+    }
+
+    &--tonedown {
+        .ShoppingBag-icon {
+            color: var(--hex-shopping-cart-tonedown);
+        }
+
+        &.is-filled {
+            .ShoppingBag-icon {
+                fill: currentColor;
+            }
+        }
+
     }
 }

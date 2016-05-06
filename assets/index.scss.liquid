@@ -1925,6 +1925,9 @@ figure {
   -webkit-animation: radio-controlled-fix 1s infinite;
           animation: radio-controlled-fix 1s infinite; }
 
+body {
+  position: relative; }
+
 a {
   text-decoration: none; }
 
@@ -1947,29 +1950,32 @@ input[type="radio"] {
     .Logo-img:hover {
       fill: #EC4024; }
 
-.ShoppingCart {
+.ShoppingBag {
   display: inline-block;
   padding-left: 10px;
   padding-left: 1rem;
   margin-bottom: 12px; }
-  .ShoppingCart-icon {
+  .ShoppingBag-icon {
     width: 32px;
     height: 30px;
     fill-opacity: 0;
     stroke: currentColor;
     stroke-width: 2px;
     color: #FF6C54; }
-    .is-filled .ShoppingCart-icon {
-      fill: #FF6C54;
-      fill-opacity: 1;
-      color: #FF6C54; }
-  .ShoppingCart-count {
+    .is-filled .ShoppingBag-icon {
+      fill: currentColor;
+      fill-opacity: 1; }
+  .ShoppingBag-count {
     font-size: 12px;
     font-size: 1.2rem;
     font-weight: 100;
     stroke-width: 1px;
     color: #ffffff;
     text-anchor: middle; }
+  .ShoppingBag--tonedown .ShoppingBag-icon {
+    color: #596771; }
+  .ShoppingBag--tonedown.is-filled .ShoppingBag-icon {
+    fill: currentColor; }
 
 .Copyright {
   display: inline-block;
@@ -2049,6 +2055,14 @@ input[type="radio"] {
   .Headline--5 {
     font-size: 18px;
     font-size: 1.8rem; }
+  .Headline--6 {
+    font-size: 14px;
+    font-size: 1.4rem;
+    font-weight: 600; }
+  .Headline--7 {
+    font-size: 12px;
+    font-size: 1.2rem;
+    font-weight: 600; }
   .Headline--highlight {
     color: #384852; }
 
@@ -3575,3 +3589,22 @@ body {
     @media (min-width: 770px) {
       .NewsletterForm .InputField {
         margin-bottom: 0; } }
+
+.Cart--quick {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  box-sizing: border-box;
+  width: 390px;
+  height: 100vh;
+  transition: -webkit-transform .5s ease;
+  -webkit-transition: -webkit-transform .5s ease;
+  transition: transform .5s ease;
+  transition: transform .5s ease, -webkit-transform .5s ease;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  padding-right: 50px;
+  padding-right: 5rem;
+  padding-left: 50px;
+  padding-left: 5rem; }

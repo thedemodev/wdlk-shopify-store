@@ -80,7 +80,14 @@
 :root {
     --hex-logo-color: var(--hex-coral);
     --hex-logo-hover-color: var(--hex-coral-dark);
-    --hex-shoping-cart-color: var(--hex-coral);
+    --hex-shopping-cart-color: var(--hex-coral);
+    --hex-shopping-cart-tonedown: var(--hex-blue-gray-dark);
     --icon-primary-color: var(--hex-white);
     --banner-teaser-logo-icon: var(--hex-blue-gray);
+}
+
+//-- Cart
+
+:root {
+    --quick-cart-hex-bg: var(--hex-white);
 }

@@ -1,0 +1,26 @@
+:root {
+    --cart-quick-width: 390px;
+}
+
+.Cart {
+    &--quick {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 10;
+        box-sizing: border-box;
+        width: var(--cart-quick-width);
+        height: 100vh;
+        //transform: translate3d(0, -100%, 0);
+        transition: transform .5s ease;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+        background-color: var(--quick-cart-hex-bg);
+        //-- Active
+        //transform: none;
+
+        padding: {
+            right: 5rem;
+            left: 5rem;
+        }
+    }
+}

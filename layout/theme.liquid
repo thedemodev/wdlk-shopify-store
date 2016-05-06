@@ -43,22 +43,31 @@
       Add the page template as a class for easy page or template specific styling.
     {% endcomment %}
     <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} {% if template == 'index'%}js_scroller{% endif %}" >
-        {% comment %} Header {% endcomment %}
-        {% include 'header' %}
-
-        {% comment %} MAIN LAYOUT CONTENT {% endcomment %}
-        {{ content_for_layout }}
-
-        {% comment %} Newsletter Form {% endcomment %}
-        {% include 'newsletter-form' %}
-
-        {% comment %} Footer {% endcomment %}
-        {% include 'footer' %}
-
         {% comment %}
           SVG Icon Container Snippet
         {% endcomment %}
         {% include 'icon-container' %}
+        {% comment %}
+            Header
+        {% endcomment %}
+        {% include 'header' %}
+        {% comment %}
+            MAIN LAYOUT CONTENT
+        {% endcomment %}
+        {{ content_for_layout }}
+        {% comment %}
+            Newsletter Form
+        {% endcomment %}
+        {% include 'newsletter-form' %}
+        {% comment %}
+            Footer
+        {% endcomment %}
+        {% include 'footer' %}
+        {% comment %}
+            Quick Cart
+        {% endcomment %}
+        {% include 'cart-quick' %}
+
         <div id="CartDrawer" class="drawer drawer--right">
         <div class="drawer__header">
           <div class="drawer__title h3">{{ 'cart.general.title' | t }}</div>
