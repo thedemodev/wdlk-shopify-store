@@ -68,45 +68,6 @@
         {% endcomment %}
         {% include 'cart-quick' %}
 
-        <div id="CartDrawer" class="drawer drawer--right">
-        <div class="drawer__header">
-          <div class="drawer__title h3">{{ 'cart.general.title' | t }}</div>
-          <div class="drawer__close js-drawer-close">
-            <button type="button" class="icon-fallback-text">
-              <span class="icon icon-x" aria-hidden="true"></span>
-              <span class="fallback-text">{{ 'cart.general.close_cart' | t | json }}</span>
-            </button>
-          </div>
-        </div>
-        <div id="CartContainer"></div>
-        </div>
-
         {{ 'index.js' | asset_url | script_tag }}
-        {% comment %}
-        Ajaxify your cart with this plugin.
-        Documentation:
-          - http://shopify.com/timber#ajax-cart
-        {% endcomment %}
-
-        {% if settings.ajax_cart_enable %}
-        {% include 'ajax-cart-template' %}
-        <script>
-          jQuery(function($) {
-            ajaxCart.init({
-              formSelector: '#AddToCartForm',
-              cartContainer: '#CartContainer',
-              addToCartSelector: '#AddToCart',
-              cartCostSelector: '#CartCost',
-              moneyFormat: {{ shop.money_format | json }}
-            });
-          });
-
-          jQuery('body').on('ajaxCart.afterCartLoad', function(evt, cart) {
-            // Bind to 'ajaxCart.afterCartLoad' to run any javascript after the cart has loaded in the DOM
-            timber.RightDrawer.open();
-          });
-        </script>
-        {% endif %}
-
     </body>
 </html>

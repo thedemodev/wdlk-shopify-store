@@ -14,6 +14,7 @@
         stroke: currentColor;
         stroke-width: 2px;
         color: var(--hex-shopping-cart-color);
+        pointer-events: none;
 
         .is-filled & {
             fill: currentColor;
@@ -29,6 +30,9 @@
         text-anchor: middle;
     }
 
+    &--link {
+        cursor: pointer;
+    }
     &--tonedown {
         .ShoppingBag-icon {
             color: var(--hex-shopping-cart-tonedown);

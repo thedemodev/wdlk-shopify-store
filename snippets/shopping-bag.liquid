@@ -15,7 +15,7 @@
 {% endcomment %}
 {% if shopping-bag %}
 {% if shopping-bag == 'link'%}
-<a href="/cart" class="ShoppingBag js_cartCountComponent js-drawer-open-right {% if cart.item_count > 0 %} is-filled {% endif %} {% if shoppingBagMod == 'tonedown' %}ShoppingBag--tonedown{% endif %}" aria-controls="CartDrawer" aria-expanded="false">
+<label class="ShoppingBag ShoppingBag--{{shopping-bag}} js_cartCountComponent {% if cart.item_count > 0 %} is-filled {% endif %} {% if shoppingBagMod == 'tonedown' %}ShoppingBag--tonedown{% endif %}" for="cart-quick">
     <svg class="ShoppingBag-icon">
         <use xlink:href="#Shopping_bag" />
         <text class="ShoppingBag-count" data-cart="counter" y="80%" x="55%">
@@ -24,7 +24,7 @@
              {% endif %}
          </text>
     </svg>
-</a>
+</label>
 {% else %}
 <span class="ShoppingBag js_cartCountComponent {% if cart.item_count > 0 %} is-filled {% endif %} {% if shoppingBagMod == 'tonedown' %}ShoppingBag--tonedown{% endif %}">
     <svg class="ShoppingBag-icon">

@@ -1,8 +1,19 @@
+<input type="checkbox" id="cart-quick" class="Cart-state" />
 <aside class="Cart--quick">
     <div class="Cart-header">
         {% assign shoppingBagMod = 'tonedown' %}
         {% include 'shopping-bag' with 'default' %}
         <strong class="Headline Headline--6">{{ 'cart.general.title' | t }}</strong>
-        <label class="Link Link--small">{{ 'cart.general.close_cart' | t }}</label>
+        <label class="Link Link--small" for="cart-quick">{{ 'cart.general.close_cart' | t }}</label>
     </div>
+        {% if cart.item_count > 0 %}
+        {% else %}
+          {% comment %}
+            The cart is empty
+          {% endcomment %}
+          <h2>{{ 'cart.general.title' | t }}</h2>
+          <p>{{ 'cart.general.empty' | t }}</p>
+          <p>{{ 'cart.general.continue_browsing_html' | t }}</p>
+        {% endif %}
+        <label class="Cart-shim-close" for="cart-quick">Close</label>
 </aside>
