@@ -11,16 +11,28 @@
         box-sizing: border-box;
         width: var(--cart-quick-width);
         height: 100vh;
-        //transform: translate3d(0, -100%, 0);
-        transition: transform .5s ease;
+        padding: var(--base-spacing) 5rem;
         box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
         background-color: var(--quick-cart-hex-bg);
+        //transform: translate3d(0, -100%, 0);
+        transition: transform .5s ease;
         //-- Active
         //transform: none;
+    }
 
-        padding: {
-            right: 5rem;
-            left: 5rem;
+    &-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 3rem;
+
+        .ShoppingBag {
+            margin-bottom: 8px;
+            padding: 0 1.6rem 0 0;
+        }
+
+        .Link {
+            flex-grow: 2;
+            text-align: right;
         }
     }
 }

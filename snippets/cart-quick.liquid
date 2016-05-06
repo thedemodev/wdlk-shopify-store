@@ -1,7 +1,8 @@
 <aside class="Cart--quick">
     <div class="Cart-header">
-        {% include 'shopping-bag' with 'tonedown' %}
+        {% assign shoppingBagMod = 'tonedown' %}
+        {% include 'shopping-bag' with 'default' %}
         <strong class="Headline Headline--6">{{ 'cart.general.title' | t }}</strong>
-        <label class="Link">{{ 'cart.general.close_cart' | t }}</label>
+        <label class="Link Link--small">{{ 'cart.general.close_cart' | t }}</label>
     </div>
 </aside>
