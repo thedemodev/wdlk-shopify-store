@@ -17,7 +17,6 @@ export default function numberInput() {
             return;
         }
         inputValue = INPUT_EL.getAttribute('value');
-        console.log(inputValue, 'from the getAttribute');
 
         node.addEventListener('click', function (e) {
             if (e.target.classList.contains(ADD_BTN_CLASS)) {
