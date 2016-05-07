@@ -8,6 +8,7 @@
     </div>
     {% if cart.item_count > 0 %}
     <div class="Cart-list">
+        <form action="/cart" method="post" novalidate class="cart table-wrap">
         {% for item in cart.items %}
         <div class="Cart-item">
             <a href="{{ item.url }}" class="Link Link--tonedown Headline Headline--7">
@@ -20,7 +21,16 @@
                 {% endcomment %}
                 <img src="{{ item | img_url: 'thumb' }}" alt="{{ item.title | escape }}">
             </a>
-            <input type="number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" min="0">
+
+            {% comment %} Number Input Component {% endcomment %}
+            {% assign numberMin = '0' %}
+            {% assign numberId = item.id %}
+            {% assign numberName = 'updates[]' %}
+            {% assign numberValue = item.quantity %}
+            {% include 'number-input' with 'quick-cart' %}
+            {% comment %} Number Input Component {% endcomment %}
+
+
             <span>{{ item.variant.title }}</span>
             <span>{{ item.price | money }}</span>
             <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
@@ -28,6 +38,10 @@
             </a>
         </div>
         {% endfor %}
+        <input type="submit" name="update" value="{{ 'cart.general.update' | t }}">
+        <input type="submit" name="checkout" class="btn" value="{{ 'cart.general.checkout' | t }}">
+
+        </form>
     </div>
     {% else %}
       {% comment %}

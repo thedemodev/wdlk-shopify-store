@@ -12,11 +12,13 @@ export default function numberInput() {
 
     NODE_ARRAY.forEach(node => {
         let inputValue = 1;
+        let min = 0;
         const INPUT_EL = node.querySelector('.js_value');
         if (!INPUT_EL) {
             return;
         }
         inputValue = INPUT_EL.getAttribute('value');
+        min = INPUT_EL.getAttribute('min')
 
         node.addEventListener('click', function (e) {
             if (e.target.classList.contains(ADD_BTN_CLASS)) {
@@ -25,6 +27,9 @@ export default function numberInput() {
             }
 
             if (e.target.classList.contains(RMV_BTN_CLASS)) {
+                if (inputValue <= min) {
+                    return;
+                }
                 inputValue = DECREASE(inputValue);
                 INPUT_EL.setAttribute('value', inputValue);
             }

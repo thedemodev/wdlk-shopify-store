@@ -147,9 +147,10 @@
                     {% endif %}
                     {% endfor %}
                 </select>
-
+                {% assign numberMin = '1' %}
                 {% assign numberId = 'quantity' %}
                 {% assign numberName = numberId %}
+                {% assign numberValue = 1 %}
                 {% include 'number-input' %}
 
                 <button type="submit" name="add" id="AddToCart" class="Btn">
