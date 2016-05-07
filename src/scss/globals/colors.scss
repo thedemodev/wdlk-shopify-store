@@ -38,7 +38,7 @@
     --typo-hex: var(--hex-blue-gray-dark);
     --typo-hex--secondary: var(--hex-blue-gray-light);
     --typo-hex--tertiary: var(--hex-white);
-    --typo-hex--highlight: var(--hex-blue-gray-ultra-dark);
+    --typo-hex--highlight: var(--hex-coral);
     --typo-hex--tone-down: var(--light-gray-hex);
     --typo-hex--lightest: var(--hex-blue-gray-lightest);
     --typo-hex--banner-secondary: var(--hex-blue-gray-light);
@@ -67,8 +67,8 @@
     --btn-bg-color-hover: var(--hex-coral-dark);
     --btn-bg-color: var(--hex-coral);
     --carousel-arrow-color: var(--light-gray-hex);
-    --indicator-color: var(--asphalt-hex);
-    --indicator-active-color: var(--sand-hex);
+    --indicator-color: var(--hex-blue-gray-light);
+    --indicator-active-color: var(--hex-blue-gray-ultra-dark);
     --link-hex-color: var(--hex-coral);
     --link-hex-hover-color: var(--hex-coral-dark);
     --link-hex-secondary-color: var(--hex-blue-gray-dark);
@@ -77,7 +77,7 @@
 
 //-- Images
 :root {
-    --thumbnail-border-color: var(--sand-hex);
+    --thumbnail-border-color: var(--hex-blue-gray-light);
 }
 
 //-- Icons
