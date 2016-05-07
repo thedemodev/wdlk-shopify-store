@@ -540,14 +540,14 @@ body {
 
 .Btn {
   display: inline-block;
-  height: 40px;
-  height: 4rem;
+  height: 46px;
+  height: 4.6rem;
   padding: 0 36px;
   padding: 0 3.6rem;
   border: none;
   background-color: #FF6C54;
-  line-height: 40px;
-  line-height: 4rem;
+  line-height: 46px;
+  line-height: 4.6rem;
   letter-spacing: 1.6px;
   letter-spacing: .16rem;
   text-transform: uppercase;
@@ -682,12 +682,12 @@ body {
 
 .Select {
   display: block;
-  height: 40px;
-  height: 4rem;
+  height: 46px;
+  height: 4.6rem;
   padding-left: 20px;
   padding-left: 2rem;
-  padding-right: 40px;
-  padding-right: 4rem;
+  padding-right: 46px;
+  padding-right: 4.6rem;
   border-radius: 0;
   border-color: #f0f0f0;
   margin-right: 10px;
@@ -740,6 +740,7 @@ body {
     height: 44px;
     border: 0;
     text-align: center;
+    color: #596771;
     font-family: "museo-sans-bold";
     font-size: 14px;
     font-size: 1.4rem; }
@@ -758,7 +759,11 @@ body {
     .NumberInput-btn .Icon {
       width: 10px;
       height: 10px;
-      pointer-events: auto; }
+      pointer-events: auto;
+      -webkit-transition: fill .5s ease;
+      transition: fill .5s ease; }
+    .NumberInput-btn:hover .Icon {
+      fill: #596771; }
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
@@ -772,16 +777,16 @@ input[type="number"]::-webkit-outer-spin-button {
   overflow: hidden; }
   .Qty-input-field {
     box-sizing: border-box;
-    height: 40px;
-    height: 4rem;
+    height: 46px;
+    height: 4.6rem;
     max-width: 70px;
-    padding-left: 15px;
-    padding-left: 1.5rem;
-    padding-right: 35px;
-    padding-right: 3.5rem;
+    padding-left: 21px;
+    padding-left: 2.1rem;
+    padding-right: 41px;
+    padding-right: 4.1rem;
     border: 1px solid #f0f0f0;
-    line-height: 40px;
-    line-height: 4rem;
+    line-height: 46px;
+    line-height: 4.6rem;
     font-size: 13px;
     font-size: 1.3rem;
     color: #bfbfbf;

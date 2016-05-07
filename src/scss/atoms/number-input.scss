@@ -33,6 +33,7 @@
         height: calc(var(--number-input-height) - 2);
         border: 0;
         text-align: center;
+        color: var(--input-hex-typo);
         font-family: "museo-sans-bold";
         font-size: var(--md-copy-size);
 
@@ -60,6 +61,13 @@
             width: 10px;
             height: 10px;
             pointer-events: auto;
+            transition: fill .5s ease;
+        }
+
+        &:hover  {
+            .Icon {
+                fill: var(--input-hex-typo);
+            }
         }
     }
 }
