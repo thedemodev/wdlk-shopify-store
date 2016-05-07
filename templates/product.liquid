@@ -148,7 +148,9 @@
                     {% endfor %}
                 </select>
 
-                <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
+                {% assign numberId = 'quantity' %}
+                {% assign numberName = numberId %}
+                {% include 'number-input' %}
 
                 <button type="submit" name="add" id="AddToCart" class="Btn">
                     {{ 'products.product.add_to_cart' | t }}

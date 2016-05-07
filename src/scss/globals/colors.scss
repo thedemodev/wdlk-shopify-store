@@ -5,12 +5,12 @@
     --hex-coral: #FF6C54;
     --hex-coral-dark: #EC4024;
     --hex-blue-gray-light: #8E959A;
+    --hex-blue-gray-lightest: #DEDFE0;
     --hex-blue-gray-dark: #596771;
     --hex-blue-gray-ultra-dark: #384852;
     --mid-gray-hex: #c8c8c8;
     --mid-dark-gray-hex: #bfbfbf;
     --light-gray-hex: #999999;
-    --lighter-gray-hex: #e6e6e6;
     --lightest-gray-hex: #f0f0f0;
     --dark-asphalt-hex: #222222;
     --asphalt-hex: #4d4d4f;
@@ -40,7 +40,7 @@
     --typo-hex--tertiary: var(--hex-white);
     --typo-hex--highlight: var(--hex-blue-gray-ultra-dark);
     --typo-hex--tone-down: var(--light-gray-hex);
-    --typo-hex--lightest: var(--lighter-gray-hex);
+    --typo-hex--lightest: var(--hex-blue-gray-lightest);
     --typo-hex--banner-secondary: var(--hex-blue-gray-light);
 }
 
@@ -48,13 +48,16 @@
 :root {
     --background-color: var(--hex-white);
     --background-color-secondary: var(--beige-light-hex);
-    --container-border: var(--lighter-gray-hex);
+    --container-border: var(--hex-blue-gray-lightest);
     --background-color-tertiary: var(--light-sand);
 }
 
 //-- Forms & Buttons
 :root {
     --input-hex-placeholder: var(--hex-blue-gray);
+    --input-hex-border: var(--hex-blue-gray-lightest);
+    --input-hex-bg: var(--hex-white);
+    --input-hex-focus: var(--hex-blue-gray);
     --form-el-bg-color: var(--lightest-gray-hex);
     --form-el-focus-color: var(--mid-gray-hex);
     --form-typo-color: var(--mid-dark-gray-hex);
