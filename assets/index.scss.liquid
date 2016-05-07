@@ -2028,6 +2028,7 @@ body {
   padding: 20px 50px;
   padding: 2rem 5rem;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  text-align: center;
   background-color: #ffffff;
   -webkit-transform: translate3d(110%, 0, 0);
           transform: translate3d(110%, 0, 0);
@@ -2063,3 +2064,15 @@ body {
   .Cart-state:checked ~ .Cart--quick {
     -webkit-transform: none;
             transform: none; }
+    .Cart-state:checked ~ .Cart--quick .Cart-shim {
+      pointer-events: auto; }
+
+.Cart-shim {
+  position: absolute;
+  top: 0;
+  right: 390px;
+  z-index: 1;
+  width: 200vw;
+  height: 100%;
+  font-size: 0;
+  pointer-events: none; }

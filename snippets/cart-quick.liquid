@@ -6,14 +6,13 @@
         <strong class="Headline Headline--6">{{ 'cart.general.title' | t }}</strong>
         <label class="Link Link--small" for="cart-quick">{{ 'cart.general.close_cart' | t }}</label>
     </div>
-        {% if cart.item_count > 0 %}
-        {% else %}
-          {% comment %}
-            The cart is empty
-          {% endcomment %}
-          <h2>{{ 'cart.general.title' | t }}</h2>
-          <p>{{ 'cart.general.empty' | t }}</p>
-          <p>{{ 'cart.general.continue_browsing_html' | t }}</p>
-        {% endif %}
-        <label class="Cart-shim-close" for="cart-quick">Close</label>
+    {% if cart.item_count > 0 %}
+
+    {% else %}
+      {% comment %}
+        The cart is empty
+      {% endcomment %}
+      <strong class="Headline Headline--4">{{ 'cart.general.empty' | t }}</strong>
+    {% endif %}
+    <label class="Cart-shim" for="cart-quick">Close</label>
 </aside>
