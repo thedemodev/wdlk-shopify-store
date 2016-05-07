@@ -1232,10 +1232,12 @@ body {
 .Lightbox-shim {
   position: fixed;
   top: 0;
-  left: -200vw;
+  left: -0;
   width: 100%;
   height: 100%;
   padding-top: 5vh;
+  -webkit-transform: translateX(-200vw);
+          transform: translateX(-200vw);
   background: transparent;
   -webkit-transition: background .30s .30s ease-in-out, left 0s .70s ease-in-out;
   transition: background .30s .30s ease-in-out, left 0s .70s ease-in-out; }
@@ -1243,7 +1245,9 @@ body {
 .Lightbox-state {
   display: none; }
   .Lightbox-state:checked ~ .Lightbox-shim {
-    left: 0;
+    z-index: 10;
+    -webkit-transform: none;
+            transform: none;
     background: #000000;
     background: rgba(0, 0, 0, 0.6);
     -webkit-transition: background .30s ease-in-out;

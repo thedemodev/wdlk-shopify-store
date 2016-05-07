@@ -11,13 +11,13 @@
     &-shim {
         position: fixed;
         top: 0;
-        left: -200vw;
+        left: -0;
         width: 100%;
         height: 100%;
         padding: {
             top: 5vh;
         }
-
+        transform: translateX(-200vw);
         background: rgba(0, 0, 0, 0);
         transition: background var(--transition-speed) var(--transition-speed) ease-in-out, left 0s var(--transition-speed-double) ease-in-out;
     }
@@ -27,7 +27,9 @@
 
         &:checked  {
             ~ .Lightbox-shim {
-                left: 0;
+
+                z-index: 10;
+                transform: none;
                 background: rgba(0, 0, 0, .6);
                 transition: background var(--transition-speed) ease-in-out;
 
