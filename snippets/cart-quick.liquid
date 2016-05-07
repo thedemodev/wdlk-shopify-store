@@ -31,13 +31,15 @@
             {% comment %} Number Input Component {% endcomment %}
 
 
-            <span>{{ item.variant.title }}</span>
-            <span>{{ item.price | money }}</span>
+            <span class="Cart-attr">{{ item.variant.title }}</span>
+            <span class="Cart-attr">{{ item.price | money }}</span>
             <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
               <small>{{ 'cart.general.remove' | t }}</small>
             </a>
         </div>
         {% endfor %}
+        <span>{{ 'cart.general.subtotal' | t }}</span>
+        <span>{{ cart.total_price | money }}</span>
         <input type="submit" name="update" value="{{ 'cart.general.update' | t }}">
         <input type="submit" name="checkout" class="btn" value="{{ 'cart.general.checkout' | t }}">
 

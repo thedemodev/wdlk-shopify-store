@@ -31,12 +31,28 @@
         }
     }
 
+    &-item {
+        padding-bottom: 30px;
+        border-bottom: 1px solid var(--quick-cart-item-hex-border);
+        margin-bottom: 26px;
+
+        &:last-child {
+            border: none;
+            margin-bottom: 0;
+        }
+    }
+
     &-img {
         display: inline-block;
         width: var(--cart-thumb-size);
         height: var(--cart-thumb-size);
         margin-right: 1.6rem;
         vertical-align: bottom;
+    }
+
+    &-attr {
+        font-size: var(--md-copy-size);
+        font-weight: 600;
     }
 
     &--quick {
