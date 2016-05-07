@@ -41,7 +41,11 @@
         }
     }
 
-    &--small {
-        font-size: 1.1rem;
+    &--tonedown {
+        color: var(--link-hex-secondary-color);
+
+        &:hover {
+            color: var(--link-hex-secondary-hover);
+        }
     }
 }

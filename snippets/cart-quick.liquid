@@ -4,10 +4,31 @@
         {% assign shoppingBagMod = 'tonedown' %}
         {% include 'shopping-bag' with 'default' %}
         <strong class="Headline Headline--6">{{ 'cart.general.title' | t }}</strong>
-        <label class="Link Link--small" for="cart-quick">{{ 'cart.general.close_cart' | t }}</label>
+        <label class="Link" for="cart-quick">{{ 'cart.general.close_cart' | t }}</label>
     </div>
     {% if cart.item_count > 0 %}
-
+    <div class="Cart-list">
+        {% for item in cart.items %}
+        <div class="Cart-item">
+            <a href="{{ item.url }}" class="Link Link--tonedown Headline Headline--7">
+                {{ item.product.title }}
+            </a>
+            <a href="{{ item.url | within: collections.all }}" class="Cart-img">
+                {% comment %}
+                More image size options at:
+                - http://docs.shopify.com/themes/filters/product-img-url
+                {% endcomment %}
+                <img src="{{ item | img_url: 'thumb' }}" alt="{{ item.title | escape }}">
+            </a>
+            <input type="number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" min="0">
+            <span>{{ item.variant.title }}</span>
+            <span>{{ item.price | money }}</span>
+            <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
+              <small>{{ 'cart.general.remove' | t }}</small>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
     {% else %}
       {% comment %}
         The cart is empty

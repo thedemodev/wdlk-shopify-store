@@ -533,9 +533,10 @@ body {
       width: 10px;
       vertical-align: bottom;
       fill: currentcolor; }
-  .Link--small {
-    font-size: 11px;
-    font-size: 1.1rem; }
+  .Link--tonedown {
+    color: #596771; }
+    .Link--tonedown:hover {
+      color: #384852; }
 
 .Btn {
   display: inline-block;
@@ -1762,7 +1763,7 @@ body {
       margin-bottom: 0; }
       .LinkList--secondary .LinkList-item {
         display: inline-block;
-        border-right: 1px solid #8E959A;
+        border-right: 1px solid #596771;
         padding-right: 2rem;
         padding-left: 2rem;
         margin-bottom: 0;
@@ -1776,9 +1777,9 @@ body {
   .LinkList--secondary .LinkList-link {
     font-size: 12px;
     font-size: 1.2rem;
-    color: #8E959A; }
+    color: #596771; }
     .LinkList--secondary .LinkList-link:hover {
-      color: #596771; }
+      color: #384852; }
 
 .PaymentList {
   margin-bottom: 77px;
@@ -1797,9 +1798,9 @@ body {
     .SocialList-item:hover {
       fill: #EC4024; }
   .SocialList--tonedown .SocialList-item {
-    fill: #8E959A; }
+    fill: #596771; }
     .SocialList--tonedown .SocialList-item:hover {
-      fill: #596771; }
+      fill: #384852; }
 
 .Header {
   display: -webkit-flex;
@@ -2021,26 +2022,6 @@ body {
       .NewsletterForm .InputField {
         margin-bottom: 0; } }
 
-.Cart--quick {
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 10;
-  box-sizing: border-box;
-  width: 390px;
-  height: 100vh;
-  padding: 20px 50px;
-  padding: 2rem 5rem;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  background-color: #ffffff;
-  -webkit-transform: translate3d(110%, 0, 0);
-          transform: translate3d(110%, 0, 0);
-  transition: -webkit-transform .5s ease;
-  -webkit-transition: -webkit-transform .5s ease;
-  transition: transform .5s ease;
-  transition: transform .5s ease, -webkit-transform .5s ease; }
-
 .Cart-header {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2061,15 +2042,46 @@ body {
         -ms-flex-positive: 2;
             -webkit-box-flex: 2;
             flex-grow: 2;
-    text-align: right; }
+    text-align: right;
+    font-size: 11px;
+    font-size: 1.1rem; }
 
-.Cart-state {
-  display: none; }
-  .Cart-state:checked ~ .Cart--quick {
-    -webkit-transform: none;
-            transform: none; }
-    .Cart-state:checked ~ .Cart--quick .Cart-shim {
-      pointer-events: auto; }
+.Cart-list {
+  text-align: left; }
+  .Cart-list .Link {
+    display: block;
+    margin: 0 0 14px;
+    margin: 0 0 1.4rem;
+    text-transform: none;
+    text-transform: initial; }
+
+.Cart-img {
+  display: inline-block;
+  width: 46px;
+  height: 46px;
+  margin-right: 16px;
+  margin-right: 1.6rem;
+  vertical-align: bottom; }
+
+.Cart--quick {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  box-sizing: border-box;
+  width: 390px;
+  height: 100vh;
+  padding: 20px 50px;
+  padding: 2rem 5rem;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  background-color: #ffffff;
+  -webkit-transform: translate3d(110%, 0, 0);
+          transform: translate3d(110%, 0, 0);
+  transition: -webkit-transform .5s ease;
+  -webkit-transition: -webkit-transform .5s ease;
+  transition: transform .5s ease;
+  transition: transform .5s ease, -webkit-transform .5s ease; }
 
 .Cart-shim {
   position: absolute;
@@ -2080,3 +2092,11 @@ body {
   height: 100%;
   font-size: 0;
   pointer-events: none; }
+
+.Cart-state {
+  display: none; }
+  .Cart-state:checked ~ .Cart--quick {
+    -webkit-transform: none;
+            transform: none; }
+    .Cart-state:checked ~ .Cart--quick .Cart-shim {
+      pointer-events: auto; }
