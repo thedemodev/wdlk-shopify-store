@@ -52,7 +52,7 @@
         line-height: 44px;
         text-align: center;
 
-        &:last-child {
+        &:first-child {
             .Icon {
                 margin-bottom: -3px;
             }
@@ -61,7 +61,7 @@
         .Icon {
             width: 10px;
             height: 10px;
-            pointer-events: auto;
+            pointer-events: none;
             transition: fill .5s ease;
         }
 

@@ -1,6 +1,5 @@
 .Page {
     margin-top: var(--nav-height);
-    overflow: hidden;
 
     @include media (medium) {
         margin-top: 0;
