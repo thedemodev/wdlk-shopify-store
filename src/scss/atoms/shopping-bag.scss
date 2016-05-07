@@ -15,10 +15,18 @@
         stroke-width: 2px;
         color: var(--hex-shopping-cart-color);
         pointer-events: none;
+        transition: fill .5s ease, stroke .5s ease;
 
         .is-filled & {
             fill: currentColor;
             fill-opacity: 1;
+
+        }
+    }
+    &.is-filled:hover {
+        .ShoppingBag-icon {
+            fill: var(--hex-shopping-cart-hover);
+            stroke: var(--hex-shopping-cart-hover);
         }
     }
 
@@ -26,6 +34,7 @@
         font-size: var(--small-copy-size);
         font-weight: 100;
         stroke-width: 1px;
+        stroke: var(--typo-hex--tertiary);
         color: var(--typo-hex--tertiary);
         text-anchor: middle;
     }

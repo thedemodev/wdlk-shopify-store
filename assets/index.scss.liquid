@@ -377,15 +377,21 @@ input[type="radio"] {
     stroke: currentColor;
     stroke-width: 2px;
     color: #FF6C54;
-    pointer-events: none; }
+    pointer-events: none;
+    -webkit-transition: fill .5s ease, stroke .5s ease;
+    transition: fill .5s ease, stroke .5s ease; }
     .is-filled .ShoppingBag-icon {
       fill: currentColor;
       fill-opacity: 1; }
+  .ShoppingBag.is-filled:hover .ShoppingBag-icon {
+    fill: #EC4024;
+    stroke: #EC4024; }
   .ShoppingBag-count {
     font-size: 12px;
     font-size: 1.2rem;
     font-weight: 100;
     stroke-width: 1px;
+    stroke: #ffffff;
     color: #ffffff;
     text-anchor: middle; }
   .ShoppingBag--link {
