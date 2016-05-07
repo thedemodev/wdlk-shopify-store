@@ -23,13 +23,11 @@ export default function numberInput() {
             if (e.target.classList.contains(ADD_BTN_CLASS)) {
                 inputValue = INCREASE(inputValue);
                 INPUT_EL.setAttribute('value', inputValue);
-                console.log(inputValue, 'on the handle method');
             }
 
             if (e.target.classList.contains(RMV_BTN_CLASS)) {
                 inputValue = DECREASE(inputValue);
                 INPUT_EL.setAttribute('value', inputValue);
-                console.log(inputValue, 'on the handle method');
             }
         });
 
