@@ -505,6 +505,7 @@ body {
 
 .Link {
   display: inline-block;
+  border: none;
   color: #FF6C54;
   font-size: 14px;
   font-size: 1.4rem;
@@ -514,7 +515,8 @@ body {
   letter-spacing: .16rem;
   cursor: pointer;
   -webkit-transition: color .3s ease;
-  transition: color .3s ease; }
+  transition: color .3s ease;
+  background: none; }
   .Link:hover {
     color: #EC4024; }
   .Link--btn .Icon--right {
@@ -563,6 +565,16 @@ body {
     background-color: #EC4024; }
   .Btn--secondary {
     background-color: #cc9966; }
+  .Btn--inverse {
+    background: transparent;
+    border: 2px solid #FF6C54;
+    color: #FF6C54;
+    -webkit-transition: border-color .35s ease;
+    transition: border-color .35s ease; }
+    .Btn--inverse:hover {
+      border-color: #EC4024;
+      color: #EC4024;
+      background: transparent; }
 
 .Carousel-trigger:checked:nth-of-type(1) ~ .Indicators .Indicators-item:nth-of-type(1) {
   background-color: #384852;
@@ -757,7 +769,7 @@ body {
     line-height: 44px;
     text-align: center; }
     .NumberInput-btn:first-child .Icon {
-      margin-bottom: -3px; }
+      margin-bottom: -4px; }
     .NumberInput-btn .Icon {
       width: 10px;
       height: 10px;
@@ -2111,19 +2123,29 @@ input[type="number"]::-webkit-outer-spin-button {
 .Cart-list {
   text-align: left; }
   .Cart-list .Link {
-    display: block;
     margin: 0 0 14px;
     margin: 0 0 1.4rem;
     text-transform: none;
     text-transform: initial; }
 
 .Cart-item {
+  position: relative;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          -webkit-box-align: center;
+          align-items: center;
   padding-bottom: 30px;
-  border-bottom: 1px solid #DEDFE0;
+  border-bottom: 1px solid #ECECEC;
   margin-bottom: 26px; }
-  .Cart-item:last-child {
-    border: none;
-    margin-bottom: 0; }
+  .Cart-item .Headline {
+    width: 100%; }
 
 .Cart-img {
   display: inline-block;
@@ -2135,8 +2157,39 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .Cart-attr {
   font-size: 14px;
-  font-size: 1.4rem;
+  font-size: 1.4rem; }
+  .Cart-attr:last-of-type {
+    -webkit-flex-grow: 2;
+        -ms-flex-positive: 2;
+            -webkit-box-flex: 2;
+            flex-grow: 2;
+    text-align: right; }
+
+.Cart-remove {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #8E959A; }
+
+.Cart-footer {
+  position: relative;
+  margin-top: 36px;
+  text-align: right;
   font-weight: 600; }
+  .Cart-footer .Copy-sm {
+    font-weight: 300;
+    font-size: 10px;
+    font-size: 1rem; }
+  .Cart-footer .Link {
+    font-size: 12px;
+    font-size: 1.2rem;
+    padding: 0 6px 0 0; }
+
+.Cart-col {
+  display: inline-block;
+  width: 38%;
+  margin-bottom: 32px;
+  vertical-align: top; }
 
 .Cart--quick {
   position: fixed;

@@ -28,4 +28,17 @@
     &--secondary {
         background-color: var(--btn-bg-color-secondary);
     }
+
+    &--inverse {
+        background: transparent;
+        border: 2px solid var(--btn-bg-color);
+        color: var(--btn-bg-color);
+        transition: border-color var(--btn-timing) ease;
+
+        &:hover {
+            border-color: var(--btn-bg-color-hover);
+            color: var(--btn-bg-color-hover);
+            background: transparent;
+        }
+    }
 }
