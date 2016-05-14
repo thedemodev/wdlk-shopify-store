@@ -13,6 +13,11 @@ $form-base-height: 4rem;
     --form-base-padding: 2rem;
 }
 
+//-- BOX SIZING
+:root {
+    --box-base-padding: calc(var(--form-base-padding) + 1.6rem);
+}
+
 //-- Typography
 //-- Increments the size of the typography
 //-- according to the device width.
