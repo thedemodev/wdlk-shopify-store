@@ -1,4 +1,5 @@
 .CookieNotification {
+    display: none;
     position: fixed;
     bottom: calc(var(--form-base-height) / 2);
     left: var(--base-spacing);
@@ -19,5 +20,6 @@
         right: 0;
         background: var(--hex-blue-gray-dark);
         text-align: center;
+        cursor: pointer;
     }
 }
