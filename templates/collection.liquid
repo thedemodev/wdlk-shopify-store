@@ -4,9 +4,10 @@
 {% endcomment %}
 
 {% paginate collection.products by 32 %}
-
-<main class="ProductList">
-    {% include 'product-item' %}
+<main>
+    <div class="ProductList">
+        {% include 'product-item' %}
+    </div>
 </main>
 
 
