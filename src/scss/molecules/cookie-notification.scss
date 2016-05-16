@@ -3,10 +3,11 @@
     position: fixed;
     bottom: calc(var(--form-base-height) / 2);
     left: var(--base-spacing);
+    z-index: 10;
     height: var(--form-base-height);
     padding: 0 calc(var(--box-base-padding) * 2) 0 var(--box-base-padding);
     line-height: var(--form-base-height);
-    background-color: var(--hex-blue-gray-light);
+    background-color: var(--rgba-blue-gray-light);
 
     @include copy-text(
         var(--md-copy-size),
@@ -15,11 +16,19 @@
 
     &-close {
         position: absolute;
-        width: var(--box-base-padding);
         top: 0;
         right: 0;
-        background: var(--hex-blue-gray-dark);
+        width: var(--box-base-padding);
+        background: var(--rgba-blue-gray-dark);
+        font-size: 1.8rem;
+        font-weight: 600;
         text-align: center;
         cursor: pointer;
+    }
+
+    &-link {
+        color: var(--typo-hex--tertiary);
+        font-weight: 600;
+        text-decoration: underline;
     }
 }
