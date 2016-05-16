@@ -147,8 +147,11 @@
                     {% endif %}
                     {% endfor %}
                 </select>
-
-                <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
+                {% assign numberMin = '1' %}
+                {% assign numberId = 'quantity' %}
+                {% assign numberName = numberId %}
+                {% assign numberValue = 1 %}
+                {% include 'number-input' %}
 
                 <button type="submit" name="add" id="AddToCart" class="Btn">
                     {{ 'products.product.add_to_cart' | t }}
@@ -220,7 +223,7 @@
                 <img sizes="(min-width: {{screen-l}}) 50vw, 100vw"
                 srcset="{{ image.src | product_img_url: 'large' }} 480w,
                 {{ image.src | product_img_url: 'grande' }} 600w,
-                {{ image.src | product_img_url: '1024x1024' }} 1024 w"
+                {{ image.src | product_img_url: '1024x1024' }} 1024w"
                 src="{{ image.src | product_img_url: 'grande' }}"
                 alt="{{ product.image.alt | escape }}"
                 class="Product-teaser-img" itemprop="image" />

@@ -1,0 +1,64 @@
+<input type="checkbox" id="cart-quick" class="Cart-state" />
+<aside class="Cart--quick">
+    <div class="Cart-header">
+        {% assign shoppingBagMod = 'tonedown' %}
+        {% include 'shopping-bag' with 'default' %}
+        <strong class="Headline Headline--6">{{ 'cart.general.title' | t }}</strong>
+        <label class="Link" for="cart-quick">{{ 'cart.general.close_cart' | t }}</label>
+    </div>
+    {% if cart.item_count > 0 %}
+    <form action="/cart" method="post" novalidate class="cart table-wrap">
+    <div class="Cart-list">
+    {% for item in cart.items %}
+        <div class="Cart-item">
+            <a href="{{ item.url }}" class="Link Link--tonedown Headline Headline--7">
+                {{ item.product.title }}
+            </a>
+            <a href="{{ item.url | within: collections.all }}" class="Cart-img">
+                {% comment %}
+                More image size options at:
+                - http://docs.shopify.com/themes/filters/product-img-url
+                {% endcomment %}
+                <img src="{{ item | img_url: 'thumb' }}" alt="{{ item.title | escape }}">
+            </a>
+
+            {% comment %} Number Input Component {% endcomment %}
+            {% assign numberMin = '0' %}
+            {% assign numberId = item.id %}
+            {% assign numberName = 'updates[]' %}
+            {% assign numberValue = item.quantity %}
+            {% include 'number-input' with 'quick-cart' %}
+            {% comment %} Number Input Component {% endcomment %}
+
+
+            <span class="Cart-attr">{{ item.variant.title }}</span>
+            <span class="Cart-attr">{{ item.price | money }}</span>
+            <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
+              <span class="Cart-remove">x</span>
+            </a>
+
+        </div>
+    {% endfor %}
+    </div>
+    <div class="Cart-footer">
+        <div class="Cart-col">
+            {{ 'cart.general.subtotal' | t }}<br />
+            <small class="Copy-sm">({{'products.product.tax_type' | t}} {{'products.product.tax_included' | t}})</small>
+        </div>
+        <div class="Cart-col">
+            {{ cart.total_price | money }}
+        </div>
+        <input class="Link" type="submit" name="update" value="{{ 'cart.general.update' | t }}">
+        <input class="Btn Btn--inverse" type="submit" name="checkout" class="btn" value="{{ 'cart.general.checkout' | t }}">
+    </div>
+
+
+    </form>
+    {% else %}
+      {% comment %}
+        The cart is empty
+      {% endcomment %}
+      <strong class="Headline Headline--4">{{ 'cart.general.empty' | t }}</strong>
+    {% endif %}
+    <label class="Cart-shim" for="cart-quick">Close</label>
+</aside>

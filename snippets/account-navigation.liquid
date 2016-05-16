@@ -21,22 +21,5 @@
     </div>
     {% endif %}
 
-    {% comment %}
-      Show number of items in the cart and total cost in the /cart link
-
-      Ajax Cart Notes:
-        - #cartCount updates the total number of items in the cart
-        - #cartCost updates the total cost of the cart
-        - Documentation:  http://shopify.com/timber#ajax-cart
-    {% endcomment %}
-    <a href="/cart" class="ShoppingCart js_cartCountComponent js-drawer-open-right {% if cart.item_count > 0 %} is-filled {% endif %}" aria-controls="CartDrawer" aria-expanded="false">
-        <svg class="ShoppingCart-icon">
-            <use xlink:href="#Shopping_cart" />
-            <text class="ShoppingCart-count" data-cart="counter" y="80%" x="55%">
-                 {% if cart.item_count > 0 %}
-                    {{ cart.item_count }}
-                 {% endif %}
-             </text>
-        </svg>
-    </a>
+    {% include 'shopping-bag' with 'link' %}
 </div>

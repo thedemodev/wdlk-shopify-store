@@ -11,11 +11,14 @@
         right: var(--form-base-height);
     }
     border-radius: 0;
-    border-color: var(--form-el-bg-color);
+    border-color: var(--input-hex-border);
     margin-right: var(--form-base-margin);
-    @include copy-text(calc(var(--md-copy-size) - .1),  var(--form-typo-color), bold);
+    color: var(--input-hex-typo);
+    font-family: "museo-sans-bold";
+    font-size: var(--md-copy-size);
+    font-weight: 600;
     background: {
-        color: var(--form-el-bg-color);
+        color: var(--input-hex-bg);
         //-- Replace with the right icon
         image: url('{{ "ico-select.svg" | asset_url }}');
         repeat: no-repeat;
@@ -31,6 +34,6 @@
     &:focus,
     &:active,
     &:hover {
-        border-color: var(--form-el-focus-color);
+        border-color: var(--input-hex-focus);
     }
 }

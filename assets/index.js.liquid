@@ -971,7 +971,7 @@ timber.init = function () {
   FastClick.attach(document.body);
   timber.cacheSelectors();
   timber.accessibleNav();
-  timber.drawersInit();
+  // timber.drawersInit();
   timber.mobileNavToggle();
   timber.productImageSwitch();
   timber.responsiveVideos();
@@ -1061,7 +1061,7 @@ timber.accessibleNav = function () {
 };
 
 timber.drawersInit = function () {
-    timber.LeftDrawer = new timber.Drawers('NavDrawer', 'left');
+    // timber.LeftDrawer = new timber.Drawers('NavDrawer', 'left');
     timber.RightDrawer = new timber.Drawers('CartDrawer', 'right', {
         {% if settings.ajax_cart_enable %}'onDrawerOpen': ajaxCart.load{% endif %}
     });
@@ -1206,146 +1206,146 @@ timber.resetPasswordSuccess = function() {
   timber.cache.$passwordResetSuccess.show();
 };
 
-/*============================================================================
-  Drawer modules
-  - Docs http://shopify.github.io/Timber/#drawers
-==============================================================================*/
-timber.Drawers = (function () {
-  var Drawer = function (id, position, options) {
-    var defaults = {
-      close: '.js-drawer-close',
-      open: '.js-drawer-open-' + position,
-      openClass: 'js-drawer-open',
-      dirOpenClass: 'js-drawer-open-' + position
-    };
-
-    this.$nodes = {
-      parent: $('body, html'),
-      page: $('.js_pageContainer'),
-      moved: $('.is-moved-by-drawer')
-    };
-
-    this.config = $.extend(defaults, options);
-    this.position = position;
-
-    this.$drawer = $('#' + id);
-
-    if (!this.$drawer.length) {
-      return false;
-    }
-
-    this.drawerIsOpen = false;
-    this.init();
-  };
-
-  Drawer.prototype.init = function () {
-    $(this.config.open).on('click', $.proxy(this.open, this));
-    this.$drawer.find(this.config.close).on('click', $.proxy(this.close, this));
-  };
-
-  Drawer.prototype.open = function (evt) {
-    // Keep track if drawer was opened from a click, or called by another function
-    var externalCall = false;
-
-    // Prevent following href if link is clicked
-    if (evt) {
-      evt.preventDefault();
-    } else {
-      externalCall = true;
-    }
-
-    // Without this, the drawer opens, the click event bubbles up to $nodes.page
-    // which closes the drawer.
-    if (evt && evt.stopPropagation) {
-      evt.stopPropagation();
-      // save the source of the click, we'll focus to this on close
-      this.$activeSource = $(evt.currentTarget);
-    }
-
-    if (this.drawerIsOpen && !externalCall) {
-      return this.close();
-    }
-
-    // Add is-transitioning class to moved elements on open so drawer can have
-    // transition for close animation
-    this.$nodes.moved.addClass('is-transitioning');
-    this.$drawer.prepareTransition();
-
-    this.$nodes.parent.addClass(this.config.openClass + ' ' + this.config.dirOpenClass);
-    this.drawerIsOpen = true;
-
-    // Set focus on drawer
-    this.trapFocus(this.$drawer, 'drawer_focus');
-
-    // Run function when draw opens if set
-    if (this.config.onDrawerOpen && typeof(this.config.onDrawerOpen) == 'function') {
-      if (!externalCall) {
-        this.config.onDrawerOpen();
-      }
-    }
-
-    if (this.$activeSource && this.$activeSource.attr('aria-expanded')) {
-      this.$activeSource.attr('aria-expanded', 'true');
-    }
-
-    // Lock scrolling on mobile
-    this.$nodes.page.on('touchmove.drawer', function () {
-      return false;
-    });
-
-    this.$nodes.page.on('click.drawer', $.proxy(function () {
-      this.close();
-      return false;
-    }, this));
-  };
-
-  Drawer.prototype.close = function () {
-    if (!this.drawerIsOpen) { // don't close a closed drawer
-      return;
-    }
-
-    // deselect any focused form elements
-    $(document.activeElement).trigger('blur');
-
-    // Ensure closing transition is applied to moved elements, like the nav
-    this.$nodes.moved.prepareTransition({ disableExisting: true });
-    this.$drawer.prepareTransition({ disableExisting: true });
-
-    this.$nodes.parent.removeClass(this.config.dirOpenClass + ' ' + this.config.openClass);
-
-    this.drawerIsOpen = false;
-
-    // Remove focus on drawer
-    this.removeTrapFocus(this.$drawer, 'drawer_focus');
-
-    this.$nodes.page.off('.drawer');
-  };
-
-  Drawer.prototype.trapFocus = function ($container, eventNamespace) {
-    var eventName = eventNamespace ? 'focusin.' + eventNamespace : 'focusin';
-
-    $container.attr('tabindex', '-1');
-
-    $container.focus();
-
-    $(document).on(eventName, function (evt) {
-      if ($container[0] !== evt.target && !$container.has(evt.target).length) {
-        $container.focus();
-      }
-    });
-  };
-
-  Drawer.prototype.removeTrapFocus = function ($container, eventNamespace) {
-    var eventName = eventNamespace ? 'focusin.' + eventNamespace : 'focusin';
-
-    $container.removeAttr('tabindex');
-    $(document).off(eventName);
-  };
-
-  return Drawer;
-})();
-// Initialize Timber's JS on docready
-$(timber.init);
+// /*============================================================================
+//   Drawer modules
+//   - Docs http://shopify.github.io/Timber/#drawers
+// ==============================================================================*/
+// timber.Drawers = (function () {
+//   var Drawer = function (id, position, options) {
+//     var defaults = {
+//       close: '.js-drawer-close',
+//       open: '.js-drawer-open-' + position,
+//       openClass: 'js-drawer-open',
+//       dirOpenClass: 'js-drawer-open-' + position
+//     };
+//
+//     this.$nodes = {
+//       parent: $('body, html'),
+//       page: $('.js_pageContainer'),
+//       moved: $('.is-moved-by-drawer')
+//     };
+//
+//     this.config = $.extend(defaults, options);
+//     this.position = position;
+//
+//     this.$drawer = $('#' + id);
+//
+//     if (!this.$drawer.length) {
+//       return false;
+//     }
+//
+//     this.drawerIsOpen = false;
+//     this.init();
+//   };
+//
+//   Drawer.prototype.init = function () {
+//     $(this.config.open).on('click', $.proxy(this.open, this));
+//     this.$drawer.find(this.config.close).on('click', $.proxy(this.close, this));
+//   };
+//
+//   Drawer.prototype.open = function (evt) {
+//     // Keep track if drawer was opened from a click, or called by another function
+//     var externalCall = false;
+//
+//     // Prevent following href if link is clicked
+//     if (evt) {
+//       evt.preventDefault();
+//     } else {
+//       externalCall = true;
+//     }
+//
+//     // Without this, the drawer opens, the click event bubbles up to $nodes.page
+//     // which closes the drawer.
+//     if (evt && evt.stopPropagation) {
+//       evt.stopPropagation();
+//       // save the source of the click, we'll focus to this on close
+//       this.$activeSource = $(evt.currentTarget);
+//     }
+//
+//     if (this.drawerIsOpen && !externalCall) {
+//       return this.close();
+//     }
+//
+//     // Add is-transitioning class to moved elements on open so drawer can have
+//     // transition for close animation
+//     this.$nodes.moved.addClass('is-transitioning');
+//     this.$drawer.prepareTransition();
+//
+//     this.$nodes.parent.addClass(this.config.openClass + ' ' + this.config.dirOpenClass);
+//     this.drawerIsOpen = true;
+//
+//     // Set focus on drawer
+//     this.trapFocus(this.$drawer, 'drawer_focus');
+//
+//     // Run function when draw opens if set
+//     if (this.config.onDrawerOpen && typeof(this.config.onDrawerOpen) == 'function') {
+//       if (!externalCall) {
+//         this.config.onDrawerOpen();
+//       }
+//     }
+//
+//     if (this.$activeSource && this.$activeSource.attr('aria-expanded')) {
+//       this.$activeSource.attr('aria-expanded', 'true');
+//     }
+//
+//     // Lock scrolling on mobile
+//     this.$nodes.page.on('touchmove.drawer', function () {
+//       return false;
+//     });
+//
+//     this.$nodes.page.on('click.drawer', $.proxy(function () {
+//       this.close();
+//       return false;
+//     }, this));
+//   };
+//
+//   Drawer.prototype.close = function () {
+//     if (!this.drawerIsOpen) { // don't close a closed drawer
+//       return;
+//     }
+//
+//     // deselect any focused form elements
+//     $(document.activeElement).trigger('blur');
+//
+//     // Ensure closing transition is applied to moved elements, like the nav
+//     this.$nodes.moved.prepareTransition({ disableExisting: true });
+//     this.$drawer.prepareTransition({ disableExisting: true });
+//
+//     this.$nodes.parent.removeClass(this.config.dirOpenClass + ' ' + this.config.openClass);
+//
+//     this.drawerIsOpen = false;
+//
+//     // Remove focus on drawer
+//     this.removeTrapFocus(this.$drawer, 'drawer_focus');
+//
+//     this.$nodes.page.off('.drawer');
+//   };
+//
+//   Drawer.prototype.trapFocus = function ($container, eventNamespace) {
+//     var eventName = eventNamespace ? 'focusin.' + eventNamespace : 'focusin';
+//
+//     $container.attr('tabindex', '-1');
+//
+//     $container.focus();
+//
+//     $(document).on(eventName, function (evt) {
+//       if ($container[0] !== evt.target && !$container.has(evt.target).length) {
+//         $container.focus();
+//       }
+//     });
+//   };
+//
+//   Drawer.prototype.removeTrapFocus = function ($container, eventNamespace) {
+//     var eventName = eventNamespace ? 'focusin.' + eventNamespace : 'focusin';
+//
+//     $container.removeAttr('tabindex');
+//     $(document).off(eventName);
+//   };
+//
+//   return Drawer;
+// })();
+// // Initialize Timber's JS on docready
+// $(timber.init);
 
 /*============================================================================
   Ajax the add to cart experience by revealing it in a side drawer
@@ -1870,21 +1870,24 @@ var ajaxCart = (function(module, $) {
 }(ajaxCart || {}, jQuery));
 
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-"use strict";function _interopRequireDefault(i){return i&&i.__esModule?i:{"default":i}}var _rAf=require("./polyfills/rAf"),_rAf2=_interopRequireDefault(_rAf),_stickyNavigation=require("./modules/sticky-navigation"),_stickyNavigation2=_interopRequireDefault(_stickyNavigation),_smoothScrolling=require("./modules/smooth-scrolling"),_smoothScrolling2=_interopRequireDefault(_smoothScrolling),_cookieNotification=require("./modules/cookie-notification"),_cookieNotification2=_interopRequireDefault(_cookieNotification);(0,_rAf2["default"])(),(0,_smoothScrolling2["default"])(),(0,_stickyNavigation2["default"])(),(0,_cookieNotification2["default"])();
+"use strict";function _interopRequireDefault(i){return i&&i.__esModule?i:{"default":i}}var _rAf=require("./polyfills/rAf"),_rAf2=_interopRequireDefault(_rAf),_stickyNavigation=require("./modules/sticky-navigation"),_stickyNavigation2=_interopRequireDefault(_stickyNavigation),_smoothScrolling=require("./modules/smooth-scrolling"),_smoothScrolling2=_interopRequireDefault(_smoothScrolling),_cookieNotification=require("./modules/cookie-notification"),_cookieNotification2=_interopRequireDefault(_cookieNotification),_numberInput=require("./modules/number-input"),_numberInput2=_interopRequireDefault(_numberInput);(0,_rAf2["default"])(),(0,_smoothScrolling2["default"])(),(0,_stickyNavigation2["default"])(),(0,_cookieNotification2["default"])(),(0,_numberInput2["default"])();
 
-},{"./modules/cookie-notification":2,"./modules/smooth-scrolling":4,"./modules/sticky-navigation":5,"./polyfills/rAf":6}],2:[function(require,module,exports){
+},{"./modules/cookie-notification":2,"./modules/number-input":4,"./modules/smooth-scrolling":5,"./modules/sticky-navigation":6,"./polyfills/rAf":7}],2:[function(require,module,exports){
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0});var notification=document.querySelector(".js-cookie-notification"),closeButton=document.querySelector(".js-cookie-notification-close"),localStorage=window.localStorage,notificationHidden=function(){return localStorage.getItem("hideCookieNotification")},hideNotification=function(){localStorage.setItem("hideCookieNotification",!0),notification.style.display="none"};exports["default"]=function(){if(!notificationHidden()){notification.style.display="block";var o=closeButton.addEventListener("click",function(){hideNotification(),closeButton.removeEventListener("click",o)})}};
 
 },{}],3:[function(require,module,exports){
 "use strict";function logger(){var e=arguments.length<=0||void 0===arguments[0]?"log":arguments[0],o=arguments[1],r=new Date;("undefined"!=typeof console&&"log"===e||"error"===e)&&("error"===e?console.error(r+": "+o):console.log(r+": "+o))}Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]=logger;
 
 },{}],4:[function(require,module,exports){
+"use strict";function _toConsumableArray(t){if(Array.isArray(t)){for(var e=0,r=Array(t.length);e<t.length;e++)r[e]=t[e];return r}return Array.from(t)}function numberInput(){var t=document.getElementsByClassName("js_numberInput");if(t){var e=[].concat(_toConsumableArray(t)),r="js_remove",n="js_add",u=function(t){return parseInt(t)+1},a=function(t){return parseInt(t)-1};e.forEach(function(t){var e=1,s=0,i=t.querySelector(".js_value");i&&(e=i.getAttribute("value"),s=i.getAttribute("min"),t.addEventListener("click",function(t){if(t.target.classList.contains(n)&&(e=u(e),i.setAttribute("value",e)),t.target.classList.contains(r)){if(s>=e)return;e=a(e),i.setAttribute("value",e)}}))})}}Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]=numberInput;
+
+},{}],5:[function(require,module,exports){
 "use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{"default":e}}function smoothScrolling(){var e=document.getElementsByClassName("js_scroll")[0];if(e){var t=document.getElementById(e.getAttribute("href").substr(1));if(t){var n=document.getElementsByClassName("js_scroller")[0];if(n){Math.easeInOutExpo=function(e,t,n,o){return e/=o/2,1>e?n/2*Math.pow(2,10*(e-1))+t:(e--,n/2*(-Math.pow(2,-10*e)+2)+t)};var o=function(e,t,n){var o=arguments.length<=3||void 0===arguments[3]?o||function(){}:arguments[3],r=e.scrollTop,u=t.offsetTop-r-40,l=null,i=function a(t){l=null!==l?l:t;var i=t-l;return i>=n?o():(e.scrollTop=Math.easeInOutExpo(i,r,u,n),void window.requestAnimationFrame(a))};window.requestAnimationFrame(i)},r=function(e){e.preventDefault(),o(n,t,1618,function(){window.location.hash="#"+t.id})};e.addEventListener("click",r,!1)}}}}Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]=smoothScrolling;var _logger=require("./logger"),_logger2=_interopRequireDefault(_logger);
 
-},{"./logger":3}],5:[function(require,module,exports){
+},{"./logger":3}],6:[function(require,module,exports){
 "use strict";function stickyNavigation(){var t=document.getElementsByClassName("js_sticky-nav")[0],e=2*t.offsetHeight,i=0,n=!1,s=function(){i=window.scrollY,o()},o=function(){n||requestAnimationFrame(a),n=!0},a=function(){var s=i;t.classList.toggle("is-undocked",s>=e),n=!1};window.addEventListener("scroll",s,!1)}Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]=stickyNavigation;
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 "use strict";function rAf(){for(var e=0,n=["ms","moz","webkit","o"],i=0;i<n.length&&!window.requestAnimationFrame;++i)window.requestAnimationFrame=window[n[i]+"RequestAnimationFrame"],window.cancelAnimationFrame=window[n[i]+"CancelAnimationFrame"]||window[n[i]+"CancelRequestAnimationFrame"];window.requestAnimationFrame||(window.requestAnimationFrame=function(n,i){var t=(new Date).getTime(),o=Math.max(0,16-(t-e)),a=window.setTimeout(function(){n(t+o)},o);return e=t+o,a}),window.cancelAnimationFrame||(window.cancelAnimationFrame=function(e){clearTimeout(e)})}Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]=rAf;
 
 },{}]},{},[1]);
