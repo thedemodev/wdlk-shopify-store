@@ -1,0 +1,25 @@
+.CookieNotification {
+    display: none;
+    position: fixed;
+    bottom: calc(var(--form-base-height) / 2);
+    left: var(--base-spacing);
+    height: var(--form-base-height);
+    padding: 0 calc(var(--box-base-padding) * 2) 0 var(--box-base-padding);
+    line-height: var(--form-base-height);
+    background-color: var(--hex-blue-gray-light);
+
+    @include copy-text(
+        var(--md-copy-size),
+        var(--typo-hex--tertiary)
+    );
+
+    &-close {
+        position: absolute;
+        width: var(--box-base-padding);
+        top: 0;
+        right: 0;
+        background: var(--hex-blue-gray-dark);
+        text-align: center;
+        cursor: pointer;
+    }
+}
