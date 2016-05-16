@@ -2,15 +2,15 @@
 :root {
     --hex-white: #ffffff;
     --hex-blue-gray: #9FBCD0;
-    --hex-coral: #FF6C54;
-    --hex-coral-dark: #EC4024;
+    --hex-coral: #FF7163;
+    --hex-coral-dark: #E5554E;
     --hex-blue-gray-light: #8E959A;
+    --hex-blue-gray-lightest: #DEDFE0;
     --hex-blue-gray-dark: #596771;
     --hex-blue-gray-ultra-dark: #384852;
     --mid-gray-hex: #c8c8c8;
     --mid-dark-gray-hex: #bfbfbf;
     --light-gray-hex: #999999;
-    --lighter-gray-hex: #e6e6e6;
     --lightest-gray-hex: #f0f0f0;
     --dark-asphalt-hex: #222222;
     --asphalt-hex: #4d4d4f;
@@ -26,6 +26,8 @@
 
 //-- Base rgba colors
 :root {
+    --rgba-blue-gray-light: rgba(142, 149, 154, .7);
+    --rgba-blue-gray-dark: rgba(80, 103, 113, .5);
     --mid-gray-rgba: rgba(200, 200, 200, 1);
     --light-black-rgba: rgba(51, 51, 51, 1);
     --lightest-gray-rgba: rgba(240, 240, 240, 1);
@@ -38,9 +40,9 @@
     --typo-hex: var(--hex-blue-gray-dark);
     --typo-hex--secondary: var(--hex-blue-gray-light);
     --typo-hex--tertiary: var(--hex-white);
-    --typo-hex--highlight: var(--hex-blue-gray-ultra-dark);
+    --typo-hex--highlight: var(--hex-coral);
     --typo-hex--tone-down: var(--light-gray-hex);
-    --typo-hex--lightest: var(--lighter-gray-hex);
+    --typo-hex--lightest: var(--hex-blue-gray-lightest);
     --typo-hex--banner-secondary: var(--hex-blue-gray-light);
 }
 
@@ -48,13 +50,17 @@
 :root {
     --background-color: var(--hex-white);
     --background-color-secondary: var(--beige-light-hex);
-    --container-border: var(--lighter-gray-hex);
+    --container-border: var(--hex-blue-gray-lightest);
     --background-color-tertiary: var(--light-sand);
 }
 
 //-- Forms & Buttons
 :root {
     --input-hex-placeholder: var(--hex-blue-gray);
+    --input-hex-border: var(--hex-blue-gray-lightest);
+    --input-hex-bg: var(--hex-white);
+    --input-hex-focus: var(--hex-blue-gray);
+    --input-hex-typo: var(--hex-blue-gray-dark);
     --form-el-bg-color: var(--lightest-gray-hex);
     --form-el-focus-color: var(--mid-gray-hex);
     --form-typo-color: var(--mid-dark-gray-hex);
@@ -63,24 +69,34 @@
     --btn-bg-color-hover: var(--hex-coral-dark);
     --btn-bg-color: var(--hex-coral);
     --carousel-arrow-color: var(--light-gray-hex);
-    --indicator-color: var(--asphalt-hex);
-    --indicator-active-color: var(--sand-hex);
+    --indicator-color: var(--hex-blue-gray-light);
+    --indicator-active-color: var(--hex-blue-gray-ultra-dark);
     --link-hex-color: var(--hex-coral);
     --link-hex-hover-color: var(--hex-coral-dark);
-    --link-hex-secondary-color: var(--hex-blue-gray-light);
-    --link-hex-secondary-hover-color: var(--hex-blue-gray-dark);
+    --link-hex-secondary-color: var(--hex-blue-gray-dark);
+    --link-hex-secondary-hover: var(--hex-blue-gray-ultra-dark);
 }
 
 //-- Images
 :root {
-    --thumbnail-border-color: var(--sand-hex);
+    --thumbnail-border-color: var(--hex-blue-gray-light);
 }
 
 //-- Icons
 :root {
     --hex-logo-color: var(--hex-coral);
     --hex-logo-hover-color: var(--hex-coral-dark);
-    --hex-shoping-cart-color: var(--hex-coral);
+    --hex-shopping-cart-color: var(--hex-coral);
+    --hex-shopping-cart-hover:  var(--hex-coral-dark);
+    --hex-shopping-cart-tonedown: var(--hex-blue-gray-dark);
+    --hex-shopping-cart-tonedown-hover: var(--hex-blue-gray-ultra-dark);
     --icon-primary-color: var(--hex-white);
     --banner-teaser-logo-icon: var(--hex-blue-gray);
+}
+
+//-- Cart
+
+:root {
+    --quick-cart-hex-bg: var(--hex-white);
+    --quick-cart-item-hex-border: #ECECEC;
 }

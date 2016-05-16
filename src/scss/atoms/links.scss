@@ -5,6 +5,7 @@
 
 .Link {
     display: inline-block;
+    border: none;
     color: var(--link-hex-color);
     font-size: var(--md-copy-size);
     font-weight: 600;
@@ -12,6 +13,7 @@
     letter-spacing: .16rem;
     cursor: pointer;
     transition: color .3s ease;
+    background: none;
 
     &:hover {
         color: var(--link-hex-hover-color);
@@ -38,6 +40,14 @@
             width: 10px;
             vertical-align: bottom;
             fill: currentcolor;
+        }
+    }
+
+    &--tonedown {
+        color: var(--link-hex-secondary-color);
+
+        &:hover {
+            color: var(--link-hex-secondary-hover);
         }
     }
 }

@@ -1,8 +1,82 @@
 :root {
+    --number-input-width: 112px;
+    --number-input-height: 46px;
+    --number-input-btn-width: 36px;
     --qty-btn-size: 1.8rem;
     --qty-input-width: 70px;
     --qty-input-timing: .35s;
     --qty-input-timing-func: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+}
+
+.NumberInput {
+    position: relative;
+    display: inline-flex;
+    align-items: baseline;
+    box-sizing: border-box;
+    width: var(--number-input-width);
+    height: var(--number-input-height);
+    border: 1px solid var(--input-hex-border);
+    margin-right: 1.5rem;
+    text-align: justify;
+    overflow: hidden;
+    background-color: var(--input-hex-bg);
+    transition: border .5s ease;
+
+    &:hover {
+        border-color: var(--input-hex-focus);
+    }
+
+    &-value {
+        display: inline-block;
+        box-sizing: border-box;
+        width: calc(var(--number-input-width) - (var(--number-input-btn-width) * 2));
+        height: calc(var(--number-input-height) - 2);
+        border: 0;
+        text-align: center;
+        color: var(--input-hex-typo);
+        font-family: "museo-sans-bold";
+        font-size: var(--md-copy-size);
+        font-weight: 600;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &-btn {
+        display: inline-block;
+        box-sizing: border-box;
+        height: 100%;
+        width: var(--number-input-btn-width);
+        cursor: pointer;
+        line-height: 44px;
+        text-align: center;
+
+        &:first-child {
+            .Icon {
+                margin-bottom: -4px;
+            }
+        }
+
+        .Icon {
+            width: 10px;
+            height: 10px;
+            pointer-events: none;
+            transition: fill .5s ease;
+        }
+
+        &:hover  {
+            .Icon {
+                fill: var(--input-hex-typo);
+            }
+        }
+    }
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
 }
 
 .Qty-input {

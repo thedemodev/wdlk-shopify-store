@@ -1,5 +1,6 @@
 {
   "general": {
+    "cookie": "We use ",
     "meta": {
       "tags": "Tagged \"{{ tags }}\"",
       "page": "Page {{ page }}"
@@ -70,7 +71,7 @@
       "empty": "Your cart is currently empty.",
       "continue_browsing_html": "Continue browsing <a href=\"\/collections\/all\">here<\/a>.",
       "view_cart": "View Cart",
-      "close_cart": "Close Cart"
+      "close_cart": "close"
     },
     "label": {
       "product": "Product",
