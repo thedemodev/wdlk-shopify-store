@@ -1,5 +1,6 @@
 {
   "general": {
+    "cookie": "We use ",
     "meta": {
       "tags": "Getaggt \"{{ tags }}\"",
       "page": "Seite {{ page }}"
