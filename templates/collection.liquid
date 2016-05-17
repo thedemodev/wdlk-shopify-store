@@ -4,9 +4,9 @@
 {% endcomment %}
 
 {% paginate collection.products by 32 %}
-{% include 'collection-sidebar' %}
 
 <main>
+    {% include 'product-filter' %}
     <div class="ProductList">
         {% include 'product-item' %}
     </div>

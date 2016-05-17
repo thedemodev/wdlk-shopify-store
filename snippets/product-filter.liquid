@@ -1,0 +1,43 @@
+{% comment %}
+
+  Side navigation for the product types, vendors, and tags.
+  These can be based on the current collection or all products. Details in comments below.
+
+  Note: Clicking on a tag will filter the products within the current collection.
+  Clicking on a type or vendor link will take you out of the current collection
+  to a standalone collection page. E.g. /collections/vendors?q=Pepsi
+
+{% endcomment %}
+
+{% comment %}
+  Product tags in the current collection
+{% endcomment %}
+{% if collection.all_tags.size > 0 %}
+
+  <ul class="ProductFilter">
+      {% comment %}
+        collection.all_types
+        Returns a list of all product types in a collection.
+      {% endcomment %}
+      {% for product_type in collection.all_types %}
+        {% comment %}
+        collection.current_type
+        Returns the product type on a /collections/types?q=TYPE collection page. For example, you may be on the automatic Shirts collection, which lists all products of type 'Shirts' in the store: myshop.shopify.com/collections/types?q=Shirts.
+        {% endcomment %}
+        {% if collection.current_type %}
+          <li class="ProductFilter-item is-active">
+            <span class="Link">
+                {{ product_type | url_to_type }} ({{ collection.all_products_count }})
+            </span>
+          </li>
+        {% else %}
+          <li class="ProductFilter-item ">
+            <a href="{{  product_type | url_for_type }}" class="Link">
+                {{ product_type | url_to_type }} ({{ collection.all_products_count }})
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+  </ul>
+
+{% endif %}
