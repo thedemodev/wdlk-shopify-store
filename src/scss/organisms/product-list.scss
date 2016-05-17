@@ -6,4 +6,12 @@
 .ProductList {
     @include grid-wrapper();
     margin-top: var(--product-list-upper-margin);
+
+    @include media (medium) {
+        padding: {
+            right: var(--product-base-spacing);
+            left: var(--product-base-spacing);
+        }
+        margin-bottom: var(--product-base-spacing);
+    }
 }

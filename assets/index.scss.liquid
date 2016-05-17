@@ -357,7 +357,7 @@ input[type="radio"] {
 .Logo {
   line-height: 1; }
   .Logo-img {
-    width: 150px;
+    width: 128px;
     height: 40px;
     fill: #FF7163;
     -webkit-transition: fill .35s ease;
@@ -1916,6 +1916,8 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .ProductItem {
   width: 100%;
+  margin-bottom: 40px;
+  margin-bottom: 4rem;
   overflow: hidden; }
   @media (min-width: 480px) {
     .ProductItem {
@@ -1924,15 +1926,15 @@ input[type="number"]::-webkit-outer-spin-button {
         margin-right: 2rem; } }
   @media (min-width: 770px) {
     .ProductItem {
-      width: calc(100vw / 3 - 1.4rem); }
+      width: calc(100vw / 3 - 4rem); }
       .ProductItem:nth-child(odd) {
         margin-right: 0; }
       .ProductItem:nth-child(3n-4) {
         margin-right: 2rem;
         margin-left: 2rem; } }
-  @media (min-width: 1024px) {
+  @media (min-width: 1440px) {
     .ProductItem {
-      width: calc(100vw / 4 - 1.5rem);
+      width: calc(100vw / 4  - 4rem);
       margin-right: 2rem; }
       .ProductItem:nth-child(odd) {
         margin-right: 2rem; }
@@ -1948,13 +1950,35 @@ input[type="number"]::-webkit-outer-spin-button {
   .ProductItem-img {
     width: 100%; }
   .ProductItem-caption {
-    display: block;
-    width: 100%;
-    text-align: justify; }
-    .ProductItem-caption:after {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            -webkit-box-pack: justify;
+            justify-content: space-between;
+    font-family: "museo";
+    font-weight: bold; }
+  .ProductItem-title, .ProductItem-price {
+    font-size: 14px;
+    font-size: 1.4rem;
+    color: #596771; }
+  .ProductItem-title {
+    position: relative;
+    padding-bottom: 16px;
+    margin-top: 0;
+    margin-right: 20px;
+    margin-right: 2rem;
+    margin-bottom: 0; }
+    .ProductItem-title:after {
       content: "";
-      display: inline-block;
-      width: 100%; }
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 25px;
+      height: 1px;
+      background-color: #DEDFE0; }
 
 .Header {
   display: -webkit-flex;
@@ -2000,16 +2024,18 @@ input[type="number"]::-webkit-outer-spin-button {
     transition: transform .4s ease, opacity .4s ease;
     transition: transform .4s ease, opacity .4s ease, -webkit-transform .4s ease; }
   @media (min-width: 770px) {
-    .Header:before {
-      border-bottom-width: 0;
-      opacity: 0;
-      -webkit-transform: translate3d(0, -100%, 0);
-              transform: translate3d(0, -100%, 0); }
-    .Header.is-undocked:before {
-      border-bottom-width: 1px;
-      opacity: 1;
-      -webkit-transform: none;
-              transform: none; } }
+    .Header {
+      padding: 0 4rem; }
+      .Header:before {
+        border-bottom-width: 0;
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+                transform: translate3d(0, -100%, 0); }
+      .Header.is-undocked:before {
+        border-bottom-width: 1px;
+        opacity: 1;
+        -webkit-transform: none;
+                transform: none; } }
 
 .Stage {
   display: -webkit-flex;
@@ -2324,3 +2350,8 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: auto;
   margin-top: 40px;
   margin-top: 4rem; }
+  @media (min-width: 770px) {
+    .ProductList {
+      padding-right: 4rem;
+      padding-left: 4rem;
+      margin-bottom: 4rem; } }

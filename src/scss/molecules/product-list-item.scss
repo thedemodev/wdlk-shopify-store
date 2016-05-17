@@ -1,5 +1,10 @@
+:root {
+    --product-base-spacing: 4rem;
+}
+
 .ProductItem {
     width: 100%;
+    margin-bottom: var(--product-base-spacing);
     overflow: hidden;
 
     @include media (small) {
@@ -11,7 +16,7 @@
     }
 
     @include media (medium) {
-        width: calc(100vw / 3 - 1.4rem);
+        width: calc(100vw / 3 - var(--product-base-spacing));
 
         &:nth-child(odd) {
             margin-right: 0;
@@ -25,8 +30,8 @@
         }
     }
 
-    @include media (large) {
-        width: calc(100vw / 4 - 1.5rem);
+    @include media (xlarge) {
+        width: calc(100vw / 4  - var(--product-base-spacing));
         margin-right: var(--base-spacing);
 
         &:nth-child(odd) {
@@ -57,14 +62,36 @@
     }
 
     &-caption {
-        display: block;
-        width: 100%;
-        text-align: justify;
+        display: flex;
+        justify-content: space-between;
+        font-family: "museo";
+        font-weight: bold;
+    }
 
-        &:after {
+    &-title,
+    &-price {
+        font-size: var(--md-copy-size);
+        color: var(--typo-hex);
+
+    }
+
+    &-title {
+        position: relative;
+        padding-bottom: 16px;
+        margin: {
+            top: 0;
+            right: var(--base-spacing);
+            bottom: 0;
+        }
+
+        &::after {
             content: "";
-            display: inline-block;
-            width: 100%;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 25px;
+            height: 1px;
+            background-color: var(--typo-hex--lightest);
         }
     }
 }
