@@ -5,8 +5,11 @@
 
 {% paginate collection.products by 32 %}
 
-<main class="ProductList">
-    {% include 'product-item' %}
+<main>
+    {% include 'product-filter' %}
+    <div class="ProductList">
+        {% include 'product-item' %}
+    </div>
 </main>
 
 
@@ -17,22 +20,12 @@ each other properly at each breakpoint.
 {% endcomment %}
 
 
-
-
-
-
 {% if paginate.pages > 1 %}
 
 
 {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
 
 {% endif %}
-
-
-
-
-{% include 'collection-sidebar' %}
-
 
 
 {% endpaginate %}
