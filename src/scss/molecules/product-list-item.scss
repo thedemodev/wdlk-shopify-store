@@ -8,7 +8,7 @@
     overflow: hidden;
 
     @include media (small) {
-        width: calc(50vw - (var(--base-spacing) / 2 ));
+        width: calc(50vw - (var(--product-base-spacing) / 1.25 ));
 
         &:nth-child(odd) {
             margin-right: var(--base-spacing);
@@ -66,6 +66,7 @@
         justify-content: space-between;
         font-family: "museo";
         font-weight: bold;
+        letter-spacing: 1px;
     }
 
     &-title,

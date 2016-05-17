@@ -78,54 +78,6 @@
     - Usage docs: http://shopify.github.io/Timber/#sass-mixins
 ==============================================================================*/
 /*============================================================================
-  #OOCSS Media Object
-    - http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/
-==============================================================================*/
-.media,
-.media-flex {
-  overflow: hidden;
-  _overflow: visible;
-  zoom: 1; }
-
-.media-img {
-  float: left;
-  margin-right: 30px; }
-
-.media-img-right {
-  float: right;
-  margin-left: 30px; }
-
-.media-img img,
-.media-img-right img {
-  display: block; }
-
-/*============================================================================
-  #Images and Iframes
-==============================================================================*/
-img {
-  border: 0 none; }
-
-svg:not(:root) {
-  overflow: hidden; }
-
-iframe {
-  max-width: 100%; }
-
-.video-wrapper {
-  position: relative;
-  overflow: hidden;
-  max-width: 100%;
-  padding-bottom: 56.25%;
-  height: 0;
-  height: auto; }
-  .video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; }
-
-/*============================================================================
   #Forms
 ==============================================================================*/
 /*================ Prevent zoom on touch devices in active inputs ================*/
@@ -285,21 +237,6 @@ label.error {
     .form-error a:hover,
     .errors a:hover {
       text-decoration: none; }
-
-/*============================================================================
-  #Pagination
-==============================================================================*/
-.pagination {
-  margin-bottom: 1em;
-  text-align: center; }
-  .pagination > span {
-    display: inline-block;
-    line-height: 1; }
-  .pagination a {
-    display: block; }
-  .pagination a,
-  .pagination .page.current {
-    padding: 8px; }
 
 article,
 aside,
@@ -1921,7 +1858,7 @@ input[type="number"]::-webkit-outer-spin-button {
   overflow: hidden; }
   @media (min-width: 480px) {
     .ProductItem {
-      width: calc(50vw - 1rem); }
+      width: calc(50vw - 3.2rem); }
       .ProductItem:nth-child(odd) {
         margin-right: 2rem; } }
   @media (min-width: 770px) {
@@ -1959,7 +1896,8 @@ input[type="number"]::-webkit-outer-spin-button {
             -webkit-box-pack: justify;
             justify-content: space-between;
     font-family: "museo";
-    font-weight: bold; }
+    font-weight: bold;
+    letter-spacing: 1px; }
   .ProductItem-title, .ProductItem-price {
     font-size: 14px;
     font-size: 1.4rem;
@@ -2348,6 +2286,12 @@ input[type="number"]::-webkit-outer-spin-button {
           justify-content: center;
   max-width: 100%;
   margin: auto;
+  padding-right: calc(  / 2);
+  padding-right: 20px;
+  padding-right: 2rem;
+  padding-left: calc(  / 2);
+  padding-left: 20px;
+  padding-left: 2rem;
   margin-top: 40px;
   margin-top: 4rem; }
   @media (min-width: 770px) {
