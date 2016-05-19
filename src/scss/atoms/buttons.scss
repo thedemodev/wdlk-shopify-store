@@ -31,12 +31,14 @@
 
     &--inverse {
         background: transparent;
-        border: 2px solid var(--btn-bg-color);
+        outline: 2px solid var(--btn-bg-color);
+        outline-offset: -2px;
+        transform: translateY(-1px);
         color: var(--btn-bg-color);
-        transition: border-color var(--btn-timing) ease;
+        transition: outline-color var(--btn-timing) ease;
 
         &:hover {
-            border-color: var(--btn-bg-color-hover);
+            outline-color: var(--btn-bg-color-hover);
             color: var(--btn-bg-color-hover);
             background: transparent;
         }

@@ -1,12 +1,12 @@
 //--
 //-- MOBILE FIRST GRID WRAPPER
 //--
-@mixin grid-wrapper ($max-width: undefined, $justify-content: center) {
+@mixin grid-wrapper ($max-width: undefined, $justify-content: center, $margin: auto) {
     display: flex;
     flex-wrap: wrap;
     justify-content: $justify-content;
     max-width: if($max-width == undefined, 100%, $max-width);
-    margin: auto;
+    margin: $margin;
 }
 //-- The $count argument accepts the amount of necessary columns
 //-- for smartphone devices and iPad mini defaults to var(--screen-md).
