@@ -1,0 +1,27 @@
+.formContainer {
+    width: 50%;
+    text-align: right;
+  }
+
+.formHeadline {
+    width: 100%;
+}
+
+.formInputWrapper {
+    display: flex;
+    justify-content: space-between;
+
+    & + .formInputWrapper {
+      margin-top: var(--form-base-padding);
+    }
+}
+
+.formLabel {
+    flex-basis: 20%;
+    line-height: $form-base-height;
+}
+
+.formInput {
+    border: 1px solid var(--hex-blue-gray-lightest);
+    flex-basis: 70%;
+}
