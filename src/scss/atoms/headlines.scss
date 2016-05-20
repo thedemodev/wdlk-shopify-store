@@ -118,4 +118,9 @@
     &--highlight {
         color: var(--typo-hex--highlight)
     }
+
+    &--hightlightSecondary {
+        color: var(--typo-hex--banner-tertiary);
+        font-weight: normal;
+    }
 }
