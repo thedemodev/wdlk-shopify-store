@@ -38,7 +38,7 @@
         flex-wrap: wrap;
         align-items: center;
         padding-bottom: 30px;
-        border-bottom: 1px solid var(--quick-cart-item-hex-border);
+        border-bottom: 1px solid var(--cart-hex-border);
         margin-bottom: 26px;
 
         .Headline {
@@ -85,18 +85,6 @@
             font-size: var(--small-copy-size);
             padding: 0 6px 0 0;
         }
-
-        //&:before {
-        //    content: "";
-        //    position: absolute;
-        //    top: 0;
-        //    left: 0;
-        //    right: 0;
-        //    width: 90%;
-        //    height: 10px;
-        //    margin: 0 auto;
-        //    background: lineal-gradient(red, green);
-        //}
     }
 
     &-col {

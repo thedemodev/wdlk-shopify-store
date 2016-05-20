@@ -1,0 +1,29 @@
+:root {
+    --cart-base-spacing: 4rem;
+}
+
+.Cart {
+    padding-bottom: var(--cart-base-spacing);
+
+    &-row {
+        display: block;
+        padding-bottom: var(--base-spacing);
+        border: solid var(--cart-hex-border);
+        border-width: 0 0 1px 0;
+        text-align: justify;
+
+        &::after {
+            content: "";
+            display: inline-block;
+            width: 100%;
+        }
+
+        &:last-of-type {
+            padding: {
+                top: var(--cart-base-spacing);
+                bottom: 0;
+            }
+            border-width: 1px 0 0 0;
+        }
+    }
+}

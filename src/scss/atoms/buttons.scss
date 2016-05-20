@@ -30,6 +30,8 @@
     }
 
     &--inverse {
+        color: var(--btn-bg-color);
+        line-height: calc(var(--form-base-height) - .2);
         background: transparent;
         outline: 2px solid var(--btn-bg-color);
         outline-offset: -2px;
