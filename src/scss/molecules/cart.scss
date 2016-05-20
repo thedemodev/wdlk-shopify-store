@@ -8,22 +8,121 @@
     &-row {
         display: block;
         padding-bottom: var(--base-spacing);
-        border: solid var(--cart-hex-border);
         border-width: 0 0 1px 0;
-        text-align: justify;
+        text-align: center;
 
-        &::after {
-            content: "";
-            display: inline-block;
-            width: 100%;
-        }
 
         &:last-of-type {
             padding: {
                 top: var(--cart-base-spacing);
                 bottom: 0;
             }
-            border-width: 1px 0 0 0;
         }
+
+        .Link {
+            width: 100%;
+            margin-bottom: var(--base-spacing);
+        }
+
+        &:first-of-type {
+            .Link {
+                display: none;
+            }
+        }
+
+
+        @include media(medium) {
+            border-style: solid;
+            border-color: var(--cart-hex-border);
+            text-align: justify;
+
+            &::after {
+                content: "";
+                display: inline-block;
+                width: 100%;
+            }
+
+            &:first-of-type {
+                .Link {
+                    display: inline-block;
+                }
+            }
+
+            &:last-of-type {
+                border-width: 1px 0 0 0;
+            }
+
+            .Link {
+                width: auto;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    &-list {
+        text-align: left;
+
+        .Link {
+            margin: 0 0 1.4rem;
+            text-transform: initial;
+        }
+    }
+
+    &-item {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        padding: {
+            top: 30px;
+            bottom: 30px;
+        }
+        border-bottom: 1px solid var(--cart-hex-border);
+        margin-bottom: 26px;
+    }
+
+    &-column {
+        position: relative;
+        flex-grow: 2;
+        margin: {
+            top: var(--base-spacing);
+            right: var(--base-spacing);
+        }
+
+        &:first-of-type {
+            flex-grow: 1;
+            margin-top: 0;
+        }
+    }
+
+    &-headline {
+        width: 100%;
+        font-family: "museo";
+        font-size: var(--h4-size);
+        font-weight: bold;
+    }
+
+    &-attr {
+        font-size: var(--md-copy-size);
+    }
+
+    &-labelTotal {
+        position: absolute;
+        top: var(--base-spacing);
+        right: 0;
+        font-size: var(--h5-size);
+        font-weight: normal;
+    }
+
+    &-remove {
+        position: absolute;
+        top: 0;
+        right: var(--base-spacing);
+        color: var(--typo-hex--secondary);
+    }
+
+    .Btn-icon {
+        width: 12px;
+        height: 20px;
+        margin-bottom: -3px;
     }
 }

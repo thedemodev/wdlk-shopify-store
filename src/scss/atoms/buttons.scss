@@ -25,6 +25,12 @@
         background-color: var(--btn-bg-color-hover);
     }
 
+    &-icon {
+        display: inline-block;
+        padding-right: 5px;
+        fill: var(--typo-hex--tertiary);
+    }
+
     &--secondary {
         background-color: var(--btn-bg-color-secondary);
     }
@@ -45,4 +51,5 @@
             background: transparent;
         }
     }
+
 }

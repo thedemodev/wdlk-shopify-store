@@ -11,7 +11,7 @@
     <div class="Cart-list">
     {% for item in cart.items %}
         <div class="Cart-item">
-            <a href="{{ item.url }}" class="Link Link--tonedown Headline Headline--7">
+            <a href="{{ item.url }}" class="Cart-headline Link Link--tonedown">
                 {{ item.product.title }}
             </a>
             <a href="{{ item.url | within: collections.all }}" class="Cart-img">
@@ -27,15 +27,13 @@
             {% assign numberId = item.id %}
             {% assign numberName = 'updates[]' %}
             {% assign numberValue = item.quantity %}
-            {% include 'number-input' with 'quick-cart' %}
+            {% include 'number-input' with 'cart' %}
             {% comment %} Number Input Component {% endcomment %}
 
 
             <span class="Cart-attr">{{ item.variant.title }}</span>
             <span class="Cart-attr">{{ item.price | money }}</span>
-            <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
-              <span class="Cart-remove">x</span>
-            </a>
+            <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="Cart-remove">x</a>
 
         </div>
     {% endfor %}

@@ -12,29 +12,58 @@
     <form action="/cart" method="post" novalidate class="Cart">
         <div class="Cart-row">
             <button type="submit" name="update" class="Link" value="{{ 'cart.general.update' | t }}">{{ 'cart.general.update' | t }}</button>
-            <button type="submit" name="checkout" class="Btn Btn--inverse" value="{{ 'cart.general.checkout' | t }}">{{'cart.general.checkout' | t }}</button>
+            <button type="submit" name="checkout" class="Btn" value="{{ 'cart.general.checkout' | t }}">
+                <svg class="Btn-icon">
+                    <use xlink:href="#Secure" />
+                </svg>
+                {{'cart.general.checkout' | t }}
+            </button>
+        </div>
+        <div class="Cart-list">
+            {% for item in cart.items %}
+                <div class="Cart-item">
+                    <div class="Cart-column" data-label="{{ 'customer.order.product' | t }}">
+                        <a href="{{ item.url | within: collections.all }}">
+                            <img src="{{ item | img_url: 'compact' }}" alt="{{ item.title | escape }}">
+                        </a>
+                    </div>
+                    <div class="Cart-column">
+                        <a href="{{ item.url }}" class="Cart-headline Link Link--tonedown">
+                            {{ item.product.title }}
+                        </a>
+                        {% comment %} Number Input Component {% endcomment %}
+                        {% assign numberMin = '0' %}
+                        {% assign numberId = item.id %}
+                        {% assign numberName = 'updates[]' %}
+                        {% assign numberValue = item.quantity %}
+                        {% include 'number-input' with 'cart' %}
+                        {% comment %} Number Input Component {% endcomment %}
+
+                        {% unless item.variant.title contains 'Default' %}
+                        <small class="Cart-attr">{{ item.variant.title }}</small>
+                        {% endunless %}
+
+                        {% if settings.cart_vendor_enable %}
+                        <p>{{ item.vendor }}</p>
+                        {% endif %}
+
+                        <strong class="Cart-labelTotal" data-label="{{ 'cart.label.total' | t }}">
+                            {{ item.line_price | money }}
+                        </strong>
+                    </div>
+
+                    <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="Cart-remove">x</a>
+                </div>
+            {% endfor %}
         </div>
 
 
     <table class="cart-table full table--responsive">
-      <thead class="cart__row cart__header-labels">
-        <th colspan="2" class="text-center">{{ 'cart.label.product' | t }}</th>
-        <th class="text-center">{{ 'cart.label.price' | t }}</th>
-        <th class="text-center">{{ 'cart.label.quantity' | t }}</th>
-        <th class="text-right">{{ 'cart.label.total' | t }}</th>
-      </thead>
+
       <tbody>
         {% for item in cart.items %}
           <tr class="cart__row table__section">
-            <td data-label="{{ 'customer.order.product' | t }}">
-              <a href="{{ item.url | within: collections.all }}" class="cart__image">
-                {% comment %}
-                  More image size options at:
-                    - http://docs.shopify.com/themes/filters/product-img-url
-                {% endcomment %}
-                <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
-              </a>
-            </td>
+
             <td>
               <a href="{{ item.url }}" class="h4">
                 {{ item.product.title }}
@@ -83,9 +112,7 @@
                 {{ item.price | money }}
               </span>
             </td>
-            <td data-label="{{ 'cart.label.quantity' | t }}">
-              <input type="number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" min="0">
-            </td>
+
             <td data-label="{{ 'cart.label.total' | t }}" class="text-right">
               <span class="h3">
                 {{ item.line_price | money }}
@@ -113,7 +140,12 @@
     </div>
         <div class="Cart-row">
             <button type="submit" name="update" class="Link" value="{{ 'cart.general.update' | t }}">{{ 'cart.general.update' | t }}</button>
-            <button type="submit" name="checkout" class="Btn Btn--inverse" value="{{ 'cart.general.checkout' | t }}">{{'cart.general.checkout' | t }}</button>
+            <button type="submit" name="checkout" class="Btn" value="{{ 'cart.general.checkout' | t }}">
+                <svg class="Btn-icon">
+                    <use xlink:href="#Secure" />
+                </svg>
+                {{'cart.general.checkout' | t }}
+            </button>
         </div>
     </form>
 {% else %}
