@@ -107,15 +107,15 @@
 
     &-labelTotal {
         position: absolute;
-        top: var(--base-spacing);
-        right: 0;
+        top: 0;
+        right: var(--base-spacing);
         font-size: var(--h5-size);
         font-weight: normal;
     }
 
     &-remove {
         position: absolute;
-        top: 0;
+        top: var(--base-spacing);
         right: var(--base-spacing);
         color: var(--typo-hex--secondary);
     }
