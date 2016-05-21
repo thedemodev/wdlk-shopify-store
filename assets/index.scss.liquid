@@ -1463,38 +1463,64 @@ input[type="number"]::-webkit-outer-spin-button {
     font-weight: 600;
     text-decoration: underline; }
 
-.formContainer {
-  width: 50%;
-  text-align: right; }
+.Form {
+  max-width: 768px;
+  margin-right: auto;
+  margin-left: auto; }
+  @media (min-width: 770px) {
+    .Form {
+      text-align: right; } }
+  .Form .Link {
+    display: block;
+    text-align: center; }
+  .Form .Btn,
+  .Form .Link {
+    margin-bottom: 40px;
+    margin-bottom: 4rem; }
+    @media (min-width: 770px) {
+      .Form .Btn,
+      .Form .Link {
+        text-align: right; } }
 
-.formHeadline {
-  width: 100%; }
+.Form-inputWrapper {
+  margin-bottom: 20px;
+  margin-bottom: 2rem;
+  text-align: left; }
+  @media (min-width: 770px) {
+    .Form-inputWrapper {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: -webkit-box;
+      display: flex;
+      -webkit-justify-content: space-between;
+          -ms-flex-pack: justify;
+              -webkit-box-pack: justify;
+              justify-content: space-between; } }
+  .Form-inputWrapper:last-of-type {
+    margin-bottom: 60px;
+    margin-bottom: 6rem; }
 
-.formInputWrapper {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: flex;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          -webkit-box-pack: justify;
-          justify-content: space-between; }
-  .formInputWrapper + .formInputWrapper {
-    margin-top: 20px;
-    margin-top: 2rem; }
-
-.formLabel {
-  -webkit-flex-basis: 20%;
-      -ms-flex-preferred-size: 20%;
-          flex-basis: 20%;
+.Form-label {
+  display: block;
+  margin-bottom: 5px;
+  margin-bottom: .5rem;
   line-height: 40px;
   line-height: 4rem; }
+  @media (min-width: 770px) {
+    .Form-label {
+      -webkit-flex-basis: 20%;
+          -ms-flex-preferred-size: 20%;
+              flex-basis: 20%; } }
 
-.formInput {
-  border: 1px solid #DEDFE0;
-  -webkit-flex-basis: 70%;
-      -ms-flex-preferred-size: 70%;
-          flex-basis: 70%; }
+.Form-input {
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #DEDFE0; }
+  @media (min-width: 770px) {
+    .Form-input {
+      -webkit-flex-basis: 70%;
+          -ms-flex-preferred-size: 70%;
+              flex-basis: 70%; } }
 
 .Product-display {
   display: -webkit-flex;

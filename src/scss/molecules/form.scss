@@ -1,27 +1,63 @@
-.formContainer {
-    width: 50%;
-    text-align: right;
-  }
-
-.formHeadline {
-    width: 100%;
+:root {
+    --label-spacing: .5rem;
 }
 
-.formInputWrapper {
-    display: flex;
-    justify-content: space-between;
+.Form {
+    max-width: var(--screen-md);
+    margin: {
+        right: auto;
+        left: auto;
+    }
 
-    & + .formInputWrapper {
-      margin-top: var(--form-base-padding);
+    @include media(medium) {
+        text-align: right;
+    }
+
+    .Link {
+        display: block;
+        text-align: center;
+    }
+
+    .Btn,
+    .Link {
+        margin-bottom: calc(var(--base-spacing) * 2);
+
+        @include media(medium) {
+            text-align: right;
+        }
+    }
+ }
+
+.Form-inputWrapper {
+    margin-bottom: var(--base-spacing);
+    text-align: left;
+
+    @include media(medium) {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &:last-of-type {
+        margin-bottom: 6rem;
     }
 }
 
-.formLabel {
-    flex-basis: 20%;
+.Form-label {
+    display: block;
+    margin-bottom: var(--label-spacing);
     line-height: $form-base-height;
+
+    @include media(medium) {
+        flex-basis: 20%;
+    }
 }
 
-.formInput {
+.Form-input {
+    box-sizing: border-box;
+    width: 100%;
     border: 1px solid var(--hex-blue-gray-lightest);
-    flex-basis: 70%;
+
+    @include media(medium) {
+        flex-basis: 70%;
+    }
 }
