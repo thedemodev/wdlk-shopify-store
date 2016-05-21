@@ -1,0 +1,6 @@
+.buttonGroup {
+    text-align: right;
+    .Btn + .Btn {
+        margin-left: var(--form-base-padding);
+    }
+}
