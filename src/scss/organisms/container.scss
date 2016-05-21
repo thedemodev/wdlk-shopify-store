@@ -1,0 +1,25 @@
+//-- The container scss module it is used to wrap
+//-- content between the header and the footer.
+
+.Container {
+    margin: {
+        top: calc(var(--nav-height) + 6rem);
+        bottom: 4rem;
+    }
+    padding: {
+        right: var(--base-spacing);
+        left: var(--base-spacing);
+    }
+
+    @include media (medium) {
+        padding: {
+            right: calc(var(--base-spacing) * 2);
+            left: calc(var(--base-spacing) * 2);
+        }
+    }
+
+    .Headline {
+        margin-bottom: calc(var(--base-spacing) * 3);
+        text-align: center;
+    }
+}

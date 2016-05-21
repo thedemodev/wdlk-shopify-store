@@ -18,7 +18,7 @@ These are the necessary variables examples to correctly initialize the component
             <use xlink:href="#Minus" />
         </svg>
     </span>
-    <input type="number" id="{% if number-input == 'quick-cart'%}updates_{% endif %}{{ numberId }}" name="{{ numberName }}" value="{{ numberValue }}" min="{{ numberMin }}" class="NumberInput-value js_value" autocomplete="off" />
+    <input type="number" id="{% if number-input == 'cart'%}updates_{% endif %}{{ numberId }}" name="{{ numberName }}" value="{{ numberValue }}" min="{{ numberMin }}" class="NumberInput-value js_value" autocomplete="off" />
     <span class="NumberInput-btn js_add">
         <svg class="Icon">
             <use xlink:href="#Plus" />
