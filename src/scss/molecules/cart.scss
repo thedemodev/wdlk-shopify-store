@@ -1,14 +1,18 @@
 :root {
     --cart-base-spacing: 4rem;
+    --cart-quick-width: 390px;
+    --cart-thumb-size: 46px;
 }
 
 .Cart {
+    max-width: var(--screen-l);
     padding-bottom: var(--cart-base-spacing);
+    margin: 0 auto;
 
     &-row {
         display: block;
         padding-bottom: var(--base-spacing);
-        border-width: 0 0 1px 0;
+        margin-bottom:  var(--cart-base-spacing);
         text-align: center;
 
 
@@ -19,11 +23,6 @@
             }
         }
 
-        .Link {
-            width: 100%;
-            margin-bottom: var(--base-spacing);
-        }
-
         &:first-of-type {
             .Link {
                 display: none;
@@ -32,8 +31,7 @@
 
 
         @include media(medium) {
-            border-style: solid;
-            border-color: var(--cart-hex-border);
+            border-bottom: 1px solid  var(--cart-hex-border);
             text-align: justify;
 
             &::after {
@@ -49,7 +47,7 @@
             }
 
             &:last-of-type {
-                border-width: 1px 0 0 0;
+                border-bottom: 0;
             }
 
             .Link {
@@ -59,50 +57,84 @@
         }
     }
 
+    &-img {
+        display: inline-block;
+        width: var(--cart-thumb-size);
+        height: var(--cart-thumb-size);
+        margin-right: 1.6rem;
+        vertical-align: bottom;
+
+        @include media(medium) {
+            width: calc(var(--cart-thumb-size) * 2);
+            height: calc(var(--cart-thumb-size) * 2);
+        }
+    }
+
+
+    &-col {
+        display: inline-block;
+        width: 38%;
+        margin-bottom: 32px;
+        vertical-align: top;
+    }
+
     &-list {
         text-align: left;
-
-        .Link {
-            margin: 0 0 1.4rem;
-            text-transform: initial;
-        }
     }
 
     &-item {
         position: relative;
         display: flex;
         flex-wrap: wrap;
+        align-items: center;
         padding: {
-            top: 30px;
+            //top: 30px;
             bottom: 30px;
         }
         border-bottom: 1px solid var(--cart-hex-border);
         margin-bottom: 26px;
     }
-
-    &-column {
-        position: relative;
-        flex-grow: 2;
-        margin: {
-            top: var(--base-spacing);
-            right: var(--base-spacing);
-        }
-
-        &:first-of-type {
-            flex-grow: 0;
-            margin-top: 0;
-        }
-    }
+    //
+    //&-column {
+    //    position: relative;
+    //    flex-grow: 2;
+    //    margin: {
+    //        top: var(--base-spacing);
+    //        right: var(--base-spacing);
+    //    }
+    //
+    //    &:first-of-type {
+    //        flex-grow: 0;
+    //        margin-top: 0;
+    //    }
+    //}
 
     &-headline {
         width: 100%;
         font-family: "museo";
-        font-size: var(--h4-size);
+        font-size: var(--h6-size);
         font-weight: bold;
+        margin-bottom: 1.4rem;
+        text-transform: initial;
+
+        @include media(medium) {
+            margin-top: var(--base-spacing);
+            font-size: var(--h4-size);
+        }
     }
 
     &-attr {
         font-size: var(--md-copy-size);
+
+        @include media(medium) {
+            font-size: var(--copy-size);
+        }
+
+        &Price {
+            flex-grow: 2;
+            text-align: right;
+            font-weight: normal;
+        }
     }
 
     &-labelTotal {
@@ -115,9 +147,26 @@
 
     &-remove {
         position: absolute;
-        top: var(--base-spacing);
-        right: var(--base-spacing);
+        top: 0;
+        right: 0;
         color: var(--typo-hex--secondary);
+    }
+
+    &-footer {
+        position: relative;
+        margin-top: 36px;
+        text-align: right;
+        font-weight: 600;
+
+        .Copy-sm {
+            font-weight: 300;
+            font-size: var(--xs-copy-size);
+        }
+
+        .Link {
+            font-size: var(--small-copy-size);
+            padding: 0 6px 0 0;
+        }
     }
 
     .Btn-icon {

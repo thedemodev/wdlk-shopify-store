@@ -32,7 +32,7 @@
 
 
             <span class="Cart-attr">{{ item.variant.title }}</span>
-            <span class="Cart-attr">{{ item.price | money }}</span>
+            <span class="Cart-attr Cart-attrPrice">{{ item.price | money }}</span>
             <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="Cart-remove">x</a>
 
         </div>

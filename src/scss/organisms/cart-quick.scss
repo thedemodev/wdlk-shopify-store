@@ -1,58 +1,4 @@
-:root {
-    --cart-quick-width: 390px;
-    --cart-thumb-size: 46px;
-}
-
 .Cart {
-    &-header {
-        display: flex;
-        align-items: center;
-        margin-bottom: 3rem;
-
-        .ShoppingBag {
-            margin-bottom: 8px;
-            padding: 0 1.6rem 0 0;
-        }
-
-        .Link {
-            flex-grow: 2;
-            text-align: right;
-            font-size: 1.1rem;
-        }
-    }
-
-    &-img {
-        display: inline-block;
-        width: var(--cart-thumb-size);
-        height: var(--cart-thumb-size);
-        margin-right: 1.6rem;
-        vertical-align: bottom;
-    }
-
-    &-footer {
-        position: relative;
-        margin-top: 36px;
-        text-align: right;
-        font-weight: 600;
-
-        .Copy-sm {
-            font-weight: 300;
-            font-size: var(--xs-copy-size);
-        }
-
-        .Link {
-            font-size: var(--small-copy-size);
-            padding: 0 6px 0 0;
-        }
-    }
-
-    &-col {
-        display: inline-block;
-        width: 38%;
-        margin-bottom: 32px;
-        vertical-align: top;
-    }
-
     &--quick {
         position: fixed;
         top: 0;
@@ -68,6 +14,23 @@
         transform: translate3d(110%, 0, 0);
         transition: transform .5s ease;
 
+        .Cart-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+
+            .ShoppingBag {
+                margin-bottom: 8px;
+                padding: 0 1.6rem 0 0;
+            }
+
+            .Link {
+                flex-grow: 2;
+                text-align: right;
+                font-size: 1.1rem;
+            }
+        }
+
         //.Cart-list {
         //    text-align: left;
         //
@@ -77,27 +40,25 @@
         //    }
         //}
 
-        .Cart-item {
-            align-items: center;
-            padding-top: 0;
-        }
-
         .Cart-headline {
-            font-size: var(--h6-size);
-        }
-
-        .Cart-attr {
-            &:last-of-type {
-                flex-grow: 2;
-                text-align: right;
+            @include media(medium) {
+                margin-top: 0;
+                font-size: var(--h6-size);
             }
         }
 
-        .Cart-remove {
-            top: 0;
-            right: 0;
+        .Cart-img {
+            @include media(medium) {
+                width: calc(var(--cart-thumb-size));
+                height: calc(var(--cart-thumb-size));
+            }
         }
 
+        .Cart-attr {
+            @include media(medium) {
+                font-size: var(--md-copy-size);
+            }
+        }
     }
 
     &-shim {
