@@ -48,7 +48,7 @@
             <li class="Navigation-item Navigation-item--mobile">
                 <a href="/account" class="Navigation-link">{{ customer.first_name }}</a>
             {% endcapture %}
-                {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
+                
                 {% else %}
                 <a href="/account" class="Navigation-link">{{ 'layout.customer.account' | t }}</a>
             </li>
