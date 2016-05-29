@@ -26,6 +26,47 @@
             text-align: right;
         }
     }
+
+    &-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        box-sizing: border-box;
+        width: 100%;
+        height: 80vh;
+        padding: {
+            right: var(--base-spacing);
+            left: var(--base-spacing);
+        }
+        opacity: 0;
+        background-color: var(--form-layer-hex-bg);
+        pointer-events: none;
+        transition: opacity .5s ease;
+
+        @include media(medium) {
+            padding: {
+                right: calc(var(--base-spacing) * 2);
+                left: calc(var(--base-spacing) * 2);
+            }
+        }
+    }
+
+    &-copy {
+        margin-bottom: var(--base-spacing);
+        text-align: center;
+    }
+
+    &-state {
+        display: none;
+
+        &:checked {
+            ~ .Form-layer {
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
+    }
  }
 
 .Form-inputWrapper {

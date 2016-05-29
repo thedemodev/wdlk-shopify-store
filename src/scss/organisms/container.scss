@@ -2,6 +2,7 @@
 //-- content between the header and the footer.
 
 .Container {
+    position: relative;
     margin: {
         top: calc(var(--nav-height) + 6rem);
         bottom: 4rem;
@@ -10,6 +11,7 @@
         right: var(--base-spacing);
         left: var(--base-spacing);
     }
+    overflow: hidden;
 
     @include media (medium) {
         padding: {
