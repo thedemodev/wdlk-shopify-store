@@ -168,7 +168,8 @@
       "sign_in": "Anmelden",
       "cancel": "Zurück zum Shop",
       "guest_title": "Als Gast fortsetzen",
-      "guest_continue": "Fortsetzen"
+      "guest_continue": "Fortsetzen",
+      "subtext": "E-Mail Adresse und Kennwort eingeben"
     },
     "orders": {
       "title": "Bestellungen",
@@ -200,7 +201,7 @@
       "subtotal": "Zwischensumme"
     },
     "recover_password": {
-      "title": "Passwort zurücksetzen",
+      "title": "Haben Sie Ihr Passwort vergessen?",
       "email": "E-Mail",
       "submit": "Absenden",
       "cancel": "Abbrechen",

@@ -14,7 +14,8 @@
     }
 
     .Link {
-        display: block;
+        margin-right: var(--base-spacing);
+        text-transform: uppercase;
         text-align: center;
     }
 
@@ -25,6 +26,10 @@
         @include media(medium) {
             text-align: right;
         }
+    }
+
+    &-headline {
+        margin-bottom: var(--base-spacing);
     }
 
     &-layer {
@@ -53,7 +58,7 @@
     }
 
     &-copy {
-        margin-bottom: var(--base-spacing);
+        margin-bottom: calc(var(--base-spacing) * 3);
         text-align: center;
     }
 

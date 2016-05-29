@@ -1100,7 +1100,6 @@ input[type="number"]::-webkit-outer-spin-button {
     margin-bottom: 40px;
     margin-bottom: 4rem;
     color: #8E959A;
-    font-family: "museo";
     font-size: 14px;
     font-size: 1.4rem;
     line-height: 1.5;
@@ -1471,7 +1470,9 @@ input[type="number"]::-webkit-outer-spin-button {
     .Form {
       text-align: right; } }
   .Form .Link {
-    display: block;
+    margin-right: 20px;
+    margin-right: 2rem;
+    text-transform: uppercase;
     text-align: center; }
   .Form .Btn,
   .Form .Link {
@@ -1481,6 +1482,9 @@ input[type="number"]::-webkit-outer-spin-button {
       .Form .Btn,
       .Form .Link {
         text-align: right; } }
+  .Form-headline {
+    margin-bottom: 20px;
+    margin-bottom: 2rem; }
   .Form-layer {
     position: absolute;
     top: 0;
@@ -1503,8 +1507,8 @@ input[type="number"]::-webkit-outer-spin-button {
         padding-right: 4rem;
         padding-left: 4rem; } }
   .Form-copy {
-    margin-bottom: 20px;
-    margin-bottom: 2rem;
+    margin-bottom: 60px;
+    margin-bottom: 6rem;
     text-align: center; }
   .Form-state {
     display: none; }
@@ -2181,6 +2185,24 @@ input[type="number"]::-webkit-outer-spin-button {
     height: 20px;
     margin-bottom: -3px; }
 
+.Container {
+  position: relative;
+  margin-top: 140px;
+  margin-top: 14rem;
+  margin-bottom: 40px;
+  margin-bottom: 4rem;
+  padding-right: 20px;
+  padding-right: 2rem;
+  padding-left: 20px;
+  padding-left: 2rem;
+  overflow: hidden; }
+  @media (min-width: 770px) {
+    .Container {
+      padding-right: 4rem;
+      padding-left: 4rem; } }
+  .Container .Headline {
+    text-align: center; }
+
 .Header {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2502,23 +2524,3 @@ input[type="number"]::-webkit-outer-spin-button {
       padding-right: 4rem;
       padding-left: 4rem;
       margin-bottom: 4rem; } }
-
-.Container {
-  position: relative;
-  margin-top: 140px;
-  margin-top: 14rem;
-  margin-bottom: 40px;
-  margin-bottom: 4rem;
-  padding-right: 20px;
-  padding-right: 2rem;
-  padding-left: 20px;
-  padding-left: 2rem;
-  overflow: hidden; }
-  @media (min-width: 770px) {
-    .Container {
-      padding-right: 4rem;
-      padding-left: 4rem; } }
-  .Container .Headline {
-    margin-bottom: 60px;
-    margin-bottom: 6rem;
-    text-align: center; }

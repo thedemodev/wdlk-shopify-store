@@ -168,7 +168,8 @@
       "sign_in": "Registrarse",
       "cancel": "Volver a la tienda",
       "guest_title": "Continuar como invitado",
-      "guest_continue": "Continuar"
+      "guest_continue": "Continuar",
+      "subtext": "Entra tu correo electrónico para accesar su cuenta de WDLK "
     },
     "orders": {
       "title": "Historial de pedidos",
@@ -200,7 +201,7 @@
       "subtotal": "Subtotal"
     },
     "recover_password": {
-      "title": "Restablecer su contraseña",
+      "title": "¿Olvidó su contraseña?",
       "email": "Correo electrónico",
       "submit": "Enviar",
       "cancel": "Cancelar",

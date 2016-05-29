@@ -168,7 +168,8 @@
       "sign_in": "Sign In",
       "cancel": "Return to Store",
       "guest_title": "Continue as a guest",
-      "guest_continue": "Continue"
+      "guest_continue": "Continue",
+      "subtext": "Enter your email and password to login in your WDLK account"
     },
     "orders": {
       "title": "Order History",
@@ -200,7 +201,7 @@
       "subtotal": "Subtotal"
     },
     "recover_password": {
-      "title": "Reset your password",
+      "title": "Forgot your password?",
       "email": "Email",
       "submit": "Submit",
       "cancel": "Cancel",

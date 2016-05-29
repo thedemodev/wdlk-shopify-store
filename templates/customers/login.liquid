@@ -2,7 +2,8 @@
 
     {% form 'customer_login', class: 'Form', id: 'CustomerEmail' %}
 
-    <h1 class="Headline Headline--2">{{ 'customer.login.title' | t }}</h1>
+    <h1 class="Headline Headline--2 Form-headline">{{ 'customer.login.title' | t }}</h1>
+    <p class="Form-copy">{{ 'customer.login.subtext' | t }}</p>
     {{ form.errors | default_errors }}
 
     <div class="Form-inputWrapper">
@@ -17,10 +18,10 @@
     </div>
     {% endif %}
 
-    <button type="submit" class="Btn" value="{{ 'customer.login.sign_in' | t }}">{{ 'customer.login.sign_in' | t }}</button>
     {% if form.password_needed %}
-    <label class="Link Link--secondary foo" for="form-layer">{{ 'customer.login.forgot_password' | t }}</label>
+    <label class="Link Link--secondary" for="form-layer">{{ 'customer.login.forgot_password' | t }}</label>
     {% endif %}
+    <button type="submit" class="Btn" value="{{ 'customer.login.sign_in' | t }}">{{ 'customer.login.sign_in' | t }}</button>
 
 
     {% endform %}
@@ -55,8 +56,8 @@
             <label for="RecoverEmail" class="Form-label">{{ 'customer.recover_password.email' | t }}</label>
             <input type="email" value="" name="email" id="RecoverEmail" class="Form-input InputField" placeholder="{{ 'customer.recover_password.email' | t }}" autocorrect="off" autocapitalize="off">
         </div>
+        <label class="Link Link--secondary" for="form-layer">{{ 'customer.recover_password.cancel' | t }}</label>
         <button type="submit" class="Btn" value="{{ 'customer.recover_password.submit' | t }}">{{ 'customer.recover_password.submit' | t }}</button>
-        <label class="Link Link--secondary foo" for="form-layer">{{ 'customer.recover_password.cancel' | t }}</label>
         {% endform %}
     </div>
 
