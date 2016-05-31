@@ -4,26 +4,23 @@
 
 .NewsletterForm {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    height: var(--newsletter-height);
     overflow: hidden;
 
-    @include media (medium) {
-        flex-direction: row;
+    &-content {
+        position: absolute;
+        bottom: 60px;
+        left: 0;
+        right: 0;
+        margin: {
+            left: auto;
+            right: auto;
+        }
+        text-align: center;
     }
 
     &-img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        height: 100%;
-        @include media (medium) {
-            height: auto;
+
+        @include media (large) {
             width: 100%;
         }
     }
@@ -36,18 +33,26 @@
     .Headline {
         color: var(--typo-hex--secondary);
 
-        @include media (medium) {
+        @include media (large) {
+            display: inline-block;
             margin-right: 2.8rem;
         }
     }
 
     .InputField {
+        //display: block;
         margin-right: 1.5rem;
         margin-bottom: var(--base-spacing);
 
-        @include media (medium) {
+        @include media (large) {
+            display: inline-block;
             margin-bottom: 0;
         }
+    }
 
+    .Btn {
+        @include media (large) {
+            display: inline-block;
+        }
     }
 }
