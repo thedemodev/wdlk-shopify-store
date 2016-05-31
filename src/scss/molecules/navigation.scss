@@ -197,6 +197,10 @@
             text-align: center;
             text-transform: uppercase;
             transform: translateY(100%);
+
+            &-one-pieces {
+                color: var(--typo-hex--secondary);
+            }
         }
 
         &-image {

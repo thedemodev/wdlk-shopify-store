@@ -29,7 +29,12 @@
       "title": "Suchen Sie auf unserer Seite nach Produkten",
       "placeholder": "Durchsuchen Sie unseren Shop",
       "submit": "Suchen"
+    },
+    "navigation": {
+        "the_brand_title": "The Brand",
+        "teaser_alt": "Woodlike Ocean was born from the ocean. Discover more about the brand"
     }
+
   },
   "blogs": {
     "article": {

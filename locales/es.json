@@ -29,7 +29,12 @@
       "title": "Buscar productos en nuestro sitio",
       "placeholder": "buscar en nuestra tienda",
       "submit": "Buscar"
+    },
+    "navigation": {
+        "the_brand_title": "La Marca",
+        "teaser_alt": "Woodlike Ocean was born from the ocean. Discover more about the brand"
     }
+
   },
   "blogs": {
     "article": {
