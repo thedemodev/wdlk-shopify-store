@@ -1,0 +1,39 @@
+:root {
+    --table-base-spacing: 4rem;
+    --table-headcell-hex-border-color: var(--hex-blue-gray-light);
+    --table-cell-hex-border-color: var(--hex-blue-gray-lightest);
+}
+
+.Table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: {
+        top: var(--table-base-spacing);
+        bottom: var(--table-base-spacing);
+    }
+    text-align: center;
+
+    @include media(medium) {
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    &-headcell,
+    &-cell {
+        padding: {
+            top: 1.5rem;
+            bottom: 1.5rem;
+        }
+        border-bottom: 1px solid;
+    }
+
+    &-headcell {
+        border-bottom-color:  var(--table-headcell-hex-border-color);
+        text-transform: uppercase;
+    }
+
+    &-cell {
+        border-bottom-color:  var(--table-cell-hex-border-color);
+    }
+}

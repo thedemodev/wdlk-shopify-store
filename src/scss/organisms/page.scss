@@ -8,4 +8,11 @@
     .template-index & {
         margin-top: 0;
     }
+
+    &--woodlike-ocean-sizing-guide {
+        .Table-cell,
+        .Table-headcell {
+            width: 20%;
+        }
+    }
 }
