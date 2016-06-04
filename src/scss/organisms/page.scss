@@ -1,8 +1,21 @@
 .Page {
     margin-top: var(--nav-height);
+    text-align: center;
 
     @include media (medium) {
         margin-top: 0;
+    }
+
+    &-copy {
+        max-width: var(--screen-md);
+        padding: {
+            right: calc(var(--base-spacing) * 2);
+            left: calc(var(--base-spacing) * 2);
+        }
+        margin: {
+            right: auto;
+            left: auto;
+        }
     }
 
     .template-index & {
