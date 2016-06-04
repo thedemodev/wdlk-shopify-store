@@ -31,22 +31,36 @@
     }
 
     .Headline {
+        text-indent: 5%;
         color: var(--typo-hex--secondary);
 
         @include media (large) {
             display: inline-block;
             margin-right: 2.8rem;
+            text-indent: 0;
+        }
+    }
+
+    .Btn {
+        margin-left: 5%;
+        @include media (large) {
+            margin-left: 0;
         }
     }
 
     .InputField {
-        //display: block;
-        margin-right: 1.5rem;
-        margin-bottom: var(--base-spacing);
+        margin: {
+            right: calc(50% - (var(--input-base-width) / 2));
+            bottom: var(--base-spacing);
+            left: calc(50% - (var(--input-base-width) / 2));
+        }
 
         @include media (large) {
             display: inline-block;
-            margin-bottom: 0;
+            margin: {
+                right:  1.5rem;
+                left: 0;
+            }
         }
     }
 
