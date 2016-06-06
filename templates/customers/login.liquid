@@ -1,4 +1,14 @@
 <main class="Container">
+    {% comment %}
+      If accounts are set as optional, the following will be shown as an option
+      during checkout, not on the default /login page.
+    {% endcomment %}
+    {% if shop.checkout.guest_login %}
+      <h1 class="Headline Headline--2">{{ 'customer.login.guest_title' | t }}</h1>
+      {% form 'guest_login', class: 'Form Form--secondary' %}
+        <button type="submit" class="Btn Btn--inverse" value="{{ 'customer.login.guest_continue' | t }}">{{ 'customer.login.guest_continue' | t }}</button>
+      {% endform %}
+    {% endif %}
 
     {% form 'customer_login', class: 'Form', id: 'CustomerEmail' %}
 
@@ -60,19 +70,4 @@
         <button type="submit" class="Btn" value="{{ 'customer.recover_password.submit' | t }}">{{ 'customer.recover_password.submit' | t }}</button>
         {% endform %}
     </div>
-
-
-
-
-    {% comment %}
-      If accounts are set as optional, the following will be shown as an option
-      during checkout, not on the default /login page.
-    {% endcomment %}
-    {% if shop.checkout.guest_login %}
-      <hr>
-      <h2 class="Headline Headline--2">{{ 'customer.login.guest_title' | t }}</h2>
-      {% form 'guest_login' %}
-        <button type="submit" class="Btn Btn--inverse" value="{{ 'customer.login.guest_continue' | t }}">{{ 'customer.login.guest_continue' | t }}</button>
-      {% endform %}
-    {% endif %}
 </main>
