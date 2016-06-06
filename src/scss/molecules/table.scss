@@ -9,7 +9,7 @@
     border-collapse: collapse;
     margin: {
         top: var(--table-base-spacing);
-        bottom: var(--table-base-spacing);
+        bottom: calc(var(--table-base-spacing) * 2);
     }
     text-align: center;
 
