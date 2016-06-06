@@ -22,5 +22,13 @@
 
     .Headline {
         text-align: center;
+
+        &--2 {
+            margin-bottom: 6rem;
+        }
+
+        &--4 {
+            margin-bottom: 4rem;
+        }
     }
 }
