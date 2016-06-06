@@ -26,6 +26,13 @@
             bottom: 1.5rem;
         }
         border-bottom: 1px solid;
+
+        &:first-child {
+            text-align: left;
+            @include media(large) {
+                text-align: center;
+            }
+        }
     }
 
     &-headcell {

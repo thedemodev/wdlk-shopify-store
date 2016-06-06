@@ -23,6 +23,9 @@
     }
 
     &--woodlike-ocean-sizing-guide {
+        .Table {
+            max-width: 650px;
+        }
         .Table-cell,
         .Table-headcell {
             width: 20%;

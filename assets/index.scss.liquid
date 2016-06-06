@@ -1717,7 +1717,8 @@ input[type="number"]::-webkit-outer-spin-button {
           -webkit-box-pack: center;
           justify-content: center;
   max-width: 100%;
-  margin: auto; }
+  margin: auto;
+  text-align: left; }
 
 .Product-teaser-description {
   width: calc(100% - 8rem);
@@ -2235,6 +2236,11 @@ input[type="number"]::-webkit-outer-spin-button {
     padding-bottom: 15px;
     padding-bottom: 1.5rem;
     border-bottom: 1px solid; }
+    .Table-headcell:first-child, .Table-cell:first-child {
+      text-align: left; }
+      @media (min-width: 1024px) {
+        .Table-headcell:first-child, .Table-cell:first-child {
+          text-align: center; } }
   .Table-headcell {
     border-bottom-color: #8E959A;
     text-transform: uppercase; }
@@ -2385,6 +2391,8 @@ input[type="number"]::-webkit-outer-spin-button {
     margin-left: auto; }
   .template-index .Page {
     margin-top: 0; }
+  .Page--woodlike-ocean-sizing-guide .Table {
+    max-width: 650px; }
   .Page--woodlike-ocean-sizing-guide .Table-cell,
   .Page--woodlike-ocean-sizing-guide .Table-headcell {
     width: 20%; }
