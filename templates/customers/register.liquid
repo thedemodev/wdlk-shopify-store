@@ -23,8 +23,6 @@
       <input type="password" name="customer[password]" id="CreatePassword" class="Form-input InputField {% if form.errors contains 'password' %} Form-inputError{% endif %}" placeholder="{{ 'customer.register.password' | t }}">
     </div>
 
-
-    <a class="Link Link--secondary" href="{{ shop.url }}">{{ 'customer.register.cancel' | t }}</a>
     <button type="submit" value="{{ 'customer.register.submit' | t }}" class="Btn">{{ 'customer.register.submit' | t }}</button>
     {% endform %}
 </main>
