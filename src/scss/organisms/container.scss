@@ -20,15 +20,19 @@
         }
     }
 
-    .Headline {
+    &--copy {
         text-align: center;
 
-        &--2 {
-            margin-bottom: 6rem;
-        }
+        .Headline {
 
-        &--4 {
-            margin-bottom: 4rem;
+            &--2 {
+                margin-bottom: 6rem;
+            }
+
+            &--4 {
+                margin-bottom: 4rem;
+            }
         }
     }
+
 }
