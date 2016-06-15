@@ -1,0 +1,39 @@
+:root {
+    --page-spacing: 6rem;
+    --block-spacing: var(--page-spacing);
+    --block-headline-spacing: calc(var(--page-spacing) / 2);
+    --block-2nd-headline-spacing: calc(var(--page-spacing) / 3);
+    --block-paragraph-spacing: calc(var(--page-spacing) / 3);
+}
+
+.TextBlock {
+    &-pageHeadline {
+        margin-bottom: var(--page-spacing);
+    }
+
+    &-block {
+        margin-bottom: var(--block-spacing);
+
+        .Headline {
+            &:first-of-type {
+                margin-bottom: var(--block-headline-spacing);
+            }
+
+            & ~ .Headline {
+                margin-bottom: var(--block-2nd-headline-spacing);
+            }
+        }
+
+        .Paragraph {
+            margin-bottom: var(--block-paragraph-spacing);
+        }
+    }
+
+    &--secondary {
+        text-align: left;
+    }
+
+    //&--tertiary {
+    //
+    //}
+}
