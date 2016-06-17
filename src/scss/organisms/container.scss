@@ -2,6 +2,7 @@
 //-- content between the header and the footer.
 
 .Container {
+    box-sizing: border-box;
     position: relative;
     margin: {
         top: calc(var(--nav-height) + 6rem);
@@ -32,6 +33,27 @@
             &--4 {
                 margin-bottom: 4rem;
             }
+        }
+    }
+
+    &--brand {
+        height: 100vh;
+        margin: {
+            top: 0;
+            bottom: 0;
+        }
+
+        &::before {
+            content: "";
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+        }
+
+        .TextBlock {
+            position: relative;
+            z-index: 1;
+            color: var(--typo-hex--tertiary);
         }
     }
 

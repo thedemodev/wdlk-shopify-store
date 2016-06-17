@@ -278,7 +278,8 @@ figure {
           animation: radio-controlled-fix 1s infinite; }
 
 body {
-  position: relative; }
+  position: relative;
+  background-color: #ffffff; }
 
 a {
   text-decoration: none; }
@@ -848,6 +849,22 @@ input[type="number"]::-webkit-outer-spin-button {
 .Icon--visaCard {
   width: 72px;
   width: 7.2rem; }
+
+.Video--bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  display: none;
+  min-height: 100%;
+  min-width: 100%;
+  -webkit-transform-origin: 50% 50% 0;
+          transform-origin: 50% 50% 0;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%); }
+  @media (min-width: 770px) {
+    .Video--bg {
+      display: block; } }
 
 .Navigation {
   position: absolute;
@@ -2251,27 +2268,32 @@ input[type="number"]::-webkit-outer-spin-button {
   .Table-cell {
     border-bottom-color: #DEDFE0; }
 
-.TextBlock-pageHeadline {
-  margin-bottom: 60px;
-  margin-bottom: 6rem; }
-
-.TextBlock-block {
-  margin-bottom: 60px;
-  margin-bottom: 6rem; }
-  .TextBlock-block .Headline:first-of-type {
-    margin-bottom: 30px;
-    margin-bottom: 3rem; }
-  .TextBlock-block .Headline ~ .Headline {
-    margin-bottom: 20px;
-    margin-bottom: 2rem; }
-  .TextBlock-block .Paragraph {
-    margin-bottom: 20px;
-    margin-bottom: 2rem; }
-
-.TextBlock--secondary {
-  text-align: left; }
+.TextBlock {
+  display: inline-block;
+  max-width: 630px;
+  max-width: 63rem;
+  min-width: 375px;
+  vertical-align: middle; }
+  .TextBlock-pageHeadline {
+    margin-bottom: 60px;
+    margin-bottom: 6rem; }
+  .TextBlock-block {
+    margin-bottom: 60px;
+    margin-bottom: 6rem; }
+    .TextBlock-block .Headline:first-of-type {
+      margin-bottom: 30px;
+      margin-bottom: 3rem; }
+    .TextBlock-block .Headline ~ .Headline {
+      margin-bottom: 20px;
+      margin-bottom: 2rem; }
+    .TextBlock-block .Paragraph {
+      margin-bottom: 20px;
+      margin-bottom: 2rem; }
+  .TextBlock--secondary {
+    text-align: left; }
 
 .Container {
+  box-sizing: border-box;
   position: relative;
   margin-top: 140px;
   margin-top: 14rem;
@@ -2294,6 +2316,19 @@ input[type="number"]::-webkit-outer-spin-button {
     .Container--copy .Headline--4 {
       margin-bottom: 40px;
       margin-bottom: 4rem; }
+  .Container--brand {
+    height: 100vh;
+    margin-top: 0;
+    margin-bottom: 0; }
+    .Container--brand:before {
+      content: "";
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle; }
+    .Container--brand .TextBlock {
+      position: relative;
+      z-index: 1;
+      color: #ffffff; }
 
 .Header {
   display: -webkit-flex;
@@ -2421,10 +2456,10 @@ input[type="number"]::-webkit-outer-spin-button {
     margin-left: auto; }
   .template-index .Page {
     margin-top: 0; }
-  .Page--woodlike-ocean-sizing-guide .Table {
+  .Page--page .Table {
     max-width: 650px; }
-  .Page--woodlike-ocean-sizing-guide .Table-cell,
-  .Page--woodlike-ocean-sizing-guide .Table-headcell {
+  .Page--page .Table-cell,
+  .Page--page .Table-headcell {
     width: 20%; }
 
 .Footer {

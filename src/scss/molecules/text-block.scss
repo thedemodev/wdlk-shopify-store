@@ -7,6 +7,11 @@
 }
 
 .TextBlock {
+    display: inline-block;
+    max-width: 63rem;
+    min-width: var(--screen-xs);
+    vertical-align: middle;
+
     &-pageHeadline {
         margin-bottom: var(--page-spacing);
     }
