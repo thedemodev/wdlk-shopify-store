@@ -22,13 +22,19 @@
         margin-top: 0;
     }
 
-    &--page {
+    &--woodlike-ocean-sizing-guide {
         .Table {
             max-width: 650px;
         }
         .Table-cell,
         .Table-headcell {
             width: 20%;
+        }
+    }
+
+    &--woodlike-sustainable-swimwear-about-us {
+        .Container--brand {
+            height: 130vh;
         }
     }
 }
