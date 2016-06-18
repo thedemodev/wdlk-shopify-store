@@ -1066,6 +1066,8 @@ input[type="number"]::-webkit-outer-spin-button {
     left: 50%;
     z-index: 1;
     width: 100%;
+    max-width: 630px;
+    max-width: 63rem;
     padding-right: 20px;
     padding-right: 2rem;
     padding-left: 20px;
@@ -1113,14 +1115,14 @@ input[type="number"]::-webkit-outer-spin-button {
             transform: translateX(50%);
     font-size: 12px;
     font-size: 1.2rem;
-    color: #ffffff;
+    color: #FF7163;
     font-weight: bold; }
     .Banner-lead .Icon {
       display: block;
       width: 16px;
       height: 16px;
       margin-bottom: 8px;
-      fill: #ffffff; }
+      fill: #FF7163; }
   .Banner .Headline {
     color: #ffffff; }
   .Banner-copy {
@@ -1199,7 +1201,7 @@ input[type="number"]::-webkit-outer-spin-button {
     .Banner--full {
       max-height: calc(100vh - 8rem); } }
   .Banner--full .Headline {
-    color: #8E959A;
+    color: #384852;
     line-height: 1.2; }
   .Banner--full .Banner-image {
     max-height: calc(100vh - 8rem); }
@@ -1242,13 +1244,14 @@ input[type="number"]::-webkit-outer-spin-button {
       -webkit-transform: translateX(-10%);
               transform: translateX(-10%); } }
   .Banner--collection:last-of-type .Banner-content {
+    top: 80%;
     max-width: 350px; }
     @media (max-width: 480px) {
       .Banner--collection:last-of-type .Banner-content {
-        top: auto;
         bottom: 0; } }
     @media (min-width: 770px) {
       .Banner--collection:last-of-type .Banner-content {
+        top: 50%;
         right: 4rem;
         left: auto;
         -webkit-transform: translateY(-50%);

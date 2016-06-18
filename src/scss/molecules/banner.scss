@@ -13,6 +13,7 @@
         left: 50%;
         z-index: 1;
         width: 100%;
+        max-width: var(--text-block-max-width);
         padding: {
             right: var(--base-spacing);
             left: var(--base-spacing);
@@ -57,7 +58,7 @@
         transform: translateX(50%);
 
         @include copy-text(
-            var(--small-copy-size), var(--typo-hex--tertiary),
+            var(--small-copy-size), var(--typo-hex--highlight),
             bold
         );
 
@@ -66,7 +67,7 @@
             width: 16px;
             height: 16px;
             margin-bottom: 8px;
-            fill: var(--icon-primary-color);
+            fill: var(--typo-hex--highlight);
         }
     }
 
@@ -174,7 +175,7 @@
         }
 
         .Headline {
-            color: var(--typo-hex--banner-secondary);
+            color: var(--typo-hex--banner-tertiary);
             line-height: 1.2;
         }
 
@@ -237,14 +238,16 @@
     &--collection {
         &:last-of-type {
             .Banner-content {
+                top: 80%;
                 max-width: 350px;
 
+
                 @include media (small, max-width) {
-                    top: auto;
                     bottom: 0;
                 }
 
                 @include media(medium) {
+                    top: 50%;
                     right: 4rem;
                     left: auto;
                     transform: translateY(-50%);
