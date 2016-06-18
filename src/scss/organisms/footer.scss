@@ -1,5 +1,6 @@
 :root {
     --footer-side-padding: 5rem;
+    --footer-side-paddding-diff: 5.8;
 }
 
 .Footer {
@@ -14,27 +15,26 @@
 
     @include media(medium) {
         @include grid-wrapper(undefined, space-between);
-
         text-align: left;
 
         .LinkList {
-            width: calc(50vw - var(--footer-side-padding));
+            width: 40vw;
 
             &--secondary {
                 align-self: flex-end;
-                width: calc(100vw / 3);
+                width: calc(100vw / 3 - 1);
             }
         }
 
         .PaymentList {
-            width: calc(50vw - var(--footer-side-padding));
+            width: calc(50vw - var(--footer-side-paddding-diff);
             text-align: right;
         }
 
         .SocialList,
         .Copyright {
             align-self: flex-end;
-            width: calc(100vw / 3 - var(--footer-side-padding));
+            width: calc(100vw / 3 - var(--footer-side-paddding-diff);
         }
 
         .Copyright {
