@@ -1,6 +1,12 @@
 :root {
     --informative-content-width: 32rem;
 }
+
+ @keyframes scaleBanner {
+     from { transform: scale3d(1, 1, 1) }
+     to { transform: scale3d(1.15, 1.15, 1.15) }
+}
+
 .Banner {
     position: relative;
     overflow: hidden;
@@ -98,7 +104,10 @@
         .Banner-image {
             width: 100vw;
             height: auto;
-            transform: none;
+            transform: scale3d(1, 1, 1);
+            perspective-origin: center;
+            perspective: 100vw;
+            animation: 30s linear 0s infinite alternate scaleBanner;
         }
 
         @include media(small, max-width) {

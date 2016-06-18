@@ -416,19 +416,16 @@ input[type="radio"] {
     font-size: 2.4rem; }
   .Headline--4 {
     font-size: 20px;
-    font-size: 2rem;
-    font-weight: 600; }
+    font-size: 2rem; }
   .Headline--5 {
     font-size: 18px;
     font-size: 1.8rem; }
   .Headline--6 {
     font-size: 14px;
-    font-size: 1.4rem;
-    font-weight: 600; }
+    font-size: 1.4rem; }
   .Headline--7 {
     font-size: 12px;
-    font-size: 1.2rem;
-    font-weight: 600; }
+    font-size: 1.2rem; }
   .Headline--highlight {
     color: #FF7163; }
   .Headline--hightlightSecondary {
@@ -1055,6 +1052,22 @@ input[type="number"]::-webkit-outer-spin-button {
       max-width: 350px;
       max-height: 280px; }
 
+@-webkit-keyframes scaleBanner {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1); }
+  to {
+    -webkit-transform: scale3d(1.15, 1.15, 1.15);
+            transform: scale3d(1.15, 1.15, 1.15); } }
+
+@keyframes scaleBanner {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1); }
+  to {
+    -webkit-transform: scale3d(1.15, 1.15, 1.15);
+            transform: scale3d(1.15, 1.15, 1.15); } }
+
 .Banner {
   position: relative;
   overflow: hidden;
@@ -1145,8 +1158,14 @@ input[type="number"]::-webkit-outer-spin-button {
     .Banner--main .Banner-image {
       width: 100vw;
       height: auto;
-      -webkit-transform: none;
-              transform: none; }
+      -webkit-transform: scale3d(1, 1, 1);
+              transform: scale3d(1, 1, 1);
+      -webkit-perspective-origin: center;
+              perspective-origin: center;
+      -webkit-perspective: 100vw;
+              perspective: 100vw;
+      -webkit-animation: 30s linear 0s infinite alternate scaleBanner;
+              animation: 30s linear 0s infinite alternate scaleBanner; }
     @media (max-width: 480px) {
       .Banner--main .Banner-image {
         width: auto;
@@ -2549,7 +2568,7 @@ input[type="number"]::-webkit-outer-spin-button {
     left: -5000px; }
   .NewsletterForm .Headline {
     text-indent: 5%;
-    color: #8E959A; }
+    color: #384852; }
     @media (min-width: 1024px) {
       .NewsletterForm .Headline {
         display: inline-block;
