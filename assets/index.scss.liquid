@@ -932,6 +932,11 @@ input[type="number"]::-webkit-outer-spin-button {
           opacity: 1;
           visibility: visible;
           pointer-events: initial; }
+        .Navigation-item.has-dropdown > .Navigation-link:before {
+          content: " ";
+          opacity: 0;
+          -webkit-transition: opacity .8s ease;
+          transition: opacity .8s ease; }
         .Navigation-item.has-dropdown:hover > .Navigation-link:before {
           content: "";
           width: 1.5rem;
@@ -945,6 +950,7 @@ input[type="number"]::-webkit-outer-spin-button {
           right: 50%;
           border: solid #DEDFE0;
           border-width: 1px 0px 0px 1px;
+          opacity: 1;
           -webkit-transform: translateX(50%) rotate(45deg);
                   transform: translateX(50%) rotate(45deg); }
         .Navigation-item--mobile {
