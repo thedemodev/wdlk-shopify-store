@@ -57,6 +57,9 @@
           {% endif %}
         {% endfor %}
         <li class="Navigation-item Navigation-item--mobile">
+            <a href="{{ pages['about-us'].url }}" class="Navigation-link {% if link.active %} is-active{% endif %}">{{ pages['about-us'].handle }}</a>
+        </li>
+        <li class="Navigation-item Navigation-item--mobile">
             <a href="{{ pages['sustainability'].url }}" class="Navigation-link {% if link.active %} is-active{% endif %}">{{ pages['sustainability'].title }}</a>
         </li>
         {% if shop.customer_accounts_enabled %}
