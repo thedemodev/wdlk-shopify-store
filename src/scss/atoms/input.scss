@@ -1,6 +1,7 @@
 :root {
     --input-base-height: 4.6rem;
     --input-base-width: 29.2rem;
+    --input-base-mobile: 2.4rem;
 }
 
 .InputField {
@@ -12,4 +13,8 @@
     font-family: "museo-sans-bold";
     font-size: var(--md-copy-size);
     color: var(--input-hex-placeholder);
+
+    @include media(small, max-width) {
+        width: var(--input-base-mobile);
+    }
 }
