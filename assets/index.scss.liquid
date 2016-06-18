@@ -2371,6 +2371,38 @@ input[type="number"]::-webkit-outer-spin-button {
       position: relative;
       z-index: 1;
       color: #ffffff; }
+  .Container--customer {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            -webkit-box-pack: center;
+            justify-content: center;
+    max-width: 1440px;
+    margin: auto; }
+    .Container--customer .Container-sidebar {
+      position: relative;
+      overflow: hidden; }
+      @media (min-width: 480px) {
+        .Container--customer .Container-sidebar {
+          width: 33.33333%;
+          margin-top: 3rem;
+          text-align: left; }
+          .Container--customer .Container-sidebar .LinkList {
+            position: fixed;
+            top: 17rem;
+            left: 4rem; } }
+    .Container--customer .Container-section {
+      text-align: left; }
+      @media (min-width: 480px) {
+        .Container--customer .Container-section {
+          box-sizing: border-box;
+          width: 66.66666%; } }
 
 .Header {
   display: -webkit-flex;

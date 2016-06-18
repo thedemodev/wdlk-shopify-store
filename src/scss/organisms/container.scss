@@ -62,4 +62,34 @@
         }
     }
 
+    &--customer {
+        @include grid-wrapper(var(--screen-xl));
+
+        .Container-sidebar {
+            position: relative;
+            overflow: hidden;
+
+            @include media (small) {
+                width: calc(100% / 3);
+                margin-top: 3rem;
+                text-align: left;
+
+                .LinkList {
+                    position: fixed;
+                    top: 17rem;
+                    left: 4rem;
+                }
+            }
+        }
+
+        .Container-section {
+            text-align: left;
+            @include media (small) {
+                box-sizing: border-box;
+                width: calc((100% / 3) * 2);
+            }
+        }
+
+    }
+
 }
