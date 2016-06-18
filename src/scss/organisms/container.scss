@@ -63,16 +63,16 @@
     }
 
     &--customer {
-        @include grid-wrapper(var(--screen-xl));
+        @include grid-wrapper(var(--screen-xl), flex-start);
 
         .Container-sidebar {
             position: relative;
             overflow: hidden;
+            text-align: left;
 
-            @include media (small) {
+            @include media (medium) {
                 width: calc(100% / 3);
                 margin-top: 3rem;
-                text-align: left;
 
                 .LinkList {
                     position: fixed;
@@ -84,7 +84,7 @@
 
         .Container-section {
             text-align: left;
-            @include media (small) {
+            @include media (medium) {
                 box-sizing: border-box;
                 width: calc((100% / 3) * 2);
             }
