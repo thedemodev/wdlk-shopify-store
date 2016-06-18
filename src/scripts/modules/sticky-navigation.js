@@ -3,7 +3,7 @@ export default function stickyNavigation () {
     //-- First keep track of the scroll value
     //-- without triggering unnecessary draw calls
     const NAV_NODE = document.getElementsByClassName('js_sticky-nav')[0];
-    const NAV_NODE_HEIGHT = NAV_NODE.offsetHeight * 2;
+    const NAV_NODE_HEIGHT = NAV_NODE.offsetHeight;
     let lastScrollPositionY = 0;
     let ticking = false;
 

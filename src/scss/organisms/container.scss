@@ -2,14 +2,15 @@
 //-- content between the header and the footer.
 
 .Container {
-    margin: {
-        top: calc(var(--nav-height) + 6rem);
-        bottom: 4rem;
-    }
+    box-sizing: border-box;
+    position: relative;
     padding: {
+        top: calc(var(--nav-height) + 6rem);
+        bottom: calc(var(--base-spacing) * 4);
         right: var(--base-spacing);
         left: var(--base-spacing);
     }
+    overflow: hidden;
 
     @include media (medium) {
         padding: {
@@ -18,8 +19,77 @@
         }
     }
 
-    .Headline {
-        margin-bottom: calc(var(--base-spacing) * 3);
+    &--copy {
         text-align: center;
+
+        .Headline {
+
+            &--2 {
+                margin-bottom: 6rem;
+            }
+
+            &--4 {
+                margin-bottom: 4rem;
+            }
+        }
     }
+
+    &--brand {
+        min-height: 100vh;
+        background-image: url('https://cdn.shopify.com/s/files/1/0742/2733/t/5/assets/WDLK_Brand-Video-Poster.jpg');
+        background-size: cover;
+
+        @include media(medium) {
+            height: 100vh;
+            margin: {
+                top: 0;
+                bottom: 0;
+            }
+            background-image: none;
+
+            &::before {
+                content: "";
+                display: inline-block;
+                height: 100%;
+                vertical-align: middle;
+            }
+        }
+
+        .TextBlock {
+            position: relative;
+            z-index: 1;
+            color: var(--typo-hex--tertiary);
+        }
+    }
+
+    &--customer {
+        @include grid-wrapper(var(--screen-xl), flex-start);
+
+        .Container-sidebar {
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+
+            @include media (medium) {
+                width: calc(100% / 3);
+                margin-top: 3rem;
+
+                .LinkList {
+                    position: fixed;
+                    top: 17rem;
+                    left: 4rem;
+                }
+            }
+        }
+
+        .Container-section {
+            text-align: left;
+            @include media (medium) {
+                box-sizing: border-box;
+                width: calc((100% / 3) * 2);
+            }
+        }
+
+    }
+
 }

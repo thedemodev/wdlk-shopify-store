@@ -8,7 +8,7 @@
     overflow: hidden;
 
     @include media (small) {
-        width: calc(50vw - (var(--product-base-spacing) / 1.25 ));
+        width: calc(50vw - var(--product-base-spacing));
 
         &:nth-child(odd) {
             margin-right: var(--base-spacing);
@@ -16,7 +16,7 @@
     }
 
     @include media (medium) {
-        width: calc(100vw / 3 - var(--product-base-spacing));
+        width: calc(100vw / 3 - (var(--product-base-spacing) + .5));
 
         &:nth-child(odd) {
             margin-right: 0;
@@ -84,6 +84,7 @@
             right: var(--base-spacing);
             bottom: 0;
         }
+        text-align: left;
 
         &::after {
             content: "";

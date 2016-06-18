@@ -1,92 +1,73 @@
-<div class="contentContainer grid">
-
-  <div class="grid__item large--one-third push--large--one-third text-center">
-
-    {% comment %}
-      If a user has successfully requested a new password, the form.posted_successfully? variable
-      is set to true within the 'recover_customer_password' form only. Within that form you'll see
-      the variable 'resetPassword' set to true, which is used to initialize timber.resetPasswordSuccess().
-    {% endcomment %}
-    <div class="note form-success" id="ResetSuccess" style="display:none;">
-      {{ 'customer.recover_password.success' | t }}
-    </div>
-
-    <div id="CustomerLoginForm" class="form-vertical">
-      {% form 'customer_login', class: 'formContainer' %}
-
-        <h1 class="formHeadline">{{ 'customer.login.title' | t }}</h1>
-
-        {{ form.errors | default_errors }}
-
-        <div class="formInputWrapper">
-          <label for="CustomerEmail" class="formLabel">{{ 'customer.login.email' | t }}</label>
-          <input type="email" name="customer[email]" id="CustomerEmail" class="formInput InputField input-full{% if form.errors contains 'email' %} error{% endif %}" placeholder="{{ 'customer.login.email' | t }}" autocorrect="off" autocapitalize="off" autofocus>
-        </div>
-
-        {% if form.password_needed %}
-          <div class="formInputWrapper">
-            <label for="CustomerPassword" class="formLabel">{{ 'customer.login.password' | t }}</label>
-            <input type="password" value="" name="customer[password]" id="CustomerPassword" class="formInput InputField input-full{% if form.errors contains 'password' %} error{% endif %}" placeholder="{{ 'customer.login.password' | t }}">
-          </div>
-        {% endif %}
-
-        <p class="buttonGroup">
-          <input type="submit" class="Btn btn--full" value="{{ 'customer.login.sign_in' | t }}">
-          <a href="{{ shop.url }}" class="Btn Btn--inverse">{{ 'customer.login.cancel' | t }}</a>
-        </p>
-        {% if form.password_needed %}
-          <p><a href="#recover" id="RecoverPassword" class="Link Link--secondary">{{ 'customer.login.forgot_password' | t }}</a></p>
-        {% endif %}
-
-      {% endform %}
-    </div>
-
-    {% comment %}
-      JS shows/hides this form in timber.loginForms()
-    {% endcomment %}
-    <div id="RecoverPasswordForm" style="display: none;">
-
-      <h2>{{ 'customer.recover_password.title' | t }}</h2>
-      <p>{{ 'customer.recover_password.subtext' | t }}</p>
-
-      <div class="form-vertical">
-        {% form 'recover_customer_password' %}
-
-          {{ form.errors | default_errors }}
-
-          {% comment %}
-            Assign variable to be used after timber.init() is run in theme.liquid
-          {% endcomment %}
-          {% if form.posted_successfully? %}
-            {% assign resetPassword = true %}
-          {% endif %}
-
-          <label for="RecoverEmail" class="hidden-label">{{ 'customer.recover_password.email' | t }}</label>
-          <input type="email" value="" name="email" id="RecoverEmail" class="input-full" placeholder="{{ 'customer.recover_password.email' | t }}" autocorrect="off" autocapitalize="off">
-
-          <p>
-            <input type="submit" class="btn btn--full" value="{{ 'customer.recover_password.submit' | t }}">
-          </p>
-          <button type="button" id="HideRecoverPasswordLink" class="text-link">{{ 'customer.recover_password.cancel' | t }}</button>
-        {% endform %}
-      </div>
-
-    </div>
-
+<main class="Container">
     {% comment %}
       If accounts are set as optional, the following will be shown as an option
       during checkout, not on the default /login page.
     {% endcomment %}
     {% if shop.checkout.guest_login %}
-      <hr>
-
-      <h2>{{ 'customer.login.guest_title' | t }}</h2>
-
-      {% form 'guest_login' %}
-        <input type="submit" class="btn" value="{{ 'customer.login.guest_continue' | t }}">
+      <h1 class="Headline Headline--2">{{ 'customer.login.guest_title' | t }}</h1>
+      {% form 'guest_login', class: 'Form Form--secondary' %}
+        <button type="submit" class="Btn Btn--inverse" value="{{ 'customer.login.guest_continue' | t }}">{{ 'customer.login.guest_continue' | t }}</button>
       {% endform %}
     {% endif %}
 
-  </div>
+    {% form 'customer_login', class: 'Form', id: 'CustomerEmail' %}
 
-</div>
+    <h1 class="Headline Headline--2 Form-headline">{{ 'customer.login.title' | t }}</h1>
+    <p class="Form-copy">{{ 'customer.login.subtext' | t }}</p>
+    {{ form.errors | default_errors }}
+
+    <div class="Form-inputWrapper">
+        <label for="CustomerEmail" class="Form-label">{{ 'customer.login.email' | t }}</label>
+        <input type="email" name="customer[email]" id="CustomerEmail" class="Form-input InputField {% if form.errors contains 'email' %} Form-inputError{% endif %}" placeholder="{{ 'customer.login.email' | t }}" autocorrect="off" autocapitalize="off" autofocus />
+    </div>
+
+    {% if form.password_needed %}
+    <div class="Form-inputWrapper">
+        <label for="CustomerPassword" class="Form-label">{{ 'customer.login.password' | t }}</label>
+        <input type="password" value="" name="customer[password]" id="CustomerPassword" class="Form-input InputField input-full{% if form.errors contains 'password' %} Form-inputError{% endif %}" placeholder="{{ 'customer.login.password' | t }}" />
+    </div>
+    {% endif %}
+
+    {% if form.password_needed %}
+    <label class="Link Link--secondary" for="form-layer">{{ 'customer.login.forgot_password' | t }}</label>
+    {% endif %}
+    <button type="submit" class="Btn" value="{{ 'customer.login.sign_in' | t }}">{{ 'customer.login.sign_in' | t }}</button>
+
+
+    {% endform %}
+
+
+    {% comment %}
+      If a user has successfully requested a new password, the form.posted_successfully? variable
+      is set to true within the 'recover_customer_password' form only. Within that form you'll see
+      the variable 'resetPassword' set to true, which is used to initialize timber.resetPasswordSuccess().
+      {{ 'customer.recover_password.success' | t }}
+    {% endcomment %}
+
+
+    <input type="checkbox" id="form-layer" class="Form-state">
+    <div class="Form-layer">
+        <h2 class="Headline Headline--2">{{ 'customer.recover_password.title' | t }}</h2>
+        <p class="Form-copy">{{ 'customer.recover_password.subtext' | t }}</p>
+
+
+        {% form 'recover_customer_password', class: 'Form' %}
+
+        {{ form.errors | default_errors }}
+
+        {% comment %}
+        Assign variable to be used after timber.init() is run in theme.liquid
+        {% endcomment %}
+        {% if form.posted_successfully? %}
+        {% assign resetPassword = true %}
+        {% endif %}
+
+        <div class="Form-inputWrapper">
+            <label for="RecoverEmail" class="Form-label">{{ 'customer.recover_password.email' | t }}</label>
+            <input type="email" value="" name="email" id="RecoverEmail" class="Form-input InputField" placeholder="{{ 'customer.recover_password.email' | t }}" autocorrect="off" autocapitalize="off">
+        </div>
+        <label class="Link Link--secondary" for="form-layer">{{ 'customer.recover_password.cancel' | t }}</label>
+        <button type="submit" class="Btn" value="{{ 'customer.recover_password.submit' | t }}">{{ 'customer.recover_password.submit' | t }}</button>
+        {% endform %}
+    </div>
+</main>

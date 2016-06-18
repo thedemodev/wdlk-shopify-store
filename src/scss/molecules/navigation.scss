@@ -55,20 +55,19 @@
 
         @include media (medium) {
             margin-top: 0;
-            line-height: var(--nav-height);
             transform: none;
+
+            > .Navigation-item  {
+                padding: 2.8rem 2rem;
+            }
         }
     }
 
     &-item {
-        position: relative;
+        padding-bottom: var(--base-spacing);
 
         @include media (medium) {
             display: inline-block;
-            padding: {
-                right: calc(var(--base-spacing) * 2);
-                bottom: var(--base-spacing);
-            }
 
             &:last-child {
                 padding-right: 0;
@@ -83,14 +82,24 @@
             }
 
             &.has-dropdown{
+                > .Navigation-link {
+                    &:before {
+                        content: " ";
+                        opacity: 0;
+                        transition: opacity .8s ease;
+                    }
+                }
                 &:hover {
-                    @include create-pointer(var(--navi-pointer-size), var(--navi-bg-color)) {
-                        position: absolute;
-                        bottom: calc(var(--navi-pointer-size) - .3rem);
-                        right: 50%;
-                        border: solid var(--nav-border-color);
-                        border-width: 1px 0px 0px 1px ;
-                        transform: translateX(calc(50% - var(--base-spacing))) rotate(45deg);
+                    > .Navigation-link {
+                        @include create-pointer(var(--navi-pointer-size), var(--navi-bg-color)) {
+                            position: absolute;
+                            top: calc(var(--navi-pointer-size) * 3);
+                            right: 50%;
+                            border: solid var(--nav-border-color);
+                            border-width: 1px 0px 0px 1px ;
+                            opacity: 1;
+                            transform: translateX(50%) rotate(45deg);
+                        }
                     }
                 }
             }
@@ -106,18 +115,18 @@
         position: relative;
         display: inline-block;
         width: auto;
-        padding-bottom: var(--base-spacing);
+        //padding-bottom: var(--base-spacing);
         color: var(--typo-hex);
         font-family: "museo-sans-bold";
         font-size: var(--h5-size);
         line-height: 1.5;
         text-transform: uppercase;
         letter-spacing: .05rem;
-        overflow-x: hidden;
+        //overflow-x: hidden;
 
         @include media (medium) {
             display: inline-block;
-            margin-bottom: -1.8rem;
+            //margin-bottom: -1.8rem;
             vertical-align: middle;
             @include copy-text(var(--md-copy-size));
         }
@@ -127,8 +136,10 @@
             display: block;
             height: .1rem;
             width: 100%;
+            margin-top: 2px;
             background-color: var(--typo-hex);
-            transform: translateX(-102%);
+            transform: scaleX(0);
+            transform-origin: 0 0;
             transition: transform .8s var(--navi-transition-function);
         }
 
@@ -150,7 +161,7 @@
     &-dropdown {
         position: absolute;
         top: calc(var(--nav-height) + .3);
-        left: calc(-var(--base-spacing) * 2);
+        left: 50%;
         display: flex;
         justify-content: space-between;
         width: var(--navi-secondary-max-size);
@@ -165,7 +176,8 @@
         visibility: hidden;
         pointer-events:none;
         background: var(--navi-bg-color);
-        transition: opacity .8s var(--navi-transition-function);
+        transform: translateX(-50%);
+        transition: opacity .8s ease;
 
         &-list {
             box-sizing: border-box;
@@ -176,7 +188,6 @@
         .Navigation-item {
             display: block;
             line-height: 1.5;
-            padding-bottom: -var(--base-spacing);
         }
     }
 
@@ -190,13 +201,18 @@
 
         &-headline {
             position: absolute;
-            top: 0;
+            top: 50%;
             left: 0;
             width: 100%;
+            margin: 0;
             color: var(--typo-hex--tertiary);
             text-align: center;
             text-transform: uppercase;
-            transform: translateY(100%);
+            transform: translateY(-50%);
+
+            &-one-pieces {
+                color: var(--typo-hex--secondary);
+            }
         }
 
         &-image {

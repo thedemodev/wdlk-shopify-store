@@ -41,6 +41,7 @@
     --typo-hex: var(--hex-blue-gray-dark);
     --typo-hex--secondary: var(--hex-blue-gray-light);
     --typo-hex--tertiary: var(--hex-white);
+    --typo-hex--quaternary: var(--hex-blue-gray-ultra-dark);
     --typo-hex--highlight: var(--hex-coral);
     --typo-hex--tone-down: var(--light-gray-hex);
     --typo-hex--lightest: var(--hex-blue-gray-lightest);
@@ -77,6 +78,7 @@
     --link-hex-hover-color: var(--hex-coral-dark);
     --link-hex-secondary-color: var(--hex-blue-gray-dark);
     --link-hex-secondary-hover: var(--hex-blue-gray-ultra-dark);
+    --form-layer-hex-bg: var(--hex-white);
 }
 
 //-- Images
@@ -97,7 +99,6 @@
 }
 
 //-- Cart
-
 :root {
     --quick-cart-hex-bg: var(--hex-white);
     --cart-hex-border: #ECECEC;

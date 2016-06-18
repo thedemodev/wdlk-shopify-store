@@ -29,7 +29,12 @@
       "title": "Suchen Sie auf unserer Seite nach Produkten",
       "placeholder": "Durchsuchen Sie unseren Shop",
       "submit": "Suchen"
+    },
+    "navigation": {
+        "the_brand_title": "The Brand",
+        "teaser_alt": "Woodlike Ocean was born from the ocean. Discover more about the brand"
     }
+
   },
   "blogs": {
     "article": {
@@ -168,7 +173,8 @@
       "sign_in": "Anmelden",
       "cancel": "Zurück zum Shop",
       "guest_title": "Als Gast fortsetzen",
-      "guest_continue": "Fortsetzen"
+      "guest_continue": "Fortsetzen",
+      "subtext": "E-Mail Adresse und Kennwort eingeben"
     },
     "orders": {
       "title": "Bestellungen",
@@ -200,7 +206,7 @@
       "subtotal": "Zwischensumme"
     },
     "recover_password": {
-      "title": "Passwort zurücksetzen",
+      "title": "Haben Sie Ihr Passwort vergessen?",
       "email": "E-Mail",
       "submit": "Absenden",
       "cancel": "Abbrechen",
@@ -238,7 +244,7 @@
         "full_banner_2_headline": "Seamless athletic one pieces",
         "frontpage_title": "Startseite-Zusammenstellung",
         "featured_title": "Ausgewählte Zusammenstellungen",
-        "principles_banner_1": "One Woodlike-Ocean bikini (100g) eliminates about 126g of waste",
+        "principles_banner_1": "One Woodlike bottom (Free Dive Hipster) eliminates 67g of waste",
         "collection_banner_1": "Figure-flattering, highly-functional fits that mirror the ever-increasing healthy lifestyle of today's conscious woman",
         "principle_banner_2": "Woodlike Ocean is a sustainable swimwear label that stands for positive change. The brand represents those favorite memories of endless summer at the beach, sun-kissed skin and salty hair. Gorgeous swimwear committed to creating healthy oceans.",
         "news_title": "Neueste Nachrichten"
