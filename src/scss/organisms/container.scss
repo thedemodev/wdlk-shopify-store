@@ -4,11 +4,9 @@
 .Container {
     box-sizing: border-box;
     position: relative;
-    margin: {
+    padding: {
         top: calc(var(--nav-height) + 6rem);
         bottom: calc(var(--base-spacing) * 4);
-    }
-    padding: {
         right: var(--base-spacing);
         left: var(--base-spacing);
     }
@@ -37,17 +35,24 @@
     }
 
     &--brand {
-        height: 100vh;
-        margin: {
-            top: 0;
-            bottom: 0;
-        }
+        min-height: 100vh;
+        background-image: url('https://cdn.shopify.com/s/files/1/0742/2733/t/5/assets/WDLK_Brand-Video-Poster.jpg');
+        background-size: cover;
 
-        &::before {
-            content: "";
-            display: inline-block;
-            height: 100%;
-            vertical-align: middle;
+        @include media(medium) {
+            height: 100vh;
+            margin: {
+                top: 0;
+                bottom: 0;
+            }
+            background-image: none;
+            
+            &::before {
+                content: "";
+                display: inline-block;
+                height: 100%;
+                vertical-align: middle;
+            }
         }
 
         .TextBlock {

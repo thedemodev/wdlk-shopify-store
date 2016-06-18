@@ -862,7 +862,7 @@ input[type="number"]::-webkit-outer-spin-button {
           transform-origin: 50% 50% 0;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%); }
-  @media (min-width: 770px) {
+  @media (min-width: 480px) {
     .Video--bg {
       display: block; } }
 
@@ -2269,14 +2269,19 @@ input[type="number"]::-webkit-outer-spin-button {
     border-bottom-color: #DEDFE0; }
 
 .TextBlock {
-  display: inline-block;
+  display: block;
   max-width: 630px;
   max-width: 63rem;
-  min-width: 375px;
   vertical-align: middle; }
+  @media (min-width: 480px) {
+    .TextBlock {
+      display: inline-block; } }
   .TextBlock-pageHeadline {
     margin-bottom: 60px;
     margin-bottom: 6rem; }
+  @media (max-width: 480px) {
+    .TextBlock .Headline--1 {
+      font-size: 4.2rem; } }
   .TextBlock-block {
     margin-bottom: 60px;
     margin-bottom: 6rem; }
@@ -2295,10 +2300,10 @@ input[type="number"]::-webkit-outer-spin-button {
 .Container {
   box-sizing: border-box;
   position: relative;
-  margin-top: 140px;
-  margin-top: 14rem;
-  margin-bottom: 80px;
-  margin-bottom: 8rem;
+  padding-top: 140px;
+  padding-top: 14rem;
+  padding-bottom: 80px;
+  padding-bottom: 8rem;
   padding-right: 20px;
   padding-right: 2rem;
   padding-left: 20px;
@@ -2317,14 +2322,20 @@ input[type="number"]::-webkit-outer-spin-button {
       margin-bottom: 40px;
       margin-bottom: 4rem; }
   .Container--brand {
-    height: 100vh;
-    margin-top: 0;
-    margin-bottom: 0; }
-    .Container--brand:before {
-      content: "";
-      display: inline-block;
-      height: 100%;
-      vertical-align: middle; }
+    min-height: 100vh;
+    background-image: url("https://cdn.shopify.com/s/files/1/0742/2733/t/5/assets/WDLK_Brand-Video-Poster.jpg");
+    background-size: cover; }
+    @media (min-width: 770px) {
+      .Container--brand {
+        height: 100vh;
+        margin-top: 0;
+        margin-bottom: 0;
+        background-image: none; }
+        .Container--brand:before {
+          content: "";
+          display: inline-block;
+          height: 100%;
+          vertical-align: middle; } }
     .Container--brand .TextBlock {
       position: relative;
       z-index: 1;

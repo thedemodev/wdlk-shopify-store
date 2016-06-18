@@ -9,7 +9,8 @@
         min-width: 100%;
         transform-origin: 50% 50% 0;
         transform:  translate(-50%, -50%);
-        @include media(medium) {
+
+        @include media(small) {
             display: block;
         }
     }

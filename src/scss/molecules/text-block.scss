@@ -7,13 +7,24 @@
 }
 
 .TextBlock {
-    display: inline-block;
+    display: block;
     max-width: 63rem;
-    min-width: var(--screen-xs);
     vertical-align: middle;
+
+    @include media (small) {
+        display: inline-block;
+    }
 
     &-pageHeadline {
         margin-bottom: var(--page-spacing);
+    }
+
+    .Headline {
+        @include media (small, max-width) {
+            &--1 {
+                font-size: 4.2rem;
+            }
+        }
     }
 
     &-block {
@@ -23,6 +34,7 @@
             &:first-of-type {
                 margin-bottom: var(--block-headline-spacing);
             }
+
 
             & ~ .Headline {
                 margin-bottom: var(--block-2nd-headline-spacing);
@@ -37,8 +49,4 @@
     &--secondary {
         text-align: left;
     }
-
-    //&--tertiary {
-    //
-    //}
 }
