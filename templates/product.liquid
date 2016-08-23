@@ -31,10 +31,11 @@
                     {% assign main-images-amount = 4 %}
                 {% endif %}
                 {% comment %}
-                    Defines the boolean condition value or offset
-                    in order to display the images in the product teaser.
+                    Defines the boolean condition values or offsets for
+                    the products teaser images display.
                 {% endcomment %}
-                {% assign teaser-offset = forloop.length %}
+                {% assign last-index = forloop.length | minus: 1 %}
+                {% assign nexto-last-index = forloop.length | minus: 2 %}
             {% endfor %}
             {% for image in product.images limit: main-images-amount %}
                 {% comment %} The first input radio for the carousel must be checked {% endcomment %}
@@ -174,7 +175,7 @@
         Starts the image loop at the 4th item and
         breaks after the second iteration
         {% endcomment %}
-        {% for image in product.images offset: main-images-amount %}
+        {% for image in product.images offset: nexto-last-index %}
         {% if forloop.index >= 2 %}
         {% break %}
         {% else %}
@@ -226,7 +227,7 @@
         Starts the image loop at the 5th item and
         breaks after the second iteration
         {% endcomment %}
-        {% for image in product.images %}
+        {% for image in product.images offset: last-teaser-offset %}
         {% if forloop.last == true %}
             <div class="Product-teaser-imgContainer" style="background-image: url({{ image.src | product_img_url: 'grande' }});">
                 <img sizes="(min-width: {{screen-l}}) 50vw, 100vw"
