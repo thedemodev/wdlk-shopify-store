@@ -1,7 +1,7 @@
 [
 	{
 		"id": 402801932,
-		"title": "Blossom Bottoms",
+		"title": "Blossom Bottoms Berry",
 		"metafield": {
 			"namespace": "features",
 			"key": "product",
@@ -55,8 +55,19 @@
 		}
 	},
 	{
+		"id": 4663802308,
+		"title": "Coastal Meadows One Piece Reversible Berry",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
 		"id": 4517920644,
-		"title": "Dylan Bandeau Top",
+		"title": "Dylan Bandeau Top Berry",
 		"metafield": {
 			"namespace": "features",
 			"key": "product",
@@ -88,8 +99,19 @@
 		}
 	},
 	{
+		"id": 7738332936,
+		"title": "Flying Fish Bikini Clutch",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
 		"id": 4517518660,
-		"title": "Free Dive Hipster Bottoms",
+		"title": "Free Dive Hipster Bottoms Berry",
 		"metafield": {
 			"namespace": "features",
 			"key": "product",
@@ -122,7 +144,7 @@
 	},
 	{
 		"id": 4542033796,
-		"title": "Ikal One Piece",
+		"title": "Ikal One Piece Black",
 		"metafield": {
 			"namespace": "features",
 			"key": "product",
@@ -143,8 +165,19 @@
 		}
 	},
 	{
+		"id": 4663815236,
+		"title": "Ikal One Piece Reversible Berry",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
 		"id": 4517802884,
-		"title": "Lani Halter Top",
+		"title": "Lani Halter Top Berry",
 		"metafield": {
 			"namespace": "features",
 			"key": "product",
@@ -177,7 +210,7 @@
 	},
 	{
 		"id": 414034396,
-		"title": "Ocean Petal High Waist",
+		"title": "Ocean Petal High Waist Pant",
 		"metafield": {
 			"namespace": "features",
 			"key": "product",
@@ -198,8 +231,19 @@
 		}
 	},
 	{
+		"id": 4663830660,
+		"title": "Ocean Petal High Waist Reversible Berry",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
 		"id": 4542204804,
-		"title": "Seagaze One Piece",
+		"title": "Seagaze One Piece Print",
 		"metafield": {
 			"namespace": "features",
 			"key": "product",
@@ -242,8 +286,19 @@
 		}
 	},
 	{
+		"id": 4663840324,
+		"title": "Sundance Triangle Bottoms Reversible Berry",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
 		"id": 4517749828,
-		"title": "Sundance Triangle Top",
+		"title": "Sundance Triangle Top Berry",
 		"metafield": {
 			"namespace": "features",
 			"key": "product",
@@ -266,6 +321,17 @@
 	{
 		"id": 4517728004,
 		"title": "Sundance Triangle Top Print",
+		"metafield": {
+			"namespace": "features",
+			"key": "product",
+			"value": "features",
+			"description": "default description programmatically generated",
+			"value_type": "string"
+		}
+	},
+	{
+		"id": 4663785732,
+		"title": "Wild Fox Bustier Reversible Berry",
 		"metafield": {
 			"namespace": "features",
 			"key": "product",
