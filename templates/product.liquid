@@ -135,7 +135,13 @@
                 For more information on products with multiple options, visit:
                 - http://docs.shopify.com/support/your-website/themes/can-i-make-my-theme-use-products-with-multiple-options#update-product-liquid
                 {% endcomment %}
-                <select name="id" class="Select">
+
+                {% assign hide_default_title = false %}
+                {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+                    {% assign hide_default_title = true %}
+                {% endif %}
+
+                <select name="id" class="Select {% if hide_default_title %} is-hidden{% endif %}">
                     {% for variant in product.variants %}
                     {% if variant.available %}
 
