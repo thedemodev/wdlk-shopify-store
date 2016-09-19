@@ -196,15 +196,17 @@
             {% assign productFeatures = product.metafields.product %}
             {{ productFeatures['Product Features'] }}
 
-            <h3 class="Headline Headline--4">
-                {% if product.type == 'Tops' %}
-                    {{'products.product.fit_guide' | t}}
-                    {% else %}
-                    {{'products.product.fit_coverage_guide' | t}}
-                {% endif %}
-            </h3>
             {% assign productFit = product.metafields.product %}
-            {{ productFit['Product Fit & Guide'] }}
+            {% if productFit['Product Fit & Guide'] %}
+                <h3 class="Headline Headline--4">
+                    {% if product.type == 'Tops' %}
+                        {{'products.product.fit_guide' | t}}
+                        {% else %}
+                        {{'products.product.fit_coverage_guide' | t}}
+                    {% endif %}
+                </h3>
+                {{ productFit['Product Fit & Guide'] }}
+            {% endif %}
 
             <h3 class="Headline Headline--4">{{'products.product.marine_protection' | t}}</h3>
             {% assign marineProtectionList = shop.metafields.product %}
