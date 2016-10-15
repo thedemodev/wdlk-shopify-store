@@ -222,9 +222,9 @@
             <h2 class="Headline Headline--2">{{'products.product.material' | t}}</h2>
             {% comment %}
                 Render different descriptions for bikinis
-                or for clutches
+                or for pouches
             {% endcomment %}
-            {% if product.type == 'Clutch' %}
+            {% if product.type == 'Pouch' %}
                 {% assign materialProps = product.metafields.product %}
 
                 {% if materialProps['Material Description'] %}
