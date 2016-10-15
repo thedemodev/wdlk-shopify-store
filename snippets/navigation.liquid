@@ -3,6 +3,17 @@
         {% for link in linklists.main-menu.links %}
           {% assign child_list_handle = link.title | handleize %}
           {% if linklists[child_list_handle].links != blank %}
+            {% comment %}
+            Manually insert the Pouch product link
+            for mobile dives. The product curently does not
+            have a category to be shown on mobile.
+            {% endcomment %}
+            {% if forloop.index >= 3 and
+              forloop.index < 4 %}
+                <li class="Navigation-item Navigation-item--mobile">
+                    <a href="{{ all_products['flying-fish-bikini-pouch'].url }}" class="Navigation-link {% if link.active %} is-active{% endif %}">{{ all_products['flying-fish-bikini-pouch'].type }}</a>
+                </li>
+            {% endif %}
             <li class="Navigation-item has-dropdown" aria-haspopup="true">
               <a href="{{ link.url }}" class="Navigation-link {% if link.active %} is-active{% endif %}">
                 {{ link.title }}
