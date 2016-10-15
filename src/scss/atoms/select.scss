@@ -36,4 +36,8 @@
     &:hover {
         border-color: var(--input-hex-focus);
     }
+
+    &.is-hidden {
+        display: none;
+    }
 }

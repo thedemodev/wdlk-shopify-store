@@ -93,6 +93,81 @@ If you’re doing it right, you should always be confident in pushing master ont
 
 [Shopify Theme Development](https://robots.thoughtbot.com/shopify-theme-development)
 
+## Metafields
+Currently we are working with the postman app to edit and maintain
+the products metafields.
+
+To get a list of all the available metafields in the store, you can run the command `npm run product-data`.
+
+### Postman Setup
+1. Click Authorization and select Basic Auth from the Type dropdown.
+2. For Username and Password provide your store private API key and password respectively.
+
+### Shopify Metafields API
+You can find the complete Shopify Metafields API documentation under:
+[Metafields Docs](https://help.shopify.com/api/reference/metafield)
+
+#### Product Metafields
+The WDLK Ocean store has following custom metafields for its products:
+* `"key": "Product Features"` Which describes the main features of the product.
+* `"key": "Product Fit & Guide"` Fit and coverage guided is only used in the liquid template for bikinis. It could be extendable for garments in general.
+
+Custom metafield for everything but bikinis/garments.
+* `"key": "Material Description"`
+* `"key": "Material Composition"`
+* `"key": "Material Properties"`
+
+#### Global/Store Metafields
+The following store metafields are used in all products because the data
+describes the marine protection of every product.
+
+* `"key": "Marine Protection"`
+* `"key": "Fabric Description"`
+* `"key": "Fabric Composition"`
+* `"key": "Fabric Properties"`
+
+### Create New Product Metafield
+
+1. Run `npm run product-data` to get all the products in the shop.
+2. Verify the product #{id} in the generated **tasks/shopify-api/data/product/product-list.json**
+3. (Optional) verify the product metafields in Postman `GET /admin/products/#{id}/metafields.json
+`
+4. In Postman, open a new tab and enter the authorization information, as before.
+5. Select POST from the API actions dropdown, and enter the endpoint url for adding/updating a metafield: `https://wdkl-ocean.myshopify.com//admin/products/#{id}/metafields.json`.
+6. Click Body and select "raw"; from the dropdown select "JSON (application/json)."
+7. Send post it should look like these
+```
+{
+  "metafield": {
+    "namespace": "product",
+    "key": "Product Features",
+    "value": "Some content",
+    "value_type": "integer"
+  }
+}
+```
+8. Take note of the JSON syntax for posting a new product. For this tutorial we will copy the JSON of the Burton Custom Freestyle product.
+Add the JSON for your product in the Body of the request. The response should look something like this:
+
+```
+HTTP/1.1 201 Created
+{
+  "metafield": {
+    "id": 915396088,
+    "namespace": "product",
+    "key": "Product Features",
+    "value": "Some content",
+    "value_type": "integer",
+    "description": null,
+    "owner_id": 632910392,
+    "created_at": "2016-06-20T13:33:41-04:00",
+    "updated_at": "2016-06-20T13:33:41-04:00",
+    "owner_resource": "product"
+  }
+}
+```
+
+
 ## Photography Art Direction
 
 The banners for the home site stage are defined in 3 different breakpoints to deliver the best possible visual composition and site performance.
@@ -105,7 +180,7 @@ The banners for the home site stage are defined in 3 different breakpoints to de
 * Smart Phone : 380 x 568  (3:2)
 
 #### Half Banner
-* Desktop: 720 x 405 
+* Desktop: 720 x 405
 * Tablet: 384 x 512 (4:3)
 * Smart Phone : 568 x 320  (3:2)
 

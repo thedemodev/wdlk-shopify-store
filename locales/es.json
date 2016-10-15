@@ -309,7 +309,8 @@
       "marine_protection": "Protección Marina",
       "material": "Material",
       "composition": "Composition",
-      "fabric_features": "Propiedades del Material"
+      "fabric_features": "Propiedades dela Fabrica",
+      "material_features": "Propiedades del Material"
     }
   },
   "gift_cards": {

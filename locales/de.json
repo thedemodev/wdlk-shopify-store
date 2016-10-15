@@ -308,7 +308,8 @@
       "marine_protection": "Meeresschutz",
       "material": "Stoff",
       "composition": "Zusammensetzung",
-      "fabric_features": "Stoffeigenschaften"
+      "fabric_features": "Stoffeigenschaften",
+      "material_features": "Material Eigenschaften"
     }
   },
   "gift_cards": {

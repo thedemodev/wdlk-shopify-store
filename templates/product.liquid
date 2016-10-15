@@ -135,7 +135,13 @@
                 For more information on products with multiple options, visit:
                 - http://docs.shopify.com/support/your-website/themes/can-i-make-my-theme-use-products-with-multiple-options#update-product-liquid
                 {% endcomment %}
-                <select name="id" class="Select">
+
+                {% assign hide_default_title = false %}
+                {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+                    {% assign hide_default_title = true %}
+                {% endif %}
+
+                <select name="id" class="Select {% if hide_default_title %} is-hidden{% endif %}">
                     {% for variant in product.variants %}
                     {% if variant.available %}
 
@@ -196,15 +202,17 @@
             {% assign productFeatures = product.metafields.product %}
             {{ productFeatures['Product Features'] }}
 
-            <h3 class="Headline Headline--4">
-                {% if product.type == 'Tops' %}
-                    {{'products.product.fit_guide' | t}}
-                    {% else %}
-                    {{'products.product.fit_coverage_guide' | t}}
-                {% endif %}
-            </h3>
             {% assign productFit = product.metafields.product %}
-            {{ productFit['Product Fit & Guide'] }}
+            {% if productFit['Product Fit & Guide'] %}
+                <h3 class="Headline Headline--4">
+                    {% if product.type == 'Tops' %}
+                        {{'products.product.fit_guide' | t}}
+                        {% else %}
+                        {{'products.product.fit_coverage_guide' | t}}
+                    {% endif %}
+                </h3>
+                {{ productFit['Product Fit & Guide'] }}
+            {% endif %}
 
             <h3 class="Headline Headline--4">{{'products.product.marine_protection' | t}}</h3>
             {% assign marineProtectionList = shop.metafields.product %}
@@ -212,16 +220,41 @@
         </div>
         <div class="Product-teaser-description">
             <h2 class="Headline Headline--2">{{'products.product.material' | t}}</h2>
-            {% assign fabricDescription = shop.metafields.product %}
-            {{ fabricDescription['Fabric Description'] }}
+            {% comment %}
+                Render different descriptions for bikinis
+                or for clutches
+            {% endcomment %}
+            {% if product.type == 'Clutch' %}
+                {% assign materialProps = product.metafields.product %}
 
-            <h3 class="Headline Headline--4">{{'products.product.composition' | t}}</h3>
-            {% assign fabricComposition = shop.metafields.product %}
-            {{ fabricComposition['Fabric Composition'] }}
+                {% if materialProps['Material Description'] %}
+                    {{ materialProps['Material Description'] }}
+                {% endif %}
 
-            <h3 class="Headline Headline--4">{{'products.product.fabric_features' | t}}</h3>
-            {% assign fabricProperties = shop.metafields.product %}
-            {{ fabricProperties['Fabric Properties'] }}
+                {% if materialProps['Material Composition'] %}
+                    <h3 class="Headline Headline--4">{{'products.product.composition' | t}}</h3>
+                    {{ materialProps['Material Composition'] }}
+                {% endif %}
+
+                {% if materialProps['Material Properties'] %}
+                    <h3 class="Headline Headline--4">{{'products.product.material_features' | t}}</h3>
+                    {{ materialProps['Material Properties'] }}
+                {% endif %}
+
+            {% else %}
+                {% comment %}
+                    Here is the description for the swimwear
+                {% endcomment %}
+                {% assign fabricDescription = shop.metafields.product %}
+                {{ fabricDescription['Fabric Description'] }}
+                <h3 class="Headline Headline--4">{{'products.product.composition' | t}}</h3>
+                {% assign fabricComposition = shop.metafields.product %}
+                {{ fabricComposition['Fabric Composition'] }}
+
+                <h3 class="Headline Headline--4">{{'products.product.fabric_features' | t}}</h3>
+                {% assign fabricProperties = shop.metafields.product %}
+                {{ fabricProperties['Fabric Properties'] }}
+            {% endif %}
         </div>
         {% comment %}
         Starts the image loop at the 5th item and
