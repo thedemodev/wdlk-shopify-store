@@ -111,10 +111,11 @@ You can find the complete Shopify Metafields API documentation under:
 The WDLK Ocean store has following custom metafields for its products:
 * `"key": "Product Features"` Which describes the main features of the product.
 * `"key": "Product Fit & Guide"` Fit and coverage guided is only used in the liquid template for bikinis. It could be extendable for garments in general.
+
+Custom metafield for everything but bikinis/garments.
 * `"key": "Material Description"`
 * `"key": "Material Composition"`
 * `"key": "Material Properties"`
- Custom metafield for everything but bikinis.
 
 #### Global/Store Metafields
 The following store metafields are used in all products because the data
