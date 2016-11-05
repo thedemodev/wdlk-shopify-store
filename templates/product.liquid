@@ -150,11 +150,11 @@
                 {% endcomment %}
 
                 {% assign hide_default_title = false %}
-                {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+                {% if product.variants.size == 1 and product.variants.first.title contains 'Default Title' %}
                     {% assign hide_default_title = true %}
                 {% endif %}
 
-                <select name="id" class="Select {% if hide_default_title %} is-hidden{% endif %}">
+                <select name="id" class="Select {% if hide_default_title %}is-hidden{% endif %}">
                     {% for variant in product.variants %}
                     {% if variant.available %}
 
