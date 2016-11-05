@@ -111,9 +111,22 @@
                 {{ product.description }}
             </p>
 
-            <label class="Link" for="lightbox">
-                {{'products.product.label_size_chart' | t}}
-            </label>
+            {% comment %}
+                LIGHTBOX
+                Verify if the product contains a Size variant
+                in order to display the sizing chart lightbox.
+            {% endcomment %}
+            {% assign SizeOption = 'Size'  %}
+            {% for option in product.options %}
+                {% if option == SizeOption %}
+                <label class="Link" for="lightbox">
+                    {{'products.product.label_size_chart' | t}}
+                </label>
+                {% else %}
+                    {% break %}
+                {% endif %}
+            {% endfor %}
+            {% comment %}END LIGHTBOX{% endcomment %}
 
             {% comment %}
             ID addToCartForm is a selector for the ajax cart plugin
@@ -137,11 +150,11 @@
                 {% endcomment %}
 
                 {% assign hide_default_title = false %}
-                {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+                {% if product.variants.size == 1 and product.variants.first.title contains 'Default Title' %}
                     {% assign hide_default_title = true %}
                 {% endif %}
 
-                <select name="id" class="Select {% if hide_default_title %} is-hidden{% endif %}">
+                <select name="id" class="Select {% if hide_default_title %}is-hidden{% endif %}">
                     {% for variant in product.variants %}
                     {% if variant.available %}
 
