@@ -18,9 +18,6 @@ export default function timber () {
         timberPath + '/money-format.js',
         timberPath + '/cache-selectors.js',
         timberPath + '/init.js',
-        timberPath + '/accessible-nav.js',
-        timberPath + '/drawers-init.js',
-        timberPath + '/mobile-nav-toggle.js',
         timberPath + '/get-hash.js',
         timberPath + '/product-page.js',
         timberPath + '/product-image-switch.js',
@@ -28,9 +25,7 @@ export default function timber () {
         timberPath + '/responsive-videos.js',
         timberPath + '/collection-views.js',
         timberPath + '/login-forms.js',
-        timberPath + '/reset-password-success.js',
-        timberPath + '/drawers.js',
-        timberPath + '/ajax-cart.js'
+        timberPath + '/reset-password-success.js'
     ];
 
     readFiles(files, (err, data) => {
