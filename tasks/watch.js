@@ -9,7 +9,6 @@ import log from './log';
 export default function watchFolders () {
     var rootFolder = resolve('./src/');
     var timberFolder = `${rootFolder}/scripts/timber`;
-    var liquifiedFolder = `${rootFolder}/scripts/liquified`;
     var sassFolder = `${rootFolder}/scss`;
     var bundleFolder = `${rootFolder}/scripts/modules`;
 
@@ -27,7 +26,6 @@ export default function watchFolders () {
 
         monitor.on('changed', (file, curr, prev) => {
             findTask(timberFolder, file, timber);
-            findTask(liquifiedFolder, file, timber);
             findTask(sassFolder, file, css, 'scss');
             findTask(bundleFolder, file, bundle);
             if (basename(file) === 'index.js') {

@@ -1112,22 +1112,25 @@ timber.resetPasswordSuccess = function() {
 
 function fbqEvents () {
 	var addToCartBtn = document.querySelector('.js_fbqAddToCart');
+	var test = {{ 'shop.currency' | json}} ;
 
-	addToCartBtn.addEventListener('click', function (e) {
-		console.log('triggering the event on click', e);
-		fbq('track', 'AddToCart', {
-			// content_name: 'Really Fast Running Shoes',
-			// content_category: 'Apparel & Accessories > Shoes',
-			// content_ids: ['1234'],
-			// content_type: 'product',
-			// value: 4.99,
-			// currency: {{shop.currency}};
-		});
+	// addToCartBtn.addEventListener('click', function (e) {
+	// 	console.log('triggering the event on click', e);
+	// 	fbq('track', 'AddToCart', {
+	// 		// content_name: 'Really Fast Running Shoes',
+	// 		// content_category: 'Apparel & Accessories > Shoes',
+	// 		// content_ids: ['1234'],
+	// 		// content_type: 'product',
+	// 		// value: 4.99,
+	// 		// currency: {{shop.currency}};
+	// 	});
 
-	});
+	// });
 	console.log('the script is working so far', fbq);
-	console.log('liquid is on', {{shop.currency}});
+	console.log('liquid is on',  test);
 }
+
+fbqEvents();
 
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";function _interopRequireDefault(i){return i&&i.__esModule?i:{"default":i}}var _rAf=require("./polyfills/rAf"),_rAf2=_interopRequireDefault(_rAf),_stickyNavigation=require("./modules/sticky-navigation"),_stickyNavigation2=_interopRequireDefault(_stickyNavigation),_smoothScrolling=require("./modules/smooth-scrolling"),_smoothScrolling2=_interopRequireDefault(_smoothScrolling),_cookieNotification=require("./modules/cookie-notification"),_cookieNotification2=_interopRequireDefault(_cookieNotification),_numberInput=require("./modules/number-input"),_numberInput2=_interopRequireDefault(_numberInput);(0,_rAf2["default"])(),(0,_smoothScrolling2["default"])(),(0,_stickyNavigation2["default"])(),(0,_cookieNotification2["default"])(),(0,_numberInput2["default"])();

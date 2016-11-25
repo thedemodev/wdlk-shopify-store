@@ -7,11 +7,8 @@ export default function timber () {
     //-- Timber is the legacy framework with which
     //-- the project was started.
     //-- Libraries, like the name says it are external libraries.
-    //-- Liquified are js files that contains liquid objects.
-    //-- not necessarely nice, but the best solution so far.
     let timberPath = resolve('./src/scripts/timber');
     let libsPath = resolve('./src/scripts/libs');
-    let liquified = resolve('./src/scripts/liquified');
     let outputFile = resolve('./src/scripts/timber.js.liquid');
 
     let files = [
@@ -31,8 +28,7 @@ export default function timber () {
         `${timberPath}/responsive-videos.js`,
         `${timberPath}/collection-views.js`,
         `${timberPath}/login-forms.js`,
-        `${timberPath}/reset-password-success.js`,
-        `${liquified}/facebook-pixel-events.js`
+        `${timberPath}/reset-password-success.js`
     ];
 
     readFiles(files, (err, data) => {
