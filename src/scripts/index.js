@@ -4,6 +4,7 @@ import smoothScrolling from './modules/smooth-scrolling';
 import cookieNotification from './modules/cookie-notification';
 import numberInput from './modules/number-input';
 
+
 rAf();
 smoothScrolling();
 stickyNavigation();
