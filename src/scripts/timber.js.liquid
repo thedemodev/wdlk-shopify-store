@@ -1121,9 +1121,10 @@ function fbqEvents () {
 			// content_ids: ['1234'],
 			// content_type: 'product',
 			// value: 4.99,
-			currency: {{shop.currency}};
+			// currency: {{shop.currency}};
 		});
 
 	});
 	console.log('the script is working so far', fbq);
+	console.log('liquid is on', {{shop.currency}});
 }
