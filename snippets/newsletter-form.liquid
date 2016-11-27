@@ -9,7 +9,7 @@
     <div class="NewsletterForm-content">
         <h3 class="Headline Headline--4">{{ 'layout.footer.newsletter_title' | t }}</h3>
         <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" name="EMAIL" class="InputField" id="mce-EMAIL" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
-        <button type="submit" value="{{ 'general.newsletter_form.submit' | t }}" name="subscribe" id="mc-embedded-subscribe" class="Btn">{{ 'general.newsletter_form.submit' | t }}</button>
+        <button type="submit" value="{{ 'general.newsletter_form.submit' | t }}" name="subscribe" id="mc-embedded-subscribe" class="Btn js_fbqNewsLead">{{ 'general.newsletter_form.submit' | t }}</button>
     	<div id="mce-responses">
     		<div class="response" id="mce-error-response" style="display:none"></div>
     		<div class="response" id="mce-success-response" style="display:none"></div>
