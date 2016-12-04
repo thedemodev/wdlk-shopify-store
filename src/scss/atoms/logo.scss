@@ -4,7 +4,8 @@
 }
 
 .Logo {
-    line-height: 1;
+    padding-top: 1rem;
+    margin: 0;
 
     &-img {
         width: var(--logo-width);
@@ -15,8 +16,5 @@
         &:hover {
             fill: var(--link-hex-hover-color);
         }
-
-        //-- For tablet styles
-        //height: var(--logo-height);
     }
 }

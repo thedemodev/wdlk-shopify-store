@@ -13,6 +13,7 @@
         top: calc(var(--burger-size-height) - (var(--burger-line-height) / 2) );
         bottom: calc(var(--burger-size-height) - (var(--burger-line-height) / 2) );
     }
+    text-align: left;
     cursor: pointer;
 
     @include media (medium) {

@@ -13,6 +13,8 @@
     z-index: 2;
     width: 100vw;
     height: calc(100vh - var(--nav-height));
+    font-size: 0;
+    line-height: 0;
     text-align: center;
     opacity: 0;
     background-color: var(--navi-mobile-bg-color);
@@ -21,10 +23,11 @@
 
     @include media (medium) {
         position: static;
+        flex-grow: 2;
         width: auto;
         height: 100%;
         opacity: 1;
-        text-align: left;
+        text-align: center;
         background-color: transparent;
         pointer-events: auto;
     }
@@ -58,7 +61,7 @@
             transform: none;
 
             > .Navigation-item  {
-                padding: 2.8rem 2rem;
+                padding: 3.4rem 2rem 0;
             }
         }
     }
@@ -93,7 +96,7 @@
                     > .Navigation-link {
                         @include create-pointer(var(--navi-pointer-size), var(--navi-bg-color)) {
                             position: absolute;
-                            top: calc(var(--navi-pointer-size) * 3);
+                            bottom: calc(var(--navi-pointer-size) * -2);
                             right: 50%;
                             border: solid var(--nav-border-color);
                             border-width: 1px 0px 0px 1px ;
