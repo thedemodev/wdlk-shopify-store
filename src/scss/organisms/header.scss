@@ -13,7 +13,7 @@
     left: 0;
     z-index: 5;
     align-items: center;
-    height: calc(var(--nav-height) - 1);
+    height: var(--nav-height);
     padding: 0 var(--base-spacing);
 
     &:before {
@@ -29,7 +29,7 @@
     }
 
     @include media(medium) {
-        height: var(--nav-height);
+        height: var(--nav-height-medium);
         padding: 0 calc(var(--base-spacing) * 2);
 
         &::before {

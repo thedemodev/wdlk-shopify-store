@@ -19,6 +19,7 @@
         }
 
         @include media (medium) {
+            padding-top: var(--nav-height-medium);
             align-items: center;
         }
 
