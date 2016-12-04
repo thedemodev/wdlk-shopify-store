@@ -9,7 +9,10 @@
 
     &-list {
         display: none;
-        margin-right: calc(var(--base-spacing) / 2);
+        margin: {
+            top: 1rem;
+            right: 1rem;
+        }
 
         @include media (medium) {
             display: inline-block;

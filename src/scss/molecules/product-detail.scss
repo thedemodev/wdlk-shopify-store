@@ -2,11 +2,8 @@
     &-display {
         @include grid-wrapper(var(--screen-xl));
 
-        @include media (medium) {
-            align-items: center;
-        }
-
         position: relative;
+        padding-top: var(--nav-height);
         background-color: var(--background-color-tertiary);
 
         &::after {
@@ -20,6 +17,12 @@
             background-color: var(--background-color-tertiary);
             transform: translateX(-50%);
         }
+
+        @include media (medium) {
+            padding-top: var(--nav-height-medium);
+            align-items: center;
+        }
+
     }
 
     &-detail {

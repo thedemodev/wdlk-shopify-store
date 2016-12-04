@@ -34,7 +34,7 @@
     {% comment %}
       Add the page template as a class for easy page or template specific styling.
     {% endcomment %}
-    <body class="Page Page--{{ page_title | handle }}{% if customer %} customer-logged-in {% endif %}{% if template == 'index' %} js_scroller{% endif %}" >
+    <body class="Page{% if customer %} customer-logged-in {% endif %}{% if template == 'index' %}js_scroller{% endif %}" >
         {% comment %}
           SVG Icon Container Snippet
         {% endcomment %}

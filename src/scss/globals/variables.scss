@@ -2,7 +2,8 @@
 :root {
     --base-spacing: 2rem;
     --base-margin: 1rem;
-    --nav-height: 8rem;
+    --nav-height: 7rem;
+    --nav-height-medium: 8rem;
 }
 $base-spacing: 4rem;
 
@@ -19,10 +20,16 @@ $form-base-height: 4rem;
     --box-base-padding: calc(var(--form-base-padding) + 1.6rem);
 }
 
-//-- Typography
+//-- TYPOGRAPHY
 //-- Increments the size of the typography
 //-- according to the device width.
 :root {
     --typo-tablet-factor: 1.444444444;
     --typo-desktop-factor: 1.292307692;
+}
+
+//-- CSS INLINE IMAGES
+
+:root {
+	--video-brand-poster: url('https://cdn.shopify.com/s/files/1/0742/2733/files/WDLK_Brand-Video-Poster.jpg?1926000932383074848');
 }
