@@ -25,13 +25,13 @@
         width: 100vw;
         height: inherit;
         border-bottom: 1px solid var(--nav-border-color);
-        background-color: var(--background-color);
+        background: var(--navi-bg-color);
         transition: transform .4s ease, opacity .4s ease;
     }
 
     @include media(medium) {
         padding: 0 calc(var(--base-spacing) * 2);
-        
+
         &::before {
             border-bottom-width: 0;
             opacity: 0;

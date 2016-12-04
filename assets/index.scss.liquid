@@ -2087,8 +2087,8 @@ input[type="number"]::-webkit-outer-spin-button {
   display: block;
   padding: 22px 20px 21px;
   padding: 2.2rem 2rem 2.1rem;
-  margin: 140px 20px 40px;
-  margin: 14rem 2rem 40px;
+  margin: 120px 20px 40px;
+  margin: 12rem 2rem 40px;
   text-align: center;
   overflow: hidden;
   background-color: #FAF5F4;
@@ -2347,7 +2347,7 @@ input[type="number"]::-webkit-outer-spin-button {
       margin-bottom: 4rem; }
   .Container--brand {
     min-height: 100vh;
-    background-image: url("https://cdn.shopify.com/s/files/1/0742/2733/t/5/assets/WDLK_Brand-Video-Poster.jpg");
+    background-image: url("https://cdn.shopify.com/s/files/1/0742/2733/files/WDLK_Brand-Video-Poster.jpg?1926000932383074848");
     background-size: cover; }
     @media (min-width: 770px) {
       .Container--brand {
@@ -2434,7 +2434,8 @@ input[type="number"]::-webkit-outer-spin-button {
     width: 100vw;
     height: inherit;
     border-bottom: 1px solid #DEDFE0;
-    background-color: #ffffff;
+    background: #ffffff;
+    background: rgba(255, 255, 255, 0.98);
     transition: -webkit-transform .4s ease, opacity .4s ease;
     -webkit-transition: -webkit-transform .4s ease, opacity .4s ease;
     transition: opacity .4s ease, -webkit-transform .4s ease;
@@ -2470,49 +2471,45 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: auto;
   overflow: hidden; }
 
-@media (min-width: 770px) {
-  .ProductPage .Carousel {
-    max-height: 720px; } }
-
-@media (min-width: 770px) and (max-width: 1024px) {
-  .ProductPage .Carousel {
-    max-height: 512px; }
+.ProductPage {
+  margin-top: 80px;
+  margin-top: 8rem; }
+  @media (min-width: 770px) {
+    .ProductPage {
+      margin-top: 0; } }
+  @media (min-width: 770px) {
+    .ProductPage .Carousel {
+      max-height: 720px; } }
+  @media (min-width: 770px) and (max-width: 1024px) {
+    .ProductPage .Carousel {
+      max-height: 512px; }
+      .ProductPage .Carousel-img {
+        height: 512px; } }
+  @media (min-width: 1024px) {
+    .ProductPage .Carousel-item {
+      height: 100%; }
     .ProductPage .Carousel-img {
-      height: 512px; } }
-
-@media (min-width: 1024px) {
-  .ProductPage .Carousel-item {
-    height: 100%; }
-  .ProductPage .Carousel-img {
-    height: 720px;
-    max-width: 150%; } }
-
-@media (min-width: 1024px) and (max-width: 1440px) {
-  .ProductPage .Carousel-img {
-    position: absolute;
-    top: 0;
-    right: 50%;
-    -webkit-transform: translateX(50%);
-            transform: translateX(50%); } }
-
-@media (min-width: 770px) {
-  .ProductPage .Carousel-btn {
-    display: none; }
-    .ProductPage .Carousel-btn:checked ~ .Carousel-btn--label {
-      display: none; } }
-
-.ProductPage .Select,
-.ProductPage .Qty-input {
-  margin-bottom: 10px;
-  margin-bottom: 1rem; }
+      height: 720px;
+      max-width: 150%; } }
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    .ProductPage .Carousel-img {
+      position: absolute;
+      top: 0;
+      right: 50%;
+      -webkit-transform: translateX(50%);
+              transform: translateX(50%); } }
+  @media (min-width: 770px) {
+    .ProductPage .Carousel-btn {
+      display: none; }
+      .ProductPage .Carousel-btn:checked ~ .Carousel-btn--label {
+        display: none; } }
+  .ProductPage .Select,
+  .ProductPage .Qty-input {
+    margin-bottom: 10px;
+    margin-bottom: 1rem; }
 
 .Page {
-  margin-top: 80px;
-  margin-top: 8rem;
   text-align: center; }
-  @media (min-width: 770px) {
-    .Page {
-      margin-top: 0; } }
   .Page-copy {
     max-width: 768px;
     padding-right: 40px;
