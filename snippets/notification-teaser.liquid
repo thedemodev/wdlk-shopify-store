@@ -5,11 +5,12 @@
 	{{'general.notification.caption' | t }}
 {% endcapture %}
 
-{% if notificationTitle != blank or notificationCaption != blank %}
+{% if notificationTitle != blank and notificationCaption != blank %}
 	<figure class="Notification">
 		<figcaption>
 			{{notificationTitle}}
 			{{notificationCaption}}
+			{{'general.notification.code' | t }}
 		</figcaption>
 	</figure>
 {% endif %}
