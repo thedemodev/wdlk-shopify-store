@@ -1,10 +1,15 @@
-{% unless
-	'general.notification.title' == blank
-%}
+{% capture notificationTitle %}
+	{{'general.notification.title' | t }}
+{% endcapture %}
+{% capture notificationCaption %}
+	{{'general.notification.caption' | t }}
+{% endcapture %}
+
+{% if notificationTitle != blank or notificationCaption != blank %}
 	<figure class="Notification">
 		<figcaption>
-			{{'general.notification.title' | t }}
-			{{'general.notification.caption' | t }}
+			{{notificationTitle}}
+			{{notificationCaption}}
 		</figcaption>
 	</figure>
-{% endunless%}
+{% endif %}
