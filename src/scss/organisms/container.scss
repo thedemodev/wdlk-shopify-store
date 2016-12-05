@@ -11,6 +11,7 @@
         left: var(--base-spacing);
     }
     overflow: hidden;
+    text-align: center;
 
     @include media (medium) {
         padding: {

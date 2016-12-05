@@ -1,0 +1,10 @@
+{% unless
+	'general.notification.title' == blank
+%}
+	<figure class="Notification">
+		<figcaption>
+			{{'general.notification.title' | t }}
+			{{'general.notification.caption' | t }}
+		</figcaption>
+	</figure>
+{% endunless%}

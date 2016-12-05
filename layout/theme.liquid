@@ -34,23 +34,25 @@
     {% comment %}
       Add the page template as a class for easy page or template specific styling.
     {% endcomment %}
-    <body class="Page{% if customer %} customer-logged-in {% endif %}{% if template == 'index' %}js_scroller{% endif %}" >
-        {% comment %}
-          SVG Icon Container Snippet
-        {% endcomment %}
-        {% include 'icon-container' %}
-        {% comment %} Header {% endcomment %}
-        {% include 'header' %}
-        {% comment %} MAIN LAYOUT CONTENT {% endcomment %}
-        {{ content_for_layout }}
-        {% comment %} Newsletter Form {% endcomment %}
-        {% include 'newsletter-form' %}
-        {% comment %} Footer {% endcomment %}
-        {% include 'footer' %}
-        {% comment %} Quick Cart {% endcomment %}
-        {% include 'cart-quick' %}
-        {% comment %} Cookie Notification Bar {% endcomment %}
-        {% include 'cookie-notification' %}
+    <body>
+        {% comment %} NOTIFICATION TEASER {% endcomment %}
+        {% include 'notification-teaser' %}
+        <div class="Layout{% if customer %} customer-logged-in {% endif %}{% if template == 'index' %}js_scroller{% endif %}">
+            {% comment %} Header {% endcomment %}
+            {% include 'header' %}
+            {% comment %} MAIN LAYOUT CONTENT {% endcomment %}
+            {{ content_for_layout }}
+            {% comment %} Newsletter Form {% endcomment %}
+            {% include 'newsletter-form' %}
+            {% comment %} Footer {% endcomment %}
+            {% include 'footer' %}
+            {% comment %} Quick Cart {% endcomment %}
+            {% include 'cart-quick' %}
+            {% comment %} Cookie Notification Bar {% endcomment %}
+            {% include 'cookie-notification' %}
+            {% comment %} SVG Icon Container Snippet {% endcomment %}
+            {% include 'icon-container' %}
+        </div>
 
         <script src="{{ 'index.js' | asset_url }}" async ></script>
         {% comment %}
