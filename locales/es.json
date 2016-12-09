@@ -35,11 +35,10 @@
         "teaser_alt": "Woodlike Ocean was born from the ocean. Discover more about the brand"
     },
     "notification": {
-        "x-mas-title": "30% Off Discount Gift:",
-        "x-mas-caption": "enter code",
-        "x-mas-code": "HAPPYOCEAN"
+        "title": "30% Off Discount Gift:",
+        "caption": "enter code:",
+        "code": "HAPPYOCEAN"
     }
-
   },
   "blogs": {
     "article": {

@@ -2438,12 +2438,9 @@ input[type="number"]::-webkit-outer-spin-button {
           justify-content: space-between;
   max-width: 100%;
   margin: auto;
-  box-sizing: border-box;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
+  position: relative;
   z-index: 5;
+  box-sizing: border-box;
   -webkit-align-items: center;
       -ms-flex-align: center;
           -webkit-box-align: center;
@@ -2451,7 +2448,9 @@ input[type="number"]::-webkit-outer-spin-button {
   height: 70px;
   height: 7rem;
   padding: 0 20px;
-  padding: 0 2rem; }
+  padding: 0 2rem;
+  margin-bottom: -70px;
+  margin-bottom: -7rem; }
   .Header:before {
     content: "";
     position: absolute;
@@ -2470,7 +2469,8 @@ input[type="number"]::-webkit-outer-spin-button {
   @media (min-width: 770px) {
     .Header {
       height: 8rem;
-      padding: 0 4rem; }
+      padding: 0 4rem;
+      margin-bottom: -8rem; }
       .Header:before {
         border-bottom: solid #DEDFE0;
         border-bottom-width: 0;
@@ -2482,6 +2482,12 @@ input[type="number"]::-webkit-outer-spin-button {
         opacity: 1;
         -webkit-transform: none;
                 transform: none; } }
+  .Header--sticky {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    margin-bottom: 0; }
 
 .Stage {
   display: -webkit-flex;

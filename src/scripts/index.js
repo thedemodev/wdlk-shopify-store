@@ -6,6 +6,8 @@ import numberInput from './modules/number-input';
 import fbqEvents from './modules/facebook-pixel-events';
 
 
+//-- Todo: include onload methode
+
 rAf();
 smoothScrolling();
 stickyNavigation();

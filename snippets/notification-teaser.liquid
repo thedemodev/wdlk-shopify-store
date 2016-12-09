@@ -6,6 +6,7 @@
 {% endcapture %}
 
 {% if notificationTitle != blank and notificationCaption != blank %}
+	{% assign notificationIsActive = notificationTitle %}
 	<figure class="Notification">
 		<figcaption>
 			{{notificationTitle}}
