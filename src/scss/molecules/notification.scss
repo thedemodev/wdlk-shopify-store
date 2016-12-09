@@ -1,0 +1,28 @@
+:root {
+	--notification-upper-spacing: 1.6rem;
+}
+
+.Notification {
+	@include grid-wrapper(undefined, center);
+	position: relative;
+	padding: var(--notification-upper-spacing) var(--base-spacing) calc(var(--notification-upper-spacing) / 2);
+	color: var(--typo-hex--tertiary);
+	text-align: center;
+	background-color: var(--background-color-contrast);
+
+	&-state {
+		display: none;
+	}
+
+	&-link {
+		position: absolute;
+		top: var(--notification-upper-spacing);
+		right: var(--notification-upper-spacing);
+		width: calc(var(--base-spacing) * 1.5);
+		height: calc(var(--base-spacing) * 1.5);
+		font-size: var(--disable-icons);
+		line-height: .5;
+		text-align: right;
+	}
+
+}
