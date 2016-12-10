@@ -11,18 +11,17 @@ import reporter from 'postcss-reporter';
 import log from './log';
 
 export default function css () {
-    const LIQUIDFONTFILE = resolve('./src/scss/atoms/font-face.scss.liquid');
-    const SRCFILE   = resolve('./src/scss/index.scss');
-    const BUILDFILE = resolve('./assets/index.scss.liquid');
-    const LIBSPATH  = resolve('./src/scss/libs');
+    const srcFile   = resolve('./src/scss/index.scss');
+    const buildFile = resolve('./assets/index.scss.liquid');
+    const time = new Date();
 
-    const SCSS = sass.renderSync({
-        file: SRCFILE,
+    const scss = sass.renderSync({
+        file: srcFile,
         outputStyle: 'nested',
         sourceMap: true
     });
 
-    const PROCESSOR = [
+    const processor = [
         autoprefixer({ browsers: ['last 2 versions']}),
         cssnext(),
         reporter({
@@ -34,23 +33,19 @@ export default function css () {
             })
     ];
 
-
-    const HANDLEEXTERNALFILE = cb => {
-        readFile(LIQUIDFONTFILE, 'utf8', (err, data) => {
+    const handleExtFile = (file, cb) => {
+        readFile(file, 'utf8', (err, data) => {
              cb(data);
         })
     };
 
-    let futureCSS = postcss(PROCESSOR).process(SCSS.css, {parcer: syntax})
+    let futureCSS = postcss(processor).process(scss.css, {parcer: syntax})
     .then(result => {
-        HANDLEEXTERNALFILE(data => {
-            console.log(result.messages.toString());
-            const RESULTFILE = `${data}${result}`;
-            writeFile(BUILDFILE, RESULTFILE);
-            console.log(log.info('[CSS build task]: ') + 'Liquid syntax css (font-face.scss.liquid) was successfully concatenated');
+        writeFile(buildFile, result, err => {
+            if (err) throw err;
+            console.log(log.info(`${time} [CSS build task]:`) + 'compilation and transformation was successfully completed');
         });
-        console.log(log.info('[CSS build task]: ') + 'compilation and transformation was successfully completed');
     }, err => {
-            console.error(log.error('[CSS build task error]: '), err);
+            console.error(log.info(`${time} [CSS build task]:`), err);
     });
 }
