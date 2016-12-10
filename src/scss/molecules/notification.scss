@@ -5,13 +5,31 @@
 .Notification {
 	@include grid-wrapper(undefined, center);
 	position: relative;
-	padding: var(--notification-upper-spacing) var(--base-spacing) calc(var(--notification-upper-spacing) / 2);
-	color: var(--typo-hex--tertiary);
+	z-index: 6;
+	max-height: 0;
 	text-align: center;
+	color: var(--typo-hex--tertiary);
 	background-color: var(--background-color-contrast);
+	transform: tranlate3d(0, 0, 0);
+	perspective: 1000;
+	transition: max-height var(--transition-speed) ease-in-out;
+
+	&.is-active {
+		max-height: 12vh;
+	}
 
 	&-state {
 		display: none;
+
+		&:checked {
+			~ .Notification {
+				max-height: 0;
+			}
+		}
+	}
+
+	&-content {
+		padding: var(--notification-upper-spacing) var(--base-spacing) calc(var(--notification-upper-spacing) / 2);
 	}
 
 	&-link {

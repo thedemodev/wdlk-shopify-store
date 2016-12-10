@@ -2362,13 +2362,26 @@ input[type="number"]::-webkit-outer-spin-button {
   max-width: 100%;
   margin: auto;
   position: relative;
-  padding: 16px 20px 8px;
-  padding: 1.6rem 2rem 0.8rem;
-  color: #ffffff;
+  z-index: 6;
+  max-height: 0;
   text-align: center;
-  background-color: #D2BC7A; }
+  color: #ffffff;
+  background-color: #D2BC7A;
+  -webkit-transform: tranlate3d(0, 0, 0);
+          transform: tranlate3d(0, 0, 0);
+  -webkit-perspective: 1000;
+          perspective: 1000;
+  -webkit-transition: max-height .30s ease-in-out;
+  transition: max-height .30s ease-in-out; }
+  .Notification.is-active {
+    max-height: 12vh; }
   .Notification-state {
     display: none; }
+    .Notification-state:checked ~ .Notification {
+      max-height: 0; }
+  .Notification-content {
+    padding: 16px 20px 8px;
+    padding: 1.6rem 2rem 0.8rem; }
   .Notification-link {
     position: absolute;
     top: 16px;
