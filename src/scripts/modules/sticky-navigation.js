@@ -2,34 +2,36 @@ export default function stickyNavigation () {
     //-- Read Values Only !!!!!
     //-- First keep track of the scroll value
     //-- without triggering unnecessary draw calls
-    const NAV_NODE = document.getElementsByClassName('js_sticky-nav')[0];
-    const NAV_NODE_HEIGHT = NAV_NODE.offsetHeight;
+    const navigation = document.querySelector('.js_sticky-nav');
+    const navigationHeight = navigation.offsetHeight;
     let lastScrollPositionY = 0;
     let ticking = false;
 
-    const ON_SCROLL = () => {
+    console.log(navigationHeight, 'this is the height');
+
+    const onScroll = () => {
         lastScrollPositionY = window.scrollY;
-        REQUEST_TICK();
+        requestTick();
     }
 
     //-- Triggers requestAnimationFrame when it's necessary only
-    const  REQUEST_TICK = () => {
+    const  requestTick = () => {
         if (!ticking) {
-            requestAnimationFrame(UPDATE);
+            requestAnimationFrame(update);
         }
         ticking = true;
     }
 
     //-- Visual Updates Callback
     //-- Use rAf to handle visual updates and write values
-    const UPDATE = () => {
+    const update = () => {
         //-- Pull the latest value when we need it
         let currentScrollPositionY = lastScrollPositionY;
 
-        NAV_NODE.classList.toggle('is-undocked', currentScrollPositionY >= NAV_NODE_HEIGHT);
+        navigation.classList.toggle('is-undocked', currentScrollPositionY >= navigationHeight);
 
         ticking = false;
     }
 
-    window.addEventListener('scroll', ON_SCROLL, false);
+    window.addEventListener('scroll', onScroll, false);
 }
