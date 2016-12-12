@@ -5,6 +5,7 @@
     --nav-height: 7rem;
     --nav-height-medium: 8rem;
 }
+
 $base-spacing: 4rem;
 
 //-- FORMS
@@ -34,11 +35,14 @@ $form-base-height: 4rem;
 	--video-brand-poster: url('https://cdn.shopify.com/s/files/1/0742/2733/files/WDLK_Brand-Video-Poster.jpg?1926000932383074848');
 }
 
-
 //-- GLOBAL TRANSITIONS
-
 :root {
     --transition-speed: .30s;
     --transition-speed-double: .70s;
     --timing: cubic-bezier(0.895, 0.030, 0.685, 0.220);
+}
+
+//-- TOUCH MEASUREMENTS
+:root {
+    --touch-target-size: 4rem;
 }

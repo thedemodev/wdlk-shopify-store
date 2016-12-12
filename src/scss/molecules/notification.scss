@@ -1,7 +1,3 @@
-:root {
-	--notification-upper-spacing: 1.6rem;
-}
-
 .Notification {
 	@include grid-wrapper(undefined, center);
 	position: relative;
@@ -29,21 +25,27 @@
 		}
 	}
 
-	&-copy {
-		font-family: 'quattrocento';
-		padding: var(--notification-upper-spacing) var(--base-spacing) calc(var(--notification-upper-spacing) / 2);
+	&-content {
+		padding: 1.6rem 3rem .8rem;
+		margin: {
+			top: 0;
+			bottom: 0;
+		};
 	}
 
 	&-link {
 		position: absolute;
-		top: var(--notification-upper-spacing);
-		right: var(--notification-upper-spacing);
-		width: calc(var(--base-spacing) * 1.5);
-		height: calc(var(--base-spacing) * 1.5);
-		font-size: var(--disable-icons);
-		line-height: .5;
-		text-align: right;
+		top: 1rem;
+		right: 1rem;
+		box-sizing: border-box;
+		width: var(--touch-target-size);
+		height: var(--touch-target-size);
+		padding-top: 1rem;
+		direction: rtl;
 		cursor: pointer;
+
+
+		@include generate-x(2rem, .1rem);
 	}
 
 }
