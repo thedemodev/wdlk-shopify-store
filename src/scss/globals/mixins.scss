@@ -74,6 +74,26 @@
     }
 }
 
+@mixin generate-x ($length, $height: .2rem, $color: var(--typo-hex--tertiary)) {
+    &::before,
+    &::after {
+        content: "";
+        display: block;
+        height: $height;
+        width: $length;
+        background-color: $color;
+        transform-origin: middle;
+    }
+
+    &::before {
+        transform: rotate(45deg);
+    }
+
+    &::after {
+        transform: rotate(135deg);
+    }
+}
+
 
 // =======================================
 // GRID CREATOR

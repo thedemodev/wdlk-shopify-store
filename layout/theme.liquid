@@ -34,11 +34,9 @@
     {% comment %}
       Add the page template as a class for easy page or template specific styling.
     {% endcomment %}
-    <body class="Page{% if customer %} customer-logged-in {% endif %}{% if template == 'index' %}js_scroller{% endif %}" >
-        {% comment %}
-          SVG Icon Container Snippet
-        {% endcomment %}
-        {% include 'icon-container' %}
+    <body class="Layout{% if customer %} customer-logged-in{% endif %}{% if template == 'index' %} js_scroller{% endif %}">
+        {% comment %} NOTIFICATION TEASER {% endcomment %}
+        {% include 'notification-teaser' %}
         {% comment %} Header {% endcomment %}
         {% include 'header' %}
         {% comment %} MAIN LAYOUT CONTENT {% endcomment %}
@@ -51,7 +49,8 @@
         {% include 'cart-quick' %}
         {% comment %} Cookie Notification Bar {% endcomment %}
         {% include 'cookie-notification' %}
-
+        {% comment %} SVG Icon Container Snippet {% endcomment %}
+        {% include 'icon-container' %}
         <script src="{{ 'index.js' | asset_url }}" async ></script>
         {% comment %}
             If you store has customer accounts disabled, you can remove the following JS file

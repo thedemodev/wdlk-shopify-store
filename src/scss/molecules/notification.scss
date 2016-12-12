@@ -1,0 +1,60 @@
+.Notification {
+	@include grid-wrapper(undefined, center);
+	position: relative;
+	z-index: 6;
+	max-height: 0;
+	overflow: hidden;
+	text-align: center;
+	color: var(--typo-hex--tertiary);
+	background-color: var(--background-color-contrast);
+	transform: translate3d(0, 0, 0);
+	perspective: 1000;
+	transition: max-height var(--transition-speed) ease-in-out;
+
+	@include media(medium) {
+		transition-duration: .6;
+	}
+
+	&.is-active {
+		max-height: 15vh;
+		transition: max-height var(--transition-speed) ease-in-out;
+
+		@include media(medium) {
+			transition-duration: .6s;
+		}
+	}
+
+	&-state {
+		display: none;
+
+		&:checked {
+			~ .Notification {
+				max-height: 0;
+			}
+		}
+	}
+
+	&-content {
+		padding: 1.6rem 3rem .8rem;
+		margin: {
+			top: 0;
+			bottom: 0;
+		};
+	}
+
+	&-link {
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+		box-sizing: border-box;
+		width: var(--touch-target-size);
+		height: var(--touch-target-size);
+		padding-top: 1rem;
+		direction: rtl;
+		cursor: pointer;
+
+
+		@include generate-x(2rem, .1rem);
+	}
+
+}

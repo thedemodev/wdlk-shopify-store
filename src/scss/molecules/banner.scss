@@ -1,11 +1,74 @@
 :root {
     --informative-content-width: 32rem;
+    --h-stage-size: 11.2rem;
+    --h-stage-base-spacing: 1.6rem;
+    --h-stage-secondary-size: 7.8rem;
 }
 
  @keyframes scaleBanner {
      from { transform: scale3d(1, 1, 1) }
      to { transform: scale3d(1.15, 1.15, 1.15) }
 }
+
+
+.HeadlineBanner {
+    display: block;
+    width: 100%;
+    //-- Fixes the height in different browsers to the
+    //-- lack of dominant-baseline: middle
+    height: calc((var(--h-stage-size) / 1.75) * 2 + 1);
+    margin-bottom: calc(var(--h-stage-base-spacing) + 1);
+    font-family: "museo300";
+    font-size: calc(var(--h-stage-size) / 1.75);
+    font-weight: 100;
+    line-height: 1;
+    letter-spacing: 1rem;
+    text-transform: uppercase;
+    pointer-events: none;
+
+    &:not(:root) {
+        overflow: visible;
+    }
+
+    &-text {
+        text-anchor: middle;
+        pointer-events: auto;
+    }
+
+    &-tspan {
+        &:last-of-type {
+            display: none;
+        }
+    }
+
+    @include media(medium) {
+        height: calc(var(--h-stage-size) / 1.333333333);
+        margin-top: var(--h-stage-base-spacing);
+        font-size: calc(var(--h-stage-size) / 1.333333333);
+        letter-spacing: 1.6rem;
+
+        &-text {
+            dominant-baseline: middle;
+
+            &:last-of-type {
+                display: none;
+            }
+        }
+
+        &-tspan {
+            &:last-of-type {
+                display: block;
+            }
+        }
+    }
+
+    @include media(large) {
+        height: var(--h-stage-size);
+        font-size: var(--h-stage-size);
+    }
+}
+
+
 
 .Banner {
     position: relative;
