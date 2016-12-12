@@ -38,6 +38,13 @@ $headline-sizes: (
     font-family: "museo300";
     text-transform: uppercase;
     letter-spacing: .2rem;
+
+    &--complementary {
+        font-family: "quattrocento";
+    }
+
+
+    //-- Generate the different headline sizes
     @include headline-sizes($headline-sizes);
 
     &--highlight {
