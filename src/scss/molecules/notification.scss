@@ -12,7 +12,8 @@
 	transition: max-height var(--transition-speed) ease-in-out;
 
 	&.is-active {
-		max-height: 12vh;
+		max-height: 14vh;
+		transition: max-height var(--transition-speed) ease-in-out;
 	}
 
 	&-state {

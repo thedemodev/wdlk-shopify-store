@@ -8,10 +8,10 @@
 {% if notificationTitle != blank and notificationCaption != blank %}
 	{% assign notificationIsActive = notificationTitle %}
 	<input type="checkbox" class="Notification-state" id="notificationModule" />
-	<figure class="Notification is-active">
+	<figure class="Notification is-active js_notification">
 		<figcaption class="Notification-content Headline Headline--5 Headline--complementary">
 			{{notificationTitle}}{{notificationCaption}}{{'general.notification.code' | t }}
 		</figcaption>
-		<label class="Notification-link" for="notificationModule"></label>
+		<label class="Notification-link js_notification-btn" for="notificationModule"></label>
 	</figure>
 {% endif %}
