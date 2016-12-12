@@ -5,14 +5,21 @@
 
 .Header {
     @include grid-wrapper(undefined, space-between);
-
     position: relative;
+    top: 0;
+    right: 0;
+    left: 0;
     z-index: 5;
     box-sizing: border-box;
     align-items: center;
     height: var(--nav-height);
     padding: 0 var(--base-spacing);
     margin-bottom: calc(-var(--nav-height));
+
+    &.is-sticky {
+        position: fixed;
+        margin-bottom: 0;
+    }
 
     &:before {
         content: "";
@@ -46,13 +53,5 @@
             }
         }
 
-    }
-
-    &--sticky {
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        margin-bottom: 0;
     }
 }

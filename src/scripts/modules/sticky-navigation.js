@@ -3,16 +3,26 @@ export default function stickyNavigation () {
     //-- First keep track of the scroll value
     //-- without triggering unnecessary draw calls
     const navigation = document.querySelector('.js_sticky-nav');
-    const navigationHeight = navigation.offsetHeight;
+    if (!navigation) {
+        return;
+    }
+    const notificationTeaser = document.querySelector('.js_notification');
+    let navigationHeight = navigation.offsetHeight;
     let lastScrollPositionY = 0;
     let ticking = false;
 
-    console.log(navigationHeight, 'this is the height');
+
+    const getTeaserHeight = () => {
+        if (!notificationTeaser) {
+            return;
+        }
+        return notificationTeaser.offsetHeight;
+    };
 
     const onScroll = () => {
         lastScrollPositionY = window.scrollY;
         requestTick();
-    }
+    };
 
     //-- Triggers requestAnimationFrame when it's necessary only
     const  requestTick = () => {
@@ -20,7 +30,7 @@ export default function stickyNavigation () {
             requestAnimationFrame(update);
         }
         ticking = true;
-    }
+    };
 
     //-- Visual Updates Callback
     //-- Use rAf to handle visual updates and write values
@@ -28,10 +38,24 @@ export default function stickyNavigation () {
         //-- Pull the latest value when we need it
         let currentScrollPositionY = lastScrollPositionY;
 
-        navigation.classList.toggle('is-undocked', currentScrollPositionY >= navigationHeight);
+        if (notificationTeaser) {
+            let currentTeaserHeight = getTeaserHeight() - 1;
+            let totalHeaderHeight = currentTeaserHeight + (navigationHeight - 1);
+
+            navigation.classList.toggle('is-sticky',
+                currentScrollPositionY >= currentTeaserHeight);
+
+            navigation.classList.toggle('is-undocked',
+                currentScrollPositionY >= totalHeaderHeight);
+
+        } else {
+            navigation.classList.toggle('is-undocked',
+                currentScrollPositionY >= navigationHeight);
+        }
+
 
         ticking = false;
-    }
+    };
 
     window.addEventListener('scroll', onScroll, false);
 }

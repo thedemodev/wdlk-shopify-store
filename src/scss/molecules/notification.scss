@@ -11,9 +11,17 @@
 	perspective: 1000;
 	transition: max-height var(--transition-speed) ease-in-out;
 
+	@include media(medium) {
+		transition-duration: .6;
+	}
+
 	&.is-active {
-		max-height: 14vh;
+		max-height: 15vh;
 		transition: max-height var(--transition-speed) ease-in-out;
+
+		@include media(medium) {
+			transition-duration: .6s;
+		}
 	}
 
 	&-state {
