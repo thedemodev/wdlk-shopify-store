@@ -131,7 +131,7 @@
             {% comment %}
             ID addToCartForm is a selector for the ajax cart plugin
             {% endcomment %}
-            <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="Product-actionRow" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+            <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="Product-actionRow js_fbqAddToCart" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                 <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
                 <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}" />
 
@@ -154,7 +154,7 @@
                     {% assign hide_default_title = true %}
                 {% endif %}
 
-                <select name="id" class="Select {% if hide_default_title %}is-hidden{% endif %}">
+                <select name="id" class="Select js_fbqSelect {% if hide_default_title %}is-hidden{% endif %}">
                     {% for variant in product.variants %}
                     {% if variant.available %}
 
@@ -184,9 +184,9 @@
 
 
                 <button type="submit" name="add"
-                    class="Btn js_fbqAddToCart"
+                    class="Btn js_fbqBtn"
                     data-name="{{ product.title }}"
-                    data-id="{{ product.id }}"
+                    data-id="{{ product.selected_variant.id }}"
                     data-value="{{ product.price | divided_by: 100 }}">
                     {{ 'products.product.add_to_cart' | t }}
                 </button>
