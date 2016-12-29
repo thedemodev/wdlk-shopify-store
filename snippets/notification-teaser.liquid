@@ -4,9 +4,9 @@
 {% capture notificationCaption %}
 	{{'general.notification.caption' | t }}
 {% endcapture %}
+{% assign notificationIsActive = notificationTitle %}
 
 {% if notificationTitle != blank and notificationCaption != blank %}
-	{% assign notificationIsActive = notificationTitle %}
 	<input type="checkbox" class="Notification-state" id="notificationModule" />
 	<figure class="Notification js_notification">
 		<figcaption class="Notification-content Headline Headline--5 Headline--complementary">
