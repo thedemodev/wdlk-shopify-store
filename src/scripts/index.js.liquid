@@ -1,28 +1,629 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{"default":e}}var _rAf=require("./polyfills/rAf"),_rAf2=_interopRequireDefault(_rAf),_stickyNavigation=require("./modules/sticky-navigation"),_stickyNavigation2=_interopRequireDefault(_stickyNavigation),_smoothScrolling=require("./modules/smooth-scrolling"),_smoothScrolling2=_interopRequireDefault(_smoothScrolling),_cookieNotification=require("./modules/cookie-notification"),_cookieNotification2=_interopRequireDefault(_cookieNotification),_numberInput=require("./modules/number-input"),_numberInput2=_interopRequireDefault(_numberInput),_facebookPixelEvents=require("./modules/facebook-pixel-events"),_facebookPixelEvents2=_interopRequireDefault(_facebookPixelEvents),_notification=require("./modules/notification"),_notification2=_interopRequireDefault(_notification);(0,_rAf2["default"])(),(0,_smoothScrolling2["default"])(),(0,_stickyNavigation2["default"])(),(0,_cookieNotification2["default"])(),(0,_numberInput2["default"])(),(0,_facebookPixelEvents2["default"])(),(0,_notification2["default"])();
 
-},{"./modules/cookie-notification":2,"./modules/facebook-pixel-events":3,"./modules/notification":5,"./modules/number-input":6,"./modules/smooth-scrolling":7,"./modules/sticky-navigation":8,"./polyfills/rAf":9}],2:[function(require,module,exports){
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var notification=document.querySelector(".js-cookie-notification"),closeButton=document.querySelector(".js-cookie-notification-close"),localStorage=window.localStorage,notificationHidden=function(){return localStorage.getItem("hideCookieNotification")},hideNotification=function(){localStorage.setItem("hideCookieNotification",!0),notification.style.display="none"};exports["default"]=function(){if(!notificationHidden()){notification.style.display="block";var o=closeButton.addEventListener("click",function(){hideNotification(),closeButton.removeEventListener("click",o)})}};
+/**
+ * This is the web browser implementation of `debug()`.
+ *
+ * Expose `debug()` as the module.
+ */
 
-},{}],3:[function(require,module,exports){
-"use strict";function fbqEvents(){var e=document.querySelector(".js_fbqAddToCart"),t=document.querySelector(".js_fbqNewsLead");e&&!function(){var t=e.querySelector(".js_fbqBtn"),n=e.querySelector(".js_fbqSelect");t&&n&&!function(){var e=parseFloat(n.options[n.selectedIndex].value),c=parseFloat(t.dataset.value).toFixed(2);t.addEventListener("click",function(){fbq("track","AddToCart",{content_name:t.dataset.name,content_ids:[e],content_type:"product",value:c,currency:"EUR"})})}()}(),t&&t.addEventListener("click",function(){fbq("track","Lead")})}Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]=fbqEvents;
+exports = module.exports = require('./debug');
+exports.log = log;
+exports.formatArgs = formatArgs;
+exports.save = save;
+exports.load = load;
+exports.useColors = useColors;
+exports.storage = 'undefined' != typeof chrome
+               && 'undefined' != typeof chrome.storage
+                  ? chrome.storage.local
+                  : localstorage();
 
-},{}],4:[function(require,module,exports){
-"use strict";function logger(){var e=arguments.length<=0||void 0===arguments[0]?"log":arguments[0],o=arguments[1],r=new Date;("undefined"!=typeof console&&"log"===e||"error"===e)&&("error"===e?console.error(r+": "+o):console.log(r+": "+o))}Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]=logger;
+/**
+ * Colors.
+ */
+
+exports.colors = [
+  'lightseagreen',
+  'forestgreen',
+  'goldenrod',
+  'dodgerblue',
+  'darkorchid',
+  'crimson'
+];
+
+/**
+ * Currently only WebKit-based Web Inspectors, Firefox >= v31,
+ * and the Firebug extension (any Firefox version) are known
+ * to support "%c" CSS customizations.
+ *
+ * TODO: add a `localStorage` variable to explicitly enable/disable colors
+ */
+
+function useColors() {
+  // is webkit? http://stackoverflow.com/a/16459606/376773
+  return ('WebkitAppearance' in document.documentElement.style) ||
+    // is firebug? http://stackoverflow.com/a/398120/376773
+    (window.console && (console.firebug || (console.exception && console.table))) ||
+    // is firefox >= v31?
+    // https://developer.mozilla.org/en-US/docs/Tools/Web_Console#Styling_messages
+    (navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/) && parseInt(RegExp.$1, 10) >= 31);
+}
+
+/**
+ * Map %j to `JSON.stringify()`, since no Web Inspectors do that by default.
+ */
+
+exports.formatters.j = function(v) {
+  return JSON.stringify(v);
+};
+
+
+/**
+ * Colorize log arguments if enabled.
+ *
+ * @api public
+ */
+
+function formatArgs() {
+  var args = arguments;
+  var useColors = this.useColors;
+
+  args[0] = (useColors ? '%c' : '')
+    + this.namespace
+    + (useColors ? ' %c' : ' ')
+    + args[0]
+    + (useColors ? '%c ' : ' ')
+    + '+' + exports.humanize(this.diff);
+
+  if (!useColors) return args;
+
+  var c = 'color: ' + this.color;
+  args = [args[0], c, 'color: inherit'].concat(Array.prototype.slice.call(args, 1));
+
+  // the final "%c" is somewhat tricky, because there could be other
+  // arguments passed either before or after the %c, so we need to
+  // figure out the correct index to insert the CSS into
+  var index = 0;
+  var lastC = 0;
+  args[0].replace(/%[a-z%]/g, function(match) {
+    if ('%%' === match) return;
+    index++;
+    if ('%c' === match) {
+      // we only are interested in the *last* %c
+      // (the user may have provided their own)
+      lastC = index;
+    }
+  });
+
+  args.splice(lastC, 0, c);
+  return args;
+}
+
+/**
+ * Invokes `console.log()` when available.
+ * No-op when `console.log` is not a "function".
+ *
+ * @api public
+ */
+
+function log() {
+  // this hackery is required for IE8/9, where
+  // the `console.log` function doesn't have 'apply'
+  return 'object' === typeof console
+    && console.log
+    && Function.prototype.apply.call(console.log, console, arguments);
+}
+
+/**
+ * Save `namespaces`.
+ *
+ * @param {String} namespaces
+ * @api private
+ */
+
+function save(namespaces) {
+  try {
+    if (null == namespaces) {
+      exports.storage.removeItem('debug');
+    } else {
+      exports.storage.debug = namespaces;
+    }
+  } catch(e) {}
+}
+
+/**
+ * Load `namespaces`.
+ *
+ * @return {String} returns the previously persisted debug modes
+ * @api private
+ */
+
+function load() {
+  var r;
+  try {
+    r = exports.storage.debug;
+  } catch(e) {}
+  return r;
+}
+
+/**
+ * Enable namespaces listed in `localStorage.debug` initially.
+ */
+
+exports.enable(load());
+
+/**
+ * Localstorage attempts to return the localstorage.
+ *
+ * This is necessary because safari throws
+ * when a user disables cookies/localstorage
+ * and you attempt to access it.
+ *
+ * @return {LocalStorage}
+ * @api private
+ */
+
+function localstorage(){
+  try {
+    return window.localStorage;
+  } catch (e) {}
+}
+
+},{"./debug":2}],2:[function(require,module,exports){
+
+/**
+ * This is the common logic for both the Node.js and web browser
+ * implementations of `debug()`.
+ *
+ * Expose `debug()` as the module.
+ */
+
+exports = module.exports = debug;
+exports.coerce = coerce;
+exports.disable = disable;
+exports.enable = enable;
+exports.enabled = enabled;
+exports.humanize = require('ms');
+
+/**
+ * The currently active debug mode names, and names to skip.
+ */
+
+exports.names = [];
+exports.skips = [];
+
+/**
+ * Map of special "%n" handling functions, for the debug "format" argument.
+ *
+ * Valid key names are a single, lowercased letter, i.e. "n".
+ */
+
+exports.formatters = {};
+
+/**
+ * Previously assigned color.
+ */
+
+var prevColor = 0;
+
+/**
+ * Previous log timestamp.
+ */
+
+var prevTime;
+
+/**
+ * Select a color.
+ *
+ * @return {Number}
+ * @api private
+ */
+
+function selectColor() {
+  return exports.colors[prevColor++ % exports.colors.length];
+}
+
+/**
+ * Create a debugger with the given `namespace`.
+ *
+ * @param {String} namespace
+ * @return {Function}
+ * @api public
+ */
+
+function debug(namespace) {
+
+  // define the `disabled` version
+  function disabled() {
+  }
+  disabled.enabled = false;
+
+  // define the `enabled` version
+  function enabled() {
+
+    var self = enabled;
+
+    // set `diff` timestamp
+    var curr = +new Date();
+    var ms = curr - (prevTime || curr);
+    self.diff = ms;
+    self.prev = prevTime;
+    self.curr = curr;
+    prevTime = curr;
+
+    // add the `color` if not set
+    if (null == self.useColors) self.useColors = exports.useColors();
+    if (null == self.color && self.useColors) self.color = selectColor();
+
+    var args = Array.prototype.slice.call(arguments);
+
+    args[0] = exports.coerce(args[0]);
+
+    if ('string' !== typeof args[0]) {
+      // anything else let's inspect with %o
+      args = ['%o'].concat(args);
+    }
+
+    // apply any `formatters` transformations
+    var index = 0;
+    args[0] = args[0].replace(/%([a-z%])/g, function(match, format) {
+      // if we encounter an escaped % then don't increase the array index
+      if (match === '%%') return match;
+      index++;
+      var formatter = exports.formatters[format];
+      if ('function' === typeof formatter) {
+        var val = args[index];
+        match = formatter.call(self, val);
+
+        // now we need to remove `args[index]` since it's inlined in the `format`
+        args.splice(index, 1);
+        index--;
+      }
+      return match;
+    });
+
+    if ('function' === typeof exports.formatArgs) {
+      args = exports.formatArgs.apply(self, args);
+    }
+    var logFn = enabled.log || exports.log || console.log.bind(console);
+    logFn.apply(self, args);
+  }
+  enabled.enabled = true;
+
+  var fn = exports.enabled(namespace) ? enabled : disabled;
+
+  fn.namespace = namespace;
+
+  return fn;
+}
+
+/**
+ * Enables a debug mode by namespaces. This can include modes
+ * separated by a colon and wildcards.
+ *
+ * @param {String} namespaces
+ * @api public
+ */
+
+function enable(namespaces) {
+  exports.save(namespaces);
+
+  var split = (namespaces || '').split(/[\s,]+/);
+  var len = split.length;
+
+  for (var i = 0; i < len; i++) {
+    if (!split[i]) continue; // ignore empty strings
+    namespaces = split[i].replace(/\*/g, '.*?');
+    if (namespaces[0] === '-') {
+      exports.skips.push(new RegExp('^' + namespaces.substr(1) + '$'));
+    } else {
+      exports.names.push(new RegExp('^' + namespaces + '$'));
+    }
+  }
+}
+
+/**
+ * Disable debug output.
+ *
+ * @api public
+ */
+
+function disable() {
+  exports.enable('');
+}
+
+/**
+ * Returns true if the given mode name is enabled, false otherwise.
+ *
+ * @param {String} name
+ * @return {Boolean}
+ * @api public
+ */
+
+function enabled(name) {
+  var i, len;
+  for (i = 0, len = exports.skips.length; i < len; i++) {
+    if (exports.skips[i].test(name)) {
+      return false;
+    }
+  }
+  for (i = 0, len = exports.names.length; i < len; i++) {
+    if (exports.names[i].test(name)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * Coerce `val`.
+ *
+ * @param {Mixed} val
+ * @return {Mixed}
+ * @api private
+ */
+
+function coerce(val) {
+  if (val instanceof Error) return val.stack || val.message;
+  return val;
+}
+
+},{"ms":4}],3:[function(require,module,exports){
+/**
+ * Module dependencies
+ */
+
+var debug = require('debug')('jsonp');
+
+/**
+ * Module exports.
+ */
+
+module.exports = jsonp;
+
+/**
+ * Callback index.
+ */
+
+var count = 0;
+
+/**
+ * Noop function.
+ */
+
+function noop(){}
+
+/**
+ * JSONP handler
+ *
+ * Options:
+ *  - param {String} qs parameter (`callback`)
+ *  - prefix {String} qs parameter (`__jp`)
+ *  - name {String} qs parameter (`prefix` + incr)
+ *  - timeout {Number} how long after a timeout error is emitted (`60000`)
+ *
+ * @param {String} url
+ * @param {Object|Function} optional options / callback
+ * @param {Function} optional callback
+ */
+
+function jsonp(url, opts, fn){
+  if ('function' == typeof opts) {
+    fn = opts;
+    opts = {};
+  }
+  if (!opts) opts = {};
+
+  var prefix = opts.prefix || '__jp';
+
+  // use the callback name that was passed if one was provided.
+  // otherwise generate a unique name by incrementing our counter.
+  var id = opts.name || (prefix + (count++));
+
+  var param = opts.param || 'callback';
+  var timeout = null != opts.timeout ? opts.timeout : 60000;
+  var enc = encodeURIComponent;
+  var target = document.getElementsByTagName('script')[0] || document.head;
+  var script;
+  var timer;
+
+
+  if (timeout) {
+    timer = setTimeout(function(){
+      cleanup();
+      if (fn) fn(new Error('Timeout'));
+    }, timeout);
+  }
+
+  function cleanup(){
+    if (script.parentNode) script.parentNode.removeChild(script);
+    window[id] = noop;
+    if (timer) clearTimeout(timer);
+  }
+
+  function cancel(){
+    if (window[id]) {
+      cleanup();
+    }
+  }
+
+  window[id] = function(data){
+    debug('jsonp got', data);
+    cleanup();
+    if (fn) fn(null, data);
+  };
+
+  // add qs component
+  url += (~url.indexOf('?') ? '&' : '?') + param + '=' + enc(id);
+  url = url.replace('?&', '?');
+
+  debug('jsonp req "%s"', url);
+
+  // create script
+  script = document.createElement('script');
+  script.src = url;
+  target.parentNode.insertBefore(script, target);
+
+  return cancel;
+}
+
+},{"debug":1}],4:[function(require,module,exports){
+/**
+ * Helpers.
+ */
+
+var s = 1000;
+var m = s * 60;
+var h = m * 60;
+var d = h * 24;
+var y = d * 365.25;
+
+/**
+ * Parse or format the given `val`.
+ *
+ * Options:
+ *
+ *  - `long` verbose formatting [false]
+ *
+ * @param {String|Number} val
+ * @param {Object} options
+ * @return {String|Number}
+ * @api public
+ */
+
+module.exports = function(val, options){
+  options = options || {};
+  if ('string' == typeof val) return parse(val);
+  return options.long
+    ? long(val)
+    : short(val);
+};
+
+/**
+ * Parse the given `str` and return milliseconds.
+ *
+ * @param {String} str
+ * @return {Number}
+ * @api private
+ */
+
+function parse(str) {
+  str = '' + str;
+  if (str.length > 10000) return;
+  var match = /^((?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|years?|yrs?|y)?$/i.exec(str);
+  if (!match) return;
+  var n = parseFloat(match[1]);
+  var type = (match[2] || 'ms').toLowerCase();
+  switch (type) {
+    case 'years':
+    case 'year':
+    case 'yrs':
+    case 'yr':
+    case 'y':
+      return n * y;
+    case 'days':
+    case 'day':
+    case 'd':
+      return n * d;
+    case 'hours':
+    case 'hour':
+    case 'hrs':
+    case 'hr':
+    case 'h':
+      return n * h;
+    case 'minutes':
+    case 'minute':
+    case 'mins':
+    case 'min':
+    case 'm':
+      return n * m;
+    case 'seconds':
+    case 'second':
+    case 'secs':
+    case 'sec':
+    case 's':
+      return n * s;
+    case 'milliseconds':
+    case 'millisecond':
+    case 'msecs':
+    case 'msec':
+    case 'ms':
+      return n;
+  }
+}
+
+/**
+ * Short format for `ms`.
+ *
+ * @param {Number} ms
+ * @return {String}
+ * @api private
+ */
+
+function short(ms) {
+  if (ms >= d) return Math.round(ms / d) + 'd';
+  if (ms >= h) return Math.round(ms / h) + 'h';
+  if (ms >= m) return Math.round(ms / m) + 'm';
+  if (ms >= s) return Math.round(ms / s) + 's';
+  return ms + 'ms';
+}
+
+/**
+ * Long format for `ms`.
+ *
+ * @param {Number} ms
+ * @return {String}
+ * @api private
+ */
+
+function long(ms) {
+  return plural(ms, d, 'day')
+    || plural(ms, h, 'hour')
+    || plural(ms, m, 'minute')
+    || plural(ms, s, 'second')
+    || ms + ' ms';
+}
+
+/**
+ * Pluralization helper.
+ */
+
+function plural(ms, n, name) {
+  if (ms < n) return;
+  if (ms < n * 1.5) return Math.floor(ms / n) + ' ' + name;
+  return Math.ceil(ms / n) + ' ' + name + 's';
+}
 
 },{}],5:[function(require,module,exports){
-"use strict";function notification(){var e=document.querySelector(".js_notification");if(e){var t=e.querySelector(".js_notification-btn"),i=window.sessionStorage,n="hiddenNotification",o="is-active",c=function(){return i.getItem(n)};if(!c())var r=function(){e.classList.add(o)},s=function(){i.setItem(n,!0),e.classList.remove(o)},a=window.addEventListener("load",function(){r(),window.removeEventListener("load",a)}),d=t.addEventListener("click",function(){s(),t.removeEventListener("click",d)})}}Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]=notification;
+"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{"default":e}}var _rAf=require("./polyfills/rAf"),_rAf2=_interopRequireDefault(_rAf),_stickyNavigation=require("./modules/sticky-navigation"),_stickyNavigation2=_interopRequireDefault(_stickyNavigation),_smoothScrolling=require("./modules/smooth-scrolling"),_smoothScrolling2=_interopRequireDefault(_smoothScrolling),_cookieNotification=require("./modules/cookie-notification"),_cookieNotification2=_interopRequireDefault(_cookieNotification),_numberInput=require("./modules/number-input"),_numberInput2=_interopRequireDefault(_numberInput),_facebookPixelEvents=require("./modules/facebook-pixel-events"),_facebookPixelEvents2=_interopRequireDefault(_facebookPixelEvents),_notification=require("./modules/notification"),_notification2=_interopRequireDefault(_notification),_instagramFeed=require("./modules/instagram-feed"),_instagramFeed2=_interopRequireDefault(_instagramFeed);(0,_rAf2["default"])(),(0,_smoothScrolling2["default"])(),(0,_stickyNavigation2["default"])(),(0,_cookieNotification2["default"])(),(0,_numberInput2["default"])(),(0,_facebookPixelEvents2["default"])(),(0,_notification2["default"])(),(0,_instagramFeed2["default"])();
 
-},{}],6:[function(require,module,exports){
-"use strict";function _toConsumableArray(t){if(Array.isArray(t)){for(var e=0,r=Array(t.length);e<t.length;e++)r[e]=t[e];return r}return Array.from(t)}function numberInput(){var t=document.getElementsByClassName("js_numberInput");if(t){var e=[].concat(_toConsumableArray(t)),r="js_remove",n="js_add",u=function(t){return parseInt(t)+1},a=function(t){return parseInt(t)-1};e.forEach(function(t){var e=1,s=0,i=t.querySelector(".js_value");i&&(e=i.getAttribute("value"),s=i.getAttribute("min"),t.addEventListener("click",function(t){if(t.target.classList.contains(n)&&(e=u(e),i.setAttribute("value",e)),t.target.classList.contains(r)){if(s>=e)return;e=a(e),i.setAttribute("value",e)}}))})}}Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]=numberInput;
+},{"./modules/cookie-notification":6,"./modules/facebook-pixel-events":7,"./modules/instagram-feed":8,"./modules/notification":10,"./modules/number-input":11,"./modules/smooth-scrolling":12,"./modules/sticky-navigation":13,"./polyfills/rAf":14}],6:[function(require,module,exports){
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var notification=document.querySelector(".js-cookie-notification"),closeButton=document.querySelector(".js-cookie-notification-close"),localStorage=window.localStorage,notificationHidden=function(){return localStorage.getItem("hideCookieNotification")},hideNotification=function(){localStorage.setItem("hideCookieNotification",!0),notification.style.display="none"};exports["default"]=function(){if(!notificationHidden()){notification.style.display="block";var o=closeButton.addEventListener("click",function(){hideNotification(),closeButton.removeEventListener("click",o)})}};
 
 },{}],7:[function(require,module,exports){
+"use strict";function fbqEvents(){var e=document.querySelector(".js_fbqAddToCart"),t=document.querySelector(".js_fbqNewsLead");e&&!function(){var t=e.querySelector(".js_fbqBtn"),n=e.querySelector(".js_fbqSelect");t&&n&&!function(){var e=parseFloat(n.options[n.selectedIndex].value),c=parseFloat(t.dataset.value).toFixed(2);t.addEventListener("click",function(){fbq("track","AddToCart",{content_name:t.dataset.name,content_ids:[e],content_type:"product",value:c,currency:"EUR"})})}()}(),t&&t.addEventListener("click",function(){fbq("track","Lead")})}Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]=fbqEvents;
+
+},{}],8:[function(require,module,exports){
+"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{"default":e}}function generateFeed(){var e=document.querySelector(".js_instagramFeed");if(e){var t="https://api.instagram.com/v1/users/"+_access.access.id+"/media/recent/?access_token="+_access.access.token+"&callback=callback",n=function(e){return new Promise(function(t,n){(0,_jsonp2["default"])(e,function(e,r){if(e)throw n(Error("Couldn't get Insta JSON feed; error code: + "+e)),e;t(r)})})},r=function(e){return 10>=e},s=function(e){return e.filter(function(e,t){return r(t)})};n(t).then(function(e){var t=s(e.data);console.log("this is the new feed",t)})}}Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]=generateFeed;var _jsonp=require("jsonp"),_jsonp2=_interopRequireDefault(_jsonp),_access=require("../../../tasks/instagram/access");
+
+},{"../../../tasks/instagram/access":15,"jsonp":3}],9:[function(require,module,exports){
+"use strict";function logger(){var e=arguments.length<=0||void 0===arguments[0]?"log":arguments[0],o=arguments[1],r=new Date;("undefined"!=typeof console&&"log"===e||"error"===e)&&("error"===e?console.error(r+": "+o):console.log(r+": "+o))}Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]=logger;
+
+},{}],10:[function(require,module,exports){
+"use strict";function notification(){var e=document.querySelector(".js_notification");if(e){var t=e.querySelector(".js_notification-btn"),i=window.sessionStorage,n="hiddenNotification",o="is-active",c=function(){return i.getItem(n)};if(!c())var r=function(){e.classList.add(o)},s=function(){i.setItem(n,!0),e.classList.remove(o)},a=window.addEventListener("load",function(){r(),window.removeEventListener("load",a)}),d=t.addEventListener("click",function(){s(),t.removeEventListener("click",d)})}}Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]=notification;
+
+},{}],11:[function(require,module,exports){
+"use strict";function _toConsumableArray(t){if(Array.isArray(t)){for(var e=0,r=Array(t.length);e<t.length;e++)r[e]=t[e];return r}return Array.from(t)}function numberInput(){var t=document.getElementsByClassName("js_numberInput");if(t){var e=[].concat(_toConsumableArray(t)),r="js_remove",n="js_add",u=function(t){return parseInt(t)+1},a=function(t){return parseInt(t)-1};e.forEach(function(t){var e=1,s=0,i=t.querySelector(".js_value");i&&(e=i.getAttribute("value"),s=i.getAttribute("min"),t.addEventListener("click",function(t){if(t.target.classList.contains(n)&&(e=u(e),i.setAttribute("value",e)),t.target.classList.contains(r)){if(s>=e)return;e=a(e),i.setAttribute("value",e)}}))})}}Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]=numberInput;
+
+},{}],12:[function(require,module,exports){
 "use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{"default":e}}function smoothScrolling(){var e=document.getElementsByClassName("js_scroll")[0];if(e){var t=document.getElementById(e.getAttribute("href").substr(1));if(t){var n=document.getElementsByClassName("js_scroller")[0];if(n){Math.easeInOutExpo=function(e,t,n,o){return e/=o/2,1>e?n/2*Math.pow(2,10*(e-1))+t:(e--,n/2*(-Math.pow(2,-10*e)+2)+t)};var o=function(e,t,n){var o=arguments.length<=3||void 0===arguments[3]?o||function(){}:arguments[3],r=e.scrollTop,u=t.offsetTop-r-40,l=null,i=function a(t){l=null!==l?l:t;var i=t-l;return i>=n?o():(e.scrollTop=Math.easeInOutExpo(i,r,u,n),void window.requestAnimationFrame(a))};window.requestAnimationFrame(i)},r=function(e){e.preventDefault(),o(n,t,1618,function(){window.location.hash="#"+t.id})};e.addEventListener("click",r,!1)}}}}Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]=smoothScrolling;var _logger=require("./logger"),_logger2=_interopRequireDefault(_logger);
 
-},{"./logger":4}],8:[function(require,module,exports){
+},{"./logger":9}],13:[function(require,module,exports){
 "use strict";function stickyNavigation(){var t=document.querySelector(".js_sticky-nav");if(t){var e=document.querySelector(".js_notification"),i=t.offsetHeight,o=0,s=!1,n=function(){return e?e.offsetHeight:void 0},c=function(){o=window.scrollY,r()},r=function(){s||requestAnimationFrame(a),s=!0},a=function(){var c=o;if(e){var r=n()-1,a=r+(i-1);t.classList.toggle("is-sticky",c>=r),t.classList.toggle("is-undocked",c>=a)}else t.classList.toggle("is-undocked",c>=i);s=!1};window.addEventListener("scroll",c,!1)}}Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]=stickyNavigation;
 
-},{}],9:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 "use strict";function rAf(){for(var e=0,n=["ms","moz","webkit","o"],i=0;i<n.length&&!window.requestAnimationFrame;++i)window.requestAnimationFrame=window[n[i]+"RequestAnimationFrame"],window.cancelAnimationFrame=window[n[i]+"CancelAnimationFrame"]||window[n[i]+"CancelRequestAnimationFrame"];window.requestAnimationFrame||(window.requestAnimationFrame=function(n,i){var t=(new Date).getTime(),o=Math.max(0,16-(t-e)),a=window.setTimeout(function(){n(t+o)},o);return e=t+o,a}),window.cancelAnimationFrame||(window.cancelAnimationFrame=function(e){clearTimeout(e)})}Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]=rAf;
 
-},{}]},{},[1]);
+},{}],15:[function(require,module,exports){
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var access=exports.access={id:"1983140883",token:"1983140883.c4c213d.70716b04afc14080a94e4ccb0c35d1b2"};
+
+},{}]},{},[5]);
