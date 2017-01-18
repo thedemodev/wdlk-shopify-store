@@ -3,9 +3,8 @@ import {access} from '../../../tasks/instagram/access';
 
 export default function generateFeed () {
 	const nodeList = document.querySelector('.js_instagramFeed');
-    if (!nodeList) {
-    	return;
-    }
+    if (!nodeList) return;
+    if (typeof Promise === undefined) return;
 
     const feedLimit = 11;
 	const instaURL = `https://api.instagram.com/v1/users/${access['id']}/media/recent/?access_token=${access['token']}&callback=callback`;
