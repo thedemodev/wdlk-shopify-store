@@ -98,4 +98,15 @@
         border-width: 0 1px 1px;
         background-color: var(--background-color);
     }
+
+    &-close {
+        position: absolute;
+        top: var(--base-spacing);
+        right: var(--base-spacing);
+        width: var(--touch-target-size);
+        height: var(--touch-target-size);
+        border-radius: var(--touch-target-size);
+
+        @include generate-x(4rem, .1rem, linear-gradient(45deg, var(--light-orange), var(--hex-coral)));
+    }
 }

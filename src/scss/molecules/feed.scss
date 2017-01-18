@@ -28,10 +28,6 @@
 		z-index: -1;
 		display: block;
 		width: 100%;
-		border: {
-			top: 1px solid var(--hex-blue-gray-lightest);
-			bottom: 1px solid var(--hex-blue-gray-lightest);
-		}
 	}
 
 	//-- Radio trigger for the lightbox
@@ -55,6 +51,7 @@
 
 	&-copy {
 		margin-top: 0;
+		text-align: justify;
 		font-size: var(--md-copy-size);
 	}
 
@@ -75,5 +72,13 @@
 
 	.Lightbox-content {
 		width: 100vw;
+		overflow: visible;
+
+		.Feed-img {
+			border: {
+				top: 1px solid var(--hex-blue-gray-lightest);
+				bottom: 1px solid var(--hex-blue-gray-lightest);
+			}
+		}
 	}
 }

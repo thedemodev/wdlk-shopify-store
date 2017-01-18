@@ -60,6 +60,7 @@ export default function generateFeed () {
 									${el.caption.text}
 								</p>
 							</figcaption>
+							<label class="Lightbox-close" for="lightbox-${i}"></label>
 						</figure>
 					</div>
 				</li>
