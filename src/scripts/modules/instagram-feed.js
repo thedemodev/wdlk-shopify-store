@@ -24,40 +24,41 @@ export default function generateFeed () {
 
 	const limitArr = value => value <= feedLimit;
 	const filteredArr = arr => arr.filter((el, i) => limitArr(i));
-	const createNode = (el, classname, attr, attrValue, id) => {
-		if (el === 'img') {
-			el = new Image();
-		} else {
-			el = document.createElement(`${el}`);
-		}
-
-		el.className = `${classname}`;
-
-		if (attr) {
- 			el[attr] = `${attrValue}`;
-		}
-
-		if (id) {
-			el.id =`${id}`;
-		}
-
-		return el;
+	const convertUnixDate = timestamp => {
+		let date = new Date(parseInt(timestamp));
+		return date.toDateString().slice(0, -4);
 	};
 
 	const createFeed = arr => {
-		const foo = arr.map(el => {
+		const foo = arr.map((el, i) => {
 			let html = `
 				<li class="Feed-item">
-					<label class="Lightbox-link" for="lightbox">
+					<label class="Feed-trigger" for="lightbox-${i}">
 					</label>
-					<img class="Feed-img" src="${el.images.standard_resolution.url}" />
-					<input class="Lightbox-state" type="checkbox" id="lightbox" />
+					<img class="Feed-img"
+						src="${el.images.standard_resolution.url}"
+						srcset="${el.images.thumbnail.url} 150w,
+								${el.images.low_resolution.url} 320w,
+								${el.images.standard_resolution.url} 640w" />
+
+					<input class="Lightbox-state" type="checkbox" id="lightbox-${i}" />
 					<div class="Lightbox-shim">
-						<label class="Lightbox-shim-close" for="lightbox"></label>
-						<figure class="Lightbox-content js_image">
-							<img class="Feed-img" src="${el.images.standard_resolution.url}" />
-							<figcaption class="Feed-caption js_caption">
-								${el.caption.text}
+						<label class="Lightbox-shim-close" for="lightbox-${i}"></label>
+						<figure class="Lightbox-content">
+							<img class="Feed-img"
+								src="${el.images.standard_resolution.url}"
+								srcset="${el.images.thumbnail.url} 150w,
+								${el.images.low_resolution.url} 320w,
+								${el.images.standard_resolution.url} 640w" />
+							<figcaption class="Feed-caption">
+								<strong class="Feed-highlight">${el.likes.count} likes</strong>
+								<time class="Feed-highlight" datetime="${convertUnixDate(el.created_time)}">${convertUnixDate(el.created_time)}</time>
+								<p class="Feed-copy">
+									<strong>
+										${el.user.username}
+									</strong>
+									${el.caption.text}
+								</p>
 							</figcaption>
 						</figure>
 					</div>
@@ -65,7 +66,6 @@ export default function generateFeed () {
 			`;
 			return html;
 		});
-
 		node.innerHTML = foo.join('');
 	};
 
