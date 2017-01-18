@@ -16,5 +16,4 @@ cookieNotification();
 numberInput();
 fbqEvents();
 notification();
-getInstaFeed();
-
+window.addEventListener('load', getInstaFeed);
