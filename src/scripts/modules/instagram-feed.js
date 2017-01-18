@@ -48,9 +48,12 @@ export default function generateFeed () {
 		const foo = arr.map(el => {
 			let html = `
 				<li class="Feed-item">
+					<label class="Lightbox-link" for="lightbox">
+					</label>
 					<img class="Feed-img" src="${el.images.standard_resolution.url}" />
 					<input class="Lightbox-state" type="checkbox" id="lightbox" />
 					<div class="Lightbox-shim">
+						<label class="Lightbox-shim-close" for="lightbox"></label>
 						<figure class="Lightbox-content js_image">
 							<img class="Feed-img" src="${el.images.standard_resolution.url}" />
 							<figcaption class="Feed-caption js_caption">
@@ -63,9 +66,8 @@ export default function generateFeed () {
 			return html;
 		});
 
-		node.innerHTML = foo.join();
+		node.innerHTML = foo.join('');
 	};
-
 
 
 	getMediaFeed(instaURL).then(res => {
