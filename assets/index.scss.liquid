@@ -376,15 +376,13 @@ body {
   display: inline-block;
   border: none;
   color: #FF7163;
-  font-size: 14px;
-  font-size: 1.4rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1.6px;
   letter-spacing: .16rem;
   cursor: pointer;
-  -webkit-transition: color .3s ease;
-  transition: color .3s ease;
+  -webkit-transition: color .30s ease;
+  transition: color .30s ease;
   background: none; }
   .Link:hover {
     color: #E5554E; }
@@ -408,6 +406,8 @@ body {
     color: #596771; }
     .Link--tonedown:hover {
       color: #384852; }
+  .Link--stripped {
+    font-weight: normal; }
 
 .Btn {
   display: inline-block;
@@ -1158,6 +1158,26 @@ input[type="number"]::-webkit-outer-spin-button {
       line-height: 1;
       -webkit-transform: translateX(-50%) translateY(-35%);
               transform: translateX(-50%) translateY(-35%); }
+  .Banner--plain {
+    position: static;
+    overflow: visible;
+    overflow: initial; }
+    .Banner--plain .Banner-content {
+      position: static;
+      padding: 90px 20px;
+      padding: 9rem 2rem;
+      margin: 0 auto;
+      color: #8E959A;
+      -webkit-transform: none;
+              transform: none; }
+      @media (min-width: 770px) {
+        .Banner--plain .Banner-content {
+          max-width: 70rem; } }
+    .Banner--plain .SocialList-item {
+      width: 30px;
+      fill: #8E959A; }
+      .Banner--plain .SocialList-item:hover {
+        fill: #384852; }
   .Banner--teaser {
     box-sizing: border-box;
     width: 100vw; }
@@ -2499,7 +2519,9 @@ input[type="number"]::-webkit-outer-spin-button {
           flex-wrap: wrap;
   padding-left: 0;
   margin: 0;
-  list-style: none; }
+  list-style: none;
+  text-align: left;
+  line-height: 1.5; }
   .Feed-item {
     width: calc(33.33333vw - 2px);
     height: calc(33.33333vw - 2px);

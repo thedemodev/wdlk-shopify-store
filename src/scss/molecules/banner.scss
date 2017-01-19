@@ -192,6 +192,31 @@
         }
     }
 
+    &--plain {
+        position: static;
+        overflow: initial;
+        .Banner-content {
+            position: static;
+            padding: calc(var(--base-spacing) * 4.5) var(--base-spacing);
+            margin: 0 auto;
+            color: var(--typo-hex--banner-secondary);
+            transform: none;
+
+            @include media (medium) {
+                max-width: 70rem;
+            }
+        }
+
+        .SocialList-item {
+            width: 30px;
+            fill: var(--typo-hex--banner-secondary);
+
+            &:hover {
+                fill: var(--link-hex-secondary-hover);
+            }
+        }
+    }
+
     &--teaser {
         box-sizing: border-box;
         width: 100vw;
@@ -233,6 +258,7 @@
             }
         }
     }
+
 
     &--principles {
         .Headline {
