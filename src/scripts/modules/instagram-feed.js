@@ -32,7 +32,7 @@ export default function generateFeed () {
 	const createFeed = arr => {
 		const foo = arr.map((el, i) => {
 			let html = `
-				<li class="Feed-item">
+				<li class="Feed-item Lightbox--row">
 					<label class="Feed-trigger" for="lightbox-${i}">
 					</label>
 					<img class="Feed-img"
@@ -45,12 +45,20 @@ export default function generateFeed () {
 					<div class="Lightbox-shim">
 						<label class="Lightbox-shim-close" for="lightbox-${i}"></label>
 						<figure class="Lightbox-content">
-							<img class="Feed-img"
-								src="${el.images.standard_resolution.url}"
-								srcset="${el.images.thumbnail.url} 150w,
-								${el.images.low_resolution.url} 320w,
-								${el.images.standard_resolution.url} 640w" />
-							<figcaption class="Feed-caption">
+							<header class="Lightbox-header">
+								<h3 class="Headline Headline--6">
+									#${el.tags[0]}
+								</h3>
+								<label class="Lightbox-icon" for="lightbox-${i}"></label>
+							</header>
+							<a class="Feed-link Lightbox-row" href="${el.link}" target="_blank">
+								<img class="Feed-img"
+									src="${el.images.standard_resolution.url}"
+									srcset="${el.images.thumbnail.url} 150w,
+									${el.images.low_resolution.url} 320w,
+									${el.images.standard_resolution.url} 640w" />
+							</a>
+							<figcaption class="Feed-caption Lightbox-row">
 								<strong class="Feed-highlight">${el.likes.count} likes</strong>
 								<time class="Feed-highlight" datetime="${convertUnixDate(el.created_time)}">${convertUnixDate(el.created_time)}</time>
 								<p class="Feed-copy">
@@ -60,11 +68,11 @@ export default function generateFeed () {
 									${el.caption.text}
 								</p>
 							</figcaption>
-							<label class="Lightbox-close" for="lightbox-${i}"></label>
 						</figure>
 					</div>
 				</li>
 			`;
+			console.log(el);
 			return html;
 		});
 		node.innerHTML = foo.join('');

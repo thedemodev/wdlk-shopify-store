@@ -80,19 +80,19 @@
         content: "";
         position: absolute;
         top: 50%;
+        left: 30%;
         display: block;
         height: $height;
         width: $length;
         background: $color;
-        transform-origin: center;
     }
 
     &::before {
-        transform: rotate(45deg) translateY(-50%);
+        transform: rotate(45deg);
     }
 
     &::after {
-        transform: rotate(135deg) translateY(-50%);
+        transform: rotate(135deg);
     }
 }
 
