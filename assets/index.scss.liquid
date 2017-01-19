@@ -1301,7 +1301,8 @@ input[type="number"]::-webkit-outer-spin-button {
   padding-top: 5vh;
   -webkit-transform: translateX(-200vw);
           transform: translateX(-200vw);
-  background: transparent;
+  background: #fafafa;
+  background: rgba(250, 250, 250, 0.9);
   -webkit-transition: background .30s .30s ease-in-out, left 0s .70s ease;
   transition: background .30s .30s ease-in-out, left 0s .70s ease; }
 
@@ -1312,7 +1313,7 @@ input[type="number"]::-webkit-outer-spin-button {
     -webkit-transform: none;
             transform: none;
     background: #fafafa;
-    background: rgba(250, 250, 250, 0.8);
+    background: rgba(250, 250, 250, 0.9);
     -webkit-transition: background .30s ease;
     transition: background .30s ease; }
     .Lightbox-state:checked ~ .Lightbox-shim .Lightbox-content {
@@ -1358,10 +1359,13 @@ input[type="number"]::-webkit-outer-spin-button {
   transition: transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity .30s ease, -webkit-transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden; }
+  @media (min-width: 480px) {
+    .Lightbox-content {
+      top: 7rem;
+      width: 90vw; } }
   @media (min-width: 770px) {
     .Lightbox-content {
-      top: 8rem;
-      width: 90vw; } }
+      top: 8rem; } }
 
 .Lightbox-link {
   position: absolute;
@@ -1425,12 +1429,15 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .Lightbox-row {
   position: relative;
-  box-sizing: border-box;
-  width: 65%; }
-  .Lightbox-row:last-child {
-    width: 35%;
-    padding-top: 80px;
-    padding-top: 8rem; }
+  overflow: hidden;
+  background-color: #ffffff; }
+  @media (min-width: 770px) {
+    .Lightbox-row {
+      box-sizing: border-box;
+      width: 65%; }
+      .Lightbox-row:last-child {
+        width: 35%;
+        padding-top: 8rem; } }
 
 @media (min-width: 770px) {
   .Lightbox--row .Lightbox-content {
@@ -2537,7 +2544,29 @@ input[type="number"]::-webkit-outer-spin-button {
     width: 100%;
     height: 100%;
     margin-bottom: -100%;
-    cursor: pointer; }
+    cursor: pointer;
+    opacity: 0;
+    background-size: contain;
+    background-blend-mode: multiply;
+    -webkit-transition: opacity 0.6s ease;
+    transition: opacity 0.6s ease; }
+    .Feed-trigger:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 20px;
+      width: 20px;
+      margin: auto;
+      -webkit-transition: opacity .30s ease;
+      transition: opacity .30s ease;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%23FFFFFF' d='M15,18.16H5A3.14,3.14,0,0,1,1.85,15V8.54h4a4.69,4.69,0,0,0-.45,2,4.75,4.75,0,0,0,9.5,0,4.68,4.68,0,0,0-.45-2h3.75V15A3.14,3.14,0,0,1,15,18.16m-2.93-7.61a2,2,0,1,1-2-2,2,2,0,0,1,2,2M5,1.84H15A3.14,3.14,0,0,1,18.15,5V6.69h-5.3a4.75,4.75,0,0,0-5.49,0H1.85V5A3.14,3.14,0,0,1,5,1.84M5,0A5,5,0,0,0,0,5V15a5,5,0,0,0,5,5H15a5,5,0,0,0,5-5V5a5,5,0,0,0-5-5H5Z'/%3E%3C/svg%3E"); }
+    .Feed-trigger:hover {
+      opacity: 1; }
+      .Feed-trigger:hover:after {
+        opacity: 1; }
   .Feed-caption {
     display: block;
     min-height: 29vh;
@@ -2564,18 +2593,64 @@ input[type="number"]::-webkit-outer-spin-button {
       vertical-align: top; }
     .Feed-highlight:nth-child(2) {
       text-align: right; }
-  .Feed .Lightbox-content .Feed-img {
-    border-top: 1px solid #DEDFE0;
-    border-bottom: 1px solid #DEDFE0; }
-    @media (min-width: 770px) {
-      .Feed .Lightbox-content .Feed-img {
-        border: none; } }
-  .Feed .Lightbox-content .Headline {
-    text-align: left;
-    margin-left: 20px;
-    margin-left: 2rem; }
+  .Feed-media {
+    display: block; }
+    .Feed-media:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 40px;
+      width: 40px;
+      margin: auto;
+      -webkit-transition: opacity .30s ease;
+      transition: opacity .30s ease;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%23FF7163' d='M15,18.16H5A3.14,3.14,0,0,1,1.85,15V8.54h4a4.69,4.69,0,0,0-.45,2,4.75,4.75,0,0,0,9.5,0,4.68,4.68,0,0,0-.45-2h3.75V15A3.14,3.14,0,0,1,15,18.16m-2.93-7.61a2,2,0,1,1-2-2,2,2,0,0,1,2,2M5,1.84H15A3.14,3.14,0,0,1,18.15,5V6.69h-5.3a4.75,4.75,0,0,0-5.49,0H1.85V5A3.14,3.14,0,0,1,5,1.84M5,0A5,5,0,0,0,0,5V15a5,5,0,0,0,5,5H15a5,5,0,0,0,5-5V5a5,5,0,0,0-5-5H5Z'/%3E%3C/svg%3E"); }
+    .Feed-media:after {
+      opacity: 0; }
+    .Feed-media:hover .Feed-img {
+      opacity: .2;
+      -webkit-transform: scale3d(1.1, 1.1, 1);
+              transform: scale3d(1.1, 1.1, 1); }
+    .Feed-media:hover .Headline {
+      opacity: 1; }
+    .Feed-media:hover:after {
+      opacity: 1; }
+    .Feed-media .Feed-img {
+      z-index: 1;
+      border-top: 1px solid #DEDFE0;
+      border-bottom: 1px solid #DEDFE0;
+      -webkit-transform: none;
+              transform: none;
+      transition: -webkit-transform 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.3s ease;
+      -webkit-transition: -webkit-transform calc(var(--transition-speed) * 2) var(--timing), opacity calc(var(--transition-speed)) ease;
+      transition: opacity 0.3s ease, -webkit-transform 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+      transition: transform 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.3s ease;
+      transition: transform 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.3s ease, -webkit-transform 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
+      @media (min-width: 770px) {
+        .Feed-media .Feed-img {
+          border: none; } }
+    .Feed-media .Headline {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      opacity: 0;
+      margin-top: 50px;
+      text-align: center;
+      color: #FF7163;
+      -webkit-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%);
+      -webkit-transition: opacity 0.6s ease;
+      transition: opacity 0.6s ease; }
   .Feed .Lightbox-header {
     border: none; }
+    .Feed .Lightbox-header .Headline--6 {
+      text-align: left;
+      margin-left: 20px;
+      margin-left: 2rem; }
 
 .Container {
   box-sizing: border-box;

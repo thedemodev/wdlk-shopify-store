@@ -33,14 +33,13 @@ export default function generateFeed () {
 		const foo = arr.map((el, i) => {
 			let html = `
 				<li class="Feed-item Lightbox--row">
-					<label class="Feed-trigger" for="lightbox-${i}">
+					<label class="Feed-trigger" for="lightbox-${i}" style="background-image: url(${el.images.standard_resolution.url}), linear-gradient(35deg, #FFCA54, #FF7163 80%)">
 					</label>
 					<img class="Feed-img"
 						src="${el.images.standard_resolution.url}"
 						srcset="${el.images.thumbnail.url} 150w,
-								${el.images.low_resolution.url} 320w,
-								${el.images.standard_resolution.url} 640w" />
-
+						${el.images.low_resolution.url} 320w,
+						${el.images.standard_resolution.url} 640w" />
 					<input class="Lightbox-state" type="checkbox" id="lightbox-${i}" />
 					<div class="Lightbox-shim">
 						<label class="Lightbox-shim-close" for="lightbox-${i}"></label>
@@ -51,7 +50,11 @@ export default function generateFeed () {
 								</h3>
 								<label class="Lightbox-icon" for="lightbox-${i}"></label>
 							</header>
-							<a class="Feed-link Lightbox-row" href="${el.link}" target="_blank">
+							<a class="Lightbox-row Feed-media"
+								href="${el.link}" target="_blank">
+								<h4 class="Headline Headline--5">
+									Join the journey on Instagram @wdlk
+								</h4>
 								<img class="Feed-img"
 									src="${el.images.standard_resolution.url}"
 									srcset="${el.images.thumbnail.url} 150w,
@@ -72,7 +75,6 @@ export default function generateFeed () {
 					</div>
 				</li>
 			`;
-			console.log(el);
 			return html;
 		});
 		node.innerHTML = foo.join('');
