@@ -29,10 +29,10 @@ export default function generateFeed () {
 		return date.toDateString().slice(0, -4);
 	};
 
-	const createFeed = arr => {
+	const generateFeedTemplate = arr => {
 		const feedTemplate = arr.map((el, i) => {
-			let html = `
-				<li class="Feed-item Lightbox--row">
+			let thumbnail = `
+				<div class="Feed-thumbnail">
 					<label class="Feed-trigger" for="lightbox-${i}" style="background-image: url(${el.images.standard_resolution.url}), linear-gradient(35deg, #FFCA54, #FF7163 80%)">
 					</label>
 					<img class="Feed-img"
@@ -40,6 +40,39 @@ export default function generateFeed () {
 						srcset="${el.images.thumbnail.url} 150w,
 						${el.images.low_resolution.url} 320w,
 						${el.images.standard_resolution.url} 640w" />
+				</div>
+			`;
+
+			let media = `
+				<a class="Lightbox-row Feed-media"
+					href="${el.link}" target="_blank">
+					<h4 class="Headline Headline--5">
+						Join the journey on Instagram @wdlk
+					</h4>
+					<img class="Feed-img"
+						src="${el.images.standard_resolution.url}"
+						srcset="${el.images.thumbnail.url} 150w,
+						${el.images.low_resolution.url} 320w,
+						${el.images.standard_resolution.url} 640w" />
+				</a>
+			`;
+
+			let caption = `
+				<figcaption class="Feed-caption Lightbox-row">
+					<strong class="Feed-highlight">${el.likes.count} likes</strong>
+					<time class="Feed-highlight" datetime="${convertUnixDate(el.created_time)}">${convertUnixDate(el.created_time)}</time>
+					<p class="Feed-copy">
+						<strong>
+							${el.user.username}
+						</strong>
+						${el.caption.text}
+					</p>
+				</figcaption>
+			`;
+
+			let feed = `
+				<li class="Feed-item Lightbox--row">
+					${thumbnail}
 					<input class="Lightbox-state" type="checkbox" id="lightbox-${i}" />
 					<div class="Lightbox-shim">
 						<label class="Lightbox-shim-close" for="lightbox-${i}"></label>
@@ -50,32 +83,13 @@ export default function generateFeed () {
 								</h3>
 								<label class="Lightbox-icon" for="lightbox-${i}"></label>
 							</header>
-							<a class="Lightbox-row Feed-media"
-								href="${el.link}" target="_blank">
-								<h4 class="Headline Headline--5">
-									Join the journey on Instagram @wdlk
-								</h4>
-								<img class="Feed-img"
-									src="${el.images.standard_resolution.url}"
-									srcset="${el.images.thumbnail.url} 150w,
-									${el.images.low_resolution.url} 320w,
-									${el.images.standard_resolution.url} 640w" />
-							</a>
-							<figcaption class="Feed-caption Lightbox-row">
-								<strong class="Feed-highlight">${el.likes.count} likes</strong>
-								<time class="Feed-highlight" datetime="${convertUnixDate(el.created_time)}">${convertUnixDate(el.created_time)}</time>
-								<p class="Feed-copy">
-									<strong>
-										${el.user.username}
-									</strong>
-									${el.caption.text}
-								</p>
-							</figcaption>
+							${media}
+							${caption}
 						</figure>
 					</div>
 				</li>
 			`;
-			return html;
+			return feed;
 		});
 		node.innerHTML = feedTemplate.join('');
 	};
@@ -83,7 +97,7 @@ export default function generateFeed () {
 
 	getMediaFeed(instaURL).then(res => {
 		const feedData = filteredArr(res.data);
-		createFeed(feedData);
+		generateFeedTemplate(feedData);
 	});
 
 }
