@@ -75,6 +75,10 @@
         @include media(medium) {
             top: var(--nav-height-medium);
         }
+
+        @include media(large) {
+            transition: transform .3s var(--timing), opacity var(--transition-speed) ease;
+        }
     }
 
     &-link {

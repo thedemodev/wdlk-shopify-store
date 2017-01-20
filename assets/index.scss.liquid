@@ -1386,6 +1386,13 @@ input[type="number"]::-webkit-outer-spin-button {
   @media (min-width: 770px) {
     .Lightbox-content {
       top: 8rem; } }
+  @media (min-width: 1024px) {
+    .Lightbox-content {
+      transition: -webkit-transform 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity .30s ease;
+      -webkit-transition: -webkit-transform 0.3s var(--timing), opacity var(--transition-speed) ease;
+      transition: opacity .30s ease, -webkit-transform 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+      transition: transform 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity .30s ease;
+      transition: transform 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity .30s ease, -webkit-transform 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955); } }
 
 .Lightbox-link {
   position: absolute;
