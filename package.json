@@ -1,6 +1,6 @@
 {
   "name": "wdlk-ocean-store",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "description": "WDLK Ocean Shopify Store",
   "main": "./tasks/watch.js",
   "directories": {
@@ -12,6 +12,7 @@
     "timber": "babel-node tasks/timber.js",
     "bundle": "babel-node tasks/bundle.js",
     "scripts": "babel-node tasks/scripts.js",
+    "instagram-auth": "babel-node tasks/instagram/instagram-auth.js",
     "theme-watch": "theme watch",
     "product-data": "babel-node tasks/shopify-api/product/prepare-metafields.js",
     "product-meta": "babel-node tasks/shopify-api/product/send-metafields.js",
@@ -41,6 +42,7 @@
     "colors": "^1.1.2",
     "eslint": "^2.10.0",
     "postcss-reporter": "^1.3.1",
+    "request": "^2.79.0",
     "shopify-node-api": "^1.6.1",
     "watch": "^0.16.0"
   },
@@ -55,9 +57,11 @@
     "babelify": "^7.2.0",
     "bourbon": "^4.2.4",
     "browserify": "^12.0.1",
+    "credential": "^1.0.0",
     "fastclick": "^1.0.6",
     "handlebars": "^4.0.5",
     "jquery": "^2.1.4",
+    "jsonp": "^0.2.1",
     "node-sass": "^3.2.0",
     "postcss": "^5.0.14",
     "postcss-color-function": "^2.0.0",

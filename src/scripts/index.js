@@ -5,6 +5,8 @@ import cookieNotification from './modules/cookie-notification';
 import numberInput from './modules/number-input';
 import fbqEvents from './modules/facebook-pixel-events';
 import notification from './modules/notification';
+import getInstaFeed from './modules/instagram-feed';
+
 
 
 rAf();
@@ -14,3 +16,4 @@ cookieNotification();
 numberInput();
 fbqEvents();
 notification();
+window.addEventListener('load', getInstaFeed);
