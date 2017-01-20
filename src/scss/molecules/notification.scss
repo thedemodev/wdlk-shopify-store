@@ -44,15 +44,13 @@
 
 	&-link {
 		position: absolute;
-		top: 1rem;
+		top: 50%;
 		right: 1rem;
 		box-sizing: border-box;
 		width: var(--touch-target-size);
 		height: var(--touch-target-size);
-		padding-top: 1rem;
-		direction: rtl;
 		cursor: pointer;
-
+		transform: translateY(-50%);
 
 		@include generate-x(2rem, .1rem);
 	}
