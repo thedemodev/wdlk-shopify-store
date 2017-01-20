@@ -36,7 +36,7 @@
     },
     "notification": {
         "title": "Free Shipping ",
-        "caption": "to EU, USA, Australia over 100 EUR",
+        "caption": "<a href=\"\/pages\/shipping-information\">to EU, USA and Australia over 100 EUR<\/a>",
         "code": ""
     }
   },

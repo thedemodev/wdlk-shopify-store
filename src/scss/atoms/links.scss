@@ -55,4 +55,29 @@
         font-weight: normal;
 
     }
+
+    &--contrast {
+        color: var(--typo-hex--tertiary);
+        font-weight: normal;
+
+        &::after {
+            content: "";
+            display: block;
+            height: .1rem;
+            width: 100%;
+            margin-top: 2px;
+            background-color: var(--typo-hex--tertiary);
+            transform: scale3d(0, 0, 0);
+            transform-origin: 0 0;
+            transition: transform .8s var(--border-timing);
+        }
+
+        &:hover {
+            color: currentColor;
+
+            &::after {
+                transform: none;
+            }
+        }
+    }
 }

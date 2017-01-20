@@ -408,6 +408,30 @@ body {
       color: #384852; }
   .Link--stripped {
     font-weight: normal; }
+  .Link--contrast {
+    color: #ffffff;
+    font-weight: normal; }
+    .Link--contrast:after {
+      content: "";
+      display: block;
+      height: 1px;
+      height: .1rem;
+      width: 100%;
+      margin-top: 2px;
+      background-color: #ffffff;
+      -webkit-transform: scale3d(0, 0, 0);
+              transform: scale3d(0, 0, 0);
+      -webkit-transform-origin: 0 0;
+              transform-origin: 0 0;
+      transition: -webkit-transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+      -webkit-transition: -webkit-transform 0.8s var(--border-timing);
+      transition: transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+      transition: transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1), -webkit-transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1); }
+    .Link--contrast:hover {
+      color: currentColor; }
+      .Link--contrast:hover:after {
+        -webkit-transform: none;
+                transform: none; }
 
 .Btn {
   display: inline-block;
@@ -919,7 +943,7 @@ input[type="number"]::-webkit-outer-spin-button {
       -webkit-transform-origin: 0 0;
               transform-origin: 0 0;
       transition: -webkit-transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
-      -webkit-transition: -webkit-transform 0.8s var(--navi-transition-function);
+      -webkit-transition: -webkit-transform 0.8s var(--border-timing);
       transition: transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
       transition: transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1), -webkit-transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1); }
     .Navigation-link:hover {
