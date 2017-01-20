@@ -13,8 +13,8 @@
 	line-height: 1.5;
 
 	&-item {
-		width: calc((100vw / 3) - 2px);
-		height: calc((100vw / 3) - 2px);
+		width: calc((100% / 3) - .2rem);
+		height: calc((100vw / 3) - .2rem);
 		margin-bottom: var(--insta-base-spacing);
 
 		&:nth-child(3n+2) {
@@ -29,7 +29,7 @@
 		};
 
 		@include media (medium) {
-            width: calc((100vw / 4) - .225rem);
+            width: calc((100% / 4) - .225rem);
 			height: calc((100vw / 4) - .225rem);
 			margin-left: var(--insta-base-spacing);
 
@@ -47,7 +47,7 @@
         }
 
         @include media (large) {
-            width: calc((100vw / 6) - .25rem);
+            width: calc((100% / 6) - .25rem);
 			height: calc((100vw / 6) - .25rem);
 			margin: {
 				right: 0;
@@ -88,7 +88,7 @@
 		background-size: contain;
 		background-blend-mode: multiply;
 		transition: opacity calc(var(--transition-speed) * 2) ease;
-		@include pseudo-svg-uri($instagram-white, 20px, 20px);
+		@include pseudo-svg-uri($instagram-white, 25px, 25px);
 
 		&:hover {
 			opacity: 1;
@@ -173,9 +173,14 @@
 			position: absolute;
 			top: 50%;
 			left: 50%;
+			box-sizing: border-box;
 			width: 100%;
-			opacity: 0;
+			padding: {
+				right: var(--base-spacing);
+				left: var(--base-spacing);
+			}
 			margin-top: 50px;
+			opacity: 0;
 			text-align: center;
 			color: var(--typo-hex--highlight);
 			transform: translate(-50%, -50%);

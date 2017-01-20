@@ -30,7 +30,7 @@ export default function generateFeed () {
 	};
 
 	const createFeed = arr => {
-		const foo = arr.map((el, i) => {
+		const feedTemplate = arr.map((el, i) => {
 			let html = `
 				<li class="Feed-item Lightbox--row">
 					<label class="Feed-trigger" for="lightbox-${i}" style="background-image: url(${el.images.standard_resolution.url}), linear-gradient(35deg, #FFCA54, #FF7163 80%)">
@@ -77,7 +77,7 @@ export default function generateFeed () {
 			`;
 			return html;
 		});
-		node.innerHTML = foo.join('');
+		node.innerHTML = feedTemplate.join('');
 	};
 
 

@@ -1386,6 +1386,13 @@ input[type="number"]::-webkit-outer-spin-button {
   @media (min-width: 770px) {
     .Lightbox-content {
       top: 8rem; } }
+  @media (min-width: 1024px) {
+    .Lightbox-content {
+      transition: -webkit-transform 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity .30s ease;
+      -webkit-transition: -webkit-transform 0.3s var(--timing), opacity var(--transition-speed) ease;
+      transition: opacity .30s ease, -webkit-transform 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+      transition: transform 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity .30s ease;
+      transition: transform 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity .30s ease, -webkit-transform 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955); } }
 
 .Lightbox-link {
   position: absolute;
@@ -2523,8 +2530,8 @@ input[type="number"]::-webkit-outer-spin-button {
   text-align: left;
   line-height: 1.5; }
   .Feed-item {
-    width: calc(33.33333vw - 2px);
-    height: calc(33.33333vw - 2px);
+    width: calc(33.33333% - .2rem);
+    height: calc(33.33333vw - .2rem);
     margin-bottom: 3px; }
     .Feed-item:nth-child(3n+2) {
       margin-right: 3px;
@@ -2533,7 +2540,7 @@ input[type="number"]::-webkit-outer-spin-button {
       margin-bottom: 0; }
     @media (min-width: 770px) {
       .Feed-item {
-        width: calc(25vw - .225rem);
+        width: calc(25% - .225rem);
         height: calc(25vw - .225rem);
         margin-left: 3px; }
         .Feed-item:nth-child(3n+2) {
@@ -2544,7 +2551,7 @@ input[type="number"]::-webkit-outer-spin-button {
           margin-bottom: 0; } }
     @media (min-width: 1024px) {
       .Feed-item {
-        width: calc(16.66667vw - .25rem);
+        width: calc(16.66667% - .25rem);
         height: calc(16.66667vw - .25rem);
         margin-right: 0;
         margin-left: 3px; }
@@ -2579,8 +2586,8 @@ input[type="number"]::-webkit-outer-spin-button {
       right: 0;
       bottom: 0;
       left: 0;
-      height: 20px;
-      width: 20px;
+      height: 25px;
+      width: 25px;
       margin: auto;
       -webkit-transition: opacity .30s ease;
       transition: opacity .30s ease;
@@ -2658,9 +2665,14 @@ input[type="number"]::-webkit-outer-spin-button {
       position: absolute;
       top: 50%;
       left: 50%;
+      box-sizing: border-box;
       width: 100%;
-      opacity: 0;
+      padding-right: 20px;
+      padding-right: 2rem;
+      padding-left: 20px;
+      padding-left: 2rem;
       margin-top: 50px;
+      opacity: 0;
       text-align: center;
       color: #FF7163;
       -webkit-transform: translate(-50%, -50%);
