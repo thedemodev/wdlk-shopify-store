@@ -10,7 +10,9 @@
 	<input type="checkbox" class="Notification-state" id="notificationModule" />
 	<figure class="Notification js_notification">
 		<figcaption class="Notification-content Headline Headline--5 Headline--complementary">
-			{{notificationTitle}}{{notificationCaption}}{{'general.notification.code' | t }}
+			<a class="Link Link--contrast" href="/pages/shipping-information">
+				{{notificationTitle}}{{notificationCaption}}{{'general.notification.code' | t }}
+			</a>
 		</figcaption>
 		<label class="Notification-link js_notification-btn" for="notificationModule"></label>
 	</figure>

@@ -1,5 +1,4 @@
 :root {
-    --navi-transition-function: cubic-bezier(0.075, 0.820, 0.165, 1.000);
     --navi-bg-color: rgba(255, 255, 255, .98);
     --navi-mobile-bg-color: rgba(250, 250, 250, .9);
     --navi-pointer-size: 1.5rem;
@@ -140,7 +139,7 @@
             background-color: var(--typo-hex);
             transform: scaleX(0);
             transform-origin: 0 0;
-            transition: transform .8s var(--navi-transition-function);
+            transition: transform .8s var(--border-timing);
         }
 
         &:hover {

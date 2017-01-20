@@ -408,6 +408,30 @@ body {
       color: #384852; }
   .Link--stripped {
     font-weight: normal; }
+  .Link--contrast {
+    color: #ffffff;
+    font-weight: normal; }
+    .Link--contrast:after {
+      content: "";
+      display: block;
+      height: 1px;
+      height: .1rem;
+      width: 100%;
+      margin-top: 2px;
+      background-color: #ffffff;
+      -webkit-transform: scale3d(0, 0, 0);
+              transform: scale3d(0, 0, 0);
+      -webkit-transform-origin: 0 0;
+              transform-origin: 0 0;
+      transition: -webkit-transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+      -webkit-transition: -webkit-transform 0.8s var(--border-timing);
+      transition: transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+      transition: transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1), -webkit-transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1); }
+    .Link--contrast:hover {
+      color: currentColor; }
+      .Link--contrast:hover:after {
+        -webkit-transform: none;
+                transform: none; }
 
 .Btn {
   display: inline-block;
@@ -919,7 +943,7 @@ input[type="number"]::-webkit-outer-spin-button {
       -webkit-transform-origin: 0 0;
               transform-origin: 0 0;
       transition: -webkit-transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
-      -webkit-transition: -webkit-transform 0.8s var(--navi-transition-function);
+      -webkit-transition: -webkit-transform 0.8s var(--border-timing);
       transition: transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
       transition: transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1), -webkit-transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1); }
     .Navigation-link:hover {
@@ -2450,7 +2474,7 @@ input[type="number"]::-webkit-outer-spin-button {
   overflow: hidden;
   text-align: center;
   color: #ffffff;
-  background-color: #D2BC7A;
+  background-color: #DFC781;
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
   -webkit-perspective: 1000;
@@ -2480,8 +2504,7 @@ input[type="number"]::-webkit-outer-spin-button {
     margin-bottom: 0; }
   .Notification-link {
     position: absolute;
-    top: 10px;
-    top: 1rem;
+    top: 50%;
     right: 10px;
     right: 1rem;
     box-sizing: border-box;
@@ -2489,10 +2512,9 @@ input[type="number"]::-webkit-outer-spin-button {
     width: 4rem;
     height: 40px;
     height: 4rem;
-    padding-top: 10px;
-    padding-top: 1rem;
-    direction: rtl;
-    cursor: pointer; }
+    cursor: pointer;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%); }
     .Notification-link:before, .Notification-link:after {
       content: "";
       position: absolute;
