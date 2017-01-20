@@ -1,6 +1,6 @@
 {
   "name": "wdlk-ocean-store",
-  "version": "1.3.2",
+  "version": "1.4.0",
   "description": "WDLK Ocean Shopify Store",
   "main": "./tasks/watch.js",
   "directories": {
