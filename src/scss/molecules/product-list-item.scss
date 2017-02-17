@@ -56,16 +56,18 @@
         display: block;
         width: 100%;
         margin-bottom: 1.8rem;
+        overflow: hidden;
     }
 
     &-img {
         width: 100%;
-        transition: opacity .1s ease, transform .2s linear;
+        transition: opacity .2s ease, transform .5s ease;
 
         &:hover {
+            transition: transform 1s ease;
             &:first-child {
                 opacity: 1;
-                transform: scale3d(1.2, 1.2, 0);
+                transform: scale3d(1.2, 1.2, 1);
             }
 
             &:last-child {
@@ -79,11 +81,7 @@
             right: 0;
             z-index: 1;
             opacity: 0;
-            transform: scale3d(1, 1, 0);
-        }
-
-        &:last-child {
-            transition: opacity .05s ease-out;
+            transform: scale3d(1, 1, 1);
         }
     }
 
