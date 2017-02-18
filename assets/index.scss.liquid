@@ -2173,12 +2173,38 @@ input[type="number"]::-webkit-outer-spin-button {
       .ProductItem:nth-child(4n) {
         margin-right: 0; } }
   .ProductItem-stage {
+    position: relative;
     display: block;
     width: 100%;
     margin-bottom: 18px;
-    margin-bottom: 1.8rem; }
+    margin-bottom: 1.8rem;
+    overflow: hidden; }
   .ProductItem-img {
-    width: 100%; }
+    display: block;
+    width: 100%;
+    transition: opacity .2s ease, -webkit-transform .5s ease;
+    -webkit-transition: opacity .2s ease, -webkit-transform .5s ease;
+    transition: opacity .2s ease, transform .5s ease;
+    transition: opacity .2s ease, transform .5s ease, -webkit-transform .5s ease; }
+    .ProductItem-img:hover {
+      transition: -webkit-transform 1s ease;
+      -webkit-transition: -webkit-transform 1s ease;
+      transition: transform 1s ease;
+      transition: transform 1s ease, -webkit-transform 1s ease; }
+      .ProductItem-img:hover:first-child {
+        opacity: 1;
+        -webkit-transform: scale3d(1.2, 1.2, 1);
+                transform: scale3d(1.2, 1.2, 1); }
+      .ProductItem-img:hover:last-child {
+        opacity: 0; }
+    .ProductItem-img:first-child {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 1;
+      opacity: 0;
+      -webkit-transform: scale3d(1, 1, 1);
+              transform: scale3d(1, 1, 1); }
   .ProductItem-caption {
     display: -webkit-flex;
     display: -ms-flexbox;

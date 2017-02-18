@@ -34,6 +34,11 @@
     {% endcomment %}
     <article class="ProductItem">
         <a href="{{ product.url | within: collection }}" class="ProductItem-stage">
+            {% for image in product.images limit: 3 %}
+                {% if forloop.index == 3 %}
+                    <img class="ProductItem-img" src="{{ image.src | img_url: 'large' }}" alt="{{ image.alt | escape }}">
+                {% endif %}
+            {% endfor %}
             <img class="ProductItem-img" src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
         </a>
 
