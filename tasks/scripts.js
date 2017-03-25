@@ -4,15 +4,18 @@ import {writeFile} from 'fs';
 import log from './log';
 
 export default function scripts () {
-    var scripts = [
+    const scripts = [
         resolve('./src/scripts/timber.js.liquid'),
         resolve('./src/scripts/index.js.liquid'),
     ];
-    var outputFile = resolve('./assets/index.js.liquid');
+    const outputFile = resolve('./assets/index.js.liquid');
+    const time = new Date();
 
     readFiles(scripts, (err, data) => {
-        if (err) console.error(log.error('Scripts Concat Read File Error:'), err);
+        if (err) {
+            console.error(log.error(`${time} [Script Concatenation]:`), `${err} 😡`);
+        }
         writeFile(outputFile, data.join('\r\n'));
-        console.log(log.info('Scripts:'), 'concatenation was successfull');
+        console.log(log.info(`${time} [Script Concatenation]:`), 'concatenation was successfull ✌🏻');
     });
 }
