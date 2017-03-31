@@ -17,13 +17,13 @@
     }
 
     &--payment {
-        height: 4rem;
+        max-height: 4rem;
         margin: {
             right: var(--base-spacing);
             bottom: var(--base-spacing);
         }
 
-        &:last-of-type {
+        &:nth-of-type(even) {
             margin-right: 0;
         }
     }
