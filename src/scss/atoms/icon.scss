@@ -23,8 +23,12 @@
             bottom: var(--base-spacing);
         }
 
-        &:nth-of-type(even) {
+        &:last-of-type {
             margin-right: 0;
+        }
+
+        @include media(medium) {
+
         }
     }
 
