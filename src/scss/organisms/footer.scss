@@ -1,6 +1,5 @@
 :root {
     --footer-side-padding: 5rem;
-    --footer-side-paddding-diff: 5.8;
 }
 
 .Footer {
@@ -18,7 +17,7 @@
         text-align: left;
 
         .LinkList {
-            width: 40vw;
+            width: 38%;
 
             &--secondary {
                 align-self: flex-end;
@@ -27,7 +26,7 @@
         }
 
         .PaymentList {
-            width: calc(50vw - var(--footer-side-paddding-diff);
+            width: 62%;
             text-align: right;
         }
 
