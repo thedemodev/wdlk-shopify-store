@@ -56,12 +56,27 @@
   &--row {
     position: relative;
     width: var(--btn-row-width, 20%);
-    font-size: 0;
+    padding: 0 calc(var(--box-base-padding) / 2);
     overflow: hidden;
+    font-size: 0;
     @include pseudo-svg-uri($arrow, 16px, 20px);
 
     &::after {
       transform: rotate(180deg);
+    }
+
+    @include media (small) {
+      padding: 0 var(--box-base-padding);
+      margin-left: var(--base-margin);
+    }
+
+    @include media(medium) {
+      width: auto;
+      font-size: inherit;
+
+      &::after {
+        content: none;
+      }
     }
   }
 

@@ -7,21 +7,27 @@
 .InputField {
   box-sizing: border-box;
   width: 100%;
+  max-width: 60rem;
   height: var(--input-base-height);
   padding: 0 var(--base-spacing);
-  border: none;
+  border: 1px solid var(--input-hex-bg);
   line-height: var(--input-base-height);
   font-family: "museo_sans500";
   font-size: var(--md-copy-size);
   color: var(--input-hex-placeholder);
 
-  // @include media(small, max-width) {
-  //     width: var(--input-base-mobile);
-  // }
+  &:focus {
+    outline: none;
+    border-color: var(--input-hex-focus);
+  }
 
   &--row {
     display: inline-block;
     width: calc(var(--input-base-width) - var(--base-spacing));
     vertical-align: top;
+
+    @include media(medium) {
+      width: calc((var(--input-base-width) - 20%) - var(--base-spacing));
+    }
   }
 }

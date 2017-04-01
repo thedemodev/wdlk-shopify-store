@@ -20,6 +20,12 @@
         right: auto;
     }
     text-align: center;
+    @include media (medium) {
+      padding: {
+        right: calc(var(--base-spacing) * 2);
+        left: calc(var(--base-spacing) * 2);
+      }
+    }
   }
 
   &-img {
@@ -39,17 +45,9 @@
   }
 
   .Btn {
-    @include media (large) {
+    @include media(large) {
         margin-left: 0;
     }
   }
 
-    // .InputField {
-    //     margin: {
-    //         right: calc(50% - (var(--input-base-width) / 2));
-    //         bottom: var(--base-spacing);
-    //         left: calc(50% - (var(--input-base-width) / 2));
-    //     }
-    //     vertical-align: top;
-    // }
 }
