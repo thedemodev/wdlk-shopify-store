@@ -23,7 +23,7 @@
       "submit": "Subscribe",
       "img_alt": "Sign up for WDLK news",
       "title": "Join the ocean movement",
-      "subline_html": "You can unsubscribe our newsletter any time. Read more about it in our <a class=\"Link Link--secondary\" href=\"\/pages\/privacy-policy\" target=\"_blank\">Privacy Policy<\/a>"
+      "subline_html": "You can unsubscribe our newsletter any time. Read more about it in our <a class=\"Link Link--secondary Link--tonedown\" href=\"\/pages\/privacy-policy\" target=\"_blank\">Privacy Policy<\/a>"
     },
     "search": {
       "no_results_html": "Your search for \"{{ terms }}\" did not yield any results.",

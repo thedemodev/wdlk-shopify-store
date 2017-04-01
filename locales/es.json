@@ -23,7 +23,7 @@
       "submit": "Suscribete",
       "img_alt": "Suscribete en el boletín de WDLK",
       "title": "Unete al movimiento marítimo",
-      "subline_html": "Tu puedes borrar tus datos del boletín en cualquier momento. Más información encuentras <a class=\"Link Link--secondary\" href=\"\/pages\/privacy-policy\" target=\"_blank\">Política de datos<\/a>"
+      "subline_html": "Tu puedes borrar tus datos del boletín en cualquier momento. Más información encuentras <a class=\"Link Link--secondary Link--tonedown\" href=\"\/pages\/privacy-policy\" target=\"_blank\">Política de datos<\/a>"
     },
     "search": {
       "no_results_html": "Su búsqueda de \"{{ terms }}\" no tuvo resultados.",
