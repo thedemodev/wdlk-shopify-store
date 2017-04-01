@@ -1209,26 +1209,22 @@ input[type="number"]::-webkit-outer-spin-button {
       line-height: 1;
       -webkit-transform: translateX(-50%) translateY(-35%);
               transform: translateX(-50%) translateY(-35%); }
-  .Banner--plain {
+  .Banner--plain .Banner-content {
     position: static;
-    overflow: visible;
-    overflow: initial; }
-    .Banner--plain .Banner-content {
-      position: static;
-      padding: 90px 20px;
-      padding: 9rem 2rem;
-      margin: 0 auto;
-      color: #8E959A;
-      -webkit-transform: none;
-              transform: none; }
-      @media (min-width: 770px) {
-        .Banner--plain .Banner-content {
-          max-width: 70rem; } }
-    .Banner--plain .SocialList-item {
-      width: 30px;
-      fill: #8E959A; }
-      .Banner--plain .SocialList-item:hover {
-        fill: #384852; }
+    padding: 90px 20px;
+    padding: 9rem 2rem;
+    margin: 0 auto;
+    color: #8E959A;
+    -webkit-transform: none;
+            transform: none; }
+    @media (min-width: 770px) {
+      .Banner--plain .Banner-content {
+        max-width: 70rem; } }
+  .Banner--plain .SocialList-item {
+    width: 30px;
+    fill: #8E959A; }
+    .Banner--plain .SocialList-item:hover {
+      fill: #384852; }
   .Banner--teaser {
     box-sizing: border-box;
     width: 100vw; }
@@ -2777,9 +2773,6 @@ input[type="number"]::-webkit-outer-spin-button {
   @media (min-width: 1024px) {
     .NewsletterForm .Btn {
       margin-left: 0; } }
-  .NewsletterForm .Copyright {
-    width: 100%;
-    margin-bottom: (--base-spacing); }
 
 .Container {
   box-sizing: border-box;
@@ -2964,6 +2957,9 @@ input[type="number"]::-webkit-outer-spin-button {
   margin-bottom: 1rem; }
 
 .Footer {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1024px;
   padding-top: 77px;
   padding-top: 7.7rem;
   padding-right: 50px;
@@ -2974,9 +2970,21 @@ input[type="number"]::-webkit-outer-spin-button {
   padding-left: 5rem;
   overflow: hidden;
   text-align: center; }
+  @media (min-width: 770px) {
+    .Footer {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      margin-right: auto;
+      margin-left: auto; } }
   .Footer .SocialList {
     margin-bottom: 60px;
     margin-bottom: 6rem; }
+  .Footer .Copyright {
+    width: 100%;
+    margin-bottom: (--base-spacing);
+    text-align: center; }
   @media (min-width: 770px) {
     .Footer {
       text-align: left; }
@@ -3077,3 +3085,12 @@ input[type="number"]::-webkit-outer-spin-button {
       padding-right: 4rem;
       padding-left: 4rem;
       margin-bottom: 4rem; } }
+
+.Layout-container {
+  position: relative;
+  z-index: 1;
+  background-color: #ffffff; }
+
+@media (min-width: 770px) {
+  .Layout {
+    margin-bottom: 603px; } }

@@ -3,6 +3,9 @@
 }
 
 .Footer {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--screen-l);
   padding: {
       top: 7.7rem;
       right: var(--footer-side-padding);
@@ -12,8 +15,25 @@
   overflow: hidden;
   text-align: center;
 
+  @include media(medium) {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: {
+      right: auto;
+      left: auto;
+    }
+  }
+
   .SocialList {
     margin-bottom: calc(var(--base-spacing) * 3);
+  }
+
+  .Copyright {
+    width: 100%;
+    margin-bottom: var(var(--base-spacing));
+    text-align: center;
   }
 
   @include media(medium) {
