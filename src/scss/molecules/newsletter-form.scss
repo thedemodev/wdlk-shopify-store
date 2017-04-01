@@ -1,0 +1,55 @@
+:root {
+  --newsletter-height: 29.6rem;
+}
+
+.NewsletterForm {
+  position: relative;
+  overflow: hidden;
+
+  &-content {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    padding: {
+      right: var(--base-spacing);
+      left: var(--base-spacing);
+    }
+    margin: {
+        left: auto;
+        right: auto;
+    }
+    text-align: center;
+  }
+
+  &-img {
+
+    @include media (large) {
+        width: 100%;
+    }
+  }
+
+  &-security {
+    position: absolute;
+    left: -5000px;
+  }
+
+  .Headline {
+    color: var(--typo-hex--quaternary);
+  }
+
+  .Btn {
+    @include media (large) {
+        margin-left: 0;
+    }
+  }
+
+    // .InputField {
+    //     margin: {
+    //         right: calc(50% - (var(--input-base-width) / 2));
+    //         bottom: var(--base-spacing);
+    //         left: calc(50% - (var(--input-base-width) / 2));
+    //     }
+    //     vertical-align: top;
+    // }
+}

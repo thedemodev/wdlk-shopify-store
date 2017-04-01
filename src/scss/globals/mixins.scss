@@ -218,6 +218,7 @@
         margin: auto;
         transition: opacity var(--transition-speed) ease;
         background-image: svg-url($svg);
+        background-repeat: no-repeat;
     }
 }
 

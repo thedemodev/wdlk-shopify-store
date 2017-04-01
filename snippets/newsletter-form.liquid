@@ -7,9 +7,12 @@
 {% assign actionUrl = '//woodlike.us10.list-manage.com/subscribe/post?u=fc45d5bd59cd2e9dcfeeec732&amp;id=1af7e2c2b9'%}
 <form class="NewsletterForm" action="{{actionUrl}}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
     <div class="NewsletterForm-content">
-        <h3 class="Headline Headline--4">{{ 'layout.footer.newsletter_title' | t }}</h3>
-        <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" name="EMAIL" class="InputField" id="mce-EMAIL" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
-        <button type="submit" value="{{ 'general.newsletter_form.submit' | t }}" name="subscribe" id="mc-embedded-subscribe" class="Btn js_fbqNewsLead">{{ 'general.newsletter_form.submit' | t }}</button>
+        <h3 class="Headline Headline--2">
+          {{ 'general.newsletter_form.title' | t }}
+        </h3>
+        <div class="SubHeadline">{{ 'general.newsletter_form.subline_html' | t }}</div>
+        <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" name="EMAIL" class="InputField InputField--row" id="mce-EMAIL" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
+        <button type="submit" value="{{ 'general.newsletter_form.submit' | t }}" name="subscribe" id="mc-embedded-subscribe" class="Btn Btn--row js_fbqNewsLead">{{ 'general.newsletter_form.submit' | t }}</button>
     	<div id="mce-responses">
     		<div class="response" id="mce-error-response" style="display:none"></div>
     		<div class="response" id="mce-success-response" style="display:none"></div>
