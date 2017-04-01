@@ -7,7 +7,6 @@ import fbqEvents from './modules/facebook-pixel-events';
 import notification from './modules/notification';
 import getInstaFeed from './modules/instagram-feed';
 
-fbqEvents();
 
 window.addEventListener('load', e => {
 	rAf();
@@ -18,6 +17,8 @@ window.addEventListener('load', e => {
 	numberInput();
 });
 
+
+fbqEvents();
 notification();
 
 
