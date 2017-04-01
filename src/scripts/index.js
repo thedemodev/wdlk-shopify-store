@@ -7,13 +7,17 @@ import fbqEvents from './modules/facebook-pixel-events';
 import notification from './modules/notification';
 import getInstaFeed from './modules/instagram-feed';
 
-
-
-rAf();
-smoothScrolling();
-stickyNavigation();
-cookieNotification();
-numberInput();
 fbqEvents();
+
+window.addEventListener('load', e => {
+	rAf();
+	getInstaFeed();
+	stickyNavigation();
+	cookieNotification();
+	smoothScrolling();
+	numberInput();
+});
+
 notification();
-window.addEventListener('load', getInstaFeed);
+
+
