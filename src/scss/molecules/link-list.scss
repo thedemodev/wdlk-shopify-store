@@ -9,7 +9,7 @@
     }
 
     &-link {
-        color: var(--link-hex-color);
+        color: var(--link-list-hex-color);
         font-family: "museo_sans500";
         font-size: var(--md-copy-size);
         text-transform: uppercase;
@@ -17,7 +17,7 @@
         transition: color .5s ease;
 
         &:hover {
-            color: var(--link-hex-hover-color);
+            color: var(--link-list-hex-hover-color);
         }
 
         &.is-active {

@@ -1,9 +1,11 @@
 <footer class="Footer">
     {% assign linkListHandle = 'footer' %}
     {% include 'link-list' with 'primary' %}
-    {% include 'payment-teaser'%}
+
     {% assign linkListHandle = 'footer-meta-navigaton' %}
-    {% include 'link-list' with 'secondary' %}
-    {% include 'social-list' with 'link tonedown' %}
+    {% include 'link-list' with 'primary' %}
+
+    {% include 'social-list' with 'default' %}
+    {% include 'payment-teaser'%}
     <small class="Copyright">{{'layout.footer.copyright' | t}}</small>
 </footer>

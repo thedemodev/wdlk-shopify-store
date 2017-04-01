@@ -3,42 +3,29 @@
 }
 
 .Footer {
-    padding: {
-        top: 7.7rem;
-        right: var(--footer-side-padding);
-        bottom: 3.5rem;
-        left: var(--footer-side-padding);
+  padding: {
+      top: 7.7rem;
+      right: var(--footer-side-padding);
+      bottom: 3.5rem;
+      left: var(--footer-side-padding);
+  }
+  overflow: hidden;
+  text-align: center;
+
+  .SocialList {
+    margin-bottom: calc(var(--base-spacing) * 3);
+  }
+
+  @include media(medium) {
+    text-align: left;
+
+    .LinkList {
+      display: inline-block;
+      min-width: 38%;
+      margin-bottom: calc(var(--base-spacing) * 3);
+      vertical-align: top;
     }
 
-    text-align: center;
-
-    @include media(medium) {
-        @include grid-wrapper(undefined, space-between);
-        text-align: left;
-
-        .LinkList {
-            width: 38%;
-
-            &--secondary {
-                align-self: flex-end;
-                width: calc(100vw / 3 - 1);
-            }
-        }
-
-        .PaymentList {
-            width: 62%;
-            text-align: right;
-        }
-
-        .SocialList,
-        .Copyright {
-            align-self: flex-end;
-            width: calc(100vw / 3 - var(--footer-side-paddding-diff);
-        }
-
-        .Copyright {
-            text-align: right;
-        }
-    }
+  }
 
 }

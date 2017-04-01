@@ -820,7 +820,7 @@ input[type="number"]::-webkit-outer-spin-button {
   font-family: "museo_sans500";
   font-size: 14px;
   font-size: 1.4rem;
-  color: #596771; }
+  color: var(--hex-blue-gray-darkt); }
   .InputField:focus {
     outline: none;
     border-color: #9FBCD0; }
@@ -841,32 +841,6 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0 20px;
   margin: 0 2rem;
   vertical-align: bottom; }
-
-.Icon--payment {
-  max-height: 40px;
-  max-height: 4rem;
-  margin-right: 20px;
-  margin-right: 2rem;
-  margin-bottom: 20px;
-  margin-bottom: 2rem; }
-  .Icon--payment:last-of-type {
-    margin-right: 0; }
-
-.Icon--paypal {
-  width: 100px;
-  width: 10rem; }
-
-.Icon--advanced {
-  width: 70px;
-  width: 7rem; }
-
-.Icon--amazon {
-  width: 120px;
-  width: 12rem; }
-
-.Icon--skrill {
-  width: 60px;
-  width: 6rem; }
 
 .Video--bg {
   position: absolute;
@@ -2112,7 +2086,7 @@ input[type="number"]::-webkit-outer-spin-button {
     margin-bottom: 10px;
     margin-bottom: 1rem; }
   .LinkList-link {
-    color: #FF7163;
+    color: #8E959A;
     font-family: "museo_sans500";
     font-size: 14px;
     font-size: 1.4rem;
@@ -2122,7 +2096,7 @@ input[type="number"]::-webkit-outer-spin-button {
     -webkit-transition: color .5s ease;
     transition: color .5s ease; }
     .LinkList-link:hover {
-      color: #E5554E; }
+      color: #596771; }
     .LinkList-link.is-active {
       color: #E5554E; }
   @media (min-width: 770px) {
@@ -2149,11 +2123,34 @@ input[type="number"]::-webkit-outer-spin-button {
       color: #384852; }
 
 .PaymentList {
-  margin-bottom: 77px;
-  margin-bottom: 7.7rem; }
-  .PaymentList-icon {
-    margin-right: 20px;
-    margin-right: 2rem; }
+  padding-top: 20px;
+  padding-top: 2rem;
+  padding-bottom: 10px;
+  padding-bottom: 1rem;
+  border: solid #DEDFE0;
+  border-width: 1px 0;
+  margin-bottom: 40px;
+  margin-bottom: 4rem;
+  text-align: center; }
+  .PaymentList .Icon {
+    max-height: 40px;
+    max-height: 4rem;
+    margin-right: 30px;
+    margin-right: 3rem; }
+    .PaymentList .Icon:last-of-type {
+      margin-right: 0; }
+  .PaymentList .Icon--paypal {
+    width: 100px;
+    width: 10rem; }
+  .PaymentList .Icon--advanced {
+    width: 70px;
+    width: 7rem; }
+  .PaymentList .Icon--amazon {
+    width: 120px;
+    width: 12rem; }
+  .PaymentList .Icon--skrill {
+    width: 60px;
+    width: 6rem; }
 
 .SocialList {
   text-align: center; }
@@ -2974,36 +2971,19 @@ input[type="number"]::-webkit-outer-spin-button {
   padding-bottom: 3.5rem;
   padding-left: 50px;
   padding-left: 5rem;
+  overflow: hidden;
   text-align: center; }
+  .Footer .SocialList {
+    margin-bottom: 60px;
+    margin-bottom: 6rem; }
   @media (min-width: 770px) {
     .Footer {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-      -webkit-box-pack: justify;
-          -ms-flex-pack: justify;
-              justify-content: space-between;
-      max-width: 100%;
-      margin: auto;
       text-align: left; }
       .Footer .LinkList {
-        width: 38%; }
-        .Footer .LinkList--secondary {
-          -ms-flex-item-align: end;
-              align-self: flex-end;
-          width: 32.33333vw; }
-      .Footer .PaymentList {
-        width: 62%;
-        text-align: right; }
-      .Footer .SocialList,
-      .Footer .Copyright {
-        -ms-flex-item-align: end;
-            align-self: flex-end;
-        width: calc(100vw / 3 - var(--footer-side-paddding-diff)); }
-      .Footer .Copyright {
-        text-align: right; } }
+        display: inline-block;
+        min-width: 38%;
+        margin-bottom: 6rem;
+        vertical-align: top; } }
 
 .Cart--quick {
   position: fixed;

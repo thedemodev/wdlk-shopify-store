@@ -1,52 +1,14 @@
 :root {
-    --social-icons-size: 2rem;
-    --advanced-icon-width: 7rem;
-    --paypal-icon-width: 10rem;
-    --skrill-icon-width: 6rem;
-    --amazon-icon-width: 12rem;
-    --disable-icons: 2.6rem;
+  --social-icons-size: 2rem;
+  --disable-icons: 2.6rem;
 }
 
 .Icon {
-    &--social {
-        display: inline-block;
-        height: var(--social-icons-size);
-        width: var(--social-icons-size);
-        margin: 0 var(--base-spacing);
-        vertical-align: bottom;
-    }
-
-    &--payment {
-        max-height: 4rem;
-        margin: {
-            right: var(--base-spacing);
-            bottom: var(--base-spacing);
-        }
-
-        &:last-of-type {
-            margin-right: 0;
-        }
-
-        @include media(medium) {
-
-        }
-    }
-
-    &--paypal {
-        width: var(--paypal-icon-width);
-    }
-
-    &--advanced {
-        width: var(--advanced-icon-width);
-    }
-
-    &--amazon {
-        width: var(--amazon-icon-width);
-    }
-
-    &--skrill {
-        width: var(--skrill-icon-width);
-    }
-
-
+  &--social {
+    display: inline-block;
+    height: var(--social-icons-size);
+    width: var(--social-icons-size);
+    margin: 0 var(--base-spacing);
+    vertical-align: bottom;
+  }
 }
