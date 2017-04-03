@@ -1,7 +1,8 @@
 :root {
-  --advanced-icon-width: 7rem;
-  --paypal-icon-width: 10rem;
-  --skrill-icon-width: 6rem;
+  --paypal-icon-width: 8rem;
+  --sofort-icon-width: var(--paypal-icon-width);
+  --advanced-icon-width: 6rem;
+  --skrill-icon-width: 5rem;
   --amazon-icon-width: 12rem;
 }
 
@@ -40,5 +41,9 @@
 
   .Icon--skrill {
       width: var(--skrill-icon-width);
+  }
+
+  .Icon--sofort {
+    width: var(--sofort-icon-width);
   }
 }
