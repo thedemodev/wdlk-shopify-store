@@ -198,3 +198,5 @@ The banners for the home site stage are defined in 3 different breakpoints to de
 * Desktop: 480 x 405 (16:9)
 * Tablet: 256 x 512
 * Smart Phone : 568 x 320  (3:2)
+
+#Test
