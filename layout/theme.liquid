@@ -35,6 +35,7 @@
       Add the page template as a class for easy page or template specific styling.
     {% endcomment %}
     <body class="Layout{% if customer %} customer-logged-in{% endif %}{% if template == 'index' %} js_scroller{% endif %}">
+      <div class="Layout-container">
         {% comment %} NOTIFICATION TEASER {% endcomment %}
         {% include 'notification-teaser' %}
         {% comment %} Header {% endcomment %}
@@ -44,19 +45,20 @@
         {% comment %} Newsletter Form {% endcomment %}
         {% include 'newsletter-form' %}
         {% comment %} Footer {% endcomment %}
-        {% include 'footer' %}
-        {% comment %} Quick Cart {% endcomment %}
-        {% include 'cart-quick' %}
-        {% comment %} Cookie Notification Bar {% endcomment %}
-        {% include 'cookie-notification' %}
-        {% comment %} SVG Icon Container Snippet {% endcomment %}
-        {% include 'icon-container' %}
-        <script src="{{ 'index.js' | asset_url }}" async ></script>
-        {% comment %}
-            If you store has customer accounts disabled, you can remove the following JS file
-        {% endcomment %}
-        {% if template contains 'customers' %}
-            <script src="{{ 'shopify_common.js' | shopify_asset_url }}" async ></script>
-        {% endif %}
+      </div>
+      {% include 'footer' %}
+      {% comment %} Quick Cart {% endcomment %}
+      {% include 'cart-quick' %}
+      {% comment %} Cookie Notification Bar {% endcomment %}
+      {% include 'cookie-notification' %}
+      {% comment %} SVG Icon Container Snippet {% endcomment %}
+      {% include 'icon-container' %}
+      <script src="{{ 'index.js' | asset_url }}" async></script>
+      {% comment %}
+          If you store has customer accounts disabled, you can remove the following JS file
+      {% endcomment %}
+      {% if template contains 'customers' %}
+          <script src="{{ 'shopify_common.js' | shopify_asset_url }}" async ></script>
+      {% endif %}
     </body>
 </html>

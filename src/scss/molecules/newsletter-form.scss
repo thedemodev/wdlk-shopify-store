@@ -1,0 +1,52 @@
+:root {
+  --newsletter-height: 29.6rem;
+}
+
+.NewsletterForm {
+  position: relative;
+  overflow: hidden;
+
+  &-content {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    padding: {
+      right: var(--base-spacing);
+      left: var(--base-spacing);
+    }
+    margin: {
+        left: auto;
+        right: auto;
+    }
+    text-align: center;
+    @include media (medium) {
+      padding: {
+        right: calc(var(--base-spacing) * 2);
+        left: calc(var(--base-spacing) * 2);
+      }
+    }
+  }
+
+  &-img {
+
+    @include media (large) {
+        width: 100%;
+    }
+  }
+
+  &-security {
+    position: absolute;
+    left: -5000px;
+  }
+
+  .Headline {
+    color: var(--typo-hex--quaternary);
+  }
+
+  .Btn {
+    @include media(large) {
+        margin-left: 0;
+    }
+  }
+}

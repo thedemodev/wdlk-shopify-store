@@ -1,7 +1,49 @@
-.PaymentList {
-    margin-bottom: 7.7rem;
+:root {
+  --paypal-icon-width: 8rem;
+  --sofort-icon-width: var(--paypal-icon-width);
+  --advanced-icon-width: 6rem;
+  --skrill-icon-width: 5rem;
+  --amazon-icon-width: 12rem;
+}
 
-    &-icon {
-        margin-right: var(--base-spacing);
+.PaymentList {
+  padding: {
+      top: var(--base-spacing);
+      bottom: calc(var(--base-spacing) / 2);
+  }
+  border: solid var(--container-border);
+  border-width: 1px 0;
+  margin-bottom: calc(var(--base-spacing) * 2);
+  text-align: center;
+
+
+
+  .Icon {
+    max-height: 4rem;
+    margin-right: 3rem;
+
+    &:last-of-type {
+        margin-right: 0;
     }
+  }
+
+  .Icon--paypal {
+      width: var(--paypal-icon-width);
+  }
+
+  .Icon--advanced {
+      width: var(--advanced-icon-width);
+  }
+
+  .Icon--amazon {
+      width: var(--amazon-icon-width);
+  }
+
+  .Icon--skrill {
+      width: var(--skrill-icon-width);
+  }
+
+  .Icon--sofort {
+    width: var(--sofort-icon-width);
+  }
 }

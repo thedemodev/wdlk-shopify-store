@@ -1,55 +1,83 @@
 :root {
-    --btn-timing: .35s;
+  --btn-timing: .35s;
+  --btn-row-width: calc(100% - var(--input-base-width));
 }
 
 .Btn {
-    display: inline-block;
-    height: var(--form-base-height);
-    padding: 0 var(--box-base-padding);
-    border: none;
-    background-color: var(--btn-bg-color);
-    line-height: var(--form-base-height);
-    letter-spacing: .16rem;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background-color var(--btn-timing) ease;
+  display: inline-block;
+  height: var(--form-base-height);
+  padding: 0 var(--box-base-padding);
+  border: none;
+  background-color: var(--btn-bg-color);
+  line-height: var(--form-base-height);
+  letter-spacing: .16rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color var(--btn-timing) ease;
 
-    @include copy-text(
-        var(--md-copy-size),
-        var(--typo-hex--tertiary),
-        bold
-    );
+  @include copy-text(
+    var(--md-copy-size),
+    var(--typo-hex--tertiary),
+    bold
+  );
+
+  &:hover {
+    color: var(--typo-hex--tertiary);
+    background-color: var(--btn-bg-color-hover);
+  }
+
+  &-icon {
+    display: inline-block;
+    padding-right: 5px;
+    fill: var(--typo-hex--tertiary);
+  }
+
+  &--secondary {
+    background-color: var(--btn-bg-color-secondary);
+  }
+
+  &--inverse {
+    color: var(--btn-bg-color);
+    line-height: calc(var(--form-base-height) - .2);
+    background: transparent;
+    outline: 2px solid var(--btn-bg-color);
+    outline-offset: -2px;
+    transform: translateY(-1px);
+    color: var(--btn-bg-color);
+    transition: outline-color var(--btn-timing) ease;
 
     &:hover {
-        color: var(--typo-hex--tertiary);
-        background-color: var(--btn-bg-color-hover);
-    }
-
-    &-icon {
-        display: inline-block;
-        padding-right: 5px;
-        fill: var(--typo-hex--tertiary);
-    }
-
-    &--secondary {
-        background-color: var(--btn-bg-color-secondary);
-    }
-
-    &--inverse {
-        color: var(--btn-bg-color);
-        line-height: calc(var(--form-base-height) - .2);
+        outline-color: var(--btn-bg-color-hover);
+        color: var(--btn-bg-color-hover);
         background: transparent;
-        outline: 2px solid var(--btn-bg-color);
-        outline-offset: -2px;
-        transform: translateY(-1px);
-        color: var(--btn-bg-color);
-        transition: outline-color var(--btn-timing) ease;
-
-        &:hover {
-            outline-color: var(--btn-bg-color-hover);
-            color: var(--btn-bg-color-hover);
-            background: transparent;
-        }
     }
+  }
+
+  &--row {
+    position: relative;
+    width: var(--btn-row-width, 20%);
+    padding: 0 calc(var(--box-base-padding) / 2);
+    overflow: hidden;
+    font-size: 0;
+    @include pseudo-svg-uri($arrow, 16px, 20px);
+
+    &::after {
+      transform: rotate(180deg);
+    }
+
+    @include media (small) {
+      padding: 0 var(--box-base-padding);
+      margin-left: var(--base-margin);
+    }
+
+    @include media(medium) {
+      width: auto;
+      font-size: inherit;
+
+      &::after {
+        content: none;
+      }
+    }
+  }
 
 }

@@ -14,13 +14,15 @@ In Shopify you develop locally and use a syncing utility to push your changes to
 The shopify_theme gem comes to rescue!!
 
 ##### Installation
+To start development you need to install Theme Kit from Shopify
 
-1. `gem install shopify_theme`
-2. Get the `confing.yml` file from product owner: mauricio.palma@woodlikeocean.com
+**Ideally the installation is being made with Homebrew**
+1. `brew tap shopify/shopify`
+2. `brew install themekit`
+3. `theme configure` --password=store-password --store=wdkl-ocean.myshopify.com --themeid=your-theme-id
 
-##### Documentation
 
-shopify_theme documentation:[http://shopify.github.io/shopify_theme/](http://shopify.github.io/shopify_theme/)
+Theme Kit documentation:[http://shopify.github.io/themekit/](http://shopify.github.io/themekit/)
 
 
 ### Local Development Environment
@@ -39,7 +41,7 @@ shopify_theme documentation:[http://shopify.github.io/shopify_theme/](http://sho
 5. Rename the duplicated theme to the name of your branch
 6. Click `Customize Theme` of your new branch theme
 7. Note the theme ID in the URL (example: /admin/themes/**9542224**/settings)
-8. Edit the `theme_id` in `config.yml` to point to your branched theme
+8. `theme configure` --password=store-password --store=wdkl-ocean.myshopify.com --themeid=your-theme-id
 9. `theme watch` and do your work
 10. Preview your work by navigating to that theme in Shopify admin and clicking preview `theme open`
 11. Make a pull request

@@ -1,59 +1,71 @@
 //-- HEADLINES SIZES
 :root {
-    --h1-size: 4.4rem;
-    --h2-size: 3.2rem;
-    --h3-size: 2.4rem;
-    --h4-size: 2rem;
-    --h5-size: 1.8rem;
-    --h6-size: 1.4rem;
-    --h7-size: 1.2rem;
+  --h1-size: 4.4rem;
+  --h2-size: 3.2rem;
+  --h3-size: 2.4rem;
+  --h4-size: 2rem;
+  --h5-size: 1.8rem;
+  --h6-size: 1.4rem;
+  --h7-size: 1.2rem;
 }
 
 //-- HEADLINE LEVELS GENERATOR
 //-- $level-map: accepts a sass map with the levels (keys)
 //-- and the headline sizes (values)
+//-- It also generates the headline font sizes for
+//-- devices smaller than small.
 @mixin headline-sizes ($level-map) {
   @each $level, $value in $level-map {
     &--#{$level} {
       font-size: $value;
+
+      @include media(small, max-width) {
+        @if $level < length($level-map) {
+          font-size: map-get($level-map, $level + 1);
+        }
+      }
     }
   }
 }
 
 //-- HEADLINES MAP
 $headline-sizes: (
-    1: var(--h1-size),
-    2: var(--h2-size),
-    3: var(--h3-size),
-    4: var(--h4-size),
-    5: var(--h5-size),
-    6: var(--h6-size),
-    7: var(--h7-size)
+  1: var(--h1-size),
+  2: var(--h2-size),
+  3: var(--h3-size),
+  4: var(--h4-size),
+  5: var(--h5-size),
+  6: var(--h6-size),
+  7: var(--h7-size)
 );
 
 
 .Headline {
-    display: block;
-    margin: 2rem 0;
-    font-family: "museo300";
-    text-transform: uppercase;
-    letter-spacing: .2rem;
+  display: block;
+  margin: 2rem 0;
+  font-family: "museo300";
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+  font-weight: normal;
+
+  &--complementary {
+    font-family: "quattrocento";
+  }
+
+
+  //-- Generate the different headline sizes
+  @include headline-sizes($headline-sizes);
+
+  &--highlight {
+    color: var(--typo-hex--highlight);
+  }
+
+  &--hightlightSecondary {
+    color: var(--typo-hex--banner-tertiary);
     font-weight: normal;
+  }
+}
 
-    &--complementary {
-        font-family: "quattrocento";
-    }
-
-
-    //-- Generate the different headline sizes
-    @include headline-sizes($headline-sizes);
-
-    &--highlight {
-        color: var(--typo-hex--highlight);
-    }
-
-    &--hightlightSecondary {
-        color: var(--typo-hex--banner-tertiary);
-        font-weight: normal;
-    }
+.SubHeadline {
+  margin-bottom: 1rem;
 }

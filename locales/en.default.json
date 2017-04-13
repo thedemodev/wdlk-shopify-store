@@ -20,8 +20,10 @@
     },
     "newsletter_form": {
       "newsletter_email": "Your E-Mail Address",
-      "submit": "Sign in",
-      "img_alt": "Sign up for WDLK news"
+      "submit": "Subscribe",
+      "img_alt": "Sign up for WDLK news",
+      "title": "Join the ocean movement",
+      "subline_html": "You can unsubscribe our newsletter any time. Read more about it in our <a class=\"Link Link--secondary Link--tonedown\" href=\"\/pages\/privacy-policy\" target=\"_blank\">Privacy Policy<\/a>"
     },
     "search": {
       "no_results_html": "Your search for \"{{ terms }}\" did not yield any results.",
@@ -283,9 +285,8 @@
     "footer": {
       "linklist_title": "Quick Links",
       "social_title": "Get Connected",
-      "newsletter_title": "Sign up for WDLK news",
       "accepted_payments": "Accepted Payments",
-      "copyright": "© WOODLIKE 2017. All rights reserved."
+      "copyright": "© WOODLIKE 2017"
     }
   },
   "products": {

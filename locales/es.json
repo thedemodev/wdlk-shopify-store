@@ -21,7 +21,9 @@
     "newsletter_form": {
       "newsletter_email": "Su E-Mail",
       "submit": "Suscribete",
-      "img_alt": "Sign up for WDLK news"
+      "img_alt": "Suscribete en el boletín de WDLK",
+      "title": "Unete al movimiento marítimo",
+      "subline_html": "Tu puedes borrar tus datos del boletín en cualquier momento. Más información encuentras <a class=\"Link Link--secondary Link--tonedown\" href=\"\/pages\/privacy-policy\" target=\"_blank\">Política de datos<\/a>"
     },
     "search": {
       "no_results_html": "Su búsqueda de \"{{ terms }}\" no tuvo resultados.",
@@ -284,7 +286,6 @@
     "footer": {
       "linklist_title": "Enlaces rápidos",
       "social_title": "Conectarse",
-      "newsletter_title": "Inscribete en el boletín de WDLK",
       "accepted_payments": "Pagos aceptados",
       "copyright": "© WOODLIKE 2017. Todos los derechos reservados."
     }

@@ -1,3 +1,12 @@
 .Layout {
+	&-container {
+		position: relative;
+		z-index: 1;
+		background-color: var(--background-color);
+	}
+
+	@include media(medium) {
+		margin-bottom: 603px;
+	}
 
 }

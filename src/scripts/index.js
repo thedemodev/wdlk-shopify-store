@@ -8,12 +8,17 @@ import notification from './modules/notification';
 import getInstaFeed from './modules/instagram-feed';
 
 
+window.addEventListener('load', e => {
+	rAf();
+	getInstaFeed();
+	stickyNavigation();
+	cookieNotification();
+	smoothScrolling();
+	numberInput();
+});
 
-rAf();
-smoothScrolling();
-stickyNavigation();
-cookieNotification();
-numberInput();
+
 fbqEvents();
 notification();
-window.addEventListener('load', getInstaFeed);
+
+
