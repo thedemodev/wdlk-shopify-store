@@ -63,9 +63,16 @@
     "watch": "^0.16.0"
   },
   "dependencies": {
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog-lint": "^0.1.3",
     "fastclick": "^1.0.6",
     "handlebars": "^4.0.5",
     "jquery": "^3.2.1",
     "jsonp": "^0.2.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog-lint"
+    }
   }
 }
