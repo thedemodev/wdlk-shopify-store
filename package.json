@@ -61,7 +61,8 @@
     "request": "^2.79.0",
     "shopify-node-api": "^1.6.1",
     "uglifyify": "^3.0.4",
-    "watch": "^0.16.0"
+    "watch": "^0.16.0",
+    "xo": "^0.18.1"
   },
   "dependencies": {
     "commitizen": "^2.9.6",
