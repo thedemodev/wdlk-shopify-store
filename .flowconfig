@@ -2,7 +2,6 @@
 src/scripts/
 
 [libs]
-flow-typed/npm/
 
 [ignore]
 .*/eslint-plugin-flow/.*
