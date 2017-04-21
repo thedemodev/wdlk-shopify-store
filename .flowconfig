@@ -4,7 +4,8 @@ src/scripts/
 [libs]
 
 [ignore]
-.*/eslint-plugin-flow/.*
+.*/_assets_/.*
+.*/_tasks_/.*
 
 [options]
 suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe
