@@ -9,7 +9,7 @@ export default function bundle () {
     const time = new Date();
 
     browserify(entryFile)
-        .transform('babelify', {presets: ['es2015', 'stage-0', 'stage-1']})
+        .transform('babelify', {presets: ['es2015', 'stage-0', 'stage-1', 'flow']})
         .transform('uglifyify')
         .bundle()
         .on('error', err => {

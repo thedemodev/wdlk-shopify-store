@@ -1,5 +1,7 @@
-WDLK Ocean Store Launch
-=======================
+# WDLK Ocean Online Store
+
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
 
 ## Getting Started
 This project has two divisions:

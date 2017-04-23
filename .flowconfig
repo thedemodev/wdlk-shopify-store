@@ -1,0 +1,14 @@
+[include]
+src/scripts/
+
+[libs]
+
+[ignore]
+.*/_assets_/.*
+.*/_tasks_/.*
+
+[options]
+suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe
+esproposal.decorators=ignore
+unsafe.enable_getters_and_setters=true
+
