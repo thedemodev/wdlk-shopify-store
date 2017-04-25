@@ -28,9 +28,9 @@ export default function watchFolders () {
             findTask(timberFolder, file, timber);
             findTask(sassFolder, file, css, 'scss');
             findTask(bundleFolder, file, bundle);
-            if (basename(file) === 'index.js') {
-                bundle();
-            }
+            // if (basename(file) === 'index.js') {
+            //     bundle();
+            // }
             if (basename(file) === 'index.js.liquid' || basename(file) === 'timber.js.liquid') {
                 scripts();
             }

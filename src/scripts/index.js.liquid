@@ -1,12 +1,159 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-(function (process){
-/**
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// identity function for calling harmony imports with the correct context
+/******/ 	__webpack_require__.i = function(value) { return value; };
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports,'__esModule',{value:!0});var notification=document.querySelector('.js-cookie-notification'),closeButton=document.querySelector('.js-cookie-notification-close'),localStorage=window.localStorage,notificationHidden=function(){return localStorage.getItem('hideCookieNotification')};console.log('yeep yeah');var hideNotification=function(){localStorage.setItem('hideCookieNotification',!0),notification.style.display='none'};exports.default=function(){if(!notificationHidden()){notification.style.display='block';var a=closeButton.addEventListener('click',function(){hideNotification(),closeButton.removeEventListener('click',a)})}};
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports,'__esModule',{value:!0}),exports.default=fbqEvents;function fbqEvents(){var a=document.querySelector('.js_fbqAddToCart'),b=document.querySelector('.js_fbqNewsLead');if(a){var c=a.querySelector('.js_fbqBtn'),d=a.querySelector('.js_fbqSelect');if(c&&d){var e=parseFloat(d.options[d.selectedIndex].value),f=parseFloat(c.dataset.value).toFixed(2);c.addEventListener('click',function(){fbq('track','AddToCart',{content_name:c.dataset.name,content_ids:[e],content_type:'product',value:f,currency:'EUR'})})}}b&&b.addEventListener('click',function(){fbq('track','Lead')})}
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var _typeof='function'==typeof Symbol&&'symbol'==typeof Symbol.iterator?function(a){return typeof a}:function(a){return a&&'function'==typeof Symbol&&a.constructor===Symbol&&a!==Symbol.prototype?'symbol':typeof a};Object.defineProperty(exports,'__esModule',{value:!0});exports.default=generateFeed;var _jsonp=__webpack_require__(13),_jsonp2=_interopRequireDefault(_jsonp),_access=__webpack_require__(10);function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}function generateFeed(){var a=document.querySelector('.js_instagramFeed');if(a&&void 0!==('undefined'==typeof Promise?'undefined':_typeof(Promise))){var c='https://api.instagram.com/v1/users/'+_access.access.id+'/media/recent/?access_token='+_access.access.token+'&callback=callback',d=function getMediaFeed(j){return new Promise(function(k,l){(0,_jsonp2.default)(j,function(m,n){if(m)throw l(Error('Couldn\'t get Insta JSON feed; error code: + '+m)),m;k(n)})})},e=function limitArr(j){return j<=11},f=function filteredArr(j){return j.filter(function(k,l){return e(l)})},g=function convertUnixDate(j){var k=new Date(parseInt(j));return k.toDateString().slice(0,-4)},h=function generateFeedTemplate(j){var k=j.map(function(l,m){var n='\n\t\t\t\t<div class="Feed-thumbnail">\n\t\t\t\t\t<label class="Feed-trigger" for="lightbox-'+m+'" style="background-image: url('+l.images.standard_resolution.url+'), linear-gradient(35deg, #FFCA54, #FF7163 80%)">\n\t\t\t\t\t</label>\n\t\t\t\t\t<img class="Feed-img"\n\t\t\t\t\t\tsrc="'+l.images.standard_resolution.url+'"\n\t\t\t\t\t\tsrcset="'+l.images.thumbnail.url+' 150w,\n\t\t\t\t\t\t'+l.images.low_resolution.url+' 320w,\n\t\t\t\t\t\t'+l.images.standard_resolution.url+' 640w" />\n\t\t\t\t</div>\n\t\t\t',o='\n\t\t\t\t<a class="Lightbox-row Feed-media"\n\t\t\t\t\thref="'+l.link+'" target="_blank">\n\t\t\t\t\t<h4 class="Headline Headline--5">\n\t\t\t\t\t\tJoin the journey on Instagram @wdlk\n\t\t\t\t\t</h4>\n\t\t\t\t\t<img class="Feed-img"\n\t\t\t\t\t\tsrc="'+l.images.standard_resolution.url+'"\n\t\t\t\t\t\tsrcset="'+l.images.thumbnail.url+' 150w,\n\t\t\t\t\t\t'+l.images.low_resolution.url+' 320w,\n\t\t\t\t\t\t'+l.images.standard_resolution.url+' 640w" />\n\t\t\t\t</a>\n\t\t\t',p='\n\t\t\t\t<figcaption class="Feed-caption Lightbox-row">\n\t\t\t\t\t<strong class="Feed-highlight">'+l.likes.count+' likes</strong>\n\t\t\t\t\t<time class="Feed-highlight" datetime="'+g(l.created_time)+'">'+g(l.created_time)+'</time>\n\t\t\t\t\t<p class="Feed-copy">\n\t\t\t\t\t\t<strong>\n\t\t\t\t\t\t\t'+l.user.username+'\n\t\t\t\t\t\t</strong>\n\t\t\t\t\t\t'+l.caption.text+'\n\t\t\t\t\t</p>\n\t\t\t\t</figcaption>\n\t\t\t',q='\n\t\t\t\t<li class="Feed-item Lightbox--row">\n\t\t\t\t\t'+n+'\n\t\t\t\t\t<input class="Lightbox-state" type="checkbox" id="lightbox-'+m+'" />\n\t\t\t\t\t<div class="Lightbox-shim">\n\t\t\t\t\t\t<label class="Lightbox-shim-close" for="lightbox-'+m+'"></label>\n\t\t\t\t\t\t<figure class="Lightbox-content">\n\t\t\t\t\t\t\t<header class="Lightbox-header">\n\t\t\t\t\t\t\t\t<h3 class="Headline Headline--6">\n\t\t\t\t\t\t\t\t\t#'+l.tags[0]+'\n\t\t\t\t\t\t\t\t</h3>\n\t\t\t\t\t\t\t\t<label class="Lightbox-icon" for="lightbox-'+m+'"></label>\n\t\t\t\t\t\t\t</header>\n\t\t\t\t\t\t\t'+o+'\n\t\t\t\t\t\t\t'+p+'\n\t\t\t\t\t\t</figure>\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t';return q});a.innerHTML=k.join('')};d(c).then(function(j){var k=f(j.data);h(k)})}}
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports,'__esModule',{value:!0}),exports.default=notification;function notification(){var a=document.querySelector('.js_notification');if(a){var b=a.querySelector('.js_notification-btn'),c=window.sessionStorage,d='hiddenNotification',e='is-active',f=function verifyNotification(){return c.getItem(d)};if(!f())var g=function loadNotification(){a.classList.add(e)},h=function hideNotification(){c.setItem(d,!0),a.classList.remove(e)},i=window.addEventListener('load',function(){g(),window.removeEventListener('load',i)}),j=b.addEventListener('click',function(){h(),b.removeEventListener('click',j)})}}
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports,'__esModule',{value:!0}),exports.default=numberInput;function _toConsumableArray(a){if(Array.isArray(a)){for(var b=0,c=Array(a.length);b<a.length;b++)c[b]=a[b];return c}return Array.from(a)}function numberInput(){var a=document.getElementsByClassName('js_numberInput');if(a){var b=[].concat(_toConsumableArray(a)),f=function INCREASE(h){return parseInt(h)+1},g=function DECREASE(h){return parseInt(h)-1};b.forEach(function(h){var j=1,k=0,l=h.querySelector('.js_value');l&&(j=l.getAttribute('value'),k=l.getAttribute('min'),h.addEventListener('click',function(m){if(m.target.classList.contains('js_add')&&(j=f(j),l.setAttribute('value',j)),m.target.classList.contains('js_remove')){if(j<=k)return;j=g(j),l.setAttribute('value',j)}}))})}}
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var _Mathpow=Math.pow,_MatheaseInOutExpo=Math.easeInOutExpo;Object.defineProperty(exports,'__esModule',{value:!0}),exports.default=smoothScrolling;var _logger=__webpack_require__(9),_logger2=_interopRequireDefault(_logger);function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}function smoothScrolling(){var a=document.getElementsByClassName('js_scroll')[0];if(a){var f=document.getElementById(a.getAttribute('href').substr(1));if(f){var g=document.getElementsByClassName('js_scroller')[0];if(g){_MatheaseInOutExpo=function(j,k,l,m){return(j/=m/2,1>j)?l/2*_Mathpow(2,10*(j-1))+k:(j--,l/2*(-_Mathpow(2,-10*j)+2)+k)};var h=function SCROLL_TO(j,k,l){var m=3<arguments.length&&void 0!==arguments[3]?arguments[3]:m||function(){},n=j.scrollTop,o=k.offsetTop-n-40,p=null,q=function ANIMATE_SCROLL(r){p=null==p?r:p;var s=r-p;return s>=l?m():void(j.scrollTop=_MatheaseInOutExpo(s,n,o,l),window.requestAnimationFrame(q))};window.requestAnimationFrame(q)},i=function SCROLL(j){j.preventDefault(),h(g,f,1618,function(){window.location.hash='#'+f.id})};a.addEventListener('click',i,!1)}}}}
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports,'__esModule',{value:!0}),exports.default=stickyNavigation;function stickyNavigation(){var a=document.querySelector('.js_sticky-nav');if(a){var b=document.querySelector('.js_notification'),c=a.offsetHeight,d=0,e=!1,f=function getTeaserHeight(){return b?b.offsetHeight:void 0},g=function onScroll(){d=window.scrollY,h()},h=function requestTick(){e||requestAnimationFrame(i),e=!0},i=function update(){var j=d;if(b){var k=f()-1;a.classList.toggle('is-sticky',j>=k),a.classList.toggle('is-undocked',j>=k+(c-1))}else a.classList.toggle('is-undocked',j>=c);e=!1};window.addEventListener('scroll',g,!1)}}
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports,'__esModule',{value:!0}),exports.default=rAf;function rAf(){for(var a=0,b=['ms','moz','webkit','o'],c=0;c<b.length&&!window.requestAnimationFrame;++c)window.requestAnimationFrame=window[b[c]+'RequestAnimationFrame'],window.cancelAnimationFrame=window[b[c]+'CancelAnimationFrame']||window[b[c]+'CancelRequestAnimationFrame'];window.requestAnimationFrame||(window.requestAnimationFrame=function(d){var f=new Date().getTime(),g=Math.max(0,16-(f-a)),h=window.setTimeout(function(){d(f+g)},g);return a=f+g,h}),window.cancelAnimationFrame||(window.cancelAnimationFrame=function(d){clearTimeout(d)})}
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var _rAf=__webpack_require__(7),_rAf2=_interopRequireDefault(_rAf),_stickyNavigation=__webpack_require__(6),_stickyNavigation2=_interopRequireDefault(_stickyNavigation),_smoothScrolling=__webpack_require__(5),_smoothScrolling2=_interopRequireDefault(_smoothScrolling),_cookieNotification=__webpack_require__(0),_cookieNotification2=_interopRequireDefault(_cookieNotification),_numberInput=__webpack_require__(4),_numberInput2=_interopRequireDefault(_numberInput),_facebookPixelEvents=__webpack_require__(1),_facebookPixelEvents2=_interopRequireDefault(_facebookPixelEvents),_notification=__webpack_require__(3),_notification2=_interopRequireDefault(_notification),_instagramFeed=__webpack_require__(2),_instagramFeed2=_interopRequireDefault(_instagramFeed);function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}window.addEventListener('load',function(){(0,_rAf2.default)(),(0,_instagramFeed2.default)(),(0,_stickyNavigation2.default)(),(0,_cookieNotification2.default)(),(0,_smoothScrolling2.default)(),(0,_numberInput2.default)()}),(0,_facebookPixelEvents2.default)(),(0,_notification2.default)();
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports,'__esModule',{value:!0}),exports.default=logger;function logger(){var a=0<arguments.length&&arguments[0]!==void 0?arguments[0]:'log',b=arguments[1],c=new Date;('undefined'!=typeof console&&'log'===a||'error'===a)&&('error'===a?console.error(c+': '+b):console.log(c+': '+b))}
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports,"__esModule",{value:!0});var access=exports.access={id:"1983140883",token:"1983140883.c4c213d.70716b04afc14080a94e4ccb0c35d1b2"};
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(process) {/**
  * This is the web browser implementation of `debug()`.
  *
  * Expose `debug()` as the module.
  */
 
-exports = module.exports = require('./debug');
+exports = module.exports = __webpack_require__(12);
 exports.log = log;
 exports.formatArgs = formatArgs;
 exports.save = save;
@@ -186,8 +333,12 @@ function localstorage() {
   } catch (e) {}
 }
 
-}).call(this,require('_process'))
-},{"./debug":2,"_process":5}],2:[function(require,module,exports){
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
 
 /**
  * This is the common logic for both the Node.js and web browser
@@ -201,7 +352,7 @@ exports.coerce = coerce;
 exports.disable = disable;
 exports.enable = enable;
 exports.enabled = enabled;
-exports.humanize = require('ms');
+exports.humanize = __webpack_require__(14);
 
 /**
  * The currently active debug mode names, and names to skip.
@@ -391,12 +542,16 @@ function coerce(val) {
   return val;
 }
 
-},{"ms":4}],3:[function(require,module,exports){
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
 /**
  * Module dependencies
  */
 
-var debug = require('debug')('jsonp');
+var debug = __webpack_require__(11)('jsonp');
 
 /**
  * Module exports.
@@ -490,7 +645,11 @@ function jsonp(url, opts, fn){
   return cancel;
 }
 
-},{"debug":1}],4:[function(require,module,exports){
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports) {
+
 /**
  * Helpers.
  */
@@ -641,7 +800,11 @@ function plural(ms, n, name) {
   return Math.ceil(ms / n) + ' ' + name + 's'
 }
 
-},{}],5:[function(require,module,exports){
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports) {
+
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -823,37 +986,6 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],6:[function(require,module,exports){
-"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}var _rAf=require("./polyfills/rAf"),_rAf2=_interopRequireDefault(_rAf),_stickyNavigation=require("./modules/sticky-navigation"),_stickyNavigation2=_interopRequireDefault(_stickyNavigation),_smoothScrolling=require("./modules/smooth-scrolling"),_smoothScrolling2=_interopRequireDefault(_smoothScrolling),_cookieNotification=require("./modules/cookie-notification"),_cookieNotification2=_interopRequireDefault(_cookieNotification),_numberInput=require("./modules/number-input"),_numberInput2=_interopRequireDefault(_numberInput),_facebookPixelEvents=require("./modules/facebook-pixel-events"),_facebookPixelEvents2=_interopRequireDefault(_facebookPixelEvents),_notification=require("./modules/notification"),_notification2=_interopRequireDefault(_notification),_instagramFeed=require("./modules/instagram-feed"),_instagramFeed2=_interopRequireDefault(_instagramFeed);window.addEventListener("load",function(e){(0,_rAf2.default)(),(0,_instagramFeed2.default)(),(0,_stickyNavigation2.default)(),(0,_cookieNotification2.default)(),(0,_smoothScrolling2.default)(),(0,_numberInput2.default)()}),(0,_facebookPixelEvents2.default)(),(0,_notification2.default)();
 
-},{"./modules/cookie-notification":7,"./modules/facebook-pixel-events":8,"./modules/instagram-feed":9,"./modules/notification":11,"./modules/number-input":12,"./modules/smooth-scrolling":13,"./modules/sticky-navigation":14,"./polyfills/rAf":15}],7:[function(require,module,exports){
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var notification=document.querySelector(".js-cookie-notification"),closeButton=document.querySelector(".js-cookie-notification-close"),localStorage=window.localStorage,notificationHidden=function(){return localStorage.getItem("hideCookieNotification")};console.log("yeep yeah");var hideNotification=function(){localStorage.setItem("hideCookieNotification",!0),notification.style.display="none"};exports.default=function(){if(!notificationHidden()){notification.style.display="block";var o=closeButton.addEventListener("click",function(){hideNotification(),closeButton.removeEventListener("click",o)})}};
-
-},{}],8:[function(require,module,exports){
-"use strict";function fbqEvents(){var e=document.querySelector(".js_fbqAddToCart"),t=document.querySelector(".js_fbqNewsLead");if(e){var n=e.querySelector(".js_fbqBtn"),r=e.querySelector(".js_fbqSelect");if(n&&r){var a=parseFloat(r.options[r.selectedIndex].value),c=parseFloat(n.dataset.value).toFixed(2);n.addEventListener("click",function(){fbq("track","AddToCart",{content_name:n.dataset.name,content_ids:[a],content_type:"product",value:c,currency:"EUR"})})}}t&&t.addEventListener("click",function(){fbq("track","Lead")})}Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=fbqEvents;
-
-},{}],9:[function(require,module,exports){
-"use strict";function _interopRequireDefault(t){return t&&t.__esModule?t:{default:t}}function generateFeed(){var t=document.querySelector(".js_instagramFeed");if(t&&void 0!==("undefined"==typeof Promise?"undefined":_typeof(Promise))){var e="https://api.instagram.com/v1/users/"+_access.access.id+"/media/recent/?access_token="+_access.access.token+"&callback=callback",n=function(t){return t<=11},i=function(t){return t.filter(function(t,e){return n(e)})},s=function(t){return new Date(parseInt(t)).toDateString().slice(0,-4)},r=function(e){var n=e.map(function(t,e){var n='\n\t\t\t\t<div class="Feed-thumbnail">\n\t\t\t\t\t<label class="Feed-trigger" for="lightbox-'+e+'" style="background-image: url('+t.images.standard_resolution.url+'), linear-gradient(35deg, #FFCA54, #FF7163 80%)">\n\t\t\t\t\t</label>\n\t\t\t\t\t<img class="Feed-img"\n\t\t\t\t\t\tsrc="'+t.images.standard_resolution.url+'"\n\t\t\t\t\t\tsrcset="'+t.images.thumbnail.url+" 150w,\n\t\t\t\t\t\t"+t.images.low_resolution.url+" 320w,\n\t\t\t\t\t\t"+t.images.standard_resolution.url+' 640w" />\n\t\t\t\t</div>\n\t\t\t',i='\n\t\t\t\t<a class="Lightbox-row Feed-media"\n\t\t\t\t\thref="'+t.link+'" target="_blank">\n\t\t\t\t\t<h4 class="Headline Headline--5">\n\t\t\t\t\t\tJoin the journey on Instagram @wdlk\n\t\t\t\t\t</h4>\n\t\t\t\t\t<img class="Feed-img"\n\t\t\t\t\t\tsrc="'+t.images.standard_resolution.url+'"\n\t\t\t\t\t\tsrcset="'+t.images.thumbnail.url+" 150w,\n\t\t\t\t\t\t"+t.images.low_resolution.url+" 320w,\n\t\t\t\t\t\t"+t.images.standard_resolution.url+' 640w" />\n\t\t\t\t</a>\n\t\t\t',r='\n\t\t\t\t<figcaption class="Feed-caption Lightbox-row">\n\t\t\t\t\t<strong class="Feed-highlight">'+t.likes.count+' likes</strong>\n\t\t\t\t\t<time class="Feed-highlight" datetime="'+s(t.created_time)+'">'+s(t.created_time)+'</time>\n\t\t\t\t\t<p class="Feed-copy">\n\t\t\t\t\t\t<strong>\n\t\t\t\t\t\t\t'+t.user.username+"\n\t\t\t\t\t\t</strong>\n\t\t\t\t\t\t"+t.caption.text+"\n\t\t\t\t\t</p>\n\t\t\t\t</figcaption>\n\t\t\t";return'\n\t\t\t\t<li class="Feed-item Lightbox--row">\n\t\t\t\t\t'+n+'\n\t\t\t\t\t<input class="Lightbox-state" type="checkbox" id="lightbox-'+e+'" />\n\t\t\t\t\t<div class="Lightbox-shim">\n\t\t\t\t\t\t<label class="Lightbox-shim-close" for="lightbox-'+e+'"></label>\n\t\t\t\t\t\t<figure class="Lightbox-content">\n\t\t\t\t\t\t\t<header class="Lightbox-header">\n\t\t\t\t\t\t\t\t<h3 class="Headline Headline--6">\n\t\t\t\t\t\t\t\t\t#'+t.tags[0]+'\n\t\t\t\t\t\t\t\t</h3>\n\t\t\t\t\t\t\t\t<label class="Lightbox-icon" for="lightbox-'+e+'"></label>\n\t\t\t\t\t\t\t</header>\n\t\t\t\t\t\t\t'+i+"\n\t\t\t\t\t\t\t"+r+"\n\t\t\t\t\t\t</figure>\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t"});t.innerHTML=n.join("")};(function(t){return new Promise(function(e,n){(0,_jsonp2.default)(t,function(t,i){if(t)throw n(Error("Couldn't get Insta JSON feed; error code: + "+t)),t;e(i)})})})(e).then(function(t){var e=i(t.data);r(e)})}}Object.defineProperty(exports,"__esModule",{value:!0});var _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t};exports.default=generateFeed;var _jsonp=require("jsonp"),_jsonp2=_interopRequireDefault(_jsonp),_access=require("../../../tasks/instagram/access");
-
-},{"../../../tasks/instagram/access":16,"jsonp":3}],10:[function(require,module,exports){
-"use strict";function logger(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"log",o=arguments[1],r=new Date;("undefined"!=typeof console&&"log"===e||"error"===e)&&("error"===e?console.error(r+": "+o):console.log(r+": "+o))}Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=logger;
-
-},{}],11:[function(require,module,exports){
-"use strict";function notification(){var e=document.querySelector(".js_notification");if(e){var t=e.querySelector(".js_notification-btn"),i=window.sessionStorage;if(!function(){return i.getItem("hiddenNotification")}())var n=function(){e.classList.add("is-active")},o=function(){i.setItem("hiddenNotification",!0),e.classList.remove("is-active")},c=window.addEventListener("load",function(){n(),window.removeEventListener("load",c)}),s=t.addEventListener("click",function(){o(),t.removeEventListener("click",s)})}}Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=notification;
-
-},{}],12:[function(require,module,exports){
-"use strict";function _toConsumableArray(t){if(Array.isArray(t)){for(var e=0,r=Array(t.length);e<t.length;e++)r[e]=t[e];return r}return Array.from(t)}function numberInput(){var t=document.getElementsByClassName("js_numberInput");if(t){var e=function(t){return parseInt(t)+1},r=function(t){return parseInt(t)-1};[].concat(_toConsumableArray(t)).forEach(function(t){var n=1,u=0,a=t.querySelector(".js_value");a&&(n=a.getAttribute("value"),u=a.getAttribute("min"),t.addEventListener("click",function(t){if(t.target.classList.contains("js_add")&&(n=e(n),a.setAttribute("value",n)),t.target.classList.contains("js_remove")){if(n<=u)return;n=r(n),a.setAttribute("value",n)}}))})}}Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=numberInput;
-
-},{}],13:[function(require,module,exports){
-"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}function smoothScrolling(){var e=document.getElementsByClassName("js_scroll")[0];if(e){var t=document.getElementById(e.getAttribute("href").substr(1));if(t){var o=document.getElementsByClassName("js_scroller")[0];if(o){Math.easeInOutExpo=function(e,t,o,n){return(e/=n/2)<1?o/2*Math.pow(2,10*(e-1))+t:(e--,o/2*(2-Math.pow(2,-10*e))+t)};var n=function(e,t,o){var n=arguments.length>3&&void 0!==arguments[3]?arguments[3]:n||function(){},r=e.scrollTop,l=t.offsetTop-r-40,i=null,u=function t(u){i=null!==i?i:u;var a=u-i;if(a>=o)return n();e.scrollTop=Math.easeInOutExpo(a,r,l,o),window.requestAnimationFrame(t)};window.requestAnimationFrame(u)},r=function(e){e.preventDefault(),n(o,t,1618,function(){window.location.hash="#"+t.id})};e.addEventListener("click",r,!1)}}}}Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=smoothScrolling;var _logger=require("./logger"),_logger2=_interopRequireDefault(_logger);
-
-},{"./logger":10}],14:[function(require,module,exports){
-"use strict";function stickyNavigation(){var t=document.querySelector(".js_sticky-nav");if(t){var e=document.querySelector(".js_notification"),i=t.offsetHeight,s=0,o=!1,n=function(){if(e)return e.offsetHeight},c=function(){s=window.scrollY,r()},r=function(){o||requestAnimationFrame(a),o=!0},a=function(){var c=s;if(e){var r=n()-1,a=r+(i-1);t.classList.toggle("is-sticky",c>=r),t.classList.toggle("is-undocked",c>=a)}else t.classList.toggle("is-undocked",c>=i);o=!1};window.addEventListener("scroll",c,!1)}}Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=stickyNavigation;
-
-},{}],15:[function(require,module,exports){
-"use strict";function rAf(){for(var e=0,n=["ms","moz","webkit","o"],i=0;i<n.length&&!window.requestAnimationFrame;++i)window.requestAnimationFrame=window[n[i]+"RequestAnimationFrame"],window.cancelAnimationFrame=window[n[i]+"CancelAnimationFrame"]||window[n[i]+"CancelRequestAnimationFrame"];window.requestAnimationFrame||(window.requestAnimationFrame=function(n,i){var t=(new Date).getTime(),o=Math.max(0,16-(t-e)),a=window.setTimeout(function(){n(t+o)},o);return e=t+o,a}),window.cancelAnimationFrame||(window.cancelAnimationFrame=function(e){clearTimeout(e)})}Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=rAf;
-
-},{}],16:[function(require,module,exports){
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var access=exports.access={id:"1983140883",token:"1983140883.c4c213d.70716b04afc14080a94e4ccb0c35d1b2"};
-
-},{}]},{},[6]);
+/***/ })
+/******/ ]);

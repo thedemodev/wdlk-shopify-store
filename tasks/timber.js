@@ -13,20 +13,12 @@ export default function timber () {
 
     let files = [
         `node_modules/jquery/dist/jquery.min.js`,
-        `node_modules/fastclick/lib/fastclick.js`,
-        `node_modules/handlebars/dist/handlebars.min.js`,
         `${libsPath}/modernizr.min.js`,
-        `${libsPath}/prepare-transition.js`,
-        `${libsPath}/replace-url-params.js`,
         `${timberPath}/money-format.js`,
         `${timberPath}/cache-selectors.js`,
         `${timberPath}/init.js`,
         `${timberPath}/get-hash.js`,
         `${timberPath}/product-page.js`,
-        `${timberPath}/product-image-switch.js`,
-        `${timberPath}/switch-image.js`,
-        `${timberPath}/responsive-videos.js`,
-        `${timberPath}/collection-views.js`,
         `${timberPath}/login-forms.js`,
         `${timberPath}/reset-password-success.js`
     ];

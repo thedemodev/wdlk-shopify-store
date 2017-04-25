@@ -19,3 +19,4 @@ export default function scripts () {
         console.log(log.info(`${time} [Script Concatenation]:`), 'concatenation was successfull ✌🏻');
     });
 }
+scripts();
