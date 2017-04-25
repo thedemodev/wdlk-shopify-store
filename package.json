@@ -7,7 +7,6 @@
     "doc": "docs"
   },
   "scripts": {
-    "bundle": "babel-node --presets es2015,stage-0 tasks/bundle.js",
     "commit": "git-cz",
     "css": "babel-node --presets es2015,stage-0 tasks/css.js",
     "delete-meta": "babel-node --presets es2015,stage-0 tasks/shopify-api/utils/delete-metafields.js",
@@ -16,7 +15,6 @@
     "product-meta": "babel-node --presets es2015,stage-0 tasks/shopify-api/product/send-metafields.js",
     "product-meta-global": "babel-node --presets es2015,stage-0 tasks/shopify-api/product/send-global-metafields.js",
     "product-data": "babel-node --presets es2015,stage-0 tasks/shopify-api/product/prepare-metafields.js",
-    "scripts": "babel-node --presets es2015,stage-0 tasks/scripts.js",
     "timber": "babel-node --presets es2015,stage-0 tasks/timber.js",
     "slate": "slate",
     "start": "npm run slate watch",

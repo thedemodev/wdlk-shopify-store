@@ -9,7 +9,7 @@ export default function timber () {
     //-- Libraries, like the name says it are external libraries.
     let timberPath = resolve('./src/scripts/timber');
     let libsPath = resolve('./src/scripts/libs');
-    let outputFile = resolve('./src/scripts/timber.js.liquid');
+    let outputFile = resolve('./src/assets/timber.js.liquid');
 
     let files = [
         `node_modules/jquery/dist/jquery.min.js`,

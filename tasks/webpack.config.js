@@ -3,7 +3,7 @@ const {resolve} = require('path');
 module.exports = {
   entry: './src/scripts/index.js',
   output: {
-    path: resolve('./src/scripts/'),
+    path: resolve('./src/assets/'),
     filename: 'index.js.liquid'
   },
   module: {
