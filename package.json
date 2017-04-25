@@ -67,6 +67,7 @@
     "shopify-node-api": "^1.6.1",
     "uglifyify": "^3.0.4",
     "watch": "^0.16.0",
+    "webpack": "^2.4.1",
     "xo": "^0.18.1"
   },
   "dependencies": {
