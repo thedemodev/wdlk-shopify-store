@@ -13,7 +13,6 @@ export default function timber () {
 
     let files = [
         `node_modules/jquery/dist/jquery.min.js`,
-        `${libsPath}/modernizr.min.js`,
         `${timberPath}/money-format.js`,
         `${timberPath}/cache-selectors.js`,
         `${timberPath}/init.js`,
