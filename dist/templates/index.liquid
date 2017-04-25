@@ -1,0 +1,238 @@
+<section class="Stage">
+    <article class="Banner Banner--main">
+        {% assign mainBannerSmart =
+            'WDLK_Main-Banner_Smartphone_1x.jpg' | asset_url %}
+        {% assign mainBannerSmart2x =
+            'WDLK_Main-Banner_Smartphone_2x.jpg' | asset_url  %}
+        {% assign mainBannerMobile =
+            'WDLK_Main-Banner_Tablet_1x.jpg' | asset_url %}
+        {% assign mainBannerMobile2x =
+            'WDLK_Main-Banner_Tablet_2x.jpg' | asset_url %}
+        {% assign mainBanner =
+            'WDLK_Main-Banner_Desktop_1x.jpg' | asset_url  %}
+        {% assign mainBanner2x =
+            'WDLK_Main-Banner_Desktop_2x.jpg' | asset_url  %}
+
+        <div class="Banner-content">
+            <svg class="HeadlineBanner Banner-mainHeadline">
+                <title>{{'home_page.sections.main_headline' | t}}</title>
+                <desc>
+                    {{'home_page.section.main_banner_description' | t}}
+                </desc>
+                <defs>
+                    <linearGradient id="Gradient" x1="0" x2="1" y1="0" y2="0">
+                        <stop offset="0%" stop-color="#FFCA54"/>
+                        <stop offset="100%" stop-color="#FF6C54"/>
+                    </linearGradient>
+                </defs>
+                <text class="HeadlineBanner-text" y="50%" x="50%" fill="url(#Gradient)" dy=".2em">
+                    <tspan class="HeadlineBanner-tspan">
+                        {{'home_page.sections.main_headline_svg_1' | t}}
+                    </tspan>
+                    <tspan class="HeadlineBanner-tspan">
+                        {{'home_page.sections.main_headline_svg_2' | t}}
+                    </tspan>
+                </text>
+                <text class="HeadlineBanner-text" y="100%" x="50%" fill="url(#Gradient)">
+                    {{'home_page.sections.main_headline_svg_2' | t}}
+                </text>
+            </svg>
+            <a class="Btn Banner-btn" href="{{ collections['bikinis'].url}}">
+                {{'home_page.sections.main_button_copy' | t}}
+            </a>
+        </div>
+        <a href="#Banner-teaser" class="Banner-lead js_scroll">
+            <svg class="Icon">
+                <use xlink:href="#Arrow_down" />
+            </svg>
+            {{'home_page.sections.main_scroll_tip' | t}}
+        </a>
+        <picture>
+            <source
+            media="(max-width: 480px)"
+            srcset="{{mainBannerSmart}}, {{ mainBannerSmart2x }} 2x">
+            <source
+            media="(max-width: 768px)"
+            srcset="{{ mainBannerMobile }}, {{ mainBannerMobile2x }} 2x">
+            <source
+            media="(min-width: 770px)"
+            srcset="{{ mainBanner }}, {{ mainBanner2x }} 2x">
+            <img class="Banner-image"
+            src="{{ mainBanner }}"
+            alt="Woodlike Ocean - {{'home_page.sections.main_headline' | t}}">
+        </picture>
+    </article>
+    <article class="Banner Banner--teaser" id="Banner-teaser">
+        <div class="Banner-content">
+            <small class="Banner Banner-introText">
+                {{'home_page.sections.claim_intro' | t}}
+            </small>
+            <h2 class="Headline Headline--2">
+                {{'home_page.sections.claim_html' | t}}
+            </h2>
+            <a class="Link Link--btn" href="{{ pages['sustainability'].url }}">
+                {{'general.buttons.link_learn_more' | t}}
+                <svg class="Icon Icon--right">
+                    <use xlink:href="#Arrow_right" />
+                </svg>
+            </a>
+        </div>
+    </article>
+    <article class="Banner Banner--half Banner--collection">
+        {% assign halfBannerSmart =
+            'WDLK_Half-Banner1_Smartphone_1x.jpg' | asset_url %}
+        {% assign halfBannerSmart2x =
+            'WDLK_Half-Banner1_Smartphone_2x.jpg' | asset_url  %}
+        {% assign halfBannerMobile =
+            'WDLK_Half-Banner1_Tablet_1x.jpg' | asset_url %}
+        {% assign halfBannerMobile2x =
+            'WDLK_Half-Banner1_Tablet_2x.jpg' | asset_url %}
+        {% assign halfBanner =
+            'WDLK_Half-Banner1_Desktop_1x.jpg' | asset_url  %}
+        {% assign halfBanner2x =
+            'WDLK_Half-Banner1_Desktop_2x.jpg' | asset_url  %}
+        <a href="{{ collections['bikini-tops'].url}}" >
+            <div class="Banner-content">
+                <h3 class="Headline Headline--4">{{ collections['bikini-tops'].title}}</h3>
+            </div>
+            <picture>
+                <source
+                media="(max-width: 480px)"
+                srcset="{{halfBannerSmart}}, {{ halfBannerSmart2x }} 2x">
+                <source
+                media="(max-width: 768px)"
+                srcset="{{ halfBannerMobile }}, {{ halfBannerMobile2x }} 2x">
+                <source
+                media="(min-width: 770px)"
+                srcset="{{ halfBanner }}, {{ halfBanner2x}} 2x">
+                <img class="Banner-image"
+                src="{{ halfBanner }}"
+                alt="{{ 'home_page.sections.collection_banner_1'}} | t">
+            </picture>
+        </a>
+    </article>
+    <article class="Banner Banner--half Banner--principles">
+        {% assign halfBanner2Smart =
+            'WDLK_Half-Banner2_Smartphone_1x.jpg' | asset_url %}
+        {% assign halfBanner2Smart2x =
+            'WDLK_Half-Banner2_Smartphone_2x.jpg' | asset_url  %}
+        {% assign halfBanner2Mobile =
+            'WDLK_Half-Banner2_Tablet_1x.jpg' | asset_url %}
+        {% assign halfBanner2Mobile2x =
+            'WDLK_Half-Banner2_Tablet_2x.jpg' | asset_url %}
+        {% assign halfBanner2 =
+            'WDLK_Half-Banner2_Desktop_1x.jpg' | asset_url  %}
+        {% assign halfBanner22x =
+            'WDLK_Half-Banner2_Desktop_2x.jpg' | asset_url  %}
+        <a href="{{ pages['sustainability'].url}}" >
+            <div class="Banner-content">
+                <h3 class="Headline Headline--3">{{'home_page.sections.principles_banner_1' | t}}</h3>
+            </div>
+            <picture>
+                <source
+                media="(max-width: 480px)"
+                srcset="{{halfBanner2Smart}}, {{ halfBanner2Smart2x }} 2x">
+                <source
+                media="(max-width: 768px)"
+                srcset="{{ halfBanner2Mobile }}, {{ halfBanner2Mobile2x }} 2x">
+                <source
+                media="(min-width: 770px)"
+                srcset="{{ halfBanner2 }}, {{ halfBanner22x}} 2x">
+                <img class="Banner-image"
+                src="{{ halfBanner2 }}"
+                alt="{{'home_page.sections.principles_banner_1' | t}}">
+            </picture>
+        </a>
+    </article>
+    <article class="Banner Banner--full Banner--principles Banner--informative">
+        {% assign fullBanner1Smart =
+            'WDLK_Full-Banner1_Smartphone_1x.jpg' | asset_url %}
+        {% assign fullBanner1Smart2x =
+             'WDLK_Full-Banner1_Smartphone_2x.jpg' | asset_url  %}
+        {% assign fullBanner1Mobile =
+            'WDLK_Full-Banner1_Tablet_1x.jpg' | asset_url %}
+        {% assign fullBanner1Mobile2x =
+            'WDLK_Full-Banner1_Tablet_2x.jpg' | asset_url %}
+        {% assign fullBanner1 =
+            'WDLK_Full-Banner1_Desktop_1x.jpg' | asset_url  %}
+        {% assign fullBanner12x =
+            'WDLK_Full-Banner1_Desktop_2x.jpg' | asset_url  %}
+
+        <a href="{{ pages['about-us'].url }}">
+            <picture>
+                <source
+                media="(max-width: 480px)"
+                srcset="{{ fullBanner1Smart}}, {{ fullBanner1Smart2x }} 2x">
+                <source
+                media="(max-width: 768px)"
+                srcset="{{ fullBanner1Mobile }}, {{ fullBanner1Mobile2x }} 2x">
+                <source
+                media="(min-width: 770px)"
+                srcset="{{ fullBanner1 }}, {{ fullBanner12x}} 2x">
+                <img class="Banner-image"
+                src="{{ fullBanner1 }}"
+                alt="{{'home_page.sections.full_banner_1_headline' | t}}">
+            </picture>
+        </a>
+        <div class="Banner-content">
+            <h3 class="Headline Headline--4">
+                {{'home_page.sections.full_banner_1_headline' | t}}
+            </h3>
+            <p class="Banner-copy">
+                {{ 'home_page.sections.principle_banner_2' | t}}
+            </p>
+            <a class="Link Link--btn" href="{{ pages['about-us'].url }}">
+                {{'general.buttons.link_read_more' | t}}
+                <svg class="Icon Icon--right">
+                    <use xlink:href="#Arrow_right" />
+                </svg>
+            </a>
+            {% comment %}
+              $todo: once the site setup include the share functionality for the banner.
+              {% include 'social-list' with 'default' %}
+            {% endcomment %}
+        </div>
+    </article>
+    <article class="Banner Banner--full Banner--collection">
+        {% assign fullBanner2Smart =
+            'WDLK_Full-Banner2_Smartphone_1x.jpg' | asset_url %}
+        {% assign fullBanner2Smart2x =
+            'WDLK_Full-Banner2_Smartphone_2x.jpg' | asset_url  %}
+        {% assign fullBanner2Mobile =
+            'WDLK_Full-Banner2_Tablet_1x.jpg' | asset_url %}
+        {% assign fullBanner2Mobile2x =
+            'WDLK_Full-Banner2_Tablet_2x.jpg' | asset_url %}
+        {% assign fullBanner2 =
+            'WDLK_Full-Banner2_Desktop_1x.jpg' | asset_url  %}
+        {% assign fullBanner22x =
+            'WDLK_Full-Banner2_Desktop_2x.jpg' | asset_url  %}
+
+        <a href="{{ collections['one-pieces'].url }}" >
+            <div class="Banner-content">
+                <h3 class="Headline Headline--3">{{'home_page.sections.full_banner_2_headline' | t}}</h3>
+                <span class="Link Link--btn">
+                    {{'general.buttons.link_shop_now' | t}}
+                    <svg class="Icon Icon--right">
+                        <use xlink:href="#Arrow_right" />
+                    </svg>
+                </span>
+            </div>
+            <picture>
+                <source
+                media="(max-width: 480px)"
+                srcset="{{ fullBanner2Smart}}, {{ fullBanner2Smart2x }} 2x">
+                <source
+                media="(max-width: 768px)"
+                srcset="{{ fullBanner2Mobile }}, {{ fullBanner2Mobile2x }} 2x">
+                <source
+                media="(min-width: 770px)"
+                srcset="{{ fullBanner2 }}, {{ fullBanner22x}} 2x">
+                <img class="Banner-image"
+                src="{{ twoThirdBanner }}"
+                alt="{{'home_page.sections.full_banner_2_headline' | t}}">
+            </picture>
+        </a>
+    </article>
+    {% comment %} Instagram Feed {% endcomment %}
+    {% include 'instagram-feed' %}
+</section>

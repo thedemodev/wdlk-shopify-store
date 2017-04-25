@@ -1,0 +1,96 @@
+{% comment %}
+
+  For info on test orders:
+    - General http://docs.shopify.com/manual/your-store/orders/test-orders
+    - Shopify Payments - http://docs.shopify.com/manual/more/shopify-payments/testing-shopify-payments
+
+{% endcomment %}
+
+{% if cart.item_count > 0 %}
+<main class="Container">
+    <h1 class="Headline Headline--2">{{ 'cart.general.title' | t }}</h1>
+    <form action="/cart" method="post" novalidate class="Cart">
+        <div class="Cart-row">
+            <button type="submit" name="update" class="Link" value="{{ 'cart.general.update' | t }}">{{ 'cart.general.update' | t }}</button>
+            <button type="submit" name="checkout" class="Btn" value="{{ 'cart.general.checkout' | t }}">
+                <svg class="Btn-icon">
+                    <use xlink:href="#Secure" />
+                </svg>
+                {{'cart.general.checkout' | t }}
+            </button>
+        </div>
+        <div class="Cart-list">
+            {% for item in cart.items %}
+                <div class="Cart-item">
+                    <a href="{{ item.url }}" class="Cart-headline Link Link--tonedown">
+                        {{ item.product.title }}
+                    </a>
+                    <a href="{{ item.url | within: collections.all }}" data-label="{{ 'customer.order.product' | t }}">
+                        <img src="{{ item | img_url: 'compact' }}" alt="{{ item.title | escape }}" class="Cart-img">
+                    </a>
+                    {% comment %} Number Input Component {% endcomment %}
+                    {% assign numberMin = '0' %}
+                    {% assign numberId = item.id %}
+                    {% assign numberName = 'updates[]' %}
+                    {% assign numberValue = item.quantity %}
+                    {% include 'number-input' with 'cart' %}
+                    {% comment %} Number Input Component {% endcomment %}
+
+                    {% unless item.variant.title contains 'Default' %}
+                    <small class="Cart-attr">{{ item.variant.title }}</small>
+                    {% endunless %}
+
+                    {% if settings.cart_vendor_enable %}
+                    <p>{{ item.vendor }}</p>
+                    {% endif %}
+
+                    <strong class="Cart-attr Cart-attrPrice" data-label="{{ 'cart.label.total' | t }}">
+                        {{ item.line_price | money }}
+                    </strong>
+
+
+                    <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="Cart-remove">x</a>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="Cart-footer">
+            {% comment %}
+                CUSTOMERS ADDITIONAL NOTE SNIPPETS
+
+                {% if settings.cart_notes_enable %}
+                <label for="CartSpecialInstructions">{{ 'cart.general.note' | t }}</label>
+                <textarea name="note" class="input-full" id="CartSpecialInstructions">{{ cart.note }}</textarea>
+                {% endif %}
+            {% endcomment %}
+            <div class="Cart-col">
+                {{ 'cart.general.subtotal' | t }}<br />
+                <small class="Copy-sm">({{'products.product.tax_type' | t}} {{'products.product.tax_included' | t}})</small>
+            </div>
+            <div class="Cart-col">
+                {{ cart.total_price | money }}
+            </div>
+            <div class="Cart-col">
+                <small class="Cart-">{{ 'cart.general.shipping_at_checkout' | t }}</small>
+            </div>
+        </div>
+        <div class="Cart-row">
+            <button type="submit" name="update" class="Link" value="{{ 'cart.general.update' | t }}">{{ 'cart.general.update' | t }}</button>
+            <button type="submit" name="checkout" class="Btn" value="{{ 'cart.general.checkout' | t }}">
+                <svg class="Btn-icon">
+                    <use xlink:href="#Secure" />
+                </svg>
+                {{'cart.general.checkout' | t }}
+            </button>
+        </div>
+    </form>
+{% else %}
+{% comment %}
+The cart is empty
+{% endcomment %}
+<main class="Container">
+  <h2>{{ 'cart.general.title' | t }}</h2>
+  <p>{{ 'cart.general.empty' | t }}</p>
+  <p>{{ 'cart.general.continue_browsing_html' | t }}</p>
+</main>
+{% endif %}
+</main>

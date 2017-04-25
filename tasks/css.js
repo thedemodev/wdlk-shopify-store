@@ -10,7 +10,7 @@ import log from './log';
 
 export default function css () {
     const srcFile   = resolve('./src/scss/index.scss');
-    const buildFile = resolve('./assets/index.scss.liquid');
+    const buildFile = resolve('./src/assets/index.scss.liquid');
     const time = new Date();
 
     const scss = sass.renderSync({

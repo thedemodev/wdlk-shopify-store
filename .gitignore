@@ -26,6 +26,7 @@ config/settings_data.json
 
 # Sensitive Information
 config.yml
+deploy.log
 tasks/shopify-api/config.js
 tasks/instagram/config.js
 tasks/instagram/access.json

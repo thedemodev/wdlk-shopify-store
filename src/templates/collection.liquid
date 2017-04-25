@@ -1,0 +1,31 @@
+{% comment %}
+  For more information on collection tags:
+    - http://docs.shopify.com/themes/liquid-variables/collection
+{% endcomment %}
+
+{% paginate collection.products by 32 %}
+
+<main>
+    {% include 'product-filter' %}
+    <div class="ProductList">
+        {% include 'product-item' %}
+    </div>
+</main>
+
+
+
+{% comment %}
+Use class grid-uniform to have evenly sized columns clear
+each other properly at each breakpoint.
+{% endcomment %}
+
+
+{% if paginate.pages > 1 %}
+
+
+{{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
+
+{% endif %}
+
+
+{% endpaginate %}

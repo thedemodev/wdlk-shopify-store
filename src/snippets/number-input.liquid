@@ -1,0 +1,27 @@
+{% comment %}
+The number input takes a 'number-input' variable with a
+'quick-cart' value in order to accept a product related id.
+{% include 'number-input' with 'quick-cart' %}
+
+These are the necessary variables examples to correctly initialize the component:
+
+1. {% assign numberMin = '0' %}
+2. {% assign numberId = item.id %}
+3. {% assign numberName = 'updates[]' %}
+4. {% assign numberValue = item.quantity %}
+
+{% endcomment %}
+
+<div class="NumberInput js_numberInput">
+    <span class="NumberInput-btn js_remove">
+        <svg class="Icon">
+            <use xlink:href="#Minus" />
+        </svg>
+    </span>
+    <input type="number" id="{% if number-input == 'cart'%}updates_{% endif %}{{ numberId }}" name="{{ numberName }}" value="{{ numberValue }}" min="{{ numberMin }}" class="NumberInput-value js_value" autocomplete="off" />
+    <span class="NumberInput-btn js_add">
+        <svg class="Icon">
+            <use xlink:href="#Plus" />
+        </svg>
+    </span>
+</div>

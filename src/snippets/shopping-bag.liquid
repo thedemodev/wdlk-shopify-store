@@ -1,0 +1,40 @@
+{% comment %}
+
+   There should be two types of shoping bag components:
+   1. default
+   2. link
+
+   The 'tonedown' modifiers displays the icon in another color.
+
+  Show number of items in the cart and total cost in the /cart link
+
+  Ajax Cart Notes:
+    - #cartCount updates the total number of items in the cart
+    - #cartCost updates the total cost of the cart
+    - Documentation:  http://shopify.com/timber#ajax-cart
+{% endcomment %}
+{% if shopping-bag %}
+{% if shopping-bag == 'link'%}
+<label class="ShoppingBag ShoppingBag--{{shopping-bag}} js_cartCountComponent {% if cart.item_count > 0 %}is-filled{% endif %}{% if shoppingBagMod == 'tonedown' %} ShoppingBag--tonedown{% endif %}" for="cart-quick">
+    <svg class="ShoppingBag-icon">
+        <use xlink:href="#Shopping_bag" />
+        <text class="ShoppingBag-count" data-cart="counter" y="80%" x="55%">
+             {% if cart.item_count > 0 %}
+                {{ cart.item_count }}
+             {% endif %}
+         </text>
+    </svg>
+</label>
+{% else %}
+<span class="ShoppingBag js_cartCountComponent {% if cart.item_count > 0 %} is-filled {% endif %} {% if shoppingBagMod == 'tonedown' %}ShoppingBag--tonedown{% endif %}">
+    <svg class="ShoppingBag-icon">
+        <use xlink:href="#Shopping_bag" />
+        <text class="ShoppingBag-count" data-cart="counter" y="80%" x="55%">
+             {% if cart.item_count > 0 %}
+                {{ cart.item_count }}
+             {% endif %}
+         </text>
+    </svg>
+</span>
+{% endif %}
+{% endif %}

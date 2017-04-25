@@ -15,23 +15,27 @@ In Shopify you develop locally and use a syncing utility to push your changes to
 
 The shopify_theme gem comes to rescue!!
 
-##### Installation
-To start development you need to install Theme Kit from Shopify
+##### Getting Started
 
+1. `npm install`
+###### Option One with NPM (recommended)
+To start development you need to install Slate from Shopify
+2. `npm install --save-dev @shopify/slate`
+3. `./node_modules/.bin/` to make the slate command available for our scripts
+4. In your `config.yml` add your store information and private app credentials
+Slate documentation:[https://shopify.github.io/slate/](https://shopify.github.io/slate/)
+
+###### Option two
 **Ideally the installation is being made with Homebrew**
-1. `brew tap shopify/shopify`
-2. `brew install themekit`
-3. `theme configure` --password=store-password --store=wdkl-ocean.myshopify.com --themeid=your-theme-id
-
-
+2. `brew tap shopify/shopify`
+3. `brew install themekit`
+4. `theme configure` --password=store-password --store=wdkl-ocean.myshopify.com --themeid=your-theme-id
 Theme Kit documentation:[http://shopify.github.io/themekit/](http://shopify.github.io/themekit/)
 
 
 ### Local Development Environment
-
-1. `npm install`
-2. `npm start`
-3. `npm run watch`
+1. `npm start`
+2. `npm run watch`
 
 
 ## Theme Development Workflow
