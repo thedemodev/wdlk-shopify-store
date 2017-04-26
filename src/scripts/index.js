@@ -1,3 +1,5 @@
+// @flow
+import '../scss/index.scss';
 import rAf from './polyfills/rAf';
 import stickyNavigation from './modules/sticky-navigation';
 import smoothScrolling from './modules/smooth-scrolling';
@@ -8,17 +10,16 @@ import notification from './modules/notification';
 import getInstaFeed from './modules/instagram-feed';
 
 
-window.addEventListener('load', e => {
-	rAf();
-	getInstaFeed();
-	stickyNavigation();
-	cookieNotification();
-	smoothScrolling();
-	numberInput();
+window.addEventListener('load', () => {
+  rAf();
+  getInstaFeed();
+  stickyNavigation();
+  cookieNotification();
+  smoothScrolling();
+  numberInput();
 });
 
 
 fbqEvents();
 notification();
-
 
