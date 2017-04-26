@@ -25,15 +25,7 @@ export default function watchFolders () {
         })
 
         monitor.on('changed', (file, curr, prev) => {
-            findTask(timberFolder, file, timber);
             findTask(sassFolder, file, css, 'scss');
-            findTask(bundleFolder, file, bundle);
-            // if (basename(file) === 'index.js') {
-            //     bundle();
-            // }
-            if (basename(file) === 'index.js.liquid' || basename(file) === 'timber.js.liquid') {
-                scripts();
-            }
             console.log(log.info('Changed File:'), file);
         })
 
