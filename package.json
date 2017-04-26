@@ -18,8 +18,8 @@
     "timber": "babel-node --presets es2015,stage-0 tasks/timber.js",
     "slate": "slate watch",
     "dev": "concurrently -k -p \"[{name}]\" -n \"WEBPACK,SHOPIFY\" \"npm run slate\" \"npm run webpack\"",
-    "webpack": "webpack --config tasks/webpack.config.js",
-    "webpack::production": "npm run webpack -p",
+    "webpack": "NODE_ENV=development webpack --config tasks/webpack.config.js",
+    "webpack::production": "NODE_ENV=production npm run webpack -p",
     "watch": "babel-node --presets es2015,stage-0 tasks/watch.js"
   },
   "repository": {
