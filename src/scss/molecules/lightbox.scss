@@ -15,7 +15,7 @@
             top: 5vh;
         }
         transform: translateX(-200vw);
-        background: $light-white-rgba;
+        background: $rgba-light-white;
         transition: background var(--transition-speed) var(--transition-speed) ease-in-out, left 0s var(--transition-speed-double) ease;
     }
 
@@ -26,7 +26,7 @@
             ~ .Lightbox-shim {
                 z-index: 10;
                 transform: none;
-                background: $light-white-rgba;
+                background: $rgba-light-white;
                 transition: background var(--transition-speed) ease;
 
                 .Lightbox-content {

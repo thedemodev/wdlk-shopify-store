@@ -1,52 +1,52 @@
 .Header {
-    @include grid-wrapper(undefined, space-between);
-    position: relative;
+  @include grid-wrapper(undefined, space-between);
+  position: relative;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 5;
+  box-sizing: border-box;
+  align-items: center;
+  height: $nav-height;
+  padding: 0 20px;
+  margin-bottom: -$nav-height;
+
+  &.is-sticky {
+      position: fixed;
+      margin-bottom: 0;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
     top: 0;
-    right: 0;
     left: 0;
-    z-index: 5;
-    box-sizing: border-box;
-    align-items: center;
-    height: $nav-height;
-    padding: 0 20px;
-    margin-bottom: -$nav-height;
+    z-index: -1;
+    width: 100vw;
+    height: inherit;
+    background: $navi-bg-color;
+    transition: transform .4s ease, opacity .4s ease;
+  }
 
-    &.is-sticky {
-        position: fixed;
-        margin-bottom: 0;
+  @include media(medium) {
+    height: $nav-height-medium;
+    padding: 0 40px;
+    margin-bottom: $nav-height-medium;
+
+    &::before {
+      border-bottom: solid $nav-border-color;
+      border-bottom-width: 0;
+      opacity: 0;
+      transform: translate3d(0, -100%, 0);
     }
 
-    &:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        width: 100vw;
-        height: inherit;
-        background: $navi-bg-color;
-        transition: transform .4s ease, opacity .4s ease;
+    &.is-undocked  {
+      &::before {
+        border-bottom-width: 1px;
+        opacity: 1;
+        transform: none;
+      }
     }
 
-    @include media(medium) {
-        height: $nav-height-medium;
-        padding: 0 40px;
-        margin-bottom: $nav-height-medium;
-
-        &::before {
-            border-bottom: solid $nav-border-color;
-            border-bottom-width: 0;
-            opacity: 0;
-            transform: translate3d(0, -100%, 0);
-        }
-
-        &.is-undocked  {
-            &::before {
-                border-bottom-width: 1px;
-                opacity: 1;
-                transform: none;
-            }
-        }
-
-    }
+  }
 }
