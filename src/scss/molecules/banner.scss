@@ -302,10 +302,6 @@
         overflow: hidden;
         background-color: $background-color;
       }
-
-      @include media(xlarge) {
-          left: calc(50% - 64px);
-      }
     }
 
     .Link {
