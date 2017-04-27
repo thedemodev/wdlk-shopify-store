@@ -19,4 +19,4 @@ config.yml
 deploy.log
 configuration/shopify-api/config.js
 configuration/instagram/config.js
-configuration/instagram/access.json
+configuration/instagram/access.js
