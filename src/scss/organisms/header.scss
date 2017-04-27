@@ -31,7 +31,7 @@
   @include media(medium) {
     height: $nav-height-medium;
     padding: 0 40px;
-    margin-bottom: $nav-height-medium;
+    margin-bottom: -$nav-height-medium;
 
     &::before {
       border-bottom: solid $nav-border-color;
