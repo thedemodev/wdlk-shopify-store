@@ -1,40 +1,36 @@
-:root {
-    --hex-product-filter-bg: var(--hex-beige-secondary);
-}
 .ProductFilter {
-    display: block;
-    padding: $base-spacing + .2 $base-spacing $base-spacing + .1;
-    margin: ($nav-height + 4rem) $base-spacing 40px;
-    text-align: center;
-    overflow: hidden;
-    background-color: var(--hex-product-filter-bg);
-    list-style: none;
+  display: block;
+  padding: $base-spacing + .2 $base-spacing $base-spacing + .1;
+  margin: ($nav-height + 4rem) $base-spacing 40px;
+  text-align: center;
+  overflow: hidden;
+  background-color: $hex-beige-secondary;
+  list-style: none;
 
-    @include media (medium) {
-        margin: {
-            right: $base-spacing * 2;
-            left: $base-spacing * 2;
-        }
+  @include media (medium) {
+    margin: {
+      right: $base-spacing * 2;
+      left: $base-spacing * 2;
+    }
+  }
+
+  &-item {
+    display: inline-block;
+    margin-right: 3.6rem;
+
+    &:last-child {
+      margin-right: 0;
     }
 
-    &-item {
-        display: inline-block;
-        margin-right: 3.6rem;
+    &.is-active {
+      .Link {
+        color: $typo-hex;
+        cursor: auto;
 
-        &:last-child {
-            margin-right: 0;
+        &:hover {
+          color: $typo-hex;
         }
-
-        &.is-active {
-            .Link {
-                color: $typo-hex;
-                cursor: auto;
-
-                &:hover {
-                    color: $typo-hex;
-                }
-            }
-        }
+      }
     }
-
+  }
 }
