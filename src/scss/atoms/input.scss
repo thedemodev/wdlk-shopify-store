@@ -10,15 +10,15 @@
   max-width: 60rem;
   height: var(--input-base-height);
   padding: 0 var(--base-spacing);
-  border: 1px solid var(--input-hex-bg);
+  border: 1px solid $input-hex-bg;
   line-height: var(--input-base-height);
   font-family: "museo_sans500";
   font-size: var(--md-copy-size);
-  color: var(--input-hex-placeholder);
+  color: $input-hex-placeholder;
 
   &:focus {
     outline: none;
-    border-color: var(--input-hex-focus);
+    border-color: $input-hex-focus;
   }
 
   &--row {

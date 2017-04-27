@@ -117,7 +117,7 @@
         position: relative;
         display: inline-block;
         width: auto;
-        color: var(--typo-hex);
+        color: $typo-hex;
         font-family: "museo_sans500";
         font-size: var(--h5-size);
         line-height: 1.5;
@@ -136,7 +136,7 @@
             height: .1rem;
             width: 100%;
             margin-top: 2px;
-            background-color: var(--typo-hex);
+            background-color: $typo-hex;
             transform: scaleX(0);
             transform-origin: 0 0;
             transition: transform .8s var(--border-timing);
@@ -209,13 +209,13 @@
             left: 0;
             width: 100%;
             margin: 0;
-            color: var(--typo-hex--tertiary);
+            color: $typo-hex--tertiary;
             text-align: center;
             text-transform: uppercase;
             transform: translateY(-50%);
 
             &-one-pieces {
-                color: var(--typo-hex--secondary);
+                color: $typo-hex--secondary;
             }
         }
 

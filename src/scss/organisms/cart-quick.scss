@@ -10,7 +10,7 @@
         padding: var(--base-spacing) 5rem;
         box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
         text-align: center;
-        background-color: var(--quick-cart-hex-bg);
+        background-color: $quick-cart-hex-bg;
         transform: translate3d(110%, 0, 0);
         transition: transform .5s ease;
 

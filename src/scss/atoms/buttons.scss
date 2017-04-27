@@ -8,7 +8,7 @@
   height: var(--form-base-height);
   padding: 0 var(--box-base-padding);
   border: none;
-  background-color: var(--btn-bg-color);
+  background-color: $btn-bg-color;
   line-height: var(--form-base-height);
   letter-spacing: .16rem;
   text-transform: uppercase;
@@ -17,38 +17,38 @@
 
   @include copy-text(
     var(--md-copy-size),
-    var(--typo-hex--tertiary),
+    $typo-hex--tertiary,
     bold
   );
 
   &:hover {
-    color: var(--typo-hex--tertiary);
-    background-color: var(--btn-bg-color-hover);
+    color: $typo-hex--tertiary;
+    background-color: $btn-bg-color-hover;
   }
 
   &-icon {
     display: inline-block;
     padding-right: 5px;
-    fill: var(--typo-hex--tertiary);
+    fill: $typo-hex--tertiary;
   }
 
   &--secondary {
-    background-color: var(--btn-bg-color-secondary);
+    background-color: $btn-bg-color-secondary;
   }
 
   &--inverse {
-    color: var(--btn-bg-color);
+    color: $btn-bg-color;
     line-height: calc(var(--form-base-height) - .2);
     background: transparent;
-    outline: 2px solid var(--btn-bg-color);
+    outline: 2px solid $btn-bg-color;
     outline-offset: -2px;
     transform: translateY(-1px);
-    color: var(--btn-bg-color);
+    color: $btn-bg-color;
     transition: outline-color var(--btn-timing) ease;
 
     &:hover {
-        outline-color: var(--btn-bg-color-hover);
-        color: var(--btn-bg-color-hover);
+        outline-color: $btn-bg-color-hover;
+        color: $btn-bg-color-hover;
         background: transparent;
     }
   }

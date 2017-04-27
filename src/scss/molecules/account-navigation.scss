@@ -21,7 +21,7 @@
 
     &-item {
         display: inline-block;
-        color: var(--typo-hex--tone-down);
+        color: $typo-hex--tone-down;
         font-family: "museo_sans500";
         font-size: var(--small-copy-size);
         line-height: 1.5;

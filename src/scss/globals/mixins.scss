@@ -63,7 +63,7 @@
     }
 }
 
-@mixin create-pointer ($size: 3rem, $color: var(--background-color), $pseudo-el: before) {
+@mixin create-pointer ($size: 3rem, $color: $background-color , $pseudo-el: before) {
     &::#{$pseudo-el} {
         content: "";
         width: $size;
@@ -74,7 +74,7 @@
     }
 }
 
-@mixin generate-x ($length, $height: .2rem, $color: var(--typo-hex--tertiary)) {
+@mixin generate-x ($length, $height: .2rem, $color: $typo-hex--tertiary) {
     &::before,
     &::after {
         content: "";

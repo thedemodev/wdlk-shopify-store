@@ -31,7 +31,7 @@
 
 
         @include media(medium) {
-            border-bottom: 1px solid  var(--cart-hex-border);
+            border-bottom: 1px solid  $cart-hex-border;
             text-align: justify;
 
             &::after {
@@ -91,7 +91,7 @@
             //top: 30px;
             bottom: 30px;
         }
-        border-bottom: 1px solid var(--cart-hex-border);
+        border-bottom: 1px solid $cart-hex-border;
         margin-bottom: 26px;
     }
     //
@@ -149,7 +149,7 @@
         position: absolute;
         top: 0;
         right: 0;
-        color: var(--typo-hex--secondary);
+        color: $typo-hex--secondary;
     }
 
     &-footer {

@@ -11,14 +11,14 @@
         right: var(--form-base-height);
     }
     border-radius: 0;
-    border-color: var(--input-hex-border);
+    border-color: $input-hex-border;
     margin-right: var(--form-base-margin);
-    color: var(--input-hex-typo);
+    color: $input-hex-typo;
     font-family: "museo_sans500";
     font-size: var(--md-copy-size);
     font-weight: 600;
     background: {
-        color: var(--input-hex-bg);
+        color: $input-hex-bg;
         //-- Replace with the right icon
         image: url('{{ "ico-select.svg" | asset_url }}');
         repeat: no-repeat;
@@ -34,7 +34,7 @@
     &:focus,
     &:active,
     &:hover {
-        border-color: var(--input-hex-focus);
+        border-color: $input-hex-focus;
     }
 
     &.is-hidden {

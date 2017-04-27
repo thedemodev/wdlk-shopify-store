@@ -127,7 +127,7 @@
         transform: translateX(50%);
 
         @include copy-text(
-            var(--small-copy-size), var(--typo-hex--highlight),
+            var(--small-copy-size), $typo-hex--highlight,
             bold
         );
 
@@ -136,17 +136,17 @@
             width: 16px;
             height: 16px;
             margin-bottom: 8px;
-            fill: var(--typo-hex--highlight);
+            fill: $typo-hex--highlight;
         }
     }
 
     .Headline {
-        color: var(--typo-hex--banner-tertiary);
+        color: $typo-hex--banner-tertiary;
     }
 
     &-copy {
         margin-bottom: calc(var(--base-spacing) + 2);
-        color: var(--typo-hex--banner-secondary);
+        color: $typo-hex--banner-secondary;
         font-size: var(--md-copy-size);
         line-height: 1.5;
         font-weight: 100;
@@ -197,7 +197,7 @@
             position: static;
             padding: calc(var(--base-spacing) * 4.5) var(--base-spacing);
             margin: 0 auto;
-            color: var(--typo-hex--banner-secondary);
+            color: $typo-hex--banner-secondary;
             transform: none;
 
             @include media (medium) {
@@ -207,10 +207,10 @@
 
         .SocialList-item {
             width: 30px;
-            fill: var(--typo-hex--banner-secondary);
+            fill: $typo-hex--banner-secondary;
 
             &:hover {
-                fill: var(--link-hex-secondary-hover);
+                fill: $link-hex-secondary-hover;
             }
         }
     }
@@ -223,7 +223,7 @@
             position: static;
             padding: calc(var(--base-spacing) * 4.5) var(--base-spacing);
             margin: 0 auto;
-            color: var(--typo-hex--banner-secondary);
+            color: $typo-hex--banner-secondary;
             transform: none;
 
             @include media (medium) {
@@ -236,7 +236,7 @@
             width: 3rem;
             max-height: 3rem;
             margin: 0 auto var(--base-spacing);
-            fill: var(--banner-teaser-logo-icon);
+            fill: $banner-teaser-logo-icon;
         }
 
         .Banner-introText {
@@ -308,7 +308,7 @@
                     bottom: 4rem;
                 }
                 overflow: hidden;
-                background-color: var(--background-color);
+                background-color: $background-color;
             }
 
             @include media(xlarge) {
@@ -362,7 +362,7 @@
         }
 
         .Headline {
-            color: var(--typo-hex--tertiary);
+            color: $typo-hex--tertiary;
         }
 
         @include media(small, max-width) {

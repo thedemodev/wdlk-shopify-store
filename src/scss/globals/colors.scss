@@ -1,110 +1,92 @@
 //-- Base HEX Colors
-:root {
-    --hex-white: #ffffff;
-    --hex-blue-gray: #9FBCD0;
-    --hex-coral: #FF7163;
-    --hex-coral-dark: #E5554E;
-    --hex-blue-gray-light: #8E959A;
-    --hex-blue-gray-lightest: #DEDFE0;
-    --hex-blue-gray-dark: #596771;
-    --hex-blue-gray-ultra-dark: #384852;
-    --hex-beige-secondary: #FAF5F4;
-    --mid-gray-hex: #c8c8c8;
-    --mid-dark-gray-hex: #bfbfbf;
-    --light-gray-hex: #999999;
-    --lightest-gray-hex: #f0f0f0;
-    --dark-asphalt-hex: #222222;
-    --asphalt-hex: #4d4d4f;
-    --mid-dark-gray-hex: #666666;
-    --light-black: #333333;
-    --sand-hex: #cc9966;
-    //--sand-hex: #e0bcb0;
-    --light-sand: #f9f6f1;
-    --ocean-blue-hex: #d3dde6;
-    --beige-light-hex: #f7f7f7;
-    --light-orange: #FFCA54;
-    // --gold: #D2BC7A;
-    --gold: #DFC781;
-}
+$hex-white                   : #ffffff;
+$hex-blue-gray               : #9FBCD0;
+$hex-coral                   : #FF7163;
+$hex-coral-dark              : #E5554E;
+$hex-blue-gray-light         : #8E959A;
+$hex-blue-gray-lightest      : #DEDFE0;
+$hex-blue-gray-dark          : #596771;
+$hex-blue-gray-ultra-dark    : #384852;
+$hex-beige-secondary         : #FAF5F4;
+$mid-gray-hex                : #c8c8c8;
+$mid-dark-gray-hex           : #bfbfbf;
+$mid-dark-gray-hex           : #666666;
+$light-gray-hex              : #999999;
+$lightest-gray-hex           : #f0f0f0;
+$dark-asphalt-hex            : #222222;
+$asphalt-hex                 : #4d4d4f;
+$light-black                 : #333333;
+$sand-hex                    : #cc9966;
+$light-sand                  : #f9f6f1;
+$ocean-blue-hex              : #d3dde6;
+$beige-light-hex             : #f7f7f7;
+$light-orange                : #FFCA54;
+$gold                        : #DFC781;
 
 //-- Base rgba colors
-:root {
-    --rgba-blue-gray-light: rgba(142, 149, 154, .7);
-    --rgba-blue-gray-dark: rgba(80, 103, 113, .5);
-    --mid-gray-rgba: rgba(200, 200, 200, 1);
-    --light-black-rgba: rgba(51, 51, 51, 1);
-    --lightest-gray-rgba: rgba(240, 240, 240, 1);
-    --mid-dark-gray-hex: rgba(191, 191, 191, 1);
-    --light-white-rgba: rgba(250, 250, 250, .9)
-}
+$rgba-blue-gray-light        : rgba(142, 149, 154, .7);
+$rgba-blue-gray-dark         : rgba(80, 103, 113, .5);
+$mid-gray-rgba               : rgba(200, 200, 200, 1);
+$light-black-rgba            : rgba(51, 51, 51, 1);
+$lightest-gray-rgba          : rgba(240, 240, 240, 1);
+$mid-dark-gray-hex           : rgba(191, 191, 191, 1);
+$light-white-rgba            : rgba(250, 250, 250, .9);
 
 //-- Typo Colors
-:root {
-    --typo-hex: var(--hex-blue-gray-dark);
-    --typo-hex--secondary: var(--hex-blue-gray-light);
-    --typo-hex--tertiary: var(--hex-white);
-    --typo-hex--quaternary: var(--hex-blue-gray-ultra-dark);
-    --typo-hex--highlight: var(--hex-coral);
-    --typo-hex--tone-down: var(--light-gray-hex);
-    --typo-hex--lightest: var(--hex-blue-gray-lightest);
-    --typo-hex--banner-secondary: var(--hex-blue-gray-light);
-    --typo-hex--banner-tertiary: var(--hex-blue-gray-ultra-dark);
-}
+$typo-hex                    : $hex-blue-gray-dark;
+$typo-hex--secondary         : $hex-blue-gray-light;
+$typo-hex--tertiary          : $hex-white;
+$typo-hex--quaternary        : $hex-blue-gray-ultra-dark;
+$typo-hex--highlight         : $hex-coral;
+$typo-hex--tone-down         : $light-gray-hex;
+$typo-hex--lightest          : $hex-blue-gray-lightest;
+$typo-hex--banner-secondary  : $hex-blue-gray-light;
+$typo-hex--banner-tertiary   : $hex-blue-gray-ultra-dark;
 
 //-- Background Colors
-:root {
-    --background-color: var(--hex-white);
-    --background-color-secondary: var(--beige-light-hex);
-    --container-border: var(--hex-blue-gray-lightest);
-    --background-color-tertiary: var(--light-sand);
-    --background-color-contrast: var(--gold);
-}
+$background-color            : $hex-white;
+$background-color-secondary  : $beige-light-hex;
+$container-border            : $hex-blue-gray-lightest;
+$background-color-tertiary   : $light-sand;
+$background-color-contrast   : $gold;
 
 //-- Forms & Buttons
-:root {
-    --input-hex-placeholder: var(--hex-blue-gray-darkt);
-    --input-hex-border: var(--hex-blue-gray-lightest);
-    --input-hex-bg: var(--hex-white);
-    --input-hex-focus: var(--hex-blue-gray);
-    --input-hex-typo: var(--hex-blue-gray-dark);
-    --form-el-bg-color: var(--lightest-gray-hex);
-    --form-el-focus-color: var(--mid-gray-hex);
-    --form-typo-color: var(--mid-dark-gray-hex);
-    --form-btn-color: var(--mid-gray-rgba);
-    --btn-bg-color-secondary: var(--sand-hex);
-    --btn-bg-color-hover: var(--hex-coral-dark);
-    --btn-bg-color: var(--hex-coral);
-    --carousel-arrow-color: var(--light-gray-hex);
-    --indicator-color: var(--hex-blue-gray-light);
-    --indicator-active-color: var(--hex-blue-gray-ultra-dark);
-    --link-hex-color: var(--hex-coral);
-    --link-list-hex-color: var(--hex-blue-gray-light);
-    --link-list-hex-hover-color: var(--hex-blue-gray-dark);
-    --link-hex-hover-color: var(--hex-coral-dark);
-    --link-hex-secondary-color: var(--hex-blue-gray-dark);
-    --link-hex-secondary-hover: var(--hex-blue-gray-ultra-dark);
-    --form-layer-hex-bg: var(--hex-white);
-}
+$input-hex-placeholder       : $hex-blue-gray-dark;
+$input-hex-border            : $hex-blue-gray-lightest;
+$input-hex-bg                : $hex-white;
+$input-hex-focus             : $hex-blue-gray;
+$input-hex-typo              : $hex-blue-gray-dark;
+$form-el-bg-color            : $lightest-gray-hex;
+$form-el-focus-color         : $mid-gray-hex;
+$form-typo-color             : $mid-dark-gray-hex;
+$form-btn-color              : $mid-gray-rgba;
+$btn-bg-color-secondary      : $sand-hex;
+$btn-bg-color-hover          : $hex-coral-dark;
+$btn-bg-color                : $hex-coral;
+$carousel-arrow-color        : $light-gray-hex;
+$indicator-color             : $hex-blue-gray-light;
+$indicator-active-color      : $hex-blue-gray-ultra-dark;
+$link-hex-color              : $hex-coral;
+$link-list-hex-color         : $hex-blue-gray-light;
+$link-list-hex-hover-color   : $hex-blue-gray-dark;
+$link-hex-hover-color        : $hex-coral-dark;
+$link-hex-secondary-color    : $hex-blue-gray-dark;
+$link-hex-secondary-hover    : $hex-blue-gray-ultra-dark;
+$form-layer-hex-bg           : $hex-white;
 
 //-- Images
-:root {
-    --thumbnail-border-color: var(--hex-blue-gray-light);
-}
+$thumbnail-border-color      : $hex-blue-gray-light;
 
 //-- Icons
-:root {
-    --hex-logo-color: var(--hex-coral);
-    --hex-logo-hover-color: var(--hex-coral-dark);
-    --hex-shopping-cart-color: var(--hex-coral);
-    --hex-shopping-cart-hover:  var(--hex-coral-dark);
-    --hex-shopping-cart-tonedown: var(--hex-blue-gray-dark);
-    --hex-shopping-cart-tonedown-hover: var(--hex-blue-gray-ultra-dark);
-    --icon-primary-color: var(--hex-white);
-    --banner-teaser-logo-icon: var(--hex-blue-gray);
-}
+$hex-logo-color               : $hex-coral;
+$hex-logo-hover-color         : $hex-coral-dark;
+$hex-shopping-cart-color      : $hex-coral;
+$hex-shopping-cart-hover      :  $hex-coral-dark;
+$hex-shopping-cart-tonedown   : $hex-blue-gray-dark;
+$hex-shopping-cart-tonedown-hover: $hex-blue-gray-ultra-dark;
+$icon-primary-color           : $hex-white;
+$banner-teaser-logo-icon      : $hex-blue-gray;
 
 //-- Cart
-:root {
-    --quick-cart-hex-bg: var(--hex-white);
-    --cart-hex-border: #ECECEC;
-}
+$quick-cart-hex-bg            : $hex-white;
+$cart-hex-border              : #ECECEC;

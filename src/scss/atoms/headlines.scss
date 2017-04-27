@@ -57,11 +57,11 @@ $headline-sizes: (
   @include headline-sizes($headline-sizes);
 
   &--highlight {
-    color: var(--typo-hex--highlight);
+    color: $typo-hex--highlight;
   }
 
   &--hightlightSecondary {
-    color: var(--typo-hex--banner-tertiary);
+    color: $typo-hex--banner-tertiary;
     font-weight: normal;
   }
 }

@@ -36,7 +36,7 @@
         left: 0;
         width: 16px;
         height: 32px;
-        fill: var(--carousel-arrow-color);
+        fill: $carousel-arrow-color;
         transform: translateY(-50%);
         pointer-events: none;
     }

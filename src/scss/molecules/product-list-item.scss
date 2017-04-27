@@ -96,7 +96,7 @@
     &-title,
     &-price {
         font-size: var(--md-copy-size);
-        color: var(--typo-hex);
+        color: $typo-hex;
 
     }
 
@@ -117,7 +117,7 @@
             bottom: 0;
             width: 25px;
             height: 1px;
-            background-color: var(--typo-hex--lightest);
+            background-color: $typo-hex--lightest;
         }
     }
 }

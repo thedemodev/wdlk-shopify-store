@@ -12,7 +12,7 @@
 //-- 3. The parent class of the indicators
 //-- 4. The class of the indicator item
 @include generateActiveIndicator(6, Carousel-trigger, Indicators, Indicators-item) {
-    background-color: var(--indicator-active-color);
+    background-color: $indicator-active-color;
     transform: scale(1.5);
 };
 
@@ -33,7 +33,7 @@
         height: var(--indicators-size);
         border-radius: 50%;
         margin-right: var(--base-margin);
-        background-color: var(--indicator-color);
+        background-color: $indicator-color;
         cursor: pointer;
         transform: scale(1);
         transition: transfrom var(--indicator-transition-speed) ease-out, background-color var(--indicator-transition-speed) ease-out;
@@ -44,7 +44,7 @@
         }
 
         &:hover {
-            background-color: var(--indicator-active-color);
+            background-color: $indicator-active-color;
         }
     }
 }

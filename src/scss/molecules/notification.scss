@@ -5,8 +5,8 @@
 	max-height: 0;
 	overflow: hidden;
 	text-align: center;
-	color: var(--typo-hex--tertiary);
-	background-color: var(--background-color-contrast);
+	color: $typo-hex--tertiary;
+	background-color: $background-color-contrast;
 	transform: translate3d(0, 0, 0);
 	perspective: 1000;
 	transition: max-height var(--transition-speed) ease-in-out;

@@ -27,11 +27,11 @@
 
         &.is-active {
             .Link {
-                color: var(--typo-hex);
+                color: $typo-hex;
                 cursor: auto;
 
                 &:hover {
-                    color: var(--typo-hex);
+                    color: $typo-hex;
                 }
             }
         }

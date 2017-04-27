@@ -46,7 +46,7 @@
             left: var(--base-spacing);
         }
         opacity: 0;
-        background-color: var(--form-layer-hex-bg);
+        background-color: $form-layer-hex-bg;
         pointer-events: none;
         transition: opacity .5s ease;
 
@@ -76,7 +76,7 @@
 
     &--secondary {
         text-align: center;
-        
+
     }
  }
 

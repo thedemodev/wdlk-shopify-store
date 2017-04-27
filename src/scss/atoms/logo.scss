@@ -10,11 +10,11 @@
     &-img {
         width: var(--logo-width);
         height: calc(var(--logo-height) - 6);
-        fill: var(--link-hex-color);
+        fill: $link-hex-color;
         transition: fill var(--btn-timing) ease;
 
         &:hover {
-            fill: var(--link-hex-hover-color);
+            fill: $link-hex-hover-color;
         }
     }
 }
