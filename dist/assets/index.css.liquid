@@ -594,10 +594,6 @@ body {
     top: 0;
     transform: rotate3d(0, 0, 1, -45deg); }
 
-:root {
-  --select-timing: .35s;
-  --select-timing-func: cubic-bezier(1, 0, 0, 1); }
-
 .Select {
   display: block;
   height: 4.6rem;
@@ -614,9 +610,9 @@ body {
   background-image: url('{{ "ico-select.svg" | asset_url }}');
   background-repeat: no-repeat;
   background-position: right 10px center;
-  transition: border-color var(--select-timing) var(--select-timing-func);
+  transition: border-color 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   outline: none;
-  appearance: none;
+  -webkit-appearance: none;
   cursor: pointer; }
   .Select:focus, .Select:active, .Select:hover {
     border-color: #9FBCD0; }
@@ -2199,9 +2195,6 @@ input[type="number"]::-webkit-outer-spin-button {
       transform: rotate(45deg); }
     .Notification-link::after {
       transform: rotate(135deg); }
-
-:root {
-  --insta-base-spacing: 3px; }
 
 .Feed {
   display: flex;

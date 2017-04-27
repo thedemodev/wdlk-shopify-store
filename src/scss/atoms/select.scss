@@ -1,43 +1,38 @@
-:root {
-    --select-timing: .35s;
-    --select-timing-func: cubic-bezier(1.000, 0.000, 0.000, 1.000);
-}
-
 .Select {
-    display: block;
-    height: $form-base-height;
-    padding: {
-        left: $form-base-height / 2;
-        right: $form-base-height;
-    }
-    border-radius: 0;
-    border-color: $input-hex-border;
-    margin-right: $form-base-margin;
-    color: $input-hex-typo;
-    font-family: "museo_sans500";
-    font-size: var(--md-copy-size);
-    font-weight: 600;
-    background: {
-        color: $input-hex-bg;
-        //-- Replace with the right icon
-        image: url('{{ "ico-select.svg" | asset_url }}');
-        repeat: no-repeat;
-        position: right 10px center;
-    }
-    transition: border-color var(--select-timing) var(--select-timing-func);
+  display: block;
+  height: $form-base-height;
+  padding: {
+    left: $form-base-height / 2;
+    right: $form-base-height;
+  }
+  border-radius: 0;
+  border-color: $input-hex-border;
+  margin-right: $form-base-margin;
+  color: $input-hex-typo;
+  font-family: "museo_sans500";
+  font-size: var(--md-copy-size);
+  font-weight: 600;
+  background: {
+    color: $input-hex-bg;
+    //-- Replace with the right icon
+    image: url('{{ "ico-select.svg" | asset_url }}');
+    repeat: no-repeat;
+    position: right 10px center;
+  }
+  transition: border-color $transition-speed $timing;
 
-    outline: none;
-    appearance: none;
-    cursor: pointer;
+  outline: none;
+  -webkit-appearance: none;
+  cursor: pointer;
 
 
-    &:focus,
-    &:active,
-    &:hover {
-        border-color: $input-hex-focus;
-    }
+  &:focus,
+  &:active,
+  &:hover {
+      border-color: $input-hex-focus;
+  }
 
-    &.is-hidden {
-        display: none;
-    }
+  &.is-hidden {
+      display: none;
+  }
 }
