@@ -1,6 +1,6 @@
 .Product {
     &-display {
-        @include grid-wrapper(var(--screen-xl));
+        @include grid-wrapper($screen-xl);
 
         position: relative;
         padding-top: $nav-height;

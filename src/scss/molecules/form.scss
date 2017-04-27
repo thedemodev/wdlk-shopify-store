@@ -3,7 +3,7 @@
 }
 
 .Form {
-    max-width: var(--screen-md);
+    max-width: $screen-md;
     margin: {
         right: auto;
         left: auto;

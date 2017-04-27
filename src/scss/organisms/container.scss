@@ -64,7 +64,7 @@
     }
 
     &--customer {
-        @include grid-wrapper(var(--screen-xl), flex-start);
+        @include grid-wrapper($screen-xl, flex-start);
 
         .Container-sidebar {
             position: relative;

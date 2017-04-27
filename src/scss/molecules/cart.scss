@@ -5,7 +5,7 @@
 }
 
 .Cart {
-    max-width: var(--screen-l);
+    max-width: $screen-l;
     padding-bottom: var(--cart-base-spacing);
     margin: 0 auto;
 

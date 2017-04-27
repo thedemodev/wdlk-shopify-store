@@ -1,9 +1,9 @@
 .ProductPage {
-    $product-img-max-height: calc(var(--screen-l) / 2) !default;
+    $product-img-max-height: $screen-l / 2 !default;
 
     .Carousel {
         @include media(medium) {
-            max-height: calc(var(--screen-xl) / 2);
+            max-height: $screen-xl / 2;
         }
 
         //-- Give the product image a fixed height
@@ -25,7 +25,7 @@
             }
 
             &-img {
-                height: calc(var(--screen-xl) / 2);
+                height: $screen-xl / 2;
                 max-width: 100% * 1.5;
             }
         }

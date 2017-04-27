@@ -5,7 +5,7 @@
 .Footer {
   box-sizing: border-box;
   width: 100%;
-  max-width: var(--screen-l);
+  max-width: $screen-l;
   padding: {
       top: 7.7rem;
       right: var(--footer-side-padding);
