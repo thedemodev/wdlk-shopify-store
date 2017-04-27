@@ -4,7 +4,7 @@
   left: 0;
   z-index: 2;
   width: 100vw;
-  height: calc(100vh - $nav-height);
+  height: calc(100vh - #{$nav-height});
   font-size: 0;
   line-height: 0;
   text-align: center;
@@ -174,7 +174,7 @@
         &-list {
           box-sizing: border-box;
           width: 50%;
-          padding: calc(var(--base-spacing) * 2);
+          padding: 40px;
         }
 
         .Navigation-item {
