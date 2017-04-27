@@ -7,7 +7,7 @@
     height: var(--form-base-height);
     padding: 0 calc(var(--box-base-padding) * 2) 0 var(--box-base-padding);
     line-height: var(--form-base-height);
-    background-color: var(--rgba-blue-gray-light);
+    background-color: $rgba-blue-gray-light;
 
     @include copy-text(
         var(--md-copy-size),
