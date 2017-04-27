@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 9);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -85,7 +85,7 @@ Object.defineProperty(exports,'__esModule',{value:!0}),exports.default=fbqEvents
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-var _typeof='function'==typeof Symbol&&'symbol'==typeof Symbol.iterator?function(a){return typeof a}:function(a){return a&&'function'==typeof Symbol&&a.constructor===Symbol&&a!==Symbol.prototype?'symbol':typeof a};Object.defineProperty(exports,'__esModule',{value:!0});exports.default=generateFeed;var _jsonp=__webpack_require__(13),_jsonp2=_interopRequireDefault(_jsonp),_access=__webpack_require__(22);function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}function generateFeed(){var a=document.querySelector('.js_instagramFeed');if(a&&void 0!==('undefined'==typeof Promise?'undefined':_typeof(Promise))){var c='https://api.instagram.com/v1/users/'+_access.access.id+'/media/recent/?access_token='+_access.access.token+'&callback=callback',d=function getMediaFeed(j){return new Promise(function(k,l){(0,_jsonp2.default)(j,function(m,n){if(m)throw l(Error('Couldn\'t get Insta JSON feed; error code: + '+m)),m;k(n)})})},e=function limitArr(j){return j<=11},f=function filteredArr(j){return j.filter(function(k,l){return e(l)})},g=function convertUnixDate(j){var k=new Date(parseInt(j));return k.toDateString().slice(0,-4)},h=function generateFeedTemplate(j){var k=j.map(function(l,m){var n='\n\t\t\t\t<div class="Feed-thumbnail">\n\t\t\t\t\t<label class="Feed-trigger" for="lightbox-'+m+'" style="background-image: url('+l.images.standard_resolution.url+'), linear-gradient(35deg, #FFCA54, #FF7163 80%)">\n\t\t\t\t\t</label>\n\t\t\t\t\t<img class="Feed-img"\n\t\t\t\t\t\tsrc="'+l.images.standard_resolution.url+'"\n\t\t\t\t\t\tsrcset="'+l.images.thumbnail.url+' 150w,\n\t\t\t\t\t\t'+l.images.low_resolution.url+' 320w,\n\t\t\t\t\t\t'+l.images.standard_resolution.url+' 640w" />\n\t\t\t\t</div>\n\t\t\t',o='\n\t\t\t\t<a class="Lightbox-row Feed-media"\n\t\t\t\t\thref="'+l.link+'" target="_blank">\n\t\t\t\t\t<h4 class="Headline Headline--5">\n\t\t\t\t\t\tJoin the journey on Instagram @wdlk\n\t\t\t\t\t</h4>\n\t\t\t\t\t<img class="Feed-img"\n\t\t\t\t\t\tsrc="'+l.images.standard_resolution.url+'"\n\t\t\t\t\t\tsrcset="'+l.images.thumbnail.url+' 150w,\n\t\t\t\t\t\t'+l.images.low_resolution.url+' 320w,\n\t\t\t\t\t\t'+l.images.standard_resolution.url+' 640w" />\n\t\t\t\t</a>\n\t\t\t',p='\n\t\t\t\t<figcaption class="Feed-caption Lightbox-row">\n\t\t\t\t\t<strong class="Feed-highlight">'+l.likes.count+' likes</strong>\n\t\t\t\t\t<time class="Feed-highlight" datetime="'+g(l.created_time)+'">'+g(l.created_time)+'</time>\n\t\t\t\t\t<p class="Feed-copy">\n\t\t\t\t\t\t<strong>\n\t\t\t\t\t\t\t'+l.user.username+'\n\t\t\t\t\t\t</strong>\n\t\t\t\t\t\t'+l.caption.text+'\n\t\t\t\t\t</p>\n\t\t\t\t</figcaption>\n\t\t\t',q='\n\t\t\t\t<li class="Feed-item Lightbox--row">\n\t\t\t\t\t'+n+'\n\t\t\t\t\t<input class="Lightbox-state" type="checkbox" id="lightbox-'+m+'" />\n\t\t\t\t\t<div class="Lightbox-shim">\n\t\t\t\t\t\t<label class="Lightbox-shim-close" for="lightbox-'+m+'"></label>\n\t\t\t\t\t\t<figure class="Lightbox-content">\n\t\t\t\t\t\t\t<header class="Lightbox-header">\n\t\t\t\t\t\t\t\t<h3 class="Headline Headline--6">\n\t\t\t\t\t\t\t\t\t#'+l.tags[0]+'\n\t\t\t\t\t\t\t\t</h3>\n\t\t\t\t\t\t\t\t<label class="Lightbox-icon" for="lightbox-'+m+'"></label>\n\t\t\t\t\t\t\t</header>\n\t\t\t\t\t\t\t'+o+'\n\t\t\t\t\t\t\t'+p+'\n\t\t\t\t\t\t</figure>\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t';return q});a.innerHTML=k.join('')};d(c).then(function(j){var k=f(j.data);h(k)})}}
+var _typeof='function'==typeof Symbol&&'symbol'==typeof Symbol.iterator?function(a){return typeof a}:function(a){return a&&'function'==typeof Symbol&&a.constructor===Symbol&&a!==Symbol.prototype?'symbol':typeof a};Object.defineProperty(exports,'__esModule',{value:!0});exports.default=generateFeed;var _jsonp=__webpack_require__(14),_jsonp2=_interopRequireDefault(_jsonp),_access=__webpack_require__(9);function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}function generateFeed(){var a=document.querySelector('.js_instagramFeed');if(a&&void 0!==('undefined'==typeof Promise?'undefined':_typeof(Promise))){var c='https://api.instagram.com/v1/users/'+_access.access.id+'/media/recent/?access_token='+_access.access.token+'&callback=callback',d=function getMediaFeed(j){return new Promise(function(k,l){(0,_jsonp2.default)(j,function(m,n){if(m)throw l(Error('Couldn\'t get Insta JSON feed; error code: + '+m)),m;k(n)})})},e=function limitArr(j){return j<=11},f=function filteredArr(j){return j.filter(function(k,l){return e(l)})},g=function convertUnixDate(j){var k=new Date(parseInt(j));return k.toDateString().slice(0,-4)},h=function generateFeedTemplate(j){var k=j.map(function(l,m){var n='\n\t\t\t\t<div class="Feed-thumbnail">\n\t\t\t\t\t<label class="Feed-trigger" for="lightbox-'+m+'" style="background-image: url('+l.images.standard_resolution.url+'), linear-gradient(35deg, #FFCA54, #FF7163 80%)">\n\t\t\t\t\t</label>\n\t\t\t\t\t<img class="Feed-img"\n\t\t\t\t\t\tsrc="'+l.images.standard_resolution.url+'"\n\t\t\t\t\t\tsrcset="'+l.images.thumbnail.url+' 150w,\n\t\t\t\t\t\t'+l.images.low_resolution.url+' 320w,\n\t\t\t\t\t\t'+l.images.standard_resolution.url+' 640w" />\n\t\t\t\t</div>\n\t\t\t',o='\n\t\t\t\t<a class="Lightbox-row Feed-media"\n\t\t\t\t\thref="'+l.link+'" target="_blank">\n\t\t\t\t\t<h4 class="Headline Headline--5">\n\t\t\t\t\t\tJoin the journey on Instagram @wdlk\n\t\t\t\t\t</h4>\n\t\t\t\t\t<img class="Feed-img"\n\t\t\t\t\t\tsrc="'+l.images.standard_resolution.url+'"\n\t\t\t\t\t\tsrcset="'+l.images.thumbnail.url+' 150w,\n\t\t\t\t\t\t'+l.images.low_resolution.url+' 320w,\n\t\t\t\t\t\t'+l.images.standard_resolution.url+' 640w" />\n\t\t\t\t</a>\n\t\t\t',p='\n\t\t\t\t<figcaption class="Feed-caption Lightbox-row">\n\t\t\t\t\t<strong class="Feed-highlight">'+l.likes.count+' likes</strong>\n\t\t\t\t\t<time class="Feed-highlight" datetime="'+g(l.created_time)+'">'+g(l.created_time)+'</time>\n\t\t\t\t\t<p class="Feed-copy">\n\t\t\t\t\t\t<strong>\n\t\t\t\t\t\t\t'+l.user.username+'\n\t\t\t\t\t\t</strong>\n\t\t\t\t\t\t'+l.caption.text+'\n\t\t\t\t\t</p>\n\t\t\t\t</figcaption>\n\t\t\t',q='\n\t\t\t\t<li class="Feed-item Lightbox--row">\n\t\t\t\t\t'+n+'\n\t\t\t\t\t<input class="Lightbox-state" type="checkbox" id="lightbox-'+m+'" />\n\t\t\t\t\t<div class="Lightbox-shim">\n\t\t\t\t\t\t<label class="Lightbox-shim-close" for="lightbox-'+m+'"></label>\n\t\t\t\t\t\t<figure class="Lightbox-content">\n\t\t\t\t\t\t\t<header class="Lightbox-header">\n\t\t\t\t\t\t\t\t<h3 class="Headline Headline--6">\n\t\t\t\t\t\t\t\t\t#'+l.tags[0]+'\n\t\t\t\t\t\t\t\t</h3>\n\t\t\t\t\t\t\t\t<label class="Lightbox-icon" for="lightbox-'+m+'"></label>\n\t\t\t\t\t\t\t</header>\n\t\t\t\t\t\t\t'+o+'\n\t\t\t\t\t\t\t'+p+'\n\t\t\t\t\t\t</figure>\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t';return q});a.innerHTML=k.join('')};d(c).then(function(j){var k=f(j.data);h(k)})}}
 
 /***/ }),
 /* 3 */
@@ -106,7 +106,7 @@ Object.defineProperty(exports,'__esModule',{value:!0}),exports.default=numberInp
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-var _Mathpow=Math.pow,_MatheaseInOutExpo=Math.easeInOutExpo;Object.defineProperty(exports,'__esModule',{value:!0}),exports.default=smoothScrolling;var _logger=__webpack_require__(10),_logger2=_interopRequireDefault(_logger);function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}function smoothScrolling(){var a=document.getElementsByClassName('js_scroll')[0];if(a){var f=document.getElementById(a.getAttribute('href').substr(1));if(f){var g=document.getElementsByClassName('js_scroller')[0];if(g){_MatheaseInOutExpo=function(j,k,l,m){return(j/=m/2,1>j)?l/2*_Mathpow(2,10*(j-1))+k:(j--,l/2*(-_Mathpow(2,-10*j)+2)+k)};var h=function SCROLL_TO(j,k,l){var m=3<arguments.length&&void 0!==arguments[3]?arguments[3]:m||function(){},n=j.scrollTop,o=k.offsetTop-n-40,p=null,q=function ANIMATE_SCROLL(r){p=null==p?r:p;var s=r-p;return s>=l?m():void(j.scrollTop=_MatheaseInOutExpo(s,n,o,l),window.requestAnimationFrame(q))};window.requestAnimationFrame(q)},i=function SCROLL(j){j.preventDefault(),h(g,f,1618,function(){window.location.hash='#'+f.id})};a.addEventListener('click',i,!1)}}}}
+var _Mathpow=Math.pow,_MatheaseInOutExpo=Math.easeInOutExpo;Object.defineProperty(exports,'__esModule',{value:!0}),exports.default=smoothScrolling;var _logger=__webpack_require__(11),_logger2=_interopRequireDefault(_logger);function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}function smoothScrolling(){var a=document.getElementsByClassName('js_scroll')[0];if(a){var f=document.getElementById(a.getAttribute('href').substr(1));if(f){var g=document.getElementsByClassName('js_scroller')[0];if(g){_MatheaseInOutExpo=function(j,k,l,m){return(j/=m/2,1>j)?l/2*_Mathpow(2,10*(j-1))+k:(j--,l/2*(-_Mathpow(2,-10*j)+2)+k)};var h=function SCROLL_TO(j,k,l){var m=3<arguments.length&&void 0!==arguments[3]?arguments[3]:m||function(){},n=j.scrollTop,o=k.offsetTop-n-40,p=null,q=function ANIMATE_SCROLL(r){p=null==p?r:p;var s=r-p;return s>=l?m():void(j.scrollTop=_MatheaseInOutExpo(s,n,o,l),window.requestAnimationFrame(q))};window.requestAnimationFrame(q)},i=function SCROLL(j){j.preventDefault(),h(g,f,1618,function(){window.location.hash='#'+f.id})};a.addEventListener('click',i,!1)}}}}
 
 /***/ }),
 /* 6 */
@@ -133,17 +133,24 @@ Object.defineProperty(exports,'__esModule',{value:!0}),exports.default=rAf;funct
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__(8);var _rAf=__webpack_require__(7),_rAf2=_interopRequireDefault(_rAf),_stickyNavigation=__webpack_require__(6),_stickyNavigation2=_interopRequireDefault(_stickyNavigation),_smoothScrolling=__webpack_require__(5),_smoothScrolling2=_interopRequireDefault(_smoothScrolling),_cookieNotification=__webpack_require__(0),_cookieNotification2=_interopRequireDefault(_cookieNotification),_numberInput=__webpack_require__(4),_numberInput2=_interopRequireDefault(_numberInput),_facebookPixelEvents=__webpack_require__(1),_facebookPixelEvents2=_interopRequireDefault(_facebookPixelEvents),_notification=__webpack_require__(3),_notification2=_interopRequireDefault(_notification),_instagramFeed=__webpack_require__(2),_instagramFeed2=_interopRequireDefault(_instagramFeed);function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}window.addEventListener('load',function(){(0,_rAf2.default)(),(0,_instagramFeed2.default)(),(0,_stickyNavigation2.default)(),(0,_cookieNotification2.default)(),(0,_smoothScrolling2.default)(),(0,_numberInput2.default)()}),(0,_facebookPixelEvents2.default)(),(0,_notification2.default)();
+Object.defineProperty(exports,"__esModule",{value:!0});var access=exports.access={id:"1983140883",token:"1983140883.c4c213d.70716b04afc14080a94e4ccb0c35d1b2"};
 
 /***/ }),
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports,'__esModule',{value:!0}),exports.default=logger;function logger(){var a=0<arguments.length&&arguments[0]!==void 0?arguments[0]:'log',b=arguments[1],c=new Date;('undefined'!=typeof console&&'log'===a||'error'===a)&&('error'===a?console.error(c+': '+b):console.log(c+': '+b))}
+__webpack_require__(8);var _rAf=__webpack_require__(7),_rAf2=_interopRequireDefault(_rAf),_stickyNavigation=__webpack_require__(6),_stickyNavigation2=_interopRequireDefault(_stickyNavigation),_smoothScrolling=__webpack_require__(5),_smoothScrolling2=_interopRequireDefault(_smoothScrolling),_cookieNotification=__webpack_require__(0),_cookieNotification2=_interopRequireDefault(_cookieNotification),_numberInput=__webpack_require__(4),_numberInput2=_interopRequireDefault(_numberInput),_facebookPixelEvents=__webpack_require__(1),_facebookPixelEvents2=_interopRequireDefault(_facebookPixelEvents),_notification=__webpack_require__(3),_notification2=_interopRequireDefault(_notification),_instagramFeed=__webpack_require__(2),_instagramFeed2=_interopRequireDefault(_instagramFeed);function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}window.addEventListener('load',function(){(0,_rAf2.default)(),(0,_instagramFeed2.default)(),(0,_stickyNavigation2.default)(),(0,_cookieNotification2.default)(),(0,_smoothScrolling2.default)(),(0,_numberInput2.default)()}),(0,_facebookPixelEvents2.default)(),(0,_notification2.default)();
 
 /***/ }),
 /* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports,'__esModule',{value:!0}),exports.default=logger;function logger(){var a=0<arguments.length&&arguments[0]!==void 0?arguments[0]:'log',b=arguments[1],c=new Date;('undefined'!=typeof console&&'log'===a||'error'===a)&&('error'===a?console.error(c+': '+b):console.log(c+': '+b))}
+
+/***/ }),
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {/**
@@ -152,7 +159,7 @@ Object.defineProperty(exports,'__esModule',{value:!0}),exports.default=logger;fu
  * Expose `debug()` as the module.
  */
 
-exports = module.exports = __webpack_require__(12);
+exports = module.exports = __webpack_require__(13);
 exports.log = log;
 exports.formatArgs = formatArgs;
 exports.save = save;
@@ -332,10 +339,10 @@ function localstorage() {
   } catch (e) {}
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -351,7 +358,7 @@ exports.coerce = coerce;
 exports.disable = disable;
 exports.enable = enable;
 exports.enabled = enabled;
-exports.humanize = __webpack_require__(14);
+exports.humanize = __webpack_require__(15);
 
 /**
  * The currently active debug mode names, and names to skip.
@@ -543,14 +550,14 @@ function coerce(val) {
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
  * Module dependencies
  */
 
-var debug = __webpack_require__(11)('jsonp');
+var debug = __webpack_require__(12)('jsonp');
 
 /**
  * Module exports.
@@ -646,7 +653,7 @@ function jsonp(url, opts, fn){
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports) {
 
 /**
@@ -801,7 +808,7 @@ function plural(ms, n, name) {
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -985,19 +992,6 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-
-/***/ }),
-/* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */,
-/* 20 */,
-/* 21 */,
-/* 22 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports,"__esModule",{value:!0});var access=exports.access={id:"1983140883",token:"1983140883.c4c213d.70716b04afc14080a94e4ccb0c35d1b2"};
 
 /***/ })
 /******/ ]);

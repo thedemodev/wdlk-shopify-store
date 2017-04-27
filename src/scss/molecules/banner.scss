@@ -1,406 +1,395 @@
-:root {
-    --informative-content-width: 32rem;
-    --h-stage-size: 11.2rem;
-    --h-stage-base-spacing: 1.6rem;
-    --h-stage-secondary-size: 7.8rem;
+@keyframes scaleBanner {
+  from { transform: scale3d(1, 1, 1) }
+  to { transform: scale3d(1.15, 1.15, 1.15) }
 }
-
- @keyframes scaleBanner {
-     from { transform: scale3d(1, 1, 1) }
-     to { transform: scale3d(1.15, 1.15, 1.15) }
-}
-
 
 .HeadlineBanner {
-    display: block;
-    width: 100%;
-    //-- Fixes the height in different browsers to the
-    //-- lack of dominant-baseline: middle
-    height: calc((var(--h-stage-size) / 1.75) * 2 + 1);
-    margin-bottom: calc(var(--h-stage-base-spacing) + 1);
-    font-family: "museo300";
-    font-size: calc(var(--h-stage-size) / 1.75);
-    font-weight: 100;
-    line-height: 1;
-    letter-spacing: 1rem;
-    text-transform: uppercase;
-    pointer-events: none;
+  $h-stage-size          : 11.2rem;
+  $h-stage-base-spacing  : 1.6rem;
 
-    &:not(:root) {
-        overflow: visible;
+  display: block;
+  width: 100%;
+  //-- Fixes the height in different browsers to the
+  //-- lack of dominant-baseline: middle
+  height: ($h-stage-size / 1.75) * 2 + 1;
+  margin-bottom: $h-stage-base-spacing + 1;
+  font-family: "museo300";
+  font-size: $h-stage-size / 1.75;
+  font-weight: 100;
+  line-height: 1;
+  letter-spacing: 1rem;
+  text-transform: uppercase;
+  pointer-events: none;
+
+  &:not(:root) {
+    overflow: visible;
+  }
+
+  &-text {
+    text-anchor: middle;
+    pointer-events: auto;
+  }
+
+  &-tspan {
+    &:last-of-type {
+      display: none;
     }
+  }
+
+  @include media(medium) {
+    height: $h-stage-size / 1.333333333;
+    margin-top: $h-stage-base-spacing;
+    font-size: $h-stage-size / 1.333333333;
+    letter-spacing: 1.6rem;
 
     &-text {
-        text-anchor: middle;
-        pointer-events: auto;
+      dominant-baseline: middle;
+
+      &:last-of-type {
+          display: none;
+      }
     }
 
     &-tspan {
-        &:last-of-type {
-            display: none;
-        }
+      &:last-of-type {
+          display: block;
+      }
     }
+  }
 
-    @include media(medium) {
-        height: calc(var(--h-stage-size) / 1.333333333);
-        margin-top: var(--h-stage-base-spacing);
-        font-size: calc(var(--h-stage-size) / 1.333333333);
-        letter-spacing: 1.6rem;
-
-        &-text {
-            dominant-baseline: middle;
-
-            &:last-of-type {
-                display: none;
-            }
-        }
-
-        &-tspan {
-            &:last-of-type {
-                display: block;
-            }
-        }
-    }
-
-    @include media(large) {
-        height: var(--h-stage-size);
-        font-size: var(--h-stage-size);
-    }
+  @include media(large) {
+    height: $h-stage-size;
+    font-size: $h-stage-size;
+  }
 }
 
-
-
 .Banner {
-    position: relative;
-    overflow: hidden;
-    line-height: 0;
+  position: relative;
+  overflow: hidden;
+  line-height: 0;
 
-    &-content {
-        box-sizing: border-box;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        z-index: 1;
-        width: 100%;
-        max-width: var(--text-block-max-width);
-        padding: {
-            right: var(--base-spacing);
-            left: var(--base-spacing);
-        }
-        text-align: center;
-        line-height: 1.5;
-        transform: translateX(-50%) translateY(-50%);
+  &-content {
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    width: 100%;
+    max-width: $text-block-max-width;
+    padding: {
+        right: 20px;
+        left: 20px;
+    }
+    text-align: center;
+    line-height: 1.5;
+    transform: translateX(-50%) translateY(-50%);
 
-        //-- Calculation based on the global headlines
-        //-- that is why the calculation happens backwards
-        @include media(medium, max-width) {
-            .Headline--1 {
-                font-size: calc(var(--h1-size) / var(--typo-desktop-factor))
-            }
-        }
-
-        @include media(small, max-width) {
-            .Headline--1 {
-                font-size: calc(var(--h1-size) / var(--typo-tablet-factor) / var(--typo-desktop-factor))
-            }
-        }
+    //-- Calculation based on the global headlines
+    //-- that is why the calculation happens backwards
+    @include media(medium, max-width) {
+      .Headline--1 {
+        font-size: $h1-size / $typo-desktop-factor;
+      }
     }
 
-    &-introText {
-        display: block;
-        font-size: var(--md-copy-size);
-        line-height: 1.5;
-        letter-spacing: .3rem;
-        text-transform: uppercase;
+    @include media(small, max-width) {
+      .Headline--1 {
+        font-size: $h1-size / $typo-tablet-factor / $typo-desktop-factor;
+      }
+    }
+  }
+
+  &-introText {
+    display: block;
+    font-size: var(--md-copy-size);
+    line-height: 1.5;
+    letter-spacing: .3rem;
+    text-transform: uppercase;
+  }
+
+  &-lead {
+    position: absolute;
+    right: 50%;
+    bottom: 2.6rem;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transform: translateX(50%);
+
+    @include copy-text(
+      var(--small-copy-size), $typo-hex--highlight, bold
+    );
+
+    .Icon {
+      display: block;
+      width: 16px;
+      height: 16px;
+      margin-bottom: 8px;
+      fill: $typo-hex--highlight;
+    }
+  }
+
+  .Headline {
+    color: $typo-hex--banner-tertiary;
+  }
+
+  &-copy {
+      margin-bottom: 40px;
+      color: $typo-hex--banner-secondary;
+      font-size: var(--md-copy-size);
+      line-height: 1.5;
+      font-weight: 100;
+      letter-spacing: .1rem;
+  }
+
+  &--main {
+      max-height: 100vh;
+
+      .Banner-introText {
+          color: var(--hex-coral);
+
+          @include media(medium) {
+              font-size: calc(var(--md-copy-size) * 1.43);
+          }
+      }
+
+      .Banner-image {
+          width: 100vw;
+          height: auto;
+          transform: scale3d(1, 1, 1);
+          perspective-origin: center;
+          perspective: 100vw;
+          animation: 30s linear 0s infinite alternate scaleBanner;
+      }
+
+      @include media(small, max-width) {
+          .Banner-image {
+              width: auto;
+              height: 100vh;
+          }
+      }
+
+      @include media(xsmall, max-width) {
+          .Banner-image {
+              transform: translateX(-8%);
+          }
+      }
+
+      .Banner-content {
+          line-height: 1;
+          transform: translateX(-50%) translateY(-35%);
+      }
+  }
+
+  &--plain {
+    .Banner-content {
+      position: static;
+      padding: 90px 40px;
+      margin: 0 auto;
+      color: $typo-hex--banner-secondary;
+      transform: none;
+
+      @include media (medium) {
+        max-width: 70rem;
+      }
     }
 
-    &-lead {
-        position: absolute;
-        right: 50%;
-        bottom: 2.6rem;
-        z-index: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        cursor: pointer;
-        transform: translateX(50%);
+    .SocialList-item {
+      width: 30px;
+      fill: $typo-hex--banner-secondary;
 
-        @include copy-text(
-            var(--small-copy-size), $typo-hex--highlight,
-            bold
-        );
+      &:hover {
+          fill: $link-hex-secondary-hover;
+      }
+    }
+  }
 
-        .Icon {
-            display: block;
-            width: 16px;
-            height: 16px;
-            margin-bottom: 8px;
-            fill: $typo-hex--highlight;
-        }
+  &--teaser {
+    box-sizing: border-box;
+    width: 100vw;
+
+    .Banner-content {
+      position: static;
+      padding: 90px 40px;
+      margin: 0 auto;
+      color: $typo-hex--banner-secondary;
+      transform: none;
+
+      @include media (medium) {
+        max-width: 70rem;
+      }
+    }
+
+    .Icon--logo {
+      display: block;
+      width: 3rem;
+      max-height: 3rem;
+      margin: 0 auto 20px;
+      fill: $banner-teaser-logo-icon;
+    }
+
+    .Banner-introText {
+      margin-bottom: 20px;
+
+      @include media(small, max-width) {
+          font-size: 1.2rem;
+      }
     }
 
     .Headline {
-        color: $typo-hex--banner-tertiary;
+      line-height: 1.3;
+      font-weight: 100;
+
+      @include media(small, max-width) {
+          font-size: $h2-size / $typo-tablet-factor;
+      }
+    }
+  }
+
+
+  &--principles {
+    .Headline {
+      font-weight: 100;
+    }
+  }
+
+  &--full {
+    @include media(large) {
+      max-height: calc(100vh - #{$nav-height});
     }
 
-    &-copy {
-        margin-bottom: calc(var(--base-spacing) + 2);
-        color: $typo-hex--banner-secondary;
-        font-size: var(--md-copy-size);
-        line-height: 1.5;
-        font-weight: 100;
-        letter-spacing: .1rem;
+    .Headline {
+      line-height: 1.2;
     }
 
-    &--main {
-        max-height: 100vh;
+    .Banner-image {
+      max-height: calc(100vh - #{$nav-height});
 
-        .Banner-introText {
-            color: var(--hex-coral);
+      @include media (medium) {
+          width: 100vw;
+      }
 
-            @include media(medium) {
-                font-size: calc(var(--md-copy-size) * 1.43);
-            }
-        }
-
-        .Banner-image {
-            width: 100vw;
-            height: auto;
-            transform: scale3d(1, 1, 1);
-            perspective-origin: center;
-            perspective: 100vw;
-            animation: 30s linear 0s infinite alternate scaleBanner;
-        }
-
-        @include media(small, max-width) {
-            .Banner-image {
-                width: auto;
-                height: 100vh;
-            }
-        }
-
-        @include media(xsmall, max-width) {
-            .Banner-image {
-                transform: translateX(-8%);
-            }
-        }
-
-        .Banner-content {
-            line-height: 1;
-            transform: translateX(-50%) translateY(-35%);
-        }
+      @include media(large) {
+          max-height: none;
+      }
     }
+  }
 
-    &--plain {
-        .Banner-content {
-            position: static;
-            padding: calc(var(--base-spacing) * 4.5) var(--base-spacing);
-            margin: 0 auto;
-            color: $typo-hex--banner-secondary;
-            transform: none;
+  &--informative {
+    .Banner-content {
+      position: relative;
+      top: auto;
+      left: auto;
+      padding: 60px 40px 90px;
+      transform: none;
 
-            @include media (medium) {
-                max-width: 70rem;
-            }
-        }
-
-        .SocialList-item {
-            width: 30px;
-            fill: $typo-hex--banner-secondary;
-
-            &:hover {
-                fill: $link-hex-secondary-hover;
-            }
-        }
-    }
-
-    &--teaser {
+      @include media (medium) {
         box-sizing: border-box;
-        width: 100vw;
-
-        .Banner-content {
-            position: static;
-            padding: calc(var(--base-spacing) * 4.5) var(--base-spacing);
-            margin: 0 auto;
-            color: $typo-hex--banner-secondary;
-            transform: none;
-
-            @include media (medium) {
-                max-width: 70rem;
-            }
+        position: absolute;
+        top: 6rem;
+        left: 5rem;
+        max-width: 320px;
+        padding: {
+          top: 3.5rem;
+          right: 4rem;
+          left: 4rem;
+          bottom: 4rem;
         }
+        overflow: hidden;
+        background-color: $background-color;
+      }
 
-        .Icon--logo {
-            display: block;
-            width: 3rem;
-            max-height: 3rem;
-            margin: 0 auto var(--base-spacing);
-            fill: $banner-teaser-logo-icon;
-        }
-
-        .Banner-introText {
-            margin-bottom: var(--base-spacing);
-
-            @include media(small, max-width) {
-                font-size: 1.2rem;
-            }
-        }
-
-        .Headline {
-            line-height: 1.3;
-            font-weight: 100;
-
-            @include media(small, max-width) {
-                font-size: calc(var(--h2-size) / var(--typo-tablet-factor));
-            }
-        }
+      @include media(xlarge) {
+          left: calc(50% - 64px);
+      }
     }
 
-
-    &--principles {
-        .Headline {
-            font-weight: 100;
-        }
+    .Link {
+      display: block;
+      margin-bottom: 40px;
     }
 
-    &--full {
-        @include media(large) {
-            max-height: calc(100vh - var(--nav-height));
-        }
-
-        .Headline {
-            line-height: 1.2;
-        }
-
-        .Banner-image {
-            max-height: calc(100vh - var(--nav-height));
-
-            @include media (medium) {
-                width: 100vw;
-            }
-
-            @include media(large) {
-                max-height: none;
-            }
-        }
+    @media(max-width: $screen-xs) {
+      .Banner-image {
+        transform: translateX(-10%);
+      }
     }
+  }
 
-    &--informative {
-        .Banner-content {
-            position: relative;
-            top: auto;
+  &--collection {
+    &:last-of-type {
+      .Banner-content {
+        top: 80%;
+        max-width: 350px;
+
+          @include media (small, max-width) {
+            bottom: 0;
+          }
+
+          @include media(medium) {
+            top: 50%;
+            right: 4rem;
             left: auto;
-            padding: calc(var(--base-spacing) * 3)
-            calc(var(--base-spacing) * 2) calc(var(--base-spacing) * 4.5);
-            transform: none;
+            transform: translateY(-50%);
+          }
+      }
+    }
+  }
 
-            @include media (medium) {
-                box-sizing: border-box;
-                position: absolute;
-                top: 6rem;
-                left: 5rem;
-                max-width: var(--informative-content-width);
-                padding: {
-                    top: 3.5rem;
-                    right: 4rem;
-                    left: 4rem;
-                    bottom: 4rem;
-                }
-                overflow: hidden;
-                background-color: $background-color;
-            }
+  &--half {
+    //-- GRID GENERATOR
+    //-- 1. Count column mobile first
+    //-- 2. Factor column number for tablet & desktop
+    //-- 3. Optional argument to define the inner padding
+    @include grid-cell(1, 2, 0, small);
 
-            @include media(xlarge) {
-                left: calc(50% - var(--informative-content-width) * 2);
-            }
-        }
-
-        .Link {
-            display: block;
-            margin-bottom: calc(var(--base-spacing) * 2);
-        }
-
-        @media(max-width: $screen-xs) {
-            .Banner-image {
-                transform: translateX(-10%);
-            }
-        }
-
+    .Banner-image {
+      width: 50vw;
     }
 
-    &--collection {
-        &:last-of-type {
-            .Banner-content {
-                top: 80%;
-                max-width: 350px;
-
-
-                @include media (small, max-width) {
-                    bottom: 0;
-                }
-
-                @include media(medium) {
-                    top: 50%;
-                    right: 4rem;
-                    left: auto;
-                    transform: translateY(-50%);
-                }
-            }
-        }
+    .Headline {
+      color: $typo-hex--tertiary;
     }
 
-    &--half {
-        //-- GRID GENERATOR
-        //-- 1. Count column mobile first
-        //-- 2. Factor column number for tablet & desktop
-        //-- 3. Optional argument to define the inner padding
-        @include grid-cell(1, 2, 0, small);
-
-        .Banner-image {
-            width: 50vw;
-        }
-
-        .Headline {
-            color: $typo-hex--tertiary;
-        }
-
-        @include media(small, max-width) {
-            .Banner-image {
-                width: auto;
-                height: 50vh;
-                transform: translateX(-15%);
-            }
-        }
+    @include media(small, max-width) {
+      .Banner-image {
+        width: auto;
+        height: 50vh;
+        transform: translateX(-15%);
+      }
     }
+  }
 
-    &--oneThird {
-        width: 100vw / 3 * 1;
+  &--oneThird {
+    width: 100vw / 3 * 1;
 
-        .Banner-image {
-            width: 100%;
-        }
+    .Banner-image {
+        width: 100%;
     }
+  }
 
-    &--twoThirds {
-        width: 100vw / 3 * 2;
+  &--twoThirds {
+    width: 100vw / 3 * 2;
 
-        .Banner-image {
-            width: 100%;
-        }
+    .Banner-image {
+        width: 100%;
     }
+  }
 
-    &--oneThird,
-    &--twoThirds {
-        @include media(small, max-width) {
-            width: auto;
-            height: 50vh;
+  &--oneThird,
+  &--twoThirds {
+    @include media(small, max-width) {
+      width: auto;
+      height: 50vh;
 
-            .Banner-image {
-                width: auto;
-                height: 50vh;
-                transform: translateX(-15%);
-            }
-        }
+      .Banner-image {
+          width: auto;
+          height: 50vh;
+          transform: translateX(-15%);
+      }
     }
+  }
 }

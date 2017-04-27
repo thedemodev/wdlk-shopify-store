@@ -4,7 +4,7 @@
 .ProductFilter {
     display: block;
     padding: calc(var(--base-spacing) + .2) var(--base-spacing) calc(var(--base-spacing) + .1);
-    margin: calc(var(--nav-height) + 4rem) var(--base-spacing) 40px;
+    margin: ($nav-height + 4rem) var(--base-spacing) 40px;
     text-align: center;
     overflow: hidden;
     background-color: var(--hex-product-filter-bg);

@@ -4,12 +4,12 @@
     --block-headline-spacing: calc(var(--page-spacing) / 2);
     --block-2nd-headline-spacing: calc(var(--page-spacing) / 3);
     --block-paragraph-spacing: calc(var(--page-spacing) / 3);
-    --text-block-max-width: 63rem;
+
 }
 
 .TextBlock {
     display: block;
-    max-width: var(--text-block-max-width);
+    max-width: $text-block-max-width;
     vertical-align: middle;
 
     @include media (small) {

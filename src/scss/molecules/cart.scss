@@ -112,14 +112,14 @@
     &-headline {
         width: 100%;
         font-family: "museo";
-        font-size: var(--h6-size);
+        font-size: $h6-size;
         font-weight: bold;
         margin-bottom: 1.4rem;
         text-transform: initial;
 
         @include media(medium) {
             margin-top: var(--base-spacing);
-            font-size: var(--h4-size);
+            font-size: $h4-size ;
         }
     }
 
@@ -141,7 +141,7 @@
         position: absolute;
         top: 0;
         right: var(--base-spacing);
-        font-size: var(--h5-size);
+        font-size: $h5-size;
         font-weight: normal;
     }
 

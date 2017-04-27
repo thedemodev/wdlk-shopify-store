@@ -3,7 +3,7 @@
         @include grid-wrapper(var(--screen-xl));
 
         position: relative;
-        padding-top: var(--nav-height);
+        padding-top: $nav-height;
         background-color: $background-color-tertiary;
 
         &::after {
@@ -19,7 +19,7 @@
         }
 
         @include media (medium) {
-            padding-top: var(--nav-height-medium);
+            padding-top: $nav-height-medium;
             align-items: center;
         }
 

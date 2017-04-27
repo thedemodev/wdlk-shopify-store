@@ -68,12 +68,12 @@
         backface-visibility: hidden;
 
         @include media(small) {
-            top: var(--nav-height);
+            top: $nav-height;
             width: 90vw;
         }
 
         @include media(medium) {
-            top: var(--nav-height-medium);
+            top: $nav-height-medium;
         }
 
         @include media(large) {

@@ -1,9 +1,11 @@
 //-- LAYOUT
+$text-block-max-width   : 63rem;
+$nav-height             : 7rem;
+$nav-height-medium      : 8rem;
 :root {
     --base-spacing: 2rem;
     --base-margin: 1rem;
-    --nav-height: 7rem;
-    --nav-height-medium: 8rem;
+
 }
 
 $base-spacing: 4rem;
@@ -24,10 +26,9 @@ $form-base-height: 4rem;
 //-- TYPOGRAPHY
 //-- Increments the size of the typography
 //-- according to the device width.
-:root {
-    --typo-tablet-factor: 1.444444444;
-    --typo-desktop-factor: 1.292307692;
-}
+$typo-tablet-factor    : 1.444444444;
+$typo-desktop-factor   : 1.292307692;
+
 
 //-- CSS INLINE IMAGES
 
