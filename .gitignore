@@ -4,11 +4,6 @@
 # or operating system, you probably want to add a global ignore instead:
 # git config --global core.excludesfile ~/.gitignore_global
 
-# Ignore bundler config
-/.bundle
-
-
-
 # Ignore cache
 node_modules
 
@@ -16,17 +11,13 @@ node_modules
 /.sass-cache
 /.cache
 assets/logo.png
-config/settings_data.json
 
 # Ignore .DS_store file
 .DS_Store
 
-# Example files
-/examples
-
 # Sensitive Information
 config.yml
 deploy.log
-tasks/shopify-api/config.js
-tasks/instagram/config.js
-tasks/instagram/access.json
+configuration/shopify-api/config.js
+configuration/instagram/config.js
+configuration/instagram/access.json
