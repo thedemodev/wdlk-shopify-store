@@ -11,7 +11,7 @@
     text-transform: uppercase;
     letter-spacing: .16rem;
     cursor: pointer;
-    transition: color var(--transition-speed) ease;
+    transition: color $transition-speed ease;
     background: none;
 
     &:hover {
@@ -68,7 +68,7 @@
             background-color: $typo-hex--tertiary;
             transform: scale3d(0, 0, 0);
             transform-origin: 0 0;
-            transition: transform .8s var(--border-timing);
+            transition: transform .8s $border-timing;
         }
 
         &:hover {

@@ -81,19 +81,19 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .Qty-input {
     position: relative;
-    margin-right: var(--form-base-margin);
+    margin-right: $form-base-margin;
     overflow: hidden;
 
     &-field {
         box-sizing: border-box;
-        height: var(--form-base-height);
+        height: $form-base-height;
         max-width: var(--qty-input-width);
         padding: {
-            left: calc(var(--form-base-height) - 2.5rem);
-            right: calc(var(--form-base-height) - 0.5rem);
+            left: $form-base-height - 2.5rem;
+            right: $form-base-height - 0.5rem;
         }
         border: 1px solid $form-el-bg-color;
-        line-height: var(--form-base-height);
+        line-height: $form-base-height;
         @include copy-text(calc(var(--md-copy-size) - .1),  $form-typo-color, bold);
         background-color: $form-el-bg-color;
         cursor: pointer;

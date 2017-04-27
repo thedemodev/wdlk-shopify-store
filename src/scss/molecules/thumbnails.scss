@@ -17,8 +17,8 @@
 
 .Thumbnails {
     position: absolute;
-    left: calc(var(--base-margin) + .5);
-    bottom: calc(var(--base-margin) + .5);
+    left: 15px;
+    bottom: 15px;
     z-index: 1;
     display: none;
     flex-direction: column;
@@ -38,7 +38,7 @@
             color: transparent;
             style: solid;
         }
-        margin-top: var(--base-margin);
+        margin-top: $base-margin;
         cursor: pointer;
         transition: border var(--thumbnail-transition-speed) ease-out;
 

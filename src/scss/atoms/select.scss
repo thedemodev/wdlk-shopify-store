@@ -5,14 +5,14 @@
 
 .Select {
     display: block;
-    height: var(--form-base-height);
+    height: $form-base-height;
     padding: {
         left: $form-base-height / 2;
-        right: var(--form-base-height);
+        right: $form-base-height;
     }
     border-radius: 0;
     border-color: $input-hex-border;
-    margin-right: var(--form-base-margin);
+    margin-right: $form-base-margin;
     color: $input-hex-typo;
     font-family: "museo_sans500";
     font-size: var(--md-copy-size);

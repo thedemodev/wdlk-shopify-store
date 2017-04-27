@@ -37,7 +37,7 @@
 
     &--brand {
         min-height: 100vh;
-        background-image: var(--video-brand-poster);
+        background-image: $video-brand-poster;
         background-size: cover;
 
         @include media(medium) {

@@ -131,7 +131,7 @@
         background-color: $typo-hex;
         transform: scaleX(0);
         transform-origin: 0 0;
-        transition: transform .8s var(--border-timing);
+        transition: transform .8s $border-timing;
     }
 
     &:hover {

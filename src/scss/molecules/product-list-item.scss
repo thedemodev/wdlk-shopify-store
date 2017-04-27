@@ -1,123 +1,114 @@
-:root {
-    --product-base-spacing: 4rem;
-}
-
 .ProductItem {
-    width: 100%;
-    margin-bottom: var(--product-base-spacing);
-    overflow: hidden;
+  width: 100%;
+  margin-bottom: $product-base-spacing;
+  overflow: hidden;
 
-    @include media (small) {
-        width: calc(50vw - var(--product-base-spacing));
+  @include media (small) {
+    width: calc(50vw - #{$product-base-spacing});
 
-        &:nth-child(odd) {
-            margin-right:$base-spacing;
-        }
-    }
-
-    @include media (medium) {
-        width: calc(100vw / 3 - (var(--product-base-spacing) + .5));
-
-        &:nth-child(odd) {
-            margin-right: 0;
-        }
-
-        &:nth-child(3n-4) {
-            margin: {
-                right:$base-spacing;
-                left:$base-spacing;
-            }
-        }
-    }
-
-    @include media (xlarge) {
-        width: calc(100vw / 4  - var(--product-base-spacing));
+    &:nth-child(odd) {
         margin-right:$base-spacing;
+    }
+  }
 
-        &:nth-child(odd) {
-            margin-right:$base-spacing;
-        }
+  @include media (medium) {
+    width: calc(33.333333333vw - 4.5rem);
 
-        &:nth-child(3n-4) {
-            margin: {
-                left: 0;
-            }
-        }
-
-        &:nth-child(4n) {
-            margin-right: 0;
-        }
-
-
+    &:nth-child(odd) {
+      margin-right: 0;
     }
 
-    &-stage {
-        position: relative;
-        display: block;
-        width: 100%;
-        margin-bottom: 1.8rem;
-        overflow: hidden;
+    &:nth-child(3n-4) {
+      margin: {
+        right: $base-spacing;
+        left: $base-spacing;
+      }
+    }
+  }
+
+  @include media (xlarge) {
+    width: calc(25vw - #{$product-base-spacing});
+    margin-right: $base-spacing;
+
+    &:nth-child(odd) {
+        margin-right: $base-spacing;
     }
 
-    &-img {
-        display: block;
-        width: 100%;
-        transition: opacity .2s ease, transform .5s ease;
-
-        &:hover {
-            transition: transform 1s ease;
-            &:first-child {
-                opacity: 1;
-                transform: scale3d(1.2, 1.2, 1);
-            }
-
-            &:last-child {
-                opacity: 0;
-            }
-        }
-
-        &:first-child {
-            position: absolute;
-            top: 0;
-            right: 0;
-            z-index: 1;
-            opacity: 0;
-            transform: scale3d(1, 1, 1);
-        }
+    &:nth-child(3n-4) {
+      margin-left: 0;
     }
 
-    &-caption {
-        display: flex;
-        justify-content: space-between;
-        font-family: "museo300";
-        letter-spacing: 1px;
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+  }
+
+  &-stage {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin-bottom: 1.8rem;
+    overflow: hidden;
+  }
+
+  &-img {
+    display: block;
+    width: 100%;
+    transition: opacity .2s ease, transform .5s ease;
+
+    &:hover {
+      transition: transform 1s ease;
+      &:first-child {
+        opacity: 1;
+        transform: scale3d(1.2, 1.2, 1);
+      }
+
+      &:last-child {
+        opacity: 0;
+      }
     }
 
-    &-title,
-    &-price {
-        font-size: var(--md-copy-size);
-        color: $typo-hex;
-
+    &:first-child {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 1;
+      opacity: 0;
+      transform: scale3d(1, 1, 1);
     }
+  }
 
-    &-title {
-        position: relative;
-        padding-bottom: 16px;
-        margin: {
-            top: 0;
-            right: $base-spacing;
-            bottom: 0;
-        }
-        text-align: left;
+  &-caption {
+    display: flex;
+    justify-content: space-between;
+    font-family: "museo300";
+    letter-spacing: 1px;
+  }
 
-        &::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 25px;
-            height: 1px;
-            background-color: $typo-hex--lightest;
-        }
-    }
+  &-title,
+  &-price {
+    font-size: var(--md-copy-size);
+    color: $typo-hex;
+  }
+
+  &-title {
+      position: relative;
+      padding-bottom: 16px;
+      margin: {
+          top: 0;
+          right: $base-spacing;
+          bottom: 0;
+      }
+      text-align: left;
+
+      &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 25px;
+          height: 1px;
+          background-color: $typo-hex--lightest;
+      }
+  }
 }

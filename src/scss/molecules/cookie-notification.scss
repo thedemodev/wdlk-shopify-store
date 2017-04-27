@@ -1,12 +1,12 @@
 .CookieNotification {
     display: none;
     position: fixed;
-    bottom: calc(var(--form-base-height) / 2);
+    bottom: $form-base-height / 2;
     left: $base-spacing;
     z-index: 10;
-    height: var(--form-base-height);
-    padding: 0 calc(var(--box-base-padding) * 2) 0 var(--box-base-padding);
-    line-height: var(--form-base-height);
+    height: $form-base-height;
+    padding: 0 $box-base-padding * 2 0 $box-base-padding;
+    line-height: $form-base-height;
     background-color: $rgba-blue-gray-light;
 
     @include copy-text(
@@ -18,7 +18,7 @@
         position: absolute;
         top: 0;
         right: 0;
-        width: var(--box-base-padding);
+        width: $box-base-padding;
         background: $rgba-blue-gray-dark;
         font-size: 1.8rem;
         font-weight: 600;

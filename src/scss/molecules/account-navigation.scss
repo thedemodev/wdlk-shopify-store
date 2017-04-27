@@ -28,13 +28,13 @@
         letter-spacing: 0.05rem;
 
         &:first-of-type {
-            padding-right: var(--base-margin);
+            padding-right: $base-margin;
             border: solid currentColor;
             border-width: 0 1px 0 0;
         }
 
         &:last-of-type {
-            padding-left: var(--base-margin);
+            padding-left: $base-margin;
         }
     }
 }

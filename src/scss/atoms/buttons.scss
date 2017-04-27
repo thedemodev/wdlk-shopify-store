@@ -5,11 +5,11 @@
 
 .Btn {
   display: inline-block;
-  height: var(--form-base-height);
-  padding: 0 var(--box-base-padding);
+  height: $form-base-height;
+  padding: 0 $box-base-padding;
   border: none;
   background-color: $btn-bg-color;
-  line-height: var(--form-base-height);
+  line-height: $form-base-height;
   letter-spacing: .16rem;
   text-transform: uppercase;
   cursor: pointer;
@@ -38,7 +38,7 @@
 
   &--inverse {
     color: $btn-bg-color;
-    line-height: calc(var(--form-base-height) - .2);
+    line-height: $form-base-height - .2;
     background: transparent;
     outline: 2px solid $btn-bg-color;
     outline-offset: -2px;
@@ -56,7 +56,7 @@
   &--row {
     position: relative;
     width: var(--btn-row-width, 20%);
-    padding: 0 calc(var(--box-base-padding) / 2);
+    padding: 0 $box-base-padding / 2;
     overflow: hidden;
     font-size: 0;
     @include pseudo-svg-uri($arrow, 16px, 20px);
@@ -66,8 +66,8 @@
     }
 
     @include media (small) {
-      padding: 0 var(--box-base-padding);
-      margin-left: var(--base-margin);
+      padding: 0 $box-base-padding;
+      margin-left: $base-margin;
     }
 
     @include media(medium) {

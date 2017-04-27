@@ -3,26 +3,19 @@ $text-block-max-width   : 63rem;
 $nav-height             : 7rem;
 $nav-height-medium      : 8rem;
 $base-spacing           : 2rem;
-:root {
-
-    --base-margin: 1rem;
-
-}
-
-$base-spacing: 4rem;
+$base-margin            : 1rem;
 
 //-- FORMS
-$form-base-height: 4rem;
-:root {
-    --form-base-height: 4.6rem;
-    --form-base-margin: 1rem;
-    --form-base-padding: 2rem;
-}
+$form-base-height       : 4rem;
+$form-base-height       : 4.6rem;
+$form-base-margin       : 1rem;
+$form-base-padding      : 2rem;
 
 //-- BOX SIZING
-:root {
-    --box-base-padding: calc(var(--form-base-padding) + 1.6rem);
-}
+$box-base-padding       : $form-base-padding + 1.6rem;
+
+//-- PRODUCT
+$product-base-spacing   : 4rem;
 
 //-- TYPOGRAPHY
 //-- Increments the size of the typography
@@ -30,30 +23,20 @@ $form-base-height: 4rem;
 $typo-tablet-factor    : 1.444444444;
 $typo-desktop-factor   : 1.292307692;
 
-
 //-- CSS INLINE IMAGES
-
-:root {
-	--video-brand-poster: url('https://cdn.shopify.com/s/files/1/0742/2733/files/WDLK_Brand-Video-Poster.jpg?1926000932383074848');
-}
+$video-brand-poster    : url('https://cdn.shopify.com/s/files/1/0742/2733/files/WDLK_Brand-Video-Poster.jpg?1926000932383074848');
 
 //-- GLOBAL TRANSITIONS
-:root {
-    --transition-speed: .30s;
-    --transition-speed-double: .70s;
-    --timing: cubic-bezier(0.455, 0.030, 0.515, 0.955);
-    --border-timing: cubic-bezier(0.075, 0.820, 0.165, 1.000);
-}
+$transition-speed      : .30s;
+$transition-speed-double: .70s;
+$timing                : cubic-bezier(0.455, 0.030, 0.515, 0.955);
+$border-timing         : cubic-bezier(0.075, 0.820, 0.165, 1.000);
 
 //-- TOUCH MEASUREMENTS
-:root {
-    --touch-target-size: 4rem;
-}
+$touch-target-size     : 4rem;
 
 //-- SVGS FOR DATA URI
-
 $instagram-white: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill="#FFFFFF" d="M15,18.16H5A3.14,3.14,0,0,1,1.85,15V8.54h4a4.69,4.69,0,0,0-.45,2,4.75,4.75,0,0,0,9.5,0,4.68,4.68,0,0,0-.45-2h3.75V15A3.14,3.14,0,0,1,15,18.16m-2.93-7.61a2,2,0,1,1-2-2,2,2,0,0,1,2,2M5,1.84H15A3.14,3.14,0,0,1,18.15,5V6.69h-5.3a4.75,4.75,0,0,0-5.49,0H1.85V5A3.14,3.14,0,0,1,5,1.84M5,0A5,5,0,0,0,0,5V15a5,5,0,0,0,5,5H15a5,5,0,0,0,5-5V5a5,5,0,0,0-5-5H5Z"/></svg>';
-
 
 $instagram-coral: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill="#FF7163" d="M15,18.16H5A3.14,3.14,0,0,1,1.85,15V8.54h4a4.69,4.69,0,0,0-.45,2,4.75,4.75,0,0,0,9.5,0,4.68,4.68,0,0,0-.45-2h3.75V15A3.14,3.14,0,0,1,15,18.16m-2.93-7.61a2,2,0,1,1-2-2,2,2,0,0,1,2,2M5,1.84H15A3.14,3.14,0,0,1,18.15,5V6.69h-5.3a4.75,4.75,0,0,0-5.49,0H1.85V5A3.14,3.14,0,0,1,5,1.84M5,0A5,5,0,0,0,0,5V15a5,5,0,0,0,5,5H15a5,5,0,0,0,5-5V5a5,5,0,0,0-5-5H5Z"/></svg>';
 

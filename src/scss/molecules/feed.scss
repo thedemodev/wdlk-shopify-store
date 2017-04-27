@@ -96,7 +96,7 @@
 		background-size: contain;
 		background-repeat: no-repeat;
 		background-blend-mode: multiply;
-		transition: opacity calc(var(--transition-speed) * 2) ease;
+		transition: opacity $transition-speed * 2 ease;
 		@include pseudo-svg-uri($instagram-white, 25px, 25px);
 
 		&:hover {
@@ -171,7 +171,7 @@
 				bottom: 1px solid var(--hex-blue-gray-lightest);
 			}
 			transform: none;
-			transition: transform calc(var(--transition-speed) * 2) var(--timing), opacity calc(var(--transition-speed)) ease;
+			transition: transform $transition-speed * 2 $timing, opacity $transition-speed ease;
 
 			@include media(medium) {
 				border: none;
@@ -193,7 +193,7 @@
 			text-align: center;
 			color: $typo-hex--highlight;
 			transform: translate(-50%, -50%);
-			transition: opacity calc(var(--transition-speed) * 2) ease;
+			transition: opacity $transition-speed * 2 ease;
 		}
 	}
 
