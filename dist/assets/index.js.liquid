@@ -71,7 +71,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports,'__esModule',{value:!0});var notification=document.querySelector('.js-cookie-notification'),closeButton=document.querySelector('.js-cookie-notification-close'),localStorage=window.localStorage,notificationHidden=function(){return localStorage.getItem('hideCookieNotification')};console.log('yeep yeah');var hideNotification=function(){localStorage.setItem('hideCookieNotification',!0),notification.style.display='none'};exports.default=function(){if(!notificationHidden()){notification.style.display='block';var a=closeButton.addEventListener('click',function(){hideNotification(),closeButton.removeEventListener('click',a)})}};
+Object.defineProperty(exports,'__esModule',{value:!0});var notification=document.querySelector('.js-cookie-notification'),closeButton=document.querySelector('.js-cookie-notification-close'),localStorage=window.localStorage,notificationHidden=function(){return localStorage.getItem('hideCookieNotification')},hideNotification=function(){localStorage.setItem('hideCookieNotification',!0),notification.style.display='none'};exports.default=function(){if(!notificationHidden()){notification.style.display='block';var a=closeButton.addEventListener('click',function(){hideNotification(),closeButton.removeEventListener('click',a)})}};
 
 /***/ }),
 /* 1 */
@@ -85,7 +85,7 @@ Object.defineProperty(exports,'__esModule',{value:!0}),exports.default=fbqEvents
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-var _typeof='function'==typeof Symbol&&'symbol'==typeof Symbol.iterator?function(a){return typeof a}:function(a){return a&&'function'==typeof Symbol&&a.constructor===Symbol&&a!==Symbol.prototype?'symbol':typeof a};Object.defineProperty(exports,'__esModule',{value:!0});exports.default=generateFeed;var _jsonp=__webpack_require__(14),_jsonp2=_interopRequireDefault(_jsonp),_access=__webpack_require__(11);function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}function generateFeed(){var a=document.querySelector('.js_instagramFeed');if(a&&void 0!==('undefined'==typeof Promise?'undefined':_typeof(Promise))){var c='https://api.instagram.com/v1/users/'+_access.access.id+'/media/recent/?access_token='+_access.access.token+'&callback=callback',d=function getMediaFeed(j){return new Promise(function(k,l){(0,_jsonp2.default)(j,function(m,n){if(m)throw l(Error('Couldn\'t get Insta JSON feed; error code: + '+m)),m;k(n)})})},e=function limitArr(j){return j<=11},f=function filteredArr(j){return j.filter(function(k,l){return e(l)})},g=function convertUnixDate(j){var k=new Date(parseInt(j));return k.toDateString().slice(0,-4)},h=function generateFeedTemplate(j){var k=j.map(function(l,m){var n='\n\t\t\t\t<div class="Feed-thumbnail">\n\t\t\t\t\t<label class="Feed-trigger" for="lightbox-'+m+'" style="background-image: url('+l.images.standard_resolution.url+'), linear-gradient(35deg, #FFCA54, #FF7163 80%)">\n\t\t\t\t\t</label>\n\t\t\t\t\t<img class="Feed-img"\n\t\t\t\t\t\tsrc="'+l.images.standard_resolution.url+'"\n\t\t\t\t\t\tsrcset="'+l.images.thumbnail.url+' 150w,\n\t\t\t\t\t\t'+l.images.low_resolution.url+' 320w,\n\t\t\t\t\t\t'+l.images.standard_resolution.url+' 640w" />\n\t\t\t\t</div>\n\t\t\t',o='\n\t\t\t\t<a class="Lightbox-row Feed-media"\n\t\t\t\t\thref="'+l.link+'" target="_blank">\n\t\t\t\t\t<h4 class="Headline Headline--5">\n\t\t\t\t\t\tJoin the journey on Instagram @wdlk\n\t\t\t\t\t</h4>\n\t\t\t\t\t<img class="Feed-img"\n\t\t\t\t\t\tsrc="'+l.images.standard_resolution.url+'"\n\t\t\t\t\t\tsrcset="'+l.images.thumbnail.url+' 150w,\n\t\t\t\t\t\t'+l.images.low_resolution.url+' 320w,\n\t\t\t\t\t\t'+l.images.standard_resolution.url+' 640w" />\n\t\t\t\t</a>\n\t\t\t',p='\n\t\t\t\t<figcaption class="Feed-caption Lightbox-row">\n\t\t\t\t\t<strong class="Feed-highlight">'+l.likes.count+' likes</strong>\n\t\t\t\t\t<time class="Feed-highlight" datetime="'+g(l.created_time)+'">'+g(l.created_time)+'</time>\n\t\t\t\t\t<p class="Feed-copy">\n\t\t\t\t\t\t<strong>\n\t\t\t\t\t\t\t'+l.user.username+'\n\t\t\t\t\t\t</strong>\n\t\t\t\t\t\t'+l.caption.text+'\n\t\t\t\t\t</p>\n\t\t\t\t</figcaption>\n\t\t\t',q='\n\t\t\t\t<li class="Feed-item Lightbox--row">\n\t\t\t\t\t'+n+'\n\t\t\t\t\t<input class="Lightbox-state" type="checkbox" id="lightbox-'+m+'" />\n\t\t\t\t\t<div class="Lightbox-shim">\n\t\t\t\t\t\t<label class="Lightbox-shim-close" for="lightbox-'+m+'"></label>\n\t\t\t\t\t\t<figure class="Lightbox-content">\n\t\t\t\t\t\t\t<header class="Lightbox-header">\n\t\t\t\t\t\t\t\t<h3 class="Headline Headline--6">\n\t\t\t\t\t\t\t\t\t#'+l.tags[0]+'\n\t\t\t\t\t\t\t\t</h3>\n\t\t\t\t\t\t\t\t<label class="Lightbox-icon" for="lightbox-'+m+'"></label>\n\t\t\t\t\t\t\t</header>\n\t\t\t\t\t\t\t'+o+'\n\t\t\t\t\t\t\t'+p+'\n\t\t\t\t\t\t</figure>\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t';return q});a.innerHTML=k.join('')};d(c).then(function(j){var k=f(j.data);h(k)})}}
+var _typeof='function'==typeof Symbol&&'symbol'==typeof Symbol.iterator?function(a){return typeof a}:function(a){return a&&'function'==typeof Symbol&&a.constructor===Symbol&&a!==Symbol.prototype?'symbol':typeof a};Object.defineProperty(exports,'__esModule',{value:!0});exports.default=generateFeed;var _jsonp=__webpack_require__(13),_jsonp2=_interopRequireDefault(_jsonp),_access=__webpack_require__(22);function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}function generateFeed(){var a=document.querySelector('.js_instagramFeed');if(a&&void 0!==('undefined'==typeof Promise?'undefined':_typeof(Promise))){var c='https://api.instagram.com/v1/users/'+_access.access.id+'/media/recent/?access_token='+_access.access.token+'&callback=callback',d=function getMediaFeed(j){return new Promise(function(k,l){(0,_jsonp2.default)(j,function(m,n){if(m)throw l(Error('Couldn\'t get Insta JSON feed; error code: + '+m)),m;k(n)})})},e=function limitArr(j){return j<=11},f=function filteredArr(j){return j.filter(function(k,l){return e(l)})},g=function convertUnixDate(j){var k=new Date(parseInt(j));return k.toDateString().slice(0,-4)},h=function generateFeedTemplate(j){var k=j.map(function(l,m){var n='\n\t\t\t\t<div class="Feed-thumbnail">\n\t\t\t\t\t<label class="Feed-trigger" for="lightbox-'+m+'" style="background-image: url('+l.images.standard_resolution.url+'), linear-gradient(35deg, #FFCA54, #FF7163 80%)">\n\t\t\t\t\t</label>\n\t\t\t\t\t<img class="Feed-img"\n\t\t\t\t\t\tsrc="'+l.images.standard_resolution.url+'"\n\t\t\t\t\t\tsrcset="'+l.images.thumbnail.url+' 150w,\n\t\t\t\t\t\t'+l.images.low_resolution.url+' 320w,\n\t\t\t\t\t\t'+l.images.standard_resolution.url+' 640w" />\n\t\t\t\t</div>\n\t\t\t',o='\n\t\t\t\t<a class="Lightbox-row Feed-media"\n\t\t\t\t\thref="'+l.link+'" target="_blank">\n\t\t\t\t\t<h4 class="Headline Headline--5">\n\t\t\t\t\t\tJoin the journey on Instagram @wdlk\n\t\t\t\t\t</h4>\n\t\t\t\t\t<img class="Feed-img"\n\t\t\t\t\t\tsrc="'+l.images.standard_resolution.url+'"\n\t\t\t\t\t\tsrcset="'+l.images.thumbnail.url+' 150w,\n\t\t\t\t\t\t'+l.images.low_resolution.url+' 320w,\n\t\t\t\t\t\t'+l.images.standard_resolution.url+' 640w" />\n\t\t\t\t</a>\n\t\t\t',p='\n\t\t\t\t<figcaption class="Feed-caption Lightbox-row">\n\t\t\t\t\t<strong class="Feed-highlight">'+l.likes.count+' likes</strong>\n\t\t\t\t\t<time class="Feed-highlight" datetime="'+g(l.created_time)+'">'+g(l.created_time)+'</time>\n\t\t\t\t\t<p class="Feed-copy">\n\t\t\t\t\t\t<strong>\n\t\t\t\t\t\t\t'+l.user.username+'\n\t\t\t\t\t\t</strong>\n\t\t\t\t\t\t'+l.caption.text+'\n\t\t\t\t\t</p>\n\t\t\t\t</figcaption>\n\t\t\t',q='\n\t\t\t\t<li class="Feed-item Lightbox--row">\n\t\t\t\t\t'+n+'\n\t\t\t\t\t<input class="Lightbox-state" type="checkbox" id="lightbox-'+m+'" />\n\t\t\t\t\t<div class="Lightbox-shim">\n\t\t\t\t\t\t<label class="Lightbox-shim-close" for="lightbox-'+m+'"></label>\n\t\t\t\t\t\t<figure class="Lightbox-content">\n\t\t\t\t\t\t\t<header class="Lightbox-header">\n\t\t\t\t\t\t\t\t<h3 class="Headline Headline--6">\n\t\t\t\t\t\t\t\t\t#'+l.tags[0]+'\n\t\t\t\t\t\t\t\t</h3>\n\t\t\t\t\t\t\t\t<label class="Lightbox-icon" for="lightbox-'+m+'"></label>\n\t\t\t\t\t\t\t</header>\n\t\t\t\t\t\t\t'+o+'\n\t\t\t\t\t\t\t'+p+'\n\t\t\t\t\t\t</figure>\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t';return q});a.innerHTML=k.join('')};d(c).then(function(j){var k=f(j.data);h(k)})}}
 
 /***/ }),
 /* 3 */
@@ -146,20 +146,13 @@ Object.defineProperty(exports,'__esModule',{value:!0}),exports.default=logger;fu
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-Object.defineProperty(exports,"__esModule",{value:!0});var access=exports.access={id:"1983140883",token:"1983140883.c4c213d.70716b04afc14080a94e4ccb0c35d1b2"};
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * This is the web browser implementation of `debug()`.
  *
  * Expose `debug()` as the module.
  */
 
-exports = module.exports = __webpack_require__(13);
+exports = module.exports = __webpack_require__(12);
 exports.log = log;
 exports.formatArgs = formatArgs;
 exports.save = save;
@@ -339,10 +332,10 @@ function localstorage() {
   } catch (e) {}
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -358,7 +351,7 @@ exports.coerce = coerce;
 exports.disable = disable;
 exports.enable = enable;
 exports.enabled = enabled;
-exports.humanize = __webpack_require__(15);
+exports.humanize = __webpack_require__(14);
 
 /**
  * The currently active debug mode names, and names to skip.
@@ -550,14 +543,14 @@ function coerce(val) {
 
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
  * Module dependencies
  */
 
-var debug = __webpack_require__(12)('jsonp');
+var debug = __webpack_require__(11)('jsonp');
 
 /**
  * Module exports.
@@ -653,7 +646,7 @@ function jsonp(url, opts, fn){
 
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, exports) {
 
 /**
@@ -808,7 +801,7 @@ function plural(ms, n, name) {
 
 
 /***/ }),
-/* 16 */
+/* 15 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -992,6 +985,19 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
+
+/***/ }),
+/* 16 */,
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports,"__esModule",{value:!0});var access=exports.access={id:"1983140883",token:"1983140883.c4c213d.70716b04afc14080a94e4ccb0c35d1b2"};
 
 /***/ })
 /******/ ]);

@@ -5,7 +5,6 @@ const localStorage = window.localStorage;
 const notificationHidden = () => {
     return localStorage.getItem('hideCookieNotification');
 }
-console.log('yeep yeah');
 const hideNotification = () => {
     localStorage.setItem('hideCookieNotification', true);
     notification.style.display = 'none';

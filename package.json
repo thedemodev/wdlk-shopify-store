@@ -2,24 +2,20 @@
   "name": "wdlk-ocean-store",
   "version": "1.7.0",
   "description": "WDLK Ocean Shopify Store",
-  "main": "./tasks/watch.js",
-  "directories": {
-    "doc": "docs"
-  },
   "scripts": {
     "commit": "git-cz",
-    "delete-meta": "babel-node --presets es2015,stage-0 tasks/shopify-api/utils/delete-metafields.js",
+    "delete-meta": "babel-node --presets es2015,stage-0 configuration/shopify-api/utils/delete-metafields.js",
     "flow": "flow",
-    "instagram-auth": "babel-node --presets es2015,stage-0 tasks/instagram/instagram-auth.js",
-    "product-meta": "babel-node --presets es2015,stage-0 tasks/shopify-api/product/send-metafields.js",
-    "product-meta-global": "babel-node --presets es2015,stage-0 tasks/shopify-api/product/send-global-metafields.js",
-    "product-data": "babel-node --presets es2015,stage-0 tasks/shopify-api/product/prepare-metafields.js",
-    "timber": "babel-node --presets es2015,stage-0 tasks/timber.js",
+    "instagram-auth": "babel-node --presets es2015,stage-0 configuration/instagram/instagram-auth.js",
+    "product-meta": "babel-node --presets es2015,stage-0 configuration/shopify-api/product/send-metafields.js",
+    "product-meta-global": "babel-node --presets es2015,stage-0 configuration/shopify-api/product/send-global-metafields.js",
+    "product-data": "babel-node --presets es2015,stage-0 configuration/shopify-api/product/prepare-metafields.js",
+    "timber": "babel-node --presets es2015,stage-0 configuration/timber.js",
     "slate": "slate watch",
     "dev": "concurrently -k -p \"[{name}]\" -n \"WEBPACK,SHOPIFY\" \"npm run slate\" \"npm run webpack\"",
-    "webpack": "NODE_ENV=development webpack --config tasks/webpack.config.js",
+    "webpack": "NODE_ENV=development webpack --config configuration/webpack.config.js",
     "webpack::production": "NODE_ENV=production npm run webpack -p",
-    "watch": "babel-node --presets es2015,stage-0 tasks/watch.js"
+    "watch": "babel-node --presets es2015,stage-0 configuration/watch.js"
   },
   "repository": {
     "type": "git",
@@ -97,7 +93,7 @@
     },
     "space": true,
     "ignore": [
-      "tasks/**"
+      "configuration/**"
     ]
   },
   "config": {
