@@ -111,7 +111,7 @@
 	&-caption {
 		display: block;
 		min-height: 29vh;
-		padding: 1.6rem var(--base-spacing) var(--base-spacing);
+		padding: 1.6rem $base-spacing $base-spacing;
 		font-size: 0;
 
 		@include media(medium) {
@@ -132,7 +132,7 @@
 		&:nth-child(2) {
 			display: inline-block;
 			width: 50%;
-			margin-bottom: var(--base-spacing);
+			margin-bottom: $base-spacing;
 			vertical-align: top;
 		}
 
@@ -185,8 +185,8 @@
 			box-sizing: border-box;
 			width: 100%;
 			padding: {
-				right: var(--base-spacing);
-				left: var(--base-spacing);
+				right: $base-spacing;
+				left: $base-spacing;
 			}
 			margin-top: 50px;
 			opacity: 0;
@@ -203,7 +203,7 @@
 
 		.Headline--6 {
 			text-align: left;
-			margin-left: var(--base-spacing);
+			margin-left: $base-spacing;
 		}
 	}
 

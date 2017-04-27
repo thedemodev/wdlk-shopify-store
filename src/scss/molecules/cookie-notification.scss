@@ -2,7 +2,7 @@
     display: none;
     position: fixed;
     bottom: calc(var(--form-base-height) / 2);
-    left: var(--base-spacing);
+    left: $base-spacing;
     z-index: 10;
     height: var(--form-base-height);
     padding: 0 calc(var(--box-base-padding) * 2) 0 var(--box-base-padding);

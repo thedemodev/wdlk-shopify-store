@@ -8,7 +8,7 @@
     display: inline-block;
     height: var(--social-icons-size);
     width: var(--social-icons-size);
-    margin: 0 var(--base-spacing);
+    margin: 0 $base-spacing;
     vertical-align: bottom;
   }
 }

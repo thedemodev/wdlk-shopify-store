@@ -1,5 +1,5 @@
 .TabNavigation {
-    margin:0 auto var(--base-spacing);
+    margin:0 auto $base-spacing;
     font-family: "montserrat", sans-serif;
 
     &-state {

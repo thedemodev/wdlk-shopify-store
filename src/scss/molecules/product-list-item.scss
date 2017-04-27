@@ -11,7 +11,7 @@
         width: calc(50vw - var(--product-base-spacing));
 
         &:nth-child(odd) {
-            margin-right: var(--base-spacing);
+            margin-right:$base-spacing;
         }
     }
 
@@ -24,18 +24,18 @@
 
         &:nth-child(3n-4) {
             margin: {
-                right: var(--base-spacing);
-                left: var(--base-spacing);
+                right:$base-spacing;
+                left:$base-spacing;
             }
         }
     }
 
     @include media (xlarge) {
         width: calc(100vw / 4  - var(--product-base-spacing));
-        margin-right: var(--base-spacing);
+        margin-right:$base-spacing;
 
         &:nth-child(odd) {
-            margin-right: var(--base-spacing);
+            margin-right:$base-spacing;
         }
 
         &:nth-child(3n-4) {
@@ -105,7 +105,7 @@
         padding-bottom: 16px;
         margin: {
             top: 0;
-            right: var(--base-spacing);
+            right: $base-spacing;
             bottom: 0;
         }
         text-align: left;

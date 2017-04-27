@@ -9,7 +9,7 @@
   width: 100%;
   max-width: 60rem;
   height: var(--input-base-height);
-  padding: 0 var(--base-spacing);
+  padding: 0 $base-spacing;
   border: 1px solid $input-hex-bg;
   line-height: var(--input-base-height);
   font-family: "museo_sans500";
@@ -23,11 +23,11 @@
 
   &--row {
     display: inline-block;
-    width: calc(var(--input-base-width) - var(--base-spacing));
+    width: calc(var(--input-base-width) - #{$base-spacing});
     vertical-align: top;
 
     @include media(medium) {
-      width: calc((var(--input-base-width) - 20%) - var(--base-spacing));
+      width: calc((var(--input-base-width) - 20%) - #{$base-spacing});
     }
   }
 }

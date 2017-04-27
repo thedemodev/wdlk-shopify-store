@@ -11,7 +11,7 @@
 
     &-row {
         display: block;
-        padding-bottom: var(--base-spacing);
+        padding-bottom: $base-spacing;
         margin-bottom:  var(--cart-base-spacing);
         text-align: center;
 
@@ -94,20 +94,6 @@
         border-bottom: 1px solid $cart-hex-border;
         margin-bottom: 26px;
     }
-    //
-    //&-column {
-    //    position: relative;
-    //    flex-grow: 2;
-    //    margin: {
-    //        top: var(--base-spacing);
-    //        right: var(--base-spacing);
-    //    }
-    //
-    //    &:first-of-type {
-    //        flex-grow: 0;
-    //        margin-top: 0;
-    //    }
-    //}
 
     &-headline {
         width: 100%;
@@ -118,7 +104,7 @@
         text-transform: initial;
 
         @include media(medium) {
-            margin-top: var(--base-spacing);
+            margin-top: $base-spacing;
             font-size: $h4-size ;
         }
     }
@@ -140,7 +126,7 @@
     &-labelTotal {
         position: absolute;
         top: 0;
-        right: var(--base-spacing);
+        right: $base-spacing;
         font-size: $h5-size;
         font-weight: normal;
     }

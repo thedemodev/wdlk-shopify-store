@@ -3,8 +3,8 @@
 }
 .ProductFilter {
     display: block;
-    padding: calc(var(--base-spacing) + .2) var(--base-spacing) calc(var(--base-spacing) + .1);
-    margin: ($nav-height + 4rem) var(--base-spacing) 40px;
+    padding: $base-spacing + .2 $base-spacing $base-spacing + .1;
+    margin: ($nav-height + 4rem) $base-spacing 40px;
     text-align: center;
     overflow: hidden;
     background-color: var(--hex-product-filter-bg);
@@ -12,8 +12,8 @@
 
     @include media (medium) {
         margin: {
-            right: calc(var(--base-spacing) * 2);
-            left: calc(var(--base-spacing) * 2);
+            right: $base-spacing * 2;
+            left: $base-spacing * 2;
         }
     }
 

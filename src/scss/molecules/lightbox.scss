@@ -113,8 +113,8 @@
 
     &-icon {
         position: absolute;
-        top: calc(var(--base-spacing) / 2);
-        right: calc(var(--base-spacing) / 2);
+        top: 10px;
+        right: 10px;
         width: var(--touch-target-size);
         height: var(--touch-target-size);
         cursor: pointer;
@@ -133,7 +133,7 @@
 
             &:last-child {
                 width: 35%;
-                padding-top: calc(var(--container-height) + var(--base-spacing));
+                padding-top: calc(var(--container-height) + #{$base-spacing});
             }
         }
     }

@@ -50,7 +50,7 @@
             .Headline {
                 &--2 {
                     max-width: calc(var(--screen-l) / 2);
-                    margin-top: calc(var(--base-spacing) * 2);
+                    margin-top: 40px;
                 }
 
                 &--4 {
@@ -60,7 +60,7 @@
 
             .List {
                 max-width: calc(var(--screen-l) / 2);
-                margin-bottom: calc(var(--base-spacing) * 2);
+                margin-bottom: 40px;
             }
 
         }

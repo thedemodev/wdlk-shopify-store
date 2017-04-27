@@ -7,7 +7,7 @@
         box-sizing: border-box;
         width: var(--cart-quick-width);
         height: 100vh;
-        padding: var(--base-spacing) 5rem;
+        padding: $base-spacing 5rem;
         box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
         text-align: center;
         background-color: $quick-cart-hex-bg;

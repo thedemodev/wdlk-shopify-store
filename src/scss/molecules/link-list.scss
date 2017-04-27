@@ -33,8 +33,8 @@
                 display: inline-block;
                 border-right: 1px solid $link-hex-secondary-color;
                 padding: {
-                    right: var(--base-spacing);
-                    left: var(--base-spacing);
+                    right: $base-spacing;
+                    left: $base-spacing;
                 }
                 margin-bottom: 0;
                 line-height: .8;

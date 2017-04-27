@@ -8,12 +8,12 @@
 
 .PaymentList {
   padding: {
-      top: var(--base-spacing);
-      bottom: calc(var(--base-spacing) / 2);
+      top: $base-spacing;
+      bottom: $base-spacing / 2;
   }
   border: solid $container-border;
   border-width: 1px 0;
-  margin-bottom: calc(var(--base-spacing) * 2);
+  margin-bottom: $base-spacing * 2;
   text-align: center;
 
 
