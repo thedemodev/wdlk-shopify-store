@@ -1,16 +1,12 @@
-:root {
-    --footer-side-padding: 5rem;
-}
-
 .Footer {
   box-sizing: border-box;
   width: 100%;
   max-width: $screen-l;
   padding: {
       top: 7.7rem;
-      right: var(--footer-side-padding);
+      right: 5rem;
       bottom: 3.5rem;
-      left: var(--footer-side-padding);
+      left: 5rem;
   }
   overflow: hidden;
   text-align: center;

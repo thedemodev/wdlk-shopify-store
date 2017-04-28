@@ -1,14 +1,10 @@
-:root {
-    --product-list-upper-margin: 4rem;
-}
-
 .ProductList {
     @include grid-wrapper();
     padding: {
         right: $product-base-spacing / 2;
         left: $product-base-spacing / 2;
     }
-    margin-top: var(--product-list-upper-margin);
+    margin-top: 4rem;
 
     @include media (medium) {
         padding: {
