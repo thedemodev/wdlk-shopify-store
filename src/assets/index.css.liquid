@@ -1924,22 +1924,17 @@ input[type="number"]::-webkit-outer-spin-button {
       .ProductFilter-item.is-active .Link:hover {
         color: #596771; }
 
-:root {
-  --cart-base-spacing: 4rem;
-  --cart-quick-width: 390px;
-  --cart-thumb-size: 46px; }
-
 .Cart {
   max-width: 1024px;
-  padding-bottom: var(--cart-base-spacing);
+  padding-bottom: 4rem;
   margin: 0 auto; }
   .Cart-row {
     display: block;
     padding-bottom: 2rem;
-    margin-bottom: var(--cart-base-spacing);
+    margin-bottom: 4rem;
     text-align: center; }
     .Cart-row:last-of-type {
-      padding-top: var(--cart-base-spacing);
+      padding-top: 4rem;
       padding-bottom: 0; }
     .Cart-row:first-of-type .Link {
       display: none; }
@@ -1960,14 +1955,14 @@ input[type="number"]::-webkit-outer-spin-button {
           margin-bottom: 0; } }
   .Cart-img {
     display: inline-block;
-    width: var(--cart-thumb-size);
-    height: var(--cart-thumb-size);
+    width: 46px;
+    height: 46px;
     margin-right: 1.6rem;
     vertical-align: bottom; }
     @media (min-width: 768px) {
       .Cart-img {
-        width: calc(var(--cart-thumb-size) * 2);
-        height: calc(var(--cart-thumb-size) * 2); } }
+        width: 92px;
+        height: 92px; } }
   .Cart-col {
     display: inline-block;
     width: 38%;
@@ -2554,7 +2549,7 @@ input[type="number"]::-webkit-outer-spin-button {
   right: 0;
   z-index: 10;
   box-sizing: border-box;
-  width: var(--cart-quick-width);
+  width: 390px;
   height: 100vh;
   padding: 2rem 5rem;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
@@ -2579,8 +2574,8 @@ input[type="number"]::-webkit-outer-spin-button {
       font-size: 1.4rem; } }
   @media (min-width: 768px) {
     .Cart--quick .Cart-img {
-      width: calc(var(--cart-thumb-size));
-      height: calc(var(--cart-thumb-size)); } }
+      width: 46px;
+      height: 46px; } }
   @media (min-width: 768px) {
     .Cart--quick .Cart-attr {
       font-size: 1.4rem; } }
@@ -2588,7 +2583,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .Cart-shim {
   position: absolute;
   top: 0;
-  right: var(--cart-quick-width);
+  right: 390px;
   z-index: 1;
   width: 200vw;
   height: 100%;

@@ -5,7 +5,7 @@
         right: 0;
         z-index: 10;
         box-sizing: border-box;
-        width: var(--cart-quick-width);
+        width: $cart-quick-width;
         height: 100vh;
         padding: $base-spacing 5rem;
         box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
@@ -31,15 +31,6 @@
             }
         }
 
-        //.Cart-list {
-        //    text-align: left;
-        //
-        //    .Link {
-        //        margin: 0 0 1.4rem;
-        //        text-transform: initial;
-        //    }
-        //}
-
         .Cart-headline {
             @include media(medium) {
                 margin-top: 0;
@@ -49,8 +40,8 @@
 
         .Cart-img {
             @include media(medium) {
-                width: calc(var(--cart-thumb-size));
-                height: calc(var(--cart-thumb-size));
+                width: $cart-thumb-size;
+                height: $cart-thumb-size;
             }
         }
 
@@ -64,7 +55,7 @@
     &-shim {
         position: absolute;
         top: 0;
-        right: var(--cart-quick-width);
+        right: $cart-quick-width;
         z-index: 1;
         width: 200vw;
         height: 100%;

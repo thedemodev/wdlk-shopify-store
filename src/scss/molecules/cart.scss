@@ -1,24 +1,22 @@
-:root {
-    --cart-base-spacing: 4rem;
-    --cart-quick-width: 390px;
-    --cart-thumb-size: 46px;
-}
+$cart-base-spacing  : $base-spacing * 2;
+$cart-thumb-size    : 46px;
+$cart-quick-width   : 390px;
 
 .Cart {
     max-width: $screen-l;
-    padding-bottom: var(--cart-base-spacing);
+    padding-bottom: $cart-base-spacing;
     margin: 0 auto;
 
     &-row {
         display: block;
         padding-bottom: $base-spacing;
-        margin-bottom:  var(--cart-base-spacing);
+        margin-bottom:  $cart-base-spacing;
         text-align: center;
 
 
         &:last-of-type {
             padding: {
-                top: var(--cart-base-spacing);
+                top: $cart-base-spacing;
                 bottom: 0;
             }
         }
@@ -59,14 +57,14 @@
 
     &-img {
         display: inline-block;
-        width: var(--cart-thumb-size);
-        height: var(--cart-thumb-size);
+        width: $cart-thumb-size;
+        height: $cart-thumb-size;
         margin-right: 1.6rem;
         vertical-align: bottom;
 
         @include media(medium) {
-            width: calc(var(--cart-thumb-size) * 2);
-            height: calc(var(--cart-thumb-size) * 2);
+            width: $cart-thumb-size * 2;
+            height: $cart-thumb-size * 2;
         }
     }
 
