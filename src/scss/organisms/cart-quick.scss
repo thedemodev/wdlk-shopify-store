@@ -56,7 +56,7 @@
 
         .Cart-attr {
             @include media(medium) {
-                font-size: var(--md-copy-size);
+                font-size: $copy-size-m;
             }
         }
     }

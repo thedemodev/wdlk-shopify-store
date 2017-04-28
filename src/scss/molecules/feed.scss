@@ -25,7 +25,7 @@
     };
 
     @include media (medium) {
-      width: calc((25% - .225rem);
+      width: calc(25% - .225rem);
       height: calc(25vw - .225rem);
       margin-left: 3px;
 
@@ -119,11 +119,11 @@
   &-copy {
     margin-top: 0;
     letter-spacing: 1px;
-    font-size: var(--md-copy-size);
+    font-size: $copy-size-m;
   }
 
   &-highlight {
-    font-size: var(--md-copy-size);
+    font-size: $copy-size-m;
     &:nth-child(1),
     &:nth-child(2) {
       display: inline-block;

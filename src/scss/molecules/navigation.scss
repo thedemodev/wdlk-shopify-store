@@ -119,7 +119,7 @@
     @include media (medium) {
       display: inline-block;
       vertical-align: middle;
-      @include copy-text(var(--md-copy-size));
+      @include copy-text($copy-size-m);
     }
 
     &::after {

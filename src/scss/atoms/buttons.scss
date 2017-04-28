@@ -11,7 +11,7 @@
   transition: background-color $button-timing ease;
 
   @include copy-text(
-    var(--md-copy-size),
+    $copy-size-m,
     $typo-hex--tertiary,
     bold
   );

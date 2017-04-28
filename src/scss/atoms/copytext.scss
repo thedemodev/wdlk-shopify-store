@@ -1,26 +1,7 @@
-:root {
-    --copy-size: 1.6rem;
-    --md-copy-size: 1.4rem;
-    --small-copy-size: 1.2rem;
-    --xs-copy-size: 1rem;
-}
-
-@mixin copy-text ($color: $typo-hex) {
-    font-size: var(--copy-size);
-    color: $color;
-}
-
-@mixin copy-text-sm ($font-size: var(--small-copy-size)) {
-    font-size: $font-size;
-}
-
-@mixin copy-text ($font-size: var(--copy-size), $color: $typo-hex, $weight: normal) {
-    font-size: $font-size;
-    color: $color;
-    @if ($weight != normal) {
-        font-weight: $weight;
-    }
-}
+$copy-size-xs    : 1rem;
+$copy-size-s     : 1.2rem;
+$copy-size-m     : 1.4rem;
+$copy-size       : 1.6rem;
 
 html {
     font-family: "museo_sans300", sans-serif;
@@ -31,6 +12,24 @@ html {
     -moz-osx-font-smoothing: grayscale;
 }
 
+@mixin copy-text ($color: $typo-hex) {
+    font-size: $copy-size;
+    color: $color;
+}
+
 body {
     @include copy-text();
 }
+
+@mixin copy-text-sm ($font-size: $copy-size-s) {
+    font-size: $font-size;
+}
+
+@mixin copy-text ($font-size: $copy-size, $color: $typo-hex, $weight: normal) {
+    font-size: $font-size;
+    color: $color;
+    @if ($weight != normal) {
+        font-weight: $weight;
+    }
+}
+

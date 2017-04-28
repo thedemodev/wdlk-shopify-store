@@ -37,7 +37,7 @@
     }
 
     &-count {
-        font-size: var(--small-copy-size);
+        font-size: $copy-size-s;
         font-weight: 100;
         stroke-width: 1px;
         stroke: $typo-hex--tertiary;

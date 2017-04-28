@@ -11,7 +11,7 @@
     &-link {
         color: $link-list-hex-color;
         font-family: "museo_sans500";
-        font-size: var(--md-copy-size);
+        font-size: $copy-size-m;
         text-transform: uppercase;
         letter-spacing: .1rem;
         transition: color .5s ease;
@@ -51,7 +51,7 @@
         }
 
         .LinkList-link {
-            font-size: var(--small-copy-size);
+            font-size: $copy-size-s;
             color: $link-hex-secondary-color;
 
             &:hover {

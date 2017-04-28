@@ -35,7 +35,7 @@
         text-align: center;
         color: $input-hex-typo;
         font-family: "museo_sans500";
-        font-size: var(--md-copy-size);
+        font-size: $copy-size-m;
         font-weight: 600;
 
         &:focus {
@@ -94,7 +94,7 @@ input[type="number"]::-webkit-outer-spin-button {
         }
         border: 1px solid $form-el-bg-color;
         line-height: $form-base-height;
-        @include copy-text(calc(var(--md-copy-size) - .1),  $form-typo-color, bold);
+        @include copy-text($copy-size-m - .1,  $form-typo-color, bold);
         background-color: $form-el-bg-color;
         cursor: pointer;
         transition: border-color var(--qty-input-timing) var(--qty-input-timing-func);
@@ -118,7 +118,7 @@ input[type="number"]::-webkit-outer-spin-button {
         font-weight: bold;
         text-align: center;
         background-color: $form-btn-color;
-        @include copy-text(calc(var(--md-copy-size) - .1),  $typo-hex--tertiary, bold);
+        @include copy-text(($copy-size-m - .1),  $typo-hex--tertiary, bold);
 
         cursor: pointer;
         transition: background-color var(--qty-input-timing) ease-in-out;

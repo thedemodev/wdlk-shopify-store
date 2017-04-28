@@ -10,7 +10,7 @@
   margin-right: $form-base-margin;
   color: $input-hex-typo;
   font-family: "museo_sans500";
-  font-size: var(--md-copy-size);
+  font-size: $copy-size-m;
   font-weight: 600;
   background: {
     color: $input-hex-bg;

@@ -10,7 +10,7 @@
     background-color: $rgba-blue-gray-light;
 
     @include copy-text(
-        var(--md-copy-size),
+        $copy-size-m,
         $typo-hex--tertiary
     );
 

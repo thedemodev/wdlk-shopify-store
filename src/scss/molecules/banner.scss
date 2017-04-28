@@ -101,7 +101,7 @@
 
   &-introText {
     display: block;
-    font-size: var(--md-copy-size);
+    font-size: $copy-size-m;
     line-height: 1.5;
     letter-spacing: .3rem;
     text-transform: uppercase;
@@ -120,7 +120,7 @@
     transform: translateX(50%);
 
     @include copy-text(
-      var(--small-copy-size), $typo-hex--highlight, bold
+      $copy-size-s, $typo-hex--highlight, bold
     );
 
     .Icon {
@@ -139,7 +139,7 @@
   &-copy {
       margin-bottom: 40px;
       color: $typo-hex--banner-secondary;
-      font-size: var(--md-copy-size);
+      font-size: $copy-size-m;
       line-height: 1.5;
       font-weight: 100;
       letter-spacing: .1rem;
@@ -152,7 +152,7 @@
           color: var(--hex-coral);
 
           @include media(medium) {
-              font-size: calc(var(--md-copy-size) * 1.43);
+              font-size: $copy-size-m * 1.43;
           }
       }
 

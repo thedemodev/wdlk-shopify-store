@@ -7,7 +7,7 @@
   border: 1px solid $input-hex-bg;
   line-height: $input-base-height;
   font-family: "museo_sans500";
-  font-size: var(--md-copy-size);
+  font-size: $copy-size-m;
   color: $input-hex-placeholder;
 
   &:focus {

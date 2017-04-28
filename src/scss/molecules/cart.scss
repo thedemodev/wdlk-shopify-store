@@ -110,10 +110,10 @@
     }
 
     &-attr {
-        font-size: var(--md-copy-size);
+        font-size: $copy-size-m;
 
         @include media(medium) {
-            font-size: var(--copy-size);
+            font-size: $copy-size;
         }
 
         &Price {
@@ -146,11 +146,11 @@
 
         .Copy-sm {
             font-weight: 300;
-            font-size: var(--xs-copy-size);
+            font-size: $copy-size-xs;
         }
 
         .Link {
-            font-size: var(--small-copy-size);
+            font-size: $copy-size-s;
             padding: 0 6px 0 0;
         }
     }
