@@ -3,11 +3,11 @@
 }
 
 .Form {
-    max-width: var(--screen-md);
+    max-width: $screen-md;
     margin: {
         right: auto;
         left: auto;
-        bottom: calc(var(--base-spacing) * 2)
+        bottom: 40px;
     }
 
     @include media(medium) {
@@ -15,14 +15,14 @@
     }
 
     .Link {
-        margin-right: var(--base-spacing);
+        margin-right: $base-spacing;
         text-transform: uppercase;
         text-align: center;
     }
 
     .Btn,
     .Link {
-        margin-bottom: calc(var(--base-spacing) * 2);
+        margin-bottom: 40px;
 
         @include media(medium) {
             text-align: right;
@@ -30,7 +30,7 @@
     }
 
     &-headline {
-        margin-bottom: var(--base-spacing);
+        margin-bottom: $base-spacing;
     }
 
     &-layer {
@@ -42,24 +42,24 @@
         width: 100%;
         height: 80vh;
         padding: {
-            right: var(--base-spacing);
-            left: var(--base-spacing);
+            right: $base-spacing;
+            left: $base-spacing;
         }
         opacity: 0;
-        background-color: var(--form-layer-hex-bg);
+        background-color: $form-layer-hex-bg;
         pointer-events: none;
         transition: opacity .5s ease;
 
         @include media(medium) {
             padding: {
-                right: calc(var(--base-spacing) * 2);
-                left: calc(var(--base-spacing) * 2);
+                right: 40px;
+                left: 40px;
             }
         }
     }
 
     &-copy {
-        margin-bottom: calc(var(--base-spacing) * 3);
+        margin-bottom: 60px;
         text-align: center;
     }
 
@@ -76,12 +76,12 @@
 
     &--secondary {
         text-align: center;
-        
+
     }
  }
 
 .Form-inputWrapper {
-    margin-bottom: var(--base-spacing);
+    margin-bottom: $base-spacing;
     text-align: left;
 
     @include media(medium) {

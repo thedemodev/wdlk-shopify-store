@@ -2,7 +2,7 @@
 	&-container {
 		position: relative;
 		z-index: 1;
-		background-color: var(--background-color);
+		background-color: $background-color ;
 	}
 
 	@include media(medium) {

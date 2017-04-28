@@ -5,11 +5,11 @@
 	max-height: 0;
 	overflow: hidden;
 	text-align: center;
-	color: var(--typo-hex--tertiary);
-	background-color: var(--background-color-contrast);
+	color: $typo-hex--tertiary;
+	background-color: $background-color-contrast;
 	transform: translate3d(0, 0, 0);
 	perspective: 1000;
-	transition: max-height var(--transition-speed) ease-in-out;
+	transition: max-height $transition-speed ease-in-out;
 
 	@include media(medium) {
 		transition-duration: .6;
@@ -17,7 +17,7 @@
 
 	&.is-active {
 		max-height: 15vh;
-		transition: max-height var(--transition-speed) ease-in-out;
+		transition: max-height $transition-speed ease-in-out;
 
 		@include media(medium) {
 			transition-duration: .6s;
@@ -47,8 +47,8 @@
 		top: 50%;
 		right: 1rem;
 		box-sizing: border-box;
-		width: var(--touch-target-size);
-		height: var(--touch-target-size);
+		width: $touch-target-size;
+		height: $touch-target-size;
 		cursor: pointer;
 		transform: translateY(-50%);
 

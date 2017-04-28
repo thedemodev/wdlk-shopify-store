@@ -8,7 +8,7 @@ export default function scripts () {
         resolve('./src/scripts/timber.js.liquid'),
         resolve('./src/scripts/index.js.liquid'),
     ];
-    const outputFile = resolve('./assets/index.js.liquid');
+    const outputFile = resolve('./src/assets/index.js.liquid');
     const time = new Date();
 
     readFiles(scripts, (err, data) => {
@@ -19,3 +19,4 @@ export default function scripts () {
         console.log(log.info(`${time} [Script Concatenation]:`), 'concatenation was successfull ✌🏻');
     });
 }
+scripts();

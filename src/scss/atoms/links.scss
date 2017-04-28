@@ -6,17 +6,16 @@
 .Link {
     display: inline-block;
     border: none;
-    color: var(--link-hex-color);
-    // font-size: var(--md-copy-size);
+    color: $link-hex-color;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: .16rem;
     cursor: pointer;
-    transition: color var(--transition-speed) ease;
+    transition: color $transition-speed ease;
     background: none;
 
     &:hover {
-        color: var(--link-hex-hover-color);
+        color: $link-hex-hover-color;
     }
 
     &--btn {
@@ -44,10 +43,10 @@
     }
 
     &--tonedown {
-        color: var(--link-hex-secondary-color);
+        color: $link-hex-secondary-color;
 
         &:hover {
-            color: var(--link-hex-secondary-hover);
+            color: $link-hex-secondary-hover;
         }
     }
 
@@ -57,7 +56,7 @@
     }
 
     &--contrast {
-        color: var(--typo-hex--tertiary);
+        color: $typo-hex--tertiary;
         font-weight: normal;
 
         &::after {
@@ -66,10 +65,10 @@
             height: .1rem;
             width: 100%;
             margin-top: 2px;
-            background-color: var(--typo-hex--tertiary);
+            background-color: $typo-hex--tertiary;
             transform: scale3d(0, 0, 0);
             transform-origin: 0 0;
-            transition: transform .8s var(--border-timing);
+            transition: transform .8s $border-timing;
         }
 
         &:hover {

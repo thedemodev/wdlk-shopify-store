@@ -1,20 +1,31 @@
-:root {
-    --copy-size: 1.6rem;
-    --md-copy-size: 1.4rem;
-    --small-copy-size: 1.2rem;
-    --xs-copy-size: 1rem;
+$copy-size-xs    : 1rem;
+$copy-size-s     : 1.2rem;
+$copy-size-m     : 1.4rem;
+$copy-size       : 1.6rem;
+
+html {
+    font-family: "museo_sans300", sans-serif;
+    font-size: 62.5%; // Equivalent to 10px
+    line-height: 1.5;
+    color: $typo-hex;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-@mixin copy-text ($color: var(--typo-hex)) {
-    font-size: var(--copy-size);
+@mixin copy-text ($color: $typo-hex) {
+    font-size: $copy-size;
     color: $color;
 }
 
-@mixin copy-text-sm ($font-size: var(--small-copy-size)) {
+body {
+    @include copy-text();
+}
+
+@mixin copy-text-sm ($font-size: $copy-size-s) {
     font-size: $font-size;
 }
 
-@mixin copy-text ($font-size: var(--copy-size), $color: var(--typo-hex), $weight: normal) {
+@mixin copy-text ($font-size: $copy-size, $color: $typo-hex, $weight: normal) {
     font-size: $font-size;
     color: $color;
     @if ($weight != normal) {
@@ -22,15 +33,3 @@
     }
 }
 
-html {
-    font-family: "museo_sans300", sans-serif;
-    font-size: 62.5%; // Equivalent to 10px
-    line-height: 1.5;
-    color: var(--typo-hex);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-    @include copy-text();
-}

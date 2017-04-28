@@ -1,5 +1,5 @@
 import jsonp from 'jsonp';
-import {access} from '../../../tasks/instagram/access';
+import {access} from '../../../configuration/instagram/access';
 
 export default function generateFeed () {
 	const node = document.querySelector('.js_instagramFeed');

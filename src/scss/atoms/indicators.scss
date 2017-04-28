@@ -1,8 +1,3 @@
-:root {
-    --indicators-size: 8px;
-    --indicator-transition-speed: .45s;
-}
-
 //-- Generates the necessary styling for the active indicators.
 //-- Depends heavily in nth-of-type pseudo class
 //-- and a rigid HTML structure. The mixin should be use on the global space.
@@ -12,39 +7,39 @@
 //-- 3. The parent class of the indicators
 //-- 4. The class of the indicator item
 @include generateActiveIndicator(6, Carousel-trigger, Indicators, Indicators-item) {
-    background-color: var(--indicator-active-color);
-    transform: scale(1.5);
+  background-color: $indicator-active-color;
+  transform: scale(1.5);
 };
 
 .Indicators {
-    position: absolute;
-    top: calc(var(--base-margin) + .5);
-    left: calc(var(--base-margin) + .5);
-    z-index: 1;
-    display: block;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  z-index: 1;
+  display: block;
 
-    @include media(medium) {
-        display: none;
+  @include media(medium) {
+    display: none;
+  }
+
+  &-item {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: $indicator-color;
+    cursor: pointer;
+    transform: scale(1);
+    transition: transfrom .45s ease-out, background-color .45s ease-out;
+    outline: none;
+
+    &:last-child {
+      margin-right: 0;
     }
 
-    &-item {
-        display: inline-block;
-        width: var(--indicators-size);
-        height: var(--indicators-size);
-        border-radius: 50%;
-        margin-right: var(--base-margin);
-        background-color: var(--indicator-color);
-        cursor: pointer;
-        transform: scale(1);
-        transition: transfrom var(--indicator-transition-speed) ease-out, background-color var(--indicator-transition-speed) ease-out;
-        outline: none;
-
-        &:last-child {
-            margin-right: 0;
-        }
-
-        &:hover {
-            background-color: var(--indicator-active-color);
-        }
+    &:hover {
+      background-color: $indicator-active-color;
     }
+  }
 }

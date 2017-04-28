@@ -1,24 +1,22 @@
-:root {
-    --cart-base-spacing: 4rem;
-    --cart-quick-width: 390px;
-    --cart-thumb-size: 46px;
-}
+$cart-base-spacing  : $base-spacing * 2;
+$cart-thumb-size    : 46px;
+$cart-quick-width   : 390px;
 
 .Cart {
-    max-width: var(--screen-l);
-    padding-bottom: var(--cart-base-spacing);
+    max-width: $screen-l;
+    padding-bottom: $cart-base-spacing;
     margin: 0 auto;
 
     &-row {
         display: block;
-        padding-bottom: var(--base-spacing);
-        margin-bottom:  var(--cart-base-spacing);
+        padding-bottom: $base-spacing;
+        margin-bottom:  $cart-base-spacing;
         text-align: center;
 
 
         &:last-of-type {
             padding: {
-                top: var(--cart-base-spacing);
+                top: $cart-base-spacing;
                 bottom: 0;
             }
         }
@@ -31,7 +29,7 @@
 
 
         @include media(medium) {
-            border-bottom: 1px solid  var(--cart-hex-border);
+            border-bottom: 1px solid  $cart-hex-border;
             text-align: justify;
 
             &::after {
@@ -59,14 +57,14 @@
 
     &-img {
         display: inline-block;
-        width: var(--cart-thumb-size);
-        height: var(--cart-thumb-size);
+        width: $cart-thumb-size;
+        height: $cart-thumb-size;
         margin-right: 1.6rem;
         vertical-align: bottom;
 
         @include media(medium) {
-            width: calc(var(--cart-thumb-size) * 2);
-            height: calc(var(--cart-thumb-size) * 2);
+            width: $cart-thumb-size * 2;
+            height: $cart-thumb-size * 2;
         }
     }
 
@@ -91,43 +89,29 @@
             //top: 30px;
             bottom: 30px;
         }
-        border-bottom: 1px solid var(--cart-hex-border);
+        border-bottom: 1px solid $cart-hex-border;
         margin-bottom: 26px;
     }
-    //
-    //&-column {
-    //    position: relative;
-    //    flex-grow: 2;
-    //    margin: {
-    //        top: var(--base-spacing);
-    //        right: var(--base-spacing);
-    //    }
-    //
-    //    &:first-of-type {
-    //        flex-grow: 0;
-    //        margin-top: 0;
-    //    }
-    //}
 
     &-headline {
         width: 100%;
         font-family: "museo";
-        font-size: var(--h6-size);
+        font-size: $h6-size;
         font-weight: bold;
         margin-bottom: 1.4rem;
         text-transform: initial;
 
         @include media(medium) {
-            margin-top: var(--base-spacing);
-            font-size: var(--h4-size);
+            margin-top: $base-spacing;
+            font-size: $h4-size ;
         }
     }
 
     &-attr {
-        font-size: var(--md-copy-size);
+        font-size: $copy-size-m;
 
         @include media(medium) {
-            font-size: var(--copy-size);
+            font-size: $copy-size;
         }
 
         &Price {
@@ -140,8 +124,8 @@
     &-labelTotal {
         position: absolute;
         top: 0;
-        right: var(--base-spacing);
-        font-size: var(--h5-size);
+        right: $base-spacing;
+        font-size: $h5-size;
         font-weight: normal;
     }
 
@@ -149,7 +133,7 @@
         position: absolute;
         top: 0;
         right: 0;
-        color: var(--typo-hex--secondary);
+        color: $typo-hex--secondary;
     }
 
     &-footer {
@@ -160,11 +144,11 @@
 
         .Copy-sm {
             font-weight: 300;
-            font-size: var(--xs-copy-size);
+            font-size: $copy-size-xs;
         }
 
         .Link {
-            font-size: var(--small-copy-size);
+            font-size: $copy-size-s;
             padding: 0 6px 0 0;
         }
     }

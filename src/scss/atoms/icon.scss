@@ -1,14 +1,9 @@
-:root {
-  --social-icons-size: 2rem;
-  --disable-icons: 2.6rem;
-}
-
 .Icon {
   &--social {
     display: inline-block;
-    height: var(--social-icons-size);
-    width: var(--social-icons-size);
-    margin: 0 var(--base-spacing);
+    height: 2rem;
+    width: 2rem;
+    margin: 0 $base-spacing;
     vertical-align: bottom;
   }
 }

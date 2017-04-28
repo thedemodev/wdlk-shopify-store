@@ -9,7 +9,7 @@
     margin: $margin;
 }
 //-- The $count argument accepts the amount of necessary columns
-//-- for smartphone devices and iPad mini defaults to var(--screen-md).
+//-- for smartphone devices and iPad mini defaults to $screen-md.
 //-- The factor argument defines the necessary amount of columns
 //-- based on the given $count parameter.
 //-- The $gap argument defaults to 0-

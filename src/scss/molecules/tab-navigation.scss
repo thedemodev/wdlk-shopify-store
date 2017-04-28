@@ -1,5 +1,5 @@
 .TabNavigation {
-    margin:0 auto var(--base-spacing);
+    margin:0 auto $base-spacing;
     font-family: "montserrat", sans-serif;
 
     &-state {
@@ -11,7 +11,7 @@
 
     &-tab {
         display: inline-block;
-        color: var(--typo-hex--tone-down);
+        color: $typo-hex--tone-down;
         text-align: center;
         text-transform: uppercase;
         vertical-align: top;

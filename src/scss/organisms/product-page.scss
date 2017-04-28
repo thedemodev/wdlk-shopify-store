@@ -1,67 +1,57 @@
 .ProductPage {
-    $product-img-max-height: calc(var(--screen-l) / 2) !default;
+  $product-img-max-height: $screen-l / 2 !default;
 
-    .Carousel {
-        @include media(medium) {
-            max-height: calc(var(--screen-xl) / 2);
+  .Carousel {
+    @include media(medium) {
+        max-height: $screen-xl / 2;
+    }
+
+    //-- Give the product image a fixed height
+    //-- in a single column illustration.
+    //-- for ideal presentation of the products
+    @include media-range($screen-md, $screen-l) {
+        max-height: $product-img-max-height;
+
+        &-img {
+          height: $product-img-max-height;
+        }
+    };
+
+    //-- Give the product image a different height proportions
+    //-- during a small viewport range for ideal presentation.
+    @include media(large) {
+        &-item {
+          height: 100%;
         }
 
-        //-- Give the product image a fixed height
-        //-- in a single column illustration.
-        //-- for ideal presentation of the products
-        @include media-range($screen-md, $screen-l) {
-            max-height: $product-img-max-height;
-
-            &-img {
-                height: $product-img-max-height;
-            }
-        };
-
-        //-- Give the product image a different height proportions
-        //-- during a small viewport range for ideal presentation.
-        @include media(large) {
-            &-item {
-                height: 100%;
-            }
-
-            &-img {
-                height: calc(var(--screen-xl) / 2);
-                max-width: 100% * 1.5;
-            }
-        }
-
-        @include media-range($screen-l, $screen-xl) {
-            &-img {
-                position: absolute;
-                top: 0;
-                right: 50%;
-                transform: translateX(50%);
-            }
+        &-img {
+          height: $screen-xl / 2;
+          max-width: 100% * 1.5;
         }
     }
 
-    //@include media-range($screen-l, $screen-xl) {
-    //    .Carousel-trigger {
-    //        &:checked {
-    //            + .Carousel-item {
-    //                transform: translate3d(-25%, 0, 0);
-    //            }
-    //        }
-    //    }
-    //}
+    @include media-range($screen-l, $screen-xl) {
+      &-img {
+        position: absolute;
+        top: 0;
+        right: 50%;
+        transform: translateX(50%);
+      }
+    }
+  }
 
-    .Carousel-btn {
-        @include media(medium) {
+  .Carousel-btn {
+    @include media(medium) {
+      display: none;
+      &:checked {
+          ~ .Carousel-btn--label {
             display: none;
-            &:checked {
-                ~ .Carousel-btn--label {
-                  display: none;
-                }
-            }
-        }
+          }
+      }
     }
-    .Select,
-    .Qty-input {
-        margin-bottom: var(--form-base-margin);
-    }
+  }
+  .Select,
+  .Qty-input {
+      margin-bottom: $form-base-margin;
+  }
 }

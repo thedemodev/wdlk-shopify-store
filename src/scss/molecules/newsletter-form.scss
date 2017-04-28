@@ -1,7 +1,3 @@
-:root {
-  --newsletter-height: 29.6rem;
-}
-
 .NewsletterForm {
   position: relative;
   overflow: hidden;
@@ -12,8 +8,8 @@
     left: 0;
     right: 0;
     padding: {
-      right: var(--base-spacing);
-      left: var(--base-spacing);
+      right: $base-spacing;
+      left: $base-spacing;
     }
     margin: {
         left: auto;
@@ -22,8 +18,8 @@
     text-align: center;
     @include media (medium) {
       padding: {
-        right: calc(var(--base-spacing) * 2);
-        left: calc(var(--base-spacing) * 2);
+        right: 40px;
+        left: 40px;
       }
     }
   }
@@ -41,7 +37,7 @@
   }
 
   .Headline {
-    color: var(--typo-hex--quaternary);
+    color: $typo-hex--quaternary;
   }
 
   .Btn {

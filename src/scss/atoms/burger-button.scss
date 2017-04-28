@@ -1,79 +1,71 @@
-:root {
-    --burger-size-width: 2.4rem;
-    --burger-size-height: 1.6rem;
-    --burger-line-height: .2rem;
-    --burger-spacing: .5rem;
-    --burger-color: var(--asphalt-hex);
-}
-
 .BurgerBtn {
-    display: block;
-    width: var(--burger-size-width);
-    padding: {
-        top: calc(var(--burger-size-height) - (var(--burger-line-height) / 2) );
-        bottom: calc(var(--burger-size-height) - (var(--burger-line-height) / 2) );
+  display: block;
+  width: 2.4rem;
+  padding: {
+    top: 15px;
+    bottom: 15px;
+  }
+  text-align: left;
+  cursor: pointer;
+
+  @include media (medium) {
+    display: none;
+  }
+
+  &-line {
+    position: absolute;
+    width: inherit;
+    height: .2rem;
+    background-color: $burger-color;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: inherit;
+      height: inherit;
+      background-color: $burger-color;
+      transform-origin: 50% 50%;
+      transform: rotate3d(0, 0, 1, 0);
+      transition: top .3s .6s ease, transform .3s ease;
     }
-    text-align: left;
-    cursor: pointer;
 
-    @include media (medium) {
-        display: none;
+    &::before {
+        top: calc(-.2rem * 4);
     }
 
-    &-line {
-        position: absolute;
-        width: inherit;
-        height: var(--burger-line-height);
-        background-color: var(--burger-color);
-
-        &::before,
-        &::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            width: inherit;
-            height: inherit;
-            background-color: var(--burger-color);
-            transform-origin: 50% 50%;
-            transform: rotate3d(0, 0, 1, 0);
-            transition: top .3s .6s ease, transform .3s ease;
-        }
-
-        &::before {
-            top: calc(-var(--burger-line-height) * 4);
-        }
-
-        &::after {
-            top: calc(var(--burger-line-height) * 4);
-        }
+    &::after {
+        top: calc(.2rem * 4);
     }
+  }
 }
 
 .Navigation {
-    &-state {
-        &:checked {
-            ~ .BurgerBtn {
-                .BurgerBtn-line {
-                    background-color: transparent;
+  &-state {
+    &:checked {
+        ~ .BurgerBtn {
+            .BurgerBtn-line {
+                background-color: transparent;
 
 
-                    &::before,
-                    &::after {
-                        top: 0;
-                        transition: top .3s ease, transform .3s .5s ease;
-                    }
-
-                    &::before {
-                        transform: rotate3d(0, 0, 1, 45deg);
-                    }
-
-                    &::after {
-                        top: 0;
-                        transform: rotate3d(0, 0, 1, -45deg);
-                    }
+                &::before,
+                &::after {
+                    top: 0;
+                    transition: top .3s ease, transform .3s .5s ease;
                 }
 
+                &::before {
+                    transform: rotate3d(0, 0, 1, 45deg);
+                }
+
+                &::after {
+                    top: 0;
+                    transform: rotate3d(0, 0, 1, -45deg);
+                }
             }
+
         }
     }
+  }
 }

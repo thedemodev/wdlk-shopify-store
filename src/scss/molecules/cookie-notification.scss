@@ -1,25 +1,25 @@
 .CookieNotification {
     display: none;
     position: fixed;
-    bottom: calc(var(--form-base-height) / 2);
-    left: var(--base-spacing);
+    bottom: $form-base-height / 2;
+    left: $base-spacing;
     z-index: 10;
-    height: var(--form-base-height);
-    padding: 0 calc(var(--box-base-padding) * 2) 0 var(--box-base-padding);
-    line-height: var(--form-base-height);
-    background-color: var(--rgba-blue-gray-light);
+    height: $form-base-height;
+    padding: 0 $box-base-padding * 2 0 $box-base-padding;
+    line-height: $form-base-height;
+    background-color: $rgba-blue-gray-light;
 
     @include copy-text(
-        var(--md-copy-size),
-        var(--typo-hex--tertiary)
+        $copy-size-m,
+        $typo-hex--tertiary
     );
 
     &-close {
         position: absolute;
         top: 0;
         right: 0;
-        width: var(--box-base-padding);
-        background: var(--rgba-blue-gray-dark);
+        width: $box-base-padding;
+        background: $rgba-blue-gray-dark;
         font-size: 1.8rem;
         font-weight: 600;
         text-align: center;
@@ -27,7 +27,7 @@
     }
 
     &-link {
-        color: var(--typo-hex--tertiary);
+        color: $typo-hex--tertiary;
         font-weight: 600;
         text-decoration: underline;
     }

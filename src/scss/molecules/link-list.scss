@@ -9,19 +9,19 @@
     }
 
     &-link {
-        color: var(--link-list-hex-color);
+        color: $link-list-hex-color;
         font-family: "museo_sans500";
-        font-size: var(--md-copy-size);
+        font-size: $copy-size-m;
         text-transform: uppercase;
         letter-spacing: .1rem;
         transition: color .5s ease;
 
         &:hover {
-            color: var(--link-list-hex-hover-color);
+            color: $link-list-hex-hover-color;
         }
 
         &.is-active {
-            color: var(--link-hex-hover-color);
+            color: $link-hex-hover-color;
         }
     }
 
@@ -31,10 +31,10 @@
 
             .LinkList-item {
                 display: inline-block;
-                border-right: 1px solid var(--link-hex-secondary-color);
+                border-right: 1px solid $link-hex-secondary-color;
                 padding: {
-                    right: var(--base-spacing);
-                    left: var(--base-spacing);
+                    right: $base-spacing;
+                    left: $base-spacing;
                 }
                 margin-bottom: 0;
                 line-height: .8;
@@ -51,11 +51,11 @@
         }
 
         .LinkList-link {
-            font-size: var(--small-copy-size);
-            color: var(--link-hex-secondary-color);
+            font-size: $copy-size-s;
+            color: $link-hex-secondary-color;
 
             &:hover {
-                color: var(--link-hex-secondary-hover);
+                color: $link-hex-secondary-hover;
             }
         }
 

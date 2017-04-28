@@ -1,22 +1,12 @@
-:root {
-  --paypal-icon-width: 8rem;
-  --sofort-icon-width: var(--paypal-icon-width);
-  --advanced-icon-width: 6rem;
-  --skrill-icon-width: 5rem;
-  --amazon-icon-width: 12rem;
-}
-
 .PaymentList {
   padding: {
-      top: var(--base-spacing);
-      bottom: calc(var(--base-spacing) / 2);
+      top: $base-spacing;
+      bottom: $base-spacing / 2;
   }
-  border: solid var(--container-border);
+  border: solid $container-border;
   border-width: 1px 0;
-  margin-bottom: calc(var(--base-spacing) * 2);
+  margin-bottom: $base-spacing * 2;
   text-align: center;
-
-
 
   .Icon {
     max-height: 4rem;
@@ -28,22 +18,22 @@
   }
 
   .Icon--paypal {
-      width: var(--paypal-icon-width);
+      width: 8rem;
   }
 
   .Icon--advanced {
-      width: var(--advanced-icon-width);
+      width: 6rem;
   }
 
   .Icon--amazon {
-      width: var(--amazon-icon-width);
+      width: 12rem;
   }
 
   .Icon--skrill {
-      width: var(--skrill-icon-width);
+      width: 5rem;
   }
 
   .Icon--sofort {
-    width: var(--sofort-icon-width);
+    width: 8rem;
   }
 }

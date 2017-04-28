@@ -13,7 +13,7 @@
         box-sizing: border-box;
         display: block;
         width: 100%;
-        font-size: var(--copy-size);
+        font-size: $copy-size;
         line-height: 1.5;
 
         @include media(medium) {

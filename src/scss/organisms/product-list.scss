@@ -1,21 +1,16 @@
-:root {
-    //--product-list-upper-margin: calc(var(--nav-height) + 6rem);
-    --product-list-upper-margin: 4rem;
-}
-
 .ProductList {
     @include grid-wrapper();
     padding: {
-        right: calc(var(--product-base-spacing ) / 2);
-        left: calc(var(--product-base-spacing ) / 2);
+        right: $product-base-spacing / 2;
+        left: $product-base-spacing / 2;
     }
-    margin-top: var(--product-list-upper-margin);
+    margin-top: 4rem;
 
     @include media (medium) {
         padding: {
-            right: var(--product-base-spacing);
-            left: var(--product-base-spacing);
+            right: $product-base-spacing;
+            left: $product-base-spacing;
         }
-        margin-bottom: var(--product-base-spacing);
+        margin-bottom: $product-base-spacing;
     }
 }

@@ -5,18 +5,18 @@
     box-sizing: border-box;
     position: relative;
     padding: {
-        top: calc(var(--nav-height) + 6rem);
-        bottom: calc(var(--base-spacing) * 4);
-        right: var(--base-spacing);
-        left: var(--base-spacing);
+        top: calc($nav-height + 6rem);
+        bottom: $base-spacing * 4;
+        right: $base-spacing;
+        left: $base-spacing;
     }
     overflow: hidden;
     text-align: center;
 
     @include media (medium) {
         padding: {
-            right: calc(var(--base-spacing) * 2);
-            left: calc(var(--base-spacing) * 2);
+            right: $base-spacing * 2;
+            left: $base-spacing * 2;
         }
     }
 
@@ -37,7 +37,7 @@
 
     &--brand {
         min-height: 100vh;
-        background-image: var(--video-brand-poster);
+        background-image: $video-brand-poster;
         background-size: cover;
 
         @include media(medium) {
@@ -59,12 +59,12 @@
         .TextBlock {
             position: relative;
             z-index: 1;
-            color: var(--typo-hex--tertiary);
+            color: $typo-hex--tertiary;
         }
     }
 
     &--customer {
-        @include grid-wrapper(var(--screen-xl), flex-start);
+        @include grid-wrapper($screen-xl, flex-start);
 
         .Container-sidebar {
             position: relative;
