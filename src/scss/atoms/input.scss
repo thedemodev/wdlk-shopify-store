@@ -1,17 +1,11 @@
-:root {
-  --input-base-height: 4.6rem;
-  --input-base-width: 80%;
-  --input-base-mobile: 24.2rem;
-}
-
 .InputField {
   box-sizing: border-box;
   width: 100%;
   max-width: 60rem;
-  height: var(--input-base-height);
+  height: $input-base-height;
   padding: 0 $base-spacing;
   border: 1px solid $input-hex-bg;
-  line-height: var(--input-base-height);
+  line-height: $input-base-height;
   font-family: "museo_sans500";
   font-size: var(--md-copy-size);
   color: $input-hex-placeholder;
@@ -23,11 +17,11 @@
 
   &--row {
     display: inline-block;
-    width: calc(var(--input-base-width) - #{$base-spacing});
+    width: calc(#{$input-base-width} - #{$base-spacing});
     vertical-align: top;
 
     @include media(medium) {
-      width: calc((var(--input-base-width) - 20%) - #{$base-spacing});
+      width: calc(#{($input-base-width  - 20%)} - $base-spacing);
     }
   }
 }

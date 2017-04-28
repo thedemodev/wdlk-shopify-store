@@ -1,8 +1,3 @@
-:root {
-  --btn-timing: .35s;
-  --btn-row-width: calc(100% - var(--input-base-width));
-}
-
 .Btn {
   display: inline-block;
   height: $form-base-height;
@@ -13,7 +8,7 @@
   letter-spacing: .16rem;
   text-transform: uppercase;
   cursor: pointer;
-  transition: background-color var(--btn-timing) ease;
+  transition: background-color $button-timing ease;
 
   @include copy-text(
     var(--md-copy-size),
@@ -44,7 +39,7 @@
     outline-offset: -2px;
     transform: translateY(-1px);
     color: $btn-bg-color;
-    transition: outline-color var(--btn-timing) ease;
+    transition: outline-color $button-timing ease;
 
     &:hover {
         outline-color: $btn-bg-color-hover;
@@ -55,7 +50,7 @@
 
   &--row {
     position: relative;
-    width: var(--btn-row-width, 20%);
+    width: 20%;
     padding: 0 $box-base-padding / 2;
     overflow: hidden;
     font-size: 0;

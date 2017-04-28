@@ -10,6 +10,8 @@ $form-base-height       : 4rem;
 $form-base-height       : 4.6rem;
 $form-base-margin       : 1rem;
 $form-base-padding      : 2rem;
+$input-base-width       : 80%;
+$input-base-height      : 4.6rem;
 
 //-- BOX SIZING
 $box-base-padding       : $form-base-padding + 1.6rem;
@@ -31,6 +33,7 @@ $transition-speed      : .30s;
 $transition-speed-double: .70s;
 $timing                : cubic-bezier(0.455, 0.030, 0.515, 0.955);
 $border-timing         : cubic-bezier(0.075, 0.820, 0.165, 1.000);
+$button-timing         : .35s;
 
 //-- TOUCH MEASUREMENTS
 $touch-target-size     : 4rem;
