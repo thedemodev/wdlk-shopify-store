@@ -1,53 +1,44 @@
-:root {
-    --page-spacing: 6rem;
-    --block-spacing: var(--page-spacing);
-    --block-headline-spacing: calc(var(--page-spacing) / 2);
-    --block-2nd-headline-spacing: calc(var(--page-spacing) / 3);
-    --block-paragraph-spacing: calc(var(--page-spacing) / 3);
-
-}
-
 .TextBlock {
-    display: block;
-    max-width: $text-block-max-width;
-    vertical-align: middle;
+  display: block;
+  max-width: $text-block-max-width;
+  vertical-align: middle;
 
-    @include media (small) {
-        display: inline-block;
-    }
+  @include media (small) {
+    display: inline-block;
+  }
 
-    &-pageHeadline {
-        margin-bottom: var(--page-spacing);
+  &-pageHeadline {
+    margin-bottom: $base-spacing * 3;
+  }
+
+  .Headline {
+    @include media (small, max-width) {
+      &--1 {
+          font-size: 4.2rem;
+      }
     }
+  }
+
+  &-block {
+    margin-bottom: $base-spacing * 6;
 
     .Headline {
-        @include media (small, max-width) {
-            &--1 {
-                font-size: 4.2rem;
-            }
+        &:first-of-type {
+          margin-bottom: 30px;
+        }
+
+
+        & ~ .Headline {
+          margin-bottom: $base-spacing;
         }
     }
 
-    &-block {
-        margin-bottom: var(--block-spacing);
-
-        .Headline {
-            &:first-of-type {
-                margin-bottom: var(--block-headline-spacing);
-            }
-
-
-            & ~ .Headline {
-                margin-bottom: var(--block-2nd-headline-spacing);
-            }
-        }
-
-        .Paragraph {
-            margin-bottom: var(--block-paragraph-spacing);
-        }
+    .Paragraph {
+      margin-bottom: $base-spacing;
     }
+  }
 
-    &--secondary {
-        text-align: left;
-    }
+  &--secondary {
+    text-align: left;
+  }
 }

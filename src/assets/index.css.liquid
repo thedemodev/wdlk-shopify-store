@@ -1305,12 +1305,6 @@ input[type="number"]::-webkit-outer-spin-button {
       background-color: #DEDFE0;
       transform: translateX(50%); } }
 
-:root {
-  --carousel-arrow-size: 40px;
-  --carousel-arrow-size-tip: 12;
-  --carousel-arrow-border: 3px;
-  --carousel-arrow-margin: 1.5rem; }
-
 .Carousel {
   position: relative;
   height: 100vw;
@@ -1323,11 +1317,11 @@ input[type="number"]::-webkit-outer-spin-button {
     left: 0;
     bottom: 0;
     z-index: 2;
-    width: var(--carousel-arrow-size);
-    height: var(--carousel-arrow-size);
+    width: 40px;
+    height: 40px;
     margin-top: auto;
     margin-bottom: auto;
-    margin-left: var(--carousel-arrow-margin);
+    margin-left: 1.5rem;
     outline: none;
     appearance: none;
     cursor: pointer; }
@@ -1346,7 +1340,7 @@ input[type="number"]::-webkit-outer-spin-button {
     .Carousel-trigger:checked ~ .Carousel-btn {
       left: auto;
       right: 0;
-      margin-right: var(--carousel-arrow-margin);
+      margin-right: 1.5rem;
       transform: rotate(180deg); }
     .Carousel-trigger:checked + .Carousel-item {
       z-index: 1;
@@ -2078,13 +2072,6 @@ input[type="number"]::-webkit-outer-spin-button {
   .Table-cell {
     border-bottom-color: var(--table-cell-hex-border-color); }
 
-:root {
-  --page-spacing: 6rem;
-  --block-spacing: var(--page-spacing);
-  --block-headline-spacing: calc(var(--page-spacing) / 2);
-  --block-2nd-headline-spacing: calc(var(--page-spacing) / 3);
-  --block-paragraph-spacing: calc(var(--page-spacing) / 3); }
-
 .TextBlock {
   display: block;
   max-width: 63rem;
@@ -2093,18 +2080,18 @@ input[type="number"]::-webkit-outer-spin-button {
     .TextBlock {
       display: inline-block; } }
   .TextBlock-pageHeadline {
-    margin-bottom: var(--page-spacing); }
+    margin-bottom: 6rem; }
   @media (max-width: 480px) {
     .TextBlock .Headline--1 {
       font-size: 4.2rem; } }
   .TextBlock-block {
-    margin-bottom: var(--block-spacing); }
+    margin-bottom: 12rem; }
     .TextBlock-block .Headline:first-of-type {
-      margin-bottom: var(--block-headline-spacing); }
+      margin-bottom: 30px; }
     .TextBlock-block .Headline ~ .Headline {
-      margin-bottom: var(--block-2nd-headline-spacing); }
+      margin-bottom: 2rem; }
     .TextBlock-block .Paragraph {
-      margin-bottom: var(--block-paragraph-spacing); }
+      margin-bottom: 2rem; }
   .TextBlock--secondary {
     text-align: left; }
 
