@@ -5,10 +5,10 @@
 # git config --global core.excludesfile ~/.gitignore_global
 
 # Ignore cache
+dist/
 node_modules
 
 /_site
-/.sass-cache
 /.cache
 
 # Ignore .DS_store file
@@ -17,6 +17,5 @@ node_modules
 # Sensitive Information
 config.yml
 deploy.log
-configuration/shopify-api/config.js
-configuration/instagram/config.js
 configuration/instagram/access.js
+configuration/instagram/instagram-auth.js
