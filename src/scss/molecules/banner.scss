@@ -149,7 +149,7 @@
       max-height: 100vh;
 
       .Banner-introText {
-          color: var(--hex-coral);
+          color: $hex-coral;
 
           @include media(medium) {
               font-size: $copy-size-m * 1.43;

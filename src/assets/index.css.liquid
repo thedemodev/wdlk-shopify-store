@@ -311,23 +311,16 @@ body {
   font-size: 1.6rem;
   color: #596771; }
 
-:root {
-  --logo-height: 46px;
-  --logo-width: 128px; }
-
 .Logo {
   padding-top: 1rem;
   margin: 0; }
   .Logo-img {
-    width: var(--logo-width);
-    height: calc(var(--logo-height) - 6);
+    width: 128px;
+    height: 40px;
     fill: #FF7163;
     transition: fill 0.35s ease; }
     .Logo-img:hover {
       fill: #E5554E; }
-
-:root {
-  --shopping-cart-size: 30px; }
 
 .ShoppingBag {
   display: inline-block;
@@ -337,8 +330,8 @@ body {
     .ShoppingBag {
       padding-top: 1.2rem; } }
   .ShoppingBag-icon {
-    width: calc(var(--shopping-cart-size) + 2px);
-    height: var(--shopping-cart-size);
+    width: 32px;
+    height: 30px;
     fill-opacity: 0;
     stroke: currentColor;
     stroke-width: 2px;
@@ -372,10 +365,6 @@ body {
 .contentContainer {
   padding: 7rem 2rem 2rem; }
 
-:root {
-  --link-icon-width: .7rem;
-  --link-icon-height: 1.4rem; }
-
 .Link {
   display: inline-block;
   border: none;
@@ -389,8 +378,8 @@ body {
   .Link:hover {
     color: #E5554E; }
   .Link--btn .Icon--right {
-    width: var(--link-icon-width);
-    height: var(--link-icon-height);
+    width: .7rem;
+    height: 1.4rem;
     margin-bottom: 2px;
     margin-left: 5px;
     vertical-align: middle;
@@ -1010,7 +999,7 @@ input[type="number"]::-webkit-outer-spin-button {
   .Banner--main {
     max-height: 100vh; }
     .Banner--main .Banner-introText {
-      color: var(--hex-coral); }
+      color: #FF7163; }
       @media (min-width: 768px) {
         .Banner--main .Banner-introText {
           font-size: 2.002rem; } }
@@ -1391,9 +1380,6 @@ input[type="number"]::-webkit-outer-spin-button {
     font-weight: 600;
     text-decoration: underline; }
 
-:root {
-  --label-spacing: .5rem; }
-
 .Form {
   max-width: 768px;
   margin-right: auto;
@@ -1456,7 +1442,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .Form-label {
   display: block;
-  margin-bottom: var(--label-spacing);
+  margin-bottom: .5rem;
   line-height: 4.6rem; }
   @media (min-width: 768px) {
     .Form-label {
@@ -1465,7 +1451,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .Form-input {
   box-sizing: border-box;
   width: 100%;
-  border: 1px solid var(--hex-blue-gray-lightest); }
+  border: 1px solid #DEDFE0; }
   @media (min-width: 768px) {
     .Form-input {
       flex-basis: 70%; } }
@@ -2006,11 +1992,8 @@ input[type="number"]::-webkit-outer-spin-button {
     height: 20px;
     margin-bottom: -3px; }
 
-:root {
-  --media-module-base-spacing: 6rem; }
-
 .MediaModule {
-  margin-top: var(--media-module-base-spacing);
+  margin-top: 6rem;
   font-size: 0;
   line-height: 0;
   text-align: center; }
@@ -2028,7 +2011,7 @@ input[type="number"]::-webkit-outer-spin-button {
         width: 50%;
         vertical-align: top; } }
   .MediaModule .MediaModule-img {
-    margin-bottom: var(--media-module-base-spacing); }
+    margin-bottom: 6rem; }
   .MediaModule .MediaModule-content {
     padding-right: 2rem;
     padding-left: 2rem;
@@ -2039,16 +2022,11 @@ input[type="number"]::-webkit-outer-spin-button {
   .MediaModule .Table-headcell {
     width: 20%; }
 
-:root {
-  --table-base-spacing: 4rem;
-  --table-headcell-hex-border-color: var(--hex-blue-gray-light);
-  --table-cell-hex-border-color: var(--hex-blue-gray-lightest); }
-
 .Table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: var(--table-base-spacing);
-  margin-bottom: calc(var(--table-base-spacing) * 2);
+  margin-top: 2rem;
+  margin-bottom: 4rem;
   text-align: center; }
   @media (min-width: 768px) {
     .Table:first-child {
@@ -2063,10 +2041,10 @@ input[type="number"]::-webkit-outer-spin-button {
         .Table-headcell:first-child, .Table-cell:first-child {
           text-align: center; } }
   .Table-headcell {
-    border-bottom-color: var(--table-headcell-hex-border-color);
+    border-bottom-color: #8E959A;
     text-transform: uppercase; }
   .Table-cell {
-    border-bottom-color: var(--table-cell-hex-border-color); }
+    border-bottom-color: #DEDFE0; }
 
 .TextBlock {
   display: block;

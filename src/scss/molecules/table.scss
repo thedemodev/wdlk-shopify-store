@@ -1,15 +1,9 @@
-:root {
-    --table-base-spacing: 4rem;
-    --table-headcell-hex-border-color: var(--hex-blue-gray-light);
-    --table-cell-hex-border-color: var(--hex-blue-gray-lightest);
-}
-
 .Table {
     width: 100%;
     border-collapse: collapse;
     margin: {
-        top: var(--table-base-spacing);
-        bottom: calc(var(--table-base-spacing) * 2);
+        top: $base-spacing;
+        bottom: $base-spacing * 2;
     }
     text-align: center;
 
@@ -36,11 +30,11 @@
     }
 
     &-headcell {
-        border-bottom-color:  var(--table-headcell-hex-border-color);
+        border-bottom-color: $hex-blue-gray-light;
         text-transform: uppercase;
     }
 
     &-cell {
-        border-bottom-color:  var(--table-cell-hex-border-color);
+        border-bottom-color: $hex-blue-gray-lightest;
     }
 }

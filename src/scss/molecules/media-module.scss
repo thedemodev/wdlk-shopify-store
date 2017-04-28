@@ -1,9 +1,5 @@
-:root {
-    --media-module-base-spacing: 6rem;
-}
-
 .MediaModule {
-    margin-top: var(--media-module-base-spacing);
+    margin-top: $base-spacing * 3;
     font-size: 0;
     line-height: 0;
     text-align: center;
@@ -24,7 +20,7 @@
     }
 
     .MediaModule-img {
-        margin-bottom: var(--media-module-base-spacing);
+        margin-bottom: $base-spacing * 3;
     }
 
     .MediaModule-content {

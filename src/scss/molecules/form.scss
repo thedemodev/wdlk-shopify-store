@@ -1,7 +1,3 @@
-:root {
-    --label-spacing: .5rem;
-}
-
 .Form {
     max-width: $screen-md;
     margin: {
@@ -96,7 +92,7 @@
 
 .Form-label {
     display: block;
-    margin-bottom: var(--label-spacing);
+    margin-bottom: .5rem;
     line-height: $form-base-height;
 
     @include media(medium) {
@@ -107,7 +103,7 @@
 .Form-input {
     box-sizing: border-box;
     width: 100%;
-    border: 1px solid var(--hex-blue-gray-lightest);
+    border: 1px solid $hex-blue-gray-lightest;
 
     @include media(medium) {
         flex-basis: 70%;

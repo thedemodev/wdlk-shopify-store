@@ -1,7 +1,3 @@
-:root {
-    --shopping-cart-size: 30px;
-}
-
 .ShoppingBag {
     display: inline-block;
     padding: {
@@ -14,8 +10,8 @@
     }
 
     &-icon {
-        width: calc(var(--shopping-cart-size) + 2px);
-        height: var(--shopping-cart-size);
+        width: 32px;
+        height: 30px;
         fill-opacity: 0;
         stroke: currentColor;
         stroke-width: 2px;

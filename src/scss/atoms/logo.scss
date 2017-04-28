@@ -1,15 +1,10 @@
-:root {
-    --logo-height: 46px;
-    --logo-width: 128px;
-}
-
 .Logo {
     padding-top: 1rem;
     margin: 0;
 
     &-img {
-        width: var(--logo-width);
-        height: calc(var(--logo-height) - 6);
+        width: 128px;
+        height: 40px;
         fill: $link-hex-color;
         transition: fill $button-timing ease;
 
