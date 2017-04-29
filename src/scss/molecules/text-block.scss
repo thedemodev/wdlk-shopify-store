@@ -1,10 +1,14 @@
 .TextBlock {
   display: block;
-  max-width: $text-block-max-width;
+  max-width: $text-block-max-width / 2;
   vertical-align: middle;
 
   @include media (small) {
     display: inline-block;
+  }
+
+  @include media (medium) {
+    max-width: $text-block-max-width;
   }
 
   &-pageHeadline {
