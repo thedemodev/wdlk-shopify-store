@@ -1164,7 +1164,7 @@ input[type="number"]::-webkit-outer-spin-button {
     margin-left: 2rem; }
 
 .Lightbox-shim {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -1182,7 +1182,7 @@ input[type="number"]::-webkit-outer-spin-button {
     background: rgba(250, 250, 250, 0.9);
     transition: background 0.3s ease; }
     .Lightbox-state:checked ~ .Lightbox-shim .Lightbox-content {
-      z-index: 1;
+      z-index: 10;
       opacity: 1;
       transform: none;
       transition: transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.3s ease; }
