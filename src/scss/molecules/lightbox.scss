@@ -1,6 +1,6 @@
 .Lightbox {
     &-shim {
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
@@ -24,7 +24,7 @@
                 transition: background $transition-speed ease;
 
                 .Lightbox-content {
-                    z-index: 1;
+                    z-index: 10;
                     opacity: 1;
                     transform: none;
                     transition: transform .4s $timing, opacity $transition-speed ease;

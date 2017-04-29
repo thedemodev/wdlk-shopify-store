@@ -5,7 +5,7 @@
     box-sizing: border-box;
     position: relative;
     padding: {
-        top: calc($nav-height + 6rem);
+        top: calc(#{$nav-height} + 6rem);
         bottom: $base-spacing * 4;
         right: $base-spacing;
         left: $base-spacing;
