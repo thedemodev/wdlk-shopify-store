@@ -84,9 +84,6 @@
       "flowtype"
     ],
     "rules": {
-      "react/forbid-component-props": [
-        "warn"
-      ],
       "flow-check/check": "error",
       "flowtype/require-valid-file-annotation": [
         "error",

@@ -4,6 +4,7 @@
   "description": "React compatible client for Shopify GraphQL server",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -15,6 +16,6 @@
   "author": "Mauricio Palma <mauricio.palma@woodlikeocean.com>",
   "license": "ISC",
   "dependencies": {
-    "react-apollo": "^1.1.2"
+    "graphql-fetch": "^1.0.1"
   }
 }
