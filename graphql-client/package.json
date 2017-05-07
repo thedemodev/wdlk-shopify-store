@@ -17,5 +17,8 @@
   "license": "ISC",
   "dependencies": {
     "graphql-fetch": "^1.0.1"
+  },
+  "devDependencies": {
+    "webpack": "^2.5.0"
   }
 }

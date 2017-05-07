@@ -1,0 +1,103 @@
+{
+  "name": "wdlk-ocean-store",
+  "version": "2.0.1",
+  "description": "WDLK Ocean Shopify Store",
+  "scripts": {
+    "commit": "git-cz",
+    "delete-meta": "babel-node --presets es2015,stage-0 configuration/shopify-api/utils/delete-metafields.js",
+    "flow": "flow",
+    "instagram-auth": "babel-node --presets es2015,stage-0 configuration/instagram/instagram-auth.js",
+    "product-meta": "babel-node --presets es2015,stage-0 configuration/shopify-api/product/send-metafields.js",
+    "product-meta-global": "babel-node --presets es2015,stage-0 configuration/shopify-api/product/send-global-metafields.js",
+    "product-data": "babel-node --presets es2015,stage-0 configuration/shopify-api/product/prepare-metafields.js",
+    "timber": "babel-node --presets es2015,stage-0 configuration/timber.js",
+    "slate:watch": "slate watch",
+    "slate:deploy": "slate deploy",
+    "dev": "concurrently -k -p \"[{name}]\" -n \"WEBPACK,SHOPIFY\" \"npm run slate:watch\" \"npm run webpack\"",
+    "webpack": "NODE_ENV=development webpack --config configuration/webpack.config.js",
+    "webpack:production": "NODE_ENV=production npm run webpack -p",
+    "watch": "babel-node --presets es2015,stage-0 configuration/watch.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/PalmaSwell/wdlk-ocean.git"
+  },
+  "author": "Woodlike Ocean <info@woodlikeocean.com> (http://woodlikeocean.com/)",
+  "contributors": [
+    {
+      "name": "Mauricio Palma",
+      "email": "mauricio.palma@woodlikeocean.com"
+    }
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/PalmaSwell/wdlk-ocean/issues"
+  },
+  "homepage": "https://gitlab.com/PalmaSwell/wdlk-ocean#README",
+  "devDependencies": {
+    "@shopify/slate": "^0.9.1",
+    "@shopify/slate-tools": "0.2.7",
+    "async": "^1.5.0",
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.1.2",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-stage-0": "^6.1.2",
+    "babel-preset-stage-1": "^6.22.0",
+    "babili-webpack-plugin": "0.0.11",
+    "colors": "^1.1.2",
+    "commitizen": "^2.9.6",
+    "concurrently": "^3.4.0",
+    "css-loader": "^0.28.0",
+    "cz-conventional-changelog": "^2.0.0",
+    "eslint": "^3.19.0",
+    "eslint-plugin-flow-check": "^1.1.1",
+    "eslint-plugin-flowtype": "^2.32.1",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "node-sass": "^4.5.1",
+    "postcss": "^5.2.17",
+    "postcss-loader": "^1.3.3",
+    "request": "^2.79.0",
+    "sass-loader": "^6.0.3",
+    "shopify-node-api": "^1.6.1",
+    "watch": "^0.16.0",
+    "webpack": "^2.4.1",
+    "xo": "^0.18.1"
+  },
+  "dependencies": {
+    "jsonp": "^0.2.1"
+  },
+  "xo": {
+    "env": [
+      "node",
+      "browser"
+    ],
+    "extends": [
+      "xo/browser",
+      "plugin:flowtype/recommended"
+    ],
+    "parser": "babel-eslint",
+    "plugins": [
+      "flow-check",
+      "flowtype"
+    ],
+    "rules": {
+      "flow-check/check": "error",
+      "flowtype/require-valid-file-annotation": [
+        "error",
+        "always"
+      ]
+    },
+    "space": true,
+    "ignore": [
+      "configuration/**"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
