@@ -25,5 +25,10 @@
   "bugs": {
     "url": "https://github.com/woodlike/shopify-store/issues"
   },
-  "homepage": "https://github.com/woodlike/shopify-store#readme"
+  "homepage": "https://github.com/woodlike/shopify-store#readme",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
