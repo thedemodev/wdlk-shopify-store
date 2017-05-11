@@ -1,5 +1,5 @@
 {
-  "name": "shopify-store",
+  "name": "wdlk-shopify-store",
   "version": "2.0.1",
   "description": "Woodlike Ocean shopping experience",
   "main": "index.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/woodlike/shopify-store.git"
+    "url": "git+https://github.com/woodlike/wdlk-shopify-store.git"
   },
   "keywords": [
     "shopify",
@@ -23,9 +23,9 @@
   "author": "Mauricio Palma",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/woodlike/shopify-store/issues"
+    "url": "https://github.com/woodlike/wdlk-shopify-store/issues"
   },
-  "homepage": "https://github.com/woodlike/shopify-store#readme",
+  "homepage": "https://github.com/woodlike/wdlk-shopify-store#readme",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
