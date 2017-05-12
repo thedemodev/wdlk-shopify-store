@@ -4,10 +4,16 @@
   "description": "Woodlike Ocean shopping experience",
   "main": "index.js",
   "scripts": {
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "bootstrap": "lerna bootstrap --loglevel info --stream",
+    "dev": "lerna run dev --no-sort --stream",
+    "lerna": "lerna",
+    "lint": "xo",
+    "reinstall": "npm run clean && npm run bootstrap"
   },
   "devDependencies": {
     "commitizen": "^2.9.6",
+    "lerna": "^2.0.0-rc.4",
     "xo": "^0.18.2"
   },
   "repository": {

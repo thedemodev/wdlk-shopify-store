@@ -1,0 +1,12 @@
+0 silly input [ 'dev' ]
+1 silly flags { _: [ 'run' ],
+1 silly flags   sort: false,
+1 silly flags   stream: true,
+1 silly flags   concurrency: 4,
+1 silly flags   script: 'dev',
+1 silly flags   args: [] }
+2 verbose rootPath /Users/maupal/Lab/wdlk-shopify-store
+3 info version 2.0.0-rc.4
+4 silly isInitialized
+5 silly isInitialized true
+6 error ENOLERNA `lerna.json` does not exist, have you run `lerna init`?

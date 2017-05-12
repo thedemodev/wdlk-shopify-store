@@ -6,7 +6,7 @@
 In our store theme and app you develop locally and use a syncing utility. You develop locally and see the changes locally but your theme is being updated simultaneously.
 
 
-1. `npm install`
+1. `npm run bootstrap`
 2. `./node_modules/.bin/slate` to make the slate command available for our scripts
 4. In your `config.yml` add your store information and private app credentials
 Slate documentation:[https://shopify.github.io/slate/](https://shopify.github.io/slate/)
