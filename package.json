@@ -7,7 +7,8 @@
     "commit": "git-cz"
   },
   "devDependencies": {
-    "commitizen": "^2.9.6"
+    "commitizen": "^2.9.6",
+    "xo": "^0.18.2"
   },
   "repository": {
     "type": "git",
@@ -20,15 +21,38 @@
     "graphql",
     "preact"
   ],
-  "author": "Mauricio Palma",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/woodlike/wdlk-shopify-store/issues"
-  },
-  "homepage": "https://github.com/woodlike/wdlk-shopify-store#readme",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "xo": {
+    "env": [
+      "node",
+      "browser"
+    ],
+    "extends": [
+      "xo/browser",
+      "plugin:flowtype/recommended"
+    ],
+    "parser": "babel-eslint",
+    "plugins": [
+      "flow-check",
+      "flowtype"
+    ],
+    "rules": {
+      "flow-check/check": "error",
+      "flowtype/require-valid-file-annotation": [
+        "error",
+        "always"
+      ]
+    },
+    "space": true
+  },
+  "author": "Mauricio Palma <mauricio.palma@woodlikeocean.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/woodlike/wdlk-shopify-store/issues"
+  },
+  "homepage": "https://github.com/woodlike/wdlk-shopify-store#readme"
 }
