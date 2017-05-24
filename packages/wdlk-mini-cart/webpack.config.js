@@ -1,5 +1,4 @@
 const {resolve} = require('path');
-const babel = require('rollup-plugin-babel');
 
 module.exports = {
   entry: './src/index.js',
@@ -8,18 +7,13 @@ module.exports = {
     filename: 'wdlk-mini-cart.js'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        loader: 'rollup-loader',
-        options: {
-          plugins: [
-            babel({
-              exclude: 'node_modules/**'
-            })
-          ]
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader'
         }
-
       }
     ]
   }
