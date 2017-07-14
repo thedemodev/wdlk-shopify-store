@@ -7,6 +7,601 @@
 1 silly flags   args: [] }
 2 verbose rootPath /Users/maupal/Lab/wdlk-shopify-store
 3 info version 2.0.0-rc.4
-4 silly isInitialized
-5 silly isInitialized true
-6 error ENOLERNA `lerna.json` does not exist, have you run `lerna init`?
+4 info versioning independent
+5 silly isInitialized
+6 silly isInitialized true
+7 silly existsSync /Users/maupal/Lab/wdlk-shopify-store/VERSION
+8 silly initialize attempt
+9 silly initialize success
+10 silly execute attempt
+11 silly runScriptInPackageStreaming [ 'dev', [], 'wdlk-ocean-store' ]
+12 silly getExecOpts { cwd: '/Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store' }
+13 error execute Error: Command failed: npm run dev
+13 error execute
+13 error execute npm ERR! Darwin 16.5.0
+13 error execute npm ERR! argv "/Users/maupal/.nvm/versions/node/v7.10.0/bin/node" "/Users/maupal/.nvm/versions/node/v7.10.0/bin/npm" "run" "dev"
+13 error execute npm ERR! node v7.10.0
+13 error execute npm ERR! npm  v4.2.0
+13 error execute npm ERR! code ELIFECYCLE
+13 error execute npm ERR! errno 1
+13 error execute npm ERR! wdlk-ocean-store@2.0.1 dev: `concurrently -k -p "[{name}]" -n "WEBPACK,SHOPIFY" "npm run slate:watch" "npm run webpack"`
+13 error execute npm ERR! Exit status 1
+13 error execute npm ERR!
+13 error execute npm ERR! Failed at the wdlk-ocean-store@2.0.1 dev script 'concurrently -k -p "[{name}]" -n "WEBPACK,SHOPIFY" "npm run slate:watch" "npm run webpack"'.
+13 error execute npm ERR! Make sure you have the latest version of node.js and npm installed.
+13 error execute npm ERR! If you do, this is most likely a problem with the wdlk-ocean-store package,
+13 error execute npm ERR! not with npm itself.
+13 error execute npm ERR! Tell the author that this fails on your system:
+13 error execute npm ERR!     concurrently -k -p "[{name}]" -n "WEBPACK,SHOPIFY" "npm run slate:watch" "npm run webpack"
+13 error execute npm ERR! You can get information on how to open an issue for this project with:
+13 error execute npm ERR!     npm bugs wdlk-ocean-store
+13 error execute npm ERR! Or if that isn't available, you can get their info via:
+13 error execute npm ERR!     npm owner ls wdlk-ocean-store
+13 error execute npm ERR! There is likely additional logging output above.
+13 error execute
+13 error execute npm ERR! Please include the following file with any support request:
+13 error execute npm ERR!     /Users/maupal/.npm/_logs/2017-07-14T17_13_15_971Z-debug.log
+13 error execute
+13 error execute > wdlk-ocean-store@2.0.1 dev /Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store
+13 error execute > concurrently -k -p "[{name}]" -n "WEBPACK,SHOPIFY" "npm run slate:watch" "npm run webpack"
+13 error execute
+13 error execute [WEBPACK]
+13 error execute [WEBPACK] > wdlk-ocean-store@2.0.1 slate:watch /Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store
+13 error execute [WEBPACK] > slate watch
+13 error execute [WEBPACK]
+13 error execute [SHOPIFY]
+13 error execute [SHOPIFY] > wdlk-ocean-store@2.0.1 webpack /Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store
+13 error execute [SHOPIFY] > NODE_ENV=development webpack --config configuration/webpack.config.js
+13 error execute [SHOPIFY]
+13 error execute [SHOPIFY]
+13 error execute [SHOPIFY] Webpack is watching the files…
+13 error execute [SHOPIFY]
+13 error execute [WEBPACK] [16:40:10]
+13 error execute [WEBPACK] Using gulpfile ~/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/@shopify/slate-tools/lib/gulpfile.js
+13 error execute [WEBPACK] [16:40:10]
+13 error execute [WEBPACK] Starting 'watch'...
+13 error execute [WEBPACK] [16:40:10]
+13 error execute [WEBPACK] Starting 'validate:id'...
+13 error execute [WEBPACK] [16:40:10]
+13 error execute [WEBPACK] Finished 'watch' after 7.9 ms
+13 error execute [WEBPACK] [16:40:10]
+13 error execute [WEBPACK] Finished 'validate:id' after 9.95 ms
+13 error execute [WEBPACK] [16:40:10] Starting 'build:config'...
+13 error execute [WEBPACK] [16:40:10] running task - build:config
+13 error execute [WEBPACK] [16:40:10]
+13 error execute [WEBPACK] config.yml 116 B
+13 error execute [WEBPACK] [16:40:10] Finished 'build:config' after 20 ms
+13 error execute [WEBPACK] [16:40:10] Starting 'watch:assets'...
+13 error execute [WEBPACK] [16:40:10] Finished 'watch:assets' after 12 ms
+13 error execute [WEBPACK] [16:40:10] Starting 'watch:config'...
+13 error execute [WEBPACK] [16:40:10] Finished 'watch:config' after 553 μs
+13 error execute [WEBPACK] [16:40:10] Starting 'watch:svg'...
+13 error execute [WEBPACK] [16:40:10] Finished 'watch:svg' after 882 μs
+13 error execute [WEBPACK] [16:40:10] Starting 'watch:css'...
+13 error execute [WEBPACK] [16:40:10] Finished 'watch:css' after 2.43 ms
+13 error execute [WEBPACK] [16:40:10] Starting 'watch:js'...
+13 error execute [WEBPACK] [16:40:10] Finished 'watch:js' after 870 μs
+13 error execute [WEBPACK] [16:40:10] Starting 'watch:vendor-js'...
+13 error execute [WEBPACK] [16:40:10] Finished 'watch:vendor-js' after 1.55 ms
+13 error execute [WEBPACK] [16:40:10] Starting 'watch:src'...
+13 error execute [WEBPACK] [16:40:10] Finished 'watch:src' after 28 μs
+13 error execute [WEBPACK] [16:40:10] Starting 'watch:dist'...
+13 error execute [WEBPACK] [16:40:10] Finished 'watch:dist' after 378 μs
+13 error execute [WEBPACK] [16:40:10] Starting 'watch:dist-config'...
+13 error execute [WEBPACK] [16:40:10] Finished 'watch:dist-config' after 237 μs
+13 error execute [WEBPACK] [16:40:10] Starting 'deploy:sync-init'...
+13 error execute [WEBPACK] [16:40:10] Finished 'deploy:sync-init' after 13 ms
+13 error execute [WEBPACK] [16:40:10] Starting 'deploy:sync-reload'...
+13 error execute [WEBPACK] [16:40:10] Finished 'deploy:sync-reload' after 11 ms
+13 error execute [WEBPACK] [BS] Proxying: https://wdkl-ocean.myshopify.com
+13 error execute [WEBPACK] [BS] Access URLs:
+13 error execute [WEBPACK]  -------------------------------------------------------------------
+13 error execute [WEBPACK]        Local: https://localhost:3000/?preview_theme_id=183504273
+13 error execute [WEBPACK]     External: https://192.168.0.148:3000/?preview_theme_id=183504273
+13 error execute [WEBPACK]  -------------------------------------------------------------------
+13 error execute [WEBPACK]           UI: http://localhost:3001
+13 error execute [WEBPACK]  UI External: http://192.168.0.148:3001
+13 error execute [WEBPACK]  -------------------------------------------------------------------
+13 error execute [SHOPIFY] Hash: df2520a98ba2209503cc
+13 error execute [SHOPIFY] Version: webpack 2.4.1
+13 error execute [SHOPIFY] Time: 3760ms
+13 error execute [SHOPIFY]             Asset     Size  Chunks             Chunk Names
+13 error execute [SHOPIFY]   index.js.liquid  33.4 kB       0  [emitted]  main
+13 error execute [SHOPIFY] /index.css.liquid   205 kB       0  [emitted]  main
+13 error execute [SHOPIFY]    [0] ./src/scripts/modules/cookie-notification.js 642 bytes {0} [built]
+13 error execute [SHOPIFY]    [1] ./src/scripts/modules/facebook-pixel-events.js 607 bytes {0} [built]
+13 error execute [SHOPIFY]    [2] ./src/scripts/modules/instagram-feed.js 3.42 kB {0} [built]
+13 error execute [SHOPIFY]    [3] ./src/scripts/modules/notification.js 634 bytes {0} [built]
+13 error execute [SHOPIFY]    [4] ./src/scripts/modules/number-input.js 779 bytes {0} [built]
+13 error execute [SHOPIFY]    [5] ./src/scripts/modules/smooth-scrolling.js 1.1 kB {0} [built]
+13 error execute [SHOPIFY]    [6] ./src/scripts/modules/sticky-navigation.js 639 bytes {0} [built]
+13 error execute [SHOPIFY]    [7] ./src/scripts/polyfills/rAf.js 636 bytes {0} [built]
+13 error execute [SHOPIFY]    [8] ./src/scss/index.scss 41 bytes {0} [built]
+13 error execute [SHOPIFY]    [9] ./configuration/instagram/access.js 172 bytes {0} [built]
+13 error execute [SHOPIFY]   [10] ./src/scripts/index.js 1.27 kB {0} [built]
+13 error execute [SHOPIFY]   [11] ./src/scripts/modules/logger.js 317 bytes {0} [built]
+13 error execute [SHOPIFY]   [14] ./~/jsonp/index.js 1.95 kB {0} [built]
+13 error execute [SHOPIFY]   [18] ./~/buffer/index.js 48.6 kB [built]
+13 error execute [SHOPIFY]   [19] ./~/css-loader/lib/css-base.js 2.19 kB [built]
+13 error execute [SHOPIFY]     + 8 hidden modules
+13 error execute [SHOPIFY] Child extract-text-webpack-plugin:
+13 error execute [SHOPIFY]        [0] ./~/css-loader/lib/css-base.js 2.19 kB {0} [built]
+13 error execute [SHOPIFY]        [1] ./~/base64-js/index.js 3.48 kB {0} [built]
+13 error execute [SHOPIFY]        [2] ./~/buffer/index.js 48.6 kB {0} [built]
+13 error execute [SHOPIFY]        [3] ./~/css-loader?{"sourceMap":true}!./~/postcss-loader?{}!./~/sass-loader/lib/loader.js!./src/scss/index.scss 443 kB {0} [built]
+13 error execute [SHOPIFY]        [4] ./~/ieee754/index.js 2.05 kB {0} [built]
+13 error execute [SHOPIFY]        [5] ./~/isarray/index.js 132 bytes {0} [built]
+13 error execute [SHOPIFY]        [6] (webpack)/buildin/global.js 509 bytes {0} [built]
+13 error execute [WEBPACK] [16:40:13]
+13 error execute [WEBPACK] change in src/assets - change index.js.liquid
+13 error execute [WEBPACK] [16:40:13]
+13 error execute [WEBPACK] change in src/assets - change index.css.liquid
+13 error execute [WEBPACK] [16:40:13]
+13 error execute [WEBPACK] running task - build:assets
+13 error execute [WEBPACK] [16:40:13] assets/index.js.liquid 33.37 kB
+13 error execute [WEBPACK] [16:40:13]
+13 error execute [WEBPACK] assets/index.css.liquid 204.6 kB
+13 error execute [WEBPACK] [16:40:13] all files 237.97 kB
+13 error execute [WEBPACK] [16:40:14]
+13 error execute [WEBPACK] change in assets - change index.js.liquid
+13 error execute [WEBPACK] [16:40:14] Initiating deploy to development
+13 error execute [WEBPACK] [16:40:14]
+13 error execute [WEBPACK] change in assets - change index.css.liquid
+13 error execute [WEBPACK] [16:40:14] Initiating deploy to development
+13 error execute [WEBPACK] [16:40:14]
+13 error execute [WEBPACK] running task [child process] - theme upload
+13 error execute [WEBPACK] [development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K
+13 error execute [WEBPACK] [development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K
+13 error execute [WEBPACK] [development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 2 / 2 [====================================================================] 100 %
+13 error execute [WEBPACK] [16:40:25] Transfer Complete: File changes successfully synced to store
+13 error execute [WEBPACK] [BS] Reloading Browsers...
+13 error execute [WEBPACK] [19:13:15]
+13 error execute [WEBPACK] Starting 'deploy:sync-init'...
+13 error execute [WEBPACK] [19:13:15]
+13 error execute [WEBPACK] Finished 'deploy:sync-init' after 28 ms
+13 error execute [WEBPACK] [BS] Proxying: https://wdkl-ocean.myshopify.com
+13 error execute [WEBPACK] [BS] Access URLs:
+13 error execute [WEBPACK]  -------------------------------------------------------------------
+13 error execute [WEBPACK]        Local: https://localhost:3000/?preview_theme_id=180599889
+13 error execute [WEBPACK]     External: https://192.168.0.148:3000/?preview_theme_id=180599889
+13 error execute [WEBPACK]  -------------------------------------------------------------------
+13 error execute [WEBPACK]           UI: http://localhost:3001
+13 error execute [WEBPACK]  UI External: http://192.168.0.148:3001
+13 error execute [WEBPACK]  -------------------------------------------------------------------
+13 error execute [WEBPACK] [19:13:15]
+13 error execute [WEBPACK] change in  - change config.yml
+13 error execute [WEBPACK] [19:13:15] running task - build:config
+13 error execute [WEBPACK] [19:13:15]
+13 error execute [WEBPACK] config.yml 116 B
+13 error execute [WEBPACK] [19:13:15]
+13 error execute [WEBPACK] change in dist - change config.yml
+13 error execute [WEBPACK] /Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/@shopify/slate-tools/lib/tasks/build-config.js:70
+13 error execute [WEBPACK]     throw new Error(messages.configChange());
+13 error execute [WEBPACK]     ^
+13 error execute [WEBPACK]
+13 error execute [WEBPACK] Error: Changes to ThemeKit Config Detected: You may need to quit <slate watch> and run a full <slate deploy> as a result.
+13 error execute [WEBPACK]     at FSWatcher.<anonymous> (/Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/@shopify/slate-tools/lib/tasks/build-config.js:70:11)
+13 error execute [WEBPACK]     at emitTwo (events.js:106:13)
+13 error execute [WEBPACK]     at FSWatcher.emit (events.js:194:7)
+13 error execute [WEBPACK]     at FSWatcher.<anonymous> (/Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/chokidar/index.js:192:38)
+13 error execute [WEBPACK]     at FSWatcher._emit (/Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/chokidar/index.js:233:5)
+13 error execute [WEBPACK]     at FSWatcher.<anonymous> (/Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/chokidar/lib/fsevents-handler.js:204:14)
+13 error execute [WEBPACK]     at addOrChange (/Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/chokidar/lib/fsevents-handler.js:210:7)
+13 error execute [WEBPACK]     at FSWatcher.<anonymous> (/Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/chokidar/lib/fsevents-handler.js:236:16)
+13 error execute [WEBPACK]     at filteredListener (/Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/chokidar/lib/fsevents-handler.js:58:7)
+13 error execute [WEBPACK]     at /Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/chokidar/lib/fsevents-handler.js:83:11
+13 error execute [WEBPACK]     at Array.forEach (native)
+13 error execute [WEBPACK]     at FSEvents.<anonymous> (/Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/chokidar/lib/fsevents-handler.js:82:34)
+13 error execute [WEBPACK]     at emitThree (events.js:116:13)
+13 error execute [WEBPACK]     at FSEvents.emit (events.js:197:7)
+13 error execute [WEBPACK]     at Immediate.<anonymous> (/Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/fsevents/fsevents.js:47:11)
+13 error execute [WEBPACK]     at runCallback (timers.js:672:20)
+13 error execute [WEBPACK] npm run slate:watch exited with code 0
+13 error execute --> Sending SIGTERM to other processes..
+13 error execute [SHOPIFY] npm run webpack exited with code null
+13 error execute
+13 error execute     at Promise.all.then.arr (/Users/maupal/Lab/wdlk-shopify-store/node_modules/lerna/node_modules/execa/index.js:210:11)
+13 error execute     at process._tickCallback (internal/process/next_tick.js:109:7)
+13 error execute  callback with error
+13 error execute  { Error: Command failed: npm run dev
+13 error execute
+13 error execute npm ERR! Darwin 16.5.0
+13 error execute npm ERR! argv "/Users/maupal/.nvm/versions/node/v7.10.0/bin/node" "/Users/maupal/.nvm/versions/node/v7.10.0/bin/npm" "run" "dev"
+13 error execute npm ERR! node v7.10.0
+13 error execute npm ERR! npm  v4.2.0
+13 error execute npm ERR! code ELIFECYCLE
+13 error execute npm ERR! errno 1
+13 error execute npm ERR! wdlk-ocean-store@2.0.1 dev: `concurrently -k -p "[{name}]" -n "WEBPACK,SHOPIFY" "npm run slate:watch" "npm run webpack"`
+13 error execute npm ERR! Exit status 1
+13 error execute npm ERR!
+13 error execute npm ERR! Failed at the wdlk-ocean-store@2.0.1 dev script 'concurrently -k -p "[{name}]" -n "WEBPACK,SHOPIFY" "npm run slate:watch" "npm run webpack"'.
+13 error execute npm ERR! Make sure you have the latest version of node.js and npm installed.
+13 error execute npm ERR! If you do, this is most likely a problem with the wdlk-ocean-store package,
+13 error execute npm ERR! not with npm itself.
+13 error execute npm ERR! Tell the author that this fails on your system:
+13 error execute npm ERR!     concurrently -k -p "[{name}]" -n "WEBPACK,SHOPIFY" "npm run slate:watch" "npm run webpack"
+13 error execute npm ERR! You can get information on how to open an issue for this project with:
+13 error execute npm ERR!     npm bugs wdlk-ocean-store
+13 error execute npm ERR! Or if that isn't available, you can get their info via:
+13 error execute npm ERR!     npm owner ls wdlk-ocean-store
+13 error execute npm ERR! There is likely additional logging output above.
+13 error execute
+13 error execute npm ERR! Please include the following file with any support request:
+13 error execute npm ERR!     /Users/maupal/.npm/_logs/2017-07-14T17_13_15_971Z-debug.log
+13 error execute
+13 error execute > wdlk-ocean-store@2.0.1 dev /Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store
+13 error execute > concurrently -k -p "[{name}]" -n "WEBPACK,SHOPIFY" "npm run slate:watch" "npm run webpack"
+13 error execute
+13 error execute [WEBPACK]
+13 error execute [WEBPACK] > wdlk-ocean-store@2.0.1 slate:watch /Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store
+13 error execute [WEBPACK] > slate watch
+13 error execute [WEBPACK]
+13 error execute [SHOPIFY]
+13 error execute [SHOPIFY] > wdlk-ocean-store@2.0.1 webpack /Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store
+13 error execute [SHOPIFY] > NODE_ENV=development webpack --config configuration/webpack.config.js
+13 error execute [SHOPIFY]
+13 error execute [SHOPIFY]
+13 error execute [SHOPIFY] Webpack is watching the files…
+13 error execute [SHOPIFY]
+13 error execute [WEBPACK] [16:40:10]
+13 error execute [WEBPACK] Using gulpfile ~/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/@shopify/slate-tools/lib/gulpfile.js
+13 error execute [WEBPACK] [16:40:10]
+13 error execute [WEBPACK] Starting 'watch'...
+13 error execute [WEBPACK] [16:40:10]
+13 error execute [WEBPACK] Starting 'validate:id'...
+13 error execute [WEBPACK] [16:40:10]
+13 error execute [WEBPACK] Finished 'watch' after 7.9 ms
+13 error execute [WEBPACK] [16:40:10]
+13 error execute [WEBPACK] Finished 'validate:id' after 9.95 ms
+13 error execute [WEBPACK] [16:40:10] Starting 'build:config'...
+13 error execute [WEBPACK] [16:40:10] running task - build:config
+13 error execute [WEBPACK] [16:40:10]
+13 error execute [WEBPACK] config.yml 116 B
+13 error execute [WEBPACK] [16:40:10] Finished 'build:config' after 20 ms
+13 error execute [WEBPACK] [16:40:10] Starting 'watch:assets'...
+13 error execute [WEBPACK] [16:40:10] Finished 'watch:assets' after 12 ms
+13 error execute [WEBPACK] [16:40:10] Starting 'watch:config'...
+13 error execute [WEBPACK] [16:40:10] Finished 'watch:config' after 553 μs
+13 error execute [WEBPACK] [16:40:10] Starting 'watch:svg'...
+13 error execute [WEBPACK] [16:40:10] Finished 'watch:svg' after 882 μs
+13 error execute [WEBPACK] [16:40:10] Starting 'watch:css'...
+13 error execute [WEBPACK] [16:40:10] Finished 'watch:css' after 2.43 ms
+13 error execute [WEBPACK] [16:40:10] Starting 'watch:js'...
+13 error execute [WEBPACK] [16:40:10] Finished 'watch:js' after 870 μs
+13 error execute [WEBPACK] [16:40:10] Starting 'watch:vendor-js'...
+13 error execute [WEBPACK] [16:40:10] Finished 'watch:vendor-js' after 1.55 ms
+13 error execute [WEBPACK] [16:40:10] Starting 'watch:src'...
+13 error execute [WEBPACK] [16:40:10] Finished 'watch:src' after 28 μs
+13 error execute [WEBPACK] [16:40:10] Starting 'watch:dist'...
+13 error execute [WEBPACK] [16:40:10] Finished 'watch:dist' after 378 μs
+13 error execute [WEBPACK] [16:40:10] Starting 'watch:dist-config'...
+13 error execute [WEBPACK] [16:40:10] Finished 'watch:dist-config' after 237 μs
+13 error execute [WEBPACK] [16:40:10] Starting 'deploy:sync-init'...
+13 error execute [WEBPACK] [16:40:10] Finished 'deploy:sync-init' after 13 ms
+13 error execute [WEBPACK] [16:40:10] Starting 'deploy:sync-reload'...
+13 error execute [WEBPACK] [16:40:10] Finished 'deploy:sync-reload' after 11 ms
+13 error execute [WEBPACK] [BS] Proxying: https://wdkl-ocean.myshopify.com
+13 error execute [WEBPACK] [BS] Access URLs:
+13 error execute [WEBPACK]  -------------------------------------------------------------------
+13 error execute [WEBPACK]        Local: https://localhost:3000/?preview_theme_id=183504273
+13 error execute [WEBPACK]     External: https://192.168.0.148:3000/?preview_theme_id=183504273
+13 error execute [WEBPACK]  -------------------------------------------------------------------
+13 error execute [WEBPACK]           UI: http://localhost:3001
+13 error execute [WEBPACK]  UI External: http://192.168.0.148:3001
+13 error execute [WEBPACK]  -------------------------------------------------------------------
+13 error execute [SHOPIFY] Hash: df2520a98ba2209503cc
+13 error execute [SHOPIFY] Version: webpack 2.4.1
+13 error execute [SHOPIFY] Time: 3760ms
+13 error execute [SHOPIFY]             Asset     Size  Chunks             Chunk Names
+13 error execute [SHOPIFY]   index.js.liquid  33.4 kB       0  [emitted]  main
+13 error execute [SHOPIFY] /index.css.liquid   205 kB       0  [emitted]  main
+13 error execute [SHOPIFY]    [0] ./src/scripts/modules/cookie-notification.js 642 bytes {0} [built]
+13 error execute [SHOPIFY]    [1] ./src/scripts/modules/facebook-pixel-events.js 607 bytes {0} [built]
+13 error execute [SHOPIFY]    [2] ./src/scripts/modules/instagram-feed.js 3.42 kB {0} [built]
+13 error execute [SHOPIFY]    [3] ./src/scripts/modules/notification.js 634 bytes {0} [built]
+13 error execute [SHOPIFY]    [4] ./src/scripts/modules/number-input.js 779 bytes {0} [built]
+13 error execute [SHOPIFY]    [5] ./src/scripts/modules/smooth-scrolling.js 1.1 kB {0} [built]
+13 error execute [SHOPIFY]    [6] ./src/scripts/modules/sticky-navigation.js 639 bytes {0} [built]
+13 error execute [SHOPIFY]    [7] ./src/scripts/polyfills/rAf.js 636 bytes {0} [built]
+13 error execute [SHOPIFY]    [8] ./src/scss/index.scss 41 bytes {0} [built]
+13 error execute [SHOPIFY]    [9] ./configuration/instagram/access.js 172 bytes {0} [built]
+13 error execute [SHOPIFY]   [10] ./src/scripts/index.js 1.27 kB {0} [built]
+13 error execute [SHOPIFY]   [11] ./src/scripts/modules/logger.js 317 bytes {0} [built]
+13 error execute [SHOPIFY]   [14] ./~/jsonp/index.js 1.95 kB {0} [built]
+13 error execute [SHOPIFY]   [18] ./~/buffer/index.js 48.6 kB [built]
+13 error execute [SHOPIFY]   [19] ./~/css-loader/lib/css-base.js 2.19 kB [built]
+13 error execute [SHOPIFY]     + 8 hidden modules
+13 error execute [SHOPIFY] Child extract-text-webpack-plugin:
+13 error execute [SHOPIFY]        [0] ./~/css-loader/lib/css-base.js 2.19 kB {0} [built]
+13 error execute [SHOPIFY]        [1] ./~/base64-js/index.js 3.48 kB {0} [built]
+13 error execute [SHOPIFY]        [2] ./~/buffer/index.js 48.6 kB {0} [built]
+13 error execute [SHOPIFY]        [3] ./~/css-loader?{"sourceMap":true}!./~/postcss-loader?{}!./~/sass-loader/lib/loader.js!./src/scss/index.scss 443 kB {0} [built]
+13 error execute [SHOPIFY]        [4] ./~/ieee754/index.js 2.05 kB {0} [built]
+13 error execute [SHOPIFY]        [5] ./~/isarray/index.js 132 bytes {0} [built]
+13 error execute [SHOPIFY]        [6] (webpack)/buildin/global.js 509 bytes {0} [built]
+13 error execute [WEBPACK] [16:40:13]
+13 error execute [WEBPACK] change in src/assets - change index.js.liquid
+13 error execute [WEBPACK] [16:40:13]
+13 error execute [WEBPACK] change in src/assets - change index.css.liquid
+13 error execute [WEBPACK] [16:40:13]
+13 error execute [WEBPACK] running task - build:assets
+13 error execute [WEBPACK] [16:40:13] assets/index.js.liquid 33.37 kB
+13 error execute [WEBPACK] [16:40:13]
+13 error execute [WEBPACK] assets/index.css.liquid 204.6 kB
+13 error execute [WEBPACK] [16:40:13] all files 237.97 kB
+13 error execute [WEBPACK] [16:40:14]
+13 error execute [WEBPACK] change in assets - change index.js.liquid
+13 error execute [WEBPACK] [16:40:14] Initiating deploy to development
+13 error execute [WEBPACK] [16:40:14]
+13 error execute [WEBPACK] change in assets - change index.css.liquid
+13 error execute [WEBPACK] [16:40:14] Initiating deploy to development
+13 error execute [WEBPACK] [16:40:14]
+13 error execute [WEBPACK] running task [child process] - theme upload
+13 error execute [WEBPACK] [development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K
+13 error execute [WEBPACK] [development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 0 / 2 [--------------------------------------------------------------------]   0 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K
+13 error execute [WEBPACK] [development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 1 / 2 [=================================>----------------------------------]  50 %
+13 error execute [WEBPACK] [1A[2K[development]: 2 / 2 [====================================================================] 100 %
+13 error execute [WEBPACK] [16:40:25] Transfer Complete: File changes successfully synced to store
+13 error execute [WEBPACK] [BS] Reloading Browsers...
+13 error execute [WEBPACK] [19:13:15]
+13 error execute [WEBPACK] Starting 'deploy:sync-init'...
+13 error execute [WEBPACK] [19:13:15]
+13 error execute [WEBPACK] Finished 'deploy:sync-init' after 28 ms
+13 error execute [WEBPACK] [BS] Proxying: https://wdkl-ocean.myshopify.com
+13 error execute [WEBPACK] [BS] Access URLs:
+13 error execute [WEBPACK]  -------------------------------------------------------------------
+13 error execute [WEBPACK]        Local: https://localhost:3000/?preview_theme_id=180599889
+13 error execute [WEBPACK]     External: https://192.168.0.148:3000/?preview_theme_id=180599889
+13 error execute [WEBPACK]  -------------------------------------------------------------------
+13 error execute [WEBPACK]           UI: http://localhost:3001
+13 error execute [WEBPACK]  UI External: http://192.168.0.148:3001
+13 error execute [WEBPACK]  -------------------------------------------------------------------
+13 error execute [WEBPACK] [19:13:15]
+13 error execute [WEBPACK] change in  - change config.yml
+13 error execute [WEBPACK] [19:13:15] running task - build:config
+13 error execute [WEBPACK] [19:13:15]
+13 error execute [WEBPACK] config.yml 116 B
+13 error execute [WEBPACK] [19:13:15]
+13 error execute [WEBPACK] change in dist - change config.yml
+13 error execute [WEBPACK] /Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/@shopify/slate-tools/lib/tasks/build-config.js:70
+13 error execute [WEBPACK]     throw new Error(messages.configChange());
+13 error execute [WEBPACK]     ^
+13 error execute [WEBPACK]
+13 error execute [WEBPACK] Error: Changes to ThemeKit Config Detected: You may need to quit <slate watch> and run a full <slate deploy> as a result.
+13 error execute [WEBPACK]     at FSWatcher.<anonymous> (/Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/@shopify/slate-tools/lib/tasks/build-config.js:70:11)
+13 error execute [WEBPACK]     at emitTwo (events.js:106:13)
+13 error execute [WEBPACK]     at FSWatcher.emit (events.js:194:7)
+13 error execute [WEBPACK]     at FSWatcher.<anonymous> (/Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/chokidar/index.js:192:38)
+13 error execute [WEBPACK]     at FSWatcher._emit (/Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/chokidar/index.js:233:5)
+13 error execute [WEBPACK]     at FSWatcher.<anonymous> (/Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/chokidar/lib/fsevents-handler.js:204:14)
+13 error execute [WEBPACK]     at addOrChange (/Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/chokidar/lib/fsevents-handler.js:210:7)
+13 error execute [WEBPACK]     at FSWatcher.<anonymous> (/Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/chokidar/lib/fsevents-handler.js:236:16)
+13 error execute [WEBPACK]     at filteredListener (/Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/chokidar/lib/fsevents-handler.js:58:7)
+13 error execute [WEBPACK]     at /Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/chokidar/lib/fsevents-handler.js:83:11
+13 error execute [WEBPACK]     at Array.forEach (native)
+13 error execute [WEBPACK]     at FSEvents.<anonymous> (/Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/chokidar/lib/fsevents-handler.js:82:34)
+13 error execute [WEBPACK]     at emitThree (events.js:116:13)
+13 error execute [WEBPACK]     at FSEvents.emit (events.js:197:7)
+13 error execute [WEBPACK]     at Immediate.<anonymous> (/Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/fsevents/fsevents.js:47:11)
+13 error execute [WEBPACK]     at runCallback (timers.js:672:20)
+13 error execute [WEBPACK] npm run slate:watch exited with code 0
+13 error execute --> Sending SIGTERM to other processes..
+13 error execute [SHOPIFY] npm run webpack exited with code null
+13 error execute
+13 error execute     at Promise.all.then.arr (/Users/maupal/Lab/wdlk-shopify-store/node_modules/lerna/node_modules/execa/index.js:210:11)
+13 error execute     at process._tickCallback (internal/process/next_tick.js:109:7)
+13 error execute   code: 1,
+13 error execute   killed: false,
+13 error execute   stdout: '\n> wdlk-ocean-store@2.0.1 dev /Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store\n> concurrently -k -p "[{name}]" -n "WEBPACK,SHOPIFY" "npm run slate:watch" "npm run webpack"\n\n[WEBPACK] \n[WEBPACK] > wdlk-ocean-store@2.0.1 slate:watch /Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store\n[WEBPACK] > slate watch\n[WEBPACK] \n[SHOPIFY] \n[SHOPIFY] > wdlk-ocean-store@2.0.1 webpack /Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store\n[SHOPIFY] > NODE_ENV=development webpack --config configuration/webpack.config.js\n[SHOPIFY] \n[SHOPIFY] \n[SHOPIFY] Webpack is watching the files…\n[SHOPIFY] \n[WEBPACK] [16:40:10] \n[WEBPACK] Using gulpfile ~/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/@shopify/slate-tools/lib/gulpfile.js\n[WEBPACK] [16:40:10] \n[WEBPACK] Starting \'watch\'...\n[WEBPACK] [16:40:10] \n[WEBPACK] Starting \'validate:id\'...\n[WEBPACK] [16:40:10] \n[WEBPACK] Finished \'watch\' after 7.9 ms\n[WEBPACK] [16:40:10] \n[WEBPACK] Finished \'validate:id\' after 9.95 ms\n[WEBPACK] [16:40:10] Starting \'build:config\'...\n[WEBPACK] [16:40:10] running task - build:config\n[WEBPACK] [16:40:10] \n[WEBPACK] config.yml 116 B\n[WEBPACK] [16:40:10] Finished \'build:config\' after 20 ms\n[WEBPACK] [16:40:10] Starting \'watch:assets\'...\n[WEBPACK] [16:40:10] Finished \'watch:assets\' after 12 ms\n[WEBPACK] [16:40:10] Starting \'watch:config\'...\n[WEBPACK] [16:40:10] Finished \'watch:config\' after 553 μs\n[WEBPACK] [16:40:10] Starting \'watch:svg\'...\n[WEBPACK] [16:40:10] Finished \'watch:svg\' after 882 μs\n[WEBPACK] [16:40:10] Starting \'watch:css\'...\n[WEBPACK] [16:40:10] Finished \'watch:css\' after 2.43 ms\n[WEBPACK] [16:40:10] Starting \'watch:js\'...\n[WEBPACK] [16:40:10] Finished \'watch:js\' after 870 μs\n[WEBPACK] [16:40:10] Starting \'watch:vendor-js\'...\n[WEBPACK] [16:40:10] Finished \'watch:vendor-js\' after 1.55 ms\n[WEBPACK] [16:40:10] Starting \'watch:src\'...\n[WEBPACK] [16:40:10] Finished \'watch:src\' after 28 μs\n[WEBPACK] [16:40:10] Starting \'watch:dist\'...\n[WEBPACK] [16:40:10] Finished \'watch:dist\' after 378 μs\n[WEBPACK] [16:40:10] Starting \'watch:dist-config\'...\n[WEBPACK] [16:40:10] Finished \'watch:dist-config\' after 237 μs\n[WEBPACK] [16:40:10] Starting \'deploy:sync-init\'...\n[WEBPACK] [16:40:10] Finished \'deploy:sync-init\' after 13 ms\n[WEBPACK] [16:40:10] Starting \'deploy:sync-reload\'...\n[WEBPACK] [16:40:10] Finished \'deploy:sync-reload\' after 11 ms\n[WEBPACK] [BS] Proxying: https://wdkl-ocean.myshopify.com\n[WEBPACK] [BS] Access URLs:\n[WEBPACK]  -------------------------------------------------------------------\n[WEBPACK]        Local: https://localhost:3000/?preview_theme_id=183504273\n[WEBPACK]     External: https://192.168.0.148:3000/?preview_theme_id=183504273\n[WEBPACK]  -------------------------------------------------------------------\n[WEBPACK]           UI: http://localhost:3001\n[WEBPACK]  UI External: http://192.168.0.148:3001\n[WEBPACK]  -------------------------------------------------------------------\n[SHOPIFY] Hash: df2520a98ba2209503cc\n[SHOPIFY] Version: webpack 2.4.1\n[SHOPIFY] Time: 3760ms\n[SHOPIFY]             Asset     Size  Chunks             Chunk Names\n[SHOPIFY]   index.js.liquid  33.4 kB       0  [emitted]  main\n[SHOPIFY] /index.css.liquid   205 kB       0  [emitted]  main\n[SHOPIFY]    [0] ./src/scripts/modules/cookie-notification.js 642 bytes {0} [built]\n[SHOPIFY]    [1] ./src/scripts/modules/facebook-pixel-events.js 607 bytes {0} [built]\n[SHOPIFY]    [2] ./src/scripts/modules/instagram-feed.js 3.42 kB {0} [built]\n[SHOPIFY]    [3] ./src/scripts/modules/notification.js 634 bytes {0} [built]\n[SHOPIFY]    [4] ./src/scripts/modules/number-input.js 779 bytes {0} [built]\n[SHOPIFY]    [5] ./src/scripts/modules/smooth-scrolling.js 1.1 kB {0} [built]\n[SHOPIFY]    [6] ./src/scripts/modules/sticky-navigation.js 639 bytes {0} [built]\n[SHOPIFY]    [7] ./src/scripts/polyfills/rAf.js 636 bytes {0} [built]\n[SHOPIFY]    [8] ./src/scss/index.scss 41 bytes {0} [built]\n[SHOPIFY]    [9] ./configuration/instagram/access.js 172 bytes {0} [built]\n[SHOPIFY]   [10] ./src/scripts/index.js 1.27 kB {0} [built]\n[SHOPIFY]   [11] ./src/scripts/modules/logger.js 317 bytes {0} [built]\n[SHOPIFY]   [14] ./~/jsonp/index.js 1.95 kB {0} [built]\n[SHOPIFY]   [18] ./~/buffer/index.js 48.6 kB [built]\n[SHOPIFY]   [19] ./~/css-loader/lib/css-base.js 2.19 kB [built]\n[SHOPIFY]     + 8 hidden modules\n[SHOPIFY] Child extract-text-webpack-plugin:\n[SHOPIFY]        [0] ./~/css-loader/lib/css-base.js 2.19 kB {0} [built]\n[SHOPIFY]        [1] ./~/base64-js/index.js 3.48 kB {0} [built]\n[SHOPIFY]        [2] ./~/buffer/index.js 48.6 kB {0} [built]\n[SHOPIFY]        [3] ./~/css-loader?{"sourceMap":true}!./~/postcss-loader?{}!./~/sass-loader/lib/loader.js!./src/scss/index.scss 443 kB {0} [built]\n[SHOPIFY]        [4] ./~/ieee754/index.js 2.05 kB {0} [built]\n[SHOPIFY]        [5] ./~/isarray/index.js 132 bytes {0} [built]\n[SHOPIFY]        [6] (webpack)/buildin/global.js 509 bytes {0} [built]\n[WEBPACK] [16:40:13] \n[WEBPACK] change in src/assets - change index.js.liquid\n[WEBPACK] [16:40:13] \n[WEBPACK] change in src/assets - change index.css.liquid\n[WEBPACK] [16:40:13] \n[WEBPACK] running task - build:assets\n[WEBPACK] [16:40:13] assets/index.js.liquid 33.37 kB\n[WEBPACK] [16:40:13] \n[WEBPACK] assets/index.css.liquid 204.6 kB\n[WEBPACK] [16:40:13] all files 237.97 kB\n[WEBPACK] [16:40:14] \n[WEBPACK] change in assets - change index.js.liquid\n[WEBPACK] [16:40:14] Initiating deploy to development\n[WEBPACK] [16:40:14] \n[WEBPACK] change in assets - change index.css.liquid\n[WEBPACK] [16:40:14] Initiating deploy to development\n[WEBPACK] [16:40:14] \n[WEBPACK] running task [child process] - theme upload\n[WEBPACK] [development]: 0 / 2 [--------------------------------------------------------------------]   0 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 0 / 2 [--------------------------------------------------------------------]   0 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 0 / 2 [--------------------------------------------------------------------]   0 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 0 / 2 [--------------------------------------------------------------------]   0 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 0 / 2 [--------------------------------------------------------------------]   0 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 0 / 2 [--------------------------------------------------------------------]   0 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 0 / 2 [--------------------------------------------------------------------]   0 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 0 / 2 [--------------------------------------------------------------------]   0 %\n[WEBPACK] \u001b[1A\u001b[2K\r\n[WEBPACK] [development]: 0 / 2 [--------------------------------------------------------------------]   0 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 0 / 2 [--------------------------------------------------------------------]   0 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 0 / 2 [--------------------------------------------------------------------]   0 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 0 / 2 [--------------------------------------------------------------------]   0 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 0 / 2 [--------------------------------------------------------------------]   0 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 0 / 2 [--------------------------------------------------------------------]   0 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 0 / 2 [--------------------------------------------------------------------]   0 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 0 / 2 [--------------------------------------------------------------------]   0 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 0 / 2 [--------------------------------------------------------------------]   0 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 0 / 2 [--------------------------------------------------------------------]   0 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r\n[WEBPACK] [development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 1 / 2 [=================================>----------------------------------]  50 %\n[WEBPACK] \u001b[1A\u001b[2K\r[development]: 2 / 2 [====================================================================] 100 %\n[WEBPACK] [16:40:25] Transfer Complete: File changes successfully synced to store\n[WEBPACK] [BS] Reloading Browsers...\n[WEBPACK] [19:13:15] \n[WEBPACK] Starting \'deploy:sync-init\'...\n[WEBPACK] [19:13:15] \n[WEBPACK] Finished \'deploy:sync-init\' after 28 ms\n[WEBPACK] [BS] Proxying: https://wdkl-ocean.myshopify.com\n[WEBPACK] [BS] Access URLs:\n[WEBPACK]  -------------------------------------------------------------------\n[WEBPACK]        Local: https://localhost:3000/?preview_theme_id=180599889\n[WEBPACK]     External: https://192.168.0.148:3000/?preview_theme_id=180599889\n[WEBPACK]  -------------------------------------------------------------------\n[WEBPACK]           UI: http://localhost:3001\n[WEBPACK]  UI External: http://192.168.0.148:3001\n[WEBPACK]  -------------------------------------------------------------------\n[WEBPACK] [19:13:15] \n[WEBPACK] change in  - change config.yml\n[WEBPACK] [19:13:15] running task - build:config\n[WEBPACK] [19:13:15] \n[WEBPACK] config.yml 116 B\n[WEBPACK] [19:13:15] \n[WEBPACK] change in dist - change config.yml\n[WEBPACK] /Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/@shopify/slate-tools/lib/tasks/build-config.js:70\n[WEBPACK]     throw new Error(messages.configChange());\n[WEBPACK]     ^\n[WEBPACK] \n[WEBPACK] Error: Changes to ThemeKit Config Detected: You may need to quit <slate watch> and run a full <slate deploy> as a result.\n[WEBPACK]     at FSWatcher.<anonymous> (/Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/@shopify/slate-tools/lib/tasks/build-config.js:70:11)\n[WEBPACK]     at emitTwo (events.js:106:13)\n[WEBPACK]     at FSWatcher.emit (events.js:194:7)\n[WEBPACK]     at FSWatcher.<anonymous> (/Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/chokidar/index.js:192:38)\n[WEBPACK]     at FSWatcher._emit (/Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/chokidar/index.js:233:5)\n[WEBPACK]     at FSWatcher.<anonymous> (/Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/chokidar/lib/fsevents-handler.js:204:14)\n[WEBPACK]     at addOrChange (/Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/chokidar/lib/fsevents-handler.js:210:7)\n[WEBPACK]     at FSWatcher.<anonymous> (/Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/chokidar/lib/fsevents-handler.js:236:16)\n[WEBPACK]     at filteredListener (/Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/chokidar/lib/fsevents-handler.js:58:7)\n[WEBPACK]     at /Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/chokidar/lib/fsevents-handler.js:83:11\n[WEBPACK]     at Array.forEach (native)\n[WEBPACK]     at FSEvents.<anonymous> (/Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/chokidar/lib/fsevents-handler.js:82:34)\n[WEBPACK]     at emitThree (events.js:116:13)\n[WEBPACK]     at FSEvents.emit (events.js:197:7)\n[WEBPACK]     at Immediate.<anonymous> (/Users/maupal/Lab/wdlk-shopify-store/packages/wdlk-store/node_modules/fsevents/fsevents.js:47:11)\n[WEBPACK]     at runCallback (timers.js:672:20)\n[WEBPACK] npm run slate:watch exited with code 0\n--> Sending SIGTERM to other processes..\n[SHOPIFY] npm run webpack exited with code null\n',
+13 error execute   stderr: '\nnpm ERR! Darwin 16.5.0\nnpm ERR! argv "/Users/maupal/.nvm/versions/node/v7.10.0/bin/node" "/Users/maupal/.nvm/versions/node/v7.10.0/bin/npm" "run" "dev"\nnpm ERR! node v7.10.0\nnpm ERR! npm  v4.2.0\nnpm ERR! code ELIFECYCLE\nnpm ERR! errno 1\nnpm ERR! wdlk-ocean-store@2.0.1 dev: `concurrently -k -p "[{name}]" -n "WEBPACK,SHOPIFY" "npm run slate:watch" "npm run webpack"`\nnpm ERR! Exit status 1\nnpm ERR! \nnpm ERR! Failed at the wdlk-ocean-store@2.0.1 dev script \'concurrently -k -p "[{name}]" -n "WEBPACK,SHOPIFY" "npm run slate:watch" "npm run webpack"\'.\nnpm ERR! Make sure you have the latest version of node.js and npm installed.\nnpm ERR! If you do, this is most likely a problem with the wdlk-ocean-store package,\nnpm ERR! not with npm itself.\nnpm ERR! Tell the author that this fails on your system:\nnpm ERR!     concurrently -k -p "[{name}]" -n "WEBPACK,SHOPIFY" "npm run slate:watch" "npm run webpack"\nnpm ERR! You can get information on how to open an issue for this project with:\nnpm ERR!     npm bugs wdlk-ocean-store\nnpm ERR! Or if that isn\'t available, you can get their info via:\nnpm ERR!     npm owner ls wdlk-ocean-store\nnpm ERR! There is likely additional logging output above.\n\nnpm ERR! Please include the following file with any support request:\nnpm ERR!     /Users/maupal/.npm/_logs/2017-07-14T17_13_15_971Z-debug.log\n',
+13 error execute   failed: true,
+13 error execute   signal: null,
+13 error execute   cmd: 'npm run dev',
+13 error execute   timedOut: false }
