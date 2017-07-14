@@ -2116,7 +2116,7 @@ input[type="number"]::-webkit-outer-spin-button {
       animation: intro-msg 3s ease-in-out 0.3s; }
     .Notification.is-active .Notification-msg:last-of-type {
       opacity: 1;
-      transform: translateY(-60%); }
+      transform: translateY(-90%); }
     @media (min-width: 768px) {
       .Notification.is-active .Notification-msg:first-of-type {
         animation-delay: .6s; }
@@ -2127,7 +2127,7 @@ input[type="number"]::-webkit-outer-spin-button {
     .Notification-state:checked ~ .Notification {
       max-height: 0; }
   .Notification-content {
-    padding: 1.6rem 4rem .8rem;
+    padding: 1.6rem 3.2rem .8rem;
     margin-top: 0;
     margin-bottom: 0; }
   .Notification-link {
@@ -2160,6 +2160,20 @@ input[type="number"]::-webkit-outer-spin-button {
     transform: translateY(200%);
     transition: ease-in .333s 3.55s; }
 
+@keyframes intro-msg {
+  0% {
+    opacity: 0;
+    transform: translateY(150%); }
+  10% {
+    opacity: 1;
+    transform: translateY(10%); }
+  90% {
+    opacity: 1;
+    transform: translateY(10%); }
+  100% {
+    opacity: 0;
+    transform: translateY(-200%); } }
+
 @media (min-width: 768px) {
   @keyframes intro-msg {
     0% {
@@ -2174,20 +2188,6 @@ input[type="number"]::-webkit-outer-spin-button {
     100% {
       opacity: 0;
       transform: translateY(-200%); } } }
-
-@keyframes intro-msg {
-  0% {
-    opacity: 0;
-    transform: translateY(150%); }
-  10% {
-    opacity: 1;
-    transform: translateY(10%); }
-  90% {
-    opacity: 1;
-    transform: translateY(10%); }
-  100% {
-    opacity: 0;
-    transform: translateY(-200%); } }
 
 .Feed {
   display: flex;

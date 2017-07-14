@@ -25,7 +25,7 @@
       }
       &:last-of-type {
         opacity: 1;
-        transform: translateY(-60%);
+        transform: translateY(-90%);
       }
     }
     @include media(medium) {
@@ -51,7 +51,7 @@
   }
 
   &-content {
-    padding: 1.6rem 4rem .8rem;
+    padding: 1.6rem 3.2rem .8rem;
     margin: {
       top: 0;
       bottom: 0;
@@ -85,6 +85,27 @@
 
 }
 
+@keyframes intro-msg {
+  0% {
+    opacity: 0;
+    transform: translateY(150%);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(10%);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(10%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-200%);
+  }
+}
+
+
+
 @include media(medium) {
   @keyframes intro-msg {
     0% {
@@ -103,24 +124,5 @@
       opacity: 0;
       transform: translateY(-200%);
     }
-  }
-}
-
-@keyframes intro-msg {
-  0% {
-    opacity: 0;
-    transform: translateY(150%);
-  }
-  10% {
-    opacity: 1;
-    transform: translateY(10%);
-  }
-  90% {
-    opacity: 1;
-    transform: translateY(10%);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-200%);
   }
 }
