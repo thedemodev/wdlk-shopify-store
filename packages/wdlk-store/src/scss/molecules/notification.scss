@@ -1,58 +1,126 @@
 .Notification {
-	@include grid-wrapper(undefined, center);
-	position: relative;
-	z-index: 6;
-	max-height: 0;
-	overflow: hidden;
-	text-align: center;
-	color: $typo-hex--tertiary;
-	background-color: $background-color-contrast;
-	transform: translate3d(0, 0, 0);
-	perspective: 1000;
-	transition: max-height $transition-speed ease-in-out;
+  @include grid-wrapper(undefined, center);
+  position: relative;
+  z-index: 6;
+  max-height: 0;
+  overflow: hidden;
+  text-align: center;
+  color: $typo-hex--tertiary;
+  background-color: $background-color-contrast;
+  transform: translate3d(0, 0, 0);
+  perspective: 1000;
+  transition: max-height $transition-speed ease-in-out;
 
-	@include media(medium) {
-		transition-duration: .6;
-	}
+  @include media(medium) {
+    transition-duration: .6s;
+  }
 
-	&.is-active {
-		max-height: 15vh;
-		transition: max-height $transition-speed ease-in-out;
+  &.is-active {
+    max-height: 12vh;
+    transition: max-height $transition-speed ease-in-out;
 
-		@include media(medium) {
-			transition-duration: .6s;
-		}
-	}
+    .Notification-msg {
+      &:first-of-type {
+        animation: intro-msg 3s ease-in-out $transition-speed;
+      }
+      &:last-of-type {
+        opacity: 1;
+        transform: translateY(-60%);
+      }
+    }
+    @include media(medium) {
+      .Notification-msg {
+        &:first-of-type {
+          animation-delay: .6s;
+        }
+        &:last-of-type {
+          transform: translateY(-50%);
+        }
+      }
+    }
+  }
 
-	&-state {
-		display: none;
+  &-state {
+    display: none;
 
-		&:checked {
-			~ .Notification {
-				max-height: 0;
-			}
-		}
-	}
+    &:checked {
+      ~ .Notification {
+        max-height: 0;
+      }
+    }
+  }
 
-	&-content {
-		padding: 1.6rem 3rem .8rem;
-		margin: {
-			top: 0;
-			bottom: 0;
-		};
-	}
+  &-content {
+    padding: 1.6rem 4rem .8rem;
+    margin: {
+      top: 0;
+      bottom: 0;
+    };
+  }
 
-	&-link {
-		position: absolute;
-		top: 50%;
-		right: 1rem;
-		box-sizing: border-box;
-		width: $touch-target-size;
-		height: $touch-target-size;
-		cursor: pointer;
-		transform: translateY(-50%);
+  &-link {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    box-sizing: border-box;
+    width: $touch-target-size;
+    height: $touch-target-size;
+    cursor: pointer;
+    transform: translateY(-50%);
 
-		@include generate-x(2rem, .1rem);
-	}
+    @include generate-x(2rem, .1rem);
+  }
 
+  &-msg {
+    &:first-of-type {
+      opacity: 0;
+      transform: translateY(-200%);
+    }
+    &:last-of-type {
+      opacity: 0;
+      transform: translateY(200%);
+      transition: ease-in .333s 3.55s;
+    }
+  }
+
+}
+
+@include media(medium) {
+  @keyframes intro-msg {
+    0% {
+      opacity: 0;
+      transform: translateY(150%);
+    }
+    10% {
+      opacity: 1;
+      transform: translateY(50%);
+    }
+    90% {
+      opacity: 1;
+      transform: translateY(50%);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-200%);
+    }
+  }
+}
+
+@keyframes intro-msg {
+  0% {
+    opacity: 0;
+    transform: translateY(150%);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(10%);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(10%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-200%);
+  }
 }

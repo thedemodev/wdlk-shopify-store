@@ -2108,19 +2108,26 @@ input[type="number"]::-webkit-outer-spin-button {
   transition: max-height 0.3s ease-in-out; }
   @media (min-width: 768px) {
     .Notification {
-      transition-duration: .6; } }
+      transition-duration: .6s; } }
   .Notification.is-active {
-    max-height: 15vh;
+    max-height: 12vh;
     transition: max-height 0.3s ease-in-out; }
+    .Notification.is-active .Notification-msg:first-of-type {
+      animation: intro-msg 3s ease-in-out 0.3s; }
+    .Notification.is-active .Notification-msg:last-of-type {
+      opacity: 1;
+      transform: translateY(-60%); }
     @media (min-width: 768px) {
-      .Notification.is-active {
-        transition-duration: .6s; } }
+      .Notification.is-active .Notification-msg:first-of-type {
+        animation-delay: .6s; }
+      .Notification.is-active .Notification-msg:last-of-type {
+        transform: translateY(-50%); } }
   .Notification-state {
     display: none; }
     .Notification-state:checked ~ .Notification {
       max-height: 0; }
   .Notification-content {
-    padding: 1.6rem 3rem .8rem;
+    padding: 1.6rem 4rem .8rem;
     margin-top: 0;
     margin-bottom: 0; }
   .Notification-link {
@@ -2145,6 +2152,42 @@ input[type="number"]::-webkit-outer-spin-button {
       transform: rotate(45deg); }
     .Notification-link::after {
       transform: rotate(135deg); }
+  .Notification-msg:first-of-type {
+    opacity: 0;
+    transform: translateY(-200%); }
+  .Notification-msg:last-of-type {
+    opacity: 0;
+    transform: translateY(200%);
+    transition: ease-in .333s 3.55s; }
+
+@media (min-width: 768px) {
+  @keyframes intro-msg {
+    0% {
+      opacity: 0;
+      transform: translateY(150%); }
+    10% {
+      opacity: 1;
+      transform: translateY(50%); }
+    90% {
+      opacity: 1;
+      transform: translateY(50%); }
+    100% {
+      opacity: 0;
+      transform: translateY(-200%); } } }
+
+@keyframes intro-msg {
+  0% {
+    opacity: 0;
+    transform: translateY(150%); }
+  10% {
+    opacity: 1;
+    transform: translateY(10%); }
+  90% {
+    opacity: 1;
+    transform: translateY(10%); }
+  100% {
+    opacity: 0;
+    transform: translateY(-200%); } }
 
 .Feed {
   display: flex;

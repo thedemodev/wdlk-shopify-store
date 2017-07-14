@@ -1,19 +1,22 @@
 {% capture notificationTitle %}
-	{{'general.notification.title' | t }}
+  {{'general.notification.title' | t }}
 {% endcapture %}
 {% capture notificationCaption %}
-	{{'general.notification.caption' | t }}
+  {{'general.notification.caption' | t }}
 {% endcapture %}
 {% assign notificationIsActive = notificationTitle %}
 
 {% if notificationTitle != blank and notificationCaption != blank %}
-	<input type="checkbox" class="Notification-state" id="notificationModule" />
-	<figure class="Notification js_notification">
-		<figcaption class="Notification-content Headline Headline--5 Headline--complementary">
-			<a class="Link Link--contrast" href="/pages/shipping-information">
-				{{notificationTitle}}{{notificationCaption}}{{'general.notification.code' | t }}
-			</a>
-		</figcaption>
-		<label class="Notification-link js_notification-btn" for="notificationModule"></label>
-	</figure>
+  <input type="checkbox" class="Notification-state" id="notificationModule" />
+  <div class="Notification js_notification">
+    <div class="Notification-content Headline Headline--5 Headline--complementary">
+      <div class="Notification-msg">
+        {{notificationTitle}}
+      </div>
+      <div class="Notification-msg">
+        {{notificationCaption}} <strong>{{'general.notification.code' | t }}</strong>
+      </div>
+    </div>
+    <label class="Notification-link js_notification-btn" for="notificationModule"></label>
+  </div>
 {% endif %}
