@@ -1,145 +1,155 @@
 .Product {
-    &-display {
-        @include grid-wrapper($screen-xl);
+  //-- Secondary background color for
+  //-- product detail site
+  &--themeLight {
+    .Product-display {
+      background-color: $hex-off-white;
 
-        position: relative;
-        padding-top: $nav-height;
-        background-color: $background-color-tertiary;
+      &::after {
+        background-color: $hex-off-white;
+      }
+    }
+    .Product-detail {
+      @include media (large) {
+        background-color: $hex-off-white;
+      }
+    }
+  }
 
-        &::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 50%;
-            z-index: -1;
-            width: 100vw;
-            height: 100%;
-            background-color: $background-color-tertiary;
-            transform: translateX(-50%);
-        }
+  &-display {
+    @include grid-wrapper($screen-xl);
 
-        @include media (medium) {
-            padding-top: $nav-height-medium;
-            align-items: center;
-        }
+    position: relative;
+    padding-top: $nav-height;
+    background-color: $hex-light-sand;
 
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      z-index: -1;
+      width: 100vw;
+      height: 100%;
+      background-color: $hex-light-sand;
+      transform: translateX(-50%);
     }
 
-    &-detail {
-        //-- GRID GENERATOR
-        //-- 1. Count column mobile first
-        //-- 2. Factor column number for tablet & desktop
-        //-- 3. Optional argument to define the inner padding
-        @include grid-cell(1, 2, $base-spacing, large);
-
-        position: relative;
-        padding: {
-            bottom: $base-spacing;
-        }
-        text-align: center;
-        background-color: $background-color ;
-
-        @include media(large) {
-            background-color: $background-color-tertiary;
-        }
-
-        //-- Styling for the price
-        .Headline--3 {
-            margin-bottom: 0;
-            color: $typo-hex--highlight;
-        }
+    @include media (medium) {
+      padding-top: $nav-height-medium;
+      align-items: center;
     }
 
-    &-images {
-        //-- GRID GENERATOR
-        //-- 1. Count column mobile first
-        //-- 2. Factor column number for tablet & desktop
-        //-- 3. Optional argument to define the inner padding
-        @include grid-cell(1, 2, 0, large);
-        position: relative;
+  }
+
+  &-detail {
+    //-- GRID GENERATOR
+    //-- 1. Count column mobile first
+    //-- 2. Factor column number for tablet & desktop
+    //-- 3. Optional argument to define the inner padding
+    @include grid-cell(1, 2, $base-spacing, large);
+
+    position: relative;
+    padding: {
+        bottom: $base-spacing;
+    }
+    text-align: center;
+    background-color: $background-color;
+
+    @include media(large) {
+        background-color: $hex-light-sand;
     }
 
-    &-headline {
-        position: relative;
-        padding-bottom: $base-spacing / 1.5;
-        margin-top: $base-spacing * 2;
-        text-transform: none;
-
-        &::after {
-            content: "";
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            height: .2rem;
-            width: 6rem;
-            margin: auto;
-            background-color: $typo-hex;
-        }
-    }
-
-    &-navigator {
-        box-sizing: border-box;
-        width: 100%;
-        margin: 4rem auto 0;
-        padding: {
-            right: 4rem;
-            left: 4rem;
-        }
-        text-align: justify;
-
-        //@include media(large) {
-        //    position: absolute;
-        //    right: 0;
-        //    bottom: 0;
-        //    left: 0;
-        //}
-
-        &::after {
-            content: "";
-            display: inline-block;
-            width: 100%;
-        }
-    }
-
+    //-- Styling for the price
     .Headline--3 {
-        &:first-child {
-            position: relative;
-            margin-top: 4rem;
-
-            &::before {
-                content: "";
-                position: absolute;
-                bottom: 3.9rem + (2rem - .2rem);
-                right: 50%;
-                height: .2rem;
-                width: 2rem;
-                background-color: $typo-hex--highlight;
-                transform: translateX(50%);
-            }
-        }
+        margin-bottom: 0;
+        color: $typo-hex--highlight;
     }
+  }
 
-    .Copy-sm {
-        display: block;
-        margin-bottom: $base-spacing;
-        color: $typo-hex--tone-down;
-        @include copy-text-sm();
+  &-images {
+    //-- GRID GENERATOR
+    //-- 1. Count column mobile first
+    //-- 2. Factor column number for tablet & desktop
+    //-- 3. Optional argument to define the inner padding
+    @include grid-cell(1, 2, 0, large);
+    position: relative;
+  }
+
+  &-headline {
+    position: relative;
+    padding-bottom: $base-spacing / 1.5;
+    margin-top: $base-spacing * 2;
+    text-transform: none;
+
+    &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: .2rem;
+        width: 6rem;
+        margin: auto;
+        background-color: $typo-hex;
     }
+  }
 
-    .Link {
-        margin-bottom: $base-spacing * 1.5;
+  &-navigator {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 4rem auto 0;
+    padding: {
+        right: 4rem;
+        left: 4rem;
     }
+    text-align: justify;
 
-    &-copytext {
-        margin: 0 0 $base-spacing;
-    }
-
-    &-actionRow {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+    &::after {
+        content: "";
+        display: inline-block;
         width: 100%;
     }
+  }
+
+  .Headline--3 {
+      &:first-child {
+        position: relative;
+        margin-top: 4rem;
+
+        &::before {
+          content: "";
+          position: absolute;
+          bottom: 3.9rem + (2rem - .2rem);
+          right: 50%;
+          height: .2rem;
+          width: 2rem;
+          background-color: $typo-hex--highlight;
+          transform: translateX(50%);
+        }
+      }
+  }
+
+  .Copy-sm {
+    display: block;
+    margin-bottom: $base-spacing;
+    color: $typo-hex--tone-down;
+    @include copy-text-sm();
+  }
+
+  .Link {
+    margin-bottom: $base-spacing * 1.5;
+  }
+
+  &-copytext {
+    margin: 0 0 $base-spacing;
+  }
+
+  &-actionRow {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
 
 }
