@@ -4,7 +4,7 @@
 
         position: relative;
         padding-top: $nav-height;
-        background-color: $background-color-tertiary;
+        background-color: $hex-off-white;
 
         &::after {
             content: "";
@@ -14,7 +14,7 @@
             z-index: -1;
             width: 100vw;
             height: 100%;
-            background-color: $background-color-tertiary;
+            background-color: $hex-off-white;
             transform: translateX(-50%);
         }
 
