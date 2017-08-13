@@ -7,7 +7,18 @@
     - http://schema.org/docs/gs.html
 
 {% endcomment %}
-<main class="Product ProductPage" itemscope itemtype="http://schema.org/Product">
+
+{% comment %}
+  Theme background switcher based on the themeLight Tag
+  {% endcomment %}
+
+{% assign themeLight = '' %}
+{% for tag in product.tags %}
+  {% if tag contains 'themeLight' %}
+    {% assign themeLight = 'Product--themeLight' %}
+  {% endif %}
+{% endfor %}
+<main class="Product ProductPage {{ themeLight}}" itemscope itemtype="http://schema.org/Product">
     {% comment %} Get first variant, or deep linked one{% endcomment %}
     <article class="Product-display">
         <div class="Product-images">
