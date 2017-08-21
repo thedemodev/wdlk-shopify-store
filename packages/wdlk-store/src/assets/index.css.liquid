@@ -1139,7 +1139,7 @@ input[type="number"]::-webkit-outer-spin-button {
     perspective-origin: center;
     perspective: 100vw; }
   .Banner--main .Banner-media {
-    --alpha-filter-url: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Main-Banner_Desktop_alpha_@1x.png);
+    --alpha-filter-url: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Main-Banner_Desktop_alpha_mask.svg);
     --image-desktop-url: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Main-Banner_Desktop_@1x.png); }
     .Banner--main .Banner-media::before, .Banner--main .Banner-media::after {
       content: "";
@@ -1151,25 +1151,25 @@ input[type="number"]::-webkit-outer-spin-button {
       pointer-events: none; }
     .Banner--main .Banner-media::before {
       z-index: 1;
-      background: linear-gradient(135deg, hsla(41, 100%, 66.5%, 1), hsla(5, 100%, 69.5%, 1) 80%);
+      background: linear-gradient(135deg, hsla(41, 100%, 66.5%, 0.4), hsla(5, 100%, 69.5%, 0.4) 80%);
       background-blend-mode: screen;
       mix-blend-mode: multiply; }
     .Banner--main .Banner-media::after {
       z-index: 2;
-      background: var(--image-desktop-url), linear-gradient(135deg, hsla(41, 100%, 66.5%, 0.5), hsla(5, 100%, 69.5%, 0.5) 80%);
+      background: var(--image-desktop-url), linear-gradient(135deg, hsla(41, 100%, 66.5%, 0.3), hsla(5, 100%, 69.5%, 0.3) 80%);
       background-repeat: no-repeat;
-      background-size: contain;
-      background-position: bottom;
+      background-size: cover;
+      background-position: center top;
       mix-blend-mode: multiply;
       -webkit-mask-image: var(--alpha-filter-url);
-      -webkit-mask-size: 100%;
-      -webkit-mask-position: 100% 100%;
+      -webkit-mask-size: cover;
+      -webkit-mask-position: center top;
       -webkit-mask-repeat: no-repeat; }
       @supports (mask-image: var(--alpha-filter-url)) {
         .Banner--main .Banner-media::after {
           mask-image: var(--alpha-filter-url);
-          mask-size: 100%;
-          mask-position: 100% 100%;
+          mask-size: cover;
+          mask-position: center top;
           mask-repeat: no-repeat; } }
   @media (max-width: 480px) {
     .Banner--main .Banner-image {
@@ -1179,9 +1179,12 @@ input[type="number"]::-webkit-outer-spin-button {
     .Banner--main .Banner-image {
       transform: translateX(-8%); } }
   .Banner--main .Banner-content {
-    z-index: 2;
+    z-index: 3;
     line-height: 1;
     transform: translateX(-50%) translateY(-35%); }
+  .Banner--main .Btn {
+    background: none;
+    border: 2px solid white; }
 
 .buttonGroup {
   text-align: right; }
