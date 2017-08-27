@@ -23,10 +23,6 @@
             perspective: 100vw;
         }
         .Banner-media {
-            --alpha-filter-url: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Main-Banner_Desktop_alpha_mask.svg);
-            --alpha-filter-tablet: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Main-Banner_Tablet_alpha_mask.svg);
-            --alpha-filter-desktop: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Main-Banner_Desktop_alpha_mask.svg);
-            --image-desktop-url: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Main-Banner_Desktop_@1x.png);
             &::before,
             &::after {
                 content: "";
@@ -52,32 +48,38 @@
                 mix-blend-mode: multiply;
             }
             &::after {
-                z-index: 2;
-                background: var(--image-desktop-url),
-                  linear-gradient(135deg,
-                  hsla(
-                    nth($hsl-yellow, 1),
-                    nth($hsl-yellow, 2),
-                    nth($hsl-yellow, 3), .3),
-                  hsla( nth($hsl-coral, 1),
-                  nth($hsl-coral, 2),
-                  nth($hsl-coral, 3), .3) 80%);
+              --alpha-filter-url: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Banner_alpha_mask_Desktop.svg);
+              --image-desktop-url: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Main-Banner_Desktop_@1x.png);
+              z-index: 2;
+              background: var(--image-desktop-url),
+                linear-gradient(135deg,
+                hsla(
+                  nth($hsl-yellow, 1),
+                  nth($hsl-yellow, 2),
+                  nth($hsl-yellow, 3), .3),
+                hsla( nth($hsl-coral, 1),
+                nth($hsl-coral, 2),
+                nth($hsl-coral, 3), .3) 80%);
 
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-position: center top;
-                mix-blend-mode: multiply;
+              background-repeat: no-repeat;
+              background-size: cover;
+              background-position: center top;
+              mix-blend-mode: multiply;
 
-                -webkit-mask-image: var(--alpha-filter-url);
-                -webkit-mask-size: cover;
-                -webkit-mask-position: center top;
-                -webkit-mask-repeat: no-repeat;
-                @supports(mask-image: var(--alpha-filter-url)) {
-                    mask-image: var(--alpha-filter-url);
-                    mask-size: cover;
-                    mask-position: center top;
-                    mask-repeat: no-repeat;
-                }
+              -webkit-mask-image: var(--alpha-filter-url);
+              -webkit-mask-size: cover;
+              -webkit-mask-position: center top;
+              -webkit-mask-repeat: no-repeat;
+              @supports(mask-image: var(--alpha-filter-url)) {
+                  mask-image: var(--alpha-filter-url);
+                  mask-size: cover;
+                  mask-position: center top;
+                  mask-repeat: no-repeat;
+              }
+
+              @include media(medium) {
+                --alpha-filter-url: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Banner_alpha_mask_Tablet.svg);
+              }
             }
         }
         @include media(small, max-width) {

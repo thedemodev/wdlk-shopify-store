@@ -1138,41 +1138,41 @@ input[type="number"]::-webkit-outer-spin-button {
     height: auto;
     perspective-origin: center;
     perspective: 100vw; }
-  .Banner--main .Banner-media {
-    --alpha-filter-url: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Main-Banner_Desktop_alpha_mask.svg);
-    --alpha-filter-tablet: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Main-Banner_Tablet_alpha_mask.svg);
-    --alpha-filter-desktop: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Main-Banner_Desktop_alpha_mask.svg);
-    --image-desktop-url: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Main-Banner_Desktop_@1x.png); }
-    .Banner--main .Banner-media::before, .Banner--main .Banner-media::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100%;
-      pointer-events: none; }
-    .Banner--main .Banner-media::before {
-      z-index: 1;
-      background: linear-gradient(135deg, hsla(41, 100%, 66.5%, 0.4), hsla(5, 100%, 69.5%, 0.4) 80%);
-      background-blend-mode: screen;
-      mix-blend-mode: multiply; }
-    .Banner--main .Banner-media::after {
-      z-index: 2;
-      background: var(--image-desktop-url), linear-gradient(135deg, hsla(41, 100%, 66.5%, 0.3), hsla(5, 100%, 69.5%, 0.3) 80%);
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center top;
-      mix-blend-mode: multiply;
-      -webkit-mask-image: var(--alpha-filter-url);
-      -webkit-mask-size: cover;
-      -webkit-mask-position: center top;
-      -webkit-mask-repeat: no-repeat; }
-      @supports (mask-image: var(--alpha-filter-url)) {
-        .Banner--main .Banner-media::after {
-          mask-image: var(--alpha-filter-url);
-          mask-size: cover;
-          mask-position: center top;
-          mask-repeat: no-repeat; } }
+  .Banner--main .Banner-media::before, .Banner--main .Banner-media::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    pointer-events: none; }
+  .Banner--main .Banner-media::before {
+    z-index: 1;
+    background: linear-gradient(135deg, hsla(41, 100%, 66.5%, 0.4), hsla(5, 100%, 69.5%, 0.4) 80%);
+    background-blend-mode: screen;
+    mix-blend-mode: multiply; }
+  .Banner--main .Banner-media::after {
+    --alpha-filter-url: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Banner_alpha_mask_Desktop.svg);
+    --image-desktop-url: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Main-Banner_Desktop_@1x.png);
+    z-index: 2;
+    background: var(--image-desktop-url), linear-gradient(135deg, hsla(41, 100%, 66.5%, 0.3), hsla(5, 100%, 69.5%, 0.3) 80%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    mix-blend-mode: multiply;
+    -webkit-mask-image: var(--alpha-filter-url);
+    -webkit-mask-size: cover;
+    -webkit-mask-position: center top;
+    -webkit-mask-repeat: no-repeat; }
+    @supports (mask-image: var(--alpha-filter-url)) {
+      .Banner--main .Banner-media::after {
+        mask-image: var(--alpha-filter-url);
+        mask-size: cover;
+        mask-position: center top;
+        mask-repeat: no-repeat; } }
+    @media (min-width: 768px) {
+      .Banner--main .Banner-media::after {
+        --alpha-filter-url: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Banner_alpha_mask_Tablet.svg); } }
   @media (max-width: 480px) {
     .Banner--main .Banner-image {
       width: auto;
