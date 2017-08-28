@@ -4,8 +4,8 @@
     $hsl-yellow: hsv-to-hsl(41, 67%, 100%);
 
     &--main {
-      --alpha-mask: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Banner_alpha_mask_Desktop.svg);
-      --image-mask: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Main-Banner_Desktop_@1x.png);
+      --alpha-mask: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Banner_alpha_mask_Smartphone_@2x_retina.svg);
+      --image-mask: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Main-Banner_Smartphone_@2x_retina.png);
       box-sizing: border-box;
       max-height: 100vh;
       background-color: hsla(
