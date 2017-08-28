@@ -32,7 +32,7 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               plugins: () => {
-                 autoprefixer({ browsers: [ 'last 2 versions' ] });
+                 autoprefixer({ browsers: [ 'last 4 versions' ] });
               }
             }
           },
