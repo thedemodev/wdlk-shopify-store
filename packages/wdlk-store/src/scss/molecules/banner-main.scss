@@ -61,11 +61,11 @@
           hsla(
             nth($hsl-yellow, 1),
             nth($hsl-yellow, 2),
-            nth($hsl-yellow, 3), .4),
+            nth($hsl-yellow, 3), .25),
           hsla(
             nth($hsl-coral, 1),
             nth($hsl-coral, 2),
-            nth($hsl-coral, 3), .4) 80%);
+            nth($hsl-coral, 3), .25) 80%);
         background-blend-mode: screen;
         mix-blend-mode: multiply;
       }
@@ -77,10 +77,10 @@
           hsla(
             nth($hsl-yellow, 1),
             nth($hsl-yellow, 2),
-            nth($hsl-yellow, 3), .3),
+            nth($hsl-yellow, 3), .35),
           hsla( nth($hsl-coral, 1),
           nth($hsl-coral, 2),
-          nth($hsl-coral, 3), .3) 80%);
+          nth($hsl-coral, 3), .35) 80%);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center top;
