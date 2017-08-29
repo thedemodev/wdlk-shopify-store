@@ -1,3 +1,7 @@
+:root {
+  --theme: var(--theme-invert, #ffffff);
+}
+
 .Banner {
   $hsl-light-sand: hsv-to-hsl(32, 2%, 93%);
   $hsl-coral: hsv-to-hsl(5, 61%, 100%);
@@ -112,15 +116,47 @@
       }
     }
 
+    .Btn {
+      border: 1px solid var(--theme);
+      background-color: var(--theme-invert, transparent);
+    }
+
     .Banner-content {
       z-index: 3;
       line-height: 1;
       transform: translateX(-50%) translateY(-35%);
     }
+  }
+}
 
-    .Btn {
-      background: none;
-      border: 2px solid white;
+.Gradient {
+  &-stop {
+    &:nth-child(1) {
+      stop-color: var(--theme);
     }
+
+    &:nth-child(2) {
+      stop-color: var(--theme);
+    }
+  }
+}
+
+.Themed {
+  .Logo-img,
+  .ShoppingBag-icon {
+    color: var(--theme);
+    fill: currentColor;
+  }
+
+  .Navigation-link {
+    color: var(--theme);
+
+    &::after {
+      background-color: var(--theme);
+    }
+  }
+
+  .AccountNavigation-item {
+    color: var(--theme);
   }
 }

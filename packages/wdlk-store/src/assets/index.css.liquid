@@ -424,9 +424,9 @@ body {
 
 .Btn {
   display: inline-block;
-  height: 4.6rem;
+  height: 4.4rem;
   padding: 0 3.6rem;
-  border: none;
+  border: 1px solid #FF7163;
   background-color: #FF7163;
   line-height: 4.6rem;
   letter-spacing: .16rem;
@@ -881,6 +881,8 @@ input[type="number"]::-webkit-outer-spin-button {
       @media (min-width: 769px) {
         .Navigation-dropdown .Navigation-item {
           text-align: left; } }
+    .Navigation-dropdown .Navigation-link {
+      color: #596771; }
   .Navigation-teaser {
     position: relative;
     display: inline-block;
@@ -1124,6 +1126,9 @@ input[type="number"]::-webkit-outer-spin-button {
       height: 11.2rem;
       font-size: 11.2rem; } }
 
+:root {
+  --theme: var(--theme-invert, #ffffff); }
+
 .Banner--main {
   --alpha-mask: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Banner_alpha_mask_Smartphone_@2x_retina.svg);
   --image-mask: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Main-Banner_Smartphone_@2x_retina.png);
@@ -1194,13 +1199,32 @@ input[type="number"]::-webkit-outer-spin-button {
         .Banner--main .Banner-media::after {
           --alpha-mask: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Banner_alpha_mask_Desktop.svg);
           --image-mask: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Main-Banner_Desktop_@1x.png); } }
+  .Banner--main .Btn {
+    border: 1px solid var(--theme);
+    background-color: var(--theme-invert, transparent); }
   .Banner--main .Banner-content {
     z-index: 3;
     line-height: 1;
     transform: translateX(-50%) translateY(-35%); }
-  .Banner--main .Btn {
-    background: none;
-    border: 2px solid white; }
+
+.Gradient-stop:nth-child(1) {
+  stop-color: var(--theme); }
+
+.Gradient-stop:nth-child(2) {
+  stop-color: var(--theme); }
+
+.Themed .Logo-img,
+.Themed .ShoppingBag-icon {
+  color: var(--theme);
+  fill: currentColor; }
+
+.Themed .Navigation-link {
+  color: var(--theme); }
+  .Themed .Navigation-link::after {
+    background-color: var(--theme); }
+
+.Themed .AccountNavigation-item {
+  color: var(--theme); }
 
 .buttonGroup {
   text-align: right; }

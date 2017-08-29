@@ -1,8 +1,8 @@
 .Btn {
   display: inline-block;
-  height: $form-base-height;
+  height: $form-base-height - .2;
   padding: 0 $box-base-padding;
-  border: none;
+  border: 1px solid $btn-bg-color;
   background-color: $btn-bg-color;
   line-height: $form-base-height;
   letter-spacing: .16rem;

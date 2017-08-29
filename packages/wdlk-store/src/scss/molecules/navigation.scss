@@ -69,11 +69,11 @@
       }
 
       &:hover {
-          .Navigation-dropdown {
-              opacity: 1;
-              visibility: visible;
-              pointer-events: initial;
-          }
+        .Navigation-dropdown {
+          opacity: 1;
+          visibility: visible;
+          pointer-events: initial;
+        }
       }
 
       &.has-dropdown{
@@ -171,20 +171,24 @@
       transform: translateX(-50%);
       transition: opacity .8s ease;
 
-        &-list {
-          box-sizing: border-box;
-          width: 50%;
-          padding: 40px;
-        }
+      &-list {
+        box-sizing: border-box;
+        width: 50%;
+        padding: 40px;
+      }
 
-        .Navigation-item {
-          display: block;
-          line-height: 1.5;
+      .Navigation-item {
+        display: block;
+        line-height: 1.5;
 
-          @include media (medium) {
-              text-align: left;
-          }
+        @include media (medium) {
+            text-align: left;
         }
+      }
+
+      .Navigation-link {
+        color: $typo-hex;
+      }
     }
 
 
