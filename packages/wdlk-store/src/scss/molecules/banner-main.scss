@@ -131,7 +131,7 @@
   --theme-fallback: #{'#{$hex-coral}'};
   --theme-alpha: 1;
 
-  animation: theme-animation 10s ease-out;
+  animation: theme-animation 5s ease-out;
 
   .Logo-img,
   .ShoppingBag-icon {
@@ -140,12 +140,12 @@
   }
 
   .AccountNavigation-item {
-    --theme: #{'#{$typo-hex--tone-down}'};
+    --theme-fallback: #{'#{$typo-hex--tone-down}'};
     color: var(--theme);
   }
 
   .Navigation-link {
-    --theme: #{'#{$typo-hex}'};
+    --theme-fallback: #{'#{$typo-hex}'};
 
     color: var(--theme);
 
@@ -178,12 +178,12 @@
 .Gradient {
   &-stop {
     &:nth-child(1) {
-      --theme: #FFCA54;
+      --theme-fallback: #FFCA54;
       stop-color: var(--theme);
     }
 
     &:nth-child(2) {
-      --theme: #FF6C54;
+      --theme-fallback: #FF6C54;
       stop-color: var(--theme);
     }
   }

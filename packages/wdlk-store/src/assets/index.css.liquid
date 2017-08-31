@@ -1208,16 +1208,16 @@ input[type="number"]::-webkit-outer-spin-button {
   --theme: var(--theme-invert, var(--theme-fallback));
   --theme-fallback: #FF7163;
   --theme-alpha: 1;
-  animation: theme-animation 10s ease-out; }
+  animation: theme-animation 5s ease-out; }
   .Themed .Logo-img,
   .Themed .ShoppingBag-icon {
     color: var(--theme);
     fill: currentColor; }
   .Themed .AccountNavigation-item {
-    --theme: #999999;
+    --theme-fallback: #999999;
     color: var(--theme); }
   .Themed .Navigation-link {
-    --theme: #596771;
+    --theme-fallback: #596771;
     color: var(--theme); }
     .Themed .Navigation-link::after {
       background-color: var(--theme); }
@@ -1234,11 +1234,11 @@ input[type="number"]::-webkit-outer-spin-button {
     --theme-invert: #ffffff; } }
 
 .Gradient-stop:nth-child(1) {
-  --theme: #FFCA54;
+  --theme-fallback: #FFCA54;
   stop-color: var(--theme); }
 
 .Gradient-stop:nth-child(2) {
-  --theme: #FF6C54;
+  --theme-fallback: #FF6C54;
   stop-color: var(--theme); }
 
 .buttonGroup {
