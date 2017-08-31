@@ -142,19 +142,34 @@
 }
 
 .Themed {
-  .Logo-img,
-  .ShoppingBag-icon {
-    color: var(--theme);
-    fill: currentColor;
-  }
+  @include media(medium) {
+    .Logo-img,
+    .ShoppingBag-icon {
+      color: var(--theme);
+      fill: currentColor;
+    }
 
-  .Navigation-link {
-    color: var(--theme);
+    .is-undocked {
+      --theme: #{'#{$hex-logo-color}'};
 
-    &::after {
-      background-color: var(--theme);
+      .Navigation-link {
+        --theme: #{'#{$typo-hex}'};
+      }
+
+      .AccountNavigation-item {
+        --theme: #{'#{$typo-hex--tone-down}'};
+      }
+    }
+
+    .Navigation-link {
+      color: var(--theme);
+
+      &::after {
+        background-color: var(--theme);
+      }
     }
   }
+
 
   .AccountNavigation-item {
     color: var(--theme);

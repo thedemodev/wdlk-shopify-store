@@ -881,8 +881,8 @@ input[type="number"]::-webkit-outer-spin-button {
       @media (min-width: 769px) {
         .Navigation-dropdown .Navigation-item {
           text-align: left; } }
-    .Navigation-dropdown .Navigation-link {
-      color: #596771; }
+      .Navigation-dropdown .Navigation-item .Navigation-link {
+        color: #596771; }
   .Navigation-teaser {
     position: relative;
     display: inline-block;
@@ -1213,15 +1213,21 @@ input[type="number"]::-webkit-outer-spin-button {
 .Gradient-stop:nth-child(2) {
   stop-color: var(--theme); }
 
-.Themed .Logo-img,
-.Themed .ShoppingBag-icon {
-  color: var(--theme);
-  fill: currentColor; }
-
-.Themed .Navigation-link {
-  color: var(--theme); }
-  .Themed .Navigation-link::after {
-    background-color: var(--theme); }
+@media (min-width: 769px) {
+  .Themed .Logo-img,
+  .Themed .ShoppingBag-icon {
+    color: var(--theme);
+    fill: currentColor; }
+  .Themed .is-undocked {
+    --theme: #FF7163; }
+    .Themed .is-undocked .Navigation-link {
+      --theme: #596771; }
+    .Themed .is-undocked .AccountNavigation-item {
+      --theme: #999999; }
+  .Themed .Navigation-link {
+    color: var(--theme); }
+    .Themed .Navigation-link::after {
+      background-color: var(--theme); } }
 
 .Themed .AccountNavigation-item {
   color: var(--theme); }
