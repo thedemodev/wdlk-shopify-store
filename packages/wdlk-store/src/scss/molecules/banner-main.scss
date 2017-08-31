@@ -1,6 +1,3 @@
-:root {
-  --theme: var(--theme-invert, #ffffff);
-}
 
 .Banner {
   $hsl-light-sand: hsv-to-hsl(32, 2%, 93%);
@@ -129,49 +126,65 @@
   }
 }
 
-.Gradient {
-  &-stop {
-    &:nth-child(1) {
-      stop-color: var(--theme);
-    }
+.Themed {
+  --theme: var(--theme-invert, var(--theme-fallback));
+  --theme-fallback: #{'#{$hex-coral}'};
+  --theme-alpha: 1;
 
-    &:nth-child(2) {
-      stop-color: var(--theme);
+  animation: theme-animation 10s ease-out;
+
+  .Logo-img,
+  .ShoppingBag-icon {
+    color: var(--theme);
+    fill: currentColor;
+  }
+
+  .AccountNavigation-item {
+    --theme: #{'#{$typo-hex--tone-down}'};
+    color: var(--theme);
+  }
+
+  .Navigation-link {
+    --theme: #{'#{$typo-hex}'};
+
+    color: var(--theme);
+
+    &::after {
+      background-color: var(--theme);
     }
   }
-}
 
-.Themed {
   @include media(medium) {
-    .Logo-img,
-    .ShoppingBag-icon {
-      color: var(--theme);
-      fill: currentColor;
-    }
-
     .is-undocked {
-      --theme: #{'#{$hex-logo-color}'};
-
       .Navigation-link {
         --theme: #{'#{$typo-hex}'};
       }
-
       .AccountNavigation-item {
         --theme: #{'#{$typo-hex--tone-down}'};
       }
     }
-
-    .Navigation-link {
-      color: var(--theme);
-
-      &::after {
-        background-color: var(--theme);
-      }
-    }
   }
 
+  @keyframes theme-animation {
+    0% {
+      --theme-invert: #{'#{$hex-white}'};
+    }
+    100% {
+      --theme-invert: #{'#{$hex-white}'};
+    }
+  }
+}
 
-  .AccountNavigation-item {
-    color: var(--theme);
+.Gradient {
+  &-stop {
+    &:nth-child(1) {
+      --theme: #FFCA54;
+      stop-color: var(--theme);
+    }
+
+    &:nth-child(2) {
+      --theme: #FF6C54;
+      stop-color: var(--theme);
+    }
   }
 }
