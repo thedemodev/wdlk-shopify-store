@@ -2,7 +2,6 @@
 .Banner {
   $hsl-light-sand: hsv-to-hsl(32, 2%, 93%);
   $hsl-coral: hsv-to-hsl(5, 61%, 100%);
-  $hsl-yellow: hsv-to-hsl(41, 67%, 100%);
 
   &--main {
     --alpha-mask: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Banner_alpha_mask_Smartphone_@2x_retina.svg);
@@ -47,22 +46,17 @@
         left: 0;
         width: 100vw;
         height: 100%;
-        opacity: var(--theme-alpha);
+        opacity: calc(var(--theme-invert, 0) * 1);
         transition: opacity calc(var(--theme-interval) * 1ms) ease-out;
         pointer-events: none;
       }
 
       &::before {
+        --theme-alpha: .25;
         z-index: 1;
         background: linear-gradient(135deg,
-          hsla(
-            nth($hsl-yellow, 1),
-            nth($hsl-yellow, 2),
-            nth($hsl-yellow, 3), .25),
-          hsla(
-            nth($hsl-coral, 1),
-            nth($hsl-coral, 2),
-            nth($hsl-coral, 3), .25) 80%);
+          var(--theme-yellow),
+          var(--theme-coral) 80%);
         background-blend-mode: screen;
         mix-blend-mode: multiply;
       }
@@ -71,13 +65,8 @@
         z-index: 2;
         background: var(--image-mask),
           linear-gradient(135deg,
-          hsla(
-            nth($hsl-yellow, 1),
-            nth($hsl-yellow, 2),
-            nth($hsl-yellow, 3), .35),
-          hsla( nth($hsl-coral, 1),
-          nth($hsl-coral, 2),
-          nth($hsl-coral, 3), .35) 80%);
+          var(--theme-yellow),
+          var(--theme-coral) 80%);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center top;
@@ -116,71 +105,67 @@
   }
 }
 
-.Themed {
-  --hsla-coral: hsla(5.4, 100%, 69.4%, 1);
-  --hsla-coral8: hsla(8.4, 100%, 66.5%, 1);
-  --hsla-gray: hsla(0, 0%, 60%, 1);
-  --hsla-gray205: hsla(205, 11.9%, 39.6%, 1);
-  --hsla-yellow: hsla(41.4, 100%, 66.5%, 1);
-  --hsla-white: hsla(0, 0%, 100%, 1);
+.withTheme {
+  --theme: var(--theme-dark, var(--theme-light));
+  --theme-dark: var(--theme-light, hsla(0, 0%, 100%, var(--theme-invert)));
+  --theme-interval: 2000;
+  --theme-negation: 1;
 
-  --theme: var(--theme-invert, var(--theme-fallback));
-  --theme-alpha: 0;
-  --theme-fallback: var(--hsla-coral);
-  --theme-interval: 5000;
+
+  --theme-coral: hsla(5, 100%, 69.5%, var(--theme-alpha, .35));
+  --theme-yellow: hsla(41, 100%, 66.5%, var(--theme-alpha, .35));
 
   animation: theme-animation calc(var(--theme-interval) * 1ms) ease;
 
   @keyframes theme-animation {
     0% {
-      --theme-invert: var(--hsla-white);
-      --theme-transparent: transparent;
-      --theme-alpha: 1;
+      --theme-invert: 1;
+      --theme-negation: 0;
     }
 
     80% {
-      --theme-invert: var(--hsla-white);
-      --theme-transparent: transparent;
-      --theme-alpha: .2;
-    }
-
-    100% {
-      --theme-alpha: 0;
+      --theme-invert: .2;
+      --theme-negation: 0;
     }
   }
 
   .Btn {
-    --theme-invert: var(--theme-transparent, var(--theme));
+    --theme: var(--theme-dark, var(--theme-light));
+    --theme-light: var(--theme-coral);
+    --flip-color: hsla(5.4, 100%, 69.4%, var(--theme-negation));
+
     border: 1px solid var(--theme);
-    background: var(--theme-invert);
+    background: var(--flip-color);
     transition: background calc(var(--theme-interval) * 1ms) linear,
       border-color calc((var(--theme-interval) / 2) * 1ms) linear;
   }
 
   .Logo-img,
   .ShoppingBag-icon {
+    --theme: var(--theme-dark, var(--theme-light));
+    --theme-light: var(--hsla-coral);
     color: var(--theme);
     fill: currentColor;
     transition: color calc((var(--theme-interval) / 2) * 1ms) ease-out;
   }
 
   .AccountNavigation-item {
-    --theme: var(--theme-invert, var(--theme-fallback));
-    --theme-fallback: var(--hsla-gray);
+    --theme: var(--theme-dark, var(--theme-light));
+    --theme-light: var(--hsla-gray);
 
-    color: var(--theme, var(--theme-fallback));
+    color: var(--theme, var(--theme-light));
     transition: color calc((var(--theme-interval) / 2) * 1ms) linear;
   }
 
   .Navigation-link {
-    --theme: var(--theme-invert, var(--theme-fallback));
-    --theme-fallback:  var(--hsla-gray205);
+    --theme: var(--theme-dark, var(--theme-light));
+    --theme-light:  var(--hsla-gray205);
 
-    color: var(--theme, var(--theme-fallback));
+    color: var(--theme, var(--theme-light));
     transition: color calc((var(--theme-interval) / 2) * 1ms) linear;
 
     &::after {
-      background-color: var(--theme, var(--theme-fallback));
+      background-color: var(--theme);
     }
   }
 
@@ -202,19 +187,19 @@
 
 .Gradient {
   &-stop {
-    --theme: var(--theme-invert, var(--theme-fallback));
+    --theme: var(--theme-dark, var(--theme-light));
     transition: stop-color
       calc((var(--theme-interval) / 1.5) * 1ms)
       cubic-bezier(0.755, 0.050, 0.855, 0.060);
 
     &:nth-child(1) {
-      --theme-fallback: var(--hsla-yellow);
-      stop-color: var(--theme, var(--theme-fallback));
+      --theme-light: var(--hsla-yellow);
+      stop-color: var(--theme, var(--theme-light));
     }
 
     &:nth-child(2) {
-      --theme-fallback: var(--hsla-coral8);
-      stop-color: var(--theme, var(--theme-fallback));
+      --theme-light: var(--hsla-coral8);
+      stop-color: var(--theme, var(--theme-light));
     }
   }
 }

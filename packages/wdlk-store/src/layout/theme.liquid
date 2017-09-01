@@ -35,7 +35,7 @@
       Add the page template as a class for easy page or template specific styling.
     {% endcomment %}
     <body class="Layout{% if customer %} customer-logged-in{% endif %}{% if template == 'index' %} js_scroller{% endif %}">
-      <div class="Layout-container{% if template == 'index' %} Themed{% endif %}">
+      <div class="Layout-container{% if template == 'index' %} withTheme{% endif %}">
         {% comment %} NOTIFICATION TEASER {% endcomment %}
         {% include 'notification-teaser' %}
         {% comment %} Header {% endcomment %}
