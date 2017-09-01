@@ -438,6 +438,7 @@ body {
   font-weight: bold; }
   .Btn:hover {
     color: #ffffff;
+    border-color: #E5554E;
     background-color: #E5554E; }
   .Btn-icon {
     display: inline-block;
@@ -1129,14 +1130,9 @@ input[type="number"]::-webkit-outer-spin-button {
 .Banner--main {
   --alpha-mask: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Banner_alpha_mask_Smartphone_@2x_retina.svg);
   --image-mask: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Main-Banner_Smartphone_@2x_retina.png);
-  box-sizing: border-box;
   max-height: 100vh;
+  box-sizing: border-box;
   background-color: hsla(32, 11.72762%, 92.07%, 1); }
-  .Banner--main .Banner-introText {
-    color: var(--hex-coral); }
-    @media (min-width: 769px) {
-      .Banner--main .Banner-introText {
-        font-size: 2.002rem; } }
   .Banner--main .Banner-image {
     position: absolute;
     top: 0;
@@ -1163,6 +1159,8 @@ input[type="number"]::-webkit-outer-spin-button {
       left: 0;
       width: 100vw;
       height: 100%;
+      opacity: var(--theme-alpha);
+      transition: opacity calc(var(--theme-interval) * 1ms) ease-out;
       pointer-events: none; }
     .Banner--main .Banner-media::before {
       z-index: 1;
@@ -1198,53 +1196,71 @@ input[type="number"]::-webkit-outer-spin-button {
           --image-mask: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Main-Banner_Desktop_@1x.png); } }
   .Banner--main .Banner-content {
     z-index: 3;
-    line-height: 1;
     transform: translateX(-50%) translateY(-35%); }
 
 .Themed {
+  --hsla-coral: hsla(5.4, 100%, 69.4%, 1);
+  --hsla-coral8: hsla(8.4, 100%, 66.5%, 1);
+  --hsla-gray: hsla(0, 0%, 60%, 1);
+  --hsla-gray205: hsla(205, 11.9%, 39.6%, 1);
+  --hsla-yellow: hsla(41.4, 100%, 66.5%, 1);
+  --hsla-white: hsla(0, 0%, 100%, 1);
   --theme: var(--theme-invert, var(--theme-fallback));
-  --theme-fallback: #FF7163;
-  --theme-alpha: 1;
-  animation: theme-animation 3s ease-out; }
+  --theme-alpha: 0;
+  --theme-fallback: var(--hsla-coral);
+  --theme-interval: 5000;
+  animation: theme-animation calc(var(--theme-interval) * 1ms) ease; }
 
 @keyframes theme-animation {
   0% {
-    --theme-invert: #ffffff;
-    --theme-transparent: transparent; }
+    --theme-invert: var(--hsla-white);
+    --theme-transparent: transparent;
+    --theme-alpha: 1; }
+  80% {
+    --theme-invert: var(--hsla-white);
+    --theme-transparent: transparent;
+    --theme-alpha: .2; }
   100% {
-    --theme-invert: #ffffff;
-    --theme-transparent: transparent; } }
+    --theme-alpha: 0; } }
   .Themed .Btn {
     --theme-invert: var(--theme-transparent, var(--theme));
     border: 1px solid var(--theme);
-    background: var(--theme-invert); }
+    background: var(--theme-invert);
+    transition: background calc(var(--theme-interval) * 1ms) linear, border-color calc((var(--theme-interval) / 2) * 1ms) linear; }
   .Themed .Logo-img,
   .Themed .ShoppingBag-icon {
     color: var(--theme);
-    fill: currentColor; }
+    fill: currentColor;
+    transition: color calc((var(--theme-interval) / 2) * 1ms) ease-out; }
   .Themed .AccountNavigation-item {
     --theme: var(--theme-invert, var(--theme-fallback));
-    --theme-fallback: #999999;
-    color: var(--theme, var(--theme-fallback)); }
+    --theme-fallback: var(--hsla-gray);
+    color: var(--theme, var(--theme-fallback));
+    transition: color calc((var(--theme-interval) / 2) * 1ms) linear; }
   .Themed .Navigation-link {
     --theme: var(--theme-invert, var(--theme-fallback));
-    --theme-fallback: #596771;
-    color: var(--theme, var(--theme-fallback)); }
+    --theme-fallback: var(--hsla-gray205);
+    color: var(--theme, var(--theme-fallback));
+    transition: color calc((var(--theme-interval) / 2) * 1ms) linear; }
     .Themed .Navigation-link::after {
       background-color: var(--theme, var(--theme-fallback)); }
   @media (min-width: 769px) {
     .Themed .is-undocked .Navigation-link {
-      --theme: #596771; }
+      --theme: var(--hsla-gray205); }
     .Themed .is-undocked .AccountNavigation-item {
-      --theme: #999999; } }
+      --theme: var(--hsla-gray); }
+    .Themed .is-undocked .Logo-img,
+    .Themed .is-undocked .ShoppingBag-icon {
+      --theme: var(--hsla-coral); } }
 
-.Gradient {
-  --theme: var(--theme-invert, var(--theme-fallback)); }
+.Gradient-stop {
+  --theme: var(--theme-invert, var(--theme-fallback));
+  transition: stop-color calc((var(--theme-interval) / 1.5) * 1ms) cubic-bezier(0.755, 0.05, 0.855, 0.06); }
   .Gradient-stop:nth-child(1) {
-    --theme-fallback: #FFCA54;
+    --theme-fallback: var(--hsla-yellow);
     stop-color: var(--theme, var(--theme-fallback)); }
   .Gradient-stop:nth-child(2) {
-    --theme-fallback: #FF6C54;
+    --theme-fallback: var(--hsla-coral8);
     stop-color: var(--theme, var(--theme-fallback)); }
 
 .buttonGroup {

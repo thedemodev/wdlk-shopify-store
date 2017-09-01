@@ -7,19 +7,13 @@
   &--main {
     --alpha-mask: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Banner_alpha_mask_Smartphone_@2x_retina.svg);
     --image-mask: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Main-Banner_Smartphone_@2x_retina.png);
-    box-sizing: border-box;
+
     max-height: 100vh;
+    box-sizing: border-box;
     background-color: hsla(
       nth($hsl-light-sand, 1),
       nth($hsl-light-sand, 2),
       nth($hsl-light-sand, 3), 1);
-
-    .Banner-introText {
-        color: var(--hex-coral);
-        @include media(medium) {
-            font-size: $copy-size-m * 1.43;
-        }
-    }
 
     .Banner-image {
       position: absolute;
@@ -53,6 +47,8 @@
         left: 0;
         width: 100vw;
         height: 100%;
+        opacity: var(--theme-alpha);
+        transition: opacity calc(var(--theme-interval) * 1ms) ease-out;
         pointer-events: none;
       }
 
@@ -115,28 +111,41 @@
 
     .Banner-content {
       z-index: 3;
-      line-height: 1;
       transform: translateX(-50%) translateY(-35%);
     }
   }
 }
 
 .Themed {
-  --theme: var(--theme-invert, var(--theme-fallback));
-  --theme-fallback: #{'#{$hex-coral}'};
-  --theme-alpha: 1;
+  --hsla-coral: hsla(5.4, 100%, 69.4%, 1);
+  --hsla-coral8: hsla(8.4, 100%, 66.5%, 1);
+  --hsla-gray: hsla(0, 0%, 60%, 1);
+  --hsla-gray205: hsla(205, 11.9%, 39.6%, 1);
+  --hsla-yellow: hsla(41.4, 100%, 66.5%, 1);
+  --hsla-white: hsla(0, 0%, 100%, 1);
 
-  animation: theme-animation 3s ease-out;
+  --theme: var(--theme-invert, var(--theme-fallback));
+  --theme-alpha: 0;
+  --theme-fallback: var(--hsla-coral);
+  --theme-interval: 5000;
+
+  animation: theme-animation calc(var(--theme-interval) * 1ms) ease;
 
   @keyframes theme-animation {
     0% {
-      --theme-invert: #{'#{$hex-white}'};
+      --theme-invert: var(--hsla-white);
       --theme-transparent: transparent;
+      --theme-alpha: 1;
+    }
+
+    80% {
+      --theme-invert: var(--hsla-white);
+      --theme-transparent: transparent;
+      --theme-alpha: .2;
     }
 
     100% {
-      --theme-invert: #{'#{$hex-white}'};
-      --theme-transparent: transparent;
+      --theme-alpha: 0;
     }
   }
 
@@ -144,26 +153,31 @@
     --theme-invert: var(--theme-transparent, var(--theme));
     border: 1px solid var(--theme);
     background: var(--theme-invert);
+    transition: background calc(var(--theme-interval) * 1ms) linear,
+      border-color calc((var(--theme-interval) / 2) * 1ms) linear;
   }
 
   .Logo-img,
   .ShoppingBag-icon {
     color: var(--theme);
     fill: currentColor;
+    transition: color calc((var(--theme-interval) / 2) * 1ms) ease-out;
   }
 
   .AccountNavigation-item {
     --theme: var(--theme-invert, var(--theme-fallback));
-    --theme-fallback: #{'#{$hex-light-gray}'};
+    --theme-fallback: var(--hsla-gray);
 
     color: var(--theme, var(--theme-fallback));
+    transition: color calc((var(--theme-interval) / 2) * 1ms) linear;
   }
 
   .Navigation-link {
     --theme: var(--theme-invert, var(--theme-fallback));
-    --theme-fallback: #{'#{$hex-blue-gray-dark}'};
+    --theme-fallback:  var(--hsla-gray205);
 
     color: var(--theme, var(--theme-fallback));
+    transition: color calc((var(--theme-interval) / 2) * 1ms) linear;
 
     &::after {
       background-color: var(--theme, var(--theme-fallback));
@@ -173,26 +187,33 @@
   @include media(medium) {
     .is-undocked {
       .Navigation-link {
-        --theme: #{'#{$typo-hex}'};
+        --theme: var(--hsla-gray205);
       }
       .AccountNavigation-item {
-        --theme: #{'#{$typo-hex--tone-down}'};
+        --theme: var(--hsla-gray);
+      }
+      .Logo-img,
+      .ShoppingBag-icon {
+        --theme: var(--hsla-coral);
       }
     }
   }
 }
 
 .Gradient {
-  --theme: var(--theme-invert, var(--theme-fallback));
   &-stop {
+    --theme: var(--theme-invert, var(--theme-fallback));
+    transition: stop-color
+      calc((var(--theme-interval) / 1.5) * 1ms)
+      cubic-bezier(0.755, 0.050, 0.855, 0.060);
 
     &:nth-child(1) {
-      --theme-fallback: #FFCA54;
+      --theme-fallback: var(--hsla-yellow);
       stop-color: var(--theme, var(--theme-fallback));
     }
 
     &:nth-child(2) {
-      --theme-fallback: #FF6C54;
+      --theme-fallback: var(--hsla-coral8);
       stop-color: var(--theme, var(--theme-fallback));
     }
   }
