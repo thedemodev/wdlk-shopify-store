@@ -1196,9 +1196,6 @@ input[type="number"]::-webkit-outer-spin-button {
         .Banner--main .Banner-media::after {
           --alpha-mask: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Banner_alpha_mask_Desktop.svg);
           --image-mask: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Main-Banner_Desktop_@1x.png); } }
-  .Banner--main .Btn {
-    border: 1px solid var(--theme);
-    background-color: var(--theme-invert, transparent); }
   .Banner--main .Banner-content {
     z-index: 3;
     line-height: 1;
@@ -1208,38 +1205,47 @@ input[type="number"]::-webkit-outer-spin-button {
   --theme: var(--theme-invert, var(--theme-fallback));
   --theme-fallback: #FF7163;
   --theme-alpha: 1;
-  animation: theme-animation 5s ease-out; }
+  animation: theme-animation 3s ease-out; }
+
+@keyframes theme-animation {
+  0% {
+    --theme-invert: #ffffff;
+    --theme-transparent: transparent; }
+  100% {
+    --theme-invert: #ffffff;
+    --theme-transparent: transparent; } }
+  .Themed .Btn {
+    --theme-invert: var(--theme-transparent, var(--theme));
+    border: 1px solid var(--theme);
+    background: var(--theme-invert); }
   .Themed .Logo-img,
   .Themed .ShoppingBag-icon {
     color: var(--theme);
     fill: currentColor; }
   .Themed .AccountNavigation-item {
+    --theme: var(--theme-invert, var(--theme-fallback));
     --theme-fallback: #999999;
-    color: var(--theme); }
+    color: var(--theme, var(--theme-fallback)); }
   .Themed .Navigation-link {
+    --theme: var(--theme-invert, var(--theme-fallback));
     --theme-fallback: #596771;
-    color: var(--theme); }
+    color: var(--theme, var(--theme-fallback)); }
     .Themed .Navigation-link::after {
-      background-color: var(--theme); }
+      background-color: var(--theme, var(--theme-fallback)); }
   @media (min-width: 769px) {
     .Themed .is-undocked .Navigation-link {
       --theme: #596771; }
     .Themed .is-undocked .AccountNavigation-item {
       --theme: #999999; } }
 
-@keyframes theme-animation {
-  0% {
-    --theme-invert: #ffffff; }
-  100% {
-    --theme-invert: #ffffff; } }
-
-.Gradient-stop:nth-child(1) {
-  --theme-fallback: #FFCA54;
-  stop-color: var(--theme); }
-
-.Gradient-stop:nth-child(2) {
-  --theme-fallback: #FF6C54;
-  stop-color: var(--theme); }
+.Gradient {
+  --theme: var(--theme-invert, var(--theme-fallback)); }
+  .Gradient-stop:nth-child(1) {
+    --theme-fallback: #FFCA54;
+    stop-color: var(--theme, var(--theme-fallback)); }
+  .Gradient-stop:nth-child(2) {
+    --theme-fallback: #FF6C54;
+    stop-color: var(--theme, var(--theme-fallback)); }
 
 .buttonGroup {
   text-align: right; }

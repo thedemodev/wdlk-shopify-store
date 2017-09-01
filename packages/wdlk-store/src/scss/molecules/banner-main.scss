@@ -113,11 +113,6 @@
       }
     }
 
-    .Btn {
-      border: 1px solid var(--theme);
-      background-color: var(--theme-invert, transparent);
-    }
-
     .Banner-content {
       z-index: 3;
       line-height: 1;
@@ -131,7 +126,25 @@
   --theme-fallback: #{'#{$hex-coral}'};
   --theme-alpha: 1;
 
-  animation: theme-animation 5s ease-out;
+  animation: theme-animation 3s ease-out;
+
+  @keyframes theme-animation {
+    0% {
+      --theme-invert: #{'#{$hex-white}'};
+      --theme-transparent: transparent;
+    }
+
+    100% {
+      --theme-invert: #{'#{$hex-white}'};
+      --theme-transparent: transparent;
+    }
+  }
+
+  .Btn {
+    --theme-invert: var(--theme-transparent, var(--theme));
+    border: 1px solid var(--theme);
+    background: var(--theme-invert);
+  }
 
   .Logo-img,
   .ShoppingBag-icon {
@@ -140,17 +153,20 @@
   }
 
   .AccountNavigation-item {
-    --theme-fallback: #{'#{$typo-hex--tone-down}'};
-    color: var(--theme);
+    --theme: var(--theme-invert, var(--theme-fallback));
+    --theme-fallback: #{'#{$hex-light-gray}'};
+
+    color: var(--theme, var(--theme-fallback));
   }
 
   .Navigation-link {
-    --theme-fallback: #{'#{$typo-hex}'};
+    --theme: var(--theme-invert, var(--theme-fallback));
+    --theme-fallback: #{'#{$hex-blue-gray-dark}'};
 
-    color: var(--theme);
+    color: var(--theme, var(--theme-fallback));
 
     &::after {
-      background-color: var(--theme);
+      background-color: var(--theme, var(--theme-fallback));
     }
   }
 
@@ -164,27 +180,20 @@
       }
     }
   }
-
-  @keyframes theme-animation {
-    0% {
-      --theme-invert: #{'#{$hex-white}'};
-    }
-    100% {
-      --theme-invert: #{'#{$hex-white}'};
-    }
-  }
 }
 
 .Gradient {
+  --theme: var(--theme-invert, var(--theme-fallback));
   &-stop {
+
     &:nth-child(1) {
       --theme-fallback: #FFCA54;
-      stop-color: var(--theme);
+      stop-color: var(--theme, var(--theme-fallback));
     }
 
     &:nth-child(2) {
       --theme-fallback: #FF6C54;
-      stop-color: var(--theme);
+      stop-color: var(--theme, var(--theme-fallback));
     }
   }
 }
