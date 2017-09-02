@@ -110,28 +110,17 @@
   --theme-dark: var(--theme-light, hsla(0, 0%, 100%, var(--theme-invert)));
 
   --theme-interval: 2000;
-  --condition: calc(1 * (1 - var(--theme-invert)));
+  --theme-condition: calc(1 * (1 - var(--theme-invert)));
 
 
   --theme-coral: hsla(5, 100%, 69.5%, var(--theme-alpha, .35));
   --theme-yellow: hsla(41, 100%, 66.5%, var(--theme-alpha, .35));
 
-  animation: theme-animation calc(var(--theme-interval) * 1ms) ease;
-
-  @keyframes theme-animation {
-    0% {
-      --theme-invert: 1;
-    }
-
-    100% {
-      --theme-invert: 0;
-    }
-  }
-
   .Btn {
     --theme: var(--theme-dark, var(--theme-light));
     --theme-light: var(--theme-coral);
-    --flip-color: hsla(5.4, 100%, 69.4%, var(--condition, 1));
+    --flipper: var(--theme-condition, 1);
+    --flip-color: hsla(5.4, 100%, 69.4%, var(--flipper));
 
     border: 1px solid var(--theme);
     background: var(--flip-color);
