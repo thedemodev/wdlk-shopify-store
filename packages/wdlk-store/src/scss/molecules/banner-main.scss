@@ -108,8 +108,9 @@
 .withTheme {
   --theme: var(--theme-dark, var(--theme-light));
   --theme-dark: var(--theme-light, hsla(0, 0%, 100%, var(--theme-invert)));
+
   --theme-interval: 2000;
-  --theme-negation: 1;
+  --condition: calc(1 * (1 - var(--theme-invert)));
 
 
   --theme-coral: hsla(5, 100%, 69.5%, var(--theme-alpha, .35));
@@ -120,33 +121,33 @@
   @keyframes theme-animation {
     0% {
       --theme-invert: 1;
-      --theme-negation: 0;
     }
 
-    80% {
-      --theme-invert: .2;
-      --theme-negation: 0;
+    100% {
+      --theme-invert: 0;
     }
   }
 
   .Btn {
     --theme: var(--theme-dark, var(--theme-light));
     --theme-light: var(--theme-coral);
-    --flip-color: hsla(5.4, 100%, 69.4%, var(--theme-negation));
+    --flip-color: hsla(5.4, 100%, 69.4%, var(--condition, 1));
 
     border: 1px solid var(--theme);
     background: var(--flip-color);
     transition: background calc(var(--theme-interval) * 1ms) linear,
-      border-color calc((var(--theme-interval) / 2) * 1ms) linear;
+    border-color calc((var(--theme-interval) / 2) * 1ms) linear;
   }
 
-  .Logo-img,
-  .ShoppingBag-icon {
-    --theme: var(--theme-dark, var(--theme-light));
-    --theme-light: var(--hsla-coral);
-    color: var(--theme);
-    fill: currentColor;
-    transition: color calc((var(--theme-interval) / 2) * 1ms) ease-out;
+  @include media(medium) {
+    .Logo-img,
+    .ShoppingBag-icon {
+      --theme: var(--theme-dark, var(--theme-light));
+      --theme-light: var(--hsla-coral);
+      color: var(--theme);
+      fill: currentColor;
+      transition: color calc((var(--theme-interval) / 2) * 1ms) ease-out;
+    }
   }
 
   .AccountNavigation-item {
