@@ -97,3 +97,13 @@ $banner-teaser-logo-icon      : $hex-blue-gray;
 //-- Cart
 $quick-cart-hex-bg            : $hex-white;
 $cart-hex-border              : #ECECEC;
+
+//-- Custom Properties
+:root {
+  --hsla-coral: hsla(5.4, 100%, 69.4%, 1);
+  --hsla-coral8: hsla(8.4, 100%, 66.5%, 1);
+  --hsla-gray: hsla(0, 0%, 60%, 1);
+  --hsla-gray205: hsla(205, 11.9%, 39.6%, 1);
+  --hsla-yellow: hsla(41.4, 100%, 66.5%, 1);
+  --hsla-white: hsla(0, 0%, 100%, 1);
+}

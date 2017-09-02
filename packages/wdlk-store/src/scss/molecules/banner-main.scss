@@ -1,0 +1,205 @@
+
+.Banner {
+  $hsl-light-sand: hsv-to-hsl(32, 2%, 93%);
+  $hsl-coral: hsv-to-hsl(5, 61%, 100%);
+
+  &--main {
+    --alpha-mask: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Banner_alpha_mask_Smartphone_@2x_retina.svg);
+    --image-mask: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Main-Banner_Smartphone_@2x_retina.png);
+
+    max-height: 100vh;
+    box-sizing: border-box;
+    background-color: hsla(
+      nth($hsl-light-sand, 1),
+      nth($hsl-light-sand, 2),
+      nth($hsl-light-sand, 3), 1);
+
+    .Banner-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: auto;
+      perspective-origin: center;
+      perspective: 100vw;
+    }
+
+    .Banner-media {
+      display: block;
+      position: relative;
+      padding-top: 149.47%;
+      width: 100vw;
+
+      @include media(small) {
+        padding-top: 133.33%;
+      }
+
+      @include media(medium) {
+        padding-top: 56.25%;
+      }
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100%;
+        opacity: calc(var(--theme-invert, 0) * 1);
+        transition: opacity calc(var(--theme-interval) * 1ms) ease-out;
+        pointer-events: none;
+      }
+
+      &::before {
+        --theme-alpha: .25;
+        z-index: 1;
+        background: linear-gradient(135deg,
+          var(--theme-yellow),
+          var(--theme-coral) 80%);
+        background-blend-mode: screen;
+        mix-blend-mode: multiply;
+      }
+
+      &::after {
+        z-index: 2;
+        background: var(--image-mask),
+          linear-gradient(135deg,
+          var(--theme-yellow),
+          var(--theme-coral) 80%);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center top;
+        mix-blend-mode: multiply;
+
+        @supports(-webkit-mask-image: var(--alpha-mask)) {
+          -webkit-mask-image: var(--alpha-mask);
+          -webkit-mask-size: cover;
+          -webkit-mask-position: center top;
+          -webkit-mask-repeat: no-repeat;
+        }
+
+        @supports(mask-image: var(--alpha-mask)) {
+          mask-image: var(--alpha-mask);
+          mask-size: cover;
+          mask-position: center top;
+          mask-repeat: no-repeat;
+        }
+
+        @include media(small) {
+          --alpha-mask: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Banner_alpha_mask_Tablet.svg);
+          --image-mask: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Main-Banner_Tablet_@1x.png);
+        }
+
+        @include media(medium) {
+          --alpha-mask: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Banner_alpha_mask_Desktop.svg);
+          --image-mask: url(https://cdn.shopify.com/s/files/1/0742/2733/t/34/assets/WDLK_Main-Banner_Desktop_@1x.png);
+        }
+      }
+    }
+
+    .Banner-content {
+      z-index: 3;
+      transform: translateX(-50%) translateY(-35%);
+    }
+  }
+}
+
+.withTheme {
+  --theme: var(--theme-dark, var(--theme-light));
+  --theme-dark: var(--theme-light, hsla(0, 0%, 100%, var(--theme-invert)));
+  --theme-interval: 2000;
+  --theme-negation: 1;
+
+
+  --theme-coral: hsla(5, 100%, 69.5%, var(--theme-alpha, .35));
+  --theme-yellow: hsla(41, 100%, 66.5%, var(--theme-alpha, .35));
+
+  animation: theme-animation calc(var(--theme-interval) * 1ms) ease;
+
+  @keyframes theme-animation {
+    0% {
+      --theme-invert: 1;
+      --theme-negation: 0;
+    }
+
+    80% {
+      --theme-invert: .2;
+      --theme-negation: 0;
+    }
+  }
+
+  .Btn {
+    --theme: var(--theme-dark, var(--theme-light));
+    --theme-light: var(--theme-coral);
+    --flip-color: hsla(5.4, 100%, 69.4%, var(--theme-negation));
+
+    border: 1px solid var(--theme);
+    background: var(--flip-color);
+    transition: background calc(var(--theme-interval) * 1ms) linear,
+      border-color calc((var(--theme-interval) / 2) * 1ms) linear;
+  }
+
+  .Logo-img,
+  .ShoppingBag-icon {
+    --theme: var(--theme-dark, var(--theme-light));
+    --theme-light: var(--hsla-coral);
+    color: var(--theme);
+    fill: currentColor;
+    transition: color calc((var(--theme-interval) / 2) * 1ms) ease-out;
+  }
+
+  .AccountNavigation-item {
+    --theme: var(--theme-dark, var(--theme-light));
+    --theme-light: var(--hsla-gray);
+
+    color: var(--theme, var(--theme-light));
+    transition: color calc((var(--theme-interval) / 2) * 1ms) linear;
+  }
+
+  .Navigation-link {
+    --theme: var(--theme-dark, var(--theme-light));
+    --theme-light:  var(--hsla-gray205);
+
+    color: var(--theme, var(--theme-light));
+    transition: color calc((var(--theme-interval) / 2) * 1ms) linear;
+
+    &::after {
+      background-color: var(--theme);
+    }
+  }
+
+  @include media(medium) {
+    .is-undocked {
+      .Navigation-link {
+        --theme: var(--hsla-gray205);
+      }
+      .AccountNavigation-item {
+        --theme: var(--hsla-gray);
+      }
+      .Logo-img,
+      .ShoppingBag-icon {
+        --theme: var(--hsla-coral);
+      }
+    }
+  }
+}
+
+.Gradient {
+  &-stop {
+    --theme: var(--theme-dark, var(--theme-light));
+    transition: stop-color
+      calc((var(--theme-interval) / 1.5) * 1ms)
+      cubic-bezier(0.755, 0.050, 0.855, 0.060);
+
+    &:nth-child(1) {
+      --theme-light: var(--hsla-yellow);
+      stop-color: var(--theme, var(--theme-light));
+    }
+
+    &:nth-child(2) {
+      --theme-light: var(--hsla-coral8);
+      stop-color: var(--theme, var(--theme-light));
+    }
+  }
+}

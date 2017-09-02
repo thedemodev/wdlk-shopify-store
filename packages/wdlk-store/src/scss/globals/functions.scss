@@ -1,0 +1,33 @@
+//-- Converts the HSV values into HSL values.
+//-- It returns a SCSS list to use together
+//-- with the hsla function;
+//-- https://gist.github.com/voxpelli/1069204
+@function hsv-to-hsl($h, $s: 0, $v: 0) {
+  @if unit($s) == '%' {
+    $s: 0 + ($s / 100%);
+  }
+  @if unit($v) == '%' {
+    $v: 0 + ($v / 100%);
+  }
+
+  $ss: $s * $v;
+  $ll: (2 - $s) * $v;
+
+  @if $ll <= 1 {
+    $ss: $ss / $ll;
+  } @else if ($ll == 2) {
+    $ss: 0;
+  } @else {
+    $ss: $ss / (2 - $ll);
+  }
+
+  $ll: $ll / 2;
+
+  @return $h, percentage(max(0, min(1, $ss))), percentage(max(0, min(1, $ll)));
+}
+
+//-- Returns the CSS hsla function instead of Sass
+//-- own hsla() function implementation.
+@function hsla ($h, $s, $l, $a) {
+  @return unquote("hsla(#{$h}, #{$s}, #{$l}, #{$a})");
+}
