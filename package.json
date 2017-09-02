@@ -1,6 +1,6 @@
 {
   "name": "wdlk-shopify-store",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Woodlike Ocean shopping experience",
   "main": "index.js",
   "scripts": {

@@ -320,8 +320,7 @@ body {
   color: #596771; }
 
 .Logo {
-  padding-top: 1rem;
-  margin: 0; }
+  display: flex; }
   .Logo-img {
     width: 122px;
     height: 46px;
@@ -1210,33 +1209,29 @@ input[type="number"]::-webkit-outer-spin-button {
 .withTheme {
   --theme: var(--theme-dark, var(--theme-light));
   --theme-dark: var(--theme-light, hsla(0, 0%, 100%, var(--theme-invert)));
-  --theme-interval: 2000;
-  --theme-negation: 1;
+  --theme-interval: 3000;
+  --theme-condition: calc(1 * (1 - var(--theme-invert)));
   --theme-coral: hsla(5, 100%, 69.5%, var(--theme-alpha, 0.35));
-  --theme-yellow: hsla(41, 100%, 66.5%, var(--theme-alpha, 0.35));
-  animation: theme-animation calc(var(--theme-interval) * 1ms) ease; }
-
-@keyframes theme-animation {
-  0% {
-    --theme-invert: 1;
-    --theme-negation: 0; }
-  80% {
-    --theme-invert: .2;
-    --theme-negation: 0; } }
+  --theme-yellow: hsla(41, 100%, 66.5%, var(--theme-alpha, 0.35)); }
   .withTheme .Btn {
     --theme: var(--theme-dark, var(--theme-light));
     --theme-light: var(--theme-coral);
-    --flip-color: hsla(5.4, 100%, 69.4%, var(--theme-negation));
+    --flipper: var(--theme-condition, 1);
+    --flip-color: hsla(5.4, 100%, 69.4%, var(--flipper));
     border: 1px solid var(--theme);
     background: var(--flip-color);
-    transition: background calc(var(--theme-interval) * 1ms) linear, border-color calc((var(--theme-interval) / 2) * 1ms) linear; }
-  .withTheme .Logo-img,
-  .withTheme .ShoppingBag-icon {
-    --theme: var(--theme-dark, var(--theme-light));
-    --theme-light: var(--hsla-coral);
-    color: var(--theme);
-    fill: currentColor;
-    transition: color calc((var(--theme-interval) / 2) * 1ms) ease-out; }
+    transition: background calc(var(--theme-interval) * 1ms) linear, border-color calc((var(--theme-interval) / 3) * 1ms) linear; }
+    .withTheme .Btn:hover {
+      border-color: #E5554E;
+      background-color: #E5554E; }
+  @media (min-width: 769px) {
+    .withTheme .Logo-img,
+    .withTheme .ShoppingBag-icon {
+      --theme: var(--theme-dark, var(--theme-light));
+      --theme-light: var(--hsla-coral);
+      color: var(--theme);
+      fill: currentColor;
+      transition: color calc((var(--theme-interval) / 2) * 1ms) ease-out; } }
   .withTheme .AccountNavigation-item {
     --theme: var(--theme-dark, var(--theme-light));
     --theme-light: var(--hsla-gray);
@@ -1260,7 +1255,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .Gradient-stop {
   --theme: var(--theme-dark, var(--theme-light));
-  transition: stop-color calc((var(--theme-interval) / 1.5) * 1ms) cubic-bezier(0.755, 0.05, 0.855, 0.06); }
+  transition: stop-color calc((var(--theme-interval) / 2) * 1ms) cubic-bezier(0.755, 0.05, 0.855, 0.06); }
   .Gradient-stop:nth-child(1) {
     --theme-light: var(--hsla-yellow);
     stop-color: var(--theme, var(--theme-light)); }
