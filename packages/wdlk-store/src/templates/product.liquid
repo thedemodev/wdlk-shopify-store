@@ -108,13 +108,24 @@
         </div>
 
         <div class="Product-detail">
-            <h1 class="Headline Headline--2 Product-headline" itemprop="name">{{ product.title }}</h1>
-            <strong class="Headline Headline--3" itemprop="price">{{ product.price | money_with_currency }}</strong>
+            <h1 class="Headline Headline--2 Product-headline" itemprop="name">
+              {{ product.title }}
+            </h1>
             {% if product.compare_at_price_max > product.price %}
-            <strong class="visually-hidden">{{ 'products.general.sale_price' | t }}</strong>
-            <p id="ComparePrice">
-                {{ 'products.product.compare_at' | t }} {{ current_variant.compare_at_price | money }}
-            </p>
+              <div class="Price Price--sale">
+                <strong class="Price-item" itemprop="price">
+                  {{ product.price | money_with_currency }}
+                </strong>
+                <strong class="Price-item" itemprop="price">
+                  {{ current_variant.compare_at_price | money }}
+                </strong>
+              </div>
+            {% else %}
+              <div class="Price">
+                <strong class="Price-item" itemprop="price">
+                  {{ product.price | money_with_currency }}
+                </strong>
+              </div>
             {% endif %}
             <small class="Copy-sm">({{'products.product.tax_type' | t}} {{'products.product.tax_included' | t}})</small>
 

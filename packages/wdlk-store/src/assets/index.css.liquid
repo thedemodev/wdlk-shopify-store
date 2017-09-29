@@ -267,44 +267,6 @@ input[type="radio"] {
   --size-XXL: 36;
   --size-3XL: 48; }
 
-.Price {
-  color: #596771;
-  font-weight: bold;
-  text-align: right; }
-  .Price-item {
-    display: inline-block; }
-  .Price--sale .Price-item:first-child {
-    text-decoration: line-through; }
-  .Price--sale .Price-item:last-child {
-    margin-left: calc(var(--size-XS) * 1px);
-    color: #FF7163; }
-
-.Video--bg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: -1;
-  display: none;
-  min-height: 100%;
-  min-width: 100%;
-  transform-origin: 50% 50% 0;
-  transform: translate(-50%, -50%); }
-  @media (min-width: 480px) {
-    .Video--bg {
-      display: block; } }
-
-html {
-  font-family: "museo_sans300", sans-serif;
-  font-size: 62.5%;
-  line-height: 1.5;
-  color: #596771;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
-
-body {
-  font-size: 1.6rem;
-  color: #596771; }
-
 .Headline {
   display: block;
   margin: 2rem 0;
@@ -354,6 +316,54 @@ body {
 
 .SubHeadline {
   margin-bottom: 1rem; }
+
+.Price {
+  display: block;
+  margin: 2rem 0;
+  font-family: "museo300";
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+  font-weight: normal;
+  font-size: 2.4rem;
+  color: #FF7163;
+  text-align: center; }
+  .Price-item {
+    display: inline-block;
+    font-size: inherit;
+    font-weight: inherit;
+    color: currentColor; }
+  .Price--sale .Price-item:first-child {
+    color: #596771;
+    font-size: 2rem;
+    text-decoration: line-through; }
+  .Price--sale .Price-item:last-child {
+    margin-left: calc(var(--size-XS) * 1px); }
+
+html {
+  font-family: "museo_sans300", sans-serif;
+  font-size: 62.5%;
+  line-height: 1.5;
+  color: #596771;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+body {
+  font-size: 1.6rem;
+  color: #596771; }
+
+.Video--bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  display: none;
+  min-height: 100%;
+  min-width: 100%;
+  transform-origin: 50% 50% 0;
+  transform: translate(-50%, -50%); }
+  @media (min-width: 480px) {
+    .Video--bg {
+      display: block; } }
 
 .Copyright {
   display: inline-block;
@@ -1644,9 +1654,6 @@ input[type="number"]::-webkit-outer-spin-button {
   @media (min-width: 1024px) {
     .Product-detail {
       background-color: #f9f6f1; } }
-  .Product-detail .Headline--3 {
-    margin-bottom: 0;
-    color: #FF7163; }
 
 .Product-images {
   width: 100%;

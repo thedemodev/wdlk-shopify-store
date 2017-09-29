@@ -298,7 +298,6 @@
     },
     "product": {
       "sold_out": "Agotado",
-      "on_sale_from_html": "<strong>En oferta<\/strong> desde {{ price }}",
       "unavailable": "No disponible",
       "compare_at": " Comparar en",
       "quantity": "Cantidad",
