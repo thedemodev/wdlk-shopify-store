@@ -52,14 +52,23 @@
               {% if product.price_varies %}
                   <div class="Price Price--list Price--sale">
                     {% assign sale_price = product.price | money %}
-                    <strong class="Price-item">{{ product.compare_at_price | money }}</strong>
-                    <strong class="Price-item">{{ product.price | money }}</strong>
+                    <strong class="Price-item">
+                      {{ product.compare_at_price | money }}
+                    </strong>
+                    <strong class="Price-item">
+                      {{ product.price | money }}
+                    </strong>
                   </div>
               {% else %}
-                  <div class="Price Price--list Price--sale">
-                    <strong class="Price-item">{{ product.compare_at_price | money }}
-                    <strong class="Price-item">{{ product.price | money }}</strong>
-                  </div>
+                <div class="Price Price--list Price--sale">
+                  {% assign sale_price = product.price | money %}
+                  <strong class="Price-item">
+                    {{ product.compare_at_price | money }}
+                  </strong>
+                  <strong class="Price-item">
+                    {{ product.price | money }}
+                  </strong>
+                </div>
               {% endif %}
             {% else %}
               {% if product.price_varies %}
@@ -69,8 +78,8 @@
                   </strong>
               {% else %}
                   <div class="Price Price--list">
-                   <strong class="Price-item">
-                    {{ product.price | money }}
+                    <strong class="Price-item">
+                      {{ product.price | money }}
                     </strong>
                   </div>
               {% endif %}
