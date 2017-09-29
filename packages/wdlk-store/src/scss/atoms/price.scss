@@ -1,13 +1,13 @@
 .Price {
   display: block;
   margin: 2rem 0;
-  font-family: "museo300";
-  text-transform: uppercase;
-  letter-spacing: .2rem;
-  font-weight: normal;
-  font-size: $h3-size;
   color: $hex-coral;
+  letter-spacing: .2rem;
+  font-family: "museo300";
+  font-size: $h3-size;
+  font-weight: normal;
   text-align: center;
+  text-transform: uppercase;
 
 
   &-item {
@@ -34,7 +34,8 @@
   &--list {
     margin: 0;
     color: $typo-hex;
-    font-size: $copy-size;
+    letter-spacing: .1rem;
+    font-size: $copy-size-m;
     font-weight: bold;
     text-align: right;
 

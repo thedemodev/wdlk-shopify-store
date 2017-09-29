@@ -49,27 +49,15 @@
             if your variants have different prices.
             {% endcomment %}
             {% if on_sale %}
-              {% if product.price_varies %}
-                  <div class="Price Price--list Price--sale">
-                    {% assign sale_price = product.price | money %}
-                    <strong class="Price-item">
-                      {{ product.compare_at_price | money }}
-                    </strong>
-                    <strong class="Price-item">
-                      {{ product.price | money }}
-                    </strong>
-                  </div>
-              {% else %}
-                <div class="Price Price--list Price--sale">
-                  {% assign sale_price = product.price | money %}
-                  <strong class="Price-item">
-                    {{ product.compare_at_price | money }}
-                  </strong>
-                  <strong class="Price-item">
-                    {{ product.price | money }}
-                  </strong>
-                </div>
-              {% endif %}
+              <div class="Price Price--list Price--sale">
+                {% assign sale_price = product.price | money %}
+                <strong class="Price-item">
+                  {{ product.compare_at_price | money }}
+                </strong>
+                <strong class="Price-item">
+                  {{ product.price | money }}
+                </strong>
+              </div>
             {% else %}
               {% if product.price_varies %}
                   {% assign price = product.price | money %}
