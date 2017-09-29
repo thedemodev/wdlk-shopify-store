@@ -9,8 +9,6 @@
   color: $hex-coral;
   text-align: center;
 
-  // font-weight: bold;
-  // text-align: right;
 
   &-item {
     display: inline-block;
@@ -29,6 +27,20 @@
 
       &:last-child {
         margin-left: calc(var(--size-XS) * 1px);
+      }
+    }
+  }
+
+  &--list {
+    margin: 0;
+    color: $typo-hex;
+    font-size: $copy-size;
+    font-weight: bold;
+    text-align: right;
+
+    .Price-item {
+      &:first-child {
+        font-size: inherit;
       }
     }
   }

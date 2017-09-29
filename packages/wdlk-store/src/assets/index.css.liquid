@@ -317,6 +317,18 @@ input[type="radio"] {
 .SubHeadline {
   margin-bottom: 1rem; }
 
+html {
+  font-family: "museo_sans300", sans-serif;
+  font-size: 62.5%;
+  line-height: 1.5;
+  color: #596771;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+body {
+  font-size: 1.6rem;
+  color: #596771; }
+
 .Price {
   display: block;
   margin: 2rem 0;
@@ -338,18 +350,14 @@ input[type="radio"] {
     text-decoration: line-through; }
   .Price--sale .Price-item:last-child {
     margin-left: calc(var(--size-XS) * 1px); }
-
-html {
-  font-family: "museo_sans300", sans-serif;
-  font-size: 62.5%;
-  line-height: 1.5;
-  color: #596771;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
-
-body {
-  font-size: 1.6rem;
-  color: #596771; }
+  .Price--list {
+    margin: 0;
+    color: #596771;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-align: right; }
+    .Price--list .Price-item:first-child {
+      font-size: inherit; }
 
 .Video--bg {
   position: absolute;

@@ -50,13 +50,13 @@
             {% endcomment %}
             {% if on_sale %}
               {% if product.price_varies %}
-                  <div class="Price Price--sale">
+                  <div class="Price Price--list Price--sale">
                     {% assign sale_price = product.price | money %}
                     <strong class="Price-item">{{ product.compare_at_price | money }}</strong>
                     <strong class="Price-item">{{ product.price | money }}</strong>
                   </div>
               {% else %}
-                  <div class="Price Price--sale">
+                  <div class="Price Price--list Price--sale">
                     <strong class="Price-item">{{ product.compare_at_price | money }}
                     <strong class="Price-item">{{ product.price | money }}</strong>
                   </div>
@@ -68,7 +68,7 @@
                     {{ 'products.general.from_text_html' | t: price: price }}
                   </strong>
               {% else %}
-                  <div class="Price">
+                  <div class="Price Price--list">
                    <strong class="Price-item">
                     {{ product.price | money }}
                     </strong>
