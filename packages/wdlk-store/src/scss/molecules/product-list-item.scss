@@ -82,23 +82,21 @@
     display: flex;
     justify-content: space-between;
     font-family: "museo300";
-    letter-spacing: 1px;
-  }
-
-  &-title,
-  &-price {
     font-size: $copy-size-m;
-    color: $typo-hex;
+    letter-spacing: 1px;
   }
 
   &-title {
       position: relative;
+      max-width: 75%;
       padding-bottom: 16px;
       margin: {
           top: 0;
           right: $base-spacing;
           bottom: 0;
       }
+      color: $typo-hex;
+      font-size: inherit;
       text-align: left;
 
       &::after {
@@ -107,7 +105,7 @@
           left: 0;
           bottom: 0;
           width: 25px;
-          height: 1px;
+          height: 2px;
           background-color: $typo-hex--lightest;
       }
   }

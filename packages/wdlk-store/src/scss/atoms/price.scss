@@ -1,0 +1,24 @@
+.Price {
+  color: $typo-hex;
+  font-weight: bold;
+  text-align: right;
+
+  &-item {
+    display: inline-block;
+  }
+
+  &--sale {
+
+    .Price-item {
+      &:first-child {
+        text-decoration: line-through;
+      }
+
+      &:last-child {
+        margin-left: calc(var(--size-XS) * 1px);
+        color: $hex-coral;
+      }
+    }
+  }
+
+}
