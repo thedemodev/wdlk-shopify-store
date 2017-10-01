@@ -1,103 +1,69 @@
 <nav class="Navigation" role="navigation">
-    <ul class="Navigation-list" id="AccessibleNav">
-        {% for link in linklists.main-menu.links %}
-          {% assign child_list_handle = link.title | handleize %}
-          {% if linklists[child_list_handle].links != blank %}
-            {% comment %}
-            Manually insert the Pouch product link
-            for mobile dives. The product curently does not
-            have a category to be shown on mobile.
-            {% endcomment %}
-            {% if forloop.index >= 3 and
-              forloop.index < 4 %}
-                <li class="Navigation-item Navigation-item--mobile">
-                    <a href="{{ all_products['flying-fish-bikini-pouch'].url }}" class="Navigation-link {% if link.active %} is-active{% endif %}">{{ all_products['flying-fish-bikini-pouch'].type }}</a>
-                </li>
-            {% endif %}
-            <li class="Navigation-item has-dropdown" aria-haspopup="true">
-              <a href="{{ link.url }}" class="Navigation-link {% if link.active %} is-active{% endif %}">
-                {{ link.title }}
-              </a>
-              <div class="Navigation-dropdown">
-                <ul class="Navigation-dropdown-list">
-                {% for childlink in linklists[child_list_handle].links %}
-                    <li class="Navigation-item">
-                        <a href="{{ childlink.url }}" class="Navigation-link ">{{ childlink.title | escape }}</a>
-                    </li>
-                {% endfor %}
-                </ul>
-                  {% comment %}
-                  -- Secondary Navigation Teaser Module
-                  The link handle must be the same as the
-                  collection handle in order to display the teaser.
+  <ul class="Navigation-list" id="AccessibleNav">
+    {% for link in linklists.main-menu.links %}
+      {% assign child_list_handle = link.title | handleize %}
+      {% if linklists[child_list_handle].links != blank %}
+        <li class="Navigation-item has-dropdown" aria-haspopup="true">
+          <a href="{{ link.url }}" class="Navigation-link {% if link.active %} is-active{% endif %}">
+            {{ link.title }}
+          </a>
 
-                  If it is the brand the link handle must be the same
-                  as the brandTeaserId variable
-                  {% endcomment %}
-                  {% if link.handle == collections[link.handle].handle %}
-                  <a class="Navigation-teaser"  href="{{collections[link.handle].url}}" >
-                      <figure>
-                          <img  class="Navigation-teaser-image" alt="{{collections[link.handle].title}}" src="{{collections[link.handle].image.src | img_url: 'large'}}" />
-                          <figurecaption class="Navigation-teaser-headline Navigation-teaser-headline-{{link.handle}} Headline Headline--4">
-                              {{'collections.general.shop' | t}} {{collections[link.handle].title}}
-                          </figurecaption>
-                      </figure>
-                  </a>
-                  {% endif %}
+          <ul class="Navigation-dropdown">
+          {% for childlink in linklists[child_list_handle].links %}
+              <li class="Navigation-item">
+                  <a href="{{ childlink.url }}" class="Navigation-link ">{{ childlink.title | escape }}</a>
+              </li>
+          {% endfor %}
+          <li class="Navigation-item">
+            <a href="https://www.instagram.com/wdlk/" target="_blank">
+              <svg class="SocialList-item Icon Icon--social Icon--instagram">
+                <use xlink:href="#Instagram" />
+              </svg>
+            </a>
+          </li>
+          </ul>
 
-                  {% assign brandTeaserId = 'the-brand' %}
-                  {% assign brandTeaserHandle = 'woodlike-ocean-the-brand' %}
-                  {% assign brandTeaserImg =
-                      '@andyscinger-byron-bay-photography2x.jpg' | asset_url %}
-                  {% if link.handle == brandTeaserId %}
-                    <a class="Navigation-teaser"  href="{{link.url}}" >
-                        <figure>
-                            <img  class="Navigation-teaser-image" alt="{{'general.navigation.teaser_alt' | t}}" src="{{brandTeaserImg}}" />
-                            <figurecaption class="Navigation-teaser-headline  Headline Headline--4">
-                                {{'general.navigation.the_brand_title' | t}}
-                            </figurecaption>
-                        </figure>
-                    </a>
-                  {% endif %}
-              </div>
-            </li>
-          {% else %}
-            <li class="Navigation-item">
-              <a href="{{ link.url }}" class="Navigation-link {% if link.active %} is-active{% endif %}">{{ link.title }}</a>
-            </li>
+        </li>
+      {% else %}
+        <li class="Navigation-item">
+          <a href="{{ link.url }}" class="Navigation-link {% if link.active %} is-active{% endif %}">{{ link.title }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+    <li class="Navigation-item Navigation-item--mobile">
+        <a href="{{ pages['about-us'].url }}" class="Navigation-link {% if link.active %} is-active{% endif %}">{{ pages['about-us'].handle | replace_first: '-', ' ' }}</a>
+    </li>
+    <li class="Navigation-item Navigation-item--mobile">
+        <a href="{{ pages['sustainability'].url }}" class="Navigation-link {% if link.active %} is-active{% endif %}">{{ pages['sustainability'].title }}</a>
+    </li>
+    {% if shop.customer_accounts_enabled %}
+      {% if customer %}
+          {% if customer.first_name != blank %}
+          {% capture first_name %}
+          <li class="Navigation-item Navigation-item--mobile">
+              <a href="/account" class="Navigation-link">{{ customer.first_name }}</a>
+          {% endcapture %}
+
+              {% else %}
+              <a href="/account" class="Navigation-link">{{ 'layout.customer.account' | t }}</a>
+          </li>
           {% endif %}
-        {% endfor %}
-        <li class="Navigation-item Navigation-item--mobile">
-            <a href="{{ pages['about-us'].url }}" class="Navigation-link {% if link.active %} is-active{% endif %}">{{ pages['about-us'].handle | replace_first: '-', ' ' }}</a>
-        </li>
-        <li class="Navigation-item Navigation-item--mobile">
-            <a href="{{ pages['sustainability'].url }}" class="Navigation-link {% if link.active %} is-active{% endif %}">{{ pages['sustainability'].title }}</a>
-        </li>
-        {% if shop.customer_accounts_enabled %}
-        {% if customer %}
-            {% if customer.first_name != blank %}
-            {% capture first_name %}
-            <li class="Navigation-item Navigation-item--mobile">
-                <a href="/account" class="Navigation-link">{{ customer.first_name }}</a>
-            {% endcapture %}
-
-                {% else %}
-                <a href="/account" class="Navigation-link">{{ 'layout.customer.account' | t }}</a>
-            </li>
-            {% endif %}
-                <li class="Navigation-item Navigation-item--mobile">
-                    <a href="/account/logout" class="Navigation-link">{{ 'layout.customer.log_out' | t }}</a>
-                </li>
-            {% else %}
-                <li class="Navigation-item Navigation-item--mobile">
-                    <a href="/account/login" class="Navigation-link">{{ 'layout.customer.log_in' | t }}</a>
-                </li>
-            {% if shop.customer_accounts_optional %}
-                <li class="Navigation-item Navigation-item--mobile">
-                    <a href="/account/register" class="Navigation-link">{{ 'layout.customer.create_account' | t }}</a>
-                </li>
-            {% endif %}
-        {% endif %}
-        {% endif %}
-      </ul>
+              <li class="Navigation-item Navigation-item--mobile">
+                  <a href="/account/logout" class="Navigation-link">{{ 'layout.customer.log_out' | t }}</a>
+              </li>
+          {% else %}
+              <li class="Navigation-item Navigation-item--mobile">
+                  <a href="/account/login" class="Navigation-link">{{ 'layout.customer.log_in' | t }}</a>
+              </li>
+          {% if shop.customer_accounts_optional %}
+              <li class="Navigation-item Navigation-item--mobile">
+                  <a href="/account/register" class="Navigation-link">{{ 'layout.customer.create_account' | t }}</a>
+              </li>
+          {% endif %}
+      {% endif %}
+    {% endif %}
+    <li class="Navigation-item Navigation-item--mobile">
+      {% include 'social-list' with 'default' %}
+    </li>
+  </ul>
 </nav>

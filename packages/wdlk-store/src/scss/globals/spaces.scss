@@ -1,10 +1,19 @@
 :root {
-  --size-XXS: 3;
-  --size-XS: 6;
-  --size-S : 12;
-  --size-M : 18;
-  --size-L : 24;
-  --size-XL : 30;
+  --size-XXS : 3;
+  --size-XS  : 6;
+  --size-S   : 12;
+  --size-M   : 18;
+  --size-L   : 24;
+  --size-XL  : 30;
   --size-XXL : 36;
   --size-3XL : 48;
 }
+
+$size-XXS    : 3;
+$size-XS     : 6;
+$size-S      : 12;
+$size-M      : 18;
+$size-L      : 24;
+$size-XL     : 30;
+$size-XXL    : 36;
+$size-3XL    : 48;
