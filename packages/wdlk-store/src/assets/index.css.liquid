@@ -850,6 +850,9 @@ input[type="number"]::-webkit-outer-spin-button {
           opacity: 1;
           visibility: visible;
           pointer-events: initial; }
+        .Navigation-item:hover .Navigation-item {
+          opacity: 1;
+          transform: none; }
         .Navigation-item.has-dropdown > .Navigation-link:before {
           content: " ";
           opacity: 0;
@@ -916,26 +919,21 @@ input[type="number"]::-webkit-outer-spin-button {
     background: rgba(255, 255, 255, 0.98);
     transform: translateX(-50%);
     transition: opacity .8s ease; }
-    @media (min-width: 769px) {
-      .Navigation-dropdown {
-        text-align: left; } }
     .Navigation-dropdown .Navigation-item {
-      line-height: 1.5; }
+      opacity: 0;
+      transform: translate3d(0, -25%, 0);
+      transition: transform .4s ease-out, opacity .1s ease-in; }
       @media (min-width: 769px) {
-        .Navigation-dropdown .Navigation-item {
-          text-align: left; }
-          .Navigation-dropdown .Navigation-item:first-child {
-            padding-left: 0; }
-          .Navigation-dropdown .Navigation-item:last-child {
-            position: absolute;
-            right: 0; } }
-      .Navigation-dropdown .Navigation-item .SocialList-item {
-        width: 30px;
-        fill: #8E959A; }
-        .Navigation-dropdown .Navigation-item .SocialList-item:hover {
-          fill: #384852; }
+        .Navigation-dropdown .Navigation-item:last-child {
+          position: absolute;
+          right: 0; } }
       .Navigation-dropdown .Navigation-item .Navigation-link {
         color: #596771; }
+    .Navigation-dropdown .SocialList-item {
+      width: calc(var(--size-M) * 1px);
+      fill: #8E959A; }
+      .Navigation-dropdown .SocialList-item:hover {
+        fill: #384852; }
   .Navigation-teaser {
     position: relative;
     display: inline-block;
@@ -954,9 +952,6 @@ input[type="number"]::-webkit-outer-spin-button {
       transform: translateY(-50%); }
       .Navigation-teaser-headline-one-pieces {
         color: #8E959A; }
-    .Navigation-teaser-image {
-      max-width: 700px / 2;
-      max-height: 280px; }
 
 .Banner {
   position: relative;
