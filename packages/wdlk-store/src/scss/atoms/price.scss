@@ -1,0 +1,49 @@
+.Price {
+  display: block;
+  margin: 2rem 0;
+  color: $hex-coral;
+  letter-spacing: .2rem;
+  font-family: "museo300";
+  font-size: $h3-size;
+  font-weight: normal;
+  text-align: center;
+  text-transform: uppercase;
+
+
+  &-item {
+    display: inline-block;
+    font-size: inherit;
+    font-weight: inherit;
+    color: currentColor;
+  }
+
+  &--sale {
+    .Price-item {
+      &:first-child {
+        color: $typo-hex;
+        font-size: $h4-size;
+        text-decoration: line-through;
+      }
+
+      &:last-child {
+        margin-left: calc(var(--size-XS) * 1px);
+      }
+    }
+  }
+
+  &--list {
+    margin: 0;
+    color: $typo-hex;
+    letter-spacing: .1rem;
+    font-size: $copy-size-m;
+    font-weight: bold;
+    text-align: right;
+
+    .Price-item {
+      &:first-child {
+        font-size: inherit;
+      }
+    }
+  }
+
+}

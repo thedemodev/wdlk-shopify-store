@@ -1,21 +1,23 @@
-//-- Typography Styling
+//--Atoms
 @import "headlines";
 @import "copytext";
-//-- Layout
-@import "logo";
-@import "shopping-bag";
-@import "copyright";
-@import "content";
-//-- Links & Buttons
-@import "links";
-@import "buttons";
-@import "indicators";
-@import "burger-button";
-//-- Forms
-@import "select";
-@import "number-input";
-@import "input";
-//-- Icons
-@import "icon";
+@import "price";
 //-- Molecules
 @import "video";
+
+//-- Layout
+@import "copyright";
+@import "content";
+@import "logo";
+@import "shopping-bag";
+//-- Links & Buttons
+@import "buttons";
+@import "burger-button";
+@import "indicators";
+@import "links";
+//-- Forms
+@import "input";
+@import "number-input";
+@import "select";
+//-- Icons
+@import "icon";

@@ -1,2 +1,4 @@
 .# Ignore cache
 node_modules
+./packages/.DS_Store
+lerna-debug.log

@@ -49,31 +49,34 @@
             if your variants have different prices.
             {% endcomment %}
             {% if on_sale %}
-            {% if product.price_varies %}
-                <strong class="ProductItem-price">{% assign sale_price = product.price | money %}</strong>
-            {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+              <div class="Price Price--list Price--sale">
+                {% assign sale_price = product.price | money %}
+                <strong class="Price-item">
+                  {{ product.compare_at_price | money }}
+                </strong>
+                <strong class="Price-item">
+                  {{ product.price | money }}
+                </strong>
+              </div>
             {% else %}
-                <strong class="ProductItem-subtitle">{{ 'products.product.on_sale' | t }}</strong>
-                <strong class="ProductItem-price">{{ product.price | money }}</strong>
-            {% endif %}
-            {% else %}
-            {% if product.price_varies %}
-                {% assign price = product.price | money %}
-                <strong class="ProductItem-subtitle">{{ 'products.general.from_text_html' | t: price: price }}</strong>
-            {% else %}
-                <strong class="ProductItem-price">{{ product.price | money }}</strong>
-            {% endif %}
+              {% if product.price_varies %}
+                  {% assign price = product.price | money %}
+                  <strong class="ProductItem-subtitle">
+                    {{ 'products.general.from_text_html' | t: price: price }}
+                  </strong>
+              {% else %}
+                  <div class="Price Price--list">
+                    <strong class="Price-item">
+                      {{ product.price | money }}
+                    </strong>
+                  </div>
+              {% endif %}
             {% endif %}
 
             {% if sold_out %}
-            <strong class="ProductItem-subtitle">{{ 'products.product.sold_out' | t }}</strong>
-            {% endif %}
-            {% if on_sale %}
-            <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
-            {{ product.compare_at_price | money }}
+              <strong class="ProductItem-subtitle">{{ 'products.product.sold_out' | t }}</strong>
             {% endif %}
         </a>
-
     </article>
     {% else %}
 
