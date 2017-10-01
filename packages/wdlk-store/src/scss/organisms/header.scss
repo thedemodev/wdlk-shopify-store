@@ -12,8 +12,8 @@
   margin-bottom: -$nav-height;
 
   &.is-sticky {
-      position: fixed;
-      margin-bottom: 0;
+    position: fixed;
+    margin-bottom: 0;
   }
 
   &:before {
@@ -30,7 +30,7 @@
 
   @include media(medium) {
     height: $nav-height-medium;
-    padding: 0 40px;
+    padding: 0 #{$size-XXL}px;
     margin-bottom: -$nav-height-medium;
 
     &::before {
