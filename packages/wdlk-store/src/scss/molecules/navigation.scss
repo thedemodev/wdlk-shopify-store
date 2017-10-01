@@ -194,6 +194,13 @@
     }
   }
 
+  .SocialList {
+    position: absolute;
+    right: 0;
+    bottom: calc(var(--size-XXL) * 1px);
+    left: 0;
+    margin: auto;
+  }
 
   &-teaser {
     position: relative;
@@ -217,5 +224,18 @@
           color: $typo-hex--secondary;
       }
     }
+  }
+}
+.Navigation-item--mobile {
+  padding-bottom: calc(var(--size-XS) * 1px);
+
+  .Navigation-link {
+    color: $hex-ocean-blue;
+    font-size: $copy-size;
+    text-transform: lowercase;
+  }
+
+  &:nth-last-child(5) {
+    margin-top: calc(var(--size-XXL) * 1px);
   }
 }

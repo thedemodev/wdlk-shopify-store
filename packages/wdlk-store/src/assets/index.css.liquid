@@ -934,6 +934,12 @@ input[type="number"]::-webkit-outer-spin-button {
       fill: #8E959A; }
       .Navigation-dropdown .SocialList-item:hover {
         fill: #384852; }
+  .Navigation .SocialList {
+    position: absolute;
+    right: 0;
+    bottom: calc(var(--size-XXL) * 1px);
+    left: 0;
+    margin: auto; }
   .Navigation-teaser {
     position: relative;
     display: inline-block;
@@ -952,6 +958,15 @@ input[type="number"]::-webkit-outer-spin-button {
       transform: translateY(-50%); }
       .Navigation-teaser-headline-one-pieces {
         color: #8E959A; }
+
+.Navigation-item--mobile {
+  padding-bottom: calc(var(--size-XS) * 1px); }
+  .Navigation-item--mobile .Navigation-link {
+    color: #d3dde6;
+    font-size: 1.6rem;
+    text-transform: lowercase; }
+  .Navigation-item--mobile:nth-last-child(5) {
+    margin-top: calc(var(--size-XXL) * 1px); }
 
 .Banner {
   position: relative;
