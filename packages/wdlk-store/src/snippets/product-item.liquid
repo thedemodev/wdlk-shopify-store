@@ -1,6 +1,5 @@
 {% comment %}
     Loop through our products in the current collection.
-    See the snippet 'product-grid-item' for the layout.
 {% endcomment %}
 {% for product in collection.products %}
 
@@ -32,7 +31,7 @@
     - http://docs.shopify.com/support/your-store/collections/how-to-navigate-within-a-collection
 
     {% endcomment %}
-    <article class="ProductItem">
+    <article class="ProductItem {% if sold_out %} ProductItem--notification{% endif %}">
         <a href="{{ product.url | within: collection }}" class="ProductItem-stage">
             {% for image in product.images limit: 3 %}
                 {% if forloop.index == 3 %}
@@ -40,6 +39,16 @@
                 {% endif %}
             {% endfor %}
             <img class="ProductItem-img" src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
+            {% if sold_out %}
+              <div class="ProductItem-notification">
+                <strong class="Headline Headline--4">
+                  {{ 'products.product.sold_out' | t }}
+                </strong>
+                <small>
+                    {{ 'products.product.sold_out_notification' | t: nickname: product.metafields.product['nickname'] }}
+                </small>
+              </div>
+            {% endif %}
         </a>
 
         <a class="ProductItem-caption" href="{{ product.url | within: collection }}">
@@ -71,10 +80,6 @@
                     </strong>
                   </div>
               {% endif %}
-            {% endif %}
-
-            {% if sold_out %}
-              <strong class="ProductItem-subtitle">{{ 'products.product.sold_out' | t }}</strong>
             {% endif %}
         </a>
     </article>

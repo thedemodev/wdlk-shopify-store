@@ -297,6 +297,7 @@
     },
     "product": {
       "sold_out": "Ausverkauft",
+      "sold_out_notification": "Go ahead and check it out. The {{ nickname }} will be restocked!",
       "unavailable": "Nicht verfügbar",
       "compare_at": "Vergleichen bei",
       "quantity": "Menge",
