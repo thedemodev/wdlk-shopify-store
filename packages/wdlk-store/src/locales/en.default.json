@@ -297,6 +297,7 @@
     },
     "product": {
       "sold_out": "Sold Out",
+      "sold_out_notification": "Go ahead and check it out. The {{ nickname }} will be restocked!",
       "on_sale_from_html": "<strong>On Sale<\/strong> from {{ price }}",
       "unavailable": "Unavailable",
       "compare_at": "Compare at",
