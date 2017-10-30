@@ -50,3 +50,13 @@
 
   }
 }
+
+.Header {
+  &:hover {
+    &::before {
+      border-bottom-width: 1px;
+      opacity: 1;
+      transform: none;
+    }
+  }
+}

@@ -72,6 +72,19 @@
 
     @include media (medium) {
       display: inline-block;
+
+      > .Navigation-link {
+        @include create-pointer(1.5rem, $navi-bg-color) {
+          position: absolute;
+          bottom: 1.5rem * -2;
+          right: 50%;
+          border: solid $nav-border-color;
+          border-width: 1px 0px 0px 1px ;
+          opacity: 0;
+          transform: translateX(50%) rotate(45deg);
+        }
+      }
+
       &:hover {
         .Navigation-dropdown {
           opacity: 1;
@@ -83,27 +96,22 @@
           opacity: 1;
           transform: none;
         }
+
+        &.has-dropdown{
+          > .Navigation-link {
+            &::before {
+              opacity: 1;
+            }
+          }
+        }
       }
 
       &.has-dropdown{
         > .Navigation-link {
-          &:before {
-              content: " ";
-              opacity: 0;
-              transition: opacity .8s ease;
-          }
-        }
-        &:hover {
-          > .Navigation-link {
-            @include create-pointer(1.5rem, $navi-bg-color) {
-              position: absolute;
-              bottom: 1.5rem * -2;
-              right: 50%;
-              border: solid $nav-border-color;
-              border-width: 1px 0px 0px 1px ;
-              opacity: 0;
-              transform: translateX(50%) rotate(45deg);
-            }
+          &::before {
+            content: "";
+            opacity: 0;
+            transition: opacity .8s ease;
           }
         }
       }
@@ -237,15 +245,15 @@
 //-- Header is-undocked
 .is-undocked {
   @include media (medium) {
-    .Navigation-item {
-      &:hover {
-        > .Navigation-link {
-          &::before {
-            opacity: 1;
-          }
-        }
-      }
-    }
+    // .Navigation-item {
+    //   &:hover {
+    //     > .Navigation-link {
+    //       &::before {
+    //         opacity: 1;
+    //       }
+    //     }
+    //   }
+    // }
     .Navigation-dropdown {
       .Navigation-item {
         padding: #{$size-L}px #{$size-L}px #{$size-M}px;
