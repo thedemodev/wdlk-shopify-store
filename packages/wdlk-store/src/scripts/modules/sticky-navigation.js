@@ -1,61 +1,65 @@
 export default function stickyNavigation () {
-    //-- Read Values Only !!!!!
-    //-- First keep track of the scroll value
-    //-- without triggering unnecessary draw calls
-    const navigation = document.querySelector('.js_sticky-nav');
-    if (!navigation) {
+
+  //-- Read Values Only !!!!!
+  //-- First keep track of the scroll value
+  //-- without triggering unnecessary draw calls
+  const navigation = document.querySelector('.js_sticky-nav');
+  if (!navigation) {
+      return;
+  }
+  const notificationTeaser = document.querySelector('.js_notification');
+  const options = {
+    height: navigation.offsetHeight,
+    scrollPosition: 0,
+    ticking: false
+  };
+
+  const init = () => {
+    navigation.classList.toggle('is-undocked',
+    window.scrollY >= options.height);
+  }
+  init();
+
+  const getTeaserHeight = () => {
+    if (!notificationTeaser) {
         return;
     }
-    const notificationTeaser = document.querySelector('.js_notification');
-    let navigationHeight = navigation.offsetHeight;
-    let lastScrollPositionY = 0;
-    let ticking = false;
+    return notificationTeaser.offsetHeight;
+  };
 
+  const onScroll = () => {
+    options.scrollPosition = window.scrollY;
+    requestTick();
+  };
 
-    const getTeaserHeight = () => {
-        if (!notificationTeaser) {
-            return;
-        }
-        return notificationTeaser.offsetHeight;
-    };
+  //-- Triggers requestAnimationFrame when it's necessary only
+  const  requestTick = () => {
+    if (!options.ticking) {
+      requestAnimationFrame(update);
+    }
+    options.ticking = true;
+  };
 
-    const onScroll = () => {
-        lastScrollPositionY = window.scrollY;
-        requestTick();
-    };
+  //-- Visual Updates Callback
+  //-- Use rAf to handle visual updates and write values
+  const update = () => {
+    //-- Pull the latest value when we need it
+    let currentScrollPositionY = options.scrollPosition;
 
-    //-- Triggers requestAnimationFrame when it's necessary only
-    const  requestTick = () => {
-        if (!ticking) {
-            requestAnimationFrame(update);
-        }
-        ticking = true;
-    };
+    if (notificationTeaser) {
+      navigation.classList.toggle('is-sticky',
+          currentScrollPositionY >= currentTeaserHeight);
 
-    //-- Visual Updates Callback
-    //-- Use rAf to handle visual updates and write values
-    const update = () => {
-        //-- Pull the latest value when we need it
-        let currentScrollPositionY = lastScrollPositionY;
+      navigation.classList.toggle('is-undocked',
+          currentScrollPositionY >= (getTeaserHeight() - 1) + (options.height - 1));
 
-        if (notificationTeaser) {
-            let currentTeaserHeight = getTeaserHeight() - 1;
-            let totalHeaderHeight = currentTeaserHeight + (navigationHeight - 1);
+    } else {
+      navigation.classList.toggle('is-undocked',
+          currentScrollPositionY >= options.height);
+    }
 
-            navigation.classList.toggle('is-sticky',
-                currentScrollPositionY >= currentTeaserHeight);
+    options.ticking = false;
+  };
 
-            navigation.classList.toggle('is-undocked',
-                currentScrollPositionY >= totalHeaderHeight);
-
-        } else {
-            navigation.classList.toggle('is-undocked',
-                currentScrollPositionY >= navigationHeight);
-        }
-
-
-        ticking = false;
-    };
-
-    window.addEventListener('scroll', onScroll, false);
+  window.addEventListener('scroll', onScroll, { capture: false, passive: true });
 }

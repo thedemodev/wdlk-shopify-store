@@ -113,7 +113,7 @@ var _Mathpow=Math.pow,_MatheaseInOutExpo=Math.easeInOutExpo;Object.definePropert
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports,'__esModule',{value:!0}),exports.default=stickyNavigation;function stickyNavigation(){var a=document.querySelector('.js_sticky-nav');if(a){var b=document.querySelector('.js_notification'),c=a.offsetHeight,d=0,e=!1,f=function getTeaserHeight(){return b?b.offsetHeight:void 0},g=function onScroll(){d=window.scrollY,h()},h=function requestTick(){e||requestAnimationFrame(i),e=!0},i=function update(){var j=d;if(b){var k=f()-1;a.classList.toggle('is-sticky',j>=k),a.classList.toggle('is-undocked',j>=k+(c-1))}else a.classList.toggle('is-undocked',j>=c);e=!1};window.addEventListener('scroll',g,!1)}}
+Object.defineProperty(exports,'__esModule',{value:!0}),exports.default=stickyNavigation;function stickyNavigation(){var a=document.querySelector('.js_sticky-nav');if(a){var b=document.querySelector('.js_notification'),c={height:a.offsetHeight,scrollPosition:0,ticking:!1},d=function init(){a.classList.toggle('is-undocked',window.scrollY>=c.height)};d();var e=function getTeaserHeight(){return b?b.offsetHeight:void 0},f=function onScroll(){c.scrollPosition=window.scrollY,g()},g=function requestTick(){c.ticking||requestAnimationFrame(h),c.ticking=!0},h=function update(){var i=c.scrollPosition;b?(a.classList.toggle('is-sticky',i>=currentTeaserHeight),a.classList.toggle('is-undocked',i>=e()-1+(c.height-1))):a.classList.toggle('is-undocked',i>=c.height),c.ticking=!1};window.addEventListener('scroll',f,{capture:!1,passive:!0})}}
 
 /***/ }),
 /* 7 */
