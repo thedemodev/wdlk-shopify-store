@@ -245,15 +245,6 @@
 //-- Header is-undocked
 .is-undocked {
   @include media (medium) {
-    // .Navigation-item {
-    //   &:hover {
-    //     > .Navigation-link {
-    //       &::before {
-    //         opacity: 1;
-    //       }
-    //     }
-    //   }
-    // }
     .Navigation-dropdown {
       .Navigation-item {
         padding: #{$size-L}px #{$size-L}px #{$size-M}px;
