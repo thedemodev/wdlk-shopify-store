@@ -5,8 +5,7 @@
 
 [libs]
 
-[lints]
-
 [options]
-
-[strict]
+module.name_mapper.extension='scss' -> '<PROJECT_ROOT>/configuration/flow/CSSModule.js.flow'
+module.name_mapper.extension='jpg' -> '<PROJECT_ROOT>/configuration/flow/WebpackAsset.js.flow'
+module.name_mapper.extension='png' -> '<PROJECT_ROOT>/configuration/flow/WebpackAsset.js.flow'

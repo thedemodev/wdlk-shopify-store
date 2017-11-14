@@ -13,7 +13,7 @@
     "timber": "babel-node --presets es2015,stage-0 configuration/timber.js",
     "slate:watch": "slate watch",
     "slate:deploy": "slate deploy",
-    "dev": "concurrently -k -p \"[{name}]\" -n \"WEBPACK,SHOPIFY\" \"npm run slate:watch\" \"npm run webpack\"",
+    "dev": "concurrently -k -p \"[{name}]\" -n \"WEBPACK,SHOPIFY,FLOWTYPE\" \"npm run slate:watch\" \"npm run webpack\"",
     "webpack": "NODE_ENV=development webpack --config configuration/webpack.config.js",
     "webpack:production": "NODE_ENV=production npm run webpack -p",
     "watch": "babel-node --presets es2015,stage-0 configuration/watch.js"
@@ -35,6 +35,7 @@
   },
   "homepage": "https://gitlab.com/PalmaSwell/wdlk-ocean#README",
   "devDependencies": {
+    "@babel/plugin-transform-flow-strip-types": "^7.0.0-beta.32",
     "@shopify/slate": "^0.13.0",
     "@shopify/slate-tools": "0.13.0",
     "async": "^1.5.0",
@@ -58,6 +59,8 @@
     "eslint-plugin-flowtype": "^2.32.1",
     "extract-text-webpack-plugin": "^2.1.0",
     "flow-bin": "^0.59.0",
+    "flow-webpack-plugin": "^1.2.0",
+    "flowtype-loader": "^0.2.2",
     "node-sass": "^4.5.1",
     "postcss": "^5.2.17",
     "postcss-loader": "^1.3.3",

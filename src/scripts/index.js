@@ -1,4 +1,3 @@
-// @flow
 import '../scss/index.scss';
 import rAf from './polyfills/rAf';
 import stickyNavigation from './modules/sticky-navigation';

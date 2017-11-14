@@ -66,13 +66,1420 @@
 /******/ 	return __webpack_require__(__webpack_require__.s = 11);
 /******/ })
 /************************************************************************/
-/******/ ({
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
 
-/***/ 11:
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var notification = document.querySelector('.js-cookie-notification');
+var closeButton = document.querySelector('.js-cookie-notification-close');
+var localStorage = window.localStorage;
+
+var notificationHidden = function notificationHidden() {
+    return localStorage.getItem('hideCookieNotification');
+};
+var hideNotification = function hideNotification() {
+    localStorage.setItem('hideCookieNotification', true);
+    notification.style.display = 'none';
+};
+
+exports.default = function () {
+    if (notificationHidden()) {
+        return;
+    }
+
+    notification.style.display = 'block';
+    var removeCloseButtenClickHandler = closeButton.addEventListener('click', function () {
+        hideNotification();
+        closeButton.removeEventListener('click', removeCloseButtenClickHandler);
+    });
+};
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = fbqEvents;
+function fbqEvents() {
+	var addToCart = document.querySelector('.js_fbqAddToCart');
+	var signUpBtn = document.querySelector('.js_fbqNewsLead');
+
+	if (addToCart) {
+		var btn = addToCart.querySelector('.js_fbqBtn');
+		var select = addToCart.querySelector('.js_fbqSelect');
+
+		if (btn && select) {
+			var productId = parseFloat(select.options[select.selectedIndex].value);
+			var value = parseFloat(btn.dataset.value).toFixed(2);
+			btn.addEventListener('click', function () {
+				fbq('track', 'AddToCart', {
+					content_name: btn.dataset.name,
+					content_ids: [productId],
+					content_type: 'product',
+					value: value,
+					currency: 'EUR'
+				});
+			});
+		}
+	}
+
+	if (signUpBtn) {
+		signUpBtn.addEventListener('click', function () {
+			fbq('track', 'Lead');
+		});
+	}
+
+	return;
+}
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+exports.default = generateFeed;
+
+var _jsonp = __webpack_require__(15);
+
+var _jsonp2 = _interopRequireDefault(_jsonp);
+
+var _access = __webpack_require__(10);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function generateFeed() {
+	var node = document.querySelector('.js_instagramFeed');
+	if (!node) return;
+	if ((typeof Promise === 'undefined' ? 'undefined' : _typeof(Promise)) === undefined) return;
+
+	var feedLimit = 11;
+	var instaURL = 'https://api.instagram.com/v1/users/' + _access.access['id'] + '/media/recent/?access_token=' + _access.access['token'] + '&callback=callback';
+
+	var getMediaFeed = function getMediaFeed(url) {
+		return new Promise(function (resolve, reject) {
+			(0, _jsonp2.default)(url, function (err, data) {
+				if (err) {
+					reject(Error('Couldn\'t get Insta JSON feed; error code: + ' + err));
+					throw err;
+				}
+				resolve(data);
+			});
+		});
+	};
+
+	var limitArr = function limitArr(value) {
+		return value <= feedLimit;
+	};
+	var filteredArr = function filteredArr(arr) {
+		return arr.filter(function (el, i) {
+			return limitArr(i);
+		});
+	};
+	var convertUnixDate = function convertUnixDate(timestamp) {
+		var date = new Date(parseInt(timestamp));
+		return date.toDateString().slice(0, -4);
+	};
+
+	var generateFeedTemplate = function generateFeedTemplate(arr) {
+		var feedTemplate = arr.map(function (el, i) {
+			var thumbnail = '\n\t\t\t\t<div class="Feed-thumbnail">\n\t\t\t\t\t<label class="Feed-trigger" for="lightbox-' + i + '" style="background-image: url(' + el.images.standard_resolution.url + '), linear-gradient(35deg, #FFCA54, #FF7163 80%)">\n\t\t\t\t\t</label>\n\t\t\t\t\t<img class="Feed-img"\n\t\t\t\t\t\tsrc="' + el.images.standard_resolution.url + '"\n\t\t\t\t\t\tsrcset="' + el.images.thumbnail.url + ' 150w,\n\t\t\t\t\t\t' + el.images.low_resolution.url + ' 320w,\n\t\t\t\t\t\t' + el.images.standard_resolution.url + ' 640w" />\n\t\t\t\t</div>\n\t\t\t';
+
+			var media = '\n\t\t\t\t<a class="Lightbox-row Feed-media"\n\t\t\t\t\thref="' + el.link + '" target="_blank">\n\t\t\t\t\t<h4 class="Headline Headline--5">\n\t\t\t\t\t\tJoin the journey on Instagram @wdlk\n\t\t\t\t\t</h4>\n\t\t\t\t\t<img class="Feed-img"\n\t\t\t\t\t\tsrc="' + el.images.standard_resolution.url + '"\n\t\t\t\t\t\tsrcset="' + el.images.thumbnail.url + ' 150w,\n\t\t\t\t\t\t' + el.images.low_resolution.url + ' 320w,\n\t\t\t\t\t\t' + el.images.standard_resolution.url + ' 640w" />\n\t\t\t\t</a>\n\t\t\t';
+
+			var caption = '\n\t\t\t\t<figcaption class="Feed-caption Lightbox-row">\n\t\t\t\t\t<strong class="Feed-highlight">' + el.likes.count + ' likes</strong>\n\t\t\t\t\t<time class="Feed-highlight" datetime="' + convertUnixDate(el.created_time) + '">' + convertUnixDate(el.created_time) + '</time>\n\t\t\t\t\t<p class="Feed-copy">\n\t\t\t\t\t\t<strong>\n\t\t\t\t\t\t\t' + el.user.username + '\n\t\t\t\t\t\t</strong>\n\t\t\t\t\t\t' + el.caption.text + '\n\t\t\t\t\t</p>\n\t\t\t\t</figcaption>\n\t\t\t';
+
+			var feed = '\n\t\t\t\t<li class="Feed-item Lightbox--row">\n\t\t\t\t\t' + thumbnail + '\n\t\t\t\t\t<input class="Lightbox-state" type="checkbox" id="lightbox-' + i + '" />\n\t\t\t\t\t<div class="Lightbox-shim">\n\t\t\t\t\t\t<label class="Lightbox-shim-close" for="lightbox-' + i + '"></label>\n\t\t\t\t\t\t<figure class="Lightbox-content">\n\t\t\t\t\t\t\t<header class="Lightbox-header">\n\t\t\t\t\t\t\t\t<h3 class="Headline Headline--6">\n\t\t\t\t\t\t\t\t\t#' + el.tags[0] + '\n\t\t\t\t\t\t\t\t</h3>\n\t\t\t\t\t\t\t\t<label class="Lightbox-icon" for="lightbox-' + i + '"></label>\n\t\t\t\t\t\t\t</header>\n\t\t\t\t\t\t\t' + media + '\n\t\t\t\t\t\t\t' + caption + '\n\t\t\t\t\t\t</figure>\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t';
+			return feed;
+		});
+		node.innerHTML = feedTemplate.join('');
+	};
+
+	getMediaFeed(instaURL).then(function (res) {
+		var feedData = filteredArr(res.data);
+		generateFeedTemplate(feedData);
+	});
+}
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = notification;
+function notification() {
+	var notification = document.querySelector('.js_notification');
+	if (!notification) {
+		return;
+	}
+	var closeBtn = notification.querySelector('.js_notification-btn');
+	var sessionStorage = window.sessionStorage;
+	var hiddenNotification = 'hiddenNotification';
+	var activeClass = 'is-active';
+
+	var verifyNotification = function verifyNotification() {
+		return sessionStorage.getItem(hiddenNotification);
+	};
+
+	if (verifyNotification()) {
+		return;
+	}
+
+	var loadNotification = function loadNotification() {
+		notification.classList.add(activeClass);
+	};
+
+	var hideNotification = function hideNotification() {
+		sessionStorage.setItem(hiddenNotification, true);
+		notification.classList.remove(activeClass);
+	};
+
+	var handleLoadEvent = window.addEventListener('load', function () {
+		loadNotification();
+		window.removeEventListener('load', handleLoadEvent);
+	});
+
+	var handleClickEvent = closeBtn.addEventListener('click', function () {
+		hideNotification();
+		closeBtn.removeEventListener('click', handleClickEvent);
+	});
+}
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = numberInput;
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function numberInput() {
+    var nodeList = document.getElementsByClassName('js_numberInput');
+    if (!nodeList) {
+        return;
+    }
+    var NODE_ARRAY = [].concat(_toConsumableArray(nodeList));
+    var RMV_BTN_CLASS = 'js_remove';
+    var ADD_BTN_CLASS = 'js_add';
+
+    var INCREASE = function INCREASE(n) {
+        return parseInt(n) + 1;
+    };
+    var DECREASE = function DECREASE(n) {
+        return parseInt(n) - 1;
+    };
+
+    NODE_ARRAY.forEach(function (node) {
+        var inputValue = 1;
+        var min = 0;
+        var INPUT_EL = node.querySelector('.js_value');
+        if (!INPUT_EL) {
+            return;
+        }
+        inputValue = INPUT_EL.getAttribute('value');
+        min = INPUT_EL.getAttribute('min');
+
+        node.addEventListener('click', function (e) {
+            if (e.target.classList.contains(ADD_BTN_CLASS)) {
+                inputValue = INCREASE(inputValue);
+                INPUT_EL.setAttribute('value', inputValue);
+            }
+
+            if (e.target.classList.contains(RMV_BTN_CLASS)) {
+                if (inputValue <= min) {
+                    return;
+                }
+                inputValue = DECREASE(inputValue);
+                INPUT_EL.setAttribute('value', inputValue);
+            }
+        });
+    });
+}
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = smoothScrolling;
+
+var _logger = __webpack_require__(12);
+
+var _logger2 = _interopRequireDefault(_logger);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function smoothScrolling() {
+    var TRIGGER = document.getElementsByClassName('js_scroll')[0];
+    if (!TRIGGER) {
+        return;
+    }
+
+    var TARGET = document.getElementById(TRIGGER.getAttribute('href').substr(1));
+    if (!TARGET) {
+        return;
+    }
+
+    var SCROLL_LAYER = document.getElementsByClassName('js_scroller')[0];
+    if (!SCROLL_LAYER) {
+        return;
+    }
+
+    //-- Exponential Ease in and out
+    //-- http://gizma.com/easing/#expo3
+    Math.easeInOutExpo = function (t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) return c / 2 * Math.pow(2, 10 * (t - 1)) + b;
+        t--;
+        return c / 2 * (-Math.pow(2, -10 * t) + 2) + b;
+    };
+
+    var SCROLL_TO = function SCROLL_TO(scrollLayer, el, duration) {
+        var cb = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : cb || function () {};
+
+        var startPosition = scrollLayer.scrollTop;
+        var positionDelta = el.offsetTop - startPosition - 40;
+        var startTime = null;
+
+        var ANIMATE_SCROLL = function ANIMATE_SCROLL(timeStamp) {
+            startTime = startTime !== null ? startTime : timeStamp;
+            var timeDelta = timeStamp - startTime;
+
+            if (timeDelta >= duration) {
+                return cb();
+            }
+
+            scrollLayer.scrollTop = Math.easeInOutExpo(timeDelta, startPosition, positionDelta, duration);
+            window.requestAnimationFrame(ANIMATE_SCROLL);
+        };
+
+        window.requestAnimationFrame(ANIMATE_SCROLL);
+    };
+
+    var SCROLL = function SCROLL(e) {
+        e.preventDefault();
+        SCROLL_TO(SCROLL_LAYER, TARGET, 1618, function () {
+            window.location.hash = '#' + TARGET.id;
+        });
+    };
+
+    TRIGGER.addEventListener('click', SCROLL, false);
+}
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = stickyNavigation;
+function stickyNavigation() {
+
+  //-- Read Values Only !!!!!
+  //-- First keep track of the scroll value
+  //-- without triggering unnecessary draw calls
+  var navigation = document.querySelector('.js_sticky-nav');
+  if (!navigation) {
+    return;
+  }
+  var notificationTeaser = document.querySelector('.js_notification');
+  var options = {
+    height: navigation.offsetHeight,
+    scrollPosition: 0,
+    ticking: false
+  };
+
+  var init = function init() {
+    navigation.classList.toggle('is-undocked', window.scrollY >= options.height);
+  };
+  init();
+
+  var getTeaserHeight = function getTeaserHeight() {
+    if (!notificationTeaser) {
+      return;
+    }
+    return notificationTeaser.offsetHeight;
+  };
+
+  var onScroll = function onScroll() {
+    options.scrollPosition = window.scrollY;
+    requestTick();
+  };
+
+  //-- Triggers requestAnimationFrame when it's necessary only
+  var requestTick = function requestTick() {
+    if (!options.ticking) {
+      requestAnimationFrame(update);
+    }
+    options.ticking = true;
+  };
+
+  //-- Visual Updates Callback
+  //-- Use rAf to handle visual updates and write values
+  var update = function update() {
+    //-- Pull the latest value when we need it
+    var currentScrollPositionY = options.scrollPosition;
+
+    if (notificationTeaser) {
+      navigation.classList.toggle('is-sticky', currentScrollPositionY >= currentTeaserHeight);
+
+      navigation.classList.toggle('is-undocked', currentScrollPositionY >= getTeaserHeight() - 1 + (options.height - 1));
+    } else {
+      navigation.classList.toggle('is-undocked', currentScrollPositionY >= options.height);
+    }
+
+    options.ticking = false;
+  };
+
+  window.addEventListener('scroll', onScroll, { capture: false, passive: true });
+}
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = setTheme;
+function setTheme() {
+  var el = document.querySelector('.withTheme');
+  if (el) {
+    el.style.setProperty('--theme-invert', 'unset');
+  }
+}
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = rAf;
+function rAf() {
+    var lastTime = 0;
+    var vendors = ['ms', 'moz', 'webkit', 'o'];
+
+    for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+        window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
+        window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] || window[vendors[x] + 'CancelRequestAnimationFrame'];
+    }
+
+    if (!window.requestAnimationFrame) window.requestAnimationFrame = function (callback, element) {
+        var currTime = new Date().getTime();
+        var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+        var id = window.setTimeout(function () {
+            callback(currTime + timeToCall);
+        }, timeToCall);
+        lastTime = currTime + timeToCall;
+        return id;
+    };
+
+    if (!window.cancelAnimationFrame) window.cancelAnimationFrame = function (id) {
+        clearTimeout(id);
+    };
+};
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: Error: Couldn't find preset \"@babel/transform-flow-strip-types\" relative to directory \"/Users/maupal/Lab/wdlk-shopify-store\"\n    at /Users/maupal/Lab/wdlk-shopify-store/node_modules/babel-core/lib/transformation/file/options/option-manager.js:293:19\n    at Array.map (<anonymous>)\n    at OptionManager.resolvePresets (/Users/maupal/Lab/wdlk-shopify-store/node_modules/babel-core/lib/transformation/file/options/option-manager.js:275:20)\n    at OptionManager.mergePresets (/Users/maupal/Lab/wdlk-shopify-store/node_modules/babel-core/lib/transformation/file/options/option-manager.js:264:10)\n    at OptionManager.mergeOptions (/Users/maupal/Lab/wdlk-shopify-store/node_modules/babel-core/lib/transformation/file/options/option-manager.js:249:14)\n    at OptionManager.init (/Users/maupal/Lab/wdlk-shopify-store/node_modules/babel-core/lib/transformation/file/options/option-manager.js:368:12)\n    at File.initOptions (/Users/maupal/Lab/wdlk-shopify-store/node_modules/babel-core/lib/transformation/file/index.js:212:65)\n    at new File (/Users/maupal/Lab/wdlk-shopify-store/node_modules/babel-core/lib/transformation/file/index.js:135:24)\n    at Pipeline.transform (/Users/maupal/Lab/wdlk-shopify-store/node_modules/babel-core/lib/transformation/pipeline.js:46:16)\n    at transpile (/Users/maupal/Lab/wdlk-shopify-store/node_modules/babel-loader/lib/index.js:50:20)\n    at Object.module.exports (/Users/maupal/Lab/wdlk-shopify-store/node_modules/babel-loader/lib/index.js:175:20)");
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var access = exports.access = {
+	"id": "1983140883",
+	"token": "1983140883.c4c213d.70716b04afc14080a94e4ccb0c35d1b2"
+};
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(9);
+
+var _rAf = __webpack_require__(8);
+
+var _rAf2 = _interopRequireDefault(_rAf);
+
+var _stickyNavigation = __webpack_require__(6);
+
+var _stickyNavigation2 = _interopRequireDefault(_stickyNavigation);
+
+var _smoothScrolling = __webpack_require__(5);
+
+var _smoothScrolling2 = _interopRequireDefault(_smoothScrolling);
+
+var _cookieNotification = __webpack_require__(0);
+
+var _cookieNotification2 = _interopRequireDefault(_cookieNotification);
+
+var _numberInput = __webpack_require__(4);
+
+var _numberInput2 = _interopRequireDefault(_numberInput);
+
+var _facebookPixelEvents = __webpack_require__(1);
+
+var _facebookPixelEvents2 = _interopRequireDefault(_facebookPixelEvents);
+
+var _notification = __webpack_require__(3);
+
+var _notification2 = _interopRequireDefault(_notification);
+
+var _instagramFeed = __webpack_require__(2);
+
+var _instagramFeed2 = _interopRequireDefault(_instagramFeed);
+
+var _theme = __webpack_require__(7);
+
+var _theme2 = _interopRequireDefault(_theme);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(0, _facebookPixelEvents2.default)();
+(0, _notification2.default)();
+
+window.addEventListener('load', function () {
+  (0, _rAf2.default)();
+  (0, _instagramFeed2.default)();
+  (0, _stickyNavigation2.default)();
+  (0, _cookieNotification2.default)();
+  (0, _smoothScrolling2.default)();
+  (0, _numberInput2.default)();
+  (0, _theme2.default)();
+});
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = logger;
+//-- The function takes either log or error as property
+//-- Any other type will be ignored by the script.
+function logger() {
+    var logProp = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'log';
+    var message = arguments[1];
+
+    var DATE = new Date();
+    if (typeof console !== 'undefined' && logProp === 'log' || logProp === 'error') {
+        if (logProp === 'error') {
+            console.error(DATE + ': ' + message);
+        } else {
+            console.log(DATE + ': ' + message);
+        }
+    }
+}
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * This is the web browser implementation of `debug()`.
+ *
+ * Expose `debug()` as the module.
+ */
+
+exports = module.exports = __webpack_require__(14);
+exports.log = log;
+exports.formatArgs = formatArgs;
+exports.save = save;
+exports.load = load;
+exports.useColors = useColors;
+exports.storage = 'undefined' != typeof chrome
+               && 'undefined' != typeof chrome.storage
+                  ? chrome.storage.local
+                  : localstorage();
+
+/**
+ * Colors.
+ */
+
+exports.colors = [
+  'lightseagreen',
+  'forestgreen',
+  'goldenrod',
+  'dodgerblue',
+  'darkorchid',
+  'crimson'
+];
+
+/**
+ * Currently only WebKit-based Web Inspectors, Firefox >= v31,
+ * and the Firebug extension (any Firefox version) are known
+ * to support "%c" CSS customizations.
+ *
+ * TODO: add a `localStorage` variable to explicitly enable/disable colors
+ */
+
+function useColors() {
+  // NB: In an Electron preload script, document will be defined but not fully
+  // initialized. Since we know we're in Chrome, we'll just detect this case
+  // explicitly
+  if (typeof window !== 'undefined' && window.process && window.process.type === 'renderer') {
+    return true;
+  }
+
+  // is webkit? http://stackoverflow.com/a/16459606/376773
+  // document is undefined in react-native: https://github.com/facebook/react-native/pull/1632
+  return (typeof document !== 'undefined' && document && document.documentElement && document.documentElement.style && document.documentElement.style.WebkitAppearance) ||
+    // is firebug? http://stackoverflow.com/a/398120/376773
+    (typeof window !== 'undefined' && window && window.console && (window.console.firebug || (window.console.exception && window.console.table))) ||
+    // is firefox >= v31?
+    // https://developer.mozilla.org/en-US/docs/Tools/Web_Console#Styling_messages
+    (typeof navigator !== 'undefined' && navigator && navigator.userAgent && navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/) && parseInt(RegExp.$1, 10) >= 31) ||
+    // double check webkit in userAgent just in case we are in a worker
+    (typeof navigator !== 'undefined' && navigator && navigator.userAgent && navigator.userAgent.toLowerCase().match(/applewebkit\/(\d+)/));
+}
+
+/**
+ * Map %j to `JSON.stringify()`, since no Web Inspectors do that by default.
+ */
+
+exports.formatters.j = function(v) {
+  try {
+    return JSON.stringify(v);
+  } catch (err) {
+    return '[UnexpectedJSONParseError]: ' + err.message;
+  }
+};
+
+
+/**
+ * Colorize log arguments if enabled.
+ *
+ * @api public
+ */
+
+function formatArgs(args) {
+  var useColors = this.useColors;
+
+  args[0] = (useColors ? '%c' : '')
+    + this.namespace
+    + (useColors ? ' %c' : ' ')
+    + args[0]
+    + (useColors ? '%c ' : ' ')
+    + '+' + exports.humanize(this.diff);
+
+  if (!useColors) return;
+
+  var c = 'color: ' + this.color;
+  args.splice(1, 0, c, 'color: inherit')
+
+  // the final "%c" is somewhat tricky, because there could be other
+  // arguments passed either before or after the %c, so we need to
+  // figure out the correct index to insert the CSS into
+  var index = 0;
+  var lastC = 0;
+  args[0].replace(/%[a-zA-Z%]/g, function(match) {
+    if ('%%' === match) return;
+    index++;
+    if ('%c' === match) {
+      // we only are interested in the *last* %c
+      // (the user may have provided their own)
+      lastC = index;
+    }
+  });
+
+  args.splice(lastC, 0, c);
+}
+
+/**
+ * Invokes `console.log()` when available.
+ * No-op when `console.log` is not a "function".
+ *
+ * @api public
+ */
+
+function log() {
+  // this hackery is required for IE8/9, where
+  // the `console.log` function doesn't have 'apply'
+  return 'object' === typeof console
+    && console.log
+    && Function.prototype.apply.call(console.log, console, arguments);
+}
+
+/**
+ * Save `namespaces`.
+ *
+ * @param {String} namespaces
+ * @api private
+ */
+
+function save(namespaces) {
+  try {
+    if (null == namespaces) {
+      exports.storage.removeItem('debug');
+    } else {
+      exports.storage.debug = namespaces;
+    }
+  } catch(e) {}
+}
+
+/**
+ * Load `namespaces`.
+ *
+ * @return {String} returns the previously persisted debug modes
+ * @api private
+ */
+
+function load() {
+  var r;
+  try {
+    r = exports.storage.debug;
+  } catch(e) {}
+
+  // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
+  if (!r && typeof process !== 'undefined' && 'env' in process) {
+    r = process.env.DEBUG;
+  }
+
+  return r;
+}
+
+/**
+ * Enable namespaces listed in `localStorage.debug` initially.
+ */
+
+exports.enable(load());
+
+/**
+ * Localstorage attempts to return the localstorage.
+ *
+ * This is necessary because safari throws
+ * when a user disables cookies/localstorage
+ * and you attempt to access it.
+ *
+ * @return {LocalStorage}
+ * @api private
+ */
+
+function localstorage() {
+  try {
+    return window.localStorage;
+  } catch (e) {}
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)))
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/**
+ * This is the common logic for both the Node.js and web browser
+ * implementations of `debug()`.
+ *
+ * Expose `debug()` as the module.
+ */
+
+exports = module.exports = createDebug.debug = createDebug['default'] = createDebug;
+exports.coerce = coerce;
+exports.disable = disable;
+exports.enable = enable;
+exports.enabled = enabled;
+exports.humanize = __webpack_require__(16);
+
+/**
+ * The currently active debug mode names, and names to skip.
+ */
+
+exports.names = [];
+exports.skips = [];
+
+/**
+ * Map of special "%n" handling functions, for the debug "format" argument.
+ *
+ * Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
+ */
+
+exports.formatters = {};
+
+/**
+ * Previous log timestamp.
+ */
+
+var prevTime;
+
+/**
+ * Select a color.
+ * @param {String} namespace
+ * @return {Number}
+ * @api private
+ */
+
+function selectColor(namespace) {
+  var hash = 0, i;
+
+  for (i in namespace) {
+    hash  = ((hash << 5) - hash) + namespace.charCodeAt(i);
+    hash |= 0; // Convert to 32bit integer
+  }
+
+  return exports.colors[Math.abs(hash) % exports.colors.length];
+}
+
+/**
+ * Create a debugger with the given `namespace`.
+ *
+ * @param {String} namespace
+ * @return {Function}
+ * @api public
+ */
+
+function createDebug(namespace) {
+
+  function debug() {
+    // disabled?
+    if (!debug.enabled) return;
+
+    var self = debug;
+
+    // set `diff` timestamp
+    var curr = +new Date();
+    var ms = curr - (prevTime || curr);
+    self.diff = ms;
+    self.prev = prevTime;
+    self.curr = curr;
+    prevTime = curr;
+
+    // turn the `arguments` into a proper Array
+    var args = new Array(arguments.length);
+    for (var i = 0; i < args.length; i++) {
+      args[i] = arguments[i];
+    }
+
+    args[0] = exports.coerce(args[0]);
+
+    if ('string' !== typeof args[0]) {
+      // anything else let's inspect with %O
+      args.unshift('%O');
+    }
+
+    // apply any `formatters` transformations
+    var index = 0;
+    args[0] = args[0].replace(/%([a-zA-Z%])/g, function(match, format) {
+      // if we encounter an escaped % then don't increase the array index
+      if (match === '%%') return match;
+      index++;
+      var formatter = exports.formatters[format];
+      if ('function' === typeof formatter) {
+        var val = args[index];
+        match = formatter.call(self, val);
+
+        // now we need to remove `args[index]` since it's inlined in the `format`
+        args.splice(index, 1);
+        index--;
+      }
+      return match;
+    });
+
+    // apply env-specific formatting (colors, etc.)
+    exports.formatArgs.call(self, args);
+
+    var logFn = debug.log || exports.log || console.log.bind(console);
+    logFn.apply(self, args);
+  }
+
+  debug.namespace = namespace;
+  debug.enabled = exports.enabled(namespace);
+  debug.useColors = exports.useColors();
+  debug.color = selectColor(namespace);
+
+  // env-specific initialization logic for debug instances
+  if ('function' === typeof exports.init) {
+    exports.init(debug);
+  }
+
+  return debug;
+}
+
+/**
+ * Enables a debug mode by namespaces. This can include modes
+ * separated by a colon and wildcards.
+ *
+ * @param {String} namespaces
+ * @api public
+ */
+
+function enable(namespaces) {
+  exports.save(namespaces);
+
+  exports.names = [];
+  exports.skips = [];
+
+  var split = (typeof namespaces === 'string' ? namespaces : '').split(/[\s,]+/);
+  var len = split.length;
+
+  for (var i = 0; i < len; i++) {
+    if (!split[i]) continue; // ignore empty strings
+    namespaces = split[i].replace(/\*/g, '.*?');
+    if (namespaces[0] === '-') {
+      exports.skips.push(new RegExp('^' + namespaces.substr(1) + '$'));
+    } else {
+      exports.names.push(new RegExp('^' + namespaces + '$'));
+    }
+  }
+}
+
+/**
+ * Disable debug output.
+ *
+ * @api public
+ */
+
+function disable() {
+  exports.enable('');
+}
+
+/**
+ * Returns true if the given mode name is enabled, false otherwise.
+ *
+ * @param {String} name
+ * @return {Boolean}
+ * @api public
+ */
+
+function enabled(name) {
+  var i, len;
+  for (i = 0, len = exports.skips.length; i < len; i++) {
+    if (exports.skips[i].test(name)) {
+      return false;
+    }
+  }
+  for (i = 0, len = exports.names.length; i < len; i++) {
+    if (exports.names[i].test(name)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * Coerce `val`.
+ *
+ * @param {Mixed} val
+ * @return {Mixed}
+ * @api private
+ */
+
+function coerce(val) {
+  if (val instanceof Error) return val.stack || val.message;
+  return val;
+}
+
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Module dependencies
+ */
+
+var debug = __webpack_require__(13)('jsonp');
+
+/**
+ * Module exports.
+ */
+
+module.exports = jsonp;
+
+/**
+ * Callback index.
+ */
+
+var count = 0;
+
+/**
+ * Noop function.
+ */
+
+function noop(){}
+
+/**
+ * JSONP handler
+ *
+ * Options:
+ *  - param {String} qs parameter (`callback`)
+ *  - prefix {String} qs parameter (`__jp`)
+ *  - name {String} qs parameter (`prefix` + incr)
+ *  - timeout {Number} how long after a timeout error is emitted (`60000`)
+ *
+ * @param {String} url
+ * @param {Object|Function} optional options / callback
+ * @param {Function} optional callback
+ */
+
+function jsonp(url, opts, fn){
+  if ('function' == typeof opts) {
+    fn = opts;
+    opts = {};
+  }
+  if (!opts) opts = {};
+
+  var prefix = opts.prefix || '__jp';
+
+  // use the callback name that was passed if one was provided.
+  // otherwise generate a unique name by incrementing our counter.
+  var id = opts.name || (prefix + (count++));
+
+  var param = opts.param || 'callback';
+  var timeout = null != opts.timeout ? opts.timeout : 60000;
+  var enc = encodeURIComponent;
+  var target = document.getElementsByTagName('script')[0] || document.head;
+  var script;
+  var timer;
+
+
+  if (timeout) {
+    timer = setTimeout(function(){
+      cleanup();
+      if (fn) fn(new Error('Timeout'));
+    }, timeout);
+  }
+
+  function cleanup(){
+    if (script.parentNode) script.parentNode.removeChild(script);
+    window[id] = noop;
+    if (timer) clearTimeout(timer);
+  }
+
+  function cancel(){
+    if (window[id]) {
+      cleanup();
+    }
+  }
+
+  window[id] = function(data){
+    debug('jsonp got', data);
+    cleanup();
+    if (fn) fn(null, data);
+  };
+
+  // add qs component
+  url += (~url.indexOf('?') ? '&' : '?') + param + '=' + enc(id);
+  url = url.replace('?&', '?');
+
+  debug('jsonp req "%s"', url);
+
+  // create script
+  script = document.createElement('script');
+  script.src = url;
+  target.parentNode.insertBefore(script, target);
+
+  return cancel;
+}
+
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports) {
+
+/**
+ * Helpers.
+ */
+
+var s = 1000
+var m = s * 60
+var h = m * 60
+var d = h * 24
+var y = d * 365.25
+
+/**
+ * Parse or format the given `val`.
+ *
+ * Options:
+ *
+ *  - `long` verbose formatting [false]
+ *
+ * @param {String|Number} val
+ * @param {Object} [options]
+ * @throws {Error} throw an error if val is not a non-empty string or a number
+ * @return {String|Number}
+ * @api public
+ */
+
+module.exports = function (val, options) {
+  options = options || {}
+  var type = typeof val
+  if (type === 'string' && val.length > 0) {
+    return parse(val)
+  } else if (type === 'number' && isNaN(val) === false) {
+    return options.long ?
+			fmtLong(val) :
+			fmtShort(val)
+  }
+  throw new Error('val is not a non-empty string or a valid number. val=' + JSON.stringify(val))
+}
+
+/**
+ * Parse the given `str` and return milliseconds.
+ *
+ * @param {String} str
+ * @return {Number}
+ * @api private
+ */
+
+function parse(str) {
+  str = String(str)
+  if (str.length > 10000) {
+    return
+  }
+  var match = /^((?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|years?|yrs?|y)?$/i.exec(str)
+  if (!match) {
+    return
+  }
+  var n = parseFloat(match[1])
+  var type = (match[2] || 'ms').toLowerCase()
+  switch (type) {
+    case 'years':
+    case 'year':
+    case 'yrs':
+    case 'yr':
+    case 'y':
+      return n * y
+    case 'days':
+    case 'day':
+    case 'd':
+      return n * d
+    case 'hours':
+    case 'hour':
+    case 'hrs':
+    case 'hr':
+    case 'h':
+      return n * h
+    case 'minutes':
+    case 'minute':
+    case 'mins':
+    case 'min':
+    case 'm':
+      return n * m
+    case 'seconds':
+    case 'second':
+    case 'secs':
+    case 'sec':
+    case 's':
+      return n * s
+    case 'milliseconds':
+    case 'millisecond':
+    case 'msecs':
+    case 'msec':
+    case 'ms':
+      return n
+    default:
+      return undefined
+  }
+}
+
+/**
+ * Short format for `ms`.
+ *
+ * @param {Number} ms
+ * @return {String}
+ * @api private
+ */
+
+function fmtShort(ms) {
+  if (ms >= d) {
+    return Math.round(ms / d) + 'd'
+  }
+  if (ms >= h) {
+    return Math.round(ms / h) + 'h'
+  }
+  if (ms >= m) {
+    return Math.round(ms / m) + 'm'
+  }
+  if (ms >= s) {
+    return Math.round(ms / s) + 's'
+  }
+  return ms + 'ms'
+}
+
+/**
+ * Long format for `ms`.
+ *
+ * @param {Number} ms
+ * @return {String}
+ * @api private
+ */
+
+function fmtLong(ms) {
+  return plural(ms, d, 'day') ||
+    plural(ms, h, 'hour') ||
+    plural(ms, m, 'minute') ||
+    plural(ms, s, 'second') ||
+    ms + ' ms'
+}
+
+/**
+ * Pluralization helper.
+ */
+
+function plural(ms, n, name) {
+  if (ms < n) {
+    return
+  }
+  if (ms < n * 1.5) {
+    return Math.floor(ms / n) + ' ' + name
+  }
+  return Math.ceil(ms / n) + ' ' + name + 's'
+}
+
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports) {
+
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
 
 /***/ })
-
-/******/ });
+/******/ ]);
