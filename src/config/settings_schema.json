@@ -4,15 +4,15 @@
     "settings": [
       {
         "type": "header",
-        "content": "Timber Theme Framework by [Shopify](http:\/\/www.shopify.com)"
+        "content": "Timber Theme Framework by [Shopify](http://www.shopify.com)"
       },
       {
         "type": "paragraph",
-        "content": "Theme settings allow designers to provide an easy way for any user to customize the look and feel of their shop without having to delve into HTML or CSS code. Please see our [help page on theme settings](http:\/\/docs.shopify.com\/themes\/theme-templates\/settings) to learn more about how you can make the theme customizable."
+        "content": "Theme settings allow designers to provide an easy way for any user to customize the look and feel of their shop without having to delve into HTML or CSS code. Please see our [help page on theme settings](http://docs.shopify.com/themes/theme-templates/settings) to learn more about how you can make the theme customizable."
       },
       {
         "type": "paragraph",
-        "content": "If you require any support for Timber, please review the [documentation](http:\/\/shopify.github.io\/Timber\/) or contact us at [timber@shopify.com](mailto:timber@shopify.com)"
+        "content": "If you require any support for Timber, please review the [documentation](http://shopify.github.io/Timber/) or contact us at [timber@shopify.com](mailto:timber@shopify.com)"
       }
     ]
   },
@@ -168,7 +168,7 @@
         "type": "text",
         "id": "newsletter_form_action",
         "label": "MailChimp Form Action URL",
-        "info": "[Where do I find my MailChimp form action URL?](http:\/\/docs.shopify.com\/support\/configuration\/store-customization\/where-do-i-get-my-mailchimp-form-action)"
+        "info": "[Where do I find my MailChimp form action URL?](http://docs.shopify.com/support/configuration/store-customization/where-do-i-get-my-mailchimp-form-action)"
       }
     ]
   },
@@ -189,7 +189,7 @@
         "type": "checkbox",
         "id": "ajax_cart_enable",
         "label": "Enable Ajaxify Cart",
-        "info": "[View Documentation](http:\/\/shopify.com\/timber#ajax-cart)"
+        "info": "[View Documentation](http://shopify.com/timber#ajax-cart)"
       },
       {
         "type": "select",
@@ -224,48 +224,48 @@
     ]
   },
   {
-   "name": "Currency",
-   "settings": [
-     {
-       "type": "paragraph",
-       "content": "To offer multiple currencies on your online store, you must first [edit your store's currency formatting](https://docs.shopify.com/manual/using-themes/troubleshooting/help-script-find-money-formats)."
-     },
-     {
-       "type": "checkbox",
-       "id": "show_multiple_currencies",
-       "label": "Enable currency conversion",
-       "default": true,
-       "info": "Even though prices are displayed in different currencies, orders will still be processed in your store's currency."
-     },
-     {
-       "type": "select",
-       "id": "currency_format",
-       "label": "Format",
-       "options": [
-         {
-           "value": "money_format",
-           "label": "Without currency (10.00)"
-         },
-         {
-           "value": "money_with_currency_format",
-           "label": "With currency (10.00 €)"
-         }
-       ],
-       "default": "money_with_currency_format"
-     },
-     {
-       "type": "text",
-       "id": "supported_currencies",
-       "label": "Supported currencies",
-       "default": "EUR GBP USD AUD ",
-       "info": "Use the country's ISO [currency code](http://www.xe.com/iso4217.php). Separate your currency codes with a space."
-     },
-     {
-       "type": "text",
-       "id": "default_currency",
-       "label": "Default currency",
-       "default": "EUR"
-     }
-   ]
- }
+    "name": "Currency",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "To offer multiple currencies on your online store, you must first [edit your store's currency formatting](https://docs.shopify.com/manual/using-themes/troubleshooting/help-script-find-money-formats)."
+      },
+      {
+        "type": "checkbox",
+        "id": "show_multiple_currencies",
+        "label": "Enable currency conversion",
+        "default": true,
+        "info": "Even though prices are displayed in different currencies, orders will still be processed in your store's currency."
+      },
+      {
+        "type": "select",
+        "id": "currency_format",
+        "label": "Format",
+        "options": [
+          {
+            "value": "money_format",
+            "label": "Without currency (10.00)"
+          },
+          {
+            "value": "money_with_currency_format",
+            "label": "With currency (10.00 €)"
+          }
+        ],
+        "default": "money_with_currency_format"
+      },
+      {
+        "type": "text",
+        "id": "supported_currencies",
+        "label": "Supported currencies",
+        "default": "EUR GBP USD AUD ",
+        "info": "Use the country's ISO [currency code](http://www.xe.com/iso4217.php). Separate your currency codes with a space."
+      },
+      {
+        "type": "text",
+        "id": "default_currency",
+        "label": "Default currency",
+        "default": "EUR"
+      }
+    ]
+  }
 ]
