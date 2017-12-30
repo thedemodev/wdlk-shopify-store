@@ -1,36 +1,80 @@
 {
-  "name": "wdlk-shopify-store",
-  "version": "2.6.1",
-  "description": "Woodlike Ocean shopping experience",
-  "main": "index.js",
+  "name": "wdlk-ocean-store",
+  "version": "2.7.0",
+  "description": "WDLK Ocean Shopify Store",
   "scripts": {
     "commit": "git-cz",
-    "bootstrap": "lerna bootstrap --loglevel info --stream",
-    "dev": "lerna run dev --no-sort --stream",
-    "lerna": "lerna",
-    "lint": "xo",
-    "reinstall": "npm run clean && npm run bootstrap"
-  },
-  "devDependencies": {
-    "commitizen": "^2.9.6",
-    "lerna": "^2.0.0-rc.4",
-    "xo": "^0.18.2"
+    "delete-meta": "babel-node --presets es2015,stage-0 configuration/shopify-api/utils/delete-metafields.js",
+    "flow": "flow",
+    "instagram-auth": "babel-node --presets es2015,stage-0 configuration/instagram/instagram-auth.js",
+    "product-meta": "babel-node --presets es2015,stage-0 configuration/shopify-api/product/send-metafields.js",
+    "product-meta-global": "babel-node --presets es2015,stage-0 configuration/shopify-api/product/send-global-metafields.js",
+    "product-data": "babel-node --presets es2015,stage-0 configuration/shopify-api/product/prepare-metafields.js",
+    "timber": "babel-node --presets es2015,stage-0 configuration/timber.js",
+    "slate:watch": "slate watch",
+    "slate:deploy": "slate deploy",
+    "dev": "concurrently -k -p \"[{name}]\" -n \"WEBPACK,SHOPIFY,FLOWTYPE\" \"npm run slate:watch\" \"npm run webpack\"",
+    "webpack": "NODE_ENV=development webpack --config configuration/webpack.config.js",
+    "webpack:production": "NODE_ENV=production npm run webpack -p",
+    "watch": "babel-node --presets es2015,stage-0 configuration/watch.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/woodlike/wdlk-shopify-store.git"
+    "url": "git+ssh://git@gitlab.com/PalmaSwell/wdlk-ocean.git"
   },
-  "keywords": [
-    "shopify",
-    "sass",
-    "es6",
-    "graphql",
-    "preact"
-  ],
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+  "author": "Woodlike Ocean <info@woodlikeocean.com> (http://woodlikeocean.com/)",
+  "contributors": [
+    {
+      "name": "Mauricio Palma",
+      "email": "mauricio.palma@woodlikeocean.com"
     }
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/PalmaSwell/wdlk-ocean/issues"
+  },
+  "homepage": "https://gitlab.com/PalmaSwell/wdlk-ocean#README",
+  "devDependencies": {
+    "@babel/plugin-transform-flow-strip-types": "^7.0.0-beta.36",
+    "@shopify/slate": "^0.13.0",
+    "@shopify/slate-tools": "0.13.0",
+    "async": "^1.5.0",
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-preset-es2015": "^6.1.2",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-stage-0": "^6.1.2",
+    "babel-preset-stage-1": "^6.22.0",
+    "babili-webpack-plugin": "0.0.11",
+    "colors": "^1.1.2",
+    "commitizen": "^2.9.6",
+    "concurrently": "^3.5.1",
+    "css-loader": "^0.28.0",
+    "cz-conventional-changelog": "^2.0.0",
+    "eslint": "^3.19.0",
+    "eslint-plugin-flow-check": "^1.2.0",
+    "eslint-plugin-flowtype": "^2.40.1",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "flow-bin": "^0.62.0",
+    "flow-webpack-plugin": "^1.2.0",
+    "flowtype-loader": "^0.2.2",
+    "node-sass": "^4.7.2",
+    "postcss": "^5.2.17",
+    "postcss-loader": "^1.3.3",
+    "request": "^2.79.0",
+    "sass-loader": "^6.0.6",
+    "shopify-node-api": "^1.6.1",
+    "watch": "^0.16.0",
+    "webpack": "^2.4.1",
+    "xo": "^0.18.1"
+  },
+  "dependencies": {
+    "@babel/core": "^7.0.0-beta.36",
+    "autoprefixer": "^7.2.3",
+    "jsonp": "^0.2.1"
   },
   "xo": {
     "env": [
@@ -53,15 +97,14 @@
         "always"
       ]
     },
-    "space": true
+    "space": true,
+    "ignore": [
+      "configuration/**"
+    ]
   },
-  "author": "Mauricio Palma <mauricio.palma@woodlikeocean.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/woodlike/wdlk-shopify-store/issues"
-  },
-  "homepage": "https://github.com/woodlike/wdlk-shopify-store#readme",
-  "dependencies": {
-    "slate": "^0.21.4"
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
