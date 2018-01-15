@@ -1,7 +1,6 @@
 const {resolve} = require('path');
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const FlowWebpackPlugin = require('flow-webpack-plugin');
 
 const extractSass = new ExtractTextPlugin({
   filename: "/index.css.liquid",
@@ -45,8 +44,7 @@ module.exports = {
     ],
   },
   plugins: [
-    extractSass,
-    new FlowWebpackPlugin(),
+    extractSass
   ],
   watch: true
 }
