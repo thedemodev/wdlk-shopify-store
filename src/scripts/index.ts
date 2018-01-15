@@ -21,6 +21,3 @@ window.addEventListener('load', () => {
   numberInput();
   setTheme();
 });
-
-
-
