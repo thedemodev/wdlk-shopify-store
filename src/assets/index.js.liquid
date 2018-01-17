@@ -74,9 +74,28 @@
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var setTheme = function setTheme() {
+    var el = document.querySelector('.withTheme');
+    if (el) {
+        el.style.setProperty('--theme-invert', 'unset');
+    }
+};
+exports.default = setTheme;
+
+
+/***/ }),
+/* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 const notification = document.querySelector('.js-cookie-notification');
 const closeButton = document.querySelector('.js-cookie-notification-close');
 const localStorage = window.localStorage;
@@ -89,7 +108,7 @@ const hideNotification = () => {
     notification.style.display = 'none';
 }
 
-/* harmony default export */ __webpack_exports__["a"] = (() => {
+/* harmony default export */ __webpack_exports__["default"] = (() => {
     if(notificationHidden()) {
         return;
     }
@@ -103,11 +122,12 @@ const hideNotification = () => {
 
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = fbqEvents;
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (immutable) */ __webpack_exports__["default"] = fbqEvents;
 function fbqEvents () {
 	let addToCart = document.querySelector('.js_fbqAddToCart');
 	let signUpBtn = document.querySelector('.js_fbqNewsLead');
@@ -144,11 +164,12 @@ function fbqEvents () {
 
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = generateFeed;
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (immutable) */ __webpack_exports__["default"] = generateFeed;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jsonp__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jsonp___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jsonp__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__configuration_instagram_access__ = __webpack_require__(10);
@@ -258,11 +279,12 @@ function generateFeed () {
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = notification;
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (immutable) */ __webpack_exports__["default"] = notification;
 function notification () {
 	const notification = document.querySelector('.js_notification');
 	if (!notification) {
@@ -301,11 +323,12 @@ function notification () {
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = numberInput;
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (immutable) */ __webpack_exports__["default"] = numberInput;
 function numberInput() {
     let nodeList = document.getElementsByClassName('js_numberInput');
     if (!nodeList) {
@@ -348,11 +371,12 @@ function numberInput() {
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = smoothScrolling;
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (immutable) */ __webpack_exports__["default"] = smoothScrolling;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__logger__ = __webpack_require__(17);
 
 
@@ -412,11 +436,12 @@ function smoothScrolling () {
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = stickyNavigation;
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (immutable) */ __webpack_exports__["default"] = stickyNavigation;
 function stickyNavigation () {
 
   //-- Read Values Only !!!!!
@@ -485,25 +510,12 @@ function stickyNavigation () {
 
 
 /***/ }),
-/* 8 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = setTheme;
-function setTheme() {
-  const el = document.querySelector('.withTheme');
-  if (el) {
-    el.style.setProperty('--theme-invert', 'unset');
-  }
-}
-
-
-/***/ }),
 /* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = rAf;
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (immutable) */ __webpack_exports__["default"] = rAf;
 function rAf () {
     let lastTime = 0;
     let vendors = ['ms', 'moz', 'webkit', 'o'];
@@ -945,41 +957,40 @@ function coerce(val) {
 
 /***/ }),
 /* 13 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__scss_index_scss__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__scss_index_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__scss_index_scss__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__polyfills_rAf__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_sticky_navigation__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_smooth_scrolling__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modules_cookie_notification__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__modules_number_input__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__modules_facebook_pixel_events__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__modules_notification__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__modules_instagram_feed__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__modules_theme__ = __webpack_require__(8);
 
-
-
-
-
-
-
-
-
-
-__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__modules_facebook_pixel_events__["a" /* default */])();
-__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__modules_notification__["a" /* default */])();
-window.addEventListener('load', () => {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__polyfills_rAf__["a" /* default */])();
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__modules_instagram_feed__["a" /* default */])();
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__modules_sticky_navigation__["a" /* default */])();
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__modules_cookie_notification__["a" /* default */])();
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__modules_smooth_scrolling__["a" /* default */])();
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__modules_number_input__["a" /* default */])();
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_9__modules_theme__["a" /* default */])();
+__webpack_require__(0);
+var _rAf = __webpack_require__(9);
+var _rAf2 = _interopRequireDefault(_rAf);
+var _stickyNavigation = __webpack_require__(8);
+var _stickyNavigation2 = _interopRequireDefault(_stickyNavigation);
+var _smoothScrolling = __webpack_require__(7);
+var _smoothScrolling2 = _interopRequireDefault(_smoothScrolling);
+var _cookieNotification = __webpack_require__(2);
+var _cookieNotification2 = _interopRequireDefault(_cookieNotification);
+var _numberInput = __webpack_require__(6);
+var _numberInput2 = _interopRequireDefault(_numberInput);
+var _facebookPixelEvents = __webpack_require__(3);
+var _facebookPixelEvents2 = _interopRequireDefault(_facebookPixelEvents);
+var _notification = __webpack_require__(5);
+var _notification2 = _interopRequireDefault(_notification);
+var _instagramFeed = __webpack_require__(4);
+var _instagramFeed2 = _interopRequireDefault(_instagramFeed);
+var _theme = __webpack_require__(1);
+var _theme2 = _interopRequireDefault(_theme);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+(0, _facebookPixelEvents2.default)();
+(0, _notification2.default)();
+window.addEventListener('load', function () {
+    (0, _rAf2.default)();
+    (0, _instagramFeed2.default)();
+    (0, _stickyNavigation2.default)();
+    (0, _cookieNotification2.default)();
+    (0, _smoothScrolling2.default)();
+    (0, _numberInput2.default)();
+    (0, _theme2.default)();
 });
 
 

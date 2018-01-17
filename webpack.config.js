@@ -4,7 +4,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HappyPack = require('happypack');
 
 // Ensure `postcss` key is extracted
-HappyPack.SERIALIZABLE_OPTIONS = HappyPack.SERIALIZABLE_OPTIONS.concat(['postcss'])
+HappyPack.SERIALIZABLE_OPTIONS = HappyPack.SERIALIZABLE_OPTIONS.concat(['postcss']);
 
 module.exports = {
   entry: './src/scripts/index',
@@ -38,9 +38,10 @@ module.exports = {
       id: 'ts',
       loaders: [
         {
-          path: 'ts-loader',
+          loader: 'ts-loader',
           query: { happyPackMode: true }
-        }
+        },
+        'babel-loader?presets[]=es2015'
       ],
       threads: 4
     })
