@@ -14,7 +14,7 @@
     "slate:watch": "slate watch",
     "slate:deploy": "slate deploy",
     "dev": "concurrently -k -p \"[{name}]\" -n \"WEBPACK,SHOPIFY,FLOWTYPE\" \"npm run slate:watch\" \"npm run webpack\"",
-    "webpack": "NODE_ENV=development webpack --config configuration/webpack.config.js",
+    "webpack": "NODE_ENV=development webpack --config ./webpack.config.js",
     "webpack:production": "NODE_ENV=production npm run webpack -p",
     "watch": "babel-node --presets es2015,stage-0 configuration/watch.js"
   },

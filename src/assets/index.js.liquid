@@ -77,7 +77,6 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 const notification = document.querySelector('.js-cookie-notification');
 const closeButton = document.querySelector('.js-cookie-notification-close');
 const localStorage = window.localStorage;
@@ -90,7 +89,7 @@ const hideNotification = () => {
     notification.style.display = 'none';
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (() => {
+/* harmony default export */ __webpack_exports__["a"] = (() => {
     if(notificationHidden()) {
         return;
     }
@@ -108,8 +107,7 @@ const hideNotification = () => {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (immutable) */ __webpack_exports__["default"] = fbqEvents;
+/* harmony export (immutable) */ __webpack_exports__["a"] = fbqEvents;
 function fbqEvents () {
 	let addToCart = document.querySelector('.js_fbqAddToCart');
 	let signUpBtn = document.querySelector('.js_fbqNewsLead');
@@ -150,8 +148,7 @@ function fbqEvents () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (immutable) */ __webpack_exports__["default"] = generateFeed;
+/* harmony export (immutable) */ __webpack_exports__["a"] = generateFeed;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jsonp__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jsonp___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jsonp__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__configuration_instagram_access__ = __webpack_require__(10);
@@ -265,8 +262,7 @@ function generateFeed () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (immutable) */ __webpack_exports__["default"] = notification;
+/* harmony export (immutable) */ __webpack_exports__["a"] = notification;
 function notification () {
 	const notification = document.querySelector('.js_notification');
 	if (!notification) {
@@ -309,8 +305,7 @@ function notification () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (immutable) */ __webpack_exports__["default"] = numberInput;
+/* harmony export (immutable) */ __webpack_exports__["a"] = numberInput;
 function numberInput() {
     let nodeList = document.getElementsByClassName('js_numberInput');
     if (!nodeList) {
@@ -357,8 +352,7 @@ function numberInput() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (immutable) */ __webpack_exports__["default"] = smoothScrolling;
+/* harmony export (immutable) */ __webpack_exports__["a"] = smoothScrolling;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__logger__ = __webpack_require__(17);
 
 
@@ -422,8 +416,7 @@ function smoothScrolling () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (immutable) */ __webpack_exports__["default"] = stickyNavigation;
+/* harmony export (immutable) */ __webpack_exports__["a"] = stickyNavigation;
 function stickyNavigation () {
 
   //-- Read Values Only !!!!!
@@ -496,9 +489,8 @@ function stickyNavigation () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (immutable) */ __webpack_exports__["default"] = setTheme;
-function setTheme () {
+/* harmony export (immutable) */ __webpack_exports__["a"] = setTheme;
+function setTheme() {
   const el = document.querySelector('.withTheme');
   if (el) {
     el.style.setProperty('--theme-invert', 'unset');
@@ -511,8 +503,7 @@ function setTheme () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (immutable) */ __webpack_exports__["default"] = rAf;
+/* harmony export (immutable) */ __webpack_exports__["a"] = rAf;
 function rAf () {
     let lastTime = 0;
     let vendors = ['ms', 'moz', 'webkit', 'o'];
@@ -954,62 +945,43 @@ function coerce(val) {
 
 /***/ }),
 /* 13 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__scss_index_scss__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__scss_index_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__scss_index_scss__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__polyfills_rAf__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_sticky_navigation__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_smooth_scrolling__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modules_cookie_notification__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__modules_number_input__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__modules_facebook_pixel_events__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__modules_notification__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__modules_instagram_feed__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__modules_theme__ = __webpack_require__(8);
 
 
-__webpack_require__(0);
 
-var _rAf = __webpack_require__(9);
 
-var _rAf2 = _interopRequireDefault(_rAf);
 
-var _stickyNavigation = __webpack_require__(7);
 
-var _stickyNavigation2 = _interopRequireDefault(_stickyNavigation);
 
-var _smoothScrolling = __webpack_require__(6);
 
-var _smoothScrolling2 = _interopRequireDefault(_smoothScrolling);
 
-var _cookieNotification = __webpack_require__(1);
 
-var _cookieNotification2 = _interopRequireDefault(_cookieNotification);
-
-var _numberInput = __webpack_require__(5);
-
-var _numberInput2 = _interopRequireDefault(_numberInput);
-
-var _facebookPixelEvents = __webpack_require__(2);
-
-var _facebookPixelEvents2 = _interopRequireDefault(_facebookPixelEvents);
-
-var _notification = __webpack_require__(4);
-
-var _notification2 = _interopRequireDefault(_notification);
-
-var _instagramFeed = __webpack_require__(3);
-
-var _instagramFeed2 = _interopRequireDefault(_instagramFeed);
-
-var _theme = __webpack_require__(8);
-
-var _theme2 = _interopRequireDefault(_theme);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(0, _facebookPixelEvents2.default)();
-(0, _notification2.default)();
-window.addEventListener('load', function () {
-    (0, _rAf2.default)();
-    (0, _instagramFeed2.default)();
-    (0, _stickyNavigation2.default)();
-    (0, _cookieNotification2.default)();
-    (0, _smoothScrolling2.default)();
-    (0, _numberInput2.default)();
-    (0, _theme2.default)();
+__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__modules_facebook_pixel_events__["a" /* default */])();
+__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__modules_notification__["a" /* default */])();
+window.addEventListener('load', () => {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__polyfills_rAf__["a" /* default */])();
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__modules_instagram_feed__["a" /* default */])();
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__modules_sticky_navigation__["a" /* default */])();
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__modules_cookie_notification__["a" /* default */])();
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__modules_smooth_scrolling__["a" /* default */])();
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__modules_number_input__["a" /* default */])();
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_9__modules_theme__["a" /* default */])();
 });
+
 
 /***/ }),
 /* 14 */
