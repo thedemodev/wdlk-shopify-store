@@ -2,8 +2,13 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "allowJs": true,
+    "inlineSources": true,
+    "inlineSourceMap": true,
+    "lib": ["es5", "es6"],
+    "mapRoot": "./assets/",
+    "noImplicitAny": true,
     "sourceMap": true,
-    "target": "es6",
+    "target": "es5",
   },
   "exclude": [
     "./src/scripts/timber/*.js",

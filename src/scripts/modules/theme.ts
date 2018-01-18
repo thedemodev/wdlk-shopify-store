@@ -1,4 +1,4 @@
-const setTheme = (): void => {
+const setTheme = () => {
   const el: HTMLElement = document.querySelector('.withTheme');
   if (el) {
     el.style.setProperty('--theme-invert', 'unset');

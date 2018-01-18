@@ -40,8 +40,7 @@ module.exports = {
         {
           loader: 'ts-loader',
           query: { happyPackMode: true }
-        },
-        'babel-loader?presets[]=es2015'
+        }
       ],
       threads: 4
     })
