@@ -4,7 +4,7 @@
     "allowJs": true,
     "inlineSources": true,
     "inlineSourceMap": true,
-    "lib": ["es5", "es6"],
+    "lib": ["dom", "es5", "es6"],
     "mapRoot": "./assets/",
     "noImplicitAny": true,
     "sourceMap": true,

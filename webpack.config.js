@@ -38,9 +38,12 @@ module.exports = {
       id: 'ts',
       loaders: [
         {
-          loader: 'ts-loader',
+          loader: 'babel-loader'
+        },
+        {
+          path: 'ts-loader',
           query: { happyPackMode: true }
-        }
+        },
       ],
       threads: 4
     })
