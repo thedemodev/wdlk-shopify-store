@@ -1,5 +1,6 @@
 import '../scss/index.scss';
 import rAf from './polyfills/rAf';
+import trackingCece from './modules/tracking-project-cece';
 import stickyNavigation from './modules/sticky-navigation';
 import smoothScrolling from './modules/smooth-scrolling';
 import cookieNotification from './modules/cookie-notification';
@@ -13,6 +14,7 @@ fbqEvents();
 notification();
 
 window.addEventListener('load', () => {
+  trackingCece();
   rAf();
   getInstaFeed();
   stickyNavigation();

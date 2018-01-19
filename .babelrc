@@ -1,5 +1,10 @@
 {
   "presets": [
+    ["env", {
+      "targets": {
+        "browsers": ["last 2 versions"]
+      }
+    }],
     "es2015",
     "stage-0",
     "stage-1"

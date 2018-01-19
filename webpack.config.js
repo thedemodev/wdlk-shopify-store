@@ -37,13 +37,8 @@ module.exports = {
     new HappyPack({
       id: 'ts',
       loaders: [
-        {
-          loader: 'babel-loader'
-        },
-        {
-          path: 'ts-loader',
-          query: { happyPackMode: true }
-        },
+        { loader: 'babel-loader' },
+        { loader: 'ts-loader', options: { happyPackMode: true } }
       ],
       threads: 4
     })
