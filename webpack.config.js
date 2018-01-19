@@ -6,6 +6,7 @@ const HappyPack = require('happypack');
 // Ensure `postcss` key is extracted
 HappyPack.SERIALIZABLE_OPTIONS = HappyPack.SERIALIZABLE_OPTIONS.concat(['postcss']);
 
+
 module.exports = {
   entry: './src/scripts/index',
   output: {
@@ -15,9 +16,13 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.tsx?$/,
+        test: /\.ts(x?)$/,
         exclude: /node_modules/,
         loader: 'happypack/loader?id=ts'
+      }, {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'happypack/loader?id=js'
       },
       {
         test: /\.scss$/,
@@ -27,7 +32,11 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin({ filename: resolve('/index.css.liquid')}),
-    new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true }),
+
+    new ForkTsCheckerWebpackPlugin({
+      checkSyntacticErrors: true,
+      watch: ['./src/scripts']
+    }),
 
     new HappyPack({
       id: 'styles',
@@ -36,12 +45,22 @@ module.exports = {
 
     new HappyPack({
       id: 'ts',
+      threads: 2,
       loaders: [
-        { loader: 'babel-loader' },
-        { loader: 'ts-loader', options: { happyPackMode: true } }
-      ],
-      threads: 4
+        { path: 'babel-loader' },
+        { path: 'ts-loader', query: { happyPackMode: true } }
+      ]
+    }),
+    new HappyPack({
+      id: 'js',
+      threads: 2,
+      loaders: [
+        {
+          path: 'babel-loader',
+        }
+      ]
     })
+
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js']

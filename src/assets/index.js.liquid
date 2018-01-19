@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 15);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -79,66 +79,56 @@
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", { value: true });
-var setTheme = function setTheme() {
-    var el = document.querySelector('.withTheme');
-    if (el) {
-        el.style.setProperty('--theme-invert', 'unset');
-    }
-};
-exports.default = setTheme;
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var notification = document.querySelector('.js-cookie-notification');
+var closeButton = document.querySelector('.js-cookie-notification-close');
+var localStorage = window.localStorage;
 
-/***/ }),
-/* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-const notification = document.querySelector('.js-cookie-notification');
-const closeButton = document.querySelector('.js-cookie-notification-close');
-const localStorage = window.localStorage;
-
-const notificationHidden = () => {
+var notificationHidden = function notificationHidden() {
     return localStorage.getItem('hideCookieNotification');
-}
-const hideNotification = () => {
+};
+var hideNotification = function hideNotification() {
     localStorage.setItem('hideCookieNotification', true);
     notification.style.display = 'none';
-}
+};
 
-/* harmony default export */ __webpack_exports__["default"] = (() => {
-    if(notificationHidden()) {
+exports.default = function () {
+    if (notificationHidden()) {
         return;
     }
 
     notification.style.display = 'block';
-    const removeCloseButtenClickHandler = closeButton.addEventListener('click', () => {
+    var removeCloseButtenClickHandler = closeButton.addEventListener('click', function () {
         hideNotification();
         closeButton.removeEventListener('click', removeCloseButtenClickHandler);
     });
-});
-
+};
 
 /***/ }),
-/* 3 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (immutable) */ __webpack_exports__["default"] = fbqEvents;
-function fbqEvents () {
-	let addToCart = document.querySelector('.js_fbqAddToCart');
-	let signUpBtn = document.querySelector('.js_fbqNewsLead');
 
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = fbqEvents;
+function fbqEvents() {
+	var addToCart = document.querySelector('.js_fbqAddToCart');
+	var signUpBtn = document.querySelector('.js_fbqNewsLead');
 
 	if (addToCart) {
-		let btn = addToCart.querySelector('.js_fbqBtn');
-		let select = addToCart.querySelector('.js_fbqSelect');
+		var btn = addToCart.querySelector('.js_fbqBtn');
+		var select = addToCart.querySelector('.js_fbqSelect');
 
 		if (btn && select) {
-			let productId = parseFloat(select.options[select.selectedIndex].value);
-			let value = parseFloat(btn.dataset.value).toFixed(2);
-			btn.addEventListener('click', () => {
+			var productId = parseFloat(select.options[select.selectedIndex].value);
+			var value = parseFloat(btn.dataset.value).toFixed(2);
+			btn.addEventListener('click', function () {
 				fbq('track', 'AddToCart', {
 					content_name: btn.dataset.name,
 					content_ids: [productId],
@@ -151,7 +141,7 @@ function fbqEvents () {
 	}
 
 	if (signUpBtn) {
-		signUpBtn.addEventListener('click', () => {
+		signUpBtn.addEventListener('click', function () {
 			fbq('track', 'Lead');
 		});
 	}
@@ -159,195 +149,170 @@ function fbqEvents () {
 	return;
 }
 
-
-
 /***/ }),
-/* 4 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (immutable) */ __webpack_exports__["default"] = generateFeed;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jsonp__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jsonp___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jsonp__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__configuration_instagram_access__ = __webpack_require__(10);
 
 
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
 
-function generateFeed () {
-	const node = document.querySelector('.js_instagramFeed');
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+exports.default = generateFeed;
+
+var _jsonp = __webpack_require__(16);
+
+var _jsonp2 = _interopRequireDefault(_jsonp);
+
+var _access = __webpack_require__(13);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function generateFeed() {
+	var node = document.querySelector('.js_instagramFeed');
 	if (!node) return;
-	if (typeof Promise === undefined) return;
+	if ((typeof Promise === 'undefined' ? 'undefined' : _typeof(Promise)) === undefined) return;
 
-	const feedLimit = 11;
-	const instaURL = `https://api.instagram.com/v1/users/${__WEBPACK_IMPORTED_MODULE_1__configuration_instagram_access__["a" /* access */]['id']}/media/recent/?access_token=${__WEBPACK_IMPORTED_MODULE_1__configuration_instagram_access__["a" /* access */]['token']}&callback=callback`;
+	var feedLimit = 11;
+	var instaURL = 'https://api.instagram.com/v1/users/' + _access.access['id'] + '/media/recent/?access_token=' + _access.access['token'] + '&callback=callback';
 
-	const getMediaFeed = url => {
-		return new Promise((resolve, reject) => {
-			__WEBPACK_IMPORTED_MODULE_0_jsonp___default()(url, (err, data) => {
+	var getMediaFeed = function getMediaFeed(url) {
+		return new Promise(function (resolve, reject) {
+			(0, _jsonp2.default)(url, function (err, data) {
 				if (err) {
-					reject(Error(`Couldn't get Insta JSON feed; error code: + ${err}`));
+					reject(Error('Couldn\'t get Insta JSON feed; error code: + ' + err));
 					throw err;
 				}
 				resolve(data);
 			});
-
 		});
 	};
 
-	const limitArr = value => value <= feedLimit;
-	const filteredArr = arr => arr.filter((el, i) => limitArr(i));
-	const convertUnixDate = timestamp => {
-		let date = new Date(parseInt(timestamp));
+	var limitArr = function limitArr(value) {
+		return value <= feedLimit;
+	};
+	var filteredArr = function filteredArr(arr) {
+		return arr.filter(function (el, i) {
+			return limitArr(i);
+		});
+	};
+	var convertUnixDate = function convertUnixDate(timestamp) {
+		var date = new Date(parseInt(timestamp));
 		return date.toDateString().slice(0, -4);
 	};
 
-	const generateFeedTemplate = arr => {
-		const feedTemplate = arr.map((el, i) => {
-			let thumbnail = `
-				<div class="Feed-thumbnail">
-					<label class="Feed-trigger" for="lightbox-${i}" style="background-image: url(${el.images.standard_resolution.url}), linear-gradient(35deg, #FFCA54, #FF7163 80%)">
-					</label>
-					<img class="Feed-img"
-						src="${el.images.standard_resolution.url}"
-						srcset="${el.images.thumbnail.url} 150w,
-						${el.images.low_resolution.url} 320w,
-						${el.images.standard_resolution.url} 640w" />
-				</div>
-			`;
+	var generateFeedTemplate = function generateFeedTemplate(arr) {
+		var feedTemplate = arr.map(function (el, i) {
+			var thumbnail = '\n\t\t\t\t<div class="Feed-thumbnail">\n\t\t\t\t\t<label class="Feed-trigger" for="lightbox-' + i + '" style="background-image: url(' + el.images.standard_resolution.url + '), linear-gradient(35deg, #FFCA54, #FF7163 80%)">\n\t\t\t\t\t</label>\n\t\t\t\t\t<img class="Feed-img"\n\t\t\t\t\t\tsrc="' + el.images.standard_resolution.url + '"\n\t\t\t\t\t\tsrcset="' + el.images.thumbnail.url + ' 150w,\n\t\t\t\t\t\t' + el.images.low_resolution.url + ' 320w,\n\t\t\t\t\t\t' + el.images.standard_resolution.url + ' 640w" />\n\t\t\t\t</div>\n\t\t\t';
 
-			let media = `
-				<a class="Lightbox-row Feed-media"
-					href="${el.link}" target="_blank">
-					<h4 class="Headline Headline--5">
-						Join the journey on Instagram @wdlk
-					</h4>
-					<img class="Feed-img"
-						src="${el.images.standard_resolution.url}"
-						srcset="${el.images.thumbnail.url} 150w,
-						${el.images.low_resolution.url} 320w,
-						${el.images.standard_resolution.url} 640w" />
-				</a>
-			`;
+			var media = '\n\t\t\t\t<a class="Lightbox-row Feed-media"\n\t\t\t\t\thref="' + el.link + '" target="_blank">\n\t\t\t\t\t<h4 class="Headline Headline--5">\n\t\t\t\t\t\tJoin the journey on Instagram @wdlk\n\t\t\t\t\t</h4>\n\t\t\t\t\t<img class="Feed-img"\n\t\t\t\t\t\tsrc="' + el.images.standard_resolution.url + '"\n\t\t\t\t\t\tsrcset="' + el.images.thumbnail.url + ' 150w,\n\t\t\t\t\t\t' + el.images.low_resolution.url + ' 320w,\n\t\t\t\t\t\t' + el.images.standard_resolution.url + ' 640w" />\n\t\t\t\t</a>\n\t\t\t';
 
-			let caption = `
-				<figcaption class="Feed-caption Lightbox-row">
-					<strong class="Feed-highlight">${el.likes.count} likes</strong>
-					<time class="Feed-highlight" datetime="${convertUnixDate(el.created_time)}">${convertUnixDate(el.created_time)}</time>
-					<p class="Feed-copy">
-						<strong>
-							${el.user.username}
-						</strong>
-						${el.caption.text}
-					</p>
-				</figcaption>
-			`;
+			var caption = '\n\t\t\t\t<figcaption class="Feed-caption Lightbox-row">\n\t\t\t\t\t<strong class="Feed-highlight">' + el.likes.count + ' likes</strong>\n\t\t\t\t\t<time class="Feed-highlight" datetime="' + convertUnixDate(el.created_time) + '">' + convertUnixDate(el.created_time) + '</time>\n\t\t\t\t\t<p class="Feed-copy">\n\t\t\t\t\t\t<strong>\n\t\t\t\t\t\t\t' + el.user.username + '\n\t\t\t\t\t\t</strong>\n\t\t\t\t\t\t' + el.caption.text + '\n\t\t\t\t\t</p>\n\t\t\t\t</figcaption>\n\t\t\t';
 
-			let feed = `
-				<li class="Feed-item Lightbox--row">
-					${thumbnail}
-					<input class="Lightbox-state" type="checkbox" id="lightbox-${i}" />
-					<div class="Lightbox-shim">
-						<label class="Lightbox-shim-close" for="lightbox-${i}"></label>
-						<figure class="Lightbox-content">
-							<header class="Lightbox-header">
-								<h3 class="Headline Headline--6">
-									#${el.tags[0]}
-								</h3>
-								<label class="Lightbox-icon" for="lightbox-${i}"></label>
-							</header>
-							${media}
-							${caption}
-						</figure>
-					</div>
-				</li>
-			`;
+			var feed = '\n\t\t\t\t<li class="Feed-item Lightbox--row">\n\t\t\t\t\t' + thumbnail + '\n\t\t\t\t\t<input class="Lightbox-state" type="checkbox" id="lightbox-' + i + '" />\n\t\t\t\t\t<div class="Lightbox-shim">\n\t\t\t\t\t\t<label class="Lightbox-shim-close" for="lightbox-' + i + '"></label>\n\t\t\t\t\t\t<figure class="Lightbox-content">\n\t\t\t\t\t\t\t<header class="Lightbox-header">\n\t\t\t\t\t\t\t\t<h3 class="Headline Headline--6">\n\t\t\t\t\t\t\t\t\t#' + el.tags[0] + '\n\t\t\t\t\t\t\t\t</h3>\n\t\t\t\t\t\t\t\t<label class="Lightbox-icon" for="lightbox-' + i + '"></label>\n\t\t\t\t\t\t\t</header>\n\t\t\t\t\t\t\t' + media + '\n\t\t\t\t\t\t\t' + caption + '\n\t\t\t\t\t\t</figure>\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t';
 			return feed;
 		});
 		node.innerHTML = feedTemplate.join('');
 	};
 
-
-	getMediaFeed(instaURL).then(res => {
-		const feedData = filteredArr(res.data);
+	getMediaFeed(instaURL).then(function (res) {
+		var feedData = filteredArr(res.data);
 		generateFeedTemplate(feedData);
 	});
-
 }
 
-
 /***/ }),
-/* 5 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (immutable) */ __webpack_exports__["default"] = notification;
-function notification () {
-	const notification = document.querySelector('.js_notification');
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = notification;
+function notification() {
+	var notification = document.querySelector('.js_notification');
 	if (!notification) {
 		return;
 	}
-	const closeBtn = notification.querySelector('.js_notification-btn');
-	const sessionStorage = window.sessionStorage;
-	const hiddenNotification = 'hiddenNotification';
-	const activeClass = 'is-active';
+	var closeBtn = notification.querySelector('.js_notification-btn');
+	var sessionStorage = window.sessionStorage;
+	var hiddenNotification = 'hiddenNotification';
+	var activeClass = 'is-active';
 
-	const verifyNotification = () => sessionStorage.getItem(hiddenNotification);
+	var verifyNotification = function verifyNotification() {
+		return sessionStorage.getItem(hiddenNotification);
+	};
 
 	if (verifyNotification()) {
 		return;
 	}
 
-	const loadNotification = () => {
+	var loadNotification = function loadNotification() {
 		notification.classList.add(activeClass);
 	};
 
-	const hideNotification = () => {
+	var hideNotification = function hideNotification() {
 		sessionStorage.setItem(hiddenNotification, true);
 		notification.classList.remove(activeClass);
 	};
 
-	const handleLoadEvent = window.addEventListener('load', () => {
+	var handleLoadEvent = window.addEventListener('load', function () {
 		loadNotification();
 		window.removeEventListener('load', handleLoadEvent);
 	});
 
-	const handleClickEvent = closeBtn.addEventListener('click', () => {
+	var handleClickEvent = closeBtn.addEventListener('click', function () {
 		hideNotification();
 		closeBtn.removeEventListener('click', handleClickEvent);
 	});
 }
 
-
 /***/ }),
-/* 6 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (immutable) */ __webpack_exports__["default"] = numberInput;
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = numberInput;
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function numberInput() {
-    let nodeList = document.getElementsByClassName('js_numberInput');
+    var nodeList = document.getElementsByClassName('js_numberInput');
     if (!nodeList) {
         return;
     }
-    const NODE_ARRAY =  [...nodeList];
-    const RMV_BTN_CLASS = 'js_remove';
-    const ADD_BTN_CLASS = 'js_add';
+    var NODE_ARRAY = [].concat(_toConsumableArray(nodeList));
+    var RMV_BTN_CLASS = 'js_remove';
+    var ADD_BTN_CLASS = 'js_add';
 
-    const INCREASE = n => parseInt(n) + 1;
-    const DECREASE = n => parseInt(n) - 1;
+    var INCREASE = function INCREASE(n) {
+        return parseInt(n) + 1;
+    };
+    var DECREASE = function DECREASE(n) {
+        return parseInt(n) - 1;
+    };
 
-    NODE_ARRAY.forEach(node => {
-        let inputValue = 1;
-        let min = 0;
-        const INPUT_EL = node.querySelector('.js_value');
+    NODE_ARRAY.forEach(function (node) {
+        var inputValue = 1;
+        var min = 0;
+        var INPUT_EL = node.querySelector('.js_value');
         if (!INPUT_EL) {
             return;
         }
         inputValue = INPUT_EL.getAttribute('value');
-        min = INPUT_EL.getAttribute('min')
+        min = INPUT_EL.getAttribute('min');
 
         node.addEventListener('click', function (e) {
             if (e.target.classList.contains(ADD_BTN_CLASS)) {
@@ -363,119 +328,129 @@ function numberInput() {
                 INPUT_EL.setAttribute('value', inputValue);
             }
         });
-
     });
 }
 
-
 /***/ }),
-/* 7 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (immutable) */ __webpack_exports__["default"] = smoothScrolling;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__logger__ = __webpack_require__(17);
 
 
-function smoothScrolling () {
-    const SCROLL_LAYER = document.querySelector(':root');
-    const TRIGGER = document.getElementsByClassName('js_scroll')[0];
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = smoothScrolling;
+
+var _logger = __webpack_require__(14);
+
+var _logger2 = _interopRequireDefault(_logger);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function smoothScrolling() {
+    var SCROLL_LAYER = document.querySelector(':root');
+    var TRIGGER = document.getElementsByClassName('js_scroll')[0];
     if (!TRIGGER) {
         return;
     }
-    const ID = TRIGGER.getAttribute('href').substr(1) || '';
-    const TARGET = document.getElementById(`${ID}`);
+    var ID = TRIGGER.getAttribute('href').substr(1) || '';
+    var TARGET = document.getElementById('' + ID);
     if (!TARGET) {
         return;
     }
 
     //-- Exponential Ease in and out
     //-- http://gizma.com/easing/#expo3
-    Math.easeInOutExpo = (t, b, c, d) => {
-      t /= d/2;
-      if (t < 1) {
-        return c/2 * Math.pow( 2, 10 * (t - 1) ) + b;
-      };
-      t--;
-      return c/2 * ( -Math.pow( 2, -10 * t) + 2 ) + b;
+    Math.easeInOutExpo = function (t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) {
+            return c / 2 * Math.pow(2, 10 * (t - 1)) + b;
+        };
+        t--;
+        return c / 2 * (-Math.pow(2, -10 * t) + 2) + b;
     };
 
-    const SCROLL_TO = (scrollLayer, el, duration, cb = cb || function (){}) => {
-        let startPosition = scrollLayer.scrollTop;
-        let positionDelta = el.offsetTop - startPosition;
-        let startTime = null;
+    var SCROLL_TO = function SCROLL_TO(scrollLayer, el, duration) {
+        var cb = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : cb || function () {};
 
-        const ANIMATE_SCROLL = (timeStamp) => {
+        var startPosition = scrollLayer.scrollTop;
+        var positionDelta = el.offsetTop - startPosition;
+        var startTime = null;
+
+        var ANIMATE_SCROLL = function ANIMATE_SCROLL(timeStamp) {
             startTime = startTime !== null ? startTime : timeStamp;
-            let timeDelta = timeStamp - startTime;
+            var timeDelta = timeStamp - startTime;
 
             if (timeDelta >= duration) {
-              return cb();
+                return cb();
             }
 
             scrollLayer.scrollTop = Math.easeInOutExpo(timeDelta, startPosition, positionDelta, duration);
             window.requestAnimationFrame(ANIMATE_SCROLL);
-        }
+        };
 
         window.requestAnimationFrame(ANIMATE_SCROLL);
-    }
+    };
 
-    const SCROLL = e => {
+    var SCROLL = function SCROLL(e) {
         e.preventDefault();
 
-        SCROLL_TO(SCROLL_LAYER, TARGET, 1618, () => {
-            window.location.hash = `#${TARGET.ID}`;
+        SCROLL_TO(SCROLL_LAYER, TARGET, 1618, function () {
+            window.location.hash = '#' + TARGET.ID;
         });
-    }
+    };
 
     TRIGGER.addEventListener('click', SCROLL, false);
 }
 
-
 /***/ }),
-/* 8 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (immutable) */ __webpack_exports__["default"] = stickyNavigation;
-function stickyNavigation () {
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = stickyNavigation;
+function stickyNavigation() {
 
   //-- Read Values Only !!!!!
   //-- First keep track of the scroll value
   //-- without triggering unnecessary draw calls
-  const navigation = document.querySelector('.js_sticky-nav');
+  var navigation = document.querySelector('.js_sticky-nav');
   if (!navigation) {
-      return;
+    return;
   }
-  const notificationTeaser = document.querySelector('.js_notification');
-  const options = {
+  var notificationTeaser = document.querySelector('.js_notification');
+  var options = {
     height: navigation.offsetHeight,
     scrollPosition: 0,
     ticking: false
   };
 
-  const init = () => {
-    navigation.classList.toggle('is-undocked',
-    window.scrollY >= options.height);
-  }
+  var init = function init() {
+    navigation.classList.toggle('is-undocked', window.scrollY >= options.height);
+  };
   init();
 
-  const getTeaserHeight = () => {
+  var getTeaserHeight = function getTeaserHeight() {
     if (!notificationTeaser) {
-        return;
+      return;
     }
     return notificationTeaser.offsetHeight;
   };
 
-  const onScroll = () => {
+  var onScroll = function onScroll() {
     options.scrollPosition = window.scrollY;
     requestTick();
   };
 
   //-- Triggers requestAnimationFrame when it's necessary only
-  const  requestTick = () => {
+  var requestTick = function requestTick() {
     if (!options.ticking) {
       requestAnimationFrame(update);
     }
@@ -484,20 +459,16 @@ function stickyNavigation () {
 
   //-- Visual Updates Callback
   //-- Use rAf to handle visual updates and write values
-  const update = () => {
+  var update = function update() {
     //-- Pull the latest value when we need it
-    let currentScrollPositionY = options.scrollPosition;
+    var currentScrollPositionY = options.scrollPosition;
 
     if (notificationTeaser) {
-      navigation.classList.toggle('is-sticky',
-          currentScrollPositionY >= currentTeaserHeight);
+      navigation.classList.toggle('is-sticky', currentScrollPositionY >= currentTeaserHeight);
 
-      navigation.classList.toggle('is-undocked',
-          currentScrollPositionY >= (getTeaserHeight() - 1) + (options.height - 1));
-
+      navigation.classList.toggle('is-undocked', currentScrollPositionY >= getTeaserHeight() - 1 + (options.height - 1));
     } else {
-      navigation.classList.toggle('is-undocked',
-          currentScrollPositionY >= options.height);
+      navigation.classList.toggle('is-undocked', currentScrollPositionY >= options.height);
     }
 
     options.ticking = false;
@@ -506,52 +477,91 @@ function stickyNavigation () {
   window.addEventListener('scroll', onScroll, { capture: false, passive: true });
 }
 
-
 /***/ }),
-/* 9 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (immutable) */ __webpack_exports__["default"] = rAf;
-function rAf () {
-    let lastTime = 0;
-    let vendors = ['ms', 'moz', 'webkit', 'o'];
 
-    for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
-        window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
-        window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame']
-            || window[vendors[x]+'CancelRequestAnimationFrame'];
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = rAf;
+function rAf() {
+    var lastTime = 0;
+    var vendors = ['ms', 'moz', 'webkit', 'o'];
+
+    for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+        window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
+        window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] || window[vendors[x] + 'CancelRequestAnimationFrame'];
     }
 
-    if (!window.requestAnimationFrame)
-        window.requestAnimationFrame = function(callback, element) {
-            var currTime = new Date().getTime();
-            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
-            var id = window.setTimeout(function() { callback(currTime + timeToCall); }, timeToCall);
+    if (!window.requestAnimationFrame) window.requestAnimationFrame = function (callback, element) {
+        var currTime = new Date().getTime();
+        var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+        var id = window.setTimeout(function () {
+            callback(currTime + timeToCall);
+        }, timeToCall);
         lastTime = currTime + timeToCall;
         return id;
     };
 
-    if (!window.cancelAnimationFrame)
-    window.cancelAnimationFrame = function(id) {
+    if (!window.cancelAnimationFrame) window.cancelAnimationFrame = function (id) {
         clearTimeout(id);
     };
 };
 
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var setTheme = function setTheme() {
+    var el = document.querySelector('.withTheme');
+    if (el) {
+        el.style.setProperty('--theme-invert', 'unset');
+    }
+};
+exports.default = setTheme;
 
 /***/ }),
 /* 10 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-const access = {
-	"id":"1983140883",
-	"token":"1983140883.c4c213d.70716b04afc14080a94e4ccb0c35d1b2"
-};
-/* harmony export (immutable) */ __webpack_exports__["a"] = access;
 
 
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = trackingCece;
+function trackingCece() {
+    var x = document.referrer;
+    function set_cece_cookie() {
+        var expiration = new Date();
+        expiration.setTime(expiration.getTime() + 30 * 24 * 60 * 60 * 1000);
+        document.cookie = "refpartner=projce; expires=" + expiration.toUTCString() + "; path=/";
+    }
+    if (x.indexOf('projectcece.') > -1) {
+        set_cece_cookie();
+        if (window.sessionStorage) {
+            sessionStorage.setItem("refpartner", "projce");
+        }
+    }
+    if (window.sessionStorage) {
+        if (sessionStorage.getItem("refpartner")) {
+            if (document.cookie.indexOf('refpartner=projce') < 0) {
+                set_cece_cookie();
+            }
+        }
+    }
+}
 
 /***/ }),
 /* 11 */
@@ -743,7 +753,7 @@ function localstorage() {
   } catch (e) {}
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(18)))
 
 /***/ }),
 /* 12 */
@@ -762,7 +772,7 @@ exports.coerce = coerce;
 exports.disable = disable;
 exports.enable = enable;
 exports.enabled = enabled;
-exports.humanize = __webpack_require__(15);
+exports.humanize = __webpack_require__(17);
 
 /**
  * The currently active debug mode names, and names to skip.
@@ -960,34 +970,109 @@ function coerce(val) {
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(0);
-var rAf_1 = __webpack_require__(9);
-var sticky_navigation_1 = __webpack_require__(8);
-var smooth_scrolling_1 = __webpack_require__(7);
-var cookie_notification_1 = __webpack_require__(2);
-var number_input_1 = __webpack_require__(6);
-var facebook_pixel_events_1 = __webpack_require__(3);
-var notification_1 = __webpack_require__(5);
-var instagram_feed_1 = __webpack_require__(4);
-var tracking_project_cece_1 = __webpack_require__(19);
-// import trackingFullstory from './modules/tracking-fullstory';
-var theme_1 = __webpack_require__(1);
-facebook_pixel_events_1.default();
-notification_1.default();
-window.addEventListener('load', function () {
-    tracking_project_cece_1.default();
-    rAf_1.default();
-    instagram_feed_1.default();
-    sticky_navigation_1.default();
-    cookie_notification_1.default();
-    smooth_scrolling_1.default();
-    number_input_1.default();
-    theme_1.default();
+Object.defineProperty(exports, "__esModule", {
+	value: true
 });
+var access = exports.access = {
+	"id": "1983140883",
+	"token": "1983140883.c4c213d.70716b04afc14080a94e4ccb0c35d1b2"
+};
 
 /***/ }),
 /* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = logger;
+//-- The function takes either log or error as property
+//-- Any other type will be ignored by the script.
+function logger() {
+    var logProp = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'log';
+    var message = arguments[1];
+
+    var DATE = new Date();
+    if (typeof console !== 'undefined' && logProp === 'log' || logProp === 'error') {
+        if (logProp === 'error') {
+            console.error(DATE + ': ' + message);
+        } else {
+            console.log(DATE + ': ' + message);
+        }
+    }
+}
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(0);
+
+var _rAf = __webpack_require__(8);
+
+var _rAf2 = _interopRequireDefault(_rAf);
+
+var _stickyNavigation = __webpack_require__(7);
+
+var _stickyNavigation2 = _interopRequireDefault(_stickyNavigation);
+
+var _smoothScrolling = __webpack_require__(6);
+
+var _smoothScrolling2 = _interopRequireDefault(_smoothScrolling);
+
+var _cookieNotification = __webpack_require__(1);
+
+var _cookieNotification2 = _interopRequireDefault(_cookieNotification);
+
+var _numberInput = __webpack_require__(5);
+
+var _numberInput2 = _interopRequireDefault(_numberInput);
+
+var _facebookPixelEvents = __webpack_require__(2);
+
+var _facebookPixelEvents2 = _interopRequireDefault(_facebookPixelEvents);
+
+var _notification = __webpack_require__(4);
+
+var _notification2 = _interopRequireDefault(_notification);
+
+var _instagramFeed = __webpack_require__(3);
+
+var _instagramFeed2 = _interopRequireDefault(_instagramFeed);
+
+var _trackingProjectCece = __webpack_require__(10);
+
+var _trackingProjectCece2 = _interopRequireDefault(_trackingProjectCece);
+
+var _theme = __webpack_require__(9);
+
+var _theme2 = _interopRequireDefault(_theme);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(0, _facebookPixelEvents2.default)();
+// import trackingFullstory from './modules/tracking-fullstory';
+
+(0, _notification2.default)();
+window.addEventListener('load', function () {
+    (0, _trackingProjectCece2.default)();
+    (0, _rAf2.default)();
+    (0, _instagramFeed2.default)();
+    (0, _stickyNavigation2.default)();
+    (0, _cookieNotification2.default)();
+    (0, _smoothScrolling2.default)();
+    (0, _numberInput2.default)();
+    (0, _theme2.default)();
+});
+
+/***/ }),
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -1090,7 +1175,7 @@ function jsonp(url, opts, fn){
 
 
 /***/ }),
-/* 15 */
+/* 17 */
 /***/ (function(module, exports) {
 
 /**
@@ -1248,7 +1333,7 @@ function plural(ms, n, name) {
 
 
 /***/ }),
-/* 16 */
+/* 18 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -1436,60 +1521,6 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-
-/***/ }),
-/* 17 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export default */
-//-- The function takes either log or error as property
-//-- Any other type will be ignored by the script.
-function logger (logProp = 'log', message) {
-    const DATE = new Date()
-    if (typeof console !== 'undefined' &&
-        logProp === 'log' ||
-        logProp === 'error') {
-            if (logProp === 'error') {
-                console.error(`${DATE}: ${message}`);
-            } else {
-                console.log(`${DATE}: ${message}`);
-            }
-    }
-}
-
-
-/***/ }),
-/* 18 */,
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", { value: true });
-function trackingCece() {
-    var x = document.referrer;
-    function set_cece_cookie() {
-        var expiration = new Date();
-        expiration.setTime(expiration.getTime() + 30 * 24 * 60 * 60 * 1000);
-        document.cookie = "refpartner=projce; expires=" + expiration.toUTCString() + "; path=/";
-    }
-    if (x.indexOf('projectcece.') > -1) {
-        set_cece_cookie();
-        if (window.sessionStorage) {
-            sessionStorage.setItem("refpartner", "projce");
-        }
-    }
-    if (window.sessionStorage) {
-        if (sessionStorage.getItem("refpartner")) {
-            if (document.cookie.indexOf('refpartner=projce') < 0) {
-                set_cece_cookie();
-            }
-        }
-    }
-}
-exports.default = trackingCece;
 
 /***/ })
 /******/ ]);
