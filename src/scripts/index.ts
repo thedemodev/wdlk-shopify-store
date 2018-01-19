@@ -8,7 +8,7 @@ import fbqEvents from './modules/facebook-pixel-events';
 import notification from './modules/notification';
 import getInstaFeed from './modules/instagram-feed';
 import trackingCece from './modules/tracking-project-cece';
-import trackingFullstory from './modules/tracking-fullstory';
+// import trackingFullstory from './modules/tracking-fullstory';
 import setTheme from './modules/theme';
 
 fbqEvents();
@@ -23,5 +23,4 @@ window.addEventListener('load', () => {
   smoothScrolling();
   numberInput();
   setTheme();
-  trackingFullstory();
 });

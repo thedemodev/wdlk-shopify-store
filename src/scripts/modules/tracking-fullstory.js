@@ -4,6 +4,7 @@ export default function trackingFullstory() {
   window['_fs_org'] = '9TD2C';
   window['_fs_namespace'] = 'FS';
   (function(m , n, e, t, l, o, g, y){
+    console.log('It is working');
     if (e in m) {
       if(m.console && m.console.log) {
         m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].');
