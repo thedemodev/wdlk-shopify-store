@@ -11,6 +11,10 @@
   "exclude": [
     "./src/scripts/timber/*.js",
     "./src/scripts/checkout-tracking.js",
-    "./dist/assets/checkout-tracking.js",
+    "./src/scripts/modules/cookie-notification.js",
+    "./src/scripts/modules/instagram-feed.js",
+    "./src/scripts/modules/logger.js",
+    "./src/scripts/modules/number-input.js",
+    "./src/scripts/modules/tracking-fullstory.js",
   ]
 }
