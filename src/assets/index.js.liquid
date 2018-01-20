@@ -63,11 +63,17 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 11);
+/******/ 	return __webpack_require__(__webpack_require__.s = 13);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -101,49 +107,6 @@ exports.default = function () {
 };
 
 /***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.default = fbqEvents;
-function fbqEvents() {
-	var addToCart = document.querySelector('.js_fbqAddToCart');
-	var signUpBtn = document.querySelector('.js_fbqNewsLead');
-
-	if (addToCart) {
-		var btn = addToCart.querySelector('.js_fbqBtn');
-		var select = addToCart.querySelector('.js_fbqSelect');
-
-		if (btn && select) {
-			var productId = parseFloat(select.options[select.selectedIndex].value);
-			var value = parseFloat(btn.dataset.value).toFixed(2);
-			btn.addEventListener('click', function () {
-				fbq('track', 'AddToCart', {
-					content_name: btn.dataset.name,
-					content_ids: [productId],
-					content_type: 'product',
-					value: value,
-					currency: 'EUR'
-				});
-			});
-		}
-	}
-
-	if (signUpBtn) {
-		signUpBtn.addEventListener('click', function () {
-			fbq('track', 'Lead');
-		});
-	}
-
-	return;
-}
-
-/***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -162,7 +125,7 @@ var _jsonp = __webpack_require__(15);
 
 var _jsonp2 = _interopRequireDefault(_jsonp);
 
-var _access = __webpack_require__(10);
+var _access = __webpack_require__(12);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -227,55 +190,6 @@ function generateFeed() {
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.default = notification;
-function notification() {
-	var notification = document.querySelector('.js_notification');
-	if (!notification) {
-		return;
-	}
-	var closeBtn = notification.querySelector('.js_notification-btn');
-	var sessionStorage = window.sessionStorage;
-	var hiddenNotification = 'hiddenNotification';
-	var activeClass = 'is-active';
-
-	var verifyNotification = function verifyNotification() {
-		return sessionStorage.getItem(hiddenNotification);
-	};
-
-	if (verifyNotification()) {
-		return;
-	}
-
-	var loadNotification = function loadNotification() {
-		notification.classList.add(activeClass);
-	};
-
-	var hideNotification = function hideNotification() {
-		sessionStorage.setItem(hiddenNotification, true);
-		notification.classList.remove(activeClass);
-	};
-
-	var handleLoadEvent = window.addEventListener('load', function () {
-		loadNotification();
-		window.removeEventListener('load', handleLoadEvent);
-	});
-
-	var handleClickEvent = closeBtn.addEventListener('click', function () {
-		hideNotification();
-		closeBtn.removeEventListener('click', handleClickEvent);
-	});
-}
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = numberInput;
@@ -326,7 +240,7 @@ function numberInput() {
 }
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -337,7 +251,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = smoothScrolling;
 
-var _logger = __webpack_require__(12);
+var _logger = __webpack_require__(14);
 
 var _logger2 = _interopRequireDefault(_logger);
 
@@ -400,6 +314,51 @@ function smoothScrolling() {
 }
 
 /***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = notification;
+function notification() {
+    var notification = document.querySelector('.js_notification');
+    if (!notification) {
+        return;
+    }
+    var closeBtn = notification.querySelector('.js_notification-btn');
+    var sessionStorage = window.sessionStorage;
+    var hiddenNotification = 'hiddenNotification';
+    var activeClass = 'is-active';
+    var verifyNotification = function verifyNotification() {
+        return sessionStorage.getItem(hiddenNotification);
+    };
+    if (verifyNotification()) {
+        return;
+    }
+    var loadNotification = function loadNotification() {
+        notification.classList.add(activeClass);
+    };
+    var hideNotification = function hideNotification() {
+        sessionStorage.setItem(hiddenNotification, 'true');
+        notification.classList.remove(activeClass);
+    };
+    var handleLoadEvent = function handleLoadEvent() {
+        loadNotification();
+        window.removeEventListener('load', handleLoadEvent);
+    };
+    var handleClickEvent = function handleClickEvent() {
+        hideNotification();
+        closeBtn.removeEventListener('click', handleClickEvent);
+    };
+    window.addEventListener('load', handleLoadEvent);
+    window.addEventListener('click', handleClickEvent);
+}
+
+/***/ }),
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -407,68 +366,58 @@ function smoothScrolling() {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.default = stickyNavigation;
 function stickyNavigation() {
-
-  //-- Read Values Only !!!!!
-  //-- First keep track of the scroll value
-  //-- without triggering unnecessary draw calls
-  var navigation = document.querySelector('.js_sticky-nav');
-  if (!navigation) {
-    return;
-  }
-  var notificationTeaser = document.querySelector('.js_notification');
-  var options = {
-    height: navigation.offsetHeight,
-    scrollPosition: 0,
-    ticking: false
-  };
-
-  var init = function init() {
-    navigation.classList.toggle('is-undocked', window.scrollY >= options.height);
-  };
-  init();
-
-  var getTeaserHeight = function getTeaserHeight() {
-    if (!notificationTeaser) {
-      return;
+    //-- Read Values Only !!!!!
+    //-- First keep track of the scroll value
+    //-- without triggering unnecessary draw calls
+    var navigation = document.querySelector('.js_sticky-nav');
+    if (!navigation) {
+        return;
     }
-    return notificationTeaser.offsetHeight;
-  };
-
-  var onScroll = function onScroll() {
-    options.scrollPosition = window.scrollY;
-    requestTick();
-  };
-
-  //-- Triggers requestAnimationFrame when it's necessary only
-  var requestTick = function requestTick() {
-    if (!options.ticking) {
-      requestAnimationFrame(update);
-    }
-    options.ticking = true;
-  };
-
-  //-- Visual Updates Callback
-  //-- Use rAf to handle visual updates and write values
-  var update = function update() {
-    //-- Pull the latest value when we need it
-    var currentScrollPositionY = options.scrollPosition;
-
-    if (notificationTeaser) {
-      navigation.classList.toggle('is-sticky', currentScrollPositionY >= currentTeaserHeight);
-
-      navigation.classList.toggle('is-undocked', currentScrollPositionY >= getTeaserHeight() - 1 + (options.height - 1));
-    } else {
-      navigation.classList.toggle('is-undocked', currentScrollPositionY >= options.height);
-    }
-
-    options.ticking = false;
-  };
-
-  window.addEventListener('scroll', onScroll, { capture: false, passive: true });
+    var notificationTeaser = document.querySelector('.js_notification');
+    var options = {
+        height: navigation.offsetHeight,
+        scrollPosition: 0,
+        ticking: false
+    };
+    var init = function init() {
+        navigation.classList.toggle('is-undocked', window.scrollY >= options.height);
+    };
+    init();
+    var getTeaserHeight = function getTeaserHeight() {
+        if (!notificationTeaser) {
+            return 0;
+        }
+        return notificationTeaser.offsetHeight;
+    };
+    var onScroll = function onScroll() {
+        options.scrollPosition = window.scrollY;
+        requestTick();
+    };
+    //-- Triggers requestAnimationFrame when it's necessary only
+    var requestTick = function requestTick() {
+        if (!options.ticking) {
+            requestAnimationFrame(update);
+        }
+        options.ticking = true;
+    };
+    //-- Visual Updates Callback
+    //-- Use rAf to handle visual updates and write values
+    var update = function update() {
+        //-- Pull the latest value when we need it
+        var currentScrollPositionY = options.scrollPosition;
+        if (notificationTeaser) {
+            navigation.classList.toggle('is-sticky', currentScrollPositionY >= getTeaserHeight());
+            navigation.classList.toggle('is-undocked', currentScrollPositionY >= getTeaserHeight() - 1);
+        } else {
+            navigation.classList.toggle('is-undocked', currentScrollPositionY >= options.height);
+        }
+        options.ticking = false;
+    };
+    window.addEventListener('scroll', onScroll, { capture: false, passive: true });
 }
 
 /***/ }),
@@ -479,15 +428,15 @@ function stickyNavigation() {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
+var setTheme = function setTheme() {
+    var el = document.querySelector('.withTheme');
+    if (el) {
+        el.style.setProperty('--theme-invert', 'unset');
+    }
+};
 exports.default = setTheme;
-function setTheme() {
-  var el = document.querySelector('.withTheme');
-  if (el) {
-    el.style.setProperty('--theme-invert', 'unset');
-  }
-}
 
 /***/ }),
 /* 8 */
@@ -499,114 +448,37 @@ function setTheme() {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.default = rAf;
-function rAf() {
-    var lastTime = 0;
-    var vendors = ['ms', 'moz', 'webkit', 'o'];
-
-    for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
-        window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
-        window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] || window[vendors[x] + 'CancelRequestAnimationFrame'];
+exports.default = fbqTracking;
+function fbqTracking() {
+    var addToCart = document.querySelector('.js_fbqAddToCart');
+    var signUpBtn = document.querySelector('.js_fbqNewsLead');
+    if (addToCart) {
+        var btn = addToCart.querySelector('.js_fbqBtn');
+        var select = addToCart.querySelector('.js_fbqSelect');
+        if (btn && select) {
+            var productId = parseFloat(select.options[select.selectedIndex].value);
+            var value = parseFloat(btn.dataset.value);
+            btn.addEventListener('click', function () {
+                fbq('track', 'AddToCart', {
+                    content_name: btn.dataset.name,
+                    content_ids: ['' + productId],
+                    content_type: 'product',
+                    value: value,
+                    currency: 'EUR'
+                });
+            });
+        }
     }
-
-    if (!window.requestAnimationFrame) window.requestAnimationFrame = function (callback, element) {
-        var currTime = new Date().getTime();
-        var timeToCall = Math.max(0, 16 - (currTime - lastTime));
-        var id = window.setTimeout(function () {
-            callback(currTime + timeToCall);
-        }, timeToCall);
-        lastTime = currTime + timeToCall;
-        return id;
-    };
-
-    if (!window.cancelAnimationFrame) window.cancelAnimationFrame = function (id) {
-        clearTimeout(id);
-    };
-};
+    if (signUpBtn) {
+        signUpBtn.addEventListener('click', function () {
+            fbq('track', 'Lead');
+        });
+    }
+    return;
+}
 
 /***/ }),
 /* 9 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-var access = exports.access = {
-	"id": "1983140883",
-	"token": "1983140883.c4c213d.70716b04afc14080a94e4ccb0c35d1b2"
-};
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-__webpack_require__(9);
-
-var _rAf = __webpack_require__(8);
-
-var _rAf2 = _interopRequireDefault(_rAf);
-
-var _stickyNavigation = __webpack_require__(6);
-
-var _stickyNavigation2 = _interopRequireDefault(_stickyNavigation);
-
-var _smoothScrolling = __webpack_require__(5);
-
-var _smoothScrolling2 = _interopRequireDefault(_smoothScrolling);
-
-var _cookieNotification = __webpack_require__(0);
-
-var _cookieNotification2 = _interopRequireDefault(_cookieNotification);
-
-var _numberInput = __webpack_require__(4);
-
-var _numberInput2 = _interopRequireDefault(_numberInput);
-
-var _facebookPixelEvents = __webpack_require__(1);
-
-var _facebookPixelEvents2 = _interopRequireDefault(_facebookPixelEvents);
-
-var _notification = __webpack_require__(3);
-
-var _notification2 = _interopRequireDefault(_notification);
-
-var _instagramFeed = __webpack_require__(2);
-
-var _instagramFeed2 = _interopRequireDefault(_instagramFeed);
-
-var _theme = __webpack_require__(7);
-
-var _theme2 = _interopRequireDefault(_theme);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(0, _facebookPixelEvents2.default)();
-(0, _notification2.default)();
-
-window.addEventListener('load', function () {
-  (0, _rAf2.default)();
-  (0, _instagramFeed2.default)();
-  (0, _stickyNavigation2.default)();
-  (0, _cookieNotification2.default)();
-  (0, _smoothScrolling2.default)();
-  (0, _numberInput2.default)();
-  (0, _theme2.default)();
-});
-
-/***/ }),
-/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -615,25 +487,31 @@ window.addEventListener('load', function () {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.default = logger;
-//-- The function takes either log or error as property
-//-- Any other type will be ignored by the script.
-function logger() {
-    var logProp = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'log';
-    var message = arguments[1];
-
-    var DATE = new Date();
-    if (typeof console !== 'undefined' && logProp === 'log' || logProp === 'error') {
-        if (logProp === 'error') {
-            console.error(DATE + ': ' + message);
-        } else {
-            console.log(DATE + ': ' + message);
+exports.default = trackingCece;
+function trackingCece() {
+    var x = document.referrer;
+    function set_cece_cookie() {
+        var expiration = new Date();
+        expiration.setTime(expiration.getTime() + 30 * 24 * 60 * 60 * 1000);
+        document.cookie = "refpartner=projce; expires=" + expiration.toUTCString() + "; path=/";
+    }
+    if (x.indexOf('projectcece.') > -1) {
+        set_cece_cookie();
+        if (window.sessionStorage) {
+            sessionStorage.setItem("refpartner", "projce");
+        }
+    }
+    if (window.sessionStorage) {
+        if (sessionStorage.getItem("refpartner")) {
+            if (document.cookie.indexOf('refpartner=projce') < 0) {
+                set_cece_cookie();
+            }
         }
     }
 }
 
 /***/ }),
-/* 13 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {/**
@@ -642,7 +520,7 @@ function logger() {
  * Expose `debug()` as the module.
  */
 
-exports = module.exports = __webpack_require__(14);
+exports = module.exports = __webpack_require__(11);
 exports.log = log;
 exports.formatArgs = formatArgs;
 exports.save = save;
@@ -825,7 +703,7 @@ function localstorage() {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)))
 
 /***/ }),
-/* 14 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -1033,6 +911,107 @@ function coerce(val) {
 
 
 /***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var access = exports.access = {
+	"id": "1983140883",
+	"token": "1983140883.c4c213d.70716b04afc14080a94e4ccb0c35d1b2"
+};
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(0);
+
+var _stickyNavigation = __webpack_require__(6);
+
+var _stickyNavigation2 = _interopRequireDefault(_stickyNavigation);
+
+var _smoothScrolling = __webpack_require__(4);
+
+var _smoothScrolling2 = _interopRequireDefault(_smoothScrolling);
+
+var _cookieNotification = __webpack_require__(1);
+
+var _cookieNotification2 = _interopRequireDefault(_cookieNotification);
+
+var _numberInput = __webpack_require__(3);
+
+var _numberInput2 = _interopRequireDefault(_numberInput);
+
+var _notification = __webpack_require__(5);
+
+var _notification2 = _interopRequireDefault(_notification);
+
+var _instagramFeed = __webpack_require__(2);
+
+var _instagramFeed2 = _interopRequireDefault(_instagramFeed);
+
+var _trackingFacebook = __webpack_require__(8);
+
+var _trackingFacebook2 = _interopRequireDefault(_trackingFacebook);
+
+var _trackingProjectCece = __webpack_require__(9);
+
+var _trackingProjectCece2 = _interopRequireDefault(_trackingProjectCece);
+
+var _theme = __webpack_require__(7);
+
+var _theme2 = _interopRequireDefault(_theme);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(0, _trackingFacebook2.default)();
+(0, _notification2.default)();
+window.addEventListener('load', function () {
+    (0, _trackingProjectCece2.default)();
+    (0, _instagramFeed2.default)();
+    (0, _stickyNavigation2.default)();
+    (0, _cookieNotification2.default)();
+    (0, _smoothScrolling2.default)();
+    (0, _numberInput2.default)();
+    (0, _theme2.default)();
+});
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = logger;
+//-- The function takes either log or error as property
+//-- Any other type will be ignored by the script.
+function logger() {
+    var logProp = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'log';
+    var message = arguments[1];
+
+    var DATE = new Date();
+    if (typeof console !== 'undefined' && logProp === 'log' || logProp === 'error') {
+        if (logProp === 'error') {
+            console.error(DATE + ': ' + message);
+        } else {
+            console.log(DATE + ': ' + message);
+        }
+    }
+}
+
+/***/ }),
 /* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1040,7 +1019,7 @@ function coerce(val) {
  * Module dependencies
  */
 
-var debug = __webpack_require__(13)('jsonp');
+var debug = __webpack_require__(10)('jsonp');
 
 /**
  * Module exports.

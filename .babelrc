@@ -1,11 +1,12 @@
 {
   "presets": [
+    ["env", {
+      "targets": {
+        "browsers": ["last 2 versions"]
+      }
+    }],
     "es2015",
-    "flow",
     "stage-0",
     "stage-1"
-  ],
-  "plugins": [
-    "transform-flow-strip-types"
   ]
 }

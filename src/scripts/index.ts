@@ -1,19 +1,19 @@
 import '../scss/index.scss';
-import rAf from './polyfills/rAf';
 import stickyNavigation from './modules/sticky-navigation';
 import smoothScrolling from './modules/smooth-scrolling';
 import cookieNotification from './modules/cookie-notification';
 import numberInput from './modules/number-input';
-import fbqEvents from './modules/facebook-pixel-events';
 import notification from './modules/notification';
 import getInstaFeed from './modules/instagram-feed';
+import fbqTracking from './modules/tracking-facebook';
+import trackingCece from './modules/tracking-project-cece';
 import setTheme from './modules/theme';
 
-fbqEvents();
+fbqTracking();
 notification();
 
 window.addEventListener('load', () => {
-  rAf();
+  trackingCece();
   getInstaFeed();
   stickyNavigation();
   cookieNotification();
@@ -21,6 +21,3 @@ window.addEventListener('load', () => {
   numberInput();
   setTheme();
 });
-
-
-

@@ -1,39 +1,44 @@
 export default function stickyNavigation () {
+  interface NotificationOptions {
+    height: number;
+    scrollPosition: number;
+    ticking: boolean;
+  }
 
   //-- Read Values Only !!!!!
   //-- First keep track of the scroll value
   //-- without triggering unnecessary draw calls
-  const navigation = document.querySelector('.js_sticky-nav');
+  const navigation: HTMLElement = document.querySelector('.js_sticky-nav');
   if (!navigation) {
       return;
   }
-  const notificationTeaser = document.querySelector('.js_notification');
-  const options = {
+  const notificationTeaser: HTMLElement = document.querySelector('.js_notification');
+  const options: NotificationOptions = {
     height: navigation.offsetHeight,
     scrollPosition: 0,
     ticking: false
   };
 
-  const init = () => {
+  const init = (): void => {
     navigation.classList.toggle('is-undocked',
     window.scrollY >= options.height);
   }
   init();
 
-  const getTeaserHeight = () => {
+  const getTeaserHeight = (): number => {
     if (!notificationTeaser) {
-        return;
+        return 0;
     }
     return notificationTeaser.offsetHeight;
   };
 
-  const onScroll = () => {
+  const onScroll = (): void => {
     options.scrollPosition = window.scrollY;
     requestTick();
   };
 
   //-- Triggers requestAnimationFrame when it's necessary only
-  const  requestTick = () => {
+  const requestTick = (): void => {
     if (!options.ticking) {
       requestAnimationFrame(update);
     }
@@ -44,14 +49,14 @@ export default function stickyNavigation () {
   //-- Use rAf to handle visual updates and write values
   const update = () => {
     //-- Pull the latest value when we need it
-    let currentScrollPositionY = options.scrollPosition;
+    let currentScrollPositionY: number = options.scrollPosition;
 
     if (notificationTeaser) {
       navigation.classList.toggle('is-sticky',
-          currentScrollPositionY >= currentTeaserHeight);
+          currentScrollPositionY >= getTeaserHeight());
 
       navigation.classList.toggle('is-undocked',
-          currentScrollPositionY >= (getTeaserHeight() - 1) + (options.height - 1));
+          currentScrollPositionY >= (getTeaserHeight() - 1));
 
     } else {
       navigation.classList.toggle('is-undocked',

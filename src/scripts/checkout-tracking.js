@@ -29,3 +29,11 @@
 			delayedTracking();
 		})();
 </script>
+{% if first_time_accessed %}
+<script>
+  // If the order is succesful and project cece cookie, place tracking pixel to record the sale
+  if (document.cookie.indexOf('refpartner=projce') > -1) {
+    var trackpixel = '<img src="https://projectcece.com/de/affiliate/?affid=544261&netto={{ subtotal_price | money_without_currency }}&saleid={{ order_number }}&currency={{ shop.currency }}&tax={{ order.tax_price  | money_without_currency }}" height="1" width="1" />'; document.body.insertAdjacentHTML('beforeend', trackpixel);
+  };
+</script>
+{% endif %}
