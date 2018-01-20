@@ -107,49 +107,7 @@ exports.default = function () {
 };
 
 /***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.default = fbqEvents;
-function fbqEvents() {
-	var addToCart = document.querySelector('.js_fbqAddToCart');
-	var signUpBtn = document.querySelector('.js_fbqNewsLead');
-
-	if (addToCart) {
-		var btn = addToCart.querySelector('.js_fbqBtn');
-		var select = addToCart.querySelector('.js_fbqSelect');
-
-		if (btn && select) {
-			var productId = parseFloat(select.options[select.selectedIndex].value);
-			var value = parseFloat(btn.dataset.value).toFixed(2);
-			btn.addEventListener('click', function () {
-				fbq('track', 'AddToCart', {
-					content_name: btn.dataset.name,
-					content_ids: [productId],
-					content_type: 'product',
-					value: value,
-					currency: 'EUR'
-				});
-			});
-		}
-	}
-
-	if (signUpBtn) {
-		signUpBtn.addEventListener('click', function () {
-			fbq('track', 'Lead');
-		});
-	}
-
-	return;
-}
-
-/***/ }),
+/* 2 */,
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -358,38 +316,9 @@ function smoothScrolling() {
 
 /***/ }),
 /* 6 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = rAf;
-function rAf() {
-    var lastTime = 0;
-    var vendors = ['ms', 'moz', 'webkit', 'o'];
-
-    for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
-        window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
-        window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] || window[vendors[x] + 'CancelRequestAnimationFrame'];
-    }
-
-    if (!window.requestAnimationFrame) window.requestAnimationFrame = function (callback, element) {
-        var currTime = new Date().getTime();
-        var timeToCall = Math.max(0, 16 - (currTime - lastTime));
-        var id = window.setTimeout(function () {
-            callback(currTime + timeToCall);
-        }, timeToCall);
-        lastTime = currTime + timeToCall;
-        return id;
-    };
-
-    if (!window.cancelAnimationFrame) window.cancelAnimationFrame = function (id) {
-        clearTimeout(id);
-    };
-};
+throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Users/maupal/Lab/wdlk-shopify-store/src/scripts/polyfills/rAf.js'");
 
 /***/ }),
 /* 7 */
@@ -1020,10 +949,6 @@ var _numberInput = __webpack_require__(4);
 
 var _numberInput2 = _interopRequireDefault(_numberInput);
 
-var _facebookPixelEvents = __webpack_require__(2);
-
-var _facebookPixelEvents2 = _interopRequireDefault(_facebookPixelEvents);
-
 var _notification = __webpack_require__(7);
 
 var _notification2 = _interopRequireDefault(_notification);
@@ -1031,6 +956,10 @@ var _notification2 = _interopRequireDefault(_notification);
 var _instagramFeed = __webpack_require__(3);
 
 var _instagramFeed2 = _interopRequireDefault(_instagramFeed);
+
+var _trackingFacebook = __webpack_require__(20);
+
+var _trackingFacebook2 = _interopRequireDefault(_trackingFacebook);
 
 var _trackingProjectCece = __webpack_require__(10);
 
@@ -1042,7 +971,7 @@ var _theme2 = _interopRequireDefault(_theme);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _facebookPixelEvents2.default)();
+(0, _trackingFacebook2.default)();
 // import trackingFullstory from './modules/tracking-fullstory';
 
 (0, _notification2.default)();
@@ -1507,6 +1436,46 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
+
+/***/ }),
+/* 19 */,
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = fbqTracking;
+function fbqTracking() {
+    var addToCart = document.querySelector('.js_fbqAddToCart');
+    var signUpBtn = document.querySelector('.js_fbqNewsLead');
+    if (addToCart) {
+        var btn = addToCart.querySelector('.js_fbqBtn');
+        var select = addToCart.querySelector('.js_fbqSelect');
+        if (btn && select) {
+            var productId = parseFloat(select.options[select.selectedIndex].value);
+            var value = parseFloat(btn.dataset.value);
+            btn.addEventListener('click', function () {
+                fbq('track', 'AddToCart', {
+                    content_name: btn.dataset.name,
+                    content_ids: ['' + productId],
+                    content_type: 'product',
+                    value: value,
+                    currency: 'EUR'
+                });
+            });
+        }
+    }
+    if (signUpBtn) {
+        signUpBtn.addEventListener('click', function () {
+            fbq('track', 'Lead');
+        });
+    }
+    return;
+}
 
 /***/ })
 /******/ ]);

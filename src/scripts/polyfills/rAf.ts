@@ -1,6 +1,6 @@
 export default function rAf () {
-    let lastTime = 0;
-    let vendors = ['ms', 'moz', 'webkit', 'o'];
+    let lastTime: number = 0;
+    let vendors: string[] = ['ms', 'moz', 'webkit', 'o'];
 
     for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
         window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];

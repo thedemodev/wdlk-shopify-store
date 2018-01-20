@@ -36,6 +36,7 @@
   "devDependencies": {
     "@shopify/slate": "^0.13.0",
     "@shopify/slate-tools": "0.13.0",
+    "@types/facebook-pixel": "0.0.19",
     "async": "^1.5.0",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
