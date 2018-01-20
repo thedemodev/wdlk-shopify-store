@@ -364,78 +364,6 @@ function smoothScrolling() {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = stickyNavigation;
-function stickyNavigation() {
-
-  //-- Read Values Only !!!!!
-  //-- First keep track of the scroll value
-  //-- without triggering unnecessary draw calls
-  var navigation = document.querySelector('.js_sticky-nav');
-  if (!navigation) {
-    return;
-  }
-  var notificationTeaser = document.querySelector('.js_notification');
-  var options = {
-    height: navigation.offsetHeight,
-    scrollPosition: 0,
-    ticking: false
-  };
-
-  var init = function init() {
-    navigation.classList.toggle('is-undocked', window.scrollY >= options.height);
-  };
-  init();
-
-  var getTeaserHeight = function getTeaserHeight() {
-    if (!notificationTeaser) {
-      return;
-    }
-    return notificationTeaser.offsetHeight;
-  };
-
-  var onScroll = function onScroll() {
-    options.scrollPosition = window.scrollY;
-    requestTick();
-  };
-
-  //-- Triggers requestAnimationFrame when it's necessary only
-  var requestTick = function requestTick() {
-    if (!options.ticking) {
-      requestAnimationFrame(update);
-    }
-    options.ticking = true;
-  };
-
-  //-- Visual Updates Callback
-  //-- Use rAf to handle visual updates and write values
-  var update = function update() {
-    //-- Pull the latest value when we need it
-    var currentScrollPositionY = options.scrollPosition;
-
-    if (notificationTeaser) {
-      navigation.classList.toggle('is-sticky', currentScrollPositionY >= currentTeaserHeight);
-
-      navigation.classList.toggle('is-undocked', currentScrollPositionY >= getTeaserHeight() - 1 + (options.height - 1));
-    } else {
-      navigation.classList.toggle('is-undocked', currentScrollPositionY >= options.height);
-    }
-
-    options.ticking = false;
-  };
-
-  window.addEventListener('scroll', onScroll, { capture: false, passive: true });
-}
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = rAf;
@@ -464,7 +392,7 @@ function rAf() {
 };
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -506,6 +434,68 @@ function notification() {
     };
     window.addEventListener('load', handleLoadEvent);
     window.addEventListener('click', handleClickEvent);
+}
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = stickyNavigation;
+function stickyNavigation() {
+    //-- Read Values Only !!!!!
+    //-- First keep track of the scroll value
+    //-- without triggering unnecessary draw calls
+    var navigation = document.querySelector('.js_sticky-nav');
+    if (!navigation) {
+        return;
+    }
+    var notificationTeaser = document.querySelector('.js_notification');
+    var options = {
+        height: navigation.offsetHeight,
+        scrollPosition: 0,
+        ticking: false
+    };
+    var init = function init() {
+        navigation.classList.toggle('is-undocked', window.scrollY >= options.height);
+    };
+    init();
+    var getTeaserHeight = function getTeaserHeight() {
+        if (!notificationTeaser) {
+            return 0;
+        }
+        return notificationTeaser.offsetHeight;
+    };
+    var onScroll = function onScroll() {
+        options.scrollPosition = window.scrollY;
+        requestTick();
+    };
+    //-- Triggers requestAnimationFrame when it's necessary only
+    var requestTick = function requestTick() {
+        if (!options.ticking) {
+            requestAnimationFrame(update);
+        }
+        options.ticking = true;
+    };
+    //-- Visual Updates Callback
+    //-- Use rAf to handle visual updates and write values
+    var update = function update() {
+        //-- Pull the latest value when we need it
+        var currentScrollPositionY = options.scrollPosition;
+        if (notificationTeaser) {
+            navigation.classList.toggle('is-sticky', currentScrollPositionY >= getTeaserHeight());
+            navigation.classList.toggle('is-undocked', currentScrollPositionY >= getTeaserHeight() - 1);
+        } else {
+            navigation.classList.toggle('is-undocked', currentScrollPositionY >= options.height);
+        }
+        options.ticking = false;
+    };
+    window.addEventListener('scroll', onScroll, { capture: false, passive: true });
 }
 
 /***/ }),
@@ -1010,11 +1000,11 @@ function logger() {
 
 __webpack_require__(0);
 
-var _rAf = __webpack_require__(7);
+var _rAf = __webpack_require__(6);
 
 var _rAf2 = _interopRequireDefault(_rAf);
 
-var _stickyNavigation = __webpack_require__(6);
+var _stickyNavigation = __webpack_require__(8);
 
 var _stickyNavigation2 = _interopRequireDefault(_stickyNavigation);
 
@@ -1034,7 +1024,7 @@ var _facebookPixelEvents = __webpack_require__(2);
 
 var _facebookPixelEvents2 = _interopRequireDefault(_facebookPixelEvents);
 
-var _notification = __webpack_require__(8);
+var _notification = __webpack_require__(7);
 
 var _notification2 = _interopRequireDefault(_notification);
 
