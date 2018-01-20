@@ -233,55 +233,6 @@ function generateFeed() {
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.default = notification;
-function notification() {
-	var notification = document.querySelector('.js_notification');
-	if (!notification) {
-		return;
-	}
-	var closeBtn = notification.querySelector('.js_notification-btn');
-	var sessionStorage = window.sessionStorage;
-	var hiddenNotification = 'hiddenNotification';
-	var activeClass = 'is-active';
-
-	var verifyNotification = function verifyNotification() {
-		return sessionStorage.getItem(hiddenNotification);
-	};
-
-	if (verifyNotification()) {
-		return;
-	}
-
-	var loadNotification = function loadNotification() {
-		notification.classList.add(activeClass);
-	};
-
-	var hideNotification = function hideNotification() {
-		sessionStorage.setItem(hiddenNotification, true);
-		notification.classList.remove(activeClass);
-	};
-
-	var handleLoadEvent = window.addEventListener('load', function () {
-		loadNotification();
-		window.removeEventListener('load', handleLoadEvent);
-	});
-
-	var handleClickEvent = closeBtn.addEventListener('click', function () {
-		hideNotification();
-		closeBtn.removeEventListener('click', handleClickEvent);
-	});
-}
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = numberInput;
@@ -332,7 +283,7 @@ function numberInput() {
 }
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -406,7 +357,7 @@ function smoothScrolling() {
 }
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -478,7 +429,7 @@ function stickyNavigation() {
 }
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -511,6 +462,51 @@ function rAf() {
         clearTimeout(id);
     };
 };
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = notification;
+function notification() {
+    var notification = document.querySelector('.js_notification');
+    if (!notification) {
+        return;
+    }
+    var closeBtn = notification.querySelector('.js_notification-btn');
+    var sessionStorage = window.sessionStorage;
+    var hiddenNotification = 'hiddenNotification';
+    var activeClass = 'is-active';
+    var verifyNotification = function verifyNotification() {
+        return sessionStorage.getItem(hiddenNotification);
+    };
+    if (verifyNotification()) {
+        return;
+    }
+    var loadNotification = function loadNotification() {
+        notification.classList.add(activeClass);
+    };
+    var hideNotification = function hideNotification() {
+        sessionStorage.setItem(hiddenNotification, 'true');
+        notification.classList.remove(activeClass);
+    };
+    var handleLoadEvent = function handleLoadEvent() {
+        loadNotification();
+        window.removeEventListener('load', handleLoadEvent);
+    };
+    var handleClickEvent = function handleClickEvent() {
+        hideNotification();
+        closeBtn.removeEventListener('click', handleClickEvent);
+    };
+    window.addEventListener('load', handleLoadEvent);
+    window.addEventListener('click', handleClickEvent);
+}
 
 /***/ }),
 /* 9 */
@@ -1014,15 +1010,15 @@ function logger() {
 
 __webpack_require__(0);
 
-var _rAf = __webpack_require__(8);
+var _rAf = __webpack_require__(7);
 
 var _rAf2 = _interopRequireDefault(_rAf);
 
-var _stickyNavigation = __webpack_require__(7);
+var _stickyNavigation = __webpack_require__(6);
 
 var _stickyNavigation2 = _interopRequireDefault(_stickyNavigation);
 
-var _smoothScrolling = __webpack_require__(6);
+var _smoothScrolling = __webpack_require__(5);
 
 var _smoothScrolling2 = _interopRequireDefault(_smoothScrolling);
 
@@ -1030,7 +1026,7 @@ var _cookieNotification = __webpack_require__(1);
 
 var _cookieNotification2 = _interopRequireDefault(_cookieNotification);
 
-var _numberInput = __webpack_require__(5);
+var _numberInput = __webpack_require__(4);
 
 var _numberInput2 = _interopRequireDefault(_numberInput);
 
@@ -1038,7 +1034,7 @@ var _facebookPixelEvents = __webpack_require__(2);
 
 var _facebookPixelEvents2 = _interopRequireDefault(_facebookPixelEvents);
 
-var _notification = __webpack_require__(4);
+var _notification = __webpack_require__(8);
 
 var _notification2 = _interopRequireDefault(_notification);
 
