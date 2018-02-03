@@ -1,0 +1,266 @@
+$aspect-ratio-4-3  : 1.33333;
+$aspect-ratio-3-4  : 0.75;
+$screen-xl         : 1440;
+$dynamic-space-l   : ($size-L * 100) / $screen-xl;
+$dynamic-pane-width: (100 - ($dynamic-space-l * 4)) / 3;
+$scaled-width      : $dynamic-pane-width / 100;
+$hex-colors-list   : #7faac0, #ea6b5a, #673e67, #f8bb5e;
+$pane-height       : 33.33;
+
+$start-pane-counter: 1;
+$end-pane-counter  : 4;
+$expander-bezier   : cubic-bezier(0.860, 0.000, 0.070, 1.000);
+
+@keyframes expand-content {
+  0% {
+    transform: scale3d(3, 1.5, 1);
+  }
+
+  20% {
+    transform: scale3d(1.5, 1.25, 1);
+  }
+
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes collapse-content {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+
+  30% {
+    transform: scale3d(1.5, 1.25, 1);
+  }
+
+  100% {
+    transform: scale3d(3, 1.5, 1);
+  }
+}
+
+@keyframes expand-first-pane {
+  0% {
+    transform:
+      scale3d(#{$scaled-width}, .7, 1)
+      translate3d(-155%, 0, 0);
+  }
+  50% {
+    transform:
+      scale3d(#{$scaled-width}, .7, 1)
+      translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform:
+      scale3d(1, 1, 1)
+      translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes expand-last-pane {
+  0% {
+    transform:
+      scale3d(#{$scaled-width}, .7, 1)
+      translate3d(155%, 0, 0);
+  }
+  50% {
+    transform:
+      scale3d(#{$scaled-width}, .7, 1)
+      translate3d(50%, 0, 0);
+  }
+  100% {
+    transform:
+      scale3d(1, 1, 1)
+      translate3d(50%, 0, 0);
+  }
+}
+
+.Expander {
+  position: relative;
+  line-height: 1.5;
+
+  &-pane {
+    position: absolute;
+    left: 0;
+    z-index: 2;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    max-width: #{$screen-xl}px;
+    cursor: pointer;
+    transform: scale3d(1, .333, 1);
+    transform-origin: top left;
+    transition: transform .3s linear,
+    z-index 1s linear;
+    transition-delay: .3s;
+
+    @media (min-width: 768px) {
+      left: 50%;
+      margin: auto;
+      transform:
+        scale3d(#{$scaled-width}, .7, 1)
+        translate3d(-50%, 0, 0);
+
+      &:first-of-type {
+        transform:
+          scale3d(#{$scaled-width}, .7, 1)
+          translate3d(-155%, 0, 0);
+        animation: expand-first-pane .5s linear;
+      }
+
+      &:nth-of-type(2) {
+        transform:
+          scale3d(#{$scaled-width}, .7, 1)
+          translate3d(-50%, 30%, 0);
+      }
+
+      &:last-of-type {
+        transform:
+          scale3d(#{$scaled-width}, .7, 1)
+          translate3d(55%, 0, 0);
+        animation: expand-last-pane .5s linear;
+      }
+    }
+
+    @for $n from $start-pane-counter to $end-pane-counter {
+      &:nth-of-type(0n + #{$n}) {
+        $counter: $n;
+        $position-top: ($n - 1) * $pane-height;
+        top: #{$position-top}vh;
+        background-color: nth($hex-colors-list, $n);
+
+        @media (min-width: 768px) {
+          top: auto;
+        }
+      }
+    }
+  }
+
+  &-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    padding: 20px 20px 40px;
+    transform: scale3d(1, 3.33, 1);
+    transform-origin: top;
+    color: white;
+    transition-delay: .35s;
+
+    @media (min-width: 768px) {
+      transform: scale3d(3, 1.5, 1);
+    }
+  }
+
+  &-content {
+    align-self: flex-end;
+    max-width: 63rem;
+    opacity: 0;
+    transform: translate3d(0, 150%, 0);
+    transition: opacity .33s linear, transform .33s $expander-bezier;
+    transition-delay: 0;
+  }
+
+  &-intro {
+    position: absolute;
+    left: 50%;
+    top: 12%;
+    font-family: 'Oswald', sans-serif;
+    font-size: #{$size-XXL}px;
+    transform: translate3d(-50%, 0, 0);
+    transition: opacity .2s linear, transform .3s linear;
+    transition-delay: .6s;
+
+    @media (min-width: 768px) {
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &-img {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    opacity: 0;
+    pointer-events: auto;
+    transition: opacity .6s linear;
+  }
+
+  &-headline {
+    margin-top: 0;
+    font-family: 'Oswald', sans-serif;
+    font-size: #{$size-XXL}px;
+  }
+
+  &-state {
+    position: absolute;
+    z-index: -1;
+    clip-path: inset(6px 6px 6px 6px);
+
+    &:checked {
+      + .Expander-pane {
+        z-index: 10;
+        max-width: 100vw;
+        transform: scale3d(1, 1, 1);
+        transition-delay: .3s;
+
+        .Expander-container {
+          transform: scale3d(1, 1, 1);
+          animation: expand-content .3s linear;
+          animation-delay: .3s;
+        }
+
+        .Expander-intro {
+          opacity: 0;
+          transform: translate3d(-50%, -200%, 0);
+          transition-delay: 0;
+        }
+
+        .Expander-content {
+          opacity: 1;
+          transform: none;
+          transition-delay: .7s;
+        }
+
+        .Expander-close {
+          opacity: 1;
+        }
+      }
+    }
+
+    @for $n from $start-pane-counter to $end-pane-counter {
+      &:nth-of-type(0n + #{$n}) {
+        &:checked {
+          + .Expander-pane {
+            @media (min-width: 768px) {
+              transform: scale3d(1, 1, 1)
+                translate3d(-50%, 0, 0);
+            }
+
+            @if $n == 2 {
+              transform: scale3d(1, 1, 1)
+                translate3d(0, #{-$pane-height}vh, 0);
+            }
+
+            @if $n == 3 {
+            transform: scale3d(1, 1, 1)
+              translate3d(0, #{-$pane-height * 2}vh, 0);
+            }
+          }
+        }
+      }
+    }
+  }
+}

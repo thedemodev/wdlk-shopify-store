@@ -1,0 +1,15 @@
+{% comment %}
+These are the necessary variables examples to correctly initialize the component:
+
+1. {% assign srcSet1 = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/156808/mob-1.jpg' %}
+2. {% assign srcSet2 = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/156808/tab-1.jpg' %}
+3. {% assign srcSet3 = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/156808/mob-1.jpg' %}
+4. {% asign className = "Foo" %}
+{% endcomment %}
+
+<picture>
+  <source srcset="{{ srcSet1 }}" media="(max-width: 480px)">
+  <source srcset="{{ srcSet2 }}" media="(max-width: 768px)">
+  <source srcset="{{ srcSet3 }}" media="(min-width: 770px)">
+  <img class="{{ className }}" src="{{ srcSet2 }}" alt="Radio Section Expander">
+</picture>
