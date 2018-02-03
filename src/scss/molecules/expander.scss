@@ -4,7 +4,6 @@ $screen-xl         : 1440;
 $dynamic-space-l   : ($size-L * 100) / $screen-xl;
 $dynamic-pane-width: (100 - ($dynamic-space-l * 4)) / 3;
 $scaled-width      : $dynamic-pane-width / 100;
-$hex-colors-list   : #7faac0, #ea6b5a, #673e67, #f8bb5e;
 $pane-height       : 33.33;
 
 $start-pane-counter: 1;
@@ -77,6 +76,8 @@ $expander-bezier   : cubic-bezier(0.860, 0.000, 0.070, 1.000);
 
 .Expander {
   position: relative;
+  height: 100vh;
+  margin: auto;
   line-height: 1.5;
 
   &-pane {
@@ -127,7 +128,6 @@ $expander-bezier   : cubic-bezier(0.860, 0.000, 0.070, 1.000);
         $counter: $n;
         $position-top: ($n - 1) * $pane-height;
         top: #{$position-top}vh;
-        background-color: nth($hex-colors-list, $n);
 
         @media (min-width: 768px) {
           top: auto;
@@ -166,7 +166,6 @@ $expander-bezier   : cubic-bezier(0.860, 0.000, 0.070, 1.000);
     position: absolute;
     left: 50%;
     top: 12%;
-    font-family: 'Oswald', sans-serif;
     font-size: #{$size-XXL}px;
     transform: translate3d(-50%, 0, 0);
     transition: opacity .2s linear, transform .3s linear;
@@ -174,7 +173,7 @@ $expander-bezier   : cubic-bezier(0.860, 0.000, 0.070, 1.000);
 
     @media (min-width: 768px) {
       top: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, 50%);
     }
   }
 
