@@ -37,9 +37,17 @@
         "teaser_alt": "Woodlike Ocean was born from the ocean. Discover more about the brand"
     },
     "notification": {
-        "title": "Free Shipping ",
+        "title": "",
         "caption": "<a href=\"\/pages\/shipping-information\">to EU, USA and Australia over 100 EUR<\/a>",
         "code": ""
+    },
+    "expander": {
+      "first_headline": "Headline One",
+      "first_caption": "The first witness was the Hatter. He came in with a teacup in one hand and a piece of bread-and-butter in the other. 'I beg pardon, your Majesty,' he began, 'for bringing these in: but I hadn't quite finished my tea when I was sent for.",
+      "second_headline": "Headline Two",
+      "second_caption": "The first witness was the Hatter. He came in with a teacup in one hand and a piece of bread-and-butter in the other. 'I beg pardon, your Majesty,' he began, 'for bringing these in: but I hadn't quite finished my tea when I was sent for.",
+      "third_headline": "Headline Three",
+      "third_caption": "The first witness was the Hatter. He came in with a teacup in one hand and a piece of bread-and-butter in the other. 'I beg pardon, your Majesty,' he began, 'for bringing these in: but I hadn't quite finished my tea when I was sent for."
     }
   },
   "blogs": {

@@ -2,17 +2,21 @@
 These are the necessary variables examples to correctly initialize the component:
 
 1. {% assign paneId = '0' %}
-2. {% assign srcSet1 = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/156808/mob-1.jpg' %}
-3. {% assign srcSet2 = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/156808/tab-1.jpg' %}
-3. {% assign srcSet3 = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/156808/mob-1.jpg' %}
+2. {% assign headline = 'Headline copy' %}
+3. {% assign caption = 'Caption copy' %}
+
+4. {% assign srcSet1 = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/156808/mob-1.jpg' %}
+5. {% assign srcSet2 = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/156808/tab-1.jpg' %}
+6. {% assign srcSet3 = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/156808/mob-1.jpg' %}
+
 {% endcomment %}
 
 <input class="Expander-state" type="checkbox" id="pane-{{paneId}}">
 <label class="Expander-pane" for="pane-{{paneId}}">
   <section class="Expander-container">
     <div class="Expander-content">
-        <h2 class="Expander-headline">Nice Copy Section</h2>
-        <p class="Expander-copy">The first witness was the Hatter. He came in with a teacup in one hand and a piece of bread-and-butter in the other. 'I beg pardon, your Majesty,' he began, 'for bringing these in: but I hadn't quite finished my tea when I was sent for.</p>
+        <h2 class="Expander-headline">{{ headline }}</h2>
+        <p class="Expander-copy">{{ caption }}</p>
     </div>
     <picture>
       <source srcset="{{ srcSet1 }}" media="(max-width: 480px)">
@@ -20,5 +24,7 @@ These are the necessary variables examples to correctly initialize the component
       <source srcset="{{ srcSet3 }}" media="(min-width: 770px)">
       <img class="Expander-img" src="{{ srcSet2 }}" alt="Radio Section Expander">
     </picture>
+    <label class="Expander-close" for="pane-{{paneId}}">X</label>
+    <div class="Expander-intro">Category</div>
   </section>
 </label>
