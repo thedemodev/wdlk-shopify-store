@@ -80,40 +80,6 @@
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var notification = document.querySelector('.js-cookie-notification');
-var closeButton = document.querySelector('.js-cookie-notification-close');
-var localStorage = window.localStorage;
-
-var notificationHidden = function notificationHidden() {
-    return localStorage.getItem('hideCookieNotification');
-};
-var hideNotification = function hideNotification() {
-    localStorage.setItem('hideCookieNotification', true);
-    notification.style.display = 'none';
-};
-
-exports.default = function () {
-    if (notificationHidden()) {
-        return;
-    }
-
-    notification.style.display = 'block';
-    var removeCloseButtenClickHandler = closeButton.addEventListener('click', function () {
-        hideNotification();
-        closeButton.removeEventListener('click', removeCloseButtenClickHandler);
-    });
-};
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
@@ -183,7 +149,7 @@ function generateFeed() {
 }
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -240,7 +206,7 @@ function numberInput() {
 }
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -312,6 +278,40 @@ function smoothScrolling() {
 
     TRIGGER.addEventListener('click', SCROLL, false);
 }
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var notification = document.querySelector('.js-cookie-notification');
+var closeButton = document.querySelector('.js-cookie-notification-close');
+var localStorage = window.localStorage;
+var notificationHidden = function notificationHidden() {
+    return localStorage.getItem('hideCookieNotification');
+};
+var hideNotification = function hideNotification() {
+    localStorage.setItem('hideCookieNotification', 'true');
+    notification.style.display = 'none';
+};
+
+exports.default = function () {
+    if (notificationHidden()) {
+        return;
+    }
+    notification.style.display = 'block';
+    // const removeCloseButtonClickHandler = closeButton.addEventListener('click', () => {
+    //     hideNotification();
+    //     closeButton.removeEventListener('click', removeCloseButtonClickHandler);
+    // });
+    closeButton.addEventListener('click', hideNotification);
+    closeButton.removeEventListener('click', hideNotification);
+};
 
 /***/ }),
 /* 5 */
@@ -938,15 +938,15 @@ var _stickyNavigation = __webpack_require__(6);
 
 var _stickyNavigation2 = _interopRequireDefault(_stickyNavigation);
 
-var _smoothScrolling = __webpack_require__(4);
+var _smoothScrolling = __webpack_require__(3);
 
 var _smoothScrolling2 = _interopRequireDefault(_smoothScrolling);
 
-var _cookieNotification = __webpack_require__(1);
+var _cookieNotification = __webpack_require__(4);
 
 var _cookieNotification2 = _interopRequireDefault(_cookieNotification);
 
-var _numberInput = __webpack_require__(3);
+var _numberInput = __webpack_require__(2);
 
 var _numberInput2 = _interopRequireDefault(_numberInput);
 
@@ -954,7 +954,7 @@ var _notification = __webpack_require__(5);
 
 var _notification2 = _interopRequireDefault(_notification);
 
-var _instagramFeed = __webpack_require__(2);
+var _instagramFeed = __webpack_require__(1);
 
 var _instagramFeed2 = _interopRequireDefault(_instagramFeed);
 
