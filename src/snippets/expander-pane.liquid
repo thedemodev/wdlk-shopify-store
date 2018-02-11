@@ -24,7 +24,9 @@ These are the necessary variables examples to correctly initialize the component
       <source srcset="{{ srcSet3 }}" media="(min-width: 770px)">
       <img class="Expander-img" src="{{ srcSet2 }}" alt="Radio Section Expander">
     </picture>
-    <label class="Expander-close" for="pane-{{paneId}}">X</label>
-    <div class="Expander-intro">Category</div>
+    <label class="Expander-close Link" for="pane-{{paneId}}">
+      {{'general.expander.close' | t}}
+    </label>
+    <div class="Expander-intro Headline Headline--2">Category</div>
   </section>
 </label>

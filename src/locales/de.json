@@ -42,6 +42,7 @@
         "code": ""
     },
     "expander": {
+      "close": "close",
       "first_headline": "Headline One",
       "first_caption": "The first witness was the Hatter. He came in with a teacup in one hand and a piece of bread-and-butter in the other. 'I beg pardon, your Majesty,' he began, 'for bringing these in: but I hadn't quite finished my tea when I was sent for.",
       "second_headline": "Headline Two",
