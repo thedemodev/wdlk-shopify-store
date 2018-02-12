@@ -15,7 +15,7 @@ export default function numberInput(): void {
             return;
         }
         inputValue = parseInt(inputEl.getAttribute('value'), 10);
-        min = parseInt( inputEl.getAttribute('min'), 10);
+        min = parseInt(inputEl.getAttribute('min'), 10);
 
         node.addEventListener('click', (e: Event) => {
             if ((event.target as HTMLElement).classList.contains('js_add')) {
