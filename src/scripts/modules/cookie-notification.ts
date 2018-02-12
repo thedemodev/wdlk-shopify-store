@@ -16,10 +16,6 @@ export default (): void => {
     }
 
     notification.style.display = 'block';
-    // const removeCloseButtonClickHandler = closeButton.addEventListener('click', () => {
-    //     hideNotification();
-    //     closeButton.removeEventListener('click', removeCloseButtonClickHandler);
-    // });
     closeButton.addEventListener('click', hideNotification);
     closeButton.removeEventListener('click', hideNotification);
   };
