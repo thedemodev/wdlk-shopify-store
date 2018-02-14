@@ -1,4 +1,3 @@
-// tslint:disable-next-line:no-any
 import { access } from '../../../configuration/instagram/access';
 import jsonp from 'jsonp';
 
