@@ -1,64 +1,69 @@
 import logger from './logger';
 
-export default function smoothScrolling(): void {
-  interface MathEasing extends Math {
-    easeInOutExpo(t: number, b: number, c: number, d: number): number;
-  }
+export interface MathEasingProps extends Math {
+  easeInOutExpo(
+    t: number,
+    b: number,
+    c: number,
+    d: number
+  ): number;
+}
 
-  const scrollLayerEl: HTMLElement = document.querySelector(':root');
-  const triggerEL: Element = document.getElementsByClassName('js_scroll')[0];
-  if (!triggerEL) {
-    return;
-  }
-
-  const id = triggerEL.getAttribute('href').substr(1) || '';
-  const targetEl: HTMLElement = document.getElementById(`${id}`);
-  if (!targetEl) {
-    return;
-  }
-
-  /* Exponential Ease in and out
-  /* http://gizma.com/easing/#expo3
-  */
-  (Math as MathEasing).easeInOutExpo = (t, b, c, d) => {
-    t /= d / 2;
-    if (t < 1) {
-      return c / 2 * Math.pow(2, 10 * (t - 1)) + b;
+export default function smoothScrolling () {
+    const scrollLayer = document.querySelector(':root');
+    const triggerEl = document.getElementsByClassName('js_scroll')[0];
+    if (!triggerEl) {
+        return;
+    }
+    const id = triggerEl.getAttribute('href').substr(1) || '';
+    const targetEl = document.getElementById(`${id}`);
+    if (!targetEl) {
+        return;
     }
 
-    t--;
-    return c / 2 * (-Math.pow(2, -10 * t) + 2) + b;
-  };
-
-  const scrollTo = (scrollLayer: HTMLElement, el: HTMLElement, duration: number, cb: () => void) => {
-      const startPosition = scrollLayer.scrollTop;
-      const positionDelta = el.offsetTop - startPosition;
-      let startTime = 0;
-      cb = cb;
-
-      const animateScroll = (timeStamp: number) => {
-        startTime = startTime !== null ? startTime : timeStamp;
-        const timeDelta: number = timeStamp - startTime;
-
-        // if (timeDelta >= duration) {
-        //   return cb();
-        // }
-
-        scrollLayer.scrollTop = (Math as MathEasing).easeInOutExpo(timeDelta, startPosition, positionDelta, duration);
-        console.log(scrollLayer.scrollTop, 'working');
-        window.requestAnimationFrame(animateScroll);
+    //-- Exponential Ease in and out
+    //-- http://gizma.com/easing/#expo3
+    (Math as MathEasingProps).easeInOutExpo = (t, b, c, d) => {
+      t /= d/2;
+      if (t < 1) {
+        return c/2 * Math.pow( 2, 10 * (t - 1) ) + b;
       };
+      t--;
+      return c/2 * ( -Math.pow( 2, -10 * t) + 2 ) + b;
+    };
 
-      // window.requestAnimationFrame(animateScroll);
-  };
+    const scrollTo = (
+      scrollLayer: Element,
+      el: HTMLElement,
+      duration: number,
+      cb: () => void): void => {
+        const startPosition = scrollLayer.scrollTop;
+        const positionDelta = el.offsetTop - startPosition;
+        let startTime: number | null = null;
+        cb = cb || function(){};
 
-  const scroll = (e: MouseEvent) => {
-      e.preventDefault();
+        const animateScroll = (timeStamp: number): void => {
+            startTime = startTime !== null ? startTime : timeStamp;
+            let timeDelta = timeStamp - startTime;
 
-      scrollTo(scrollLayerEl, targetEl, 1618, () => {
-          window.location.hash = `#${targetEl.id}`;
-      });
-  };
+            if (timeDelta >= duration) {
+              return cb();
+            }
 
-  triggerEL.addEventListener('click', scroll, false);
+            scrollLayer.scrollTop = (Math as MathEasingProps).easeInOutExpo(timeDelta, startPosition, positionDelta, duration);
+            window.requestAnimationFrame(animateScroll);
+        }
+
+        window.requestAnimationFrame(animateScroll);
+    }
+
+    const scroll = (e: Event) => {
+        e.preventDefault();
+
+        scrollTo(scrollLayer, targetEl, 1618, () => {
+            window.location.hash = `#${targetEl.id}`;
+        });
+    }
+
+    triggerEl.addEventListener('click', scroll, false);
 }

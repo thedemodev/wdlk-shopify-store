@@ -281,51 +281,50 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = smoothScrolling;
 function smoothScrolling() {
-    var scrollLayerEl = document.querySelector(':root');
-    var triggerEL = document.getElementsByClassName('js_scroll')[0];
-    if (!triggerEL) {
+    var scrollLayer = document.querySelector(':root');
+    var triggerEl = document.getElementsByClassName('js_scroll')[0];
+    if (!triggerEl) {
         return;
     }
-    var id = triggerEL.getAttribute('href').substr(1) || '';
+    var id = triggerEl.getAttribute('href').substr(1) || '';
     var targetEl = document.getElementById('' + id);
     if (!targetEl) {
         return;
     }
-    /* Exponential Ease in and out
-    /* http://gizma.com/easing/#expo3
-    */
+    //-- Exponential Ease in and out
+    //-- http://gizma.com/easing/#expo3
     Math.easeInOutExpo = function (t, b, c, d) {
         t /= d / 2;
         if (t < 1) {
             return c / 2 * Math.pow(2, 10 * (t - 1)) + b;
         }
+        ;
         t--;
         return c / 2 * (-Math.pow(2, -10 * t) + 2) + b;
     };
     var scrollTo = function scrollTo(scrollLayer, el, duration, cb) {
         var startPosition = scrollLayer.scrollTop;
         var positionDelta = el.offsetTop - startPosition;
-        var startTime = 0;
-        cb = cb;
+        var startTime = null;
+        cb = cb || function () {};
         var animateScroll = function animateScroll(timeStamp) {
             startTime = startTime !== null ? startTime : timeStamp;
             var timeDelta = timeStamp - startTime;
-            // if (timeDelta >= duration) {
-            //   return cb();
-            // }
+            if (timeDelta >= duration) {
+                return cb();
+            }
             scrollLayer.scrollTop = Math.easeInOutExpo(timeDelta, startPosition, positionDelta, duration);
-            console.log(scrollLayer.scrollTop, 'working');
             window.requestAnimationFrame(animateScroll);
         };
-        // window.requestAnimationFrame(animateScroll);
+        window.requestAnimationFrame(animateScroll);
     };
     var scroll = function scroll(e) {
         e.preventDefault();
-        scrollTo(scrollLayerEl, targetEl, 1618, function () {
+        scrollTo(scrollLayer, targetEl, 1618, function () {
             window.location.hash = '#' + targetEl.id;
         });
     };
-    triggerEL.addEventListener('click', scroll, false);
+    triggerEl.addEventListener('click', scroll, false);
 }
 
 /***/ }),
