@@ -135,6 +135,7 @@ function instagramFeed() {
   }
   var feedLimit = 11;
   var instaURL = 'https://api.instagram.com/v1/users/' + _access.access['id'] + '/media/recent/?access_token=' + _access.access['token'] + '&callback=callback';
+  // tslint:disable-next-line
   var getMediaFeed = function getMediaFeed(url) {
     return new Promise(function (resolve, reject) {
       (0, _jsonp2.default)(url, function (err, data) {
@@ -168,9 +169,10 @@ function instagramFeed() {
     });
     node.innerHTML = feedTemplate.join('');
   };
-  getMediaFeed(instaURL).then(function (res) {
-    var feedData = filteredArr(res.data);
-    generateFeedTemplate(feedData);
+  getMediaFeed(instaURL).then(function (value) {
+    return generateFeedTemplate(filteredArr(value.data));
+  }, function (reason) {
+    console.log('Couldn\'t get Insta JSON feed; error code: + ' + reason);
   });
 }
 

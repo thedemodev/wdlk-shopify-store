@@ -27,7 +27,7 @@ export interface InstagramPost {
   };
 }
 
-export interface InstagramResponse {
+export interface InstagramData {
   data: InstagramPost[];
   meta: 200;
   pagination: object;
@@ -45,9 +45,10 @@ export default function instagramFeed(): void {
   const feedLimit = 11;
   const instaURL = `https://api.instagram.com/v1/users/${access['id']}/media/recent/?access_token=${access['token']}&callback=callback`;
 
-  const getMediaFeed = (url: string) => (
+  // tslint:disable-next-line
+  const getMediaFeed = (url: string): Promise<InstagramData> => (
     new Promise((resolve, reject) => {
-      jsonp(url, (err: Error, data) => {
+      jsonp(url, (err: Error, data: InstagramData) => {
         if (err) {
           reject(Error(`Couldn't get Insta JSON feed; error code: + ${err}`));
           throw err;
@@ -129,9 +130,10 @@ export default function instagramFeed(): void {
     node.innerHTML = feedTemplate.join('');
   };
 
-  getMediaFeed(instaURL).then((res: InstagramResponse) => {
-    const feedData = filteredArr(res.data);
-    generateFeedTemplate(feedData);
-  });
+  getMediaFeed(instaURL).then((value: InstagramData) => generateFeedTemplate(filteredArr(value.data)) ,
+  (reason: Error) => {
+    console.log(`Couldn't get Insta JSON feed; error code: + ${reason}`);
+  }
+);
 
 }
