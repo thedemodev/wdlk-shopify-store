@@ -1,5 +1,4 @@
-export default function stickyNavigation():void {
-
+export default function stickyNavigation(): void {
   interface NotificationOptions {
     height: number;
     scrollPosition: number;
@@ -34,22 +33,6 @@ export default function stickyNavigation():void {
     return notificationTeaser.offsetHeight;
   };
 
-  const onScroll = (): void => {
-    options.scrollPosition = window.scrollY;
-    requestTick();
-  };
-
-  /*
-  /* Triggers requestAnimationFrame when it's necessary only
-  */
-
-  const requestTick = (): void => {
-    if (!options.ticking) {
-      requestAnimationFrame(update);
-    }
-    options.ticking = true;
-  };
-
   /* Visual Updates Callback
   /* Use rAf to handle visual updates and write values
   */
@@ -73,6 +56,22 @@ export default function stickyNavigation():void {
     }
 
     options.ticking = false;
+  };
+
+  /*
+  /* Triggers requestAnimationFrame when it's necessary only
+  */
+  const requestTick = (): void => {
+    if (!options.ticking) {
+      requestAnimationFrame(update);
+    }
+
+    options.ticking = true;
+  };
+
+  const onScroll = (): void => {
+    options.scrollPosition = window.scrollY;
+    requestTick();
   };
 
   window.addEventListener('scroll', onScroll, { capture: false, passive: true });
