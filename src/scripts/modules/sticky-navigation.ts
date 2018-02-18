@@ -1,17 +1,19 @@
-export default function stickyNavigation () {
+export default function stickyNavigation():void {
+
   interface NotificationOptions {
     height: number;
     scrollPosition: number;
     ticking: boolean;
   }
 
-  //-- Read Values Only !!!!!
-  //-- First keep track of the scroll value
-  //-- without triggering unnecessary draw calls
+  /*
+  /* Read Values Only !!!!!
+  /* First keep track of the scroll value
+  /* without triggering unnecessary draw calls
+  */
   const navigation: HTMLElement = document.querySelector('.js_sticky-nav');
-  if (!navigation) {
-      return;
-  }
+  if (!navigation) { return; }
+
   const notificationTeaser: HTMLElement = document.querySelector('.js_notification');
   const options: NotificationOptions = {
     height: navigation.offsetHeight,
@@ -22,7 +24,7 @@ export default function stickyNavigation () {
   const init = (): void => {
     navigation.classList.toggle('is-undocked',
     window.scrollY >= options.height);
-  }
+  };
   init();
 
   const getTeaserHeight = (): number => {
@@ -37,7 +39,10 @@ export default function stickyNavigation () {
     requestTick();
   };
 
-  //-- Triggers requestAnimationFrame when it's necessary only
+  /*
+  /* Triggers requestAnimationFrame when it's necessary only
+  */
+
   const requestTick = (): void => {
     if (!options.ticking) {
       requestAnimationFrame(update);
@@ -45,11 +50,15 @@ export default function stickyNavigation () {
     options.ticking = true;
   };
 
-  //-- Visual Updates Callback
-  //-- Use rAf to handle visual updates and write values
+  /* Visual Updates Callback
+  /* Use rAf to handle visual updates and write values
+  */
+
   const update = () => {
-    //-- Pull the latest value when we need it
-    let currentScrollPositionY: number = options.scrollPosition;
+    /*
+    /* Pull the latest value when we need it
+    */
+    const currentScrollPositionY: number = options.scrollPosition;
 
     if (notificationTeaser) {
       navigation.classList.toggle('is-sticky',

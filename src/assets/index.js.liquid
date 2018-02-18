@@ -342,9 +342,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = stickyNavigation;
 function stickyNavigation() {
-    //-- Read Values Only !!!!!
-    //-- First keep track of the scroll value
-    //-- without triggering unnecessary draw calls
+    /*
+    /* Read Values Only !!!!!
+    /* First keep track of the scroll value
+    /* without triggering unnecessary draw calls
+    */
     var navigation = document.querySelector('.js_sticky-nav');
     if (!navigation) {
         return;
@@ -369,17 +371,22 @@ function stickyNavigation() {
         options.scrollPosition = window.scrollY;
         requestTick();
     };
-    //-- Triggers requestAnimationFrame when it's necessary only
+    /*
+    /* Triggers requestAnimationFrame when it's necessary only
+    */
     var requestTick = function requestTick() {
         if (!options.ticking) {
             requestAnimationFrame(update);
         }
         options.ticking = true;
     };
-    //-- Visual Updates Callback
-    //-- Use rAf to handle visual updates and write values
+    /* Visual Updates Callback
+    /* Use rAf to handle visual updates and write values
+    */
     var update = function update() {
-        //-- Pull the latest value when we need it
+        /*
+        /* Pull the latest value when we need it
+        */
         var currentScrollPositionY = options.scrollPosition;
         if (notificationTeaser) {
             navigation.classList.toggle('is-sticky', currentScrollPositionY >= getTeaserHeight());
