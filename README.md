@@ -1,5 +1,6 @@
-# WDLK Ocean Online Store
+# Woodlike Ocean Online Store
 
+[![Build Status](https://travis-ci.org/woodlike/wdlk-shopify-store.svg?branch=master)](https://travis-ci.org/woodlike/wdlk-shopify-store)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 ## Prerequisites
