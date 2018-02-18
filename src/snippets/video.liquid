@@ -1,0 +1,18 @@
+{% comment %}
+These are the necessary variables examples to correctly initialize the component:
+
+1. {% assign videoPoster =
+        'WDLK_Brand-Video-Poster.jpg' | file_img_url %}
+2. {% assign videoWebM =
+        'WDLK_Brand-Video-Bg.webm' | file_url %}
+3. {% assign videoMp4 =
+        'WDLK_Brand-Video-Bg.mp4' | file_url %}
+3. {% assign mute =
+        true %}
+{% endcomment %}
+
+<video class="Video Video--bg" poster="{{ videoPoster }}" autoplay loop {% if mute %}muted{% endif %}>
+  <source src="{{ videoWebM }}" type="video/webm" />
+  <source src="{{ videoMp4 }}" type="video/mp4" />
+  I'm sorry; your browser doesn't support HTML5 video.
+</video>
