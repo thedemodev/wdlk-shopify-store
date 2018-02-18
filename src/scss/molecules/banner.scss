@@ -141,7 +141,7 @@
       font-weight: 100;
 
       @include media(small, max-width) {
-          font-size: $h2-size / $typo-tablet-factor;
+        font-size: $h2-size / $typo-tablet-factor;
       }
     }
   }
@@ -150,6 +150,19 @@
   &--principles {
     .Headline {
       font-weight: 100;
+    }
+
+    .Banner-content {
+      @include media(small, max-width) {
+        background-image: url(https://cdn.shopify.com/s/files/1/0742/2733/files/WDLK_Brand-Video-Poster.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        .Headline,
+        .Banner-copy {
+          color: $hex-white
+        }
+      }
     }
   }
 

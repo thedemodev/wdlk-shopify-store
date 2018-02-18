@@ -84,6 +84,7 @@
    <article class="Banner Banner--expander">
       {% include 'expander' %}
     </article>
+    {% comment %}
     <article class="Banner Banner--half Banner--collection">
         {% assign halfBannerSmart =
             'WDLK_Half-Banner1_Smartphone_1x.jpg' | asset_url %}
@@ -150,54 +151,36 @@
             </picture>
         </a>
     </article>
+    {% endcomment %}
     <article class="Banner Banner--full Banner--principles Banner--informative">
-        {% assign fullBanner1Smart =
-            'WDLK_Full-Banner1_Smartphone_1x.jpg' | asset_url %}
-        {% assign fullBanner1Smart2x =
-             'WDLK_Full-Banner1_Smartphone_2x.jpg' | asset_url  %}
-        {% assign fullBanner1Mobile =
-            'WDLK_Full-Banner1_Tablet_1x.jpg' | asset_url %}
-        {% assign fullBanner1Mobile2x =
-            'WDLK_Full-Banner1_Tablet_2x.jpg' | asset_url %}
-        {% assign fullBanner1 =
-            'WDLK_Full-Banner1_Desktop_1x.jpg' | asset_url  %}
-        {% assign fullBanner12x =
-            'WDLK_Full-Banner1_Desktop_2x.jpg' | asset_url  %}
-
-        <a href="{{ pages['about-us'].url }}">
-            <picture>
-                <source
-                media="(max-width: 480px)"
-                srcset="{{ fullBanner1Smart}}, {{ fullBanner1Smart2x }} 2x">
-                <source
-                media="(max-width: 768px)"
-                srcset="{{ fullBanner1Mobile }}, {{ fullBanner1Mobile2x }} 2x">
-                <source
-                media="(min-width: 770px)"
-                srcset="{{ fullBanner1 }}, {{ fullBanner12x}} 2x">
-                <img class="Banner-image"
-                src="{{ fullBanner1 }}"
-                alt="{{'home_page.sections.full_banner_1_headline' | t}}">
-            </picture>
-        </a>
-        <div class="Banner-content">
-            <h3 class="Headline Headline--4">
-                {{'home_page.sections.full_banner_1_headline' | t}}
-            </h3>
-            <p class="Banner-copy">
-                {{ 'home_page.sections.principle_banner_2' | t}}
-            </p>
-            <a class="Link Link--btn" href="{{ pages['about-us'].url }}">
-                {{'general.buttons.link_read_more' | t}}
-                <svg class="Icon Icon--right">
-                    <use xlink:href="#Arrow_right" />
-                </svg>
-            </a>
-            {% comment %}
-              $todo: once the site setup include the share functionality for the banner.
-              {% include 'social-list' with 'default' %}
-            {% endcomment %}
-        </div>
+      <a href="{{ pages['sustainability'].url }}">
+        {% assign videoWebM =
+          'WDLK_Brand-Video-Bg.webm' | file_url %}
+        {% assign videoMp4 =
+          'WDLK_Brand-Video-Bg.mp4' | file_url %}
+        {% assign videoPoster =
+          'WDLK_Brand-Video-Poster.jpg' | file_img_url %}
+        {% assign mute = true %}
+        {% include 'video' %}
+      </a>
+      <div class="Banner-content">
+          <h3 class="Headline Headline--4">
+              {{'home_page.sections.full_banner_1_headline' | t}}
+          </h3>
+          <p class="Banner-copy">
+              {{ 'home_page.sections.principle_banner_2' | t}}
+          </p>
+          <a class="Link Link--btn" href="{{ pages['sustainability'].url }}">
+              {{'general.buttons.link_read_more' | t}}
+              <svg class="Icon Icon--right">
+                  <use xlink:href="#Arrow_right" />
+              </svg>
+          </a>
+          {% comment %}
+            $todo: once the site setup include the share functionality for the banner.
+            {% include 'social-list' with 'default' %}
+          {% endcomment %}
+      </div>
     </article>
     <article class="Banner Banner--full Banner--collection">
         {% assign fullBanner2Smart =
@@ -234,11 +217,11 @@
                 media="(min-width: 770px)"
                 srcset="{{ fullBanner2 }}, {{ fullBanner22x}} 2x">
                 <img class="Banner-image"
-                src="{{ twoThirdBanner }}"
+                src="{{ fullBanner2 }}"
                 alt="{{'home_page.sections.full_banner_2_headline' | t}}">
             </picture>
         </a>
     </article>
-    {% comment %} Instagram Feed {% endcomment %}
-    {% include 'instagram-feed' %}
 </section>
+{% comment %} Instagram Feed {% endcomment %}
+{% include 'instagram-feed' %}
