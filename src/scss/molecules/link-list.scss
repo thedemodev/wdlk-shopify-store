@@ -10,8 +10,8 @@
 
     &-link {
         color: $link-list-hex-color;
-        font-family: "museo_sans500";
         font-size: $copy-size-m;
+        font-weight: bold;
         text-transform: uppercase;
         letter-spacing: .1rem;
         transition: color .5s ease;
