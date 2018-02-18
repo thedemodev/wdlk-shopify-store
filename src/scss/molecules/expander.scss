@@ -175,15 +175,10 @@ $expander-bezier   : cubic-bezier(0.860, 0.000, 0.070, 1.000);
   &-intro {
     position: absolute;
     left: 50%;
-    top: 12%;
+    top: 50%;
     transform: translate3d(-50%, 0, 0);
     transition: opacity linear .33s;
     transition-delay: .2s;
-
-    @include media(large) {
-      top: 50%;
-      transform: translate3d(calc(-100% + 10px), 50%, 0);
-    }
   }
 
   &-img {
@@ -194,7 +189,7 @@ $expander-bezier   : cubic-bezier(0.860, 0.000, 0.070, 1.000);
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: left;
   }
 
   &-close {
@@ -204,12 +199,6 @@ $expander-bezier   : cubic-bezier(0.860, 0.000, 0.070, 1.000);
     opacity: 0;
     pointer-events: auto;
     transition: opacity .6s linear;
-  }
-
-  &-headline {
-    margin-top: 0;
-    font-family: 'Oswald', sans-serif;
-    font-size: #{$size-XXL}px;
   }
 
   &-state {

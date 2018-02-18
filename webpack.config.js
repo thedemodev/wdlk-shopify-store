@@ -31,18 +31,18 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('happypack/loader?id=styles')
+        loader: ExtractTextPlugin.extract('happypack/loader?id=styles'),
       }
     ],
   },
   plugins: [
-    new ExtractTextPlugin({ filename: resolve('/index.css.liquid')}),
-
+    new ExtractTextPlugin({
+      filename: resolve('/index.css.liquid')
+    }),
     new ForkTsCheckerWebpackPlugin({
       checkSyntacticErrors: true,
       watch: ['./src/scripts']
     }),
-
     new HappyPack({
       id: 'styles',
       loaders: [ 'css-loader', 'postcss-loader', 'sass-loader']
