@@ -2,7 +2,7 @@
 import '../scss/index.scss';
 
 import cookieNotification from './modules/cookie-notification';
-import getInstaFeed from './modules/instagram-feed';
+import instagramFeed from './modules/instagram-feed';
 import fbqTracking from './modules/tracking-facebook';
 
 import notification from './modules/notification';
@@ -18,7 +18,7 @@ notification();
 
 window.addEventListener('load', () => {
   trackingCece();
-  getInstaFeed();
+  instagramFeed();
   stickyNavigation();
   cookieNotification();
   smoothScrolling();

@@ -3,7 +3,7 @@
     "allowSyntheticDefaultImports": true,
     "declaration": true,
     "lib": ["dom", "dom.iterable", "es6", "scripthost" ],
-    "mapRoot": "./assets/",
+    "mapRoot": "./typings/",
     "noImplicitAny": true,
     "sourceMap": true,
     "target": "es6",

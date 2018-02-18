@@ -63,17 +63,27 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 14);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/* no static exports found */
+/* all exports used */
+/*!*****************************!*\
+  !*** ./src/scss/index.scss ***!
+  \*****************************/
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 1 */
+/* no static exports found */
+/* all exports used */
+/*!****************************************************!*\
+  !*** ./src/scripts/modules/cookie-notification.ts ***!
+  \****************************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -104,6 +114,11 @@ exports.default = function () {
 
 /***/ }),
 /* 2 */
+/* no static exports found */
+/* all exports used */
+/*!***********************************************!*\
+  !*** ./src/scripts/modules/instagram-feed.ts ***!
+  \***********************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -115,17 +130,17 @@ Object.defineProperty(exports, "__esModule", {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-exports.default = generateFeed;
+exports.default = instagramFeed;
 
-var _access = __webpack_require__(12);
+var _access = __webpack_require__(/*! ../../../configuration/instagram/access */ 13);
 
-var _jsonp = __webpack_require__(14);
+var _jsonp = __webpack_require__(/*! jsonp */ 15);
 
 var _jsonp2 = _interopRequireDefault(_jsonp);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function generateFeed() {
+function instagramFeed() {
   var node = document.querySelector('.js_instagramFeed');
   if (!node) {
     return;
@@ -176,6 +191,11 @@ function generateFeed() {
 
 /***/ }),
 /* 3 */
+/* no static exports found */
+/* all exports used */
+/*!*********************************************!*\
+  !*** ./src/scripts/modules/notification.ts ***!
+  \*********************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -186,11 +206,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = notification;
 function notification() {
-    var notification = document.querySelector('.js_notification');
-    if (!notification) {
+    var notificationEl = document.querySelector('.js_notification');
+    if (!notificationEl) {
         return;
     }
-    var closeBtn = notification.querySelector('.js_notification-btn');
+    var closeBtn = notificationEl.querySelector('.js_notification-btn');
     var sessionStorage = window.sessionStorage;
     var hiddenNotification = 'hiddenNotification';
     var activeClass = 'is-active';
@@ -201,11 +221,11 @@ function notification() {
         return;
     }
     var loadNotification = function loadNotification() {
-        notification.classList.add(activeClass);
+        notificationEl.classList.add(activeClass);
     };
     var hideNotification = function hideNotification() {
         sessionStorage.setItem(hiddenNotification, 'true');
-        notification.classList.remove(activeClass);
+        notificationEl.classList.remove(activeClass);
     };
     var handleLoadEvent = function handleLoadEvent() {
         loadNotification();
@@ -221,6 +241,11 @@ function notification() {
 
 /***/ }),
 /* 4 */
+/* no static exports found */
+/* all exports used */
+/*!*********************************************!*\
+  !*** ./src/scripts/modules/number-input.ts ***!
+  \*********************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -271,6 +296,11 @@ function numberInput() {
 
 /***/ }),
 /* 5 */
+/* no static exports found */
+/* all exports used */
+/*!*************************************************!*\
+  !*** ./src/scripts/modules/smooth-scrolling.ts ***!
+  \*************************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -281,7 +311,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = smoothScrolling;
 function smoothScrolling() {
-    var scrollLayer = document.querySelector(':root');
+    var scrollLayerEl = document.querySelector(':root');
     var triggerEl = document.getElementsByClassName('js_scroll')[0];
     if (!triggerEl) {
         return;
@@ -291,14 +321,15 @@ function smoothScrolling() {
     if (!targetEl) {
         return;
     }
-    //-- Exponential Ease in and out
-    //-- http://gizma.com/easing/#expo3
+    /*
+    /* Exponential Ease in and out
+    /* http://gizma.com/easing/#expo3
+    */
     Math.easeInOutExpo = function (t, b, c, d) {
         t /= d / 2;
         if (t < 1) {
             return c / 2 * Math.pow(2, 10 * (t - 1)) + b;
         }
-        ;
         t--;
         return c / 2 * (-Math.pow(2, -10 * t) + 2) + b;
     };
@@ -306,11 +337,13 @@ function smoothScrolling() {
         var startPosition = scrollLayer.scrollTop;
         var positionDelta = el.offsetTop - startPosition;
         var startTime = null;
+        // tslint:disable-next-line
         cb = cb || function () {};
         var animateScroll = function animateScroll(timeStamp) {
             startTime = startTime !== null ? startTime : timeStamp;
             var timeDelta = timeStamp - startTime;
             if (timeDelta >= duration) {
+                // tslint:disable-next-line
                 return cb();
             }
             scrollLayer.scrollTop = Math.easeInOutExpo(timeDelta, startPosition, positionDelta, duration);
@@ -320,7 +353,7 @@ function smoothScrolling() {
     };
     var scroll = function scroll(e) {
         e.preventDefault();
-        scrollTo(scrollLayer, targetEl, 1618, function () {
+        scrollTo(scrollLayerEl, targetEl, 1618, function () {
             window.location.hash = '#' + targetEl.id;
         });
     };
@@ -329,6 +362,11 @@ function smoothScrolling() {
 
 /***/ }),
 /* 6 */
+/* no static exports found */
+/* all exports used */
+/*!**************************************************!*\
+  !*** ./src/scripts/modules/sticky-navigation.ts ***!
+  \**************************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -391,6 +429,11 @@ function stickyNavigation() {
 
 /***/ }),
 /* 7 */
+/* no static exports found */
+/* all exports used */
+/*!**************************************!*\
+  !*** ./src/scripts/modules/theme.ts ***!
+  \**************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -409,6 +452,11 @@ exports.default = setTheme;
 
 /***/ }),
 /* 8 */
+/* no static exports found */
+/* all exports used */
+/*!**************************************************!*\
+  !*** ./src/scripts/modules/tracking-facebook.ts ***!
+  \**************************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -448,6 +496,11 @@ function fbqTracking() {
 
 /***/ }),
 /* 9 */
+/* no static exports found */
+/* all exports used */
+/*!******************************************************!*\
+  !*** ./src/scripts/modules/tracking-project-cece.ts ***!
+  \******************************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -481,6 +534,174 @@ function trackingCece() {
 
 /***/ }),
 /* 10 */
+/* no static exports found */
+/* all exports used */
+/*!*******************************!*\
+  !*** ./~/debug/~/ms/index.js ***!
+  \*******************************/
+/***/ (function(module, exports) {
+
+/**
+ * Helpers.
+ */
+
+var s = 1000;
+var m = s * 60;
+var h = m * 60;
+var d = h * 24;
+var y = d * 365.25;
+
+/**
+ * Parse or format the given `val`.
+ *
+ * Options:
+ *
+ *  - `long` verbose formatting [false]
+ *
+ * @param {String|Number} val
+ * @param {Object} [options]
+ * @throws {Error} throw an error if val is not a non-empty string or a number
+ * @return {String|Number}
+ * @api public
+ */
+
+module.exports = function(val, options) {
+  options = options || {};
+  var type = typeof val;
+  if (type === 'string' && val.length > 0) {
+    return parse(val);
+  } else if (type === 'number' && isNaN(val) === false) {
+    return options.long ? fmtLong(val) : fmtShort(val);
+  }
+  throw new Error(
+    'val is not a non-empty string or a valid number. val=' +
+      JSON.stringify(val)
+  );
+};
+
+/**
+ * Parse the given `str` and return milliseconds.
+ *
+ * @param {String} str
+ * @return {Number}
+ * @api private
+ */
+
+function parse(str) {
+  str = String(str);
+  if (str.length > 100) {
+    return;
+  }
+  var match = /^((?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|years?|yrs?|y)?$/i.exec(
+    str
+  );
+  if (!match) {
+    return;
+  }
+  var n = parseFloat(match[1]);
+  var type = (match[2] || 'ms').toLowerCase();
+  switch (type) {
+    case 'years':
+    case 'year':
+    case 'yrs':
+    case 'yr':
+    case 'y':
+      return n * y;
+    case 'days':
+    case 'day':
+    case 'd':
+      return n * d;
+    case 'hours':
+    case 'hour':
+    case 'hrs':
+    case 'hr':
+    case 'h':
+      return n * h;
+    case 'minutes':
+    case 'minute':
+    case 'mins':
+    case 'min':
+    case 'm':
+      return n * m;
+    case 'seconds':
+    case 'second':
+    case 'secs':
+    case 'sec':
+    case 's':
+      return n * s;
+    case 'milliseconds':
+    case 'millisecond':
+    case 'msecs':
+    case 'msec':
+    case 'ms':
+      return n;
+    default:
+      return undefined;
+  }
+}
+
+/**
+ * Short format for `ms`.
+ *
+ * @param {Number} ms
+ * @return {String}
+ * @api private
+ */
+
+function fmtShort(ms) {
+  if (ms >= d) {
+    return Math.round(ms / d) + 'd';
+  }
+  if (ms >= h) {
+    return Math.round(ms / h) + 'h';
+  }
+  if (ms >= m) {
+    return Math.round(ms / m) + 'm';
+  }
+  if (ms >= s) {
+    return Math.round(ms / s) + 's';
+  }
+  return ms + 'ms';
+}
+
+/**
+ * Long format for `ms`.
+ *
+ * @param {Number} ms
+ * @return {String}
+ * @api private
+ */
+
+function fmtLong(ms) {
+  return plural(ms, d, 'day') ||
+    plural(ms, h, 'hour') ||
+    plural(ms, m, 'minute') ||
+    plural(ms, s, 'second') ||
+    ms + ' ms';
+}
+
+/**
+ * Pluralization helper.
+ */
+
+function plural(ms, n, name) {
+  if (ms < n) {
+    return;
+  }
+  if (ms < n * 1.5) {
+    return Math.floor(ms / n) + ' ' + name;
+  }
+  return Math.ceil(ms / n) + ' ' + name + 's';
+}
+
+
+/***/ }),
+/* 11 */
+/* no static exports found */
+/* all exports used */
+/*!********************************!*\
+  !*** ./~/debug/src/browser.js ***!
+  \********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {/**
@@ -489,7 +710,7 @@ function trackingCece() {
  * Expose `debug()` as the module.
  */
 
-exports = module.exports = __webpack_require__(11);
+exports = module.exports = __webpack_require__(/*! ./debug */ 12);
 exports.log = log;
 exports.formatArgs = formatArgs;
 exports.save = save;
@@ -669,10 +890,15 @@ function localstorage() {
   } catch (e) {}
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../process/browser.js */ 16)))
 
 /***/ }),
-/* 11 */
+/* 12 */
+/* no static exports found */
+/* all exports used */
+/*!******************************!*\
+  !*** ./~/debug/src/debug.js ***!
+  \******************************/
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -688,7 +914,7 @@ exports.coerce = coerce;
 exports.disable = disable;
 exports.enable = enable;
 exports.enabled = enabled;
-exports.humanize = __webpack_require__(15);
+exports.humanize = __webpack_require__(/*! ms */ 10);
 
 /**
  * The currently active debug mode names, and names to skip.
@@ -880,7 +1106,12 @@ function coerce(val) {
 
 
 /***/ }),
-/* 12 */
+/* 13 */
+/* no static exports found */
+/* all exports used */
+/*!*******************************************!*\
+  !*** ./configuration/instagram/access.ts ***!
+  \*******************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -895,47 +1126,52 @@ var access = exports.access = {
 };
 
 /***/ }),
-/* 13 */
+/* 14 */
+/* no static exports found */
+/* all exports used */
+/*!******************************!*\
+  !*** ./src/scripts/index.ts ***!
+  \******************************/
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(0);
+__webpack_require__(/*! ../scss/index.scss */ 0);
 
-var _cookieNotification = __webpack_require__(1);
+var _cookieNotification = __webpack_require__(/*! ./modules/cookie-notification */ 1);
 
 var _cookieNotification2 = _interopRequireDefault(_cookieNotification);
 
-var _instagramFeed = __webpack_require__(2);
+var _instagramFeed = __webpack_require__(/*! ./modules/instagram-feed */ 2);
 
 var _instagramFeed2 = _interopRequireDefault(_instagramFeed);
 
-var _trackingFacebook = __webpack_require__(8);
+var _trackingFacebook = __webpack_require__(/*! ./modules/tracking-facebook */ 8);
 
 var _trackingFacebook2 = _interopRequireDefault(_trackingFacebook);
 
-var _notification = __webpack_require__(3);
+var _notification = __webpack_require__(/*! ./modules/notification */ 3);
 
 var _notification2 = _interopRequireDefault(_notification);
 
-var _numberInput = __webpack_require__(4);
+var _numberInput = __webpack_require__(/*! ./modules/number-input */ 4);
 
 var _numberInput2 = _interopRequireDefault(_numberInput);
 
-var _smoothScrolling = __webpack_require__(5);
+var _smoothScrolling = __webpack_require__(/*! ./modules/smooth-scrolling */ 5);
 
 var _smoothScrolling2 = _interopRequireDefault(_smoothScrolling);
 
-var _stickyNavigation = __webpack_require__(6);
+var _stickyNavigation = __webpack_require__(/*! ./modules/sticky-navigation */ 6);
 
 var _stickyNavigation2 = _interopRequireDefault(_stickyNavigation);
 
-var _theme = __webpack_require__(7);
+var _theme = __webpack_require__(/*! ./modules/theme */ 7);
 
 var _theme2 = _interopRequireDefault(_theme);
 
-var _trackingProjectCece = __webpack_require__(9);
+var _trackingProjectCece = __webpack_require__(/*! ./modules/tracking-project-cece */ 9);
 
 var _trackingProjectCece2 = _interopRequireDefault(_trackingProjectCece);
 
@@ -955,14 +1191,19 @@ window.addEventListener('load', function () {
 });
 
 /***/ }),
-/* 14 */
+/* 15 */
+/* no static exports found */
+/* all exports used */
+/*!**************************!*\
+  !*** ./~/jsonp/index.js ***!
+  \**************************/
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
  * Module dependencies
  */
 
-var debug = __webpack_require__(10)('jsonp');
+var debug = __webpack_require__(/*! debug */ 11)('jsonp');
 
 /**
  * Module exports.
@@ -1058,165 +1299,12 @@ function jsonp(url, opts, fn){
 
 
 /***/ }),
-/* 15 */
-/***/ (function(module, exports) {
-
-/**
- * Helpers.
- */
-
-var s = 1000;
-var m = s * 60;
-var h = m * 60;
-var d = h * 24;
-var y = d * 365.25;
-
-/**
- * Parse or format the given `val`.
- *
- * Options:
- *
- *  - `long` verbose formatting [false]
- *
- * @param {String|Number} val
- * @param {Object} [options]
- * @throws {Error} throw an error if val is not a non-empty string or a number
- * @return {String|Number}
- * @api public
- */
-
-module.exports = function(val, options) {
-  options = options || {};
-  var type = typeof val;
-  if (type === 'string' && val.length > 0) {
-    return parse(val);
-  } else if (type === 'number' && isNaN(val) === false) {
-    return options.long ? fmtLong(val) : fmtShort(val);
-  }
-  throw new Error(
-    'val is not a non-empty string or a valid number. val=' +
-      JSON.stringify(val)
-  );
-};
-
-/**
- * Parse the given `str` and return milliseconds.
- *
- * @param {String} str
- * @return {Number}
- * @api private
- */
-
-function parse(str) {
-  str = String(str);
-  if (str.length > 100) {
-    return;
-  }
-  var match = /^((?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|years?|yrs?|y)?$/i.exec(
-    str
-  );
-  if (!match) {
-    return;
-  }
-  var n = parseFloat(match[1]);
-  var type = (match[2] || 'ms').toLowerCase();
-  switch (type) {
-    case 'years':
-    case 'year':
-    case 'yrs':
-    case 'yr':
-    case 'y':
-      return n * y;
-    case 'days':
-    case 'day':
-    case 'd':
-      return n * d;
-    case 'hours':
-    case 'hour':
-    case 'hrs':
-    case 'hr':
-    case 'h':
-      return n * h;
-    case 'minutes':
-    case 'minute':
-    case 'mins':
-    case 'min':
-    case 'm':
-      return n * m;
-    case 'seconds':
-    case 'second':
-    case 'secs':
-    case 'sec':
-    case 's':
-      return n * s;
-    case 'milliseconds':
-    case 'millisecond':
-    case 'msecs':
-    case 'msec':
-    case 'ms':
-      return n;
-    default:
-      return undefined;
-  }
-}
-
-/**
- * Short format for `ms`.
- *
- * @param {Number} ms
- * @return {String}
- * @api private
- */
-
-function fmtShort(ms) {
-  if (ms >= d) {
-    return Math.round(ms / d) + 'd';
-  }
-  if (ms >= h) {
-    return Math.round(ms / h) + 'h';
-  }
-  if (ms >= m) {
-    return Math.round(ms / m) + 'm';
-  }
-  if (ms >= s) {
-    return Math.round(ms / s) + 's';
-  }
-  return ms + 'ms';
-}
-
-/**
- * Long format for `ms`.
- *
- * @param {Number} ms
- * @return {String}
- * @api private
- */
-
-function fmtLong(ms) {
-  return plural(ms, d, 'day') ||
-    plural(ms, h, 'hour') ||
-    plural(ms, m, 'minute') ||
-    plural(ms, s, 'second') ||
-    ms + ' ms';
-}
-
-/**
- * Pluralization helper.
- */
-
-function plural(ms, n, name) {
-  if (ms < n) {
-    return;
-  }
-  if (ms < n * 1.5) {
-    return Math.floor(ms / n) + ' ' + name;
-  }
-  return Math.ceil(ms / n) + ' ' + name + 's';
-}
-
-
-/***/ }),
 /* 16 */
+/* no static exports found */
+/* all exports used */
+/*!******************************!*\
+  !*** ./~/process/browser.js ***!
+  \******************************/
 /***/ (function(module, exports) {
 
 // shim for using process in browser

@@ -15,9 +15,9 @@
     "slate:build": "npx slate build",
     "slate:deploy": "npx slate deploy -e development",
     "slate:watch": "npx slate watch -e development",
-    "dev": "concurrently -k -p \"[{name}]\" -n \"WEBPACK,SHOPIFY\" \"npm run slate:watch\" \"npm run webpack\"",
+    "dev": "concurrently -k -p \"[{name}]\" -n \"WEBPACK,SHOPIFY\" \"npx yarn slate:watch\" \"npx yarn webpack\"",
     "webpack": "NODE_ENV=development webpack --config ./webpack.config.js",
-    "webpack:production": "NODE_ENV=production npm run webpack -p",
+    "webpack:production": "NODE_ENV=production npx yarn webpack -p",
     "watch": "babel-node --presets es2015,stage-0 configuration/watch.js"
   },
   "repository": {
@@ -80,20 +80,8 @@
     "@babel/core": "^7.0.0-beta.36",
     "@types/jsonp": "^0.2.0",
     "autoprefixer": "^7.2.3",
-    "jsonp": "^0.2.1"
-  },
-  "xo": {
-    "env": [
-      "node",
-      "browser"
-    ],
-    "extends": [
-      "xo/browser"
-    ],
-    "space": true,
-    "ignore": [
-      "configuration/**"
-    ]
+    "jsonp": "^0.2.1",
+    "yarn": "^1.3.2"
   },
   "config": {
     "commitizen": {

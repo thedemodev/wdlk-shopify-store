@@ -33,7 +33,7 @@ export interface InstagramResponse {
   pagination: object;
 }
 
-export default function generateFeed(): void {
+export default function instagramFeed(): void {
   const node: HTMLElement = document.querySelector('.js_instagramFeed');
   if (!node) {
     return;
