@@ -16,6 +16,11 @@ module.exports = {
   module: {
     loaders: [
       {
+        test: /\.ts$/,
+        enforce: 'pre',
+        loader: 'tslint-loader'
+      },
+      {
         test: /\.ts(x?)$/,
         exclude: /node_modules/,
         loader: 'happypack/loader?id=ts'
