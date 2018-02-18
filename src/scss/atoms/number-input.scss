@@ -24,9 +24,8 @@
         border: 0;
         text-align: center;
         color: $input-hex-typo;
-        font-family: "museo_sans500";
         font-size: $copy-size-m;
-        font-weight: 600;
+        font-weight: bold;
 
         &:focus {
             outline: none;

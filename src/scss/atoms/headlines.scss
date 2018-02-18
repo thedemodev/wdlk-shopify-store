@@ -62,6 +62,10 @@ $headline-sizes: (
     color: $typo-hex--banner-tertiary;
     font-weight: normal;
   }
+
+  &--highlightContrast {
+    color: $hex-white;
+  }
 }
 
 .SubHeadline {

@@ -1,6 +1,20 @@
-# WDLK Ocean Online Store
+# Woodlike Ocean Online Store
 
+[![Build Status](https://travis-ci.org/woodlike/wdlk-shopify-store.svg?branch=master)](https://travis-ci.org/woodlike/wdlk-shopify-store)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
+## Prerequisites
+
+* Dependencies are maintained via `yarn`
+* Tasks are executed via `npx`
+
+### Bootstrapping dependencies
+
+This packages are strictly required to get up and running with this repository.
+
+* `git`
+* `npx` ([npm](https://www.npmjs.com/package/npx]))
+* `node` `8.4.0`
 
 ## Getting Started
 In our store theme and app you develop locally and use a syncing utility. You develop locally and see the changes locally but your theme is being updated simultaneously.

@@ -1,40 +1,38 @@
-import { EventEmitter } from "events";
+import { EventEmitter } from 'events';
 
-export default function notification () {
+export default function notification(): void {
 
-  const notification: HTMLElement = document.querySelector('.js_notification');
-  if (!notification) {
+  const notificationEl: HTMLElement = document.querySelector('.js_notification');
+  if (!notificationEl) {
     return;
   }
-  const closeBtn: HTMLElement = notification.querySelector('.js_notification-btn');
+  const closeBtn: HTMLElement = notificationEl.querySelector('.js_notification-btn');
   const sessionStorage: Storage = window.sessionStorage;
-  const hiddenNotification: string = 'hiddenNotification';
-  const activeClass: string = 'is-active';
+  const hiddenNotification = 'hiddenNotification';
+  const activeClass = 'is-active';
 
   const verifyNotification = (): string => sessionStorage.getItem(hiddenNotification);
 
-  if (verifyNotification()) {
-    return; 
-  }
+  if (verifyNotification()) { return; }
 
   const loadNotification = (): void => {
-    notification.classList.add(activeClass);
+    notificationEl.classList.add(activeClass);
   };
 
   const hideNotification = (): void => {
     sessionStorage.setItem(hiddenNotification, 'true');
-    notification.classList.remove(activeClass);
+    notificationEl.classList.remove(activeClass);
   };
 
   const handleLoadEvent = (): void => {
     loadNotification();
     window.removeEventListener('load', handleLoadEvent);
-  }
+  };
 
   const handleClickEvent = (): void => {
     hideNotification();
     closeBtn.removeEventListener('click', handleClickEvent);
-  }
+  };
 
   window.addEventListener('load', handleLoadEvent);
   window.addEventListener('click', handleClickEvent);

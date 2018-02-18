@@ -1,17 +1,11 @@
 .Video {
-    &--bg {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        z-index: -1;
-        display: none;
-        min-height: 100%;
-        min-width: 100%;
-        transform-origin: 50% 50% 0;
-        transform:  translate(-50%, -50%);
+  &--bg {
+    display: none;
+    width: 100vw;
+    height: auto;
 
-        @include media(small) {
-            display: block;
-        }
+    @include media(small) {
+        display: block;
     }
+  }
 }

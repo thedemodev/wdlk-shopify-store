@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 14);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -85,12 +85,11 @@ Object.defineProperty(exports, "__esModule", {
 var notification = document.querySelector('.js-cookie-notification');
 var closeButton = document.querySelector('.js-cookie-notification-close');
 var localStorage = window.localStorage;
-
 var notificationHidden = function notificationHidden() {
     return localStorage.getItem('hideCookieNotification');
 };
 var hideNotification = function hideNotification() {
-    localStorage.setItem('hideCookieNotification', true);
+    localStorage.setItem('hideCookieNotification', 'true');
     notification.style.display = 'none';
 };
 
@@ -98,12 +97,9 @@ exports.default = function () {
     if (notificationHidden()) {
         return;
     }
-
     notification.style.display = 'block';
-    var removeCloseButtenClickHandler = closeButton.addEventListener('click', function () {
-        hideNotification();
-        closeButton.removeEventListener('click', removeCloseButtenClickHandler);
-    });
+    closeButton.addEventListener('click', hideNotification);
+    closeButton.removeEventListener('click', hideNotification);
 };
 
 /***/ }),
@@ -114,76 +110,119 @@ exports.default = function () {
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-exports.default = generateFeed;
+exports.default = instagramFeed;
+
+var _access = __webpack_require__(13);
 
 var _jsonp = __webpack_require__(15);
 
 var _jsonp2 = _interopRequireDefault(_jsonp);
 
-var _access = __webpack_require__(12);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function generateFeed() {
-	var node = document.querySelector('.js_instagramFeed');
-	if (!node) return;
-	if ((typeof Promise === 'undefined' ? 'undefined' : _typeof(Promise)) === undefined) return;
-
-	var feedLimit = 11;
-	var instaURL = 'https://api.instagram.com/v1/users/' + _access.access['id'] + '/media/recent/?access_token=' + _access.access['token'] + '&callback=callback';
-
-	var getMediaFeed = function getMediaFeed(url) {
-		return new Promise(function (resolve, reject) {
-			(0, _jsonp2.default)(url, function (err, data) {
-				if (err) {
-					reject(Error('Couldn\'t get Insta JSON feed; error code: + ' + err));
-					throw err;
-				}
-				resolve(data);
-			});
-		});
-	};
-
-	var limitArr = function limitArr(value) {
-		return value <= feedLimit;
-	};
-	var filteredArr = function filteredArr(arr) {
-		return arr.filter(function (el, i) {
-			return limitArr(i);
-		});
-	};
-	var convertUnixDate = function convertUnixDate(timestamp) {
-		var date = new Date(parseInt(timestamp));
-		return date.toDateString().slice(0, -4);
-	};
-
-	var generateFeedTemplate = function generateFeedTemplate(arr) {
-		var feedTemplate = arr.map(function (el, i) {
-			var thumbnail = '\n\t\t\t\t<div class="Feed-thumbnail">\n\t\t\t\t\t<label class="Feed-trigger" for="lightbox-' + i + '" style="background-image: url(' + el.images.standard_resolution.url + '), linear-gradient(35deg, #FFCA54, #FF7163 80%)">\n\t\t\t\t\t</label>\n\t\t\t\t\t<img class="Feed-img"\n\t\t\t\t\t\tsrc="' + el.images.standard_resolution.url + '"\n\t\t\t\t\t\tsrcset="' + el.images.thumbnail.url + ' 150w,\n\t\t\t\t\t\t' + el.images.low_resolution.url + ' 320w,\n\t\t\t\t\t\t' + el.images.standard_resolution.url + ' 640w" />\n\t\t\t\t</div>\n\t\t\t';
-
-			var media = '\n\t\t\t\t<a class="Lightbox-row Feed-media"\n\t\t\t\t\thref="' + el.link + '" target="_blank">\n\t\t\t\t\t<h4 class="Headline Headline--5">\n\t\t\t\t\t\tJoin the journey on Instagram @wdlk\n\t\t\t\t\t</h4>\n\t\t\t\t\t<img class="Feed-img"\n\t\t\t\t\t\tsrc="' + el.images.standard_resolution.url + '"\n\t\t\t\t\t\tsrcset="' + el.images.thumbnail.url + ' 150w,\n\t\t\t\t\t\t' + el.images.low_resolution.url + ' 320w,\n\t\t\t\t\t\t' + el.images.standard_resolution.url + ' 640w" />\n\t\t\t\t</a>\n\t\t\t';
-
-			var caption = '\n\t\t\t\t<figcaption class="Feed-caption Lightbox-row">\n\t\t\t\t\t<strong class="Feed-highlight">' + el.likes.count + ' likes</strong>\n\t\t\t\t\t<time class="Feed-highlight" datetime="' + convertUnixDate(el.created_time) + '">' + convertUnixDate(el.created_time) + '</time>\n\t\t\t\t\t<p class="Feed-copy">\n\t\t\t\t\t\t<strong>\n\t\t\t\t\t\t\t' + el.user.username + '\n\t\t\t\t\t\t</strong>\n\t\t\t\t\t\t' + el.caption.text + '\n\t\t\t\t\t</p>\n\t\t\t\t</figcaption>\n\t\t\t';
-
-			var feed = '\n\t\t\t\t<li class="Feed-item Lightbox--row">\n\t\t\t\t\t' + thumbnail + '\n\t\t\t\t\t<input class="Lightbox-state" type="checkbox" id="lightbox-' + i + '" />\n\t\t\t\t\t<div class="Lightbox-shim">\n\t\t\t\t\t\t<label class="Lightbox-shim-close" for="lightbox-' + i + '"></label>\n\t\t\t\t\t\t<figure class="Lightbox-content">\n\t\t\t\t\t\t\t<header class="Lightbox-header">\n\t\t\t\t\t\t\t\t<h3 class="Headline Headline--6">\n\t\t\t\t\t\t\t\t\t#' + el.tags[0] + '\n\t\t\t\t\t\t\t\t</h3>\n\t\t\t\t\t\t\t\t<label class="Lightbox-icon" for="lightbox-' + i + '"></label>\n\t\t\t\t\t\t\t</header>\n\t\t\t\t\t\t\t' + media + '\n\t\t\t\t\t\t\t' + caption + '\n\t\t\t\t\t\t</figure>\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t';
-			return feed;
-		});
-		node.innerHTML = feedTemplate.join('');
-	};
-
-	getMediaFeed(instaURL).then(function (res) {
-		var feedData = filteredArr(res.data);
-		generateFeedTemplate(feedData);
-	});
+function instagramFeed() {
+  var node = document.querySelector('.js_instagramFeed');
+  if (!node) {
+    return;
+  }
+  if ((typeof Promise === 'undefined' ? 'undefined' : _typeof(Promise)) === undefined) {
+    return;
+  }
+  var feedLimit = 11;
+  var instaURL = 'https://api.instagram.com/v1/users/' + _access.access['id'] + '/media/recent/?access_token=' + _access.access['token'] + '&callback=callback';
+  // tslint:disable-next-line
+  var getMediaFeed = function getMediaFeed(url) {
+    return new Promise(function (resolve, reject) {
+      (0, _jsonp2.default)(url, function (err, data) {
+        if (err) {
+          reject(Error('Couldn\'t get Insta JSON feed; error code: + ' + err));
+          throw err;
+        }
+        resolve(data);
+      });
+    });
+  };
+  var limitArr = function limitArr(value) {
+    return value <= feedLimit;
+  };
+  var filteredArr = function filteredArr(arr) {
+    return arr.filter(function (el, i) {
+      return limitArr(i);
+    });
+  };
+  var convertUnixDate = function convertUnixDate(timestamp) {
+    var date = new Date(parseInt('' + timestamp, 10));
+    return date.toDateString().slice(0, -4);
+  };
+  var generateFeedTemplate = function generateFeedTemplate(arr) {
+    var feedTemplate = arr.map(function (el, i) {
+      var thumbnail = '\n        <div class="Feed-thumbnail">\n          <label class="Feed-trigger" for="lightbox-' + i + '" style="background-image: url(' + el.images.standard_resolution.url + '), linear-gradient(35deg, #FFCA54, #FF7163 80%)">\n          </label>\n          <img class="Feed-img"\n            src="' + el.images.standard_resolution.url + '"\n            srcset="' + el.images.thumbnail.url + ' 150w,\n            ' + el.images.low_resolution.url + ' 320w,\n            ' + el.images.standard_resolution.url + ' 640w" />\n        </div>\n      ';
+      var media = '\n        <a class="Lightbox-row Feed-media"\n          href="' + el.link + '" target="_blank">\n          <h4 class="Headline Headline--5">\n            Join the journey on Instagram @wdlk\n          </h4>\n          <img class="Feed-img"\n            src="' + el.images.standard_resolution.url + '"\n            srcset="' + el.images.thumbnail.url + ' 150w,\n            ' + el.images.low_resolution.url + ' 320w,\n            ' + el.images.standard_resolution.url + ' 640w" />\n        </a>\n      ';
+      var caption = '\n        <figcaption class="Feed-caption Lightbox-row">\n          <strong class="Feed-highlight">' + el.likes.count + ' likes</strong>\n          <time class="Feed-highlight" datetime="' + convertUnixDate(el.created_time) + '">' + convertUnixDate(el.created_time) + '</time>\n          <p class="Feed-copy">\n            <strong>\n              ' + el.user.username + '\n            </strong>\n            ' + el.caption.text + '\n          </p>\n        </figcaption>\n      ';
+      var feed = '\n        <li class="Feed-item Lightbox--row">\n          ' + thumbnail + '\n          <input class="Lightbox-state" type="checkbox" id="lightbox-' + i + '" />\n          <div class="Lightbox-shim">\n            <label class="Lightbox-shim-close" for="lightbox-' + i + '"></label>\n            <figure class="Lightbox-content">\n              <header class="Lightbox-header">\n                <h3 class="Headline Headline--6">\n                  #' + el.tags[0] + '\n                </h3>\n                <label class="Lightbox-icon" for="lightbox-' + i + '"></label>\n              </header>\n              ' + media + '\n              ' + caption + '\n            </figure>\n          </div>\n        </li>\n      ';
+      return feed;
+    });
+    node.innerHTML = feedTemplate.join('');
+  };
+  getMediaFeed(instaURL).then(function (value) {
+    return generateFeedTemplate(filteredArr(value.data));
+  }, function (reason) {
+    console.log('Couldn\'t get Insta JSON feed; error code: + ' + reason);
+  });
 }
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = notification;
+function notification() {
+    var notificationEl = document.querySelector('.js_notification');
+    if (!notificationEl) {
+        return;
+    }
+    var closeBtn = notificationEl.querySelector('.js_notification-btn');
+    var sessionStorage = window.sessionStorage;
+    var hiddenNotification = 'hiddenNotification';
+    var activeClass = 'is-active';
+    var verifyNotification = function verifyNotification() {
+        return sessionStorage.getItem(hiddenNotification);
+    };
+    if (verifyNotification()) {
+        return;
+    }
+    var loadNotification = function loadNotification() {
+        notificationEl.classList.add(activeClass);
+    };
+    var hideNotification = function hideNotification() {
+        sessionStorage.setItem(hiddenNotification, 'true');
+        notificationEl.classList.remove(activeClass);
+    };
+    var handleLoadEvent = function handleLoadEvent() {
+        loadNotification();
+        window.removeEventListener('load', handleLoadEvent);
+    };
+    var handleClickEvent = function handleClickEvent() {
+        hideNotification();
+        closeBtn.removeEventListener('click', handleClickEvent);
+    };
+    window.addEventListener('load', handleLoadEvent);
+    window.addEventListener('click', handleClickEvent);
+}
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -201,116 +240,35 @@ function numberInput() {
     if (!nodeList) {
         return;
     }
-    var NODE_ARRAY = [].concat(_toConsumableArray(nodeList));
-    var RMV_BTN_CLASS = 'js_remove';
-    var ADD_BTN_CLASS = 'js_add';
-
-    var INCREASE = function INCREASE(n) {
-        return parseInt(n) + 1;
+    var increase = function increase(n) {
+        return parseInt('' + n, 10) + 1;
     };
-    var DECREASE = function DECREASE(n) {
-        return parseInt(n) - 1;
+    var decrease = function decrease(n) {
+        return parseInt('' + n, 10) - 1;
     };
-
-    NODE_ARRAY.forEach(function (node) {
+    [].concat(_toConsumableArray(nodeList)).forEach(function (node) {
         var inputValue = 1;
         var min = 0;
-        var INPUT_EL = node.querySelector('.js_value');
-        if (!INPUT_EL) {
+        var inputEl = node.querySelector('.js_value');
+        if (!inputEl) {
             return;
         }
-        inputValue = INPUT_EL.getAttribute('value');
-        min = INPUT_EL.getAttribute('min');
-
+        inputValue = parseInt(inputEl.getAttribute('value'), 10);
+        min = parseInt(inputEl.getAttribute('min'), 10);
         node.addEventListener('click', function (e) {
-            if (e.target.classList.contains(ADD_BTN_CLASS)) {
-                inputValue = INCREASE(inputValue);
-                INPUT_EL.setAttribute('value', inputValue);
+            if (event.target.classList.contains('js_add')) {
+                inputValue = increase(inputValue);
+                inputEl.setAttribute('value', inputValue.toString());
             }
-
-            if (e.target.classList.contains(RMV_BTN_CLASS)) {
+            if (event.target.classList.contains('js_remove')) {
                 if (inputValue <= min) {
                     return;
                 }
-                inputValue = DECREASE(inputValue);
-                INPUT_EL.setAttribute('value', inputValue);
+                inputValue = decrease(inputValue);
+                inputEl.setAttribute('value', inputValue.toString());
             }
         });
     });
-}
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = smoothScrolling;
-
-var _logger = __webpack_require__(14);
-
-var _logger2 = _interopRequireDefault(_logger);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function smoothScrolling() {
-    var SCROLL_LAYER = document.querySelector(':root');
-    var TRIGGER = document.getElementsByClassName('js_scroll')[0];
-    if (!TRIGGER) {
-        return;
-    }
-    var ID = TRIGGER.getAttribute('href').substr(1) || '';
-    var TARGET = document.getElementById('' + ID);
-    if (!TARGET) {
-        return;
-    }
-
-    //-- Exponential Ease in and out
-    //-- http://gizma.com/easing/#expo3
-    Math.easeInOutExpo = function (t, b, c, d) {
-        t /= d / 2;
-        if (t < 1) {
-            return c / 2 * Math.pow(2, 10 * (t - 1)) + b;
-        };
-        t--;
-        return c / 2 * (-Math.pow(2, -10 * t) + 2) + b;
-    };
-
-    var SCROLL_TO = function SCROLL_TO(scrollLayer, el, duration) {
-        var cb = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : cb || function () {};
-
-        var startPosition = scrollLayer.scrollTop;
-        var positionDelta = el.offsetTop - startPosition;
-        var startTime = null;
-
-        var ANIMATE_SCROLL = function ANIMATE_SCROLL(timeStamp) {
-            startTime = startTime !== null ? startTime : timeStamp;
-            var timeDelta = timeStamp - startTime;
-
-            if (timeDelta >= duration) {
-                return cb();
-            }
-
-            scrollLayer.scrollTop = Math.easeInOutExpo(timeDelta, startPosition, positionDelta, duration);
-            window.requestAnimationFrame(ANIMATE_SCROLL);
-        };
-
-        window.requestAnimationFrame(ANIMATE_SCROLL);
-    };
-
-    var SCROLL = function SCROLL(e) {
-        e.preventDefault();
-
-        SCROLL_TO(SCROLL_LAYER, TARGET, 1618, function () {
-            window.location.hash = '#' + TARGET.ID;
-        });
-    };
-
-    TRIGGER.addEventListener('click', SCROLL, false);
 }
 
 /***/ }),
@@ -323,39 +281,55 @@ function smoothScrolling() {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.default = notification;
-function notification() {
-    var notification = document.querySelector('.js_notification');
-    if (!notification) {
+exports.default = smoothScrolling;
+function smoothScrolling() {
+    var scrollLayerEl = document.querySelector(':root');
+    var triggerEl = document.getElementsByClassName('js_scroll')[0];
+    if (!triggerEl) {
         return;
     }
-    var closeBtn = notification.querySelector('.js_notification-btn');
-    var sessionStorage = window.sessionStorage;
-    var hiddenNotification = 'hiddenNotification';
-    var activeClass = 'is-active';
-    var verifyNotification = function verifyNotification() {
-        return sessionStorage.getItem(hiddenNotification);
-    };
-    if (verifyNotification()) {
+    var id = triggerEl.getAttribute('href').substr(1) || '';
+    var targetEl = document.getElementById('' + id);
+    if (!targetEl) {
         return;
     }
-    var loadNotification = function loadNotification() {
-        notification.classList.add(activeClass);
+    /*
+    /* Exponential Ease in and out
+    /* http://gizma.com/easing/#expo3
+    */
+    Math.easeInOutExpo = function (t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) {
+            return c / 2 * Math.pow(2, 10 * (t - 1)) + b;
+        }
+        t--;
+        return c / 2 * (-Math.pow(2, -10 * t) + 2) + b;
     };
-    var hideNotification = function hideNotification() {
-        sessionStorage.setItem(hiddenNotification, 'true');
-        notification.classList.remove(activeClass);
+    var scrollTo = function scrollTo(scrollLayer, el, duration, cb) {
+        var startPosition = scrollLayer.scrollTop;
+        var positionDelta = el.offsetTop - startPosition;
+        var startTime = null;
+        // tslint:disable-next-line
+        cb = cb || function () {};
+        var animateScroll = function animateScroll(timeStamp) {
+            startTime = startTime !== null ? startTime : timeStamp;
+            var timeDelta = timeStamp - startTime;
+            if (timeDelta >= duration) {
+                // tslint:disable-next-line
+                return cb();
+            }
+            scrollLayer.scrollTop = Math.easeInOutExpo(timeDelta, startPosition, positionDelta, duration);
+            window.requestAnimationFrame(animateScroll);
+        };
+        window.requestAnimationFrame(animateScroll);
     };
-    var handleLoadEvent = function handleLoadEvent() {
-        loadNotification();
-        window.removeEventListener('load', handleLoadEvent);
+    var scroll = function scroll(e) {
+        e.preventDefault();
+        scrollTo(scrollLayerEl, targetEl, 1618, function () {
+            window.location.hash = '#' + targetEl.id;
+        });
     };
-    var handleClickEvent = function handleClickEvent() {
-        hideNotification();
-        closeBtn.removeEventListener('click', handleClickEvent);
-    };
-    window.addEventListener('load', handleLoadEvent);
-    window.addEventListener('click', handleClickEvent);
+    triggerEl.addEventListener('click', scroll, false);
 }
 
 /***/ }),
@@ -370,9 +344,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = stickyNavigation;
 function stickyNavigation() {
-    //-- Read Values Only !!!!!
-    //-- First keep track of the scroll value
-    //-- without triggering unnecessary draw calls
+    /*
+    /* Read Values Only !!!!!
+    /* First keep track of the scroll value
+    /* without triggering unnecessary draw calls
+    */
     var navigation = document.querySelector('.js_sticky-nav');
     if (!navigation) {
         return;
@@ -393,21 +369,13 @@ function stickyNavigation() {
         }
         return notificationTeaser.offsetHeight;
     };
-    var onScroll = function onScroll() {
-        options.scrollPosition = window.scrollY;
-        requestTick();
-    };
-    //-- Triggers requestAnimationFrame when it's necessary only
-    var requestTick = function requestTick() {
-        if (!options.ticking) {
-            requestAnimationFrame(update);
-        }
-        options.ticking = true;
-    };
-    //-- Visual Updates Callback
-    //-- Use rAf to handle visual updates and write values
+    /* Visual Updates Callback
+    /* Use rAf to handle visual updates and write values
+    */
     var update = function update() {
-        //-- Pull the latest value when we need it
+        /*
+        /* Pull the latest value when we need it
+        */
         var currentScrollPositionY = options.scrollPosition;
         if (notificationTeaser) {
             navigation.classList.toggle('is-sticky', currentScrollPositionY >= getTeaserHeight());
@@ -416,6 +384,19 @@ function stickyNavigation() {
             navigation.classList.toggle('is-undocked', currentScrollPositionY >= options.height);
         }
         options.ticking = false;
+    };
+    /*
+    /* Triggers requestAnimationFrame when it's necessary only
+    */
+    var requestTick = function requestTick() {
+        if (!options.ticking) {
+            requestAnimationFrame(update);
+        }
+        options.ticking = true;
+    };
+    var onScroll = function onScroll() {
+        options.scrollPosition = window.scrollY;
+        requestTick();
     };
     window.addEventListener('scroll', onScroll, { capture: false, passive: true });
 }
@@ -457,13 +438,12 @@ function fbqTracking() {
         var select = addToCart.querySelector('.js_fbqSelect');
         if (btn && select) {
             var productId = parseFloat(select.options[select.selectedIndex].value);
-            var value = parseFloat(btn.dataset.value);
             btn.addEventListener('click', function () {
                 fbq('track', 'AddToCart', {
                     content_name: btn.dataset.name,
                     content_ids: ['' + productId],
                     content_type: 'product',
-                    value: value,
+                    value: parseFloat(btn.dataset.value),
                     currency: 'EUR'
                 });
             });
@@ -493,16 +473,16 @@ function trackingCece() {
     function set_cece_cookie() {
         var expiration = new Date();
         expiration.setTime(expiration.getTime() + 30 * 24 * 60 * 60 * 1000);
-        document.cookie = "refpartner=projce; expires=" + expiration.toUTCString() + "; path=/";
+        document.cookie = 'refpartner=projce; expires=' + expiration.toUTCString() + '; path=/';
     }
     if (x.indexOf('projectcece.') > -1) {
         set_cece_cookie();
         if (window.sessionStorage) {
-            sessionStorage.setItem("refpartner", "projce");
+            sessionStorage.setItem('refpartner', 'projce');
         }
     }
     if (window.sessionStorage) {
-        if (sessionStorage.getItem("refpartner")) {
+        if (sessionStorage.getItem('refpartner')) {
             if (document.cookie.indexOf('refpartner=projce') < 0) {
                 set_cece_cookie();
             }
@@ -512,6 +492,164 @@ function trackingCece() {
 
 /***/ }),
 /* 10 */
+/***/ (function(module, exports) {
+
+/**
+ * Helpers.
+ */
+
+var s = 1000;
+var m = s * 60;
+var h = m * 60;
+var d = h * 24;
+var y = d * 365.25;
+
+/**
+ * Parse or format the given `val`.
+ *
+ * Options:
+ *
+ *  - `long` verbose formatting [false]
+ *
+ * @param {String|Number} val
+ * @param {Object} [options]
+ * @throws {Error} throw an error if val is not a non-empty string or a number
+ * @return {String|Number}
+ * @api public
+ */
+
+module.exports = function(val, options) {
+  options = options || {};
+  var type = typeof val;
+  if (type === 'string' && val.length > 0) {
+    return parse(val);
+  } else if (type === 'number' && isNaN(val) === false) {
+    return options.long ? fmtLong(val) : fmtShort(val);
+  }
+  throw new Error(
+    'val is not a non-empty string or a valid number. val=' +
+      JSON.stringify(val)
+  );
+};
+
+/**
+ * Parse the given `str` and return milliseconds.
+ *
+ * @param {String} str
+ * @return {Number}
+ * @api private
+ */
+
+function parse(str) {
+  str = String(str);
+  if (str.length > 100) {
+    return;
+  }
+  var match = /^((?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|years?|yrs?|y)?$/i.exec(
+    str
+  );
+  if (!match) {
+    return;
+  }
+  var n = parseFloat(match[1]);
+  var type = (match[2] || 'ms').toLowerCase();
+  switch (type) {
+    case 'years':
+    case 'year':
+    case 'yrs':
+    case 'yr':
+    case 'y':
+      return n * y;
+    case 'days':
+    case 'day':
+    case 'd':
+      return n * d;
+    case 'hours':
+    case 'hour':
+    case 'hrs':
+    case 'hr':
+    case 'h':
+      return n * h;
+    case 'minutes':
+    case 'minute':
+    case 'mins':
+    case 'min':
+    case 'm':
+      return n * m;
+    case 'seconds':
+    case 'second':
+    case 'secs':
+    case 'sec':
+    case 's':
+      return n * s;
+    case 'milliseconds':
+    case 'millisecond':
+    case 'msecs':
+    case 'msec':
+    case 'ms':
+      return n;
+    default:
+      return undefined;
+  }
+}
+
+/**
+ * Short format for `ms`.
+ *
+ * @param {Number} ms
+ * @return {String}
+ * @api private
+ */
+
+function fmtShort(ms) {
+  if (ms >= d) {
+    return Math.round(ms / d) + 'd';
+  }
+  if (ms >= h) {
+    return Math.round(ms / h) + 'h';
+  }
+  if (ms >= m) {
+    return Math.round(ms / m) + 'm';
+  }
+  if (ms >= s) {
+    return Math.round(ms / s) + 's';
+  }
+  return ms + 'ms';
+}
+
+/**
+ * Long format for `ms`.
+ *
+ * @param {Number} ms
+ * @return {String}
+ * @api private
+ */
+
+function fmtLong(ms) {
+  return plural(ms, d, 'day') ||
+    plural(ms, h, 'hour') ||
+    plural(ms, m, 'minute') ||
+    plural(ms, s, 'second') ||
+    ms + ' ms';
+}
+
+/**
+ * Pluralization helper.
+ */
+
+function plural(ms, n, name) {
+  if (ms < n) {
+    return;
+  }
+  if (ms < n * 1.5) {
+    return Math.floor(ms / n) + ' ' + name;
+  }
+  return Math.ceil(ms / n) + ' ' + name + 's';
+}
+
+
+/***/ }),
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {/**
@@ -520,7 +658,7 @@ function trackingCece() {
  * Expose `debug()` as the module.
  */
 
-exports = module.exports = __webpack_require__(11);
+exports = module.exports = __webpack_require__(12);
 exports.log = log;
 exports.formatArgs = formatArgs;
 exports.save = save;
@@ -700,10 +838,10 @@ function localstorage() {
   } catch (e) {}
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -719,7 +857,7 @@ exports.coerce = coerce;
 exports.disable = disable;
 exports.enable = enable;
 exports.enabled = enabled;
-exports.humanize = __webpack_require__(16);
+exports.humanize = __webpack_require__(10);
 
 /**
  * The currently active debug mode names, and names to skip.
@@ -911,22 +1049,22 @@ function coerce(val) {
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
 var access = exports.access = {
-	"id": "1983140883",
-	"token": "1983140883.c4c213d.70716b04afc14080a94e4ccb0c35d1b2"
+    id: '1983140883',
+    token: '1983140883.c4c213d.70716b04afc14080a94e4ccb0c35d1b2'
 };
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -934,25 +1072,9 @@ var access = exports.access = {
 
 __webpack_require__(0);
 
-var _stickyNavigation = __webpack_require__(6);
-
-var _stickyNavigation2 = _interopRequireDefault(_stickyNavigation);
-
-var _smoothScrolling = __webpack_require__(4);
-
-var _smoothScrolling2 = _interopRequireDefault(_smoothScrolling);
-
 var _cookieNotification = __webpack_require__(1);
 
 var _cookieNotification2 = _interopRequireDefault(_cookieNotification);
-
-var _numberInput = __webpack_require__(3);
-
-var _numberInput2 = _interopRequireDefault(_numberInput);
-
-var _notification = __webpack_require__(5);
-
-var _notification2 = _interopRequireDefault(_notification);
 
 var _instagramFeed = __webpack_require__(2);
 
@@ -962,16 +1084,33 @@ var _trackingFacebook = __webpack_require__(8);
 
 var _trackingFacebook2 = _interopRequireDefault(_trackingFacebook);
 
-var _trackingProjectCece = __webpack_require__(9);
+var _notification = __webpack_require__(3);
 
-var _trackingProjectCece2 = _interopRequireDefault(_trackingProjectCece);
+var _notification2 = _interopRequireDefault(_notification);
+
+var _numberInput = __webpack_require__(4);
+
+var _numberInput2 = _interopRequireDefault(_numberInput);
+
+var _smoothScrolling = __webpack_require__(5);
+
+var _smoothScrolling2 = _interopRequireDefault(_smoothScrolling);
+
+var _stickyNavigation = __webpack_require__(6);
+
+var _stickyNavigation2 = _interopRequireDefault(_stickyNavigation);
 
 var _theme = __webpack_require__(7);
 
 var _theme2 = _interopRequireDefault(_theme);
 
+var _trackingProjectCece = __webpack_require__(9);
+
+var _trackingProjectCece2 = _interopRequireDefault(_trackingProjectCece);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// tslint:disable-next-line:no-import-side-effect
 (0, _trackingFacebook2.default)();
 (0, _notification2.default)();
 window.addEventListener('load', function () {
@@ -985,33 +1124,6 @@ window.addEventListener('load', function () {
 });
 
 /***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = logger;
-//-- The function takes either log or error as property
-//-- Any other type will be ignored by the script.
-function logger() {
-    var logProp = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'log';
-    var message = arguments[1];
-
-    var DATE = new Date();
-    if (typeof console !== 'undefined' && logProp === 'log' || logProp === 'error') {
-        if (logProp === 'error') {
-            console.error(DATE + ': ' + message);
-        } else {
-            console.log(DATE + ': ' + message);
-        }
-    }
-}
-
-/***/ }),
 /* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1019,7 +1131,7 @@ function logger() {
  * Module dependencies
  */
 
-var debug = __webpack_require__(10)('jsonp');
+var debug = __webpack_require__(11)('jsonp');
 
 /**
  * Module exports.
@@ -1116,164 +1228,6 @@ function jsonp(url, opts, fn){
 
 /***/ }),
 /* 16 */
-/***/ (function(module, exports) {
-
-/**
- * Helpers.
- */
-
-var s = 1000;
-var m = s * 60;
-var h = m * 60;
-var d = h * 24;
-var y = d * 365.25;
-
-/**
- * Parse or format the given `val`.
- *
- * Options:
- *
- *  - `long` verbose formatting [false]
- *
- * @param {String|Number} val
- * @param {Object} [options]
- * @throws {Error} throw an error if val is not a non-empty string or a number
- * @return {String|Number}
- * @api public
- */
-
-module.exports = function(val, options) {
-  options = options || {};
-  var type = typeof val;
-  if (type === 'string' && val.length > 0) {
-    return parse(val);
-  } else if (type === 'number' && isNaN(val) === false) {
-    return options.long ? fmtLong(val) : fmtShort(val);
-  }
-  throw new Error(
-    'val is not a non-empty string or a valid number. val=' +
-      JSON.stringify(val)
-  );
-};
-
-/**
- * Parse the given `str` and return milliseconds.
- *
- * @param {String} str
- * @return {Number}
- * @api private
- */
-
-function parse(str) {
-  str = String(str);
-  if (str.length > 100) {
-    return;
-  }
-  var match = /^((?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|years?|yrs?|y)?$/i.exec(
-    str
-  );
-  if (!match) {
-    return;
-  }
-  var n = parseFloat(match[1]);
-  var type = (match[2] || 'ms').toLowerCase();
-  switch (type) {
-    case 'years':
-    case 'year':
-    case 'yrs':
-    case 'yr':
-    case 'y':
-      return n * y;
-    case 'days':
-    case 'day':
-    case 'd':
-      return n * d;
-    case 'hours':
-    case 'hour':
-    case 'hrs':
-    case 'hr':
-    case 'h':
-      return n * h;
-    case 'minutes':
-    case 'minute':
-    case 'mins':
-    case 'min':
-    case 'm':
-      return n * m;
-    case 'seconds':
-    case 'second':
-    case 'secs':
-    case 'sec':
-    case 's':
-      return n * s;
-    case 'milliseconds':
-    case 'millisecond':
-    case 'msecs':
-    case 'msec':
-    case 'ms':
-      return n;
-    default:
-      return undefined;
-  }
-}
-
-/**
- * Short format for `ms`.
- *
- * @param {Number} ms
- * @return {String}
- * @api private
- */
-
-function fmtShort(ms) {
-  if (ms >= d) {
-    return Math.round(ms / d) + 'd';
-  }
-  if (ms >= h) {
-    return Math.round(ms / h) + 'h';
-  }
-  if (ms >= m) {
-    return Math.round(ms / m) + 'm';
-  }
-  if (ms >= s) {
-    return Math.round(ms / s) + 's';
-  }
-  return ms + 'ms';
-}
-
-/**
- * Long format for `ms`.
- *
- * @param {Number} ms
- * @return {String}
- * @api private
- */
-
-function fmtLong(ms) {
-  return plural(ms, d, 'day') ||
-    plural(ms, h, 'hour') ||
-    plural(ms, m, 'minute') ||
-    plural(ms, s, 'second') ||
-    ms + ' ms';
-}
-
-/**
- * Pluralization helper.
- */
-
-function plural(ms, n, name) {
-  if (ms < n) {
-    return;
-  }
-  if (ms < n * 1.5) {
-    return Math.floor(ms / n) + ' ' + name;
-  }
-  return Math.ceil(ms / n) + ' ' + name + 's';
-}
-
-
-/***/ }),
-/* 17 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser

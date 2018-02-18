@@ -1,20 +1,24 @@
+// tslint:disable-next-line:no-import-side-effect
 import '../scss/index.scss';
-import stickyNavigation from './modules/sticky-navigation';
-import smoothScrolling from './modules/smooth-scrolling';
+
 import cookieNotification from './modules/cookie-notification';
-import numberInput from './modules/number-input';
-import notification from './modules/notification';
-import getInstaFeed from './modules/instagram-feed';
+import instagramFeed from './modules/instagram-feed';
 import fbqTracking from './modules/tracking-facebook';
-import trackingCece from './modules/tracking-project-cece';
+
+import notification from './modules/notification';
+import numberInput from './modules/number-input';
+
+import smoothScrolling from './modules/smooth-scrolling';
+import stickyNavigation from './modules/sticky-navigation';
 import setTheme from './modules/theme';
+import trackingCece from './modules/tracking-project-cece';
 
 fbqTracking();
 notification();
 
 window.addEventListener('load', () => {
   trackingCece();
-  getInstaFeed();
+  instagramFeed();
   stickyNavigation();
   cookieNotification();
   smoothScrolling();

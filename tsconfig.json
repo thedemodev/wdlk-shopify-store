@@ -2,19 +2,10 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "declaration": true,
-    "lib": ["dom", "es6"],
-    "mapRoot": "./assets/",
+    "lib": ["dom", "dom.iterable", "es6", "scripthost" ],
+    "mapRoot": "./dist/assets",
     "noImplicitAny": true,
     "sourceMap": true,
     "target": "es6",
-  },
-  "exclude": [
-    "./src/scripts/timber/*.js",
-    "./src/scripts/checkout-tracking.js",
-    "./src/scripts/modules/cookie-notification.js",
-    "./src/scripts/modules/instagram-feed.js",
-    "./src/scripts/modules/logger.js",
-    "./src/scripts/modules/number-input.js",
-    "./src/scripts/modules/tracking-fullstory.js",
-  ]
+  }
 }
