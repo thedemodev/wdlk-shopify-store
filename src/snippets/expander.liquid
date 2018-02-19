@@ -1,7 +1,8 @@
 <div class="Expander">
   {% assign paneId = '1' %}
-  {% assign headline = 'general.expander.first_headline' | t  %}
+  {% assign headline = collections['mini-shape'].title %}
   {% assign caption = 'general.expander.first_caption' | t %}
+  {% assign categoryTitle = collections['mini-shape'].title %}
 
   {% assign srcSet1 = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/156808/mob-1.jpg' %}
   {% assign srcSet2 = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/156808/tab-1.jpg' %}
@@ -9,8 +10,9 @@
   {% include 'expander-pane' %}
 
   {% assign paneId = '2' %}
-  {% assign headline = 'general.expander.second_headline' | t  %}
+  {% assign headline = collections['active'].title %}
   {% assign caption = 'general.expander.second_caption' | t %}
+  {% assign categoryTitle = collections['active'].title %}
 
   {% assign srcSet1 = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/156808/mob-2.jpg' %}
   {% assign srcSet2 = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/156808/tab-2.jpg' %}
@@ -18,8 +20,9 @@
   {% include 'expander-pane' %}
 
   {% assign paneId = '3' %}
-  {% assign headline = 'general.expander.third_headline' | t  %}
+  {% assign headline =  collections['tanning'].title  %}
   {% assign caption = 'general.expander.third_caption' | t %}
+  {% assign categoryTitle = collections['tanning'].title %}
 
   {% assign srcSet1 = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/156808/mob-3.jpg' %}
   {% assign srcSet2 = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/156808/tab-3.jpg' %}
