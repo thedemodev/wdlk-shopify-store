@@ -501,13 +501,17 @@ var _cookieNotification = __webpack_require__(1);
 
 var _cookieNotification2 = _interopRequireDefault(_cookieNotification);
 
-var _instagramFeed = __webpack_require__(2);
+var _fadeThrough = __webpack_require__(18);
 
-var _instagramFeed2 = _interopRequireDefault(_instagramFeed);
+var _fadeThrough2 = _interopRequireDefault(_fadeThrough);
 
 var _trackingFacebook = __webpack_require__(8);
 
 var _trackingFacebook2 = _interopRequireDefault(_trackingFacebook);
+
+var _instagramFeed = __webpack_require__(2);
+
+var _instagramFeed2 = _interopRequireDefault(_instagramFeed);
 
 var _notification = __webpack_require__(3);
 
@@ -531,11 +535,12 @@ var _trackingProjectCece2 = _interopRequireDefault(_trackingProjectCece);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _trackingFacebook2.default)(); // tslint:disable-next-line:no-import-side-effect
-
+// tslint:disable-next-line:no-import-side-effect
+(0, _trackingFacebook2.default)();
 (0, _notification2.default)();
 window.addEventListener('load', function () {
     (0, _trackingProjectCece2.default)();
+    (0, _fadeThrough2.default)();
     (0, _instagramFeed2.default)();
     (0, _stickyNavigation2.default)();
     (0, _cookieNotification2.default)();
@@ -1393,6 +1398,22 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
+
+/***/ }),
+/* 17 */,
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var fadeThrough = function fadeThrough() {
+    console.log('this is working');
+};
+exports.default = fadeThrough;
 
 /***/ })
 /******/ ]);
