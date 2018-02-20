@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 14);
+/******/ 	return __webpack_require__(__webpack_require__.s = 11);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -117,9 +117,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 exports.default = instagramFeed;
 
-var _access = __webpack_require__(13);
+var _access = __webpack_require__(10);
 
-var _jsonp = __webpack_require__(15);
+var _jsonp = __webpack_require__(12);
 
 var _jsonp2 = _interopRequireDefault(_jsonp);
 
@@ -402,24 +402,7 @@ function stickyNavigation() {
 }
 
 /***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var setTheme = function setTheme() {
-    var el = document.querySelector('.withTheme');
-    if (el) {
-        el.style.setProperty('--theme-invert', 'unset');
-    }
-};
-exports.default = setTheme;
-
-/***/ }),
+/* 7 */,
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -652,13 +635,187 @@ function plural(ms, n, name) {
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var access = exports.access = {
+    id: '1983140883',
+    token: '1983140883.c4c213d.70716b04afc14080a94e4ccb0c35d1b2'
+};
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(0);
+
+var _cookieNotification = __webpack_require__(1);
+
+var _cookieNotification2 = _interopRequireDefault(_cookieNotification);
+
+var _instagramFeed = __webpack_require__(2);
+
+var _instagramFeed2 = _interopRequireDefault(_instagramFeed);
+
+var _trackingFacebook = __webpack_require__(8);
+
+var _trackingFacebook2 = _interopRequireDefault(_trackingFacebook);
+
+var _notification = __webpack_require__(3);
+
+var _notification2 = _interopRequireDefault(_notification);
+
+var _numberInput = __webpack_require__(4);
+
+var _numberInput2 = _interopRequireDefault(_numberInput);
+
+var _smoothScrolling = __webpack_require__(5);
+
+var _smoothScrolling2 = _interopRequireDefault(_smoothScrolling);
+
+var _stickyNavigation = __webpack_require__(6);
+
+var _stickyNavigation2 = _interopRequireDefault(_stickyNavigation);
+
+var _trackingProjectCece = __webpack_require__(9);
+
+var _trackingProjectCece2 = _interopRequireDefault(_trackingProjectCece);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(0, _trackingFacebook2.default)(); // tslint:disable-next-line:no-import-side-effect
+
+(0, _notification2.default)();
+window.addEventListener('load', function () {
+    (0, _trackingProjectCece2.default)();
+    (0, _instagramFeed2.default)();
+    (0, _stickyNavigation2.default)();
+    (0, _cookieNotification2.default)();
+    (0, _smoothScrolling2.default)();
+    (0, _numberInput2.default)();
+});
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Module dependencies
+ */
+
+var debug = __webpack_require__(13)('jsonp');
+
+/**
+ * Module exports.
+ */
+
+module.exports = jsonp;
+
+/**
+ * Callback index.
+ */
+
+var count = 0;
+
+/**
+ * Noop function.
+ */
+
+function noop(){}
+
+/**
+ * JSONP handler
+ *
+ * Options:
+ *  - param {String} qs parameter (`callback`)
+ *  - prefix {String} qs parameter (`__jp`)
+ *  - name {String} qs parameter (`prefix` + incr)
+ *  - timeout {Number} how long after a timeout error is emitted (`60000`)
+ *
+ * @param {String} url
+ * @param {Object|Function} optional options / callback
+ * @param {Function} optional callback
+ */
+
+function jsonp(url, opts, fn){
+  if ('function' == typeof opts) {
+    fn = opts;
+    opts = {};
+  }
+  if (!opts) opts = {};
+
+  var prefix = opts.prefix || '__jp';
+
+  // use the callback name that was passed if one was provided.
+  // otherwise generate a unique name by incrementing our counter.
+  var id = opts.name || (prefix + (count++));
+
+  var param = opts.param || 'callback';
+  var timeout = null != opts.timeout ? opts.timeout : 60000;
+  var enc = encodeURIComponent;
+  var target = document.getElementsByTagName('script')[0] || document.head;
+  var script;
+  var timer;
+
+
+  if (timeout) {
+    timer = setTimeout(function(){
+      cleanup();
+      if (fn) fn(new Error('Timeout'));
+    }, timeout);
+  }
+
+  function cleanup(){
+    if (script.parentNode) script.parentNode.removeChild(script);
+    window[id] = noop;
+    if (timer) clearTimeout(timer);
+  }
+
+  function cancel(){
+    if (window[id]) {
+      cleanup();
+    }
+  }
+
+  window[id] = function(data){
+    debug('jsonp got', data);
+    cleanup();
+    if (fn) fn(null, data);
+  };
+
+  // add qs component
+  url += (~url.indexOf('?') ? '&' : '?') + param + '=' + enc(id);
+  url = url.replace('?&', '?');
+
+  debug('jsonp req "%s"', url);
+
+  // create script
+  script = document.createElement('script');
+  script.src = url;
+  target.parentNode.insertBefore(script, target);
+
+  return cancel;
+}
+
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * This is the web browser implementation of `debug()`.
  *
  * Expose `debug()` as the module.
  */
 
-exports = module.exports = __webpack_require__(12);
+
+exports = module.exports = __webpack_require__(14);
 exports.log = log;
 exports.formatArgs = formatArgs;
 exports.save = save;
@@ -841,7 +998,7 @@ function localstorage() {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
 
 /***/ }),
-/* 12 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -857,7 +1014,8 @@ exports.coerce = coerce;
 exports.disable = disable;
 exports.enable = enable;
 exports.enabled = enabled;
-exports.humanize = __webpack_require__(10);
+exports.humanize = __webpack_require__(15);
+
 
 /**
  * The currently active debug mode names, and names to skip.
@@ -1049,180 +1207,160 @@ function coerce(val) {
 
 
 /***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var access = exports.access = {
-    id: '1983140883',
-    token: '1983140883.c4c213d.70716b04afc14080a94e4ccb0c35d1b2'
-};
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-__webpack_require__(0);
-
-var _cookieNotification = __webpack_require__(1);
-
-var _cookieNotification2 = _interopRequireDefault(_cookieNotification);
-
-var _instagramFeed = __webpack_require__(2);
-
-var _instagramFeed2 = _interopRequireDefault(_instagramFeed);
-
-var _trackingFacebook = __webpack_require__(8);
-
-var _trackingFacebook2 = _interopRequireDefault(_trackingFacebook);
-
-var _notification = __webpack_require__(3);
-
-var _notification2 = _interopRequireDefault(_notification);
-
-var _numberInput = __webpack_require__(4);
-
-var _numberInput2 = _interopRequireDefault(_numberInput);
-
-var _smoothScrolling = __webpack_require__(5);
-
-var _smoothScrolling2 = _interopRequireDefault(_smoothScrolling);
-
-var _stickyNavigation = __webpack_require__(6);
-
-var _stickyNavigation2 = _interopRequireDefault(_stickyNavigation);
-
-var _theme = __webpack_require__(7);
-
-var _theme2 = _interopRequireDefault(_theme);
-
-var _trackingProjectCece = __webpack_require__(9);
-
-var _trackingProjectCece2 = _interopRequireDefault(_trackingProjectCece);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// tslint:disable-next-line:no-import-side-effect
-(0, _trackingFacebook2.default)();
-(0, _notification2.default)();
-window.addEventListener('load', function () {
-    (0, _trackingProjectCece2.default)();
-    (0, _instagramFeed2.default)();
-    (0, _stickyNavigation2.default)();
-    (0, _cookieNotification2.default)();
-    (0, _smoothScrolling2.default)();
-    (0, _numberInput2.default)();
-    (0, _theme2.default)();
-});
-
-/***/ }),
 /* 15 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 /**
- * Module dependencies
+ * Helpers.
  */
 
-var debug = __webpack_require__(11)('jsonp');
+var s = 1000;
+var m = s * 60;
+var h = m * 60;
+var d = h * 24;
+var y = d * 365.25;
 
 /**
- * Module exports.
- */
-
-module.exports = jsonp;
-
-/**
- * Callback index.
- */
-
-var count = 0;
-
-/**
- * Noop function.
- */
-
-function noop(){}
-
-/**
- * JSONP handler
+ * Parse or format the given `val`.
  *
  * Options:
- *  - param {String} qs parameter (`callback`)
- *  - prefix {String} qs parameter (`__jp`)
- *  - name {String} qs parameter (`prefix` + incr)
- *  - timeout {Number} how long after a timeout error is emitted (`60000`)
  *
- * @param {String} url
- * @param {Object|Function} optional options / callback
- * @param {Function} optional callback
+ *  - `long` verbose formatting [false]
+ *
+ * @param {String|Number} val
+ * @param {Object} [options]
+ * @throws {Error} throw an error if val is not a non-empty string or a number
+ * @return {String|Number}
+ * @api public
  */
 
-function jsonp(url, opts, fn){
-  if ('function' == typeof opts) {
-    fn = opts;
-    opts = {};
+module.exports = function(val, options) {
+  options = options || {};
+  var type = typeof val;
+  if (type === 'string' && val.length > 0) {
+    return parse(val);
+  } else if (type === 'number' && isNaN(val) === false) {
+    return options.long ? fmtLong(val) : fmtShort(val);
   }
-  if (!opts) opts = {};
+  throw new Error(
+    'val is not a non-empty string or a valid number. val=' +
+      JSON.stringify(val)
+  );
+};
 
-  var prefix = opts.prefix || '__jp';
+/**
+ * Parse the given `str` and return milliseconds.
+ *
+ * @param {String} str
+ * @return {Number}
+ * @api private
+ */
 
-  // use the callback name that was passed if one was provided.
-  // otherwise generate a unique name by incrementing our counter.
-  var id = opts.name || (prefix + (count++));
-
-  var param = opts.param || 'callback';
-  var timeout = null != opts.timeout ? opts.timeout : 60000;
-  var enc = encodeURIComponent;
-  var target = document.getElementsByTagName('script')[0] || document.head;
-  var script;
-  var timer;
-
-
-  if (timeout) {
-    timer = setTimeout(function(){
-      cleanup();
-      if (fn) fn(new Error('Timeout'));
-    }, timeout);
+function parse(str) {
+  str = String(str);
+  if (str.length > 100) {
+    return;
   }
-
-  function cleanup(){
-    if (script.parentNode) script.parentNode.removeChild(script);
-    window[id] = noop;
-    if (timer) clearTimeout(timer);
+  var match = /^((?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|years?|yrs?|y)?$/i.exec(
+    str
+  );
+  if (!match) {
+    return;
   }
-
-  function cancel(){
-    if (window[id]) {
-      cleanup();
-    }
+  var n = parseFloat(match[1]);
+  var type = (match[2] || 'ms').toLowerCase();
+  switch (type) {
+    case 'years':
+    case 'year':
+    case 'yrs':
+    case 'yr':
+    case 'y':
+      return n * y;
+    case 'days':
+    case 'day':
+    case 'd':
+      return n * d;
+    case 'hours':
+    case 'hour':
+    case 'hrs':
+    case 'hr':
+    case 'h':
+      return n * h;
+    case 'minutes':
+    case 'minute':
+    case 'mins':
+    case 'min':
+    case 'm':
+      return n * m;
+    case 'seconds':
+    case 'second':
+    case 'secs':
+    case 'sec':
+    case 's':
+      return n * s;
+    case 'milliseconds':
+    case 'millisecond':
+    case 'msecs':
+    case 'msec':
+    case 'ms':
+      return n;
+    default:
+      return undefined;
   }
+}
 
-  window[id] = function(data){
-    debug('jsonp got', data);
-    cleanup();
-    if (fn) fn(null, data);
-  };
+/**
+ * Short format for `ms`.
+ *
+ * @param {Number} ms
+ * @return {String}
+ * @api private
+ */
 
-  // add qs component
-  url += (~url.indexOf('?') ? '&' : '?') + param + '=' + enc(id);
-  url = url.replace('?&', '?');
+function fmtShort(ms) {
+  if (ms >= d) {
+    return Math.round(ms / d) + 'd';
+  }
+  if (ms >= h) {
+    return Math.round(ms / h) + 'h';
+  }
+  if (ms >= m) {
+    return Math.round(ms / m) + 'm';
+  }
+  if (ms >= s) {
+    return Math.round(ms / s) + 's';
+  }
+  return ms + 'ms';
+}
 
-  debug('jsonp req "%s"', url);
+/**
+ * Long format for `ms`.
+ *
+ * @param {Number} ms
+ * @return {String}
+ * @api private
+ */
 
-  // create script
-  script = document.createElement('script');
-  script.src = url;
-  target.parentNode.insertBefore(script, target);
+function fmtLong(ms) {
+  return plural(ms, d, 'day') ||
+    plural(ms, h, 'hour') ||
+    plural(ms, m, 'minute') ||
+    plural(ms, s, 'second') ||
+    ms + ' ms';
+}
 
-  return cancel;
+/**
+ * Pluralization helper.
+ */
+
+function plural(ms, n, name) {
+  if (ms < n) {
+    return;
+  }
+  if (ms < n * 1.5) {
+    return Math.floor(ms / n) + ' ' + name;
+  }
+  return Math.ceil(ms / n) + ' ' + name + 's';
 }
 
 

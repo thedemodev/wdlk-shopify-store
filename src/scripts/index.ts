@@ -10,7 +10,6 @@ import numberInput from './modules/number-input';
 
 import smoothScrolling from './modules/smooth-scrolling';
 import stickyNavigation from './modules/sticky-navigation';
-import setTheme from './modules/theme';
 import trackingCece from './modules/tracking-project-cece';
 
 fbqTracking();
@@ -23,5 +22,4 @@ window.addEventListener('load', () => {
   cookieNotification();
   smoothScrolling();
   numberInput();
-  setTheme();
 });

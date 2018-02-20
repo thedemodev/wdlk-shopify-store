@@ -34,7 +34,7 @@
     {% comment %}
       Add the page template as a class for easy page or template specific styling.
     {% endcomment %}
-    <body class="Layout{% if customer %} customer-logged-in{% endif %}{% if template == 'index' %} withTheme js_scroller{% endif %}" style="{% if template == 'index' %}--theme-invert: 1;{% endif %}">
+    <body class="Layout{% if customer %} customer-logged-in{% endif %}{% if template == 'index' %} Layout--main js_scroller{% endif %}">
       <div class="Layout-container">
         {% comment %} NOTIFICATION TEASER {% endcomment %}
         {% include 'notification-teaser' %}

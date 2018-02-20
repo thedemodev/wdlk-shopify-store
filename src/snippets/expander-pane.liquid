@@ -4,10 +4,11 @@ These are the necessary variables examples to correctly initialize the component
 1. {% assign paneId = '0' %}
 2. {% assign headline = 'Headline copy' %}
 3. {% assign caption = 'Caption copy' %}
+4. {% assign categoryTitle = 'category title' %}
 
-4. {% assign srcSet1 = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/156808/mob-1.jpg' %}
-5. {% assign srcSet2 = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/156808/tab-1.jpg' %}
-6. {% assign srcSet3 = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/156808/mob-1.jpg' %}
+5. {% assign srcSet1 = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/156808/mob-1.jpg' %}
+6. {% assign srcSet2 = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/156808/tab-1.jpg' %}
+7. {% assign srcSet3 = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/156808/mob-1.jpg' %}
 
 {% endcomment %}
 
@@ -27,6 +28,6 @@ These are the necessary variables examples to correctly initialize the component
     <label class="Expander-close Link" for="pane-{{paneId}}">
       {{'general.expander.close' | t}}
     </label>
-    <div class="Expander-intro Headline Headline--2">Category</div>
+    <div class="Expander-intro Headline Headline--2">{{ categoryTitle }}</div>
   </section>
 </label>
