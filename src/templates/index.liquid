@@ -2,7 +2,7 @@
     <article class="Banner Banner--main">
       {% comment %}
         Main Banner Assets
-      {% endcomment %}
+
       {% assign mainBannerSmart =
           'WDLK_Main-Banner_Smartphone_@1x.png' | asset_url %}
       {% assign mainBannerSmart2x =
@@ -15,6 +15,19 @@
           'WDLK_Main-Banner_Desktop_@1x.png' | asset_url  %}
       {% assign mainBanner2x =
           'WDLK_Main-Banner_Desktop_@2x_retina.png' | asset_url  %}
+      {% endcomment %}
+      {% assign mainBannerSmart =
+          'WDLK_Main-Banner_Smartphone_1@1x.jpg' | asset_url %}
+      {% assign mainBannerSmart2x =
+          'WDLK_Main-Banner_Smartphone_1@2x_retina.jpg' | asset_url  %}
+      {% assign mainBannerMobile =
+          'WDLK_Main-Banner_Tablet_1@1x.jpg' | asset_url %}
+      {% assign mainBannerMobile2x =
+          'WDLK_Main-Banner_Tablet_1@2x_retina.jpg' | asset_url %}
+      {% assign mainBanner =
+          'WDLK_Main-Banner_Desktop_1@1x.jpg' | asset_url  %}
+      {% assign mainBanner2x =
+          'WDLK_Main-Banner_Desktop_1@2x_retina.jpg' | asset_url  %}
 
       <div class="Banner-content">
           <svg class="HeadlineBanner Banner-mainHeadline">
