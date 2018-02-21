@@ -3,8 +3,8 @@ import '../scss/index.scss';
 
 import cookieNotification from './modules/cookie-notification';
 import fadeThrough from './modules/fade-through';
-import fbqTracking from './modules/tracking-facebook';
 import instagramFeed from './modules/instagram-feed';
+import fbqTracking from './modules/tracking-facebook';
 
 import notification from './modules/notification';
 import numberInput from './modules/number-input';

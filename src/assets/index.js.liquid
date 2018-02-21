@@ -110,6 +110,22 @@ exports.default = function () {
 
 
 Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var fadeThrough = function fadeThrough() {
+    var el = document.querySelector('.js_fadeThrough');
+    console.log('this is working', el);
+};
+exports.default = fadeThrough;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
@@ -177,7 +193,7 @@ function instagramFeed() {
 }
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -222,7 +238,7 @@ function notification() {
 }
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -272,7 +288,7 @@ function numberInput() {
 }
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -333,7 +349,7 @@ function smoothScrolling() {
 }
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -402,7 +418,6 @@ function stickyNavigation() {
 }
 
 /***/ }),
-/* 7 */,
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -501,31 +516,31 @@ var _cookieNotification = __webpack_require__(1);
 
 var _cookieNotification2 = _interopRequireDefault(_cookieNotification);
 
-var _fadeThrough = __webpack_require__(18);
+var _fadeThrough = __webpack_require__(2);
 
 var _fadeThrough2 = _interopRequireDefault(_fadeThrough);
+
+var _instagramFeed = __webpack_require__(3);
+
+var _instagramFeed2 = _interopRequireDefault(_instagramFeed);
 
 var _trackingFacebook = __webpack_require__(8);
 
 var _trackingFacebook2 = _interopRequireDefault(_trackingFacebook);
 
-var _instagramFeed = __webpack_require__(2);
-
-var _instagramFeed2 = _interopRequireDefault(_instagramFeed);
-
-var _notification = __webpack_require__(3);
+var _notification = __webpack_require__(4);
 
 var _notification2 = _interopRequireDefault(_notification);
 
-var _numberInput = __webpack_require__(4);
+var _numberInput = __webpack_require__(5);
 
 var _numberInput2 = _interopRequireDefault(_numberInput);
 
-var _smoothScrolling = __webpack_require__(5);
+var _smoothScrolling = __webpack_require__(6);
 
 var _smoothScrolling2 = _interopRequireDefault(_smoothScrolling);
 
-var _stickyNavigation = __webpack_require__(6);
+var _stickyNavigation = __webpack_require__(7);
 
 var _stickyNavigation2 = _interopRequireDefault(_stickyNavigation);
 
@@ -1398,22 +1413,6 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-
-/***/ }),
-/* 17 */,
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var fadeThrough = function fadeThrough() {
-    console.log('this is working');
-};
-exports.default = fadeThrough;
 
 /***/ })
 /******/ ]);
