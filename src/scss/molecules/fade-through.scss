@@ -1,6 +1,6 @@
 .FadeThrough {
   --is-visible: 0;
-  &-img {
+  &-media {
     transition: opacity .5s cubic-bezier(0.455, 0.030, 0.515, 0.955);
 
     &:nth-of-type(1) {
