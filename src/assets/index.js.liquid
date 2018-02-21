@@ -112,9 +112,26 @@ exports.default = function () {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 var fadeThrough = function fadeThrough() {
     var el = document.querySelector('.js_fadeThrough');
-    console.log('this is working', el);
+    if (!el) {
+        return;
+    }
+    var btnList = document.querySelectorAll('.js_fadeThrough-btn');
+    if (!btnList) {
+        return;
+    }
+    var isVisible = false;
+    var handleClick = function handleClick(e) {
+        isVisible = !isVisible;
+        el.style.setProperty('--is-visible', '' + (isVisible ? 1 : 0));
+    };
+    [].concat(_toConsumableArray(btnList)).forEach(function (btn) {
+        btn.addEventListener('click', handleClick);
+    });
 };
 exports.default = fadeThrough;
 
