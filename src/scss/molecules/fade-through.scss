@@ -1,0 +1,40 @@
+.FadeThrough {
+  --is-visible: 0;
+  &-media {
+    transition: opacity .5s cubic-bezier(0.455, 0.030, 0.515, 0.955);
+
+    &:nth-of-type(1) {
+      opacity: calc(
+        (1 - var(--is-visible)) * 1
+      );
+    }
+    &:nth-of-type(2) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      opacity: var(--is-visible);
+      transition-delay: .2s;
+    }
+  }
+  &-panel {
+    position: absolute;
+    top: 0;
+    z-index: 6;
+    display: none;
+    width: 38vw;
+    height: 100%;
+
+    @include media(medium) {
+      display: block;
+    }
+    &:nth-of-type(3) {
+      left: 0;
+      cursor: url('{{ "icon-left-arrow-home.png" | asset_url }}') 33 29, auto;
+    }
+    &:nth-of-type(2) {
+      right: 0;
+      cursor: url('{{ "icon-right-arrow-home.png" | asset_url }}') 33 29, auto;
+    }
+  }
+}

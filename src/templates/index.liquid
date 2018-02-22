@@ -1,33 +1,32 @@
 <section class="Stage">
-    <article class="Banner Banner--main">
-      {% comment %}
-        Main Banner Assets
-
-      {% assign mainBannerSmart =
-          'WDLK_Main-Banner_Smartphone_@1x.png' | asset_url %}
-      {% assign mainBannerSmart2x =
-          'WDLK_Main-Banner_Smartphone_@2x_retina.png' | asset_url  %}
-      {% assign mainBannerMobile =
-          'WDLK_Main-Banner_Tablet_@1x.png' | asset_url %}
-      {% assign mainBannerMobile2x =
-          'WDLK_Main-Banner_Tablet_@2x_retina.png' | asset_url %}
-      {% assign mainBanner =
-          'WDLK_Main-Banner_Desktop_@1x.png' | asset_url  %}
-      {% assign mainBanner2x =
-          'WDLK_Main-Banner_Desktop_@2x_retina.png' | asset_url  %}
-      {% endcomment %}
+    <article class="Banner Banner--main FadeThrough js_fadeThrough">
+      {% comment %}Main Banner Primary{% endcomment %}
       {% assign mainBannerSmart =
           'WDLK_Main-Banner_Smartphone_1@1x.jpg' | asset_url %}
       {% assign mainBannerSmart2x =
-          'WDLK_Main-Banner_Smartphone_1@2x_retina.jpg' | asset_url  %}
+          'WDLK_Main-Banner_Smartphone_1@2x.jpg' | asset_url  %}
       {% assign mainBannerMobile =
           'WDLK_Main-Banner_Tablet_1@1x.jpg' | asset_url %}
       {% assign mainBannerMobile2x =
-          'WDLK_Main-Banner_Tablet_1@2x_retina.jpg' | asset_url %}
+          'WDLK_Main-Banner_Tablet_1@2x.jpg' | asset_url %}
       {% assign mainBanner =
           'WDLK_Main-Banner_Desktop_1@1x.jpg' | asset_url  %}
       {% assign mainBanner2x =
-          'WDLK_Main-Banner_Desktop_1@2x_retina.jpg' | asset_url  %}
+          'WDLK_Main-Banner_Desktop_1@2x.jpg' | asset_url  %}
+
+      {% comment %}Main Banner Secondary{% endcomment %}
+      {% assign mainBannerSmartSecondary =
+          'WDLK_Main-Banner_Smartphone_@1x.jpg' | asset_url %}
+      {% assign mainBannerSmartSecondary2x =
+          'WDLK_Main-Banner_Smartphone_@2x.jpg' | asset_url  %}
+      {% assign mainBannerMobileSecondary =
+          'WDLK_Main-Banner_Tablet_@1x.jpg' | asset_url %}
+      {% assign mainBannerMobileSecondary2x =
+          'WDLK_Main-Banner_Tablet_@2x.jpg' | asset_url %}
+      {% assign mainBannerSecondary =
+          'WDLK_Main-Banner_Desktop_@1x.jpg' | asset_url  %}
+      {% assign mainBannerSecondary2x =
+          'WDLK_Main-Banner_Desktop_@2x.jpg' | asset_url  %}
 
       <div class="Banner-content">
           <svg class="HeadlineBanner Banner-mainHeadline">
@@ -57,26 +56,42 @@
               {{'home_page.sections.main_button_copy' | t}}
           </a>
       </div>
-        <a href="#Banner-teaser" class="Banner-lead js_scroll">
-            <svg class="Icon">
-                <use xlink:href="#Arrow_down" />
-            </svg>
-            {{'home_page.sections.main_scroll_tip' | t}}
-        </a>
-        <picture class="Banner-media">
-            <source
-            media="(max-width: 480px)"
-            srcset="{{mainBannerSmart}}, {{ mainBannerSmart2x }} 2x">
-            <source
-            media="(max-width: 768px)"
-            srcset="{{ mainBannerMobile }}, {{ mainBannerMobile2x }} 2x">
-            <source
-            media="(min-width: 770px)"
-            srcset="{{ mainBanner }}, {{ mainBanner2x }} 2x">
-            <img class="Banner-image"
-            src="{{ mainBanner }}"
-            alt="Woodlike Ocean - {{'home_page.sections.main_headline' | t}}">
-        </picture>
+      <picture class="Banner-media FadeThrough-media">
+        <source
+        media="(max-width: 480px)"
+        srcset="{{mainBannerSmart}}, {{ mainBannerSmart2x }} 2x">
+        <source
+        media="(max-width: 768px)"
+        srcset="{{ mainBannerMobile }}, {{ mainBannerMobile2x }} 2x">
+        <source
+        media="(min-width: 770px)"
+        srcset="{{ mainBanner }}, {{ mainBanner2x }} 2x">
+        <img class="Banner-image"
+        src="{{ mainBanner }}"
+        alt="Woodlike Ocean - {{'home_page.sections.main_headline' | t}}">
+      </picture>
+      <picture class="Banner-media FadeThrough-media">
+        <source
+        media="(max-width: 480px)"
+        srcset="{{mainBannerSmartSecondary}}, {{ mainBannerSmartSecondary2x }} 2x">
+        <source
+        media="(max-width: 768px)"
+        srcset="{{ mainBannerMobileSecondary }}, {{ mainBannerMobileSecondary2x }} 2x">
+        <source
+        media="(min-width: 770px)"
+        srcset="{{ mainBannerSecondary }}, {{ mainBannerSecondary2x }} 2x">
+        <img class="Banner-image"
+        src="{{ mainBannerSecondary }}"
+        alt="Woodlike Ocean - {{'home_page.sections.main_headline' | t}}">
+      </picture>
+      <div class="FadeThrough-panel js_fadeThrough-btn"></div>
+      <div class="FadeThrough-panel js_fadeThrough-btn"></div>
+      <a href="#Banner-teaser" class="Banner-lead js_scroll">
+          <svg class="Icon">
+              <use xlink:href="#Arrow_down" />
+          </svg>
+          {{'home_page.sections.main_scroll_tip' | t}}
+      </a>
     </article>
     <article class="Banner Banner--teaser" id="Banner-teaser">
         <div class="Banner-content">

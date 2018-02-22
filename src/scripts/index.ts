@@ -2,6 +2,7 @@
 import '../scss/index.scss';
 
 import cookieNotification from './modules/cookie-notification';
+import fadeThrough from './modules/fade-through';
 import instagramFeed from './modules/instagram-feed';
 import fbqTracking from './modules/tracking-facebook';
 
@@ -17,6 +18,7 @@ notification();
 
 window.addEventListener('load', () => {
   trackingCece();
+  fadeThrough();
   instagramFeed();
   stickyNavigation();
   cookieNotification();
