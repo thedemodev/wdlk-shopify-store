@@ -50,6 +50,10 @@ $headline-sizes: (
     font-family: "museo_sans300";
   }
 
+  &--bold {
+    font-family: "museo500";
+  }
+
 
   //-- Generate the different headline sizes
   @include headline-sizes($headline-sizes);

@@ -1,20 +1,27 @@
 @font-face {
   font-family: "museo_sans300";
-  src: url("/s/files/1/0742/2733/files/MuseoSans_300-webfont.woff") format("woff");
+  src: url("{{ 'MuseoSans_300-webfont.woff' | file_url }}") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "museo300";
-  src: url("/s/files/1/0742/2733/files/Museo300_Regular-webfont.woff") format("woff");
+  src: url("{{ 'Museo300_Regular-webfont.woff' | file_url }}") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "quattrocento";
-  src: url("/s/files/1/0742/2733/files/quattrocento-regular-webfont.woff") format("woff");
+  font-family: "museo500";
+  src: url("{{ 'Museo500-Regular-webfont.woff' | file_url }}") format("woff");
   font-weight: normal;
   font-style: normal;
 }
+
+// @font-face {
+//   font-family: "quattrocento";
+//   src: url("{{ 'quattrocento-regular-webfont.woff' | file_url }}") format("woff");
+//   font-weight: normal;
+//   font-style: normal;
+// }

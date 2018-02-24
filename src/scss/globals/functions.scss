@@ -31,3 +31,7 @@
 @function hsla ($h, $s, $l, $a) {
   @return unquote("hsla(#{$h}, #{$s}, #{$l}, #{$a})");
 }
+
+@function rgba ($r, $g, $b, $a) {
+  @return unquote("rgba(#{$r}, #{$g}, #{$b}, #{$a})");
+}

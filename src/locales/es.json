@@ -42,13 +42,13 @@
         "code": ""
     },
     "expander": {
-      "close": "cerrar",
-      "first_headline": "Headline One",
-      "first_caption": "The first witness was the Hatter. He came in with a teacup in one hand and a piece of bread-and-butter in the other. 'I beg pardon, your Majesty,' he began, 'for bringing these in: but I hadn't quite finished my tea when I was sent for.",
-      "second_headline": "Headline Two",
-      "second_caption": "The first witness was the Hatter. He came in with a teacup in one hand and a piece of bread-and-butter in the other. 'I beg pardon, your Majesty,' he began, 'for bringing these in: but I hadn't quite finished my tea when I was sent for.",
-      "third_headline": "Headline Three",
-      "third_caption": "The first witness was the Hatter. He came in with a teacup in one hand and a piece of bread-and-butter in the other. 'I beg pardon, your Majesty,' he began, 'for bringing these in: but I hadn't quite finished my tea when I was sent for."
+      "close": "close",
+      "first_headline": "Shape Effect",
+      "first_caption": "Our shape-styles are designed to give you a mini shape effect. Crafted out of two layers (double lined) high-quality eco fabric to shape the perfect silhouette. The Shape Effect will make you feel confident and comfortable with your body at all times. We give meticulous attention to the cuts and textures details and use them to your advantage.",
+      "second_headline": "Tanning",
+      "second_caption": "Active-styles offering the perfect mix of fits, fabrics, and shapes for activities inside the ocean and the miles around it. When the action comes you can focus on what is important;  with our active-styles, you’ll feel confident and relaxed when you need it the most. They provide the right coverage for absolute movement freedom and UPF 50+ UV protection factor to protect your skin. Enjoy the movement!",
+      "third_headline": "Tanning",
+      "third_caption": "Our tan-styles are crafted for you to get ideal sun exposure and the perfect tan. With little fabric coverage but with full UPF 50+ UV protection factor on the parts you need it. Now is the time for you to get your perfect suntan."
     }
   },
   "blogs": {
@@ -257,7 +257,7 @@
         "claim": "Nosotros confeccionamos trajes de baño de alta costura hechos de redes de pescar",
         "claim_html": "Nosotros confeccionamos trajes de baño de alta costura hechos de redes de pescar recuperadas del oceano y otros materiales recyclados",
         "full_banner_1_headline": "Costura meticulosa se encuentra con la protección al medio ambiente",
-        "full_banner_2_headline": "Seamless athletic one pieces",
+        "banner_collection_alt": "Eco bikini pouch from 100% recyclable Tyvek® material included in every order",
         "frontpage_title": "Colección de portada",
         "featured_title": "Colecciones destacadas",
         "principles_banner_1": "Un bikini de Woodlike (Free Dive Hipster) elimina 67g de deseschos",

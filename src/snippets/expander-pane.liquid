@@ -4,11 +4,14 @@ These are the necessary variables examples to correctly initialize the component
 1. {% assign paneId = '0' %}
 2. {% assign headline = 'Headline copy' %}
 3. {% assign caption = 'Caption copy' %}
-4. {% assign categoryTitle = 'category title' %}
+4. {% assign link = 'link' %}
 
-5. {% assign srcSet1 = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/156808/mob-1.jpg' %}
-6. {% assign srcSet2 = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/156808/tab-1.jpg' %}
-7. {% assign srcSet3 = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/156808/mob-1.jpg' %}
+5. {% assign srcSet1 = 'WDLK_Expander_Mobile_1@1x.jpg' | asset_url %}
+6. {% assign srcSet1@2x = 'WDLK_Expander_Mobile_1@2x.jpg' | asset_url %}
+7. {% assign srcSet2 = 'WDLK_Expander_Tablet_1@1x.jpg' | asset_url %}
+8. {% assign srcSet2@2x = 'WDLK_Expander_Tablet_1@2x.jpg' | asset_url %}
+9. {% assign srcSet3 = 'WDLK_Expander_Desktop_1@1x.jpg' | asset_url %}
+10. {% assign srcSet3@2x = 'WDLK_Expander_Desktop_1@1x.jpg' | asset_url %}
 
 {% endcomment %}
 
@@ -16,18 +19,29 @@ These are the necessary variables examples to correctly initialize the component
 <label class="Expander-pane" for="pane-{{paneId}}">
   <section class="Expander-container">
     <div class="Expander-content">
-        <h2 class="Headline Headline--1">{{ headline }}</h2>
+        <h2 class="Headline Headline--1 Headline--bold">{{ headline }}</h2>
         <p>{{ caption }}</p>
+        <a class="Link Link--btn" href="{{ link }}">
+          Shop {{ categoryTitle }}
+          <svg class="Icon Icon--right">
+              <use xlink:href="#Arrow_right" />
+          </svg>
+        </a>
     </div>
     <picture>
-      <source srcset="{{ srcSet1 }}" media="(max-width: 480px)">
-      <source srcset="{{ srcSet2 }}" media="(max-width: 768px)">
-      <source srcset="{{ srcSet3 }}" media="(min-width: 770px)">
-      <img class="Expander-img" src="{{ srcSet2 }}" alt="Radio Section Expander">
+      <source srcset="{{ srcSet1 }}, {{ srcSet1@2x }} 2x" media="(max-width: 480px)">
+      <source srcset="{{ srcSet2 }}, {{ srcSet2@2x }} 2x" media="(max-width: 768px)">
+      <source srcset="{{ srcSet3 }}, {{ srcSet3@2x }} 2x" media="(min-width: 770px)">
+      <img class="Expander-img" src="{{ srcSet2 }}" alt="Woodlike Ocean Eco Swimwear {{ categoryTitle }} Category">
     </picture>
+    <svg class="Expander-lead Icon">
+        <use xlink:href="#Arrow_down" />
+    </svg>
     <label class="Expander-close Link" for="pane-{{paneId}}">
-      {{'general.expander.close' | t}}
+      <svg class="Icon">
+          <use xlink:href="#Arrow_left" />
+      </svg>
     </label>
-    <div class="Expander-intro Headline Headline--2">{{ categoryTitle }}</div>
+    <div class="Expander-intro Headline Headline--2 Headline--bold">{{ categoryTitle }}</div>
   </section>
 </label>

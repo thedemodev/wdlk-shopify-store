@@ -55,7 +55,7 @@
       transform: none;
 
       > .Navigation-item  {
-        padding: 3.4rem 2rem 2.5rem;
+        padding: 3.2rem 2rem 2.5rem;
       }
     }
   }
@@ -76,7 +76,7 @@
       > .Navigation-link {
         @include create-pointer(1.5rem, $navi-bg-color) {
           position: absolute;
-          bottom: 1.5rem * -2;
+          bottom: -3.2rem;
           right: 50%;
           border: solid $nav-border-color;
           border-width: 1px 0px 0px 1px ;
@@ -128,17 +128,21 @@
     position: relative;
     display: inline-block;
     width: auto;
-    color: $typo-hex;
+    color: currentColor;
     font-size: $h5-size;
-    font-weight: bold;
+    font-weight: 700;
     line-height: 1.5;
     text-transform: uppercase;
     letter-spacing: .05rem;
 
+    &:hover {
+      color: $hex-blue-gray-dark;
+    }
+
     @include media (medium) {
       display: inline-block;
       vertical-align: middle;
-      @include copy-text($copy-size-m);
+      @include copy-text($copy-size-m, currentColor);
     }
 
     &::after {

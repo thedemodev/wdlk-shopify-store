@@ -10,8 +10,7 @@
     top: 50%;
     left: 50%;
     z-index: 1;
-    width: 100%;
-    max-width: $text-block-max-width;
+    width: 100vw;
     padding: {
         right: 20px;
         left: 20px;
@@ -61,8 +60,8 @@
 
     .Icon {
       display: block;
-      width: 16px;
-      height: 16px;
+      width: 20px;
+      height: 20px;
       margin-bottom: 8px;
       fill: $typo-hex--highlight;
     }
@@ -331,6 +330,16 @@
   &-tspan {
     &:last-of-type {
       display: none;
+    }
+  }
+
+  &-btn {
+    opacity: 0;
+    pointer-events: none;
+
+    @include media(small) {
+      opacity: 1;
+      pointer-events: auto;
     }
   }
 

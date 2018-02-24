@@ -3,61 +3,99 @@
 }
 
 .ShoppingBag {
-    display: inline-block;
-    padding: {
-        top: 1rem;
-        bottom: 1.4rem;
+  display: inline-block;
+  padding: {
+    top: 1rem;
+    bottom: 1.4rem;
+  }
+  color: $hex-coral;
+
+  @include media (medium) {
+    padding-top: 1.2rem;
+  }
+
+  &-icon {
+    width: calc(var(--shopping-cart-size) + 2px);
+    height: var(--shopping-cart-size);
+    fill-opacity: 0;
+    stroke: currentColor;
+    stroke-width: 2px;
+    pointer-events: none;
+    transition: fill .5s ease, stroke .5s ease;
+
+    .is-filled & {
+      fill: currentColor;
+      fill-opacity: 1;
+    }
+  }
+  &.is-filled:hover {
+    .ShoppingBag-icon {
+      fill: currentColor;
+      stroke: currentColor;
+    }
+  }
+
+  &-count {
+    font-size: $copy-size-s;
+    font-weight: 100;
+    stroke-width: 1px;
+    stroke: $typo-hex--tertiary;
+    color: $typo-hex--tertiary;
+    text-anchor: middle;
+  }
+
+  &--link {
+    cursor: pointer;
+  }
+  &--tonedown {
+    .ShoppingBag-icon {
+      color: $hex-shopping-cart-tonedown;
     }
 
-    @include media (medium) {
-        padding-top: 1.2rem;
+    &.is-filled {
+      .ShoppingBag-icon {
+        fill: currentColor;
+      }
     }
+  }
+}
+@include media(medium) {
+  .Layout--main {
+    .ShoppingBag {
+      //-- Changes betwenn White and Coral
+      //-- White: rgba(255, 255, 255, 1)
+      //-- Coral: rgba(255, 113, 99, 1)
+      --g: calc(
+        255 * (1 - var(--is-visible)) +
+        113 * var(--is-visible)
+      );
+      --b: calc(
+        255 * (1 - var(--is-visible)) +
+        99 * var(--is-visible)
+      );
 
-    &-icon {
-        width: calc(var(--shopping-cart-size) + 2px);
-        height: var(--shopping-cart-size);
-        fill-opacity: 0;
-        stroke: currentColor;
-        stroke-width: 2px;
-        color: $hex-shopping-cart-color;
-        pointer-events: none;
-        transition: fill .5s ease, stroke .5s ease;
+      color: rgba(255, var(--g), var(--b), 1);
 
-        .is-filled & {
-            fill: currentColor;
-            fill-opacity: 1;
-
-        }
+      &-count {
+        --g: calc(
+          113 * (1 - var(--is-visible)) +
+          255 * var(--is-visible)
+        );
+        --b: calc(
+          99 * (1 - var(--is-visible)) +
+          255 * var(--is-visible)
+        );
+        stroke: rgba(255, var(--g), var(--b), 1);;
+      }
     }
-    &.is-filled:hover {
-        .ShoppingBag-icon {
-            fill: $hex-shopping-cart-hover;
-            stroke: $hex-shopping-cart-hover;
-        }
+    .Header:hover,
+    .is-undocked {
+      .ShoppingBag {
+        color: $hex-coral;
+      }
+      .ShoppingBag-count {
+        stroke: $hex-white;
+      }
     }
-
-    &-count {
-        font-size: $copy-size-s;
-        font-weight: 100;
-        stroke-width: 1px;
-        stroke: $typo-hex--tertiary;
-        color: $typo-hex--tertiary;
-        text-anchor: middle;
-    }
-
-    &--link {
-        cursor: pointer;
-    }
-    &--tonedown {
-        .ShoppingBag-icon {
-            color: $hex-shopping-cart-tonedown;
-        }
-
-        &.is-filled {
-            .ShoppingBag-icon {
-                fill: currentColor;
-            }
-        }
-
-    }
+  }
 }

@@ -1,0 +1,30 @@
+<article class="Banner Banner--full Banner--principles Banner--informative">
+  <a href="{{ pages['sustainability'].url }}">
+    {% assign videoWebM =
+      'WDLK_Brand-Video-Bg.webm' | file_url %}
+    {% assign videoMp4 =
+      'WDLK_Brand-Video-Bg.mp4' | file_url %}
+    {% assign videoPoster =
+      'WDLK_Brand-Video-Poster.jpg' | file_img_url %}
+    {% assign mute = true %}
+    {% include 'video' %}
+  </a>
+  <div class="Banner-content">
+      <h3 class="Headline Headline--4">
+          {{'home_page.sections.full_banner_1_headline' | t}}
+      </h3>
+      <p class="Banner-copy">
+          {{ 'home_page.sections.principle_banner_2' | t}}
+      </p>
+      <a class="Link Link--btn" href="{{ pages['sustainability'].url }}">
+          {{'general.buttons.link_read_more' | t}}
+          <svg class="Icon Icon--right">
+              <use xlink:href="#Arrow_right" />
+          </svg>
+      </a>
+      {% comment %}
+        $todo: once the site setup include the share functionality for the banner.
+        {% include 'social-list' with 'default' %}
+      {% endcomment %}
+  </div>
+</article>

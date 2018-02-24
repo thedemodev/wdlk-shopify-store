@@ -1,0 +1,68 @@
+ {% comment %}
+    <article class="Banner Banner--half Banner--collection">
+        {% assign halfBannerSmart =
+            'WDLK_Half-Banner1_Smartphone_1x.jpg' | asset_url %}
+        {% assign halfBannerSmart2x =
+            'WDLK_Half-Banner1_Smartphone_2x.jpg' | asset_url  %}
+        {% assign halfBannerMobile =
+            'WDLK_Half-Banner1_Tablet_1x.jpg' | asset_url %}
+        {% assign halfBannerMobile2x =
+            'WDLK_Half-Banner1_Tablet_2x.jpg' | asset_url %}
+        {% assign halfBanner =
+            'WDLK_Half-Banner1_Desktop_1x.jpg' | asset_url  %}
+        {% assign halfBanner2x =
+            'WDLK_Half-Banner1_Desktop_2x.jpg' | asset_url  %}
+        <a href="{{ collections['bikini-tops'].url}}" >
+            <div class="Banner-content">
+                <h3 class="Headline Headline--4">{{ collections['bikini-tops'].title}}</h3>
+            </div>
+            <picture>
+                <source
+                media="(max-width: 480px)"
+                srcset="{{halfBannerSmart}}, {{ halfBannerSmart2x }} 2x">
+                <source
+                media="(max-width: 768px)"
+                srcset="{{ halfBannerMobile }}, {{ halfBannerMobile2x }} 2x">
+                <source
+                media="(min-width: 770px)"
+                srcset="{{ halfBanner }}, {{ halfBanner2x}} 2x">
+                <img class="Banner-image"
+                src="{{ halfBanner }}"
+                alt="{{ 'home_page.sections.collection_banner_1'}} | t">
+            </picture>
+        </a>
+    </article>
+    <article class="Banner Banner--half Banner--principles">
+        {% assign halfBanner2Smart =
+            'WDLK_Half-Banner2_Smartphone_1x.jpg' | asset_url %}
+        {% assign halfBanner2Smart2x =
+            'WDLK_Half-Banner2_Smartphone_2x.jpg' | asset_url  %}
+        {% assign halfBanner2Mobile =
+            'WDLK_Half-Banner2_Tablet_1x.jpg' | asset_url %}
+        {% assign halfBanner2Mobile2x =
+            'WDLK_Half-Banner2_Tablet_2x.jpg' | asset_url %}
+        {% assign halfBanner2 =
+            'WDLK_Half-Banner2_Desktop_1x.jpg' | asset_url  %}
+        {% assign halfBanner22x =
+            'WDLK_Half-Banner2_Desktop_2x.jpg' | asset_url  %}
+        <a href="{{ pages['sustainability'].url}}" >
+            <div class="Banner-content">
+                <h3 class="Headline Headline--3">{{'home_page.sections.principles_banner_1' | t}}</h3>
+            </div>
+            <picture>
+                <source
+                media="(max-width: 480px)"
+                srcset="{{halfBanner2Smart}}, {{ halfBanner2Smart2x }} 2x">
+                <source
+                media="(max-width: 768px)"
+                srcset="{{ halfBanner2Mobile }}, {{ halfBanner2Mobile2x }} 2x">
+                <source
+                media="(min-width: 770px)"
+                srcset="{{ halfBanner2 }}, {{ halfBanner22x}} 2x">
+                <img class="Banner-image"
+                src="{{ halfBanner2 }}"
+                alt="{{'home_page.sections.principles_banner_1' | t}}">
+            </picture>
+        </a>
+    </article>
+    {% endcomment %}

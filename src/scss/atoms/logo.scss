@@ -1,14 +1,39 @@
 .Logo {
-    display: flex;
+  display: flex;
 
-    &-img {
-        width: 122px;
-        height: 46px;
-        fill: $link-hex-color;
-        transition: fill $button-timing ease;
+  &-img {
+    width: 122px;
+    height: 46px;
+    fill: $hex-coral;
+    transition: fill $button-timing ease;
 
-        &:hover {
-            fill: $link-hex-hover-color;
-        }
+    &:hover {
+        fill: $link-hex-hover-color;
     }
+  }
+}
+
+@include media(medium) {
+  .Layout--main {
+    .Logo-img {
+      //-- Changes betwenn White and Coral
+      //-- White: rgba(255, 255, 255, 1)
+      //-- Coral: rgba(255, 113, 99, 1)
+      --g: calc(
+        255 * (1 - var(--is-visible)) +
+        113 * var(--is-visible)
+      );
+      --b: calc(
+        255 * (1 - var(--is-visible)) +
+        99 * var(--is-visible)
+      );
+      fill: rgba(255, var(--g), var(--b), 1);
+    }
+    .Header:hover,
+    .is-undocked {
+      .Logo-img {
+        fill: $hex-coral;
+      }
+    }
+  }
 }

@@ -1,40 +1,63 @@
 .AccountNavigation {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 100%;
-    font-size: 0;
-    line-height: 0;
-    vertical-align: middle;
+  //-- Changes betwenn White and Spanish Gray
+  //-- White: rgba(255, 255, 255, 1)
+  //-- Spanish Gray: rgba(153, 153, 153, 1)
+  --r: calc(
+      255 * (1 - var(--is-visible)) +
+      153 * var(--is-visible)
+    );
+  --g: calc(
+    255 * (1 - var(--is-visible)) +
+    153 * var(--is-visible)
+  );
+  --b: calc(
+    255 * (1 - var(--is-visible)) +
+    153 * var(--is-visible)
+  );
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  font-size: 0;
+  line-height: 0;
+  vertical-align: middle;
+  color: rgba(var(--r), var(--g), var(--b), 1);
 
-    &-list {
-        display: none;
-        margin: {
-            top: 1rem;
-            right: 1rem;
-        }
-
-        @include media (medium) {
-            display: inline-block;
-        }
+  &-list {
+    display: none;
+    margin: {
+      top: .5rem;
+      right: 1rem;
     }
 
-    &-item {
-        display: inline-block;
-        color: $typo-hex--tone-down;
-        font-size: $copy-size-s;
-        font-weight: bold;
-        line-height: 1.5;
-        letter-spacing: 0.05rem;
-
-        &:first-of-type {
-            padding-right: $base-margin;
-            border: solid currentColor;
-            border-width: 0 1px 0 0;
-        }
-
-        &:last-of-type {
-            padding-left: $base-margin;
-        }
+    @include media (medium) {
+      display: inline-block;
     }
+  }
+
+  &-item {
+    display: inline-block;
+    color: currentColor;
+    font-size: $copy-size-s;
+    font-weight: bold;
+    line-height: 1.5;
+    letter-spacing: 0.05rem;
+
+    &:first-of-type {
+      padding-right: $base-margin;
+      border: solid currentColor;
+      border-width: 0 1px 0 0;
+    }
+
+    &:last-of-type {
+      padding-left: $base-margin;
+    }
+  }
+}
+
+.Header:hover,
+.is-undocked {
+  .AccountNavigation-item {
+    color: $typo-hex--tone-down;
+  }
 }

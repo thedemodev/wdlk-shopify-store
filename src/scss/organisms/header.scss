@@ -10,6 +10,7 @@
   height: $nav-height;
   padding: 0 20px;
   margin-bottom: -$nav-height;
+  color: $hex-blue-gray-dark;
 
   &.is-sticky {
     position: fixed;
@@ -57,6 +58,33 @@
       border-bottom-width: 1px;
       opacity: 1;
       transform: none;
+    }
+  }
+}
+
+@include media (medium) {
+  .Layout--main {
+    .Header {
+      //-- Changes betwenn White and Platinum
+      //-- White: rgba(255, 255, 255, 1)
+      //-- Platinum: rgba(89, 103, 113, 1)
+      --r: calc(
+      255 * (1 - var(--is-visible)) +
+      89 * var(--is-visible)
+      );
+      --g: calc(
+      255 * (1 - var(--is-visible)) +
+      103 * var(--is-visible)
+      );
+      --b: calc(
+      255 * (1 - var(--is-visible)) +
+      113 * var(--is-visible)
+      );
+      color: rgba(var(--r), var(--g), var(--b), 1);
+      &.is-undocked,
+      &:hover {
+        color: $hex-blue-gray-dark;
+      }
     }
   }
 }

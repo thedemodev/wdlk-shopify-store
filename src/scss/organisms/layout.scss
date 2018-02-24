@@ -8,23 +8,4 @@
   @include media(medium) {
     margin-bottom: 603px;
   }
-  &--main {
-    .Navigation-link,
-    .AccountNavigation-item {
-      color: $hex-white;
-      &:hover {
-        color: $typo-hex;
-      }
-    }
-
-    .Header {
-      &:hover,
-      &.is-undocked {
-        .Navigation-link,
-        .AccountNavigation-item {
-          color: $typo-hex;
-        }
-      }
-    }
-  }
 }

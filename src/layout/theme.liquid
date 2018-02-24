@@ -23,7 +23,7 @@
 
         <link rel="preload" href="{{ 'MuseoSans_300-webfont.woff' | file_url }}" as="font" type="font/woff">
         <link rel="preload" href="{{ 'Museo300_Regular-webfont.woff' | file_url }}" as="font" type="font/woff">
-        <link rel="preload" href="{{ 'quattrocento-regular-webfont.woff' | file_url }}" as="font" type="font/woff">
+        <link rel="preload" href="{{ 'Museo500-Regular-webfont.woff' | file_url }}" as="font" type="font/woff">
         {{ 'index.css' | asset_url | stylesheet_tag }}
 
         {% comment %}
@@ -35,7 +35,7 @@
       Add the page template as a class for easy page or template specific styling.
     {% endcomment %}
     <body class="Layout{% if customer %} customer-logged-in{% endif %}{% if template == 'index' %} Layout--main js_scroller{% endif %}">
-      <div class="Layout-container">
+      <div class="Layout-container {% if template == 'index' %}js_fadeThrough{% endif %}">
         {% comment %} NOTIFICATION TEASER {% endcomment %}
         {% include 'notification-teaser' %}
         {% comment %} Header {% endcomment %}

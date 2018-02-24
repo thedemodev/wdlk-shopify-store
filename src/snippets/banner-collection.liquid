@@ -1,0 +1,40 @@
+<article class="Banner Banner--full Banner--collection">
+  {% assign collectionBannerDesktop =
+      'WDLK_Banner-Collection_Desktop@1x.jpg' | asset_url %}
+  {% assign collectionBannerDesktop2x =
+      'WDLK_Banner-Collection_Desktop@2x.jpg' | asset_url  %}
+  {% assign collectionBannerTablet =
+      'WDLK_Banner-Collection_Tablet@1x.jpg' | asset_url %}
+  {% assign collectionBannerTablet2x =
+      'WDLK_Banner-Collection_Tablet@2x.jpg' | asset_url %}
+  {% assign collectionBannerMobile =
+      'WDLK_Banner-Collection_Mobile@1x.jpg' | asset_url  %}
+  {% assign collectionBannerMobile2x =
+      'WDLK_Banner-Collection_Mobile@2x.jpg' | asset_url  %}
+
+  <a href="{{ collections['one-pieces'].url }}" >
+      <div class="Banner-content">
+          <h3 class="Headline Headline--3">{{'home_page.sections.full_banner_2_headline' | t}}</h3>
+          <span class="Link Link--btn">
+              {{'general.buttons.link_shop_now' | t}}
+              <svg class="Icon Icon--right">
+                  <use xlink:href="#Arrow_right" />
+              </svg>
+          </span>
+      </div>
+      <picture>
+        <source
+          media="(max-width: 480px)"
+          srcset="{{ collectionBannerMobile }}, {{ collectionBannerMobile2x}} 2x">
+        <source
+        media="(max-width: 768px)"
+        srcset="{{ collectionBannerTablet }}, {{ collectionBannerTablet2x }} 2x">
+        <source
+        media="(min-width: 770px)"
+        srcset="{{ collectionBannerDesktop }}, {{ collectionBannerDesktop2x}} 2x">
+        <img class="Banner-image"
+        src="{{ collectionBannerDesktop }}"
+        alt="{{'home_page.sections.full_banner_2_headline' | t}}">
+      </picture>
+  </a>
+</article>

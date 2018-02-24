@@ -264,51 +264,6 @@ function notification() {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.default = notification;
-function notification() {
-    var notificationEl = document.querySelector('.js_notification');
-    if (!notificationEl) {
-        return;
-    }
-    var closeBtn = notificationEl.querySelector('.js_notification-btn');
-    var sessionStorage = window.sessionStorage;
-    var hiddenNotification = 'hiddenNotification';
-    var activeClass = 'is-active';
-    var verifyNotification = function verifyNotification() {
-        return sessionStorage.getItem(hiddenNotification);
-    };
-    if (verifyNotification()) {
-        return;
-    }
-    var loadNotification = function loadNotification() {
-        notificationEl.classList.add(activeClass);
-    };
-    var hideNotification = function hideNotification() {
-        sessionStorage.setItem(hiddenNotification, 'true');
-        notificationEl.classList.remove(activeClass);
-    };
-    var handleLoadEvent = function handleLoadEvent() {
-        loadNotification();
-        window.removeEventListener('load', handleLoadEvent);
-    };
-    var handleClickEvent = function handleClickEvent() {
-        hideNotification();
-        closeBtn.removeEventListener('click', handleClickEvent);
-    };
-    window.addEventListener('load', handleLoadEvent);
-    window.addEventListener('click', handleClickEvent);
-}
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
 exports.default = numberInput;
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -687,12 +642,6 @@ function jsonp(url, opts, fn){
   var script;
   var timer;
 
-  if (timeout) {
-    timer = setTimeout(function(){
-      cleanup();
-      if (fn) fn(new Error('Timeout'));
-    }, timeout);
-  }
 
   if (timeout) {
     timer = setTimeout(function(){
