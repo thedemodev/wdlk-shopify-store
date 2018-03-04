@@ -19,17 +19,12 @@ const init = (): void => {
   stickyNavigation();
   cookieNotification();
 
-  const mainBannerTrigger = document.getElementsByClassName('js_scroll')[0];
+  const mainBannerTrigger = document.querySelectorAll('.js_scroll')[0];
   const expander = document.querySelectorAll('.js_expander')[0];
-  const expanderTrigger = document.querySelectorAll('.js_expander_lead')[0];
+  const expanderPanes = document.querySelectorAll('.js_expander_lead');
   smoothScrolling(mainBannerTrigger);
-  smoothScrolling(expanderTrigger, expander);
+  smoothScrolling(expanderPanes, expander);
 
-  expanderTrigger.addEventListener('click', (e: Event) => {
-    e.preventDefault();
-    console.log('init its working', e.target);
-    console.log('showing the expander', expander);
-  });
   fadeThrough();
   instagramFeed();
   trackingCece();

@@ -312,6 +312,7 @@ $expander-bezier   : cubic-bezier(0.165, 0.84, 0.44, 1);
     position: absolute;
     top: calc(100vh - 120px);
     left: 50%;
+    cursor: pointer;
     transform: translate3d(-50%, 0, 0);
     @include media(medium) {
       opacity: 0;

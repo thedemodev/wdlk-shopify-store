@@ -270,15 +270,13 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = smoothScrolling;
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function smoothScrolling(triggerEl) {
     var scrollLayerEl = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document.querySelector(':root');
 
     if (!triggerEl) {
-        return;
-    }
-    var id = triggerEl.getAttribute('href').substr(1) || '';
-    var targetEl = document.getElementById('' + id);
-    if (!targetEl) {
         return;
     }
     /*
@@ -297,7 +295,6 @@ function smoothScrolling(triggerEl) {
         var startPosition = scrollLayer.scrollTop;
         var positionDelta = el.offsetTop - startPosition;
         var startTime = null;
-        console.log(startPosition, 'startPosition');
         // tslint:disable-next-line
         cb = cb || function () {};
         var animateScroll = function animateScroll(timeStamp) {
@@ -307,21 +304,37 @@ function smoothScrolling(triggerEl) {
                 // tslint:disable-next-line
                 return cb();
             }
-            console.log(timeDelta, 'time delta $$$$$');
-            console.log(startPosition, 'start position $$$$$');
-            console.log(positionDelta, 'positionDelta &&&&');
             scrollLayer.scrollTop = Math.easeInOutExpo(timeDelta, startPosition, positionDelta, duration);
             window.requestAnimationFrame(animateScroll);
         };
         window.requestAnimationFrame(animateScroll);
     };
-    var scroll = function scroll(e) {
-        e.preventDefault();
-        scrollTo(scrollLayerEl, targetEl, 1618, function () {
-            window.location.hash = '#' + targetEl.id;
-        });
-    };
-    triggerEl.addEventListener('click', scroll, false);
+    console.log(triggerEl, '####');
+    var nodeList = [].concat(_toConsumableArray(triggerEl)).filter(function (el) {
+        return el.getAttribute('href');
+    }).forEach(function (el) {
+        var id = el.getAttribute('href').substr(1) || '';
+        var targetEl = document.getElementById('' + id);
+        console.log(targetEl, 'sss');
+        var scroll = function scroll(e) {
+            e.preventDefault();
+            scrollTo(scrollLayerEl, targetEl, 1618, function () {
+                window.location.hash = '#' + targetEl.id;
+            });
+            el.removeEventListener('click', scroll);
+        };
+        el.addEventListener('click', scroll, false);
+    });
+    // const id = triggerEl.getAttribute('href').substr(1) || '';
+    // const targetEl = document.getElementById(`${id}`);
+    // const scroll = (e: Event) => {
+    //   e.preventDefault();
+    //   scrollTo(scrollLayerEl, targetEl, 1618, () => {
+    //     window.location.hash = `#${targetEl.id}`;
+    //   });
+    //   triggerEl.removeEventListener('click', scroll);
+    // };
+    // triggerEl.addEventListener('click', scroll, false);
 }
 
 /***/ }),
@@ -527,16 +540,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var init = function init() {
     (0, _stickyNavigation2.default)();
     (0, _cookieNotification2.default)();
-    var mainBannerTrigger = document.getElementsByClassName('js_scroll')[0];
+    var mainBannerTrigger = document.querySelectorAll('.js_scroll')[0];
     var expander = document.querySelectorAll('.js_expander')[0];
-    var expanderTrigger = document.querySelectorAll('.js_expander_lead')[0];
+    var expanderPanes = document.querySelectorAll('.js_expander_lead');
     (0, _smoothScrolling2.default)(mainBannerTrigger);
-    (0, _smoothScrolling2.default)(expanderTrigger, expander);
-    expanderTrigger.addEventListener('click', function (e) {
-        e.preventDefault();
-        console.log('init its working', e.target);
-        console.log('showing the expander', expander);
-    });
+    (0, _smoothScrolling2.default)(expanderPanes, expander);
     (0, _fadeThrough2.default)();
     (0, _instagramFeed2.default)();
     (0, _trackingProjectCece2.default)();
