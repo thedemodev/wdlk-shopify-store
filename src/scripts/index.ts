@@ -14,14 +14,26 @@ import stickyNavigation from './modules/sticky-navigation';
 import trackingCece from './modules/tracking-project-cece';
 
 fbqTracking();
-notification();
 
-window.addEventListener('load', () => {
-  trackingCece();
-  fadeThrough();
-  instagramFeed();
+const init = (): void => {
   stickyNavigation();
   cookieNotification();
-  smoothScrolling();
+
+  const mainBannerTrigger = document.getElementsByClassName('js_scroll')[0];
+  const expander = document.querySelectorAll('.js_expander')[0];
+  const expanderTrigger = document.querySelectorAll('.js_expander_lead')[0];
+  smoothScrolling(mainBannerTrigger);
+  smoothScrolling(expanderTrigger, expander);
+
+  expanderTrigger.addEventListener('click', (e: Event) => {
+    e.preventDefault();
+    console.log('init its working', e.target);
+    console.log('showing the expander', expander);
+  });
+  fadeThrough();
+  instagramFeed();
+  trackingCece();
   numberInput();
-});
+};
+
+window.addEventListener('load', init);

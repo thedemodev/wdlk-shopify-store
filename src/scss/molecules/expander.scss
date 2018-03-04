@@ -238,6 +238,7 @@ $expander-bezier   : cubic-bezier(0.165, 0.84, 0.44, 1);
   &-content {
     align-self: flex-end;
     max-width: 50rem;
+    margin: 0 auto;
     padding-bottom: 100px;
     opacity: 0;
     pointer-events: auto;
@@ -248,6 +249,7 @@ $expander-bezier   : cubic-bezier(0.165, 0.84, 0.44, 1);
 
     @include media(medium) {
       align-self: flex-start;
+      margin: 0;
       padding-bottom: 0;
       font-size: $copy-size-l;
       text-align: left;
@@ -316,6 +318,15 @@ $expander-bezier   : cubic-bezier(0.165, 0.84, 0.44, 1);
       pointer-events: none;
       animation-play-state: paused;
     }
+  }
+  &-scrollContent {
+    position: absolute;
+    bottom: 65vh;
+    right: 0;
+    z-index: -2;
+    width: 100vw;
+    height: 50vh;
+    pointer-events: none;
   }
 
   &-state {
@@ -401,6 +412,7 @@ $expander-bezier   : cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         .Expander-lead {
+          z-index: 10;
           animation: lead-arrow 2s $expander-bezier;
           animation-iteration-count: 4;
           &:hover {

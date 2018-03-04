@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 11);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -150,9 +150,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 exports.default = instagramFeed;
 
-var _access = __webpack_require__(10);
+var _access = __webpack_require__(9);
 
-var _jsonp = __webpack_require__(12);
+var _jsonp = __webpack_require__(11);
 
 var _jsonp2 = _interopRequireDefault(_jsonp);
 
@@ -219,51 +219,6 @@ function instagramFeed() {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.default = notification;
-function notification() {
-    var notificationEl = document.querySelector('.js_notification');
-    if (!notificationEl) {
-        return;
-    }
-    var closeBtn = notificationEl.querySelector('.js_notification-btn');
-    var sessionStorage = window.sessionStorage;
-    var hiddenNotification = 'hiddenNotification';
-    var activeClass = 'is-active';
-    var verifyNotification = function verifyNotification() {
-        return sessionStorage.getItem(hiddenNotification);
-    };
-    if (verifyNotification()) {
-        return;
-    }
-    var loadNotification = function loadNotification() {
-        notificationEl.classList.add(activeClass);
-    };
-    var hideNotification = function hideNotification() {
-        sessionStorage.setItem(hiddenNotification, 'true');
-        notificationEl.classList.remove(activeClass);
-    };
-    var handleLoadEvent = function handleLoadEvent() {
-        loadNotification();
-        window.removeEventListener('load', handleLoadEvent);
-    };
-    var handleClickEvent = function handleClickEvent() {
-        hideNotification();
-        closeBtn.removeEventListener('click', handleClickEvent);
-    };
-    window.addEventListener('load', handleLoadEvent);
-    window.addEventListener('click', handleClickEvent);
-}
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
 exports.default = numberInput;
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -305,7 +260,7 @@ function numberInput() {
 }
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -315,9 +270,9 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = smoothScrolling;
-function smoothScrolling() {
-    var scrollLayerEl = document.querySelector(':root');
-    var triggerEl = document.getElementsByClassName('js_scroll')[0];
+function smoothScrolling(triggerEl) {
+    var scrollLayerEl = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document.querySelector(':root');
+
     if (!triggerEl) {
         return;
     }
@@ -342,6 +297,7 @@ function smoothScrolling() {
         var startPosition = scrollLayer.scrollTop;
         var positionDelta = el.offsetTop - startPosition;
         var startTime = null;
+        console.log(startPosition, 'startPosition');
         // tslint:disable-next-line
         cb = cb || function () {};
         var animateScroll = function animateScroll(timeStamp) {
@@ -351,6 +307,9 @@ function smoothScrolling() {
                 // tslint:disable-next-line
                 return cb();
             }
+            console.log(timeDelta, 'time delta $$$$$');
+            console.log(startPosition, 'start position $$$$$');
+            console.log(positionDelta, 'positionDelta &&&&');
             scrollLayer.scrollTop = Math.easeInOutExpo(timeDelta, startPosition, positionDelta, duration);
             window.requestAnimationFrame(animateScroll);
         };
@@ -366,7 +325,7 @@ function smoothScrolling() {
 }
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -435,7 +394,7 @@ function stickyNavigation() {
 }
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -473,7 +432,7 @@ function fbqTracking() {
 }
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -506,7 +465,7 @@ function trackingCece() {
 }
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -521,7 +480,7 @@ var access = exports.access = {
 };
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -541,54 +500,59 @@ var _instagramFeed = __webpack_require__(3);
 
 var _instagramFeed2 = _interopRequireDefault(_instagramFeed);
 
-var _trackingFacebook = __webpack_require__(8);
+var _trackingFacebook = __webpack_require__(7);
 
 var _trackingFacebook2 = _interopRequireDefault(_trackingFacebook);
 
-var _notification = __webpack_require__(4);
-
-var _notification2 = _interopRequireDefault(_notification);
-
-var _numberInput = __webpack_require__(5);
+var _numberInput = __webpack_require__(4);
 
 var _numberInput2 = _interopRequireDefault(_numberInput);
 
-var _smoothScrolling = __webpack_require__(6);
+var _smoothScrolling = __webpack_require__(5);
 
 var _smoothScrolling2 = _interopRequireDefault(_smoothScrolling);
 
-var _stickyNavigation = __webpack_require__(7);
+var _stickyNavigation = __webpack_require__(6);
 
 var _stickyNavigation2 = _interopRequireDefault(_stickyNavigation);
 
-var _trackingProjectCece = __webpack_require__(9);
+var _trackingProjectCece = __webpack_require__(8);
 
 var _trackingProjectCece2 = _interopRequireDefault(_trackingProjectCece);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// tslint:disable-next-line:no-import-side-effect
-(0, _trackingFacebook2.default)();
-(0, _notification2.default)();
-window.addEventListener('load', function () {
-    (0, _trackingProjectCece2.default)();
-    (0, _fadeThrough2.default)();
-    (0, _instagramFeed2.default)();
+(0, _trackingFacebook2.default)(); // tslint:disable-next-line:no-import-side-effect
+
+var init = function init() {
     (0, _stickyNavigation2.default)();
     (0, _cookieNotification2.default)();
-    (0, _smoothScrolling2.default)();
+    var mainBannerTrigger = document.getElementsByClassName('js_scroll')[0];
+    var expander = document.querySelectorAll('.js_expander')[0];
+    var expanderTrigger = document.querySelectorAll('.js_expander_lead')[0];
+    (0, _smoothScrolling2.default)(mainBannerTrigger);
+    (0, _smoothScrolling2.default)(expanderTrigger, expander);
+    expanderTrigger.addEventListener('click', function (e) {
+        e.preventDefault();
+        console.log('init its working', e.target);
+        console.log('showing the expander', expander);
+    });
+    (0, _fadeThrough2.default)();
+    (0, _instagramFeed2.default)();
+    (0, _trackingProjectCece2.default)();
     (0, _numberInput2.default)();
-});
+};
+window.addEventListener('load', init);
 
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
  * Module dependencies
  */
 
-var debug = __webpack_require__(13)('jsonp');
+var debug = __webpack_require__(12)('jsonp');
 
 /**
  * Module exports.
@@ -684,7 +648,7 @@ function jsonp(url, opts, fn){
 
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {/**
@@ -693,7 +657,7 @@ function jsonp(url, opts, fn){
  * Expose `debug()` as the module.
  */
 
-exports = module.exports = __webpack_require__(14);
+exports = module.exports = __webpack_require__(13);
 exports.log = log;
 exports.formatArgs = formatArgs;
 exports.save = save;
@@ -873,10 +837,10 @@ function localstorage() {
   } catch (e) {}
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -892,7 +856,7 @@ exports.coerce = coerce;
 exports.disable = disable;
 exports.enable = enable;
 exports.enabled = enabled;
-exports.humanize = __webpack_require__(15);
+exports.humanize = __webpack_require__(14);
 
 /**
  * The currently active debug mode names, and names to skip.
@@ -1084,7 +1048,7 @@ function coerce(val) {
 
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, exports) {
 
 /**
@@ -1242,7 +1206,7 @@ function plural(ms, n, name) {
 
 
 /***/ }),
-/* 16 */
+/* 15 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
