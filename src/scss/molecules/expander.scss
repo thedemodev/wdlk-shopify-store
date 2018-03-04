@@ -9,68 +9,72 @@ $start-pane-counter: 1;
 $end-pane-counter  : 4;
 $expander-bezier   : cubic-bezier(0.860, 0.000, 0.070, 1.000);
 
-@keyframes expand-container {
-  0% {
-    transform: scale3d(3, 1.5, 1);
+/*
+/* @param {string} $name of the animation
+/* @param {number} $value of the translation position to achieve
+/* @param {boolean} $toggle the direction of the animation
+/* @return @keyframe animation
+*/
+@mixin expander-animation-s ($name, $value, $toggle: false) {
+  @keyframes #{$name} {
+    @if not $toggle {
+      0% {
+        transform: scale3d(1, .333, 1) translate3d(0, 0, 0);
+      }
+      5% {
+        transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
+      }
+      100% {
+        transform: scale3d(1, 1, 1) translate3d(0, $value, 0);
+      }
+    } @else {
+      0% {
+        transform: scale3d(1, 1, 1) translate3d(0, $value, 0);
+      }
+      95% {
+        transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
+      }
+      100% {
+        transform: scale3d(1, .333, 1) translate3d(0, 0, 0);
+      }
+    }
   }
-
-  10% {
-    transform: scale3d(1.5, 1.25, 1);
-  }
-
-  100% {
-    transform: scale3d(1, 1, 1);
-  }
+  animation: #{$name} .333s if($toggle, ease-in, ease-out);
 }
 
-@keyframes collapse-container {
-  0% {
-    transform: scale3d(1, 1, 1);
+/* @param {string} $name of the animation
+/* @param {number} $from translation X position starting point
+/* @param {boolean} $toggle the direction of the animation
+/* @param {number} $fromY translation Y position starting point
+/* @return @keyframe animation
+*/
+@mixin expander-animation-m ($name, $from: null, $toggle: false, $fromY: 0) {
+  $to: -50%;
+  @keyframes #{$name} {
+    @if not $toggle  {
+      from {
+        transform: scale3d(1, 1, 1) translate3d($from, 0, 0);
+      }
+      to {
+        transform: scale3d(1, 1, 1) translate3d($to, 0, 0);
+      }
+    }
+    @else {
+      0% {
+        transform: scale3d(1, 1, 1) translate3d($to, 0, 0);
+      }
+      50% {
+        transform: scale3d($scaled-width, .7, 1)
+          translate3d(($to + $from) / 2,
+          ($fromY/2), 0);
+      }
+      100% {
+        transform: scale3d($scaled-width, .7, 1)
+          translate3d($from, $fromY, 0);
+      }
+    }
   }
-
-  70% {
-    transform: scale3d(1.5, 1.25, 1);
-  }
-
-  100% {
-    transform: scale3d(3, 1.5, 1);
-  }
-}
-
-@keyframes expand-first-pane {
-  0% {
-    transform:
-      scale3d(#{$scaled-width}, .7, 1)
-      translate3d(-155%, 0, 0);
-  }
-  50% {
-    transform:
-      scale3d(#{$scaled-width}, .7, 1)
-      translate3d(-50%, 0, 0);
-  }
-  100% {
-    transform:
-      scale3d(1, 1, 1)
-      translate3d(-50%, 0, 0);
-  }
-}
-
-@keyframes expand-last-pane {
-  0% {
-    transform:
-      scale3d(#{$scaled-width}, .7, 1)
-      translate3d(155%, 0, 0);
-  }
-  50% {
-    transform:
-      scale3d(#{$scaled-width}, .7, 1)
-      translate3d(50%, 0, 0);
-  }
-  100% {
-    transform:
-      scale3d(1, 1, 1)
-      translate3d(50%, 0, 0);
-  }
+  animation: #{$name} .5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 @keyframes lead-arrow {
@@ -99,7 +103,10 @@ $expander-bezier   : cubic-bezier(0.860, 0.000, 0.070, 1.000);
   }
 
   .Headline {
-    color: $hex-sand;;
+    color: $hex-sand;
+    @include media(medium) {
+      color: $hex-white;
+    }
   }
 
   .Link {
@@ -111,7 +118,6 @@ $expander-bezier   : cubic-bezier(0.860, 0.000, 0.070, 1.000);
     height: 20px;
     fill: $hex-white;
     transition: fill .2s ease-in-out;
-
     &:hover {
       fill: $hex-coral;
     }
@@ -128,8 +134,15 @@ $expander-bezier   : cubic-bezier(0.860, 0.000, 0.070, 1.000);
     cursor: pointer;
     transform: scale3d(1, .333, 1) translate3d(0, 0, 0);
     transform-origin: top left;
-    transition: transform .3s linear,
-    z-index 1s linear;
+    &:nth-of-type(2) {
+      @include expander-animation-s('pane-2-collapse',
+      calc(-55vh + #{$nav-height}), true);
+    }
+    &:nth-of-type(3) {
+      @include expander-animation-s('pane-3-collapse',
+      calc(-110vh + #{$nav-height}), true);
+    }
+    transition: z-index .66s linear;
 
     @include media (medium) {
       left: 50%;
@@ -139,24 +152,27 @@ $expander-bezier   : cubic-bezier(0.860, 0.000, 0.070, 1.000);
         scale3d(#{$scaled-width}, .7, 1)
         translate3d(-50%, 0, 0);
 
-      &:first-of-type {
+      &:nth-of-type(1) {
         transform:
           scale3d(#{$scaled-width}, .7, 1)
           translate3d(-155%, 0, 0);
-        animation: expand-first-pane .5s linear;
+          @include expander-animation-m('pane-m-1-collapse', -155%, true);
       }
 
       &:nth-of-type(2) {
         transform:
           scale3d(#{$scaled-width}, .7, 1)
           translate3d(-50%, 30%, 0);
+          &:nth-of-type(2) {
+            @include expander-animation-m('pane-m-2-collapse', -50%, true, 30%);
+          }
       }
 
-      &:last-of-type {
+      &:nth-of-type(3) {
         transform:
           scale3d(#{$scaled-width}, .7, 1)
           translate3d(55%, 0, 0);
-        animation: expand-last-pane .5s linear;
+          @include expander-animation-m('pane-m-3-collapse', 55%, true);
       }
     }
 
@@ -169,7 +185,15 @@ $expander-bezier   : cubic-bezier(0.860, 0.000, 0.070, 1.000);
         @include media(medium) {
           top: auto;
         }
+        @if $n == 1 {
+          .Expander-img {
+            transform: translateY(-18%);
+            @include media(medium) {
+              transform: none;
+            }
+          }
 
+        }
         @if $n == 2 {
           .Expander-img {
             transform: translateY(-33%);
@@ -198,7 +222,6 @@ $expander-bezier   : cubic-bezier(0.860, 0.000, 0.070, 1.000);
       height: calc(100vh - #{$nav-height-medium});
       max-width: $screen-xl;
       padding: #{$size-XXL}px #{$size-XXL}px 0;
-      animation: collapse-container .26s linear;
       transform: scale3d(3, 1.5, 1);
     }
   }
@@ -211,14 +234,14 @@ $expander-bezier   : cubic-bezier(0.860, 0.000, 0.070, 1.000);
     pointer-events: auto;
     text-align: center;
     transform: translate3d(0, 150%, 0);
-    transition: opacity .33s linear, transform .33s $expander-bezier;
-    transition-delay: 0;
+
+    transition: none;
 
     @include media(medium) {
       align-self: flex-start;
       padding-bottom: 0;
       font-size: $copy-size-l;
-      text-align: left;;
+      text-align: left;
     }
 
     .Icon {
@@ -231,6 +254,7 @@ $expander-bezier   : cubic-bezier(0.860, 0.000, 0.070, 1.000);
     position: absolute;
     left: 50%;
     top: 20vh;
+    opacity: 1;
     text-align: center;
     transform: translate3d(-50%, 0, 0);
     transition: opacity linear .33s;
@@ -238,6 +262,11 @@ $expander-bezier   : cubic-bezier(0.860, 0.000, 0.070, 1.000);
 
     @include media(medium) {
       top: #{$size-XXL}px;
+
+    }
+
+    &.Expander-intro {
+      color: $hex-white;
     }
   }
 
@@ -250,7 +279,6 @@ $expander-bezier   : cubic-bezier(0.860, 0.000, 0.070, 1.000);
     height: calc(100vh - #{$nav-height});
     object-fit: cover;
     object-position: center;
-
     @include media(medium) {
       bottom: 0;
       top: auto;
@@ -265,7 +293,6 @@ $expander-bezier   : cubic-bezier(0.860, 0.000, 0.070, 1.000);
     opacity: 0;
     pointer-events: auto;
     transition: opacity .6s linear;
-
     @include media(medium) {
       top: #{$size-L}px;
       right: #{$size-XXL}px;
@@ -275,10 +302,14 @@ $expander-bezier   : cubic-bezier(0.860, 0.000, 0.070, 1.000);
 
   &-lead {
     position: absolute;
-    top: calc(100vh - 140px);
+    top: calc(100vh - 120px);
     left: 50%;
     transform: translate3d(-50%, 0, 0);
-    animation: lead-arrow 1s cubic-bezier(0.770, 0.000, 0.175, 1.000) infinite;
+    @include media(medium) {
+      opacity: 0;
+      pointer-events: none;
+      animation-play-state: paused;
+    }
   }
 
   &-state {
@@ -293,35 +324,67 @@ $expander-bezier   : cubic-bezier(0.860, 0.000, 0.070, 1.000);
         max-width: 100vw;
         overflow: scroll;
         transform: scale3d(1, 1, 1) translate3d(0, #{$nav-height}, 0);
-
+        &:nth-of-type(1) {
+          @include expander-animation-s('pane-1', $nav-height);
+        }
+        &:nth-of-type(2) {
+          @include expander-animation-s('pane-2', calc(-55vh + #{$nav-height}));
+        }
+        &:nth-of-type(3) {
+          @include expander-animation-s('pane-3', calc(-110vh + #{$nav-height}));
+        }
         @include media(medium) {
           top: $nav-height-medium;
           z-index: 15;
           overflow: auto;
           transform: scale3d(1, 1, 1);
+          &:nth-of-type(1) {
+            @include expander-animation-m('pane-m-1', -155%);
+          }
+          &:nth-of-type(2) {
+            @keyframes pane-m-2 {
+              0% {
+                transform: scale3d(#{$scaled-width}, .7, 1)
+                  translate3d(-50%, 30%, 0);
+              }
+              50% {
+                transform: scale3d(1, 1, 1)
+                  translate3d(-50%, 30%, 0);
+              }
+              100% {
+                transform: scale3d(1, 1, 1)
+                  translate3d(-50%, 0, 0);
+              }
+            }
+            animation: pane-m-2 .5s cubic-bezier(0.165, 0.84, 0.44, 1);
+          }
+          &:nth-of-type(3) {
+            @include expander-animation-m('pane-m-3', 55%);
+          }
         }
 
         .Expander-container {
           transform: scale3d(1, 1, 1);
 
-          @include media(medium) {
-            animation: expand-container .3s linear;
-          }
           @include media (xlarge) {
             max-width: $screen-xl + 480;
           }
         }
 
         .Expander-intro {
-          opacity: 0;
           transition: none;
           transition-delay: .2s;
+          animation: fade-out-in 1s ease-in-out;
+          @include media(medium) {
+            opacity: 0;
+            animation: none;
+          }
         }
 
         .Expander-content {
           opacity: 1;
-          transform: none;
-          transition-delay: .5s;
+          transform: translate3d(0, 0, 0);
+          transition: opacity .33s linear .5s, transform .33s cubic-bezier(0.165, 0.84, 0.44, 1) .5s;
         }
 
         .Expander-close {
@@ -330,6 +393,11 @@ $expander-bezier   : cubic-bezier(0.860, 0.000, 0.070, 1.000);
 
         .Expander-img {
           transform: none;
+        }
+
+        .Expander-lead {
+          animation: lead-arrow 4s cubic-bezier(0.770, 0.000, 0.175, 1.000);
+          animation-iteration-count: 4;
         }
       }
     }
@@ -358,7 +426,6 @@ $expander-bezier   : cubic-bezier(0.860, 0.000, 0.070, 1.000);
     }
   }
 }
-
 @include media(medium) {
   [for="pane-3"] {
     .Expander-content {
