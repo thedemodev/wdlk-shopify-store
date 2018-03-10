@@ -9,19 +9,21 @@ import fbqTracking from './modules/tracking-facebook';
 import notification from './modules/notification';
 import numberInput from './modules/number-input';
 
-import smoothScrolling from './modules/smooth-scrolling';
+import { initSmoothScrolling } from './modules/smooth-scrolling';
 import stickyNavigation from './modules/sticky-navigation';
 import trackingCece from './modules/tracking-project-cece';
 
 fbqTracking();
-notification();
 
-window.addEventListener('load', () => {
-  trackingCece();
-  fadeThrough();
-  instagramFeed();
+const init = (): void => {
   stickyNavigation();
   cookieNotification();
-  smoothScrolling();
+
+  fadeThrough();
+  initSmoothScrolling();
+  instagramFeed();
+  trackingCece();
   numberInput();
-});
+};
+
+window.addEventListener('load', init);

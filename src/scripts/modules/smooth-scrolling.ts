@@ -1,78 +1,91 @@
-import logger from './logger';
-
 export interface MathEasingProps extends Math {
-  easeInOutExpo(
-    t: number,
-    b: number,
-    c: number,
-    d: number
-  ): number;
+  easeInOutExpo(t: number, b: number, c: number, d: number): number;
 }
 
-export default function smoothScrolling(): void {
-    const scrollLayerEl = document.querySelector(':root');
-    const triggerEl = document.getElementsByClassName('js_scroll')[0];
-    if (!triggerEl) {
-      return;
+/*
+* @param {node list} triggerList -
+* node list of elements that trigger the scroll event
+* @param {node list} scrollLayers -
+* node list of elements that define the scrollable area
+*/
+export const smoothScrolling = (
+  triggerList: NodeListOf<Element>,
+  scrollLayers: NodeListOf<Element> = document.querySelectorAll(':root')
+) => {
+  if (!triggerList) {
+    return;
+  }
+
+  /*
+  /* Exponential Ease in and out
+  /* http://gizma.com/easing/#expo3
+  */
+  (Math as MathEasingProps).easeInOutExpo = (t, b, c, d) => {
+    t /= d / 2;
+    if (t < 1) {
+      return c / 2 * Math.pow(2, 10 * (t - 1)) + b;
     }
-    const id = triggerEl.getAttribute('href').substr(1) || '';
-    const targetEl = document.getElementById(`${id}`);
-    if (!targetEl) {
-        return;
-    }
+    t--;
+    return c / 2 * (-Math.pow(2, -10 * t) + 2) + b;
+  };
 
-    /*
-    /* Exponential Ease in and out
-    /* http://gizma.com/easing/#expo3
-    */
+  const scrollTo = (
+    scrollLayer: Element,
+    el: HTMLElement,
+    duration: number,
+    cb: () => void
+  ): void => {
+    const startPosition = scrollLayer.scrollTop;
+    const positionDelta = el.offsetTop - startPosition;
+    let startTime: number | null = null;
 
-    (Math as MathEasingProps).easeInOutExpo = (t, b, c, d) => {
-      t /= d / 2;
+    // tslint:disable-next-line
+    cb = cb || function() {};
 
-      if (t < 1) {
-        return c / 2 * Math.pow(2, 10 * (t - 1)) + b;
+    const animateScroll = (timeStamp: number): void => {
+      startTime = startTime !== null ? startTime : timeStamp;
+      const timeDelta = timeStamp - startTime;
+
+      if (timeDelta >= duration) {
+        // tslint:disable-next-line
+        return cb();
       }
 
-      t--;
-
-      return c / 2 * (-Math.pow(2, -10 * t) + 2) + b;
+      scrollLayer.scrollTop = (Math as MathEasingProps).easeInOutExpo(
+        timeDelta,
+        startPosition,
+        positionDelta,
+        duration
+      );
+      window.requestAnimationFrame(animateScroll);
     };
 
-    const scrollTo = (
-      scrollLayer: Element,
-      el: HTMLElement,
-      duration: number,
-      cb: () => void): void => {
-        const startPosition = scrollLayer.scrollTop;
-        const positionDelta = el.offsetTop - startPosition;
-        let startTime: number | null = null;
+    window.requestAnimationFrame(animateScroll);
+  };
 
-        // tslint:disable-next-line
-        cb = cb || function(){};
-
-        const animateScroll = (timeStamp: number): void => {
-            startTime = startTime !== null ? startTime : timeStamp;
-            const timeDelta = timeStamp - startTime;
-
-            if (timeDelta >= duration) {
-              // tslint:disable-next-line
-              return cb();
-            }
-
-            scrollLayer.scrollTop = (Math as MathEasingProps).easeInOutExpo(timeDelta, startPosition, positionDelta, duration);
-            window.requestAnimationFrame(animateScroll);
-        };
-
-        window.requestAnimationFrame(animateScroll);
-    };
+  [...triggerList].filter(el => el.getAttribute('href')).forEach(el => {
+    const id = el.getAttribute('href').substr(1) || '';
+    const targetEl = document.getElementById(`${id}`);
 
     const scroll = (e: Event) => {
-        e.preventDefault();
+      e.preventDefault();
 
-        scrollTo(scrollLayerEl, targetEl, 1618, () => {
-            window.location.hash = `#${targetEl.id}`;
+      scrollLayers.forEach((layer: Element) => {
+        scrollTo(layer, targetEl, 1618, () => {
+          window.location.hash = `#${targetEl.id}`;
         });
+      });
     };
 
-    triggerEl.addEventListener('click', scroll, false);
-}
+    el.addEventListener('click', scroll, false);
+  });
+};
+
+export const initSmoothScrolling = (): void => {
+  const mainBannerTrigger = document.querySelectorAll('.js_scroll');
+  const expander = document.querySelectorAll('.js_expander');
+  const expanderPanes = document.querySelectorAll('.js_expander_lead');
+
+  smoothScrolling(mainBannerTrigger);
+  smoothScrolling(expanderPanes, expander);
+};
