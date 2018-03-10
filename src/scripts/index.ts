@@ -9,6 +9,7 @@ import fbqTracking from './modules/tracking-facebook';
 import notification from './modules/notification';
 import numberInput from './modules/number-input';
 
+import { initExpander } from './modules/expander';
 import { initSmoothScrolling } from './modules/smooth-scrolling';
 import stickyNavigation from './modules/sticky-navigation';
 import trackingCece from './modules/tracking-project-cece';
@@ -20,6 +21,7 @@ const init = (): void => {
   cookieNotification();
 
   fadeThrough();
+  initExpander();
   initSmoothScrolling();
   instagramFeed();
   trackingCece();

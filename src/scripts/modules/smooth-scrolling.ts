@@ -12,10 +12,9 @@ export const smoothScrolling = (
   triggerList: NodeListOf<Element>,
   scrollLayers: NodeListOf<Element> = document.querySelectorAll(':root')
 ) => {
-  if (!triggerList) {
+  if (triggerList.length === 0) {
     return;
   }
-
   /*
   /* Exponential Ease in and out
   /* http://gizma.com/easing/#expo3
@@ -87,5 +86,5 @@ export const initSmoothScrolling = (): void => {
   const expanderPanes = document.querySelectorAll('.js_expander_lead');
 
   smoothScrolling(mainBannerTrigger);
-  smoothScrolling(expanderPanes, expander);
+  // smoothScrolling(expanderPanes, expander);
 };
