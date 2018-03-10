@@ -1,8 +1,8 @@
 <article class="Banner Banner--expander Expander">
   {% assign paneId = '1' %}
-  {% assign headline = collections['shape-effect'].title %}
+  {% assign headline = 'general.expander.first_headline' | t %}
   {% assign caption = 'general.expander.first_caption' | t %}
-  {% assign categoryTitle = collections['shape-effect'].title %}
+  {% assign categoryTitle = 'general.expander.first_headline' | t %}
   {% assign link = collections['shape-effect'].url %}
 
   {% assign srcSet1 = 'WDLK_Expander_Mobile_1@1x.jpg' | asset_url %}
@@ -14,9 +14,9 @@
   {% include 'expander-pane' %}
 
   {% assign paneId = '2' %}
-  {% assign headline = collections['active'].title %}
+  {% assign headline = 'general.expander.second_headline' | t %}
   {% assign caption = 'general.expander.second_caption' | t %}
-  {% assign categoryTitle = collections['active'].title %}
+  {% assign categoryTitle = 'general.expander.second_headline' | t %}
   {% assign link = collections['active'].url %}
 
   {% assign srcSet1 = 'WDLK_Expander_Mobile_2@1x.jpg' | asset_url %}
@@ -28,9 +28,9 @@
   {% include 'expander-pane' %}
 
   {% assign paneId = '3' %}
-  {% assign headline =  collections['tanning'].title  %}
+  {% assign headline = 'general.expander.third_headline' | t %}
   {% assign caption = 'general.expander.third_caption' | t %}
-  {% assign categoryTitle = collections['tanning'].title %}
+  {% assign categoryTitle = 'general.expander.third_headline' | t %}
   {% assign link = collections['tanning'].url %}
 
   {% assign srcSet1 = 'WDLK_Expander_Mobile_3@1x.jpg' | asset_url %}

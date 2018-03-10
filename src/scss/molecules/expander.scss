@@ -100,6 +100,7 @@ $expander-bezier   : cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .Expander {
+  --pane-height: 300;
   position: relative;
   height: #{$pane-height * 3}vh;
   margin: auto;

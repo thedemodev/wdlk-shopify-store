@@ -1,3 +1,8 @@
+import { smoothScrolling } from './smooth-scrolling';
+export type HTMLInputEvent<T extends HTMLInputElement> = Event & {
+  target: T;
+};
+
 export const expander = (
   contentList: NodeListOf<Element>,
   paneList: NodeListOf<Element>
@@ -29,9 +34,29 @@ export const expander = (
   setCssVariables(paneList, heightList);
 };
 
+export const resetState = (
+  inputList: NodeListOf<Element>,
+  paneList: NodeListOf<Element>
+) => {
+  if (inputList.length === 0) {
+    return;
+  }
+
+  const resetPosition = () => {
+    paneList.forEach((pane: HTMLElement) => {
+      pane.scrollTop = 0;
+    });
+  };
+
+  [...inputList].forEach((input: HTMLInputElement) => {
+    input.addEventListener('click', resetPosition);
+  });
+};
+
 export const initExpander = () => {
-  expander(
-    document.querySelectorAll('.js_content'),
-    document.querySelectorAll('.js_expander')
-  );
+  const panes = document.querySelectorAll('.js_expander');
+  resetState(document.querySelectorAll('.js_state'), panes);
+  expander(document.querySelectorAll('.js_content'), panes);
+  smoothScrolling(document.querySelectorAll('.js_expander_lead'), panes);
+
 };

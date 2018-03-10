@@ -331,11 +331,7 @@ var smoothScrolling = exports.smoothScrolling = function smoothScrolling(trigger
     });
 };
 var initSmoothScrolling = exports.initSmoothScrolling = function initSmoothScrolling() {
-    var mainBannerTrigger = document.querySelectorAll('.js_scroll');
-    var expander = document.querySelectorAll('.js_expander');
-    var expanderPanes = document.querySelectorAll('.js_expander_lead');
-    smoothScrolling(mainBannerTrigger);
-    // smoothScrolling(expanderPanes, expander);
+    smoothScrolling(document.querySelectorAll('.js_scroll'));
 };
 
 /***/ }),
@@ -1413,6 +1409,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+exports.initExpander = exports.resetState = exports.expander = undefined;
+
+var _smoothScrolling = __webpack_require__(5);
+
+
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 var expander = exports.expander = function expander(contentList, paneList) {
@@ -1436,8 +1437,25 @@ var expander = exports.expander = function expander(contentList, paneList) {
     };
     setCssVariables(paneList, heightList);
 };
+var resetState = exports.resetState = function resetState(inputList, paneList) {
+    if (inputList.length === 0) {
+        return;
+    }
+    var resetPosition = function resetPosition() {
+        paneList.forEach(function (pane) {
+            pane.scrollTop = 0;
+        });
+    };
+    [].concat(_toConsumableArray(inputList)).forEach(function (input) {
+        input.addEventListener('click', resetPosition);
+    });
+};
 var initExpander = exports.initExpander = function initExpander() {
-    expander(document.querySelectorAll('.js_content'), document.querySelectorAll('.js_expander'));
+    var panes = document.querySelectorAll('.js_expander');
+    resetState(document.querySelectorAll('.js_state'), panes);
+    expander(document.querySelectorAll('.js_content'), panes);
+    (0, _smoothScrolling.smoothScrolling)(document.querySelectorAll('.js_expander_lead'), panes);
+
 };
 
 /***/ })

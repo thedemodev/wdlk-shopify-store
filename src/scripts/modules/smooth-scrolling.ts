@@ -81,10 +81,6 @@ export const smoothScrolling = (
 };
 
 export const initSmoothScrolling = (): void => {
-  const mainBannerTrigger = document.querySelectorAll('.js_scroll');
-  const expander = document.querySelectorAll('.js_expander');
-  const expanderPanes = document.querySelectorAll('.js_expander_lead');
+  smoothScrolling(document.querySelectorAll('.js_scroll'));
 
-  smoothScrolling(mainBannerTrigger);
-  // smoothScrolling(expanderPanes, expander);
 };
