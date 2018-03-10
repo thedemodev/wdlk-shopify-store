@@ -9,7 +9,7 @@ import fbqTracking from './modules/tracking-facebook';
 import notification from './modules/notification';
 import numberInput from './modules/number-input';
 
-import smoothScrolling from './modules/smooth-scrolling';
+import { initSmoothScrolling } from './modules/smooth-scrolling';
 import stickyNavigation from './modules/sticky-navigation';
 import trackingCece from './modules/tracking-project-cece';
 
@@ -19,13 +19,8 @@ const init = (): void => {
   stickyNavigation();
   cookieNotification();
 
-  const mainBannerTrigger = document.querySelectorAll('.js_scroll')[0];
-  const expander = document.querySelectorAll('.js_expander')[0];
-  const expanderPanes = document.querySelectorAll('.js_expander_lead');
-  smoothScrolling(mainBannerTrigger);
-  smoothScrolling(expanderPanes, expander);
-
   fadeThrough();
+  initSmoothScrolling();
   instagramFeed();
   trackingCece();
   numberInput();

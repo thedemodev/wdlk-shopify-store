@@ -2,11 +2,17 @@ export interface MathEasingProps extends Math {
   easeInOutExpo(t: number, b: number, c: number, d: number): number;
 }
 
-export default function smoothScrolling(
-  triggerEl: NodeListOf<Element> | any,
-  scrollLayerEl: Element = document.querySelector(':root')
-): void {
-  if (!triggerEl) {
+/*
+* @param {node list} triggerList -
+* node list of elements that trigger the scroll event
+* @param {node list} scrollLayers -
+* node list of elements that define the scrollable area
+*/
+export const smoothScrolling = (
+  triggerList: NodeListOf<Element>,
+  scrollLayers: NodeListOf<Element> = document.querySelectorAll(':root')
+) => {
+  if (!triggerList) {
     return;
   }
 
@@ -57,36 +63,29 @@ export default function smoothScrolling(
     window.requestAnimationFrame(animateScroll);
   };
 
-  console.log(triggerEl, '####');
-  const nodeList = [...triggerEl]
-    .filter(el => el.getAttribute('href'))
-    .forEach(el => {
-      const id = el.getAttribute('href').substr(1) || '';
-      const targetEl = document.getElementById(`${id}`);
-      console.log(targetEl, 'sss');
-      const scroll = (e: Event) => {
-        e.preventDefault();
+  [...triggerList].filter(el => el.getAttribute('href')).forEach(el => {
+    const id = el.getAttribute('href').substr(1) || '';
+    const targetEl = document.getElementById(`${id}`);
 
-        scrollTo(scrollLayerEl, targetEl, 1618, () => {
+    const scroll = (e: Event) => {
+      e.preventDefault();
+
+      scrollLayers.forEach((layer: Element) => {
+        scrollTo(layer, targetEl, 1618, () => {
           window.location.hash = `#${targetEl.id}`;
         });
-        el.removeEventListener('click', scroll);
-      };
+      });
+    };
 
-      el.addEventListener('click', scroll, false);
-    });
+    el.addEventListener('click', scroll, false);
+  });
+};
 
-  // const id = triggerEl.getAttribute('href').substr(1) || '';
-  // const targetEl = document.getElementById(`${id}`);
+export const initSmoothScrolling = (): void => {
+  const mainBannerTrigger = document.querySelectorAll('.js_scroll');
+  const expander = document.querySelectorAll('.js_expander');
+  const expanderPanes = document.querySelectorAll('.js_expander_lead');
 
-  // const scroll = (e: Event) => {
-  //   e.preventDefault();
-
-  //   scrollTo(scrollLayerEl, targetEl, 1618, () => {
-  //     window.location.hash = `#${targetEl.id}`;
-  //   });
-  //   triggerEl.removeEventListener('click', scroll);
-  // };
-
-  // triggerEl.addEventListener('click', scroll, false);
-}
+  smoothScrolling(mainBannerTrigger);
+  smoothScrolling(expanderPanes, expander);
+};

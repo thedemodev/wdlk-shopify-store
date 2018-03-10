@@ -269,14 +269,19 @@ function numberInput() {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.default = smoothScrolling;
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-function smoothScrolling(triggerEl) {
-    var scrollLayerEl = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document.querySelector(':root');
+/*
+* @param {node list} triggerList -
+* node list of elements that trigger the scroll event
+* @param {node list} scrollLayers -
+* node list of elements that define the scrollable area
+*/
+var smoothScrolling = exports.smoothScrolling = function smoothScrolling(triggerList) {
+    var scrollLayers = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document.querySelectorAll(':root');
 
-    if (!triggerEl) {
+    if (!triggerList) {
         return;
     }
     /*
@@ -309,33 +314,29 @@ function smoothScrolling(triggerEl) {
         };
         window.requestAnimationFrame(animateScroll);
     };
-    console.log(triggerEl, '####');
-    var nodeList = [].concat(_toConsumableArray(triggerEl)).filter(function (el) {
+    [].concat(_toConsumableArray(triggerList)).filter(function (el) {
         return el.getAttribute('href');
     }).forEach(function (el) {
         var id = el.getAttribute('href').substr(1) || '';
         var targetEl = document.getElementById('' + id);
-        console.log(targetEl, 'sss');
         var scroll = function scroll(e) {
             e.preventDefault();
-            scrollTo(scrollLayerEl, targetEl, 1618, function () {
-                window.location.hash = '#' + targetEl.id;
+            scrollLayers.forEach(function (layer) {
+                scrollTo(layer, targetEl, 1618, function () {
+                    window.location.hash = '#' + targetEl.id;
+                });
             });
-            el.removeEventListener('click', scroll);
         };
         el.addEventListener('click', scroll, false);
     });
-    // const id = triggerEl.getAttribute('href').substr(1) || '';
-    // const targetEl = document.getElementById(`${id}`);
-    // const scroll = (e: Event) => {
-    //   e.preventDefault();
-    //   scrollTo(scrollLayerEl, targetEl, 1618, () => {
-    //     window.location.hash = `#${targetEl.id}`;
-    //   });
-    //   triggerEl.removeEventListener('click', scroll);
-    // };
-    // triggerEl.addEventListener('click', scroll, false);
-}
+};
+var initSmoothScrolling = exports.initSmoothScrolling = function initSmoothScrolling() {
+    var mainBannerTrigger = document.querySelectorAll('.js_scroll');
+    var expander = document.querySelectorAll('.js_expander');
+    var expanderPanes = document.querySelectorAll('.js_expander_lead');
+    smoothScrolling(mainBannerTrigger);
+    smoothScrolling(expanderPanes, expander);
+};
 
 /***/ }),
 /* 6 */
@@ -523,8 +524,6 @@ var _numberInput2 = _interopRequireDefault(_numberInput);
 
 var _smoothScrolling = __webpack_require__(5);
 
-var _smoothScrolling2 = _interopRequireDefault(_smoothScrolling);
-
 var _stickyNavigation = __webpack_require__(6);
 
 var _stickyNavigation2 = _interopRequireDefault(_stickyNavigation);
@@ -540,12 +539,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var init = function init() {
     (0, _stickyNavigation2.default)();
     (0, _cookieNotification2.default)();
-    var mainBannerTrigger = document.querySelectorAll('.js_scroll')[0];
-    var expander = document.querySelectorAll('.js_expander')[0];
-    var expanderPanes = document.querySelectorAll('.js_expander_lead');
-    (0, _smoothScrolling2.default)(mainBannerTrigger);
-    (0, _smoothScrolling2.default)(expanderPanes, expander);
     (0, _fadeThrough2.default)();
+    (0, _smoothScrolling.initSmoothScrolling)();
     (0, _instagramFeed2.default)();
     (0, _trackingProjectCece2.default)();
     (0, _numberInput2.default)();
