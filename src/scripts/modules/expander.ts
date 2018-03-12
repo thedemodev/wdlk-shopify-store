@@ -58,5 +58,4 @@ export const initExpander = () => {
   resetState(document.querySelectorAll('.js_state'), panes);
   expander(document.querySelectorAll('.js_content'), panes);
   smoothScrolling(document.querySelectorAll('.js_expander_lead'), panes);
-
 };

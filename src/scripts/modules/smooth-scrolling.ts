@@ -82,5 +82,4 @@ export const smoothScrolling = (
 
 export const initSmoothScrolling = (): void => {
   smoothScrolling(document.querySelectorAll('.js_scroll'));
-
 };

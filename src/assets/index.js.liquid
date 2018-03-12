@@ -63,17 +63,92 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+/******/ 	return __webpack_require__(__webpack_require__.s = 11);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+/*
+* @param {node list} triggerList -
+* node list of elements that trigger the scroll event
+* @param {node list} scrollLayers -
+* node list of elements that define the scrollable area
+*/
+var smoothScrolling = exports.smoothScrolling = function smoothScrolling(triggerList) {
+    var scrollLayers = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document.querySelectorAll(':root');
+
+    if (triggerList.length === 0) {
+        return;
+    }
+    /*
+    /* Exponential Ease in and out
+    /* http://gizma.com/easing/#expo3
+    */
+    Math.easeInOutExpo = function (t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) {
+            return c / 2 * Math.pow(2, 10 * (t - 1)) + b;
+        }
+        t--;
+        return c / 2 * (-Math.pow(2, -10 * t) + 2) + b;
+    };
+    var scrollTo = function scrollTo(scrollLayer, el, duration, cb) {
+        var startPosition = scrollLayer.scrollTop;
+        var positionDelta = el.offsetTop - startPosition;
+        var startTime = null;
+        // tslint:disable-next-line
+        cb = cb || function () {};
+        var animateScroll = function animateScroll(timeStamp) {
+            startTime = startTime !== null ? startTime : timeStamp;
+            var timeDelta = timeStamp - startTime;
+            if (timeDelta >= duration) {
+                // tslint:disable-next-line
+                return cb();
+            }
+            scrollLayer.scrollTop = Math.easeInOutExpo(timeDelta, startPosition, positionDelta, duration);
+            window.requestAnimationFrame(animateScroll);
+        };
+        window.requestAnimationFrame(animateScroll);
+    };
+    [].concat(_toConsumableArray(triggerList)).filter(function (el) {
+        return el.getAttribute('href');
+    }).forEach(function (el) {
+        var id = el.getAttribute('href').substr(1) || '';
+        var targetEl = document.getElementById('' + id);
+        var scroll = function scroll(e) {
+            e.preventDefault();
+            scrollLayers.forEach(function (layer) {
+                scrollTo(layer, targetEl, 1618, function () {
+                    window.location.hash = '#' + targetEl.id;
+                });
+            });
+        };
+        el.addEventListener('click', scroll, false);
+    });
+};
+var initSmoothScrolling = exports.initSmoothScrolling = function initSmoothScrolling() {
+    smoothScrolling(document.querySelectorAll('.js_scroll'));
+};
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -103,7 +178,64 @@ exports.default = function () {
 };
 
 /***/ }),
-/* 2 */
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.initExpander = exports.resetState = exports.expander = undefined;
+
+var _smoothScrolling = __webpack_require__(0);
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var expander = exports.expander = function expander(contentList, paneList) {
+    if (paneList.length === 0) {
+        return;
+    }
+    if (contentList.length === 0) {
+        return;
+    }
+    var root = document.querySelector(':root');
+    if (root.offsetWidth > 768) {
+        return;
+    }
+    var heightList = [].concat(_toConsumableArray(contentList)).map(function (el) {
+        return el.offsetHeight;
+    });
+    var setCssVariables = function setCssVariables(nodeList, numbers) {
+        [].concat(_toConsumableArray(nodeList)).forEach(function (el, i) {
+            el.style.setProperty('--pane-height', '' + numbers[i]);
+        });
+    };
+    setCssVariables(paneList, heightList);
+};
+var resetState = exports.resetState = function resetState(inputList, paneList) {
+    if (inputList.length === 0) {
+        return;
+    }
+    var resetPosition = function resetPosition() {
+        paneList.forEach(function (pane) {
+            pane.scrollTop = 0;
+        });
+    };
+    [].concat(_toConsumableArray(inputList)).forEach(function (input) {
+        input.addEventListener('click', resetPosition);
+    });
+};
+var initExpander = exports.initExpander = function initExpander() {
+    var panes = document.querySelectorAll('.js_expander');
+    resetState(document.querySelectorAll('.js_state'), panes);
+    expander(document.querySelectorAll('.js_content'), panes);
+    (0, _smoothScrolling.smoothScrolling)(document.querySelectorAll('.js_expander_lead'), panes);
+};
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -136,7 +268,7 @@ var fadeThrough = function fadeThrough() {
 exports.default = fadeThrough;
 
 /***/ }),
-/* 3 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -150,9 +282,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 exports.default = instagramFeed;
 
-var _access = __webpack_require__(9);
+var _access = __webpack_require__(10);
 
-var _jsonp = __webpack_require__(11);
+var _jsonp = __webpack_require__(12);
 
 var _jsonp2 = _interopRequireDefault(_jsonp);
 
@@ -210,7 +342,7 @@ function instagramFeed() {
 }
 
 /***/ }),
-/* 4 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -404,7 +536,7 @@ function stickyNavigation() {
 }
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -442,7 +574,7 @@ function fbqTracking() {
 }
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -475,7 +607,7 @@ function trackingCece() {
 }
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -490,43 +622,43 @@ var access = exports.access = {
 };
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(0);
+__webpack_require__(1);
 
-var _cookieNotification = __webpack_require__(1);
+var _cookieNotification = __webpack_require__(2);
 
 var _cookieNotification2 = _interopRequireDefault(_cookieNotification);
 
-var _fadeThrough = __webpack_require__(2);
+var _fadeThrough = __webpack_require__(4);
 
 var _fadeThrough2 = _interopRequireDefault(_fadeThrough);
 
-var _instagramFeed = __webpack_require__(3);
+var _instagramFeed = __webpack_require__(5);
 
 var _instagramFeed2 = _interopRequireDefault(_instagramFeed);
 
-var _trackingFacebook = __webpack_require__(7);
+var _trackingFacebook = __webpack_require__(8);
 
 var _trackingFacebook2 = _interopRequireDefault(_trackingFacebook);
 
-var _numberInput = __webpack_require__(4);
+var _numberInput = __webpack_require__(6);
 
 var _numberInput2 = _interopRequireDefault(_numberInput);
 
-var _expander = __webpack_require__(17);
+var _expander = __webpack_require__(3);
 
-var _smoothScrolling = __webpack_require__(5);
+var _smoothScrolling = __webpack_require__(0);
 
-var _stickyNavigation = __webpack_require__(6);
+var _stickyNavigation = __webpack_require__(7);
 
 var _stickyNavigation2 = _interopRequireDefault(_stickyNavigation);
 
-var _trackingProjectCece = __webpack_require__(8);
+var _trackingProjectCece = __webpack_require__(9);
 
 var _trackingProjectCece2 = _interopRequireDefault(_trackingProjectCece);
 
@@ -547,14 +679,14 @@ var init = function init() {
 window.addEventListener('load', init);
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
  * Module dependencies
  */
 
-var debug = __webpack_require__(12)('jsonp');
+var debug = __webpack_require__(13)('jsonp');
 
 /**
  * Module exports.
@@ -650,7 +782,7 @@ function jsonp(url, opts, fn){
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {/**
@@ -659,7 +791,7 @@ function jsonp(url, opts, fn){
  * Expose `debug()` as the module.
  */
 
-exports = module.exports = __webpack_require__(13);
+exports = module.exports = __webpack_require__(14);
 exports.log = log;
 exports.formatArgs = formatArgs;
 exports.save = save;
@@ -839,10 +971,10 @@ function localstorage() {
   } catch (e) {}
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -858,7 +990,7 @@ exports.coerce = coerce;
 exports.disable = disable;
 exports.enable = enable;
 exports.enabled = enabled;
-exports.humanize = __webpack_require__(14);
+exports.humanize = __webpack_require__(15);
 
 /**
  * The currently active debug mode names, and names to skip.
@@ -1050,7 +1182,7 @@ function coerce(val) {
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports) {
 
 /**
@@ -1208,7 +1340,7 @@ function plural(ms, n, name) {
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser

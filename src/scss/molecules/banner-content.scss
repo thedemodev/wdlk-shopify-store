@@ -1,0 +1,22 @@
+.Banner {
+  &--content {
+    .Banner-content {
+      position: static;
+      padding: 90px 40px;
+      margin: 0 auto;
+      transform: none;
+
+      @include media(medium) {
+        position: absolute;
+        left: 0;
+        max-width: 50%;
+        transform: translateY(-50%);
+        text-align: left;
+      }
+    }
+
+    .Banner-image {
+      width: 100%;
+    }
+  }
+}

@@ -225,25 +225,25 @@
     }
   }
 
-  &--collection {
-    &:last-of-type {
-      .Banner-content {
-        top: 80%;
-        max-width: 350px;
+  // &--collection {
+  //   &:last-of-type {
+  //     .Banner-content {
+  //       top: 80%;
+  //       max-width: 350px;
 
-          @include media (small, max-width) {
-            bottom: 0;
-          }
+  //         @include media (small, max-width) {
+  //           bottom: 0;
+  //         }
 
-          @include media(medium) {
-            top: 50%;
-            right: 4rem;
-            left: auto;
-            transform: translateY(-50%);
-          }
-      }
-    }
-  }
+  //         @include media(medium) {
+  //           top: 50%;
+  //           right: 4rem;
+  //           left: auto;
+  //           transform: translateY(-50%);
+  //         }
+  //     }
+  //   }
+  // }
 
   &--half {
     //-- GRID GENERATOR
