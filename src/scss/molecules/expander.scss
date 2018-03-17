@@ -272,8 +272,10 @@ $expander-bezier   : cubic-bezier(0.165, 0.84, 0.44, 1);
     }
 
     &.Expander-intro {
-      // color: #596771;
-      color: $hex-blue-gray-dark;
+      color: $hex-white;
+      @include media(medium) {
+        color: $hex-blue-gray-dark;
+      }
     }
   }
 
@@ -315,7 +317,6 @@ $expander-bezier   : cubic-bezier(0.165, 0.84, 0.44, 1);
     transform: translate3d(-50%, 0, 0);
     @include media(medium) {
       opacity: 0;
-      pointer-events: none;
       animation-play-state: paused;
     }
   }
@@ -326,7 +327,6 @@ $expander-bezier   : cubic-bezier(0.165, 0.84, 0.44, 1);
     z-index: -2;
     width: 100vw;
     height: 50vh;
-    pointer-events: none;
   }
 
   &-state {
