@@ -2,7 +2,7 @@
   &--content {
     .Banner-content {
       position: static;
-      padding: 90px 40px;
+      padding: 40px 40px;
       margin: 0 auto;
       transform: none;
 
@@ -10,6 +10,7 @@
         position: absolute;
         left: 0;
         max-width: 40%;
+        padding: 90px 40px;
         transform: translateY(-50%);
         text-align: left;
       }

@@ -80,6 +80,9 @@
   }
 
   &--plain {
+    .Banner-background {
+      background-color: $hex-smoke-white;
+    }
     .Banner-content {
       position: static;
       padding: 90px 40px;
