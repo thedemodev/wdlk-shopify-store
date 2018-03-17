@@ -217,9 +217,6 @@ $expander-bezier   : cubic-bezier(0.165, 0.84, 0.44, 1);
 
   .Headline {
     color: $hex-sand;
-    @include media(medium) {
-      color: $hex-white;
-    }
   }
 
   .Link {
@@ -275,7 +272,8 @@ $expander-bezier   : cubic-bezier(0.165, 0.84, 0.44, 1);
     }
 
     &.Expander-intro {
-      color: $hex-white;
+      // color: #596771;
+      color: $hex-blue-gray-dark;
     }
   }
 
