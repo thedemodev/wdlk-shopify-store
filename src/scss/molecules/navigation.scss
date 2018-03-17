@@ -45,13 +45,12 @@
   &-list {
     height: 100%;
     padding-left: 0;
-    margin: 40px auto 0;
+    margin: 0 auto;
     list-style: none;
     transform: scale(.85);
     transition: transform .3s ease;
 
     @include media (medium) {
-      margin-top: 0;
       transform: none;
 
       > .Navigation-item  {
@@ -63,7 +62,7 @@
   &-item {
     padding-bottom: #{$size-M}px;
     display: block;
-    padding: #{$size-L}px #{$size-L}px #{$size-M}px;
+    padding: #{$size-M}px;
 
     &:last-child {
       opacity: 1;
