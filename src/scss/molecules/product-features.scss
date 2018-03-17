@@ -9,7 +9,7 @@
             //-- 1. Count column mobile first
             //-- 2. Factor column number for tablet & desktop
             //-- 3. Optional argument to define the inner padding
-            @include grid-cell(1, 2, $base-spacing, medium);
+            @include grid-cell(1, 2, $base-spacing * 2, medium);
 
             position: relative;
             background-color: $background-color ;

@@ -12,7 +12,6 @@
   {% assign collectionBannerMobile2x =
       'WDLK_Banner-Collection_Mobile@2x.jpg' | asset_url  %}
 
-  <a href="{{ all_products['flying-fish-bikini-pouch'].url }}" >
     <picture>
       <source
         media="(max-width: 480px)"
@@ -31,13 +30,15 @@
         <h3 class="Headline Headline--2">
           {{'home_page.sections.banner_collection_title' | t}}
         </h3>
-        <p class="Banner-copy">{{'home_page.sections.banner_collectio_copy' | t}}</p>
-        <span class="Link Link--btn">
-            {{'home_page.sections.banner_collection_link' | t}}
-            <svg class="Icon Icon--right">
-                <use xlink:href="#Arrow_right" />
-            </svg>
-        </span>
+        <p class="Banner-copy">{{'home_page.sections.banner_collection_copy_1' | t}}</p>
+        <p class="Banner-copy">{{'home_page.sections.banner_collection_copy_2' | t}}</p>
+        <a href="{{ all_products['flying-fish-bikini-pouch'].url }}" >
+          <span class="Link Link--btn">
+              {{'home_page.sections.banner_collection_link' | t}}
+              <svg class="Icon Icon--right">
+                  <use xlink:href="#Arrow_right" />
+              </svg>
+          </span>
+        </a>
     </div>
-  </a>
 </article>
