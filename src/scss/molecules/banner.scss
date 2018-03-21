@@ -4,6 +4,10 @@
   overflow: hidden;
   line-height: 0;
 
+  &-background {
+    background-color: $hex-white-smoke;
+  }
+
   &-content {
     box-sizing: border-box;
     position: absolute;
