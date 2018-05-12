@@ -1,6 +1,11 @@
 {
   "general": {
-    "cookie": "We use ",
+    "cookie": {
+      "copy": "We use cookies to provide you with the best possible service. If you continue to use the site, you agree to the use of cookies.",
+      "agree": "I Agree",
+      "more": "Find out more",
+      "configure": "configure"
+    },
     "meta": {
       "tags": "Tagged \"{{ tags }}\"",
       "page": "Page {{ page }}"

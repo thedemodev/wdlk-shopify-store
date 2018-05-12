@@ -27,6 +27,10 @@
         {{ 'index.css' | asset_url | stylesheet_tag }}
 
         {% comment %}
+            Tracking
+        {% endcomment %}
+        <script async src="{{ 'tracking.js' | asset_url }}"></script>
+        {% comment %}
             Header hook for plugins
         {% endcomment %}
         {{ content_for_header }}

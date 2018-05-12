@@ -2,70 +2,59 @@ const { resolve } = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HappyPack = require('happypack');
+const happyThreadPool = HappyPack.ThreadPool({ size: 6 });
 
 // Ensure `postcss` key is extracted
 HappyPack.SERIALIZABLE_OPTIONS = HappyPack.SERIALIZABLE_OPTIONS.concat(['postcss']);
 
 
 module.exports = {
-  entry: './src/scripts/index',
+  entry: {
+    index: './src/scripts/index',
+    tracking: './src/scripts/tracking/tracking'
+  },
   output: {
     path: resolve('./src/assets/'),
-    filename: 'index.js.liquid'
+    filename: '[name].js.liquid'
   },
+  mode: 'development',
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.ts$/,
-        enforce: 'pre',
-        loader: 'tslint-loader'
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract('happypack/loader?id=styles')
       },
       {
         test: /\.ts(x?)$/,
-        exclude: /node_modules/,
-        loader: 'happypack/loader?id=ts'
-      }, {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'happypack/loader?id=js'
-      },
-      {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('happypack/loader?id=styles'),
+        use: 'happypack/loader?id=ts',
       }
-    ],
+    ]
   },
   plugins: [
-    new ExtractTextPlugin({
-      filename: resolve('/index.css.liquid')
-    }),
-    new ForkTsCheckerWebpackPlugin({
-      checkSyntacticErrors: true,
-      watch: ['./src/scripts']
-    }),
     new HappyPack({
       id: 'styles',
+      threadPool: happyThreadPool,
       loaders: [ 'css-loader', 'postcss-loader', 'sass-loader']
     }),
-
     new HappyPack({
       id: 'ts',
-      threads: 2,
+      threadPool: happyThreadPool,
       loaders: [
         { path: 'babel-loader' },
-        { path: 'ts-loader', query: { happyPackMode: true } }
+        {
+          path: 'ts-loader',
+          options: {
+            transpileOnly: true
+          },
+          query: { happyPackMode: true } }
       ]
     }),
-    new HappyPack({
-      id: 'js',
-      threads: 2,
-      loaders: [
-        {
-          path: 'babel-loader',
-        }
-      ]
+    new ExtractTextPlugin({ filename: resolve('/index.css.liquid') }),
+    new ForkTsCheckerWebpackPlugin({
+      checkSyntacticErrors: true,
+      tslint: true,
+      watch: ['./src/scripts']
     })
-
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js']

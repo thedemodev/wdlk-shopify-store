@@ -4,7 +4,6 @@ import '../scss/index.scss';
 import cookieNotification from './modules/cookie-notification';
 import fadeThrough from './modules/fade-through';
 import instagramFeed from './modules/instagram-feed';
-import fbqTracking from './modules/tracking-facebook';
 
 import notification from './modules/notification';
 import numberInput from './modules/number-input';
@@ -14,8 +13,6 @@ import { initSmoothScrolling } from './modules/smooth-scrolling';
 import stickyNavigation from './modules/sticky-navigation';
 import trackingCece from './modules/tracking-project-cece';
 
-fbqTracking();
-
 const init = (): void => {
   stickyNavigation();
   cookieNotification();
@@ -24,8 +21,8 @@ const init = (): void => {
   initExpander();
   initSmoothScrolling();
   instagramFeed();
-  trackingCece();
   numberInput();
+  trackingCece();
 };
 
 window.addEventListener('load', init);

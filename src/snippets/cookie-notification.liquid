@@ -1,4 +1,14 @@
-<div class="CookieNotification js-cookie-notification">
-  <span>{{'general.cookie' | t}} <a class="CookieNotification-link" href="{{ pages['privacy-policy'].url }}"> cookies</a></span>
-  <span class="CookieNotification-close js-cookie-notification-close">X</span>
+<div class="CookieNotification js-cookieNotification">
+  <div class="CookieNotification-content">
+    <p class="CookieNotification-copy">
+    {{'general.cookie.copy' | t}}
+    <a class="CookieNotification-link"
+      href="{{ pages['privacy-policy'].url }}#Cookies">
+      {{'general.cookie.more' | t}}
+    </a>
+    </p>
+  </div>
+  <button class="Btn js-cookieNotificationBtn">
+    {{'general.cookie.agree' | t}}
+  </button>
 </div>

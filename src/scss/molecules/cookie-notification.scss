@@ -1,18 +1,32 @@
 .CookieNotification {
-    display: none;
-    position: fixed;
-    bottom: $form-base-height / 2;
-    left: $base-spacing;
-    z-index: 10;
-    height: $form-base-height;
-    padding: 0 $box-base-padding * 2 0 $box-base-padding;
-    line-height: $form-base-height;
-    background-color: $rgba-blue-gray-light;
 
-    @include copy-text(
-        $copy-size-m,
-        $typo-hex--tertiary
-    );
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    padding: calc(var(--size-M) * 1px) calc(var(--size-L) * 1px);
+    background-color: $hex-white-smoke;
+    background-color: var(--rgba-white-smoke);
+    transform: translate3d(0, calc(var(--visibility, 100) * 1%), 0);
+    transition: transform .2s cubic-bezier(0.165, 0.84, 0.44, 1);
+    @include copy-text(1.6rem, $hex-blue-gray-ultra-dark);
+
+    &-content {
+      display: flex;
+      align-items: center;
+      max-width: 60%;
+      @include media(medium) {
+        max-width: 80%;
+      }
+    }
+
+    &-copy {
+      margin: 0;
+    }
 
     &-close {
         position: absolute;
@@ -27,8 +41,12 @@
     }
 
     &-link {
-        color: $typo-hex--tertiary;
-        font-weight: 600;
-        text-decoration: underline;
+      color: $hex-blue-gray-ultra-dark;
+      text-decoration: underline;
+    }
+
+    .Btn {
+      font-size: 1.6rem;
+      line-height: normal;
     }
 }
