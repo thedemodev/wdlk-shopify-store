@@ -1,6 +1,6 @@
 export interface StorageVisibilityProps {
   isVisible: boolean;
-  setInitialValue(): void;
+  setInitialValue(): boolean;
   toggleVisibility(): string;
   handleEvent(e: Event): void;
 }
@@ -8,9 +8,11 @@ export interface StorageVisibilityProps {
 export function StorageVisibilityFactory(name: string): StorageVisibilityProps {
   return {
     isVisible: JSON.parse(localStorage.getItem(name)),
-    setInitialValue(): void {
+    setInitialValue(): boolean {
       if (JSON.parse(localStorage.getItem(name)) === null) {
         localStorage.setItem(name, 'true');
+        this.isVisible = true;
+        return this.isVisible;
       }
     },
     toggleVisibility(): string {

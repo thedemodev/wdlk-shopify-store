@@ -95,6 +95,18 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 /***/ }),
 
+/***/ "./src/scripts/tracking/tracking-facebook.ts":
+/*!***************************************************!*\
+  !*** ./src/scripts/tracking/tracking-facebook.ts ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = fbqTracking;\n\nfunction fbqTracking() {\n  // document.addEventListener('DOMContentLoaded', event => {\n  //   const dontTrackObject = document.querySelectorAll('[data-fbpixel]')[0];\n  //   if (dontTrackObject != null) {\n  //     dontTrackObject.addEventListener('click', () => {\n  //       localStorage.setItem('DontTrackMe', true);\n  //     });\n  //   }\n  //   if (localStorage.getItem('DontTrackMe') == null) {\n  //     document.body.appendChild(tag);\n  //   }\n  // });\n  var addToCart = document.querySelector('.js_fbqAddToCart');\n  var signUpBtn = document.querySelector('.js_fbqNewsLead');\n\n  if (addToCart) {\n    var btn = addToCart.querySelector('.js_fbqBtn');\n    var select = addToCart.querySelector('.js_fbqSelect');\n\n    if (btn && select) {\n      var productId = parseFloat(select.options[select.selectedIndex].value);\n      btn.addEventListener('click', function () {\n        fbq('track', 'AddToCart', {\n          content_name: btn.dataset.name,\n          content_ids: [\"\".concat(productId)],\n          content_type: 'product',\n          value: parseFloat(btn.dataset.value),\n          currency: 'EUR'\n        });\n      });\n    }\n  }\n\n  if (signUpBtn) {\n    signUpBtn.addEventListener('click', function () {\n      fbq('track', 'Lead');\n    });\n  }\n}\n\n//# sourceURL=webpack:///./src/scripts/tracking/tracking-facebook.ts?");
+
+/***/ }),
+
 /***/ "./src/scripts/tracking/tracking.ts":
 /*!******************************************!*\
   !*** ./src/scripts/tracking/tracking.ts ***!
@@ -103,7 +115,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _fbpSnippet = _interopRequireDefault(__webpack_require__(/*! ./fbp-snippet */ \"./src/scripts/tracking/fbp-snippet.ts\"));\n\nvar _gaSnippet = _interopRequireDefault(__webpack_require__(/*! ./ga-snippet */ \"./src/scripts/tracking/ga-snippet.ts\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n(0, _fbpSnippet.default)();\n(0, _gaSnippet.default)();\n\n//# sourceURL=webpack:///./src/scripts/tracking/tracking.ts?");
+eval("\n\nvar _fbpSnippet = _interopRequireDefault(__webpack_require__(/*! ./fbp-snippet */ \"./src/scripts/tracking/fbp-snippet.ts\"));\n\nvar _gaSnippet = _interopRequireDefault(__webpack_require__(/*! ./ga-snippet */ \"./src/scripts/tracking/ga-snippet.ts\"));\n\nvar _trackingFacebook = _interopRequireDefault(__webpack_require__(/*! ./tracking-facebook */ \"./src/scripts/tracking/tracking-facebook.ts\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n(0, _fbpSnippet.default)();\n(0, _gaSnippet.default)();\n(0, _trackingFacebook.default)();\n\n//# sourceURL=webpack:///./src/scripts/tracking/tracking.ts?");
 
 /***/ })
 
