@@ -16,7 +16,7 @@ import trackingCece from './modules/tracking-project-cece';
 const init = (): void => {
   stickyNavigation();
   cookieNotification();
-
+  notification();
   fadeThrough();
   initExpander();
   initSmoothScrolling();
