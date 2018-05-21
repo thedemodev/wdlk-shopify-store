@@ -184,14 +184,6 @@
       "check-whitespace"
     ],
     "one-variable-per-declaration": [false],
-    "ordered-imports": [
-      true,
-      {
-        "import-sources-order": "case-insensitive",
-        "named-imports-order": "case-insensitive",
-        "module-source-path": "basename"
-      }
-    ],
     "prefer-function-over-method": [true, "allow-public", "allow-protected"],
     "prefer-method-signature": true,
     "prefer-switch": [false],

@@ -146,7 +146,7 @@ eval("// shim for using process in browser\nvar process = module.exports = {};\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\n__webpack_require__(/*! ../scss/index.scss */ \"./src/scss/index.scss\");\n\nvar _cookieNotification = _interopRequireDefault(__webpack_require__(/*! ./modules/cookie-notification */ \"./src/scripts/modules/cookie-notification.ts\"));\n\nvar _fadeThrough = _interopRequireDefault(__webpack_require__(/*! ./modules/fade-through */ \"./src/scripts/modules/fade-through.ts\"));\n\nvar _instagramFeed = _interopRequireDefault(__webpack_require__(/*! ./modules/instagram-feed */ \"./src/scripts/modules/instagram-feed.ts\"));\n\nvar _notification = _interopRequireDefault(__webpack_require__(/*! ./modules/notification */ \"./src/scripts/modules/notification.ts\"));\n\nvar _numberInput = _interopRequireDefault(__webpack_require__(/*! ./modules/number-input */ \"./src/scripts/modules/number-input.ts\"));\n\nvar _expander = __webpack_require__(/*! ./modules/expander */ \"./src/scripts/modules/expander.ts\");\n\nvar _smoothScrolling = __webpack_require__(/*! ./modules/smooth-scrolling */ \"./src/scripts/modules/smooth-scrolling.ts\");\n\nvar _stickyNavigation = _interopRequireDefault(__webpack_require__(/*! ./modules/sticky-navigation */ \"./src/scripts/modules/sticky-navigation.ts\"));\n\nvar _trackingProjectCece = _interopRequireDefault(__webpack_require__(/*! ./modules/tracking-project-cece */ \"./src/scripts/modules/tracking-project-cece.ts\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n// tslint:disable-next-line:no-import-side-effect\nvar init = function init() {\n  (0, _stickyNavigation.default)();\n  (0, _cookieNotification.default)();\n  (0, _notification.default)();\n  (0, _fadeThrough.default)();\n  (0, _expander.initExpander)();\n  (0, _smoothScrolling.initSmoothScrolling)();\n  (0, _instagramFeed.default)();\n  (0, _numberInput.default)();\n  (0, _trackingProjectCece.default)();\n};\n\nwindow.addEventListener('load', init);\n\n//# sourceURL=webpack:///./src/scripts/index.ts?");
+eval("\n\n__webpack_require__(/*! ../scss/index.scss */ \"./src/scss/index.scss\");\n\nvar _cookieNotification = _interopRequireDefault(__webpack_require__(/*! ./modules/cookie-notification */ \"./src/scripts/modules/cookie-notification.ts\"));\n\nvar _fadeThrough = _interopRequireDefault(__webpack_require__(/*! ./modules/fade-through */ \"./src/scripts/modules/fade-through.ts\"));\n\nvar _instagramFeed = _interopRequireDefault(__webpack_require__(/*! ./modules/instagram-feed */ \"./src/scripts/modules/instagram-feed.ts\"));\n\nvar _notification = _interopRequireDefault(__webpack_require__(/*! ./modules/notification */ \"./src/scripts/modules/notification.ts\"));\n\nvar _numberInput = _interopRequireDefault(__webpack_require__(/*! ./modules/number-input */ \"./src/scripts/modules/number-input.ts\"));\n\nvar _expander = __webpack_require__(/*! ./modules/expander */ \"./src/scripts/modules/expander.ts\");\n\nvar _smoothScrolling = __webpack_require__(/*! ./modules/smooth-scrolling */ \"./src/scripts/modules/smooth-scrolling.ts\");\n\nvar _stickyNavigation = _interopRequireDefault(__webpack_require__(/*! ./modules/sticky-navigation */ \"./src/scripts/modules/sticky-navigation.ts\"));\n\nvar _trackingProjectCece = _interopRequireDefault(__webpack_require__(/*! ./tracking/tracking-project-cece */ \"./src/scripts/tracking/tracking-project-cece.ts\"));\n\nvar _trackingFacebook = _interopRequireDefault(__webpack_require__(/*! ./tracking/tracking-facebook */ \"./src/scripts/tracking/tracking-facebook.ts\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n// tslint:disable-next-line:no-import-side-effect\nvar init = function init() {\n  (0, _stickyNavigation.default)();\n  (0, _cookieNotification.default)();\n  (0, _notification.default)();\n  (0, _fadeThrough.default)();\n  (0, _expander.initExpander)();\n  (0, _smoothScrolling.initSmoothScrolling)();\n  (0, _instagramFeed.default)();\n  (0, _numberInput.default)();\n  (0, _trackingProjectCece.default)();\n  (0, _trackingFacebook.default)();\n};\n\nwindow.addEventListener('load', init);\n\n//# sourceURL=webpack:///./src/scripts/index.ts?");
 
 /***/ }),
 
@@ -258,15 +258,27 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 /***/ }),
 
-/***/ "./src/scripts/modules/tracking-project-cece.ts":
-/*!******************************************************!*\
-  !*** ./src/scripts/modules/tracking-project-cece.ts ***!
-  \******************************************************/
+/***/ "./src/scripts/tracking/tracking-facebook.ts":
+/*!***************************************************!*\
+  !*** ./src/scripts/tracking/tracking-facebook.ts ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = trackingCece;\n\nfunction trackingCece() {\n  var x = document.referrer;\n\n  function set_cece_cookie() {\n    var expiration = new Date();\n    expiration.setTime(expiration.getTime() + 30 * 24 * 60 * 60 * 1000);\n    document.cookie = \"refpartner=projce; expires=\".concat(expiration.toUTCString(), \"; path=/\");\n  }\n\n  if (x.indexOf('projectcece.') > -1) {\n    set_cece_cookie();\n\n    if (window.sessionStorage) {\n      sessionStorage.setItem('refpartner', 'projce');\n    }\n  }\n\n  if (window.sessionStorage) {\n    if (sessionStorage.getItem('refpartner')) {\n      if (document.cookie.indexOf('refpartner=projce') < 0) {\n        set_cece_cookie();\n      }\n    }\n  }\n}\n\n//# sourceURL=webpack:///./src/scripts/modules/tracking-project-cece.ts?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = fbqTracking;\n\nfunction fbqTracking() {\n  var addToCart = document.querySelector('.js_fbqAddToCart');\n  var signUpBtn = document.querySelector('.js_fbqNewsLead');\n\n  if (addToCart) {\n    var btn = addToCart.querySelector('.js_fbqBtn');\n    var select = addToCart.querySelector('.js_fbqSelect');\n\n    if (btn && select) {\n      var productId = parseFloat(select.options[select.selectedIndex].value);\n      btn.addEventListener('click', function () {\n        fbq('track', 'AddToCart', {\n          content_name: btn.dataset.name,\n          content_ids: [\"\".concat(productId)],\n          content_type: 'product',\n          value: parseFloat(btn.dataset.value),\n          currency: 'EUR'\n        });\n      });\n    }\n  }\n\n  if (signUpBtn) {\n    signUpBtn.addEventListener('click', function () {\n      fbq('track', 'Lead');\n    });\n  }\n}\n\n//# sourceURL=webpack:///./src/scripts/tracking/tracking-facebook.ts?");
+
+/***/ }),
+
+/***/ "./src/scripts/tracking/tracking-project-cece.ts":
+/*!*******************************************************!*\
+  !*** ./src/scripts/tracking/tracking-project-cece.ts ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = trackingCece;\n\nfunction trackingCece() {\n  var x = document.referrer;\n\n  function set_cece_cookie() {\n    var expiration = new Date();\n    expiration.setTime(expiration.getTime() + 30 * 24 * 60 * 60 * 1000);\n    document.cookie = \"refpartner=projce; expires=\".concat(expiration.toUTCString(), \"; path=/\");\n  }\n\n  if (x.indexOf('projectcece.') > -1) {\n    set_cece_cookie();\n\n    if (window.sessionStorage) {\n      sessionStorage.setItem('refpartner', 'projce');\n    }\n  }\n\n  if (window.sessionStorage) {\n    if (sessionStorage.getItem('refpartner')) {\n      if (document.cookie.indexOf('refpartner=projce') < 0) {\n        set_cece_cookie();\n      }\n    }\n  }\n}\n\n//# sourceURL=webpack:///./src/scripts/tracking/tracking-project-cece.ts?");
 
 /***/ }),
 

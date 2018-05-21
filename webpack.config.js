@@ -1,4 +1,5 @@
 const { resolve } = require('path');
+const Dotenv = require('dotenv-webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HappyPack = require('happypack');
@@ -31,6 +32,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new Dotenv(),
     new HappyPack({
       id: 'styles',
       threadPool: happyThreadPool,
