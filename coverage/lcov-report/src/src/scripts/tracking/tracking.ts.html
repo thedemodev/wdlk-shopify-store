@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/41</span>
+        <span class='fraction'>0/47</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/41</span>
+        <span class='fraction'>0/47</span>
       </div>
     </div>
     <p class="quiet">
@@ -131,7 +131,16 @@
 <a name='L83'></a><a href='#L83'>83</a>
 <a name='L84'></a><a href='#L84'>84</a>
 <a name='L85'></a><a href='#L85'>85</a>
-<a name='L86'></a><a href='#L86'>86</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -195,16 +204,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -225,7 +243,7 @@ export default<span class="fstat-no" title="function not covered" > function tra
   const fbId = <span class="cstat-no" title="statement not covered" >'js_facebook-pixel';</span>
   const gaId = <span class="cstat-no" title="statement not covered" >'js_ga-tracking';</span>
   const fbOptOutEl = <span class="cstat-no" title="statement not covered" >document.querySelector('.js_fb-opt-out');</span>
-  const gaOptOutEl = <span class="cstat-no" title="statement not covered" >document.querySelector('.ga_fb-opt-out');</span>
+  const gaOptOutEl = <span class="cstat-no" title="statement not covered" >document.querySelector('.js_ga-opt-out');</span>
 &nbsp;
   const addScript = (<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >script: string) =&gt; {</span></span>
 <span class="cstat-no" title="statement not covered" >    if (typeof script === 'string') {</span>
@@ -280,6 +298,7 @@ export default<span class="fstat-no" title="function not covered" > function tra
               document.querySelectorAll(`.${fbId}`),
               'fbIsNotTracking'
             );
+<span class="cstat-no" title="statement not covered" >            alert('Facebook tracking has been deactivated');</span>
           };
 <span class="cstat-no" title="statement not covered" >          node.addEventListener('click', removeFBTracking);</span>
 <span class="cstat-no" title="statement not covered" >          break;</span>
@@ -290,6 +309,14 @@ export default<span class="fstat-no" title="function not covered" > function tra
               document.querySelectorAll(`.${gaId}`),
               'gaIsNotTracking'
             );
+            const gaProperty = <span class="cstat-no" title="statement not covered" >'UA-79543949-2';</span>
+            const disableStr = <span class="cstat-no" title="statement not covered" >'ga-disable-' + gaProperty;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            document.cookie =</span>
+              disableStr +
+              '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+<span class="cstat-no" title="statement not covered" >            window[disableStr] = true;</span>
+<span class="cstat-no" title="statement not covered" >            alert('Google Analytics tracking has been deactivated');</span>
           };
 <span class="cstat-no" title="statement not covered" >          node.addEventListener('click', removeGATracking);</span>
       }
@@ -307,7 +334,7 @@ export default<span class="fstat-no" title="function not covered" > function tra
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon May 21 2018 18:17:41 GMT+0200 (CEST)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon May 21 2018 19:56:49 GMT+0200 (CEST)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>
