@@ -1,16 +1,4 @@
 export default function fbqTracking(): void {
-  // document.addEventListener('DOMContentLoaded', event => {
-  //   const dontTrackObject = document.querySelectorAll('[data-fbpixel]')[0];
-  //   if (dontTrackObject != null) {
-  //     dontTrackObject.addEventListener('click', () => {
-  //       localStorage.setItem('DontTrackMe', true);
-  //     });
-  //   }
-  //   if (localStorage.getItem('DontTrackMe') == null) {
-  //     document.body.appendChild(tag);
-  //   }
-  // });
-
   const addToCart: HTMLElement = document.querySelector('.js_fbqAddToCart');
   const signUpBtn: HTMLElement = document.querySelector('.js_fbqNewsLead');
 

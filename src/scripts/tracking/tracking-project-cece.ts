@@ -2,7 +2,7 @@ export default function trackingCece(): void {
   const x = document.referrer;
   function set_cece_cookie(): void {
     const expiration = new Date();
-    expiration.setTime(expiration.getTime() + (30 * 24 * 60 * 60 * 1000));
+    expiration.setTime(expiration.getTime() + 30 * 24 * 60 * 60 * 1000);
     document.cookie = `refpartner=projce; expires=${expiration.toUTCString()}; path=/`;
   }
 
@@ -14,10 +14,10 @@ export default function trackingCece(): void {
   }
 
   if (window.sessionStorage) {
-      if (sessionStorage.getItem('refpartner')) {
-        if (document.cookie.indexOf('refpartner=projce') < 0) {
-          set_cece_cookie();
-          }
+    if (sessionStorage.getItem('refpartner')) {
+      if (document.cookie.indexOf('refpartner=projce') < 0) {
+        set_cece_cookie();
       }
+    }
   }
 }

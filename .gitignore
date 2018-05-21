@@ -21,3 +21,4 @@ config.yml
 deploy.log
 configuration/instagram/access.js
 configuration/instagram/instagram-auth.js
+.env

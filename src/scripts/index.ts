@@ -11,7 +11,8 @@ import numberInput from './modules/number-input';
 import { initExpander } from './modules/expander';
 import { initSmoothScrolling } from './modules/smooth-scrolling';
 import stickyNavigation from './modules/sticky-navigation';
-import trackingCece from './modules/tracking-project-cece';
+import trackingCece from './tracking/tracking-project-cece';
+import fbqTracking from './tracking/tracking-facebook';
 
 const init = (): void => {
   stickyNavigation();
@@ -23,6 +24,7 @@ const init = (): void => {
   instagramFeed();
   numberInput();
   trackingCece();
+  fbqTracking();
 };
 
 window.addEventListener('load', init);
