@@ -54,6 +54,9 @@ export default function tracking(): void {
     if (localStorage.getItem('google') === null) {
       localStorage.setItem('google', `${trackingManager.google}`);
     }
+    if (JSON.parse(localStorage.getItem('google')) === false) {
+      handleOptOut('google');
+    }
   };
 
   setValues();
@@ -61,7 +64,14 @@ export default function tracking(): void {
   [].slice.call(fbOptOutList).forEach((el: Element) => {
     el.addEventListener('click', () => {
       handleOptOut('facebook');
-      alert('You deactivated the facebook tracking pixel!');
+      alert('You deactivated the Facebook tracking pixel!');
+    });
+  });
+
+  [].slice.call(gaOptOutList).forEach((el: Element) => {
+    el.addEventListener('click', () => {
+      handleOptOut('google');
+      alert('You deactivated the Google tracking pixel!');
     });
   });
 }
