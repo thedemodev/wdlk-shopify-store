@@ -1,6 +1,5 @@
-export const facebookPixel = `
 <!-- Facebook Pixel Code -->
-<script class="js_facebook-pixel">
+<script class="js_facebook-tracking">
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -9,13 +8,16 @@ export const facebookPixel = `
   t.src=v;s=b.getElementsByTagName(e)[0];
   s.parentNode.insertBefore(t,s)}(window, document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
+  if (JSON.parse(localStorage.getItem('facebook')) === false) {
+    fbq('consent', 'revoke');
+  }
+  if ((JSON.parse(localStorage.getItem('facebook')))) {
+    fbq('consent', 'grant');
+  }
   fbq('init', '496673557200912');
   fbq('track', 'PageView');
 </script>
-<noscript class="js_facebook-pixel"><img height="1" width="1" style="display:none"
+<noscript class="js_facebook-tracking"><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=496673557200912&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Facebook Pixel Code -->
-`;
-
-export default facebookPixel;

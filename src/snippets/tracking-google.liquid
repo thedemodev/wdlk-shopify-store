@@ -1,0 +1,17 @@
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async class="js_google-tracking" src="https://www.googletagmanager.com/gtag/js?id=UA-79543949-2"></script>
+<script class="js_google-tracking">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  var trackId;
+  if (JSON.parse(localStorage.getItem('google')) === false) {
+    trackId =''
+  }
+  if ((JSON.parse(localStorage.getItem('google'))) === true) {
+    trackId ='UA-79543949-2'
+  }
+
+  gtag('config', trackId, { 'anonymize_ip': true });
+</script>
+<!-- End Google Analytics -->
