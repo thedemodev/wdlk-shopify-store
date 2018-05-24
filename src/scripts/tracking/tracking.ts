@@ -1,7 +1,28 @@
-import facebookPixel from './facebook-pixel';
-import googleAnalytics from './google-analytics';
+// import facebookPixel from './facebook-pixel';
+// import googleAnalytics from './google-analytics';
 export type trackingStatusTypes = 'fbIsNotTracking' | 'gaIsNotTracking';
 export type vendorTypes = 'facebook' | 'google';
+
+export interface TrackingProps {
+  facebook: boolean;
+  google: boolean;
+  disableTracking(vendor: string): void;
+}
+export function TrackingManagerFactory(): TrackingProps {
+  return {
+    facebook: true,
+    google: true,
+    disableTracking(vendor: string): void {
+      const keys = Object.keys(this);
+
+      keys.forEach(key => {
+        if (key === vendor) {
+          this[vendor] = false;
+        }
+      });
+    }
+  };
+}
 
 export default function tracking(): void {
   const fbId = 'js_facebook-pixel';
@@ -36,13 +57,13 @@ export default function tracking(): void {
     console.log('set status to', status);
   };
 
-  if (localStorage.getItem('fbIsNotTracking') === 'true') {
-    removeScript(document.querySelectorAll(`.${fbId}`), 'fbIsNotTracking');
-  }
+  // if (localStorage.getItem('fbIsNotTracking') === 'true') {
+  //   removeScript(document.querySelectorAll(`.${fbId}`), 'fbIsNotTracking');
+  // }
 
-  if (localStorage.getItem('fbIsNotTracking') === null) {
-    addScript(facebookPixel);
-  }
+  // if (localStorage.getItem('fbIsNotTracking') === null) {
+  //   addScript(facebookPixel);
+  // }
 
   // if (localStorage.getItem('gaIsNotTracking') === 'true') {
   //   removeScript(document.querySelectorAll(`.${gaId}`), 'gaIsNotTracking');
@@ -52,43 +73,43 @@ export default function tracking(): void {
   //   addScript(googleAnalytics);
   // }
 
-  const handleOptOut = (node: Element, vendor: vendorTypes): void => {
-    if (node) {
-      switch (vendor) {
-        case 'facebook':
-          const removeFBTracking = () => {
-            setStatus('fbIsNotTracking');
-            removeScript(
-              document.querySelectorAll(`.${fbId}`),
-              'fbIsNotTracking'
-            );
-            alert('Facebook tracking has been deactivated');
-          };
-          node.addEventListener('click', removeFBTracking);
-        // break;
-        // case 'google':
-        //   const removeGATracking = () => {
-        //     setStatus('gaIsNotTracking');
-        //     removeScript(
-        //       document.querySelectorAll(`.${gaId}`),
-        //       'gaIsNotTracking'
-        //     );
-        //     const gaProperty = 'UA-79543949-2';
-        //     const disableStr = 'ga-disable-' + gaProperty;
+  // const handleOptOut = (node: Element, vendor: vendorTypes): void => {
+  //   if (node) {
+  //     switch (vendor) {
+  //       case 'facebook':
+  //         const removeFBTracking = () => {
+  //           setStatus('fbIsNotTracking');
+  //           removeScript(
+  //             document.querySelectorAll(`.${fbId}`),
+  //             'fbIsNotTracking'
+  //           );
+  //           alert('Facebook tracking has been deactivated');
+  //         };
+  //         node.addEventListener('click', removeFBTracking);
+  //       // break;
+  //       // case 'google':
+  //       //   const removeGATracking = () => {
+  //       //     setStatus('gaIsNotTracking');
+  //       //     removeScript(
+  //       //       document.querySelectorAll(`.${gaId}`),
+  //       //       'gaIsNotTracking'
+  //       //     );
+  //       //     const gaProperty = 'UA-79543949-2';
+  //       //     const disableStr = 'ga-disable-' + gaProperty;
 
-        //     document.cookie =
-        //       disableStr +
-        //       '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
-        //     window[disableStr] = true;
-        //     alert('Google Analytics tracking has been deactivated');
-        //   };
-        //   node.addEventListener('click', removeGATracking);
-      }
-    }
-  };
+  //       //     document.cookie =
+  //       //       disableStr +
+  //       //       '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+  //       //     window[disableStr] = true;
+  //       //     alert('Google Analytics tracking has been deactivated');
+  //       //   };
+  //       //   node.addEventListener('click', removeGATracking);
+  //     }
+  //   }
+  // };
 
-  handleOptOut(fbOptOutEl, 'facebook');
-  handleOptOut(gaOptOutEl, 'google');
+  // handleOptOut(fbOptOutEl, 'facebook');
+  // handleOptOut(gaOptOutEl, 'google');
 }
 
 tracking();
