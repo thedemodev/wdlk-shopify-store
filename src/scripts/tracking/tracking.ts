@@ -44,13 +44,13 @@ export default function tracking(): void {
     addScript(facebookPixel);
   }
 
-  if (localStorage.getItem('gaIsNotTracking') === 'true') {
-    removeScript(document.querySelectorAll(`.${gaId}`), 'gaIsNotTracking');
-  }
+  // if (localStorage.getItem('gaIsNotTracking') === 'true') {
+  //   removeScript(document.querySelectorAll(`.${gaId}`), 'gaIsNotTracking');
+  // }
 
-  if (localStorage.getItem('gaIsNotTracking') === null) {
-    addScript(googleAnalytics);
-  }
+  // if (localStorage.getItem('gaIsNotTracking') === null) {
+  //   addScript(googleAnalytics);
+  // }
 
   const handleOptOut = (node: Element, vendor: vendorTypes): void => {
     if (node) {
@@ -65,24 +65,24 @@ export default function tracking(): void {
             alert('Facebook tracking has been deactivated');
           };
           node.addEventListener('click', removeFBTracking);
-          break;
-        case 'google':
-          const removeGATracking = () => {
-            setStatus('gaIsNotTracking');
-            removeScript(
-              document.querySelectorAll(`.${gaId}`),
-              'gaIsNotTracking'
-            );
-            const gaProperty = 'UA-79543949-2';
-            const disableStr = 'ga-disable-' + gaProperty;
+        // break;
+        // case 'google':
+        //   const removeGATracking = () => {
+        //     setStatus('gaIsNotTracking');
+        //     removeScript(
+        //       document.querySelectorAll(`.${gaId}`),
+        //       'gaIsNotTracking'
+        //     );
+        //     const gaProperty = 'UA-79543949-2';
+        //     const disableStr = 'ga-disable-' + gaProperty;
 
-            document.cookie =
-              disableStr +
-              '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
-            window[disableStr] = true;
-            alert('Google Analytics tracking has been deactivated');
-          };
-          node.addEventListener('click', removeGATracking);
+        //     document.cookie =
+        //       disableStr +
+        //       '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+        //     window[disableStr] = true;
+        //     alert('Google Analytics tracking has been deactivated');
+        //   };
+        //   node.addEventListener('click', removeGATracking);
       }
     }
   };

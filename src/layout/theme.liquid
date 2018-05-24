@@ -32,6 +32,8 @@
           Tracking
       {% endcomment %}
       <script async src="{{ 'tracking.js' | asset_url }}"></script>
+      {% include 'tracking-facebook' %}
+      {% include 'tracking-ga' %}
   </head>
   {% comment %}
     Add the page template as a class for easy page or template specific styling.
