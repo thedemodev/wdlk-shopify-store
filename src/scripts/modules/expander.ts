@@ -1,14 +1,76 @@
 import { Observable, Observer, fromEvent, from } from 'rxjs';
-import { filter } from 'rxjs/operators';
 import { AspectRatio } from './picture-aspect-ratio';
-import { BreakPoint } from './breakpoint';
+import { mediaQuery, BreakPoint } from './match-media';
+
+// enum ViewBoxSize {
+//   S,
+//   M,
+//   L,
+//   XL
+// }
+
+// interface ViewBoxInit {
+//   isExpanded: boolean;
+//   size: ViewBoxSize;
+// }
+
+// class ViewBox {
+//   private size = ViewBoxSize;
+//   private isExpanded: boolean = false;
+// }
+
+export function foo(isExpanded: boolean = false): Observable<string> {
+  return Observable.create((observer: Observer<string>) => {
+    const viewportWidth = window.innerWidth;
+    const viewBox = {
+      S: `0 0 ${BreakPoint.S} ${
+        isExpanded ? BreakPoint.S * AspectRatio.S : viewportWidth / 2
+      }`,
+      M: `0 0 ${BreakPoint.M} ${BreakPoint.M * AspectRatio.M}`,
+      L: `0 0 ${BreakPoint.L} ${BreakPoint.L * AspectRatio.L}`,
+      XL: `0 0 ${BreakPoint.XL} ${BreakPoint.XL * AspectRatio.L}`
+    };
+
+    if (mediaQuery.S.matches) {
+      observer.next(viewBox.S);
+    }
+    if (mediaQuery.M.matches) {
+      observer.next(viewBox.M);
+    }
+    if (mediaQuery.L.matches) {
+      observer.next(viewBox.L);
+    }
+    if (mediaQuery.XL.matches) {
+      observer.next(viewBox.XL);
+    }
+    mediaQuery.S.addListener(e => {
+      if (e.matches) {
+        observer.next(viewBox.S);
+      }
+    });
+    mediaQuery.M.addListener(e => {
+      if (e.matches) {
+        observer.next(viewBox.M);
+      }
+    });
+    mediaQuery.L.addListener(e => {
+      if (e.matches) {
+        observer.next(viewBox.L);
+      }
+    });
+  });
+}
+const so = foo();
+so.subscribe(bla => {
+  console.log(bla, 'subscription');
+});
 
 export function viewBoxStream(
   viewportWidth: number,
   isExpanded: boolean = false
 ): Observable<string> {
   return Observable.create((observer: Observer<string>) => {
-    console.log(isExpanded, '&&&&');
+    // console.log(isExpanded, '&&&&');
     switch (viewportWidth) {
       /**
        * @type {BreakPoint.S}
