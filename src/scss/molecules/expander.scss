@@ -1,453 +1,469 @@
-$aspect-ratio-4-3  : 1.33333;
-$aspect-ratio-3-4  : 0.75;
-$dynamic-space-l   : ($size-L * 100) / 1440;
-$dynamic-pane-width: (100 - ($dynamic-space-l * 4)) / 3;
-$scaled-width      : $dynamic-pane-width / 100;
-$pane-height       : 55;
-
-$start-pane-counter: 1;
-$end-pane-counter  : 4;
-$expander-bezier   : cubic-bezier(0.165, 0.84, 0.44, 1);
-
-/*
-/* @param {string} $name of the animation
-/* @param {number} $from translation X position starting point
-/* @param {boolean} $toggle the direction of the animation
-/* @return @keyframe animation
-*/
-@mixin expander-animation-s ($name, $value, $toggle: false) {
-  @keyframes #{$name} {
-    @if not $toggle {
-      from {
-        transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
-      }
-      to {
-        transform: scale3d(1, 1, 1) translate3d(0, $value, 0);
-      }
-    }
-    @else {
-      0% {
-        transform: scale3d(1, 1, 1) translate3d(0, $value, 0);
-      }
-      50% {
-        transform: scale3d(1, .333, 1) translate3d(0, ($value / 2), 0);
-      }
-      100% {
-        transform: scale3d(1, .333, 1) translate3d(0, 0, 0);
-      }
-    }
-  }
-  animation: #{$name} .333s $expander-bezier;
-}
-
-/* @param {string} $name of the animation
-/* @param {number} $from translation X position starting point
-/* @param {boolean} $toggle the direction of the animation
-/* @param {number} $fromY translation Y position starting point
-/* @return @keyframe animation
-*/
-@mixin expander-animation-m ($name, $from: null, $toggle: false, $fromY: 0) {
-  $to: -50%;
-  @keyframes #{$name} {
-    @if not $toggle  {
-      from {
-        transform: scale3d(1, 1, 1) translate3d($from, 0, 0);
-      }
-      to {
-        transform: scale3d(1, 1, 1) translate3d($to, 0, 0);
-      }
-    }
-    @else {
-      0% {
-        transform: scale3d(1, 1, 1) translate3d($to, 0, 0);
-      }
-      50% {
-        transform: scale3d($scaled-width, .7, 1)
-          translate3d(($to + $from) / 2,
-          ($fromY/2), 0);
-      }
-      100% {
-        transform: scale3d($scaled-width, .7, 1)
-          translate3d($from, $fromY, 0);
-      }
-    }
-  }
-  animation: #{$name} .5s $expander-bezier;
-}
-
-@keyframes fade-in-out {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes lead-arrow {
-  0% {
-    transform: translate3d(-50%, 0, 0);
-  }
-  25% {
-    transform: translate3d(-50%, 100%, 0);
-  }
-  50% {
-    transform: translate3d(-50%, 0, 0);
-  }
-  100% {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-
 .Expander {
-  --pane-height: 300;
-  position: relative;
-  height: #{$pane-height * 3}vh;
-  margin: auto;
-  line-height: 1.5;
-  @include media (medium) {
-    height: calc(100vh - #{$nav-height-medium});
-  }
+  --expander-pane-height: calc(var(--expander-pane-width) * 1.5);
+  // &-media {
+  //   width: calc(var(--expander-pane-width) * 1px);
+  //   height: calc(var(--expander-pane-height) * 1px);
 
-  &-container {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    width: 100vw;
-    height: calc((var(--pane-height) * 1px) + 100vh);
-    padding: #{$size-L}px #{$size-L}px 0;
-    margin: {
-      right: auto;
-      left: auto;
-    }
-    transform: scale3d(1, 3.33, 1);
-    transform-origin: top center;
-    background-color: $hex-white;
-
-    @include media(medium) {
-      height: calc(100vh - #{$nav-height-medium});
-      max-width: $screen-xl;
-      padding: #{$size-XXL}px #{$size-XXL}px 0;
-      transform: scale3d(3, 1.5, 1);
-    }
-  }
-
-  &-pane {
-    position: absolute;
-    left: 0;
-    z-index: 2;
-    overflow: hidden;
-    width: 100vw;
-    height: 100%;
-    max-width: $screen-xl;
-    cursor: pointer;
-    transform: scale3d(1, .333, 1) translate3d(0, 0, 0);
-    transform-origin: top left;
-    &:nth-of-type(1) {
-      @include expander-animation-s('pane-1-collapse',
-      $nav-height, true);
-    }
-    &:nth-of-type(2) {
-      @include expander-animation-s('pane-2-collapse',
-      calc(-55vh + #{$nav-height}), true);
-    }
-    &:nth-of-type(3) {
-      @include expander-animation-s('pane-3-collapse',
-      calc(-110vh + #{$nav-height}), true);
-    }
-    transition: z-index .66s linear;
-
-    @include media (medium) {
-      left: 50%;
-      height: calc(100vh - #{$nav-height-medium});
-      margin: auto;
-      transform:
-        scale3d(#{$scaled-width}, .7, 1)
-        translate3d(-50%, 0, 0);
-
-      &:nth-of-type(1) {
-        transform:
-          scale3d(#{$scaled-width}, .7, 1)
-          translate3d(-155%, 0, 0);
-          @include expander-animation-m('pane-m-1-collapse', -155%, true);
-      }
-
-      &:nth-of-type(2) {
-        transform:
-          scale3d(#{$scaled-width}, .7, 1)
-          translate3d(-50%, 30%, 0);
-          &:nth-of-type(2) {
-            @include expander-animation-m('pane-m-2-collapse', -50%, true, 30%);
-          }
-      }
-
-      &:nth-of-type(3) {
-        transform:
-          scale3d(#{$scaled-width}, .7, 1)
-          translate3d(55%, 0, 0);
-          @include expander-animation-m('pane-m-3-collapse', 55%, true);
-      }
-    }
-
-    @for $n from $start-pane-counter to $end-pane-counter {
-      &:nth-of-type(0n + #{$n}) {
-        $counter: $n;
-        $position-top: ($n - 1) * $pane-height;
-        top: #{$position-top}vh;
-
-        @include media(medium) {
-          top: auto;
-        }
-        @if $n == 1 {
-          .Expander-img {
-            transform: translateY(-18%);
-            @include media(medium) {
-              transform: none;
-            }
-          }
-        }
-        @if $n == 2 {
-          .Expander-img {
-            transform: translateY(-33%);
-          }
-        }
-      }
-    }
-  }
-
-  .Headline {
-    color: $hex-sand;
-  }
-
-  .Link {
-    margin-top: #{$size-L}px;
-  }
-
-  .Icon {
-    width: 20px;
-    height: 20px;
-    fill: $hex-white;
-    transition: fill .2s ease-in-out;
-    &:hover {
-      fill: $hex-coral;
-    }
-  }
-
-  &-content {
-    align-self: flex-end;
-    max-width: 50rem;
-    margin: 0 auto;
-    padding-bottom: 100px;
-    opacity: 0;
-    pointer-events: auto;
-    text-align: center;
-    transform: translate3d(0, 150%, 0);
-
-    transition: none;
-
-    @include media(medium) {
-      align-self: flex-start;
-      margin: 0;
-      padding-bottom: 0;
-      font-size: $copy-size-l;
-      text-align: left;
-    }
-
-    .Icon {
-      height: 16px;
-      fill: $hex-coral;
-    }
-  }
-
-  &-intro {
-    position: absolute;
-    left: 50%;
-    top: 20vh;
-    opacity: 1;
-    text-align: center;
-    transform: translate3d(-50%, 0, 0);
-    transition: opacity .3s $expander-bezier;
-    @include media(medium) {
-      top: #{$size-XXL}px;
-    }
-
-    &.Expander-intro {
-      color: $hex-white;
-      @include media(medium) {
-        color: $hex-blue-gray-dark;
-      }
-    }
-  }
-
-  &-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    width: 100%;
-    height: calc(100vh - #{$nav-height});
-    object-fit: cover;
-    object-position: center;
-    @include media(medium) {
-      bottom: 0;
-      top: auto;
-      height: 100%;
-    }
-  }
-
-  &-close {
-    position: absolute;
-    top: #{$size-M}px;
-    left: #{$size-L}px;
-    opacity: 0;
-    pointer-events: auto;
-    transition: opacity .6s linear;
-    @include media(medium) {
-      top: #{$size-L}px;
-      right: #{$size-XXL}px;
-      left: auto;
-    }
-  }
-
-  &-lead {
-    position: absolute;
-    top: calc(100vh - 120px);
-    left: 50%;
-    cursor: pointer;
-    transform: translate3d(-50%, 0, 0);
-    @include media(medium) {
-      opacity: 0;
-      animation-play-state: paused;
-    }
-  }
-  &-scrollContent {
-    position: absolute;
-    bottom: 65vh;
-    right: 0;
-    z-index: -2;
-    width: 100vw;
-    height: 50vh;
-  }
-
-  &-state {
-    position: absolute;
-    z-index: -1;
-    clip-path: inset(6px 6px 6px 6px);
-
-    &:checked {
-      + .Expander-pane {
-        position: fixed;
-        z-index: 10;
-        max-width: 100vw;
-        overflow: scroll;
-        transform: scale3d(1, 1, 1) translate3d(0, #{$nav-height}, 0);
-
-        &:nth-of-type(1) {
-          @include expander-animation-s('pane-1', $nav-height);
-        }
-        &:nth-of-type(2) {
-          @include expander-animation-s('pane-2', calc(-55vh + #{$nav-height}));
-        }
-        &:nth-of-type(3) {
-          @include expander-animation-s('pane-3', calc(-110vh + #{$nav-height}));
-        }
-        @include media(medium) {
-          top: $nav-height-medium;
-          z-index: 15;
-          overflow: auto;
-          transform: scale3d(1, 1, 1);
-          &:nth-of-type(1) {
-            @include expander-animation-m('pane-m-1', -155%);
-          }
-          &:nth-of-type(2) {
-            @keyframes pane-m-2 {
-              0% {
-                transform: scale3d(#{$scaled-width}, .7, 1)
-                  translate3d(-50%, 30%, 0);
-              }
-              50% {
-                transform: scale3d(1, 1, 1)
-                  translate3d(-50%, 30%, 0);
-              }
-              100% {
-                transform: scale3d(1, 1, 1)
-                  translate3d(-50%, 0, 0);
-              }
-            }
-            animation: pane-m-2 .5s $expander-bezier;
-          }
-          &:nth-of-type(3) {
-            @include expander-animation-m('pane-m-3', 55%);
-          }
-        }
-
-        .Expander-container {
-          transform: scale3d(1, 1, 1);
-
-          @include media (xlarge) {
-            max-width: $screen-xl + 480;
-          }
-        }
-
-        .Expander-intro {
-          animation: fade-in-out 1s $expander-bezier;
-          @include media(medium) {
-            opacity: 0;
-            animation: none;
-          }
-        }
-
-        .Expander-content {
-          opacity: 1;
-          transform: translate3d(0, 0, 0);
-          transition: opacity .33s linear .5s, transform .33s $expander-bezier .5s;
-        }
-
-        .Expander-close {
-          opacity: 1;
-        }
-
-        .Expander-img {
-          transform: none;
-        }
-
-        .Expander-lead {
-          z-index: 10;
-          animation: lead-arrow 2s $expander-bezier;
-          animation-iteration-count: 4;
-          &:hover {
-            animation-play-state: paused;
-          }
-        }
-      }
-    }
-
-    @for $n from $start-pane-counter to $end-pane-counter {
-      &:nth-of-type(0n + #{$n}) {
-        &:checked {
-          + .Expander-pane {
-            @include media(medium) {
-              transform: scale3d(1, 1, 1)
-                translate3d(-50%, 0, 0);
-            }
-            @if $n == 2 {
-              transform: scale3d(1, 1, 1)
-                translate3d(0, calc(#{-$pane-height}vh + #{$nav-height}), 0);
-            }
-            @if $n == 3 {
-            transform: scale3d(1, 1, 1)
-              translate3d(0, calc(#{-$pane-height * 2}vh + #{$nav-height}), 0);
-            }
-          }
-        }
-      }
-    }
-  }
+  //   @include media('medium') {
+  //     --expander-pane-height: calc(var(--expander-pane-width) * 1.3333);
+  //   }
+  //   @include media('large') {
+  //     --expander-pane-height: calc(var(--expander-pane-width) * 0.562);
+  //   }
+  // }
 }
-@include media(medium) {
-  [for="pane-3"] {
-    .Expander-content {
-      align-self: center;
-    }
-  }
-}
+
+
+// $aspect-ratio-4-3  : 1.33333;
+// $aspect-ratio-3-4  : 0.75;
+// $dynamic-space-l   : ($size-L * 100) / 1440;
+// $dynamic-pane-width: (100 - ($dynamic-space-l * 4)) / 3;
+// $scaled-width      : $dynamic-pane-width / 100;
+// $pane-height       : 55;
+
+// $start-pane-counter: 1;
+// $end-pane-counter  : 4;
+// $expander-bezier   : cubic-bezier(0.165, 0.84, 0.44, 1);
+
+// /*
+// /* @param {string} $name of the animation
+// /* @param {number} $from translation X position starting point
+// /* @param {boolean} $toggle the direction of the animation
+// /* @return @keyframe animation
+// */
+// @mixin expander-animation-s ($name, $value, $toggle: false) {
+//   @keyframes #{$name} {
+//     @if not $toggle {
+//       from {
+//         transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
+//       }
+//       to {
+//         transform: scale3d(1, 1, 1) translate3d(0, $value, 0);
+//       }
+//     }
+//     @else {
+//       0% {
+//         transform: scale3d(1, 1, 1) translate3d(0, $value, 0);
+//       }
+//       50% {
+//         transform: scale3d(1, .333, 1) translate3d(0, ($value / 2), 0);
+//       }
+//       100% {
+//         transform: scale3d(1, .333, 1) translate3d(0, 0, 0);
+//       }
+//     }
+//   }
+//   animation: #{$name} .333s $expander-bezier;
+// }
+
+// /* @param {string} $name of the animation
+// /* @param {number} $from translation X position starting point
+// /* @param {boolean} $toggle the direction of the animation
+// /* @param {number} $fromY translation Y position starting point
+// /* @return @keyframe animation
+// */
+// @mixin expander-animation-m ($name, $from: null, $toggle: false, $fromY: 0) {
+//   $to: -50%;
+//   @keyframes #{$name} {
+//     @if not $toggle  {
+//       from {
+//         transform: scale3d(1, 1, 1) translate3d($from, 0, 0);
+//       }
+//       to {
+//         transform: scale3d(1, 1, 1) translate3d($to, 0, 0);
+//       }
+//     }
+//     @else {
+//       0% {
+//         transform: scale3d(1, 1, 1) translate3d($to, 0, 0);
+//       }
+//       50% {
+//         transform: scale3d($scaled-width, .7, 1)
+//           translate3d(($to + $from) / 2,
+//           ($fromY/2), 0);
+//       }
+//       100% {
+//         transform: scale3d($scaled-width, .7, 1)
+//           translate3d($from, $fromY, 0);
+//       }
+//     }
+//   }
+//   animation: #{$name} .5s $expander-bezier;
+// }
+
+// @keyframes fade-in-out {
+//   from {
+//     opacity: 0;
+//   }
+//   to {
+//     opacity: 1;
+//   }
+// }
+
+// @keyframes lead-arrow {
+//   0% {
+//     transform: translate3d(-50%, 0, 0);
+//   }
+//   25% {
+//     transform: translate3d(-50%, 100%, 0);
+//   }
+//   50% {
+//     transform: translate3d(-50%, 0, 0);
+//   }
+//   100% {
+//     transform: translate3d(-50%, 0, 0);
+//   }
+// }
+
+// .Expander {
+//   --pane-height: 300;
+//   position: relative;
+//   height: #{$pane-height * 3}vh;
+//   margin: auto;
+//   line-height: 1.5;
+//   @include media (medium) {
+//     height: calc(100vh - #{$nav-height-medium});
+//   }
+
+//   &-container {
+//     box-sizing: border-box;
+//     display: flex;
+//     flex-direction: row;
+//     width: 100vw;
+//     height: calc((var(--pane-height) * 1px) + 100vh);
+//     padding: #{$size-L}px #{$size-L}px 0;
+//     margin: {
+//       right: auto;
+//       left: auto;
+//     }
+//     transform: scale3d(1, 3.33, 1);
+//     transform-origin: top center;
+//     background-color: $hex-white;
+
+//     @include media(medium) {
+//       height: calc(100vh - #{$nav-height-medium});
+//       max-width: $screen-xl;
+//       padding: #{$size-XXL}px #{$size-XXL}px 0;
+//       transform: scale3d(3, 1.5, 1);
+//     }
+//   }
+
+//   &-pane {
+//     position: absolute;
+//     left: 0;
+//     z-index: 2;
+//     overflow: hidden;
+//     width: 100vw;
+//     height: 100%;
+//     max-width: $screen-xl;
+//     cursor: pointer;
+//     transform: scale3d(1, .333, 1) translate3d(0, 0, 0);
+//     transform-origin: top left;
+//     &:nth-of-type(1) {
+//       @include expander-animation-s('pane-1-collapse',
+//       $nav-height, true);
+//     }
+//     &:nth-of-type(2) {
+//       @include expander-animation-s('pane-2-collapse',
+//       calc(-55vh + #{$nav-height}), true);
+//     }
+//     &:nth-of-type(3) {
+//       @include expander-animation-s('pane-3-collapse',
+//       calc(-110vh + #{$nav-height}), true);
+//     }
+//     transition: z-index .66s linear;
+
+//     @include media (medium) {
+//       left: 50%;
+//       height: calc(100vh - #{$nav-height-medium});
+//       margin: auto;
+//       transform:
+//         scale3d(#{$scaled-width}, .7, 1)
+//         translate3d(-50%, 0, 0);
+
+//       &:nth-of-type(1) {
+//         transform:
+//           scale3d(#{$scaled-width}, .7, 1)
+//           translate3d(-155%, 0, 0);
+//           @include expander-animation-m('pane-m-1-collapse', -155%, true);
+//       }
+
+//       &:nth-of-type(2) {
+//         transform:
+//           scale3d(#{$scaled-width}, .7, 1)
+//           translate3d(-50%, 30%, 0);
+//           &:nth-of-type(2) {
+//             @include expander-animation-m('pane-m-2-collapse', -50%, true, 30%);
+//           }
+//       }
+
+//       &:nth-of-type(3) {
+//         transform:
+//           scale3d(#{$scaled-width}, .7, 1)
+//           translate3d(55%, 0, 0);
+//           @include expander-animation-m('pane-m-3-collapse', 55%, true);
+//       }
+//     }
+
+//     @for $n from $start-pane-counter to $end-pane-counter {
+//       &:nth-of-type(0n + #{$n}) {
+//         $counter: $n;
+//         $position-top: ($n - 1) * $pane-height;
+//         top: #{$position-top}vh;
+
+//         @include media(medium) {
+//           top: auto;
+//         }
+//         @if $n == 1 {
+//           .Expander-img {
+//             transform: translateY(-18%);
+//             @include media(medium) {
+//               transform: none;
+//             }
+//           }
+//         }
+//         @if $n == 2 {
+//           .Expander-img {
+//             transform: translateY(-33%);
+//           }
+//         }
+//       }
+//     }
+//   }
+
+//   .Headline {
+//     color: $hex-sand;
+//   }
+
+//   .Link {
+//     margin-top: #{$size-L}px;
+//   }
+
+//   .Icon {
+//     width: 20px;
+//     height: 20px;
+//     fill: $hex-white;
+//     transition: fill .2s ease-in-out;
+//     &:hover {
+//       fill: $hex-coral;
+//     }
+//   }
+
+//   &-content {
+//     align-self: flex-end;
+//     max-width: 50rem;
+//     margin: 0 auto;
+//     padding-bottom: 100px;
+//     opacity: 0;
+//     pointer-events: auto;
+//     text-align: center;
+//     transform: translate3d(0, 150%, 0);
+
+//     transition: none;
+
+//     @include media(medium) {
+//       align-self: flex-start;
+//       margin: 0;
+//       padding-bottom: 0;
+//       font-size: $copy-size-l;
+//       text-align: left;
+//     }
+
+//     .Icon {
+//       height: 16px;
+//       fill: $hex-coral;
+//     }
+//   }
+
+//   &-intro {
+//     position: absolute;
+//     left: 50%;
+//     top: 20vh;
+//     opacity: 1;
+//     text-align: center;
+//     transform: translate3d(-50%, 0, 0);
+//     transition: opacity .3s $expander-bezier;
+//     @include media(medium) {
+//       top: #{$size-XXL}px;
+//     }
+
+//     &.Expander-intro {
+//       color: $hex-white;
+//       @include media(medium) {
+//         color: $hex-blue-gray-dark;
+//       }
+//     }
+//   }
+
+//   &-img {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     z-index: -1;
+//     width: 100%;
+//     height: calc(100vh - #{$nav-height});
+//     object-fit: cover;
+//     object-position: center;
+//     @include media(medium) {
+//       bottom: 0;
+//       top: auto;
+//       height: 100%;
+//     }
+//   }
+
+//   &-close {
+//     position: absolute;
+//     top: #{$size-M}px;
+//     left: #{$size-L}px;
+//     opacity: 0;
+//     pointer-events: auto;
+//     transition: opacity .6s linear;
+//     @include media(medium) {
+//       top: #{$size-L}px;
+//       right: #{$size-XXL}px;
+//       left: auto;
+//     }
+//   }
+
+//   &-lead {
+//     position: absolute;
+//     top: calc(100vh - 120px);
+//     left: 50%;
+//     cursor: pointer;
+//     transform: translate3d(-50%, 0, 0);
+//     @include media(medium) {
+//       opacity: 0;
+//       animation-play-state: paused;
+//     }
+//   }
+//   &-scrollContent {
+//     position: absolute;
+//     bottom: 65vh;
+//     right: 0;
+//     z-index: -2;
+//     width: 100vw;
+//     height: 50vh;
+//   }
+
+//   &-state {
+//     position: absolute;
+//     z-index: -1;
+//     clip-path: inset(6px 6px 6px 6px);
+
+//     &:checked {
+//       + .Expander-pane {
+//         position: fixed;
+//         z-index: 10;
+//         max-width: 100vw;
+//         overflow: scroll;
+//         transform: scale3d(1, 1, 1) translate3d(0, #{$nav-height}, 0);
+
+//         &:nth-of-type(1) {
+//           @include expander-animation-s('pane-1', $nav-height);
+//         }
+//         &:nth-of-type(2) {
+//           @include expander-animation-s('pane-2', calc(-55vh + #{$nav-height}));
+//         }
+//         &:nth-of-type(3) {
+//           @include expander-animation-s('pane-3', calc(-110vh + #{$nav-height}));
+//         }
+//         @include media(medium) {
+//           top: $nav-height-medium;
+//           z-index: 15;
+//           overflow: auto;
+//           transform: scale3d(1, 1, 1);
+//           &:nth-of-type(1) {
+//             @include expander-animation-m('pane-m-1', -155%);
+//           }
+//           &:nth-of-type(2) {
+//             @keyframes pane-m-2 {
+//               0% {
+//                 transform: scale3d(#{$scaled-width}, .7, 1)
+//                   translate3d(-50%, 30%, 0);
+//               }
+//               50% {
+//                 transform: scale3d(1, 1, 1)
+//                   translate3d(-50%, 30%, 0);
+//               }
+//               100% {
+//                 transform: scale3d(1, 1, 1)
+//                   translate3d(-50%, 0, 0);
+//               }
+//             }
+//             animation: pane-m-2 .5s $expander-bezier;
+//           }
+//           &:nth-of-type(3) {
+//             @include expander-animation-m('pane-m-3', 55%);
+//           }
+//         }
+
+//         .Expander-container {
+//           transform: scale3d(1, 1, 1);
+
+//           @include media (xlarge) {
+//             max-width: $screen-xl + 480;
+//           }
+//         }
+
+//         .Expander-intro {
+//           animation: fade-in-out 1s $expander-bezier;
+//           @include media(medium) {
+//             opacity: 0;
+//             animation: none;
+//           }
+//         }
+
+//         .Expander-content {
+//           opacity: 1;
+//           transform: translate3d(0, 0, 0);
+//           transition: opacity .33s linear .5s, transform .33s $expander-bezier .5s;
+//         }
+
+//         .Expander-close {
+//           opacity: 1;
+//         }
+
+//         .Expander-img {
+//           transform: none;
+//         }
+
+//         .Expander-lead {
+//           z-index: 10;
+//           animation: lead-arrow 2s $expander-bezier;
+//           animation-iteration-count: 4;
+//           &:hover {
+//             animation-play-state: paused;
+//           }
+//         }
+//       }
+//     }
+
+//     @for $n from $start-pane-counter to $end-pane-counter {
+//       &:nth-of-type(0n + #{$n}) {
+//         &:checked {
+//           + .Expander-pane {
+//             @include media(medium) {
+//               transform: scale3d(1, 1, 1)
+//                 translate3d(-50%, 0, 0);
+//             }
+//             @if $n == 2 {
+//               transform: scale3d(1, 1, 1)
+//                 translate3d(0, calc(#{-$pane-height}vh + #{$nav-height}), 0);
+//             }
+//             @if $n == 3 {
+//             transform: scale3d(1, 1, 1)
+//               translate3d(0, calc(#{-$pane-height * 2}vh + #{$nav-height}), 0);
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+// @include media(medium) {
+//   [for="pane-3"] {
+//     .Expander-content {
+//       align-self: center;
+//     }
+//   }
+// }

@@ -1,4 +1,7 @@
 {
+  "rulesDirectory": [
+    "node_modules/rxjs-tslint"
+  ],
   "defaultSeverity": "warning",
   "linterOptions": {
     "exclude": [
@@ -7,7 +10,6 @@
     ]
   },
   "rules": {
-    "adjacent-overload-signatures": true,
     "ban-comma-operator": true,
     "ban-types": [
       true,
@@ -190,6 +192,10 @@
     "prefer-template": [true, "allow-single-concat"],
     "quotemark": [true, "single", "avoid-escape", "avoid-template", "jsx-double"],
     "return-undefined": false,
+    "rxjs-collapse-imports": true,
+    "rxjs-pipeable-operators-only": true,
+    "rxjs-no-static-observable-methods": true,
+    "rxjs-proper-imports": true,
     "semicolon": [true, "always"],
     "space-before-function-paren": [
       true,

@@ -4,6 +4,9 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HappyPack = require('happypack');
 const happyThreadPool = HappyPack.ThreadPool({ size: 6 });
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const rxPaths = require('rxjs/_esm5/path-mapping');
+const webpack = require('webpack');
 
 // Ensure `postcss` key is extracted
 HappyPack.SERIALIZABLE_OPTIONS = HappyPack.SERIALIZABLE_OPTIONS.concat(['postcss']);
@@ -30,6 +33,15 @@ module.exports = {
         use: 'happypack/loader?id=ts',
       }
     ]
+  },
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        parallel: true,
+        sourceMap: true
+      })
+    ],
+    concatenateModules: true
   },
   plugins: [
     new Dotenv(),
@@ -59,6 +71,7 @@ module.exports = {
     })
   ],
   resolve: {
+    alias: rxPaths(),
     extensions: ['.ts', '.tsx', '.js']
   },
   watch: true

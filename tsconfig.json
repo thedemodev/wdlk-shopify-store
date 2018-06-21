@@ -8,6 +8,7 @@
       "es6",
       "scripthost" ],
     "mapRoot": "./dist/assets",
+    "moduleResolution": "node",
     "noImplicitAny": true,
     "sourceMap": true,
     "target": "es6",

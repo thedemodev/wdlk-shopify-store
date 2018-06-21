@@ -15,7 +15,7 @@ These are the necessary variables examples to correctly initialize the component
 
 {% endcomment %}
 
-<input class="Expander-state js_state" type="checkbox" id="pane-{{paneId}}"/>
+{% comment %} <input class="Expander-state js_state" type="checkbox" id="pane-{{paneId}}"/>
 <label class="Expander-pane js_expander" for="pane-{{paneId}}">
   <section class="Expander-container">
     <div class="Expander-content js_content" id="Expander-{{paneId}}">
@@ -44,4 +44,29 @@ These are the necessary variables examples to correctly initialize the component
     </label>
     <div class="Expander-intro Headline Headline--3 Headline--bold">{{ categoryTitle }}</div>
   </section>
-</label>
+</label> {% endcomment %}
+
+<article class="Expander" tabindex="0">
+  <svg
+    aria-labelledby="catagory-{{paneId}}-title"
+    class="Expander-media js_expander"
+    preserveAspectRatio="xMinYMin"
+    role="img"
+    viewBox="0 0 768 1024" >
+    <title id="catagory-{{paneId}}-title">{{ headline }} Swimwear Category</title>
+    <image
+      href="{{ srcSet1 }}"
+      data-image-m="{{ srcSet2 }}"
+      data-image-l="{{ srcSet3 }}"/>
+  </svg>
+  <div style="display: none">
+    <h2 class="Headline Headline--1 Headline--bold">{{ headline }}</h2>
+    <p>{{ caption }}</p>
+    <a class="Link Link--btn" href="{{ link }}">
+      Shop {{ categoryTitle }}
+      <svg class="Icon Icon--right">
+          <use xlink:href="#Arrow_right" />
+      </svg>
+    </a>
+  </div>
+</article>

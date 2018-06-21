@@ -8,7 +8,7 @@ import instagramFeed from './modules/instagram-feed';
 import notification from './modules/notification';
 import numberInput from './modules/number-input';
 
-import { initExpander } from './modules/expander';
+import expander from './modules/expander';
 import { initSmoothScrolling } from './modules/smooth-scrolling';
 import stickyNavigation from './modules/sticky-navigation';
 import trackingCece from './tracking/tracking-project-cece';
@@ -19,7 +19,7 @@ const init = (): void => {
   cookieNotification();
   notification();
   fadeThrough();
-  initExpander();
+  expander();
   initSmoothScrolling();
   instagramFeed();
   numberInput();
