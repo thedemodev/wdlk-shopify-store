@@ -1,128 +1,84 @@
-import { Observable, Observer, fromEvent, from } from 'rxjs';
+import { Observable, Observer, fromEvent } from 'rxjs';
 import { AspectRatio } from './picture-aspect-ratio';
 import { mediaQuery, BreakPoint } from './match-media';
+import { ViewBox } from './viewbox';
 
-// enum ViewBoxSize {
-//   S,
-//   M,
-//   L,
-//   XL
-// }
+// `0 0 ${BreakPoint.S} ${
+//   isExpanded ? BreakPoint.S * AspectRatio.S : viewportWidth / 2
+// }`
 
-// interface ViewBoxInit {
-//   isExpanded: boolean;
-//   size: ViewBoxSize;
-// }
+const expanderViewBox = {
+  S: new ViewBox({
+    minX: 0,
+    minY: 0,
+    width: BreakPoint.S,
+    height: BreakPoint.S * AspectRatio.S
+  }),
+  M: new ViewBox({
+    minX: 0,
+    minY: 0,
+    width: BreakPoint.M,
+    height: BreakPoint.M * AspectRatio.M
+  }),
+  L: new ViewBox({
+    minX: 0,
+    minY: 0,
+    width: BreakPoint.L,
+    height: BreakPoint.L * AspectRatio.L
+  }),
+  XL: new ViewBox({
+    minX: 0,
+    minY: 0,
+    width: BreakPoint.XL,
+    height: BreakPoint.XL * AspectRatio.L
+  })
+};
 
-// class ViewBox {
-//   private size = ViewBoxSize;
-//   private isExpanded: boolean = false;
-// }
-
-export function foo(isExpanded: boolean = false): Observable<string> {
+export function viewBoxStream(isExpanded: boolean = false): Observable<string> {
   return Observable.create((observer: Observer<string>) => {
-    const viewportWidth = window.innerWidth;
-    const viewBox = {
-      S: `0 0 ${BreakPoint.S} ${
-        isExpanded ? BreakPoint.S * AspectRatio.S : viewportWidth / 2
-      }`,
-      M: `0 0 ${BreakPoint.M} ${BreakPoint.M * AspectRatio.M}`,
-      L: `0 0 ${BreakPoint.L} ${BreakPoint.L * AspectRatio.L}`,
-      XL: `0 0 ${BreakPoint.XL} ${BreakPoint.XL * AspectRatio.L}`
-    };
-
-    if (mediaQuery.S.matches) {
-      observer.next(viewBox.S);
-    }
-    if (mediaQuery.M.matches) {
-      observer.next(viewBox.M);
+    if (mediaQuery.S.matches || mediaQuery.M.matches) {
+      observer.next(expanderViewBox.M.getValues());
     }
     if (mediaQuery.L.matches) {
-      observer.next(viewBox.L);
+      observer.next(expanderViewBox.L.getValues());
     }
     if (mediaQuery.XL.matches) {
-      observer.next(viewBox.XL);
+      observer.next(expanderViewBox.XL.getValues());
     }
     mediaQuery.S.addListener(e => {
       if (e.matches) {
-        observer.next(viewBox.S);
+        observer.next(expanderViewBox.S.getValues());
       }
     });
     mediaQuery.M.addListener(e => {
       if (e.matches) {
-        observer.next(viewBox.M);
+        observer.next(expanderViewBox.M.getValues());
       }
     });
     mediaQuery.L.addListener(e => {
       if (e.matches) {
-        observer.next(viewBox.L);
+        observer.next(expanderViewBox.L.getValues());
       }
     });
   });
-}
-const so = foo();
-so.subscribe(bla => {
-  console.log(bla, 'subscription');
-});
-
-export function viewBoxStream(
-  viewportWidth: number,
-  isExpanded: boolean = false
-): Observable<string> {
-  return Observable.create((observer: Observer<string>) => {
-    // console.log(isExpanded, '&&&&');
-    switch (viewportWidth) {
-      /**
-       * @type {BreakPoint.S}
-       * Range from 0 - 768
-       */
-      case Math.min(BreakPoint.M, viewportWidth):
-        observer.next(
-          `0 0 ${BreakPoint.S} ${
-            isExpanded ? BreakPoint.S * AspectRatio.S : viewportWidth / 2
-          }`
-        );
-        break;
-      /**
-       * @type {BreakPoint.M}
-       * Range from 768 - 1024
-       */
-      case Math.min(BreakPoint.L, viewportWidth):
-        observer.next(`0 0 ${BreakPoint.M} ${BreakPoint.M * AspectRatio.M}`);
-        break;
-      /**
-       * @type {BreakPoint.L}
-       * Range from 1024 - 1440
-       */
-      case Math.min(BreakPoint.XL, viewportWidth):
-        observer.next(`0 0 ${BreakPoint.L} ${BreakPoint.L * AspectRatio.L}`);
-        break;
-      /**
-       * @type {default}
-       * Range from 1440 - ∞
-       */
-      default:
-        observer.next(`0 0 ${BreakPoint.XL} ${BreakPoint.XL * AspectRatio.L}`);
-    }
-  });
-}
-
-function toggleState(boolList: boolean[], i: number): void {
-  boolList[i] = !boolList[i];
 }
 
 export function setViewBox(nodeList: NodeListOf<Element>): void {
   if (nodeList) {
     const state = [false, false, false];
     [...nodeList].forEach((node: HTMLElement, i: number) => {
-      let stream = viewBoxStream(window.innerWidth, state[i]);
-      const clickStream = fromEvent(node, 'click');
-      clickStream.subscribe(click => {
-        toggleState(state, i);
-        console.log(click, state, '@@@@@');
-        stream = viewBoxStream(window.innerWidth, state[i]);
+      const stream = viewBoxStream(state[i]);
+
+      // const clickStream = fromEvent(node, 'click');
+      // clickStream.subscribe(click => {
+      //   toggleState(state, i);
+      //   console.log(click, state, '@@@@@');
+      //   stream = viewBoxStream(window.innerWidth, state[i]);
+      // });
+      stream.subscribe(viewbox => {
+        console.log(viewbox, 'viewbox stream');
+        node.setAttribute('viewBox', `${viewbox}`);
       });
-      stream.subscribe(viewbox => node.setAttribute('viewBox', `${viewbox}`));
     });
   }
 }
