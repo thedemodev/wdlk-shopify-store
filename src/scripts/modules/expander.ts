@@ -34,86 +34,50 @@ const expanderViewBox = {
   })
 };
 
-export function viewBoxStream(isExpanded: boolean = false): Observable<string> {
-  return Observable.create((observer: Observer<string>) => {
-    if (mediaQuery.S.matches || mediaQuery.M.matches) {
+export const viewBoxStream = Observable.create((observer: Observer<string>) => {
+  if (mediaQuery.S.matches) {
+    observer.next(expanderViewBox.S.getValues());
+  }
+  if (mediaQuery.M.matches) {
+    observer.next(expanderViewBox.M.getValues());
+  }
+  if (mediaQuery.L.matches) {
+    observer.next(expanderViewBox.L.getValues());
+  }
+  if (mediaQuery.XL.matches) {
+    observer.next(expanderViewBox.XL.getValues());
+  }
+  mediaQuery.S.addListener(e => {
+    if (e.matches) {
+      observer.next(expanderViewBox.S.getValues());
+    }
+  });
+  mediaQuery.M.addListener(e => {
+    if (e.matches) {
       observer.next(expanderViewBox.M.getValues());
     }
-    if (mediaQuery.L.matches) {
+  });
+  mediaQuery.L.addListener(e => {
+    if (e.matches) {
       observer.next(expanderViewBox.L.getValues());
     }
-    if (mediaQuery.XL.matches) {
-      observer.next(expanderViewBox.XL.getValues());
-    }
-    mediaQuery.S.addListener(e => {
-      if (e.matches) {
-        observer.next(expanderViewBox.S.getValues());
-      }
-    });
-    mediaQuery.M.addListener(e => {
-      if (e.matches) {
-        observer.next(expanderViewBox.M.getValues());
-      }
-    });
-    mediaQuery.L.addListener(e => {
-      if (e.matches) {
-        observer.next(expanderViewBox.L.getValues());
-      }
-    });
   });
-}
+});
 
 export function setViewBox(nodeList: NodeListOf<Element>): void {
   if (nodeList) {
-    const state = [false, false, false];
     [...nodeList].forEach((node: HTMLElement, i: number) => {
-      const stream = viewBoxStream(state[i]);
-
-      // const clickStream = fromEvent(node, 'click');
-      // clickStream.subscribe(click => {
-      //   toggleState(state, i);
-      //   console.log(click, state, '@@@@@');
-      //   stream = viewBoxStream(window.innerWidth, state[i]);
-      // });
-      stream.subscribe(viewbox => {
-        console.log(viewbox, 'viewbox stream');
+      viewBoxStream.subscribe((viewbox: string) => {
         node.setAttribute('viewBox', `${viewbox}`);
       });
     });
   }
 }
 
-export function setImageSrc(nodeList: NodeListOf<Element>): void {
-  if (nodeList) {
-    const viewportWidth = window.innerWidth;
-    if (viewportWidth > BreakPoint.M - 1 && viewportWidth < BreakPoint.L) {
-      [...nodeList].forEach((node: HTMLElement) => {
-        // tslint:disable-next-line:no-any
-        const image = node.querySelector('image') as any;
-        image.setAttribute('href', `${image.dataset.imageM}`);
-      });
-    }
-    if (viewportWidth > BreakPoint.L - 1) {
-      [...nodeList].forEach((node: HTMLElement) => {
-        // tslint:disable-next-line:no-any
-        const image = node.querySelector('image') as any;
-        image.setAttribute('href', `${image.dataset.imageL}`);
-      });
-    }
-  }
-}
-
 export function onResize(nodeList: NodeListOf<Element>): void {
-  window.addEventListener(
-    'resize',
-    () => {
-      setViewBox(nodeList);
-      setImageSrc(nodeList);
-    },
-    {
-      passive: true
-    }
-  );
+  window.addEventListener('resize', () => setViewBox(nodeList), {
+    passive: true
+  });
 }
 
 export default function expander(): void {
@@ -123,7 +87,6 @@ export default function expander(): void {
 
   if (expanderList) {
     setViewBox(expanderList);
-    setImageSrc(expanderList);
     window.requestAnimationFrame(() => onResize(expanderList));
   }
 }

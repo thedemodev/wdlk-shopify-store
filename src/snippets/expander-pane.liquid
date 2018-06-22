@@ -15,36 +15,6 @@ These are the necessary variables examples to correctly initialize the component
 
 {% endcomment %}
 
-{% comment %} <input class="Expander-state js_state" type="checkbox" id="pane-{{paneId}}"/>
-<label class="Expander-pane js_expander" for="pane-{{paneId}}">
-  <section class="Expander-container">
-    <div class="Expander-content js_content" id="Expander-{{paneId}}">
-        <h2 class="Headline Headline--1 Headline--bold">{{ headline }}</h2>
-        <p>{{ caption }}</p>
-        <a class="Link Link--btn" href="{{ link }}">
-          Shop {{ categoryTitle }}
-          <svg class="Icon Icon--right">
-              <use xlink:href="#Arrow_right" />
-          </svg>
-        </a>
-    </div>
-    <picture>
-      <source srcset="{{ srcSet1 }}, {{ srcSet1@2x }} 2x" media="(max-width: 480px)">
-      <source srcset="{{ srcSet2 }}, {{ srcSet2@2x }} 2x" media="(max-width: 768px)">
-      <source srcset="{{ srcSet3 }}, {{ srcSet3@2x }} 2x" media="(min-width: 770px)">
-      <img class="Expander-img" src="{{ srcSet2 }}" alt="Woodlike Ocean Eco Swimwear {{ categoryTitle }} Category">
-    </picture>
-    <svg href="#Expander-{{paneId}}" class="Expander-lead Icon js_expander_lead">
-        <use xlink:href="#Arrow_down" />
-    </svg>
-    <label class="Expander-close Link" for="pane-{{paneId}}">
-      <svg class="Icon">
-          <use xlink:href="#Arrow_left" />
-      </svg>
-    </label>
-    <div class="Expander-intro Headline Headline--3 Headline--bold">{{ categoryTitle }}</div>
-  </section>
-</label> {% endcomment %}
 
 <article class="Expander" tabindex="0">
   <svg
@@ -54,10 +24,9 @@ These are the necessary variables examples to correctly initialize the component
     role="img"
     viewBox="0 0 768 1024" >
     <title id="catagory-{{paneId}}-title">{{ headline }} Swimwear Category</title>
-    <image
-      href="{{ srcSet1 }}"
-      data-image-m="{{ srcSet2 }}"
-      data-image-l="{{ srcSet3 }}"/>
+    <image class="Expander-img" href="{{ srcSet1 }}" />
+    <image class="Expander-img" href="{{ srcSet2 }}" />
+    <image class="Expander-img" href="{{ srcSet3 }}" />
   </svg>
   <div style="opacity: 0">
     <h2 class="Headline Headline--1 Headline--bold">{{ headline }}</h2>
