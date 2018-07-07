@@ -47,26 +47,11 @@ export const viewBoxStream = Observable.create((observer: Observer<string>) => {
   if (mediaQuery.XL.matches) {
     observer.next(expanderViewBox.XL.getValues());
   }
-  mediaQuery.S.addListener(e => {
-    if (e.matches) {
-      observer.next(expanderViewBox.S.getValues());
-    }
-  });
-  mediaQuery.M.addListener(e => {
-    if (e.matches) {
-      observer.next(expanderViewBox.M.getValues());
-    }
-  });
-  mediaQuery.L.addListener(e => {
-    if (e.matches) {
-      observer.next(expanderViewBox.L.getValues());
-    }
-  });
 });
 
 export function setViewBox(nodeList: NodeListOf<Element>): void {
   if (nodeList) {
-    [...nodeList].forEach((node: HTMLElement, i: number) => {
+    [...nodeList].forEach((node: HTMLElement) => {
       viewBoxStream.subscribe((viewbox: string) => {
         node.setAttribute('viewBox', `${viewbox}`);
       });
