@@ -2,6 +2,7 @@ import { Observable, Observer } from 'rxjs';
 import { AspectRatio } from './picture-aspect-ratio';
 import { mediaQuery, BreakPoint } from './match-media';
 import { ViewBox } from './viewbox';
+import { ViewBoxDimension } from './viewbox-dimension';
 
 const viewBox = {
   S: new ViewBox({
@@ -74,38 +75,52 @@ export function initExpander(
   const stickyHeaderHeight: number = (document.querySelector(
     '.js_sticky-nav'
   ) as HTMLElement).offsetHeight;
-  const height = {
-    S: {
+  const viewBoxDimensions = {
+    S: ViewBoxDimension({
       collapsed: viewPortHeight / 3 - stickyHeaderHeight / 3,
       expanded: BreakPoint.S * AspectRatio.S
-    },
-    M: {
+    }),
+    M: ViewBoxDimension({
       collapsed: viewPortHeight / 3 - stickyHeaderHeight / 3,
       expanded: BreakPoint.M * AspectRatio.M
-    },
-    L: {
+    }),
+    L: ViewBoxDimension({
       collapsed: viewPortWidth / 3,
       expanded: BreakPoint.L * AspectRatio.L
-    },
-    XL: {
+    }),
+    XL: ViewBoxDimension({
       collapsed: viewPortWidth / 3,
       expanded: BreakPoint.XL * AspectRatio.L
-    }
+    })
   };
 
   if (node) {
     if (mediaQuery.S.matches) {
-      viewBox.S.setHeight(isCollapsed ? height.S.collapsed : height.S.expanded);
+      viewBox.S.setHeight(
+        isCollapsed
+          ? viewBoxDimensions.S.collapsed
+          : viewBoxDimensions.S.expanded
+      );
     }
     if (mediaQuery.M.matches) {
-      viewBox.M.setHeight(isCollapsed ? height.M.collapsed : height.M.expanded);
+      viewBox.M.setHeight(
+        isCollapsed
+          ? viewBoxDimensions.M.collapsed
+          : viewBoxDimensions.M.expanded
+      );
     }
     if (mediaQuery.L.matches) {
-      viewBox.M.setHeight(isCollapsed ? height.L.collapsed : height.L.expanded);
+      viewBox.M.setHeight(
+        isCollapsed
+          ? viewBoxDimensions.L.collapsed
+          : viewBoxDimensions.L.expanded
+      );
     }
     if (mediaQuery.XL.matches) {
       viewBox.M.setHeight(
-        isCollapsed ? height.XL.collapsed : height.XL.expanded
+        isCollapsed
+          ? viewBoxDimensions.XL.collapsed
+          : viewBoxDimensions.XL.expanded
       );
     }
   }
