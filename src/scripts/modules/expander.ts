@@ -13,7 +13,7 @@ export default function expander(): void {
   const expanderList: NodeListOf<SVGElement> = document.querySelectorAll(
     '.js_expander'
   );
-  let isCollapsed = true;
+  let isCollapsed = true ;
 
   const viewBox = {
     S: new ViewBox({
