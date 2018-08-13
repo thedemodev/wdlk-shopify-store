@@ -1,8 +1,14 @@
 import numberInput from './number-input';
 
 export interface ViewBoxDimensionProps {
-  collapsed: number;
-  expanded: number;
+  collapsed: {
+    width: number;
+    height: number;
+  };
+  expanded: {
+    width?: number;
+    height: number;
+  };
 }
 
 export function ViewBoxDimension({

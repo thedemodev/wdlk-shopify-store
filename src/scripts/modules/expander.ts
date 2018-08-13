@@ -13,7 +13,7 @@ export default function expander(): void {
   const expanderList: NodeListOf<SVGElement> = document.querySelectorAll(
     '.js_expander'
   );
-  let isCollapsed = true ;
+  let isCollapsed = true;
 
   const viewBox = {
     S: new ViewBox({
@@ -44,20 +44,44 @@ export default function expander(): void {
 
   const viewBoxDimensions = {
     S: ViewBoxDimension({
-      collapsed: viewPortHeight / 3 - stickyHeaderHeight / 3,
-      expanded: BreakPoint.S * AspectRatio.S
+      collapsed: {
+        width: BreakPoint.S,
+        height: viewPortHeight / 3 - stickyHeaderHeight / 3
+      },
+      expanded: {
+        width: BreakPoint.S,
+        height: BreakPoint.S * AspectRatio.S
+      }
     }),
     M: ViewBoxDimension({
-      collapsed: viewPortHeight / 3 - stickyHeaderHeight / 3,
-      expanded: BreakPoint.M * AspectRatio.M
+      collapsed: {
+        width: BreakPoint.M,
+        height: viewPortHeight / 3 - stickyHeaderHeight / 3
+      },
+      expanded: {
+        width: BreakPoint.M,
+        height: BreakPoint.M * AspectRatio.M
+      }
     }),
     L: ViewBoxDimension({
-      collapsed: viewPortWidth / 3,
-      expanded: BreakPoint.L * AspectRatio.L
+      collapsed: {
+        width: BreakPoint.L * AspectRatio.L,
+        height: BreakPoint.L * AspectRatio.L * 1.5
+      },
+      expanded: {
+        width: BreakPoint.L,
+        height: BreakPoint.L * AspectRatio.L
+      }
     }),
     XL: ViewBoxDimension({
-      collapsed: viewPortWidth / 3,
-      expanded: BreakPoint.XL * AspectRatio.L
+      collapsed: {
+        width: BreakPoint.XL * AspectRatio.L,
+        height: BreakPoint.XL * AspectRatio.L * 1.5
+      },
+      expanded: {
+        width: BreakPoint.L,
+        height: BreakPoint.L * AspectRatio.L
+      }
     })
   };
 
@@ -65,33 +89,37 @@ export default function expander(): void {
     if (mediaQuery.S.matches) {
       viewBox.S.setHeight(
         isCollapsed
-          ? viewBoxDimensions.S.collapsed
-          : viewBoxDimensions.S.expanded
+          ? viewBoxDimensions.S.collapsed.height
+          : viewBoxDimensions.S.expanded.height
       );
       observer.next(viewBox.S.getValues());
     }
     if (mediaQuery.M.matches) {
       viewBox.M.setHeight(
         isCollapsed
-          ? viewBoxDimensions.M.collapsed
-          : viewBoxDimensions.M.expanded
+          ? viewBoxDimensions.M.collapsed.height
+          : viewBoxDimensions.M.expanded.height
       );
       observer.next(viewBox.M.getValues());
     }
     if (mediaQuery.L.matches) {
-      viewBox.M.setHeight(
-        isCollapsed
-          ? viewBoxDimensions.L.collapsed
-          : viewBoxDimensions.L.expanded
-      );
+      if (isCollapsed) {
+        viewBox.L.setWidth(viewBoxDimensions.L.collapsed.width);
+        viewBox.L.setHeight(viewBoxDimensions.L.collapsed.height);
+      } else {
+        viewBox.L.setWidth(viewBoxDimensions.L.expanded.width);
+        viewBox.L.setHeight(viewBoxDimensions.L.expanded.height);
+      }
       observer.next(viewBox.L.getValues());
     }
     if (mediaQuery.XL.matches) {
-      viewBox.M.setHeight(
-        isCollapsed
-          ? viewBoxDimensions.XL.collapsed
-          : viewBoxDimensions.XL.expanded
-      );
+      if (isCollapsed) {
+        viewBox.L.setWidth(viewBoxDimensions.L.collapsed.width);
+        viewBox.L.setHeight(viewBoxDimensions.L.collapsed.height);
+      } else {
+        viewBox.L.setWidth(viewBoxDimensions.L.expanded.width);
+        viewBox.L.setHeight(viewBoxDimensions.L.expanded.height);
+      }
       observer.next(viewBox.XL.getValues());
     }
   });
@@ -107,7 +135,6 @@ export default function expander(): void {
   const handleClick = (e: MouseEvent): void => {
     const target = e.currentTarget as SVGElement;
     isCollapsed = !isCollapsed;
-
     viewBoxStream.subscribe((viewbox: string) => {
       target.setAttribute('viewBox', `${viewbox}`);
     });
