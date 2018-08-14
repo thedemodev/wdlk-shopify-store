@@ -132,12 +132,22 @@ export default function expander(): void {
     }
   };
 
+  const toggleCustomProp = (node: SVGElement): void => {
+    if (node) {
+      node.style.setProperty('--is-collapsed', `${isCollapsed ? 1 : 0}`);
+    }
+  };
+
   const handleClick = (e: MouseEvent): void => {
     const target = e.currentTarget as SVGElement;
     isCollapsed = !isCollapsed;
     viewBoxStream.subscribe((viewbox: string) => {
       target.setAttribute('viewBox', `${viewbox}`);
     });
+
+    if (mediaQuery.L.matches) {
+      toggleCustomProp(target);
+    }
   };
 
   if (expanderList) {

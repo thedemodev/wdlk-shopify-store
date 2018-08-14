@@ -6,22 +6,33 @@
 
 @include media(large) {
   .Expander {
+    --is-collapsed: 0;
+
     &-media {
       position: absolute;
       top: 0;
-      transform: scale(.3) translate3d(0, 0, 0);
+      transform: scale(calc(
+        0.3 * var(--is-collapsed) +
+        1 * (1 - var(--is-collapsed))
+      )) translate3d(0, 0, 0);
       transform-origin: top;
     }
     &:first-of-type {
       .Expander-media {
         left: 0;
-        transform: scale(.3) translate3d(-100%, 0, 0);
+        transform: scale(calc(
+          0.3 * var(--is-collapsed) +
+          1 * (1 - var(--is-collapsed))
+          )) translate3d(calc(-100 * var(--is-collapsed) * 1%), 0, 0);
       }
     }
     &:last-of-type {
       .Expander-media {
         right: 0;
-        transform: scale(.3) translate3d(100%, 0, 0);
+        transform: scale(calc(
+          0.3 * var(--is-collapsed) +
+          1 * (1 - var(--is-collapsed))
+        )) translate3d(calc(100 * var(--is-collapsed) * 1%), 0, 0);
       }
     }
   }
