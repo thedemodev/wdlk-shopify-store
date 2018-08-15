@@ -6,17 +6,20 @@
 
 @include media(large) {
   .Expander {
-    --is-collapsed: 0;
-
+    --is-collapsed: 1;
+    pointer-events: none;
     &-media {
       position: absolute;
       top: 0;
+      z-index: calc(1 * var(--is-collapsed) + 2 * (1 - var(--is-collapsed)));
       transform: scale(calc(
         0.3 * var(--is-collapsed) +
         1 * (1 - var(--is-collapsed))
       )) translate3d(0, 0, 0);
       transform-origin: top;
+      pointer-events: auto;
     }
+
     &:first-of-type {
       .Expander-media {
         left: 0;
