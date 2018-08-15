@@ -132,7 +132,7 @@ export default function expander(): void {
     }
   };
 
-  const toggleCustomProp = (node: SVGElement): void => {
+  const toggleCustomProp = (node: HTMLElement): void => {
     if (node) {
       node.style.setProperty('--is-collapsed', `${isCollapsed ? 1 : 0}`);
     }
@@ -140,14 +140,15 @@ export default function expander(): void {
 
   const handleClick = (e: MouseEvent): void => {
     const target = e.currentTarget as SVGElement;
+    const parent = target.parentElement;
     isCollapsed = !isCollapsed;
     viewBoxStream.subscribe((viewbox: string) => {
       target.setAttribute('viewBox', `${viewbox}`);
+      toggleCustomProp(parent);
+      if (!mediaQuery.L.matches || !mediaQuery.XL.matches) {
+        parent.classList.toggle('is-collapsed', isCollapsed);
+      }
     });
-
-    if (mediaQuery.L.matches) {
-      toggleCustomProp(target);
-    }
   };
 
   if (expanderList) {

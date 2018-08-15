@@ -16,20 +16,22 @@ These are the necessary variables examples to correctly initialize the component
 {% endcomment %}
 
 
-<article class="Expander" tabindex="0">
+<article
+  class="Expander is-collapsed"
+  style="--is-collapsed: 1"
+  tabindex="0">
   <svg
     aria-labelledby="catagory-{{paneId}}-title"
     class="Expander-media js_expander"
     preserveAspectRatio="xMinYMin"
     role="img"
-    style="--is-collapsed: 1"
     viewBox="0 0 768 1024" >
     <title id="catagory-{{paneId}}-title">{{ headline }} Swimwear Category</title>
     <image class="Expander-img" href="{{ srcSet1 }}" />
     <image class="Expander-img" href="{{ srcSet2 }}" />
     <image class="Expander-img" href="{{ srcSet3 }}" />
   </svg>
-  <div style="opacity: 0">
+  <div class="Expander-content">
     <h2 class="Headline Headline--1 Headline--bold">{{ headline }}</h2>
     <p>{{ caption }}</p>
     <a class="Link Link--btn" href="{{ link }}">
