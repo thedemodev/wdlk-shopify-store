@@ -30,6 +30,16 @@ These are the necessary variables examples to correctly initialize the component
     <image class="Expander-img" href="{{ srcSet1 }}" />
     <image class="Expander-img" href="{{ srcSet2 }}" />
     <image class="Expander-img" href="{{ srcSet3 }}" />
+    <g style="transform: translate3d(0, calc(50% + 40px), 0)">
+      <text>{{ headline }}</text>
+      <text>{{ caption }}</text>
+      <a class="Link Link--btn" href="{{ link }}">
+        <text>
+          Shop {{ categoryTitle }}
+          <use class="Icon Icon--right" xlink:href="#Arrow_right" />
+        </text>
+      </a>
+    </g>
   </svg>
   <div class="Expander-content">
     <h2 class="Headline Headline--1 Headline--bold">{{ headline }}</h2>
