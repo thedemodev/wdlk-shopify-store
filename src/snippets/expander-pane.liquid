@@ -30,18 +30,23 @@ These are the necessary variables examples to correctly initialize the component
     <image class="Expander-img" href="{{ srcSet1 }}" />
     <image class="Expander-img" href="{{ srcSet2 }}" />
     <image class="Expander-img" href="{{ srcSet3 }}" />
-    <g style="transform: translate3d(0, calc(50% + 40px), 0)">
-      <text>{{ headline }}</text>
-      <text>{{ caption }}</text>
-      <a class="Link Link--btn" href="{{ link }}">
-        <text>
-          Shop {{ categoryTitle }}
-          <use class="Icon Icon--right" xlink:href="#Arrow_right" />
-        </text>
-      </a>
+    <g class="Expander-content js_expander-content">
+      {% assign paragraphs = caption | split: ','%}
+      <text y="15">
+        <tspan dy="2.5rem" dx="15">{{ headline }}</tspan>
+        {% for paragraph in paragraphs %}
+          <tspan dy="2.5rem" x="15">{{ paragraph }}</tspan>
+        {% endfor %}
+        <a class="Link Link--btn" href="{{ link }}">
+          <tspan dy="3rem" x="15">
+              Shop {{ categoryTitle }}
+              <use class="Icon Icon--right" xlink:href="#Arrow_right" />
+          </tspan>
+        </a>
+      </text>
     </g>
   </svg>
-  <div class="Expander-content">
+  {% comment %} <div class="Expander-content">
     <h2 class="Headline Headline--1 Headline--bold">{{ headline }}</h2>
     <p>{{ caption }}</p>
     <a class="Link Link--btn" href="{{ link }}">
@@ -50,5 +55,5 @@ These are the necessary variables examples to correctly initialize the component
           <use xlink:href="#Arrow_right" />
       </svg>
     </a>
-  </div>
+  </div> {% endcomment %}
 </article>

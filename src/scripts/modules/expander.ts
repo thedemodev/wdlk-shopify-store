@@ -153,6 +153,9 @@ export default function expander(): void {
 
   if (expanderList) {
     [...expanderList].forEach((node: SVGElement) => {
+      const content = node
+        .querySelector('.js_expander-content')
+        .getBoundingClientRect().height;
       setViewBox(node);
       node.addEventListener('click', handleClick);
     });
