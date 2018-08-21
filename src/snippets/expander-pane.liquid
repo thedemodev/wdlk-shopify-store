@@ -33,12 +33,12 @@ These are the necessary variables examples to correctly initialize the component
     <g class="Expander-content js_expander-content">
       {% assign paragraphs = caption | split: ','%}
       <text y="66%">
-        <tspan dy="2.5rem" dx="15">{{ headline }}</tspan>
+        <tspan x="15" dy="2.5rem">{{ headline }}</tspan>
         {% for paragraph in paragraphs %}
-          <tspan dy="2.5rem" x="15">{{ paragraph }}</tspan>
+          <tspan x="15" dy="2.5rem">{{ paragraph }}</tspan>
         {% endfor %}
         <a class="Link Link--btn" href="{{ link }}">
-          <tspan dy="3rem" x="15">
+          <tspan x="15" dy="2.5rem">
               Shop {{ categoryTitle }}
               <use class="Icon Icon--right" xlink:href="#Arrow_right" />
           </tspan>
@@ -46,14 +46,4 @@ These are the necessary variables examples to correctly initialize the component
       </text>
     </g>
   </svg>
-  {% comment %} <div class="Expander-content">
-    <h2 class="Headline Headline--1 Headline--bold">{{ headline }}</h2>
-    <p>{{ caption }}</p>
-    <a class="Link Link--btn" href="{{ link }}">
-      Shop {{ categoryTitle }}
-      <svg class="Icon Icon--right">
-          <use xlink:href="#Arrow_right" />
-      </svg>
-    </a>
-  </div> {% endcomment %}
 </article>

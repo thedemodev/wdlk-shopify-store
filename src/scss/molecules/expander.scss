@@ -46,10 +46,12 @@
 
 .Expander {
   &-img {
+    width: 100%;
+    height: auto;
     &:not(:nth-of-type(1)) {
       display: none;
     }
-    @include media(medium) {
+    @media(min-width: 768px) {
       display: none;
       &:nth-of-type(2) {
         display: block;
@@ -71,8 +73,8 @@
   &-content {
     padding: calc(var(--size-L) * 1px);
     opacity: calc(0 * var(--is-collapsed) + 1 * (1 - var(--is-collapsed)));
+    fill: $hex-blue-gray-dark;
     // line-height: 1.5;
-    // transform: translate3d(0, 50%, 0)
+    // transform: translate3d(0, 66%, 0);
   }
-
 }

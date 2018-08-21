@@ -21,8 +21,7 @@ export default function expander(): void {
     );
     return elHeight;
   });
-  const padding = 80;
-  const contentHeight: number = Math.max(...contentHeightList) + padding;
+  const contentHeight: number = Math.max(...contentHeightList) + 80;
 
   console.log(contentHeight);
 
