@@ -71,8 +71,8 @@
   &-content {
     padding: calc(var(--size-L) * 1px);
     opacity: calc(0 * var(--is-collapsed) + 1 * (1 - var(--is-collapsed)));
-    line-height: 1.5;
-    transform: translate3d(0, 50%, 0)
+    // line-height: 1.5;
+    // transform: translate3d(0, 50%, 0)
   }
 
 }

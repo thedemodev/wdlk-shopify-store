@@ -25,14 +25,14 @@ These are the necessary variables examples to correctly initialize the component
     class="Expander-media js_expander"
     preserveAspectRatio="xMinYMin"
     role="img"
-    viewBox="0 0 768 1024" >
+    viewBox="0 0 375 222" >
     <title id="catagory-{{paneId}}-title">{{ headline }} Swimwear Category</title>
     <image class="Expander-img" href="{{ srcSet1 }}" />
     <image class="Expander-img" href="{{ srcSet2 }}" />
     <image class="Expander-img" href="{{ srcSet3 }}" />
     <g class="Expander-content js_expander-content">
       {% assign paragraphs = caption | split: ','%}
-      <text y="15">
+      <text y="66%">
         <tspan dy="2.5rem" dx="15">{{ headline }}</tspan>
         {% for paragraph in paragraphs %}
           <tspan dy="2.5rem" x="15">{{ paragraph }}</tspan>

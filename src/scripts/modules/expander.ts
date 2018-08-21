@@ -6,13 +6,26 @@ import { ViewBoxDimension } from './viewbox-dimension';
 
 export default function expander(): void {
   const viewPortHeight = window.innerHeight;
-  const viewPortWidth = window.innerWidth;
   const stickyHeaderHeight: number = (document.querySelector(
     '.js_sticky-nav'
   ) as HTMLElement).offsetHeight;
   const expanderList: NodeListOf<SVGElement> = document.querySelectorAll(
     '.js_expander'
   );
+  if (!expanderList) {
+    return;
+  }
+  const contentHeightList: number[] = [...expanderList].map((el: Element) => {
+    const elHeight = Math.round(
+      el.querySelector('.js_expander-content').getBoundingClientRect().height
+    );
+    return elHeight;
+  });
+  const padding = 80;
+  const contentHeight: number = Math.max(...contentHeightList) + padding;
+
+  console.log(contentHeight);
+
   let isCollapsed = true;
 
   const viewBox = {
@@ -50,7 +63,7 @@ export default function expander(): void {
       },
       expanded: {
         width: BreakPoint.S,
-        height: BreakPoint.S * AspectRatio.S
+        height: BreakPoint.S * AspectRatio.S + contentHeight
       }
     }),
     M: ViewBoxDimension({
@@ -60,7 +73,7 @@ export default function expander(): void {
       },
       expanded: {
         width: BreakPoint.M,
-        height: BreakPoint.M * AspectRatio.M
+        height: BreakPoint.M * AspectRatio.M + contentHeight
       }
     }),
     L: ViewBoxDimension({
@@ -142,20 +155,15 @@ export default function expander(): void {
     const target = e.currentTarget as SVGElement;
     const parent = target.parentElement;
     isCollapsed = !isCollapsed;
+
     viewBoxStream.subscribe((viewbox: string) => {
       target.setAttribute('viewBox', `${viewbox}`);
       toggleCustomProp(parent);
-      if (!mediaQuery.L.matches || !mediaQuery.XL.matches) {
-        parent.classList.toggle('is-collapsed', isCollapsed);
-      }
     });
   };
 
   if (expanderList) {
     [...expanderList].forEach((node: SVGElement) => {
-      const content = node
-        .querySelector('.js_expander-content')
-        .getBoundingClientRect().height;
       setViewBox(node);
       node.addEventListener('click', handleClick);
     });
