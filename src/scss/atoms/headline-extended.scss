@@ -1,5 +1,45 @@
+@keyframes headline--extened-blink {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
 .Headline--extended {
-  dominant-baseline: middle;
-  text-anchor: middle;
-  // pointer-events: none;
+  width: 100%;
+  dominant-baseline: hanging;
+  font-family: "museo300";
+  font-size: 10rem;
+  pointer-events: none;
+  transition: opacity .3s ease-out;
+  animation: headline--extened-blink .5s infinite linear;
+
+  @include media(medium) {
+    font-size: 9rem;
+  }
+
+  &-section {
+    &:nth-child(2) {
+      opacity: 1;
+      animation: headline--extened-blink .5s infinite linear;
+    }
+    &:nth-child(3) {
+      opacity: 0;
+    }
+  }
+}
+
+.Gradient {
+  &-stop {
+    &:nth-child(1) {
+      stop-color: var(--hsla-yellow);
+    }
+
+    &:nth-child(2) {
+      stop-color: var(--hsla-coral8);
+    }
+  }
 }

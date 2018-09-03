@@ -29,15 +29,3 @@
     }
   }
 }
-
-.Gradient {
-  &-stop {
-    &:nth-child(1) {
-      stop-color: var(--hsla-yellow);
-    }
-
-    &:nth-child(2) {
-      stop-color: var(--hsla-coral8);
-    }
-  }
-}

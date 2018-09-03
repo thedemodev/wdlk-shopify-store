@@ -28,7 +28,7 @@
       'WDLK_Main-Banner_Desktop_retina.jpg' | asset_url  %}
 
   <div class="Banner-content">
-      <svg class="HeadlineBanner Banner-mainHeadline">
+      <svg viewbox="0 0 1400 200">
           <title>{{'home_page.sections.main_headline' | t}}</title>
           <desc>
               {{'home_page.section.main_banner_description' | t}}
@@ -40,14 +40,16 @@
               </linearGradient>
           </defs>
           <use xlink:href="#Arrow_left" class="HeadlineBanner-btn" y="10%" x="2%" width="20" fill="var(--hsla-yellow)" />
-          <text  fill="url(#Gradient)">
-            <tspan x="10">
-              Sale
+          <text class="Headline--extended" fill="url(#Gradient)" x="0" y="45%">
+            <tspan class="Headline--extended-section" x="200">
+              {{'home_page.banner_main.headline.pre' | t}}
             </tspan>
-            <tspan x="10" dx="1.2rem">
-              Improve his shining tail,
+            <tspan class="Headline--extended-section" x="10" dx="30%">
+              {{'home_page.banner_main.headline.clause_one' | t}}
             </tspan>
-            <tspan x="10" dy="1.2em" dx="1.2rem">Last chance</tspan>
+            <tspan class="Headline--extended-section" x="10" dx="30%">
+              {{'home_page.banner_main.headline.clause_two' | t}}
+            </tspan>
           </text>
           <use xlink:href="#Arrow_right" class="HeadlineBanner-btn" y="10%" x="98%" width="20" fill="var(--hsla-coral)" />
       </svg>
