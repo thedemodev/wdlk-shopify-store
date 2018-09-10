@@ -1,0 +1,7 @@
+.Topline {
+  font-size: 4rem;
+  fill: $hex-white;
+  @include media(medium) {
+    font-size: 2rem;
+  }
+}
