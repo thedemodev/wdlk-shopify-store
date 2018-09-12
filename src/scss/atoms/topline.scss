@@ -1,0 +1,8 @@
+.Topline {
+  text-anchor: middle;
+  font-size: 6rem;
+  fill: $hex-white;
+  @include media(medium) {
+    font-size: 4rem;
+  }
+}

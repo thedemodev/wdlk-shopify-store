@@ -49,6 +49,21 @@
     }
   }
 
+  &--inversePlain {
+    line-height: $form-base-height - .2;
+    background: transparent;
+    outline: 2px solid $hex-white;
+    outline-offset: -2px;
+    transform: translateY(-1px);
+    color: $hex-white;
+    transition: background-color $button-timing ease;
+
+    &:hover {
+        outline-color: $btn-bg-color-hover;
+        background: $btn-bg-color-hover;
+    }
+  }
+
   &--row {
     position: relative;
     width: 20%;

@@ -256,7 +256,7 @@
         "main_headline": "Swim with us",
         "main_headline_svg_1": "Swim",
         "main_headline_svg_2": "with us",
-        "main_button_copy": "Shop the collection",
+        "main_button_copy": "Shop now",
         "main_scroll_tip": "Scroll down",
         "claim_intro": "Respect to nature",
         "claim_html": "Premium swimwear crafted from ocean recovered fishing nets and other recycled materials",
@@ -283,6 +283,16 @@
       "no_collections_html": "You don't have any collections to show here. <a href=\"\/admin\/custom_collections\">Add some collections<\/a> to go along with the default Frontpage.",
       "add_collection": "Add a Collection",
       "collection_title": "Example Collection Title"
+    },
+    "banner_main": {
+      "headline": {
+        "pre": "Sale:",
+        "clause_one": "Now up to 70% off",
+        "clause_two": "Last Chance"
+      },
+      "topline": {
+        "copy": "100% Sustainable Swimwear"
+      }
     }
   },
   "layout": {

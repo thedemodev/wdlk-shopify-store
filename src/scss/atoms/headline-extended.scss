@@ -1,0 +1,53 @@
+@keyframes Blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.Headline--extended {
+  // width: 100%;
+  dominant-baseline: hanging;
+  font-family: "museo300";
+  font-size: 12rem;
+  pointer-events: none;
+  transform: translateX(-10%);
+  transition: opacity .3s ease-out;
+
+  @include media(medium) {
+    font-size: 9rem;
+    transform: none;
+  }
+
+  @include media(medium) {
+    font-size: 8rem;
+  }
+
+  &-section {
+    &:nth-child(2) {
+      opacity: 0;
+      animation: Blink 3000ms infinite steps(1);
+    }
+    &:nth-child(3) {
+      opacity: 0;
+      animation: Blink 3s infinite steps(1) 1500ms;
+    }
+  }
+}
+
+.Gradient {
+  &-stop {
+    &:nth-child(1) {
+      stop-color: var(--hsla-yellow);
+    }
+
+    &:nth-child(2) {
+      stop-color: var(--hsla-coral8);
+    }
+  }
+}
