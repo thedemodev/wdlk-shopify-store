@@ -31,5 +31,9 @@
         transform: translateX(-50%) translateY(-25%);
       }
     }
+
+    .Btn {
+      margin-top: calc(var(--size-XL) * 1px);
+    }
   }
 }

@@ -1,41 +1,54 @@
 @keyframes Blink {
-  0% {
-    opacity: 1;
+  from {
+    fill-opacity: 1;
   }
   50% {
-    opacity: 0;
+    fill-opacity: 0;
   }
-  100% {
-    opacity: 1;
+  to {
+    fill-opacity: 1;
+  }
+}
+
+@keyframes BlinkReverse {
+  from {
+    fill-opacity: 0;
+  }
+  50% {
+    fill-opacity: 1;
+  }
+  to {
+    fill-opacity: 0;
   }
 }
 
 .Headline--extended {
-  // width: 100%;
-  dominant-baseline: hanging;
+  --headline-size: 16;
   font-family: "museo300";
-  font-size: 12rem;
+  font-size: calc(var(--headline-size) * 1rem);
   pointer-events: none;
-  transform: translateX(-10%);
+  transform: translate3d(-30%, calc(50% + 4rem), 0);
   transition: opacity .3s ease-out;
 
   @include media(medium) {
-    font-size: 9rem;
-    transform: none;
-  }
-
-  @include media(medium) {
-    font-size: 8rem;
+    --headline-size: 8;
+    transform: translate3d(0, calc(50% - 6rem), 0);
   }
 
   &-section {
+    &:nth-child(1) {
+      fill-opacity: 0;
+      @include media(medium) {
+        fill-opacity: 1;
+      }
+    }
     &:nth-child(2) {
-      opacity: 0;
-      animation: Blink 3000ms infinite steps(1);
+      fill-opacity: 1;
+      animation: Blink 3500ms infinite steps(1);
     }
     &:nth-child(3) {
-      opacity: 0;
-      animation: Blink 3s infinite steps(1) 1500ms;
+      fill-opacity: 0;
+      animation: BlinkReverse 3500ms infinite steps(1);
     }
   }
 }
