@@ -28,7 +28,7 @@
       'WDLK_Main-Banner_Desktop_retina.jpg' | asset_url  %}
 
   <div class="Banner-content">
-      <svg viewbox="0 0 1400 200">
+      <svg viewbox="0 0 1400 300">
           <title>{{'home_page.sections.main_headline' | t}}</title>
           <desc>
               {{'home_page.section.main_banner_description' | t}}
@@ -40,20 +40,22 @@
               </linearGradient>
           </defs>
           <use xlink:href="#Arrow_left" class="HeadlineBanner-btn" y="10%" x="2%" width="20" fill="var(--hsla-yellow)" />
-          <text  x="50%" y="32%" class="Topline">
-            {{'home_page.banner_main.topline.copy' | t}}
-          </text>
-          <text class="Headline--extended" fill="url(#Gradient)" x="50%" y="45%">
-            <tspan class="Headline--extended-section" x="200">
-              {{'home_page.banner_main.headline.pre' | t}}
-            </tspan>
-            <tspan class="Headline--extended-section" x="11" dx="30%">
-              {{'home_page.banner_main.headline.clause_one' | t}}
-            </tspan>
-            <tspan class="Headline--extended-section" x="11" dx="30%">
-              {{'home_page.banner_main.headline.clause_two' | t}}
-            </tspan>
-          </text>
+          <g class="HeadlineGroup">
+            <text class="Topline" x="50%">
+              {{'home_page.banner_main.topline.copy' | t}}
+            </text>
+            <text class="Headline--extended" fill="url(#Gradient)">
+              <tspan class="Headline--extended-section" x="0" dx="16%">
+                {{'home_page.banner_main.headline.pre' | t}}
+              </tspan>
+              <tspan class="Headline--extended-section" x="0" dx="34%">
+                {{'home_page.banner_main.headline.clause_one' | t}}
+              </tspan>
+              <tspan class="Headline--extended-section" x="0" dx="34%">
+                {{'home_page.banner_main.headline.clause_two' | t}}
+              </tspan>
+            </text>
+          </g>
           <use xlink:href="#Arrow_right" class="HeadlineBanner-btn" y="10%" x="98%" width="20" fill="var(--hsla-coral)" />
       </svg>
       <a class="Btn Btn--inversePlain" href="{{ collections['bikinis'].url}}">
