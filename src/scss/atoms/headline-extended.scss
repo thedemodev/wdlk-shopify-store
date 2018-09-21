@@ -1,29 +1,7 @@
-@keyframes Blink {
-  from {
-    fill-opacity: 1;
-  }
-  50% {
-    fill-opacity: 0;
-  }
-  to {
-    fill-opacity: 1;
-  }
-}
-
-@keyframes BlinkReverse {
-  from {
-    fill-opacity: 0;
-  }
-  50% {
-    fill-opacity: 1;
-  }
-  to {
-    fill-opacity: 0;
-  }
-}
-
 .Headline--extended {
   --headline-size: 16;
+  dominant-baseline: hanging;
+  text-anchor: middle;
   font-family: "museo300";
   font-size: calc(var(--headline-size) * 1rem);
   pointer-events: none;
@@ -33,23 +11,6 @@
   @include media(medium) {
     --headline-size: 8;
     transform: translate3d(0, calc(50% - 6rem), 0);
-  }
-
-  &-section {
-    &:nth-child(1) {
-      fill-opacity: 0;
-      @include media(medium) {
-        fill-opacity: 1;
-      }
-    }
-    &:nth-child(2) {
-      fill-opacity: 1;
-      animation: Blink 3500ms infinite steps(1);
-    }
-    &:nth-child(3) {
-      fill-opacity: 0;
-      animation: BlinkReverse 3500ms infinite steps(1);
-    }
   }
 }
 

@@ -1,5 +1,6 @@
 .Topline {
   text-anchor: middle;
+  dominant-baseline: hanging;
   font-size: 6rem;
   fill: $hex-white;
   @include media(medium) {
