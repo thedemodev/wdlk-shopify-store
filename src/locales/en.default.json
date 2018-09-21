@@ -286,9 +286,7 @@
     },
     "banner_main": {
       "headline": {
-        "pre": "Sale:",
-        "clause_one": "Now up to 70% off",
-        "clause_two": "Last Chance"
+        "copy": "Sale: Now up to 70% off"
       },
       "topline": {
         "copy": "100% Sustainable Swimwear"
