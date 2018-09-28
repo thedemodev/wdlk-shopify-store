@@ -1,9 +1,9 @@
-const { resolve } = require('path');
 const Dotenv = require('dotenv-webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HappyPack = require('happypack');
-const happyThreadPool = HappyPack.ThreadPool({ size: 6 });
+const happyThreadPool = HappyPack.ThreadPool({ size: 4 });
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { resolve } = require('path');
 
 // Ensure `postcss` key is extracted
 HappyPack.SERIALIZABLE_OPTIONS = HappyPack.SERIALIZABLE_OPTIONS.concat(['postcss']);
@@ -15,15 +15,17 @@ module.exports = {
     tracking: './src/scripts/tracking/tracking'
   },
   output: {
-    path: resolve('./src/assets/'),
+    path: resolve('./src/assets'),
     filename: '[name].js.liquid'
   },
-  mode: 'development',
   module: {
     rules: [
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract('happypack/loader?id=styles')
+        loaders: [
+          MiniCssExtractPlugin.loader,
+         'happypack/loader?id=styles',
+        ]
       },
       {
         test: /\.ts(x?)$/,
@@ -31,6 +33,7 @@ module.exports = {
       }
     ]
   },
+  mode: "production",
   plugins: [
     new Dotenv(),
     new HappyPack({
@@ -48,10 +51,13 @@ module.exports = {
           options: {
             transpileOnly: true
           },
-          query: { happyPackMode: true } }
+          query: { happyPackMode: true } },
       ]
     }),
-    new ExtractTextPlugin({ filename: resolve('/index.css.liquid') }),
+    new MiniCssExtractPlugin({
+      filename: resolve('/index.css.liquid'),
+      chunkFilename: '[id].css'
+    }),
     new ForkTsCheckerWebpackPlugin({
       checkSyntacticErrors: true,
       tslint: true,
@@ -60,6 +66,5 @@ module.exports = {
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js']
-  },
-  watch: true
+  }
 }
