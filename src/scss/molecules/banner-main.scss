@@ -25,19 +25,15 @@
 
     .Banner-content {
       z-index: 3;
-      transform: translateX(-50%) translateY(-35%);
-    }
-  }
-}
+      transform: translateX(-50%);
 
-.Gradient {
-  &-stop {
-    &:nth-child(1) {
-      stop-color: var(--hsla-yellow);
+      @include media(medium) {
+        transform: translateX(-50%) translateY(-25%);
+      }
     }
 
-    &:nth-child(2) {
-      stop-color: var(--hsla-coral8);
+    .Btn {
+      margin-top: calc(var(--size-XL) * 1px);
     }
   }
 }

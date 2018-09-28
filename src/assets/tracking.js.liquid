@@ -66,21 +66,16 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/scripts/tracking/tracking.ts");
+/******/ 	return __webpack_require__(__webpack_require__.s = 160);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/scripts/tracking/tracking.ts":
-/*!******************************************!*\
-  !*** ./src/scripts/tracking/tracking.ts ***!
-  \******************************************/
-/*! no static exports found */
-/*! ModuleConcatenation bailout: Module is not an ECMAScript module */
+/***/ 160:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.TrackingManagerFactory = TrackingManagerFactory;\nexports.default = tracking;\n\nfunction TrackingManagerFactory() {\n  return {\n    facebook: true,\n    google: true,\n    disableTracking: function disableTracking(vendor) {\n      var _this = this;\n\n      var keys = Object.keys(this);\n      keys.forEach(function (key) {\n        if (key === vendor) {\n          _this[vendor] = false;\n        }\n      });\n    }\n  };\n}\n\nfunction tracking() {\n  var fbOptOutList = document.querySelectorAll('.js_fb-opt-out');\n  var gaOptOutList = document.querySelectorAll('.js_ga-opt-out');\n  var trackingManager = TrackingManagerFactory();\n\n  var handleOptOut = function handleOptOut(vendor) {\n    var nodeList = document.querySelectorAll(\".js_\".concat(vendor, \"-tracking\"));\n    var scriptList = [].slice.call(nodeList);\n\n    if (JSON.parse(localStorage.getItem(vendor)) === true) {\n      trackingManager.disableTracking(vendor);\n      localStorage.setItem(vendor, \"\".concat(trackingManager[vendor]));\n      console.log(JSON.parse(localStorage.getItem(vendor)) === true, 'in the the handle opt out');\n    }\n\n    scriptList.forEach(function (script) {\n      if (script) {\n        script.parentElement.removeChild(script);\n      }\n    });\n  };\n\n  var setValues = function setValues() {\n    if (localStorage.getItem('facebook') === null) {\n      localStorage.setItem('facebook', \"\".concat(trackingManager.facebook));\n    }\n\n    if (JSON.parse(localStorage.getItem('facebook')) === false) {\n      handleOptOut('facebook');\n    }\n\n    if (localStorage.getItem('google') === null) {\n      localStorage.setItem('google', \"\".concat(trackingManager.google));\n    }\n\n    if (JSON.parse(localStorage.getItem('google')) === false) {\n      handleOptOut('google');\n    }\n  };\n\n  setValues();\n  [].slice.call(fbOptOutList).forEach(function (el) {\n    el.addEventListener('click', function () {\n      handleOptOut('facebook');\n      alert('You deactivated the Facebook tracking pixel!');\n    });\n  });\n  [].slice.call(gaOptOutList).forEach(function (el) {\n    el.addEventListener('click', function () {\n      handleOptOut('google');\n      alert('You deactivated the Google tracking pixel!');\n    });\n  });\n}\n\ntracking();\n\n//# sourceURL=webpack:///./src/scripts/tracking/tracking.ts?");
+Object.defineProperty(exports,"__esModule",{value:!0}),exports.TrackingManagerFactory=TrackingManagerFactory,exports.default=tracking;function TrackingManagerFactory(){return{facebook:!0,google:!0,disableTracking:function d(a){var b=this,c=Object.keys(this);c.forEach(function(c){c===a&&(b[a]=!1)})}}}function tracking(){var a=document.querySelectorAll(".js_fb-opt-out"),b=document.querySelectorAll(".js_ga-opt-out"),c=TrackingManagerFactory(),d=function(a){var b=document.querySelectorAll(".js_".concat(a,"-tracking")),d=[].slice.call(b);!0===JSON.parse(localStorage.getItem(a))&&(c.disableTracking(a),localStorage.setItem(a,"".concat(c[a])),console.log(!0===JSON.parse(localStorage.getItem(a)),"in the the handle opt out")),d.forEach(function(a){a&&a.parentElement.removeChild(a)})};(function a(){null===localStorage.getItem("facebook")&&localStorage.setItem("facebook","".concat(c.facebook)),!1===JSON.parse(localStorage.getItem("facebook"))&&d("facebook"),null===localStorage.getItem("google")&&localStorage.setItem("google","".concat(c.google)),!1===JSON.parse(localStorage.getItem("google"))&&d("google")})(),[].slice.call(a).forEach(function(a){a.addEventListener("click",function(){d("facebook"),alert("You deactivated the Facebook tracking pixel!")})}),[].slice.call(b).forEach(function(a){a.addEventListener("click",function(){d("google"),alert("You deactivated the Google tracking pixel!")})})}tracking();
 
 /***/ })
 

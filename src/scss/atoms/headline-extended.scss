@@ -1,0 +1,28 @@
+.Headline--extended {
+  --headline-size: 13;
+
+  dominant-baseline: hanging;
+  text-anchor: middle;
+  font-family: "museo300";
+  font-size: calc(var(--headline-size) * 1rem);
+  pointer-events: none;
+  transform: translate3d(-30%, calc(50% + 4rem), 0);
+  transition: opacity .3s ease-out;
+
+  @include media(medium) {
+    --headline-size: 8;
+    transform: translate3d(0, calc(50% - 6rem), 0);
+  }
+}
+
+.Gradient {
+  &-stop {
+    &:nth-child(1) {
+      stop-color: var(--hsla-yellow);
+    }
+
+    &:nth-child(2) {
+      stop-color: var(--hsla-coral8);
+    }
+  }
+}
