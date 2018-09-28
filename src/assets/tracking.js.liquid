@@ -66,17 +66,16 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 160);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 160:
+/******/ ([
+/* 0 */,
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(exports,"__esModule",{value:!0}),exports.TrackingManagerFactory=TrackingManagerFactory,exports.default=tracking;function TrackingManagerFactory(){return{facebook:!0,google:!0,disableTracking:function d(a){var b=this,c=Object.keys(this);c.forEach(function(c){c===a&&(b[a]=!1)})}}}function tracking(){var a=document.querySelectorAll(".js_fb-opt-out"),b=document.querySelectorAll(".js_ga-opt-out"),c=TrackingManagerFactory(),d=function(a){var b=document.querySelectorAll(".js_".concat(a,"-tracking")),d=[].slice.call(b);!0===JSON.parse(localStorage.getItem(a))&&(c.disableTracking(a),localStorage.setItem(a,"".concat(c[a])),console.log(!0===JSON.parse(localStorage.getItem(a)),"in the the handle opt out")),d.forEach(function(a){a&&a.parentElement.removeChild(a)})};(function a(){null===localStorage.getItem("facebook")&&localStorage.setItem("facebook","".concat(c.facebook)),!1===JSON.parse(localStorage.getItem("facebook"))&&d("facebook"),null===localStorage.getItem("google")&&localStorage.setItem("google","".concat(c.google)),!1===JSON.parse(localStorage.getItem("google"))&&d("google")})(),[].slice.call(a).forEach(function(a){a.addEventListener("click",function(){d("facebook"),alert("You deactivated the Facebook tracking pixel!")})}),[].slice.call(b).forEach(function(a){a.addEventListener("click",function(){d("google"),alert("You deactivated the Google tracking pixel!")})})}tracking();
 
 /***/ })
-
-/******/ });
+/******/ ]);
