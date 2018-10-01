@@ -15,35 +15,43 @@ These are the necessary variables examples to correctly initialize the component
 
 {% endcomment %}
 
-
-<article
-  class="Expander is-collapsed"
+<svg
+  aria-labelledby="catagory-{{paneId}}-title"
+  class="Expander js_expander"
+  preserveAspectRatio="xMidYMid"
+  role="img"
   style="--is-collapsed: 1"
-  tabindex="0">
-  <svg
-    aria-labelledby="catagory-{{paneId}}-title"
-    class="Expander-media js_expander"
-    preserveAspectRatio="xMinYMin"
-    role="img"
-    viewBox="0 0 375 222" >
-    <title id="catagory-{{paneId}}-title">{{ headline }} Swimwear Category</title>
-    <image class="Expander-img" href="{{ srcSet1 }}" />
-    <image class="Expander-img" href="{{ srcSet2 }}" />
-    <image class="Expander-img" href="{{ srcSet3 }}" />
-    <g class="Expander-content js_expander-content">
-      {% assign paragraphs = caption | split: ','%}
-      <text y="66%">
-        <tspan x="15" dy="2.5rem">{{ headline }}</tspan>
-        {% for paragraph in paragraphs %}
-          <tspan x="15" dy="2.5rem">{{ paragraph }}</tspan>
-        {% endfor %}
-        <a class="Link Link--btn" href="{{ link }}">
-          <tspan x="15" dy="2.5rem">
-              Shop {{ categoryTitle }}
-              <use class="Icon Icon--right" xlink:href="#Arrow_right" />
-          </tspan>
-        </a>
-      </text>
-    </g>
-  </svg>
-</article>
+  tabindex="0"
+  viewBox="0 0 375 222" >
+  <title id="catagory-{{paneId}}-title">
+    {{ headline }} Swimwear Category
+  </title>
+  <image class="Expander-media" href="{{ srcSet1 }}" />
+  <image class="Expander-media" href="{{ srcSet2 }}" />
+  <image class="Expander-media" href="{{ srcSet3 }}" />
+  <text
+    class="Headline Headline--4 Expander-headline"
+    x="50%"
+    y="50%">
+    {{ headline }}
+  </text>
+  <g class="Expander-content js_expander-content">
+    {% assign paragraphs = caption | split: ','%}
+    <text>
+      <tspan
+        class="Headline Headline--3"
+        x="15">
+        {{ headline }}
+      </tspan>
+      {% for paragraph in paragraphs %}
+        <tspan x="15" dy="2.5rem">{{ paragraph }}</tspan>
+      {% endfor %}
+      <a class="Link Link--btn" href="{{ link }}">
+        <tspan x="15" dy="4.5rem">
+            Shop {{ categoryTitle }}
+            <use class="Icon Icon--right" xlink:href="#Arrow_right" />
+        </tspan>
+      </a>
+    </text>
+  </g>
+</svg>

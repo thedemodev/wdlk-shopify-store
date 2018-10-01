@@ -6,48 +6,49 @@
 
 .Expander {
   --is-collapsed: 1;
+
+  cursor: pointer;
 }
 
 @include media(large) {
   .Expander {
     pointer-events: none;
-    &-media {
-      position: absolute;
-      top: 0;
-      z-index: calc(1 * var(--is-collapsed) + 2 * (1 - var(--is-collapsed)));
-      transform: scale(calc(
-        0.3 * var(--is-collapsed) +
-        1 * (1 - var(--is-collapsed))
-      )) translate3d(0, 0, 0);
-      transform-origin: top;
-      pointer-events: auto;
-    }
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index:
+      calc(
+        1 * var(--is-collapsed) +
+        2 * (1 - var(--is-collapsed))
+      );
+    width: calc(
+      33.3333% * var(--is-collapsed) +
+      100% * (1 - var(--is-collapsed))
+    );
+    transform: translate3d(-50% , 0, 0);
+    transform-origin: top;
+    pointer-events: auto;
 
     &:first-of-type {
-      .Expander-media {
-        left: 0;
-        transform: scale(calc(
-          0.3 * var(--is-collapsed) +
-          1 * (1 - var(--is-collapsed))
-          )) translate3d(calc(-100 * var(--is-collapsed) * 1%), 0, 0);
-      }
+      left: 0;
+      transform: translate3d(0, 0, 0);
     }
     &:last-of-type {
-      .Expander-media {
-        right: 0;
-        transform: scale(calc(
-          0.3 * var(--is-collapsed) +
-          1 * (1 - var(--is-collapsed))
-        )) translate3d(calc(100 * var(--is-collapsed) * 1%), 0, 0);
-      }
+      right: 0;
+      transform: translate3d(
+        calc(
+          50% * var(--is-collapsed) +
+          -50% * (1 - var(--is-collapsed))
+        ), 0, 0);
     }
   }
 }
 
 .Expander {
-  &-img {
-    width: 100%;
+  &-media {
     height: auto;
+    width: 100%;
+
     &:not(:nth-of-type(1)) {
       display: none;
     }
@@ -59,6 +60,8 @@
     }
     @include media(large) {
       display: none;
+      width: var(--media-width, auto);
+
       &:nth-of-type(2) {
         display: none;
       }
@@ -74,7 +77,28 @@
     padding: calc(var(--size-L) * 1px);
     opacity: calc(0 * var(--is-collapsed) + 1 * (1 - var(--is-collapsed)));
     fill: $hex-blue-gray-dark;
-    // line-height: 1.5;
-    // transform: translate3d(0, 66%, 0);
+    transform: translate3d(0,
+      calc(
+        100% * var(--is-collapsed) +
+        66% * (1 -var(--is-collapsed))
+      ), 0);
+
+    @include media(large) {;
+      font-size: $copy-size-s;
+      transform: translate3d(15px, 60px, 0);
+    }
+  }
+  &-headline {
+    text-anchor: middle;
+    opacity: calc(1 * var(--is-collapsed) + 0 * (1 - var(--is-collapsed)));
+  }
+
+  .Link {
+    fill: $hex-coral;
+    transition: fill .3s ease-in-out;
+
+    &:hover {
+      fill: $hex-coral-dark;
+    }
   }
 }

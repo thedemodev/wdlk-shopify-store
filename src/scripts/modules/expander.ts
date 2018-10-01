@@ -19,7 +19,7 @@ export default function expander(): void {
       el.querySelector('.js_expander-content').getBoundingClientRect().height
     )
   );
-  const contentHeight: number = Math.max(...contentHeightList) + 80;
+  const contentHeight: number = Math.max(...contentHeightList) + headerHeight;
 
   const viewbox = ViewBox({
     minX: 0,
@@ -48,22 +48,19 @@ export default function expander(): void {
     }
 
     if (mediaQuery.L.matches) {
-      const width = isCollapsed ? BreakPoint.L * AspectRatio.L : BreakPoint.L;
-      const height = isCollapsed
-        ? BreakPoint.L * AspectRatio.L * 1.5
-        : BreakPoint.L * AspectRatio.L;
+      const width = isCollapsed ? BreakPoint.L / 3 : BreakPoint.L;
 
       viewbox.setWidth(width);
-      viewbox.setHeight(height);
+      viewbox.setHeight(BreakPoint.L * AspectRatio.L);
     }
 
     if (mediaQuery.XL.matches) {
-      const width = isCollapsed ? BreakPoint.XL * AspectRatio.L : BreakPoint.L;
+      const width = isCollapsed ? BreakPoint.XL / 3 : BreakPoint.L;
       const height = isCollapsed
         ? BreakPoint.XL * AspectRatio.L * 1.5
         : BreakPoint.L * AspectRatio.L;
 
-      viewbox.setWidth(BreakPoint.M);
+      viewbox.setWidth(width);
       viewbox.setHeight(height);
     }
 
@@ -79,8 +76,17 @@ export default function expander(): void {
     });
   };
 
-  const toggleCustomProp = (node: HTMLElement): void => {
+  const toggleCustomProp = (node: SVGElement): void => {
     if (!node) {
+      return;
+    }
+    if (mediaQuery.L.matches) {
+      node.style.setProperty('--is-collapsed', `${isCollapsed ? 1 : 0}`);
+      if (isCollapsed) {
+        node.style.setProperty('--media-width', 'auto');
+      } else {
+        node.style.setProperty('--media-width', '100%');
+      }
       return;
     }
     node.style.setProperty('--is-collapsed', `${isCollapsed ? 1 : 0}`);
@@ -88,12 +94,11 @@ export default function expander(): void {
 
   const handleClick = (e: MouseEvent): void => {
     const target = e.currentTarget as SVGElement;
-    const parent = target.parentElement;
     isCollapsed = !isCollapsed;
 
     viewBoxStream.subscribe((viewboxProps: ViewBoxProps) => {
       target.setAttribute('viewBox', `${viewboxProps}`);
-      toggleCustomProp(parent);
+      toggleCustomProp(target);
     });
   };
 
