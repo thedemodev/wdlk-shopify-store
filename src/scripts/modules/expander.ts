@@ -13,14 +13,12 @@ export default function expander(): void {
   if (!expanderList) {
     return;
   }
-
   const contentHeightList: number[] = [...expanderList].map((el: Element) =>
     Math.round(
       el.querySelector('.js_expander-content').getBoundingClientRect().height
     )
   );
   const contentHeight: number = Math.max(...contentHeightList) + headerHeight;
-
   const viewbox = ViewBox({
     minX: 0,
     minY: 0,
