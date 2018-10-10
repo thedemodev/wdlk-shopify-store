@@ -30,6 +30,7 @@ export function ViewBox(init: ViewBoxProps): ViewBoxFactoryProps {
       return this.height;
     },
     getViewBox(): string {
+      console.log(this.width, this.height, 'within the viewbox factory');
       return `${this.minX} ${this.minY} ${this.width} ${this.height}`;
     },
     setWidth(width: number): void {

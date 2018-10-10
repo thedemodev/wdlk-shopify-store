@@ -1,7 +1,8 @@
 import { Observable, Observer } from 'rxjs';
 import { AspectRatio } from './picture-aspect-ratio';
 import { mediaQuery, BreakPoint } from './match-media';
-import { ViewBox, ViewBoxProps } from './viewbox';
+import { ViewBoxProps } from './viewbox';
+import * as Utils from '../utils';
 
 export default function expander(): void {
   const viewPortHeight = window.innerHeight;
@@ -19,50 +20,34 @@ export default function expander(): void {
     )
   );
   const contentHeight: number = Math.max(...contentHeightList) + headerHeight;
-  const viewbox = ViewBox({
-    minX: 0,
-    minY: 0,
-    width: BreakPoint.S,
-    height: BreakPoint.S * AspectRatio.S
-  });
   let isCollapsed = true;
 
   const viewBoxStream = Observable.create((observer: Observer<string>) => {
-    if (mediaQuery.S.matches) {
-      const height = isCollapsed
-        ? viewPortHeight / 3 - headerHeight / 3
-        : BreakPoint.S * AspectRatio.S + contentHeight;
-
-      viewbox.setHeight(height);
-    }
+    let width: number = BreakPoint.S;
+    let height: number = isCollapsed
+      ? viewPortHeight / 3 - headerHeight / 3
+      : BreakPoint.S * AspectRatio.S + contentHeight;
 
     if (mediaQuery.M.matches) {
-      const height = isCollapsed
+      width = BreakPoint.M;
+      height = isCollapsed
         ? viewPortHeight / 3 - headerHeight / 3
         : BreakPoint.M * AspectRatio.M + contentHeight;
-
-      viewbox.setWidth(BreakPoint.M);
-      viewbox.setHeight(height);
     }
 
     if (mediaQuery.L.matches) {
-      const width = isCollapsed ? BreakPoint.L / 3 : BreakPoint.L;
-
-      viewbox.setWidth(width);
-      viewbox.setHeight(BreakPoint.L * AspectRatio.L);
+      width = isCollapsed ? BreakPoint.L / 3 : BreakPoint.L;
+      height = BreakPoint.L * AspectRatio.L;
     }
 
     if (mediaQuery.XL.matches) {
-      const width = isCollapsed ? BreakPoint.XL / 3 : BreakPoint.L;
-      const height = isCollapsed
+      width = isCollapsed ? BreakPoint.XL / 3 : BreakPoint.L;
+      height = isCollapsed
         ? BreakPoint.XL * AspectRatio.L * 1.5
         : BreakPoint.L * AspectRatio.L;
-
-      viewbox.setWidth(width);
-      viewbox.setHeight(height);
     }
-
-    observer.next(viewbox.getViewBox());
+    console.log(width, height, '%%%%%%%');
+    observer.next(`0 0 ${width} ${height}`);
   });
 
   const setViewBox = (node: SVGElement): void => {

@@ -162,7 +162,7 @@
       ), 0);
     transition: transform 333ms ease-in-out;
 
-    @include media(large) {;
+    @include media(large) {
       font-size: $copy-size-s;
       transform: translate3d(15px, 60px, 0);
     }
