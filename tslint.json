@@ -124,7 +124,6 @@
     "eofline": true,
     "indent": [true, "spaces"],
     "linebreak-style": [true, "LF"],
-    "max-classes-per-file": [false],
     "max-file-line-count": [false],
     "max-line-length": [false, 100],
     "no-default-export": false,

@@ -1,7 +1,5 @@
-import { Observable, Observer } from 'rxjs';
 import { AspectRatio } from './picture-aspect-ratio';
 import { mediaQuery, BreakPoint } from './match-media';
-import { ViewBoxProps } from './viewbox';
 import * as Utils from '../utils';
 
 export default function expander(): void {
@@ -22,41 +20,29 @@ export default function expander(): void {
   const contentHeight: number = Math.max(...contentHeightList) + headerHeight;
   let isCollapsed = true;
 
-  const viewBoxStream = Observable.create((observer: Observer<string>) => {
-    let width: number = BreakPoint.S;
-    let height: number = isCollapsed
-      ? viewPortHeight / 3 - headerHeight / 3
-      : BreakPoint.S * AspectRatio.S + contentHeight;
+  const getViewBoxDimension = () => {
+    const dimension = {
+      startWidth: BreakPoint.S,
+      endWidth: BreakPoint.S,
+      startHeight: viewPortHeight / 3 - headerHeight / 3,
+      endHeight: BreakPoint.S * AspectRatio.S + contentHeight
+    };
 
     if (mediaQuery.M.matches) {
-      width = BreakPoint.M;
-      height = isCollapsed
-        ? viewPortHeight / 3 - headerHeight / 3
-        : BreakPoint.M * AspectRatio.M + contentHeight;
+      dimension.endHeight = BreakPoint.M * AspectRatio.M + contentHeight;
     }
-
     if (mediaQuery.L.matches) {
-      width = isCollapsed ? BreakPoint.L / 3 : BreakPoint.L;
-      height = BreakPoint.L * AspectRatio.L;
+      dimension.startWidth = BreakPoint.L / 3;
+      dimension.endWidth = BreakPoint.L;
+      dimension.startHeight = BreakPoint.L * AspectRatio.L;
     }
-
     if (mediaQuery.XL.matches) {
-      width = isCollapsed ? BreakPoint.XL / 3 : BreakPoint.L;
-      height = isCollapsed
-        ? BreakPoint.XL * AspectRatio.L * 1.5
-        : BreakPoint.L * AspectRatio.L;
+      dimension.startWidth = BreakPoint.XL / 3;
+      dimension.endWidth = BreakPoint.L;
+      dimension.startHeight = BreakPoint.XL * AspectRatio.L * 1.5;
+      dimension.endHeight = BreakPoint.L * AspectRatio.L;
     }
-    console.log(width, height, '%%%%%%%');
-    observer.next(`0 0 ${width} ${height}`);
-  });
-
-  const setViewBox = (node: SVGElement): void => {
-    if (!node) {
-      return;
-    }
-    viewBoxStream.subscribe((viewboxProps: ViewBoxProps) => {
-      node.setAttribute('viewBox', `${viewboxProps}`);
-    });
+    return dimension;
   };
 
   const toggleCustomProp = (node: SVGElement): void => {
@@ -75,14 +61,57 @@ export default function expander(): void {
     node.style.setProperty('--is-collapsed', `${isCollapsed ? 1 : 0}`);
   };
 
+  const setViewBox = (node: SVGElement): void => {
+    if (!node) {
+      return;
+    }
+    const {
+      startWidth,
+      endWidth,
+      startHeight,
+      endHeight
+    } = getViewBoxDimension();
+    node.setAttribute(
+      'viewBox',
+      isCollapsed
+        ? `0 0 ${startWidth} ${startHeight}`
+        : `0 0 ${endWidth} ${endHeight}`
+    );
+  };
+
   const handleClick = (e: MouseEvent): void => {
     const target = e.currentTarget as SVGElement;
-    isCollapsed = !isCollapsed;
+    const {
+      startWidth,
+      endWidth,
+      startHeight,
+      endHeight
+    } = getViewBoxDimension();
 
-    viewBoxStream.subscribe((viewboxProps: ViewBoxProps) => {
-      target.setAttribute('viewBox', `${viewboxProps}`);
-      toggleCustomProp(target);
-    });
+    isCollapsed = !isCollapsed;
+    toggleCustomProp(target);
+    const easeCollapsed = Utils.easeValues({
+      startWidth,
+      endWidth,
+      startHeight,
+      endHeight
+    })(100);
+    const easeExpanded = Utils.easeValues({
+      startWidth: endWidth,
+      endWidth: startWidth,
+      startHeight: endHeight,
+      endHeight: startHeight
+    })(100);
+    easeExpanded((value: Utils.CurrentDimensionProps) =>
+      console.log('Value', value)
+    );
+
+    target.setAttribute(
+      'viewBox',
+      isCollapsed
+        ? `0 0 ${startWidth} ${startHeight}`
+        : `0 0 ${endWidth} ${endHeight}`
+    );
   };
 
   if (expanderList) {

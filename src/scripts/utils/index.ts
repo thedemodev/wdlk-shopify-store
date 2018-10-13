@@ -1,2 +1,2 @@
 export * from './viewport';
-export * from './lerp';
+export * from './transition';
