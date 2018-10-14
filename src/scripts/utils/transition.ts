@@ -12,11 +12,11 @@ export interface CurrentDimensionProps {
 
 type cbType = (n: CurrentDimensionProps) => {};
 
-export function easeValues(dimension: DimensionProps): (d: number) => {} {
+export function ease(dimension: DimensionProps): (d: number) => {} {
   return (duration: number) => (cb: cbType) => {
     const { startWidth, endWidth, startHeight, endHeight } = dimension;
-    const deltaW = (endWidth - startWidth) / duration;
-    const deltaH = (endHeight - startHeight) / duration;
+    const deltaW = (endWidth - startWidth) / (duration / 16);
+    const deltaH = (endHeight - startHeight) / (duration / 16);
     const currentDimension = {
       width: startWidth,
       height: startHeight
@@ -25,6 +25,7 @@ export function easeValues(dimension: DimensionProps): (d: number) => {} {
     const step = () => {
       currentDimension.width += deltaW;
       currentDimension.height += deltaH;
+
       if (
         currentDimension.width < endWidth ||
         currentDimension.height < endHeight

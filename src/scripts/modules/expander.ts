@@ -90,28 +90,26 @@ export default function expander(): void {
 
     isCollapsed = !isCollapsed;
     toggleCustomProp(target);
-    const easeCollapsed = Utils.easeValues({
+
+    // tslint:disable-next-line:no-any
+    const easeOut: any = Utils.ease({
       startWidth,
       endWidth,
       startHeight,
       endHeight
+    })(500);
+    const easeIn = Utils.ease({
+      endWidth,
+      startWidth,
+      endHeight,
+      startHeight
     })(100);
-    const easeExpanded = Utils.easeValues({
-      startWidth: endWidth,
-      endWidth: startWidth,
-      startHeight: endHeight,
-      endHeight: startHeight
-    })(100);
-    easeExpanded((value: Utils.CurrentDimensionProps) =>
-      console.log('Value', value)
-    );
 
-    target.setAttribute(
-      'viewBox',
-      isCollapsed
-        ? `0 0 ${startWidth} ${startHeight}`
-        : `0 0 ${endWidth} ${endHeight}`
-    );
+    isCollapsed
+      ? target.setAttribute('viewBox', `0 0 ${startWidth} ${startHeight}`)
+      : easeOut((value: Utils.CurrentDimensionProps) =>
+          target.setAttribute('viewBox', `0 0 ${value.width} ${value.height}`)
+        );
   };
 
   if (expanderList) {
