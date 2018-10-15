@@ -92,18 +92,28 @@ export default function expander(): void {
     toggleCustomProp(target);
 
     // tslint:disable-next-line:no-any
-    const easeOut: any = Utils.ease({
-      startWidth,
-      endWidth,
-      startHeight,
-      endHeight
+    const easeOut: any = Utils.easeOut({
+      x1: startWidth,
+      x2: endWidth,
+      y1: startHeight,
+      y2: endHeight
     })(500);
-    const easeIn = Utils.ease({
-      endWidth,
-      startWidth,
-      endHeight,
-      startHeight
+    // tslint:disable-next-line:no-any
+    const easeIn: any = Utils.easeIn({
+      x1: endWidth,
+      x2: startWidth,
+      y1: endHeight,
+      y2: startHeight
     })(100);
+
+    console.log(
+      easeIn((value: Utils.CurrentDimensionProps) =>
+        console.log(value, 'INNN@@@@')
+      )
+      // easeOut((value: Utils.CurrentDimensionProps) =>
+      //   console.log(value, 'OOOOUT!!!!!!')
+      // )
+    );
 
     isCollapsed
       ? target.setAttribute('viewBox', `0 0 ${startWidth} ${startHeight}`)
