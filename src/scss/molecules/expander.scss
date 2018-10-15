@@ -47,25 +47,31 @@
 .Expander {
   &:nth-of-type(1) {
     .Expander-media {
-      transform-origin: right;
+      transform-origin: bottom;
       transform: translate3d(
         0,
-        calc(-50% * var(--is-collapsed)),
+        calc(
+          -50% * var(--is-collapsed) +
+          0% * (1 - var(--is-collapsed))
+        ),
         0
       );
       @include media(large) {
         transform: translate3d(
           calc(
-            -150% * var(--is-collapsed)
+            -150% * var(--is-collapsed) +
+            0% * (1 - var(--is-collapsed))
             ),
           0,
           0
         );
+        transform-origin: right;
       }
       @include media(xlarge) {
         transform: translate3d(
           calc(
-            -110% * var(--is-collapsed)
+            -110% * var(--is-collapsed) +
+            0% * (1 - var(--is-collapsed))
             ),
           0,
           0
@@ -76,13 +82,22 @@
 
   &:nth-of-type(2) {
     .Expander-media {
-      transform: translateY(
-        calc(-90% * var(--is-collapsed))
+      transform: translate3d(
+        0,
+        calc(
+          -90% * var(--is-collapsed) +
+          0% * (1 - var(--is-collapsed))
+        ),
+        0
         );
+        transform-origin: bottom;
         @include media(large) {
           transform-origin: center;
           transform: translate3d(
-            calc(-160% * var(--is-collapsed)),
+            calc(
+              -160% * var(--is-collapsed) +
+              0% * (1 - var(--is-collapsed))
+            ),
             0,
             0
           );
@@ -90,7 +105,8 @@
         @include media(xlarge) {
           transform: translate3d(
             calc(
-              -110% * var(--is-collapsed)
+              -110% * var(--is-collapsed) +
+              0% * (1 - var(--is-collapsed))
             ),
             0,
             0
@@ -104,7 +120,10 @@
       @include media(large) {
         transform-origin: left;
         transform: translate3d(
-          calc(-160% * var(--is-collapsed)),
+          calc(
+            -160% * var(--is-collapsed) +
+            0% * (1 - var(--is-collapsed))
+          ),
           0,
           0
         );
@@ -112,7 +131,8 @@
       @include media(xlarge) {
         transform: translate3d(
           calc(
-            -110% * var(--is-collapsed)
+            -110% * var(--is-collapsed) +
+            0% * (1 - var(--is-collapsed))
           ),
           0,
           0

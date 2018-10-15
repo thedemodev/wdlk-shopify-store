@@ -6,8 +6,8 @@ export interface DimensionProps {
 }
 
 export interface CurrentDimensionProps {
-  width: number;
-  height: number;
+  x: number;
+  y: number;
 }
 
 type cbType = (n: CurrentDimensionProps) => {};
@@ -15,22 +15,22 @@ type cbType = (n: CurrentDimensionProps) => {};
 export function easeOut(dimension: DimensionProps): (d: number) => {} {
   return (duration: number) => (cb: cbType) => {
     const { x1, x2, y1, y2 } = dimension;
-    const deltaW = (x2 - x1) / (duration / 16);
-    const deltaH = (y2 - y1) / (duration / 16);
-    const currentDimension = {
-      width: x1,
-      height: y1
+    const deltaX = (x2 - x1) / (duration / 16);
+    const deltaY = (y2 - y1) / (duration / 16);
+    const current = {
+      x: x1,
+      y: y1
     };
 
     const step = () => {
-      currentDimension.width += deltaW;
-      currentDimension.height += deltaH;
+      current.x += deltaX;
+      current.y += deltaY;
 
-      if (currentDimension.width < x2 || currentDimension.height < y2) {
-        cb(currentDimension);
+      if (current.x < x2 || current.y < y2) {
+        cb(current);
         window.requestAnimationFrame(step);
       } else {
-        cb(currentDimension);
+        cb(current);
       }
     };
     step();
@@ -40,23 +40,21 @@ export function easeOut(dimension: DimensionProps): (d: number) => {} {
 export function easeIn(dimension: DimensionProps): (d: number) => {} {
   return (duration: number) => (cb: cbType) => {
     const { x1, x2, y1, y2 } = dimension;
-    const deltaW = (x2 - x1) / (16 / duration);
-    const deltaH = (y2 - y1) / (16 / duration);
-    const currentDimension = {
-      width: x1,
-      height: y1
+    const deltaX = (x1 - x2) / (duration / 16);
+    const deltaY = (y1 - y2) / (duration / 16);
+    const current = {
+      x: x1,
+      y: y1
     };
 
-    console.log(x1, y1);
-
     const step = () => {
-      currentDimension.width -= deltaW;
-      currentDimension.height -= deltaH;
-      if (currentDimension.width > x2 || currentDimension.width > y2) {
-        cb(currentDimension);
+      current.x -= deltaX;
+      current.y -= deltaY;
+      if (current.x > x2 || current.y > y2) {
+        cb(current);
         window.requestAnimationFrame(step);
       } else {
-        cb(currentDimension);
+        cb(current);
       }
     };
     window.requestAnimationFrame(step);

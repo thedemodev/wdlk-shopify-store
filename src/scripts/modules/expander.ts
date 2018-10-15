@@ -104,21 +104,14 @@ export default function expander(): void {
       x2: startWidth,
       y1: endHeight,
       y2: startHeight
-    })(100);
-
-    console.log(
-      easeIn((value: Utils.CurrentDimensionProps) =>
-        console.log(value, 'INNN@@@@')
-      )
-      // easeOut((value: Utils.CurrentDimensionProps) =>
-      //   console.log(value, 'OOOOUT!!!!!!')
-      // )
-    );
+    })(500);
 
     isCollapsed
-      ? target.setAttribute('viewBox', `0 0 ${startWidth} ${startHeight}`)
+      ? easeIn((value: Utils.CurrentDimensionProps) =>
+          target.setAttribute('viewBox', `0 0 ${value.x} ${value.y}`)
+        )
       : easeOut((value: Utils.CurrentDimensionProps) =>
-          target.setAttribute('viewBox', `0 0 ${value.width} ${value.height}`)
+          target.setAttribute('viewBox', `0 0 ${value.x} ${value.y}`)
         );
   };
 
