@@ -77,12 +77,16 @@ export default function expander(): void {
     if (!node) {
       return;
     }
-    node.setAttribute(
-      'viewBox',
-      isCollapsed
-        ? `0 0 ${startWidth} ${startHeight}`
-        : `0 0 ${endWidth} ${endHeight}`
-    );
+    if (mediaQuery.L.matches) {
+      node.setAttribute('viewBox', `0 0 ${endWidth} ${endHeight}`);
+    } else {
+      node.setAttribute(
+        'viewBox',
+        isCollapsed
+          ? `0 0 ${startWidth} ${startHeight}`
+          : `0 0 ${endWidth} ${endHeight}`
+      );
+    }
   };
 
   const handleClick = (e: MouseEvent): void => {
@@ -90,13 +94,17 @@ export default function expander(): void {
     isCollapsed = !isCollapsed;
     toggleCustomProp(target);
     target.classList.toggle('is-collapsed', isCollapsed);
-    isCollapsed
-      ? easeIn((value: Utils.CurrentDimensionProps) =>
-          target.setAttribute('viewBox', `0 0 ${value.x} ${value.y}`)
-        )
-      : easeOut((value: Utils.CurrentDimensionProps) =>
-          target.setAttribute('viewBox', `0 0 ${value.x} ${value.y}`)
-        );
+    if (mediaQuery.L.matches) {
+      target.setAttribute('viewBox', `0 0 ${endWidth} ${endHeight}`);
+    } else {
+      isCollapsed
+        ? easeIn((value: Utils.CurrentDimensionProps) =>
+            target.setAttribute('viewBox', `0 0 ${value.x} ${value.y}`)
+          )
+        : easeOut((value: Utils.CurrentDimensionProps) =>
+            target.setAttribute('viewBox', `0 0 ${value.x} ${value.y}`)
+          );
+    }
   };
 
   if (expanderList) {
