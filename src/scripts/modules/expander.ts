@@ -45,17 +45,29 @@ export default function expander(): void {
     return dimension;
   };
 
+  const {
+    startWidth,
+    endWidth,
+    startHeight,
+    endHeight
+  } = getViewBoxDimension();
+  // tslint:disable-next-line:no-any
+  const easeOut: any = Utils.easeOut({
+    x1: startWidth,
+    x2: endWidth,
+    y1: startHeight,
+    y2: endHeight
+  })(500);
+  // tslint:disable-next-line:no-any
+  const easeIn: any = Utils.easeIn({
+    x1: endWidth,
+    x2: startWidth,
+    y1: endHeight,
+    y2: startHeight
+  })(500);
+
   const toggleCustomProp = (node: SVGElement): void => {
     if (!node) {
-      return;
-    }
-    if (mediaQuery.L.matches) {
-      node.style.setProperty('--is-collapsed', `${isCollapsed ? 1 : 0}`);
-      if (isCollapsed) {
-        node.style.setProperty('--media-width', 'auto');
-      } else {
-        node.style.setProperty('--media-width', '100%');
-      }
       return;
     }
     node.style.setProperty('--is-collapsed', `${isCollapsed ? 1 : 0}`);
@@ -65,12 +77,6 @@ export default function expander(): void {
     if (!node) {
       return;
     }
-    const {
-      startWidth,
-      endWidth,
-      startHeight,
-      endHeight
-    } = getViewBoxDimension();
     node.setAttribute(
       'viewBox',
       isCollapsed
@@ -81,31 +87,9 @@ export default function expander(): void {
 
   const handleClick = (e: MouseEvent): void => {
     const target = e.currentTarget as SVGElement;
-    const {
-      startWidth,
-      endWidth,
-      startHeight,
-      endHeight
-    } = getViewBoxDimension();
-
     isCollapsed = !isCollapsed;
     toggleCustomProp(target);
-
-    // tslint:disable-next-line:no-any
-    const easeOut: any = Utils.easeOut({
-      x1: startWidth,
-      x2: endWidth,
-      y1: startHeight,
-      y2: endHeight
-    })(500);
-    // tslint:disable-next-line:no-any
-    const easeIn: any = Utils.easeIn({
-      x1: endWidth,
-      x2: startWidth,
-      y1: endHeight,
-      y2: startHeight
-    })(500);
-
+    target.classList.toggle('is-collapsed', isCollapsed);
     isCollapsed
       ? easeIn((value: Utils.CurrentDimensionProps) =>
           target.setAttribute('viewBox', `0 0 ${value.x} ${value.y}`)

@@ -21,10 +21,10 @@
         1 * var(--is-collapsed) +
         2 * (1 - var(--is-collapsed))
       );
-    width: calc(
-      33.3333% * var(--is-collapsed) +
-      100% * (1 - var(--is-collapsed))
-    );
+    // width: calc(
+    //   33.3333% * var(--is-collapsed) +
+    //   100% * (1 - var(--is-collapsed))
+    // );
     transform: translate3d(-50% , 0, 0);
     transform-origin: top;
     pointer-events: auto;
@@ -45,104 +45,54 @@
 }
 
 .Expander {
-  &:nth-of-type(1) {
+  &.is-collapsed {
     .Expander-media {
-      transform-origin: bottom;
-      transform: translate3d(
-        0,
-        calc(
-          -50% * var(--is-collapsed) +
-          0% * (1 - var(--is-collapsed))
-        ),
-        0
-      );
-      @include media(large) {
-        transform: translate3d(
-          calc(
-            -150% * var(--is-collapsed) +
-            0% * (1 - var(--is-collapsed))
-            ),
-          0,
-          0
-        );
-        transform-origin: right;
+      transform: translate3d(0, 0, 0);
+      transition-delay: 200ms;
+      transition-property: transform;
+      transition-timing-function: ease-in;
+      transition-duration: 300ms;
+    }
+    &:nth-of-type(1) {
+      .Expander-media {
+        transform: translate3d(0, -45%, 0);
+        @media(min-width: 768px) {
+          transform: translate3d(0, 0, 0);
+        }
       }
-      @include media(xlarge) {
-        transform: translate3d(
-          calc(
-            -110% * var(--is-collapsed) +
-            0% * (1 - var(--is-collapsed))
-            ),
-          0,
-          0
-        );
+    }
+    &:nth-of-type(2) {
+      .Expander-media {
+        transform: translate3d(0, -55%, 0);
+        @media(min-width: 768px) {
+          transform: translate3d(0, 0, 0);
+        }
+      }
+    }
+    &:nth-of-type(3) {
+      .Expander-media {
+        transform: translate3d(0, 0, 0);
+        @media(min-width: 768px) {
+          transform: translate3d(0, 0, 0);
+        }
       }
     }
   }
-
-  &:nth-of-type(2) {
-    .Expander-media {
-      transform: translate3d(
-        0,
-        calc(
-          -90% * var(--is-collapsed) +
-          0% * (1 - var(--is-collapsed))
-        ),
-        0
-        );
-        transform-origin: bottom;
-        @include media(large) {
-          transform-origin: center;
-          transform: translate3d(
-            calc(
-              -160% * var(--is-collapsed) +
-              0% * (1 - var(--is-collapsed))
-            ),
-            0,
-            0
-          );
-        }
-        @include media(xlarge) {
-          transform: translate3d(
-            calc(
-              -110% * var(--is-collapsed) +
-              0% * (1 - var(--is-collapsed))
-            ),
-            0,
-            0
-          );
-        }
-    }
-  }
-
-  &:nth-of-type(3) {
-    .Expander-media {
-      @include media(large) {
-        transform-origin: left;
-        transform: translate3d(
-          calc(
-            -160% * var(--is-collapsed) +
-            0% * (1 - var(--is-collapsed))
-          ),
-          0,
-          0
-        );
-      }
-      @include media(xlarge) {
-        transform: translate3d(
-          calc(
-            -110% * var(--is-collapsed) +
-            0% * (1 - var(--is-collapsed))
-          ),
-          0,
-          0
-        );
-      }
-    }
+  .Expander-media {
+    transform: translate3d(0, 0 ,0);
+    transition: unset;
   }
 }
 
+
 .Expander {
+  &.is-collapsed {
+    .Expander-media {
+      @include media(large) {
+        width: auto;
+      }
+    }
+  }
   &-media {
     height: auto;
     width: 100%;
@@ -156,9 +106,10 @@
         display: block;
       }
     }
+
     @include media(large) {
       display: none;
-      width: var(--media-width, auto);
+      width: 100%;
 
       &:nth-of-type(2) {
         display: none;
@@ -178,13 +129,14 @@
     transform: translate3d(0,
       calc(
         100% * var(--is-collapsed) +
-        66% * (1 -var(--is-collapsed))
+        65% * (1 -var(--is-collapsed))
       ), 0);
-    transition: transform 333ms ease-in-out;
+    transition: transform 500ms 250ms linear, opacity 250ms 250ms linear;
+    font-size: $copy-size-m;
 
     @include media(large) {
-      font-size: $copy-size-s;
       transform: translate3d(15px, 60px, 0);
+      font-size: $copy-size-s;
     }
   }
   &-headline {
@@ -195,7 +147,7 @@
 
   .Link {
     fill: $hex-coral;
-    transition: fill .3s ease-in-out;
+    transition: fill .333ms ease-in-out;
 
     &:hover {
       fill: $hex-coral-dark;
