@@ -8,6 +8,7 @@ export interface DimensionProps {
 export interface CurrentDimensionProps {
   x: number;
   y: number;
+  sin: number;
 }
 
 type cbType = (n: CurrentDimensionProps) => {};
@@ -15,16 +16,19 @@ type cbType = (n: CurrentDimensionProps) => {};
 export function easeOut(dimension: DimensionProps): (d: number) => {} {
   return (duration: number) => (cb: cbType) => {
     const { x1, x2, y1, y2 } = dimension;
-    const deltaX = (x2 - x1) / (duration / 16);
-    const deltaY = (y2 - y1) / (duration / 16);
+    const stepCount = duration / 16;
+    const deltaX = (x2 - x1) / stepCount;
+    const deltaY = (y2 - y1) / stepCount;
     const current = {
       x: x1,
-      y: y1
+      y: y1,
+      sin: 0
     };
 
     const step = () => {
-      current.x += deltaX;
-      current.y += deltaY;
+      current.sin += Math.PI / stepCount;
+      current.x += deltaX * Math.sin(current.sin) ** 2 * 2;
+      current.y += deltaY * Math.sin(current.sin) ** 2 * 2;
 
       if (current.x < x2 || current.y < y2) {
         cb(current);
@@ -40,16 +44,19 @@ export function easeOut(dimension: DimensionProps): (d: number) => {} {
 export function easeIn(dimension: DimensionProps): (d: number) => {} {
   return (duration: number) => (cb: cbType) => {
     const { x1, x2, y1, y2 } = dimension;
-    const deltaX = (x1 - x2) / (duration / 16);
-    const deltaY = (y1 - y2) / (duration / 16);
+    const stepCount = duration / 16;
+    const deltaX = (x1 - x2) / stepCount;
+    const deltaY = (y1 - y2) / stepCount;
     const current = {
       x: x1,
-      y: y1
+      y: y1,
+      sin: 0
     };
 
     const step = () => {
-      current.x -= deltaX;
-      current.y -= deltaY;
+      current.sin += Math.PI / stepCount;
+      current.x -= deltaX * Math.sin(current.sin) ** 2 * 2;
+      current.y -= deltaY * Math.sin(current.sin) ** 2 * 2;
       if (current.x > x2 || current.y > y2) {
         cb(current);
         window.requestAnimationFrame(step);
