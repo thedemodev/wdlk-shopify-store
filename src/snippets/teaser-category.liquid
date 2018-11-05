@@ -1,0 +1,28 @@
+{% comment %}
+These are the necessary variables examples to correctly initialize the component:
+
+1. {% assign categoryHref = 'href' %}
+2. {% assign headline = 'Headline copy' %}
+3. {% assign categoryTitle = 'Category Name' %}
+
+4. {% assign src = 'WDLK_Teaser_Mobile_1@1x.jpg' | asset_url %}
+5. {% assign src2x = 'WDLK_Teaser_Mobile_1@2x.jpg' | asset_url %}
+6. {% assign src2 = 'WDLK_Teaser_Tablet_1@1x.jpg' | asset_url %}
+}
+{% endcomment %}
+
+<a class="Teaser" href="{{ categoryHref }}">
+  <h2 class="Headline Headline--3">{{ headline }}</h2>
+  <strong class="Link Link--btn">
+    {{ categoryTitle }}
+    <svg class="Icon Icon--right">
+      <use xlink:href="#Arrow_right" />
+    </svg>
+  </strong>
+  <img
+    class="Teaser-media"
+    src="{{ src }}"
+    srcset="{{ src2 }} 768w"
+    alt="Swimwear category: {{ categoryTitle }}" />
+</a>
+

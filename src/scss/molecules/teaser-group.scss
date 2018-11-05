@@ -1,0 +1,40 @@
+.TeaserGroup {
+  --is-animating: 1;
+  --duration: 8000;
+  --delay: var(--duration);
+  --opacity: var(--is-animating);
+
+  position: relative;
+  width: 100vw;
+  height: calc(100vw * 1.5); //-- 1.5 being the current aspect ratio
+}
+
+.TeaserGroup .Teaser {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: var(--opacity);
+  animation-name: teaserGroup;
+  animation-duration: calc(var(--duration) * 1ms);
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.TeaserGroup .Teaser:nth-of-type(2) {
+  opacity: 0;
+  animation-delay: -4000ms;
+}
+
+.TeaserGroup .Teaser:nth-of-type(3) {
+  opacity: 0;
+  animation-delay: -6000ms;
+}
+
+@keyframes teaserGroup {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}

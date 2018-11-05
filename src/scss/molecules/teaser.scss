@@ -1,0 +1,24 @@
+.Teaser {
+  display: block;
+  padding: 0 calc(var(--size-3XL) * 1px);
+}
+
+.Teaser-media {
+  width: 100%;
+  height: auto;
+}
+
+.Teaser .Headline {
+  text-align: center;
+  color: $typo-hex--secondary;
+}
+
+.Teaser .Link {
+  position: absolute;
+  right: 50%;
+  bottom: calc(var(--size-3XL) * 1px);
+  width: 100%;
+  text-align: center;
+  color: $hex-white;
+  transform: translateX(50%);
+}
