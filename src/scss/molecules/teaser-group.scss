@@ -1,6 +1,6 @@
 .TeaserGroup {
   --is-animating: 1;
-  --duration: 8000;
+  --duration: 10000;
   --delay: var(--duration);
   --opacity: var(--is-animating);
 
@@ -17,24 +17,25 @@
   animation-name: teaserGroup;
   animation-duration: calc(var(--duration) * 1ms);
   animation-iteration-count: infinite;
-  animation-timing-function: linear;
+  animation-timing-function: steps(1, start);
 }
 
 .TeaserGroup .Teaser:nth-of-type(2) {
   opacity: 0;
-  animation-delay: -4000ms;
+  animation-delay: calc(((var(--duration) * 66.6) / 100) * -1ms);
 }
 
 .TeaserGroup .Teaser:nth-of-type(3) {
+  animation-delay: calc(((var(--duration) * 33.3) / 100) * -1ms);
   opacity: 0;
-  animation-delay: -6000ms;
 }
 
 @keyframes teaserGroup {
   0%, 100% {
     opacity: 1;
   }
-  50% {
+
+  33%, 66% {
     opacity: 0;
   }
 }
