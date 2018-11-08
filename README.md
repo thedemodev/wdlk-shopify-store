@@ -42,4 +42,4 @@ Slate documentation:[https://shopify.github.io/slate/](https://shopify.github.io
 14. Delete your branch (local and server)
 15. Delete your branched theme in Shopify Admin
 
-Copyright 2018 by [Mauricio Palma Jimenez - Woodlike](https://woodlikeocean.com)
+Copyright 2018 by [Mauricio Palma Jimenez - Woodlike](https://woodlikeocean.com).
