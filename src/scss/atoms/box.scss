@@ -1,0 +1,12 @@
+.BoxInset {
+    --size: 48;
+    box-sizing: border-box;
+}
+
+.BoxInset--x {
+    padding: 0 calc(var(--size) * 1px);
+}
+
+.BoxInset--y {
+    padding: calc(var(--size) * 1px) 0;
+}

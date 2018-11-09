@@ -1,34 +1,62 @@
 .TeaserGroup {
   --is-animating: 1;
-  --duration: 10000;
+  --duration: 8000;
   --delay: var(--duration);
   --opacity: var(--is-animating);
 
   position: relative;
   width: 100vw;
+  max-width: $screen-xl;
   height: calc(100vw * 1.5); //-- 1.5 being the current aspect ratio
+  padding: 0 calc(var(--size-3XL) * 1px);
+  @include media(medium) {
+    line-height: 0;
+    font-size: 0;
+  }
 }
 
 .TeaserGroup .Teaser {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   opacity: var(--opacity);
+  padding: 0;
   animation-name: teaserGroup;
   animation-duration: calc(var(--duration) * 1ms);
   animation-iteration-count: infinite;
   animation-timing-function: steps(1, start);
+  @include media(medium) {
+    position: static;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 33.333%;
+    opacity: 1;
+    animation: none;
+  }
 }
 
 .TeaserGroup .Teaser:nth-of-type(2) {
   opacity: 0;
   animation-delay: calc(((var(--duration) * 66.6) / 100) * -1ms);
+  @include media(medium) {
+    opacity: 1;
+  }
 }
 
 .TeaserGroup .Teaser:nth-of-type(3) {
   animation-delay: calc(((var(--duration) * 33.3) / 100) * -1ms);
   opacity: 0;
+  @include media(medium) {
+    opacity: 1;
+  }
 }
+
+.TeaserGroup .Link {
+  @include media(medium) {
+    font-size: $copy-size;
+  }
+}
+
 
 @keyframes teaserGroup {
   0%, 100% {

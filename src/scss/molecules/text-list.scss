@@ -1,0 +1,34 @@
+.TextList {
+    --duration: 8000;
+    width: 100%;
+    overflow: hidden;
+}
+
+.TextList--s {
+    height: $h2-size * 1.5;
+    margin: 2rem 0;
+}
+
+.TextList-container {
+    list-style: none;
+    text-align: center;
+    transform: translate3d(0, 0, 0,);
+    animation: textList calc(var(--duration) * 1ms) infinite;
+    animation-timing-function: steps(1, start);
+}
+
+.TextList-container .Headline {
+    margin: 0;
+}
+
+@keyframes textList {
+    0%, 100% {
+        transform: translate3d(0, 0, 0);
+    }
+    33% {
+        transform: translate3d(0, -38%, 0);
+    }
+    66% {
+        transform: translate3d(0, -75%, 0);
+    }
+}
