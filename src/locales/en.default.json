@@ -54,6 +54,15 @@
       "second_caption": "Active-styles offering the perfect mix of fits, fabrics, and shapes for activities inside the ocean and the miles around it. When the action comes you can focus on what is important;  with our active-styles, you’ll feel confident and relaxed when you need it the most. They provide the right coverage for absolute movement freedom and UPF 50+ UV protection factor to protect your skin. Enjoy the movement!",
       "third_headline": "Tanning",
       "third_caption": "Our tan-styles are crafted for you to get ideal sun exposure and the perfect tan. With little fabric coverage but with full UPF 50+ UV protection factor on the parts you need it. Now is the time for you to get your perfect suntan."
+    },
+    "teaser": {
+      "category": {
+        "name": "Our favorite categories",
+        "first_headline": "Mini Shape Effect",
+        "second_headline": "Movement Freedom",
+        "third_headline": "Tanning",
+        "cta": "Shop now"
+      }
     }
   },
   "blogs": {

@@ -26,7 +26,7 @@
   animation-iteration-count: infinite;
   animation-timing-function: steps(1, start);
   @include media(medium) {
-    position: static;
+    position: relative;
     box-sizing: border-box;
     display: inline-block;
     width: 33.333%;
@@ -54,6 +54,17 @@
 .TeaserGroup .Link {
   @include media(medium) {
     font-size: $copy-size;
+  }
+}
+
+.TeaserGroup .Headline {
+  color: $hex-coral;
+  @include media(medium) {
+    position: absolute;
+    top: calc(var(--size-3XL) * 1px);
+    right: 0;
+    left: 0;
+    font-family: "museo_sans300";
   }
 }
 
