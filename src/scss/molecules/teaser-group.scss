@@ -5,9 +5,9 @@
   --opacity: var(--is-animating);
 
   position: relative;
+  box-sizing: border-box;
   width: 100vw;
   max-width: $screen-xl;
-  height: calc(100vw * 1.5); //-- 1.5 being the current aspect ratio
   padding: 0 calc(var(--size-3XL) * 1px);
   @include media(medium) {
     line-height: 0;
