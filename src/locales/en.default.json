@@ -57,7 +57,8 @@
     },
     "teaser": {
       "category": {
-        "name": "Our favorite categories",
+        "topline": "Our favorite ",
+        "name": "categories",
         "first_headline": "Mini Shape Effect",
         "second_headline": "Movement Freedom",
         "third_headline": "Tanning",

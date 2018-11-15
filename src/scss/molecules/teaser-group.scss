@@ -9,10 +9,11 @@
   box-sizing: border-box;
   width: 100%;
   max-width: $screen-xl;
-  height: calc((100vw * 1.5) + (var(--headline-2-size) + (var(--size-3XL) * 1px))); //-- 1.5 being the current aspect ratio
-  padding: calc(var(--size-3XL) * 1px) 0;
+  height: calc(100vw * 1.5); //-- 1.5 being the current aspect ratio
+  margin: 0 auto;
   @include media(medium) {
     height: auto;
+    padding-bottom: calc(var(--size-3XL) * 2px);
     line-height: 0;
     font-size: 0;
   }
@@ -20,7 +21,7 @@
 
 .TeaserGroup .Teaser {
   position: absolute;
-  top: calc(var(--headline-2-size) + (var(--size-3XL) * 1px));
+  top: 0;
   left: 0;
   right: 0;
   opacity: var(--opacity);
@@ -33,10 +34,12 @@
   animation-timing-function: steps(1, start);
   @include media(medium) {
     position: relative;
+    top: auto;
     box-sizing: border-box;
     display: inline-block;
     width: 33.333%;
     opacity: 1;
+    line-height: 1.5;
     animation: none;
   }
 }
@@ -65,22 +68,28 @@
 
 .TeaserGroup .Headline {
   text-align: center;
+  line-height: 1.5;
+}
+
+.TeaserGroup .Headline--2 {
+  padding: 0 calc(var(--size-3XL) * 1px);
+  color: $hex-blue-gray-ultra-dark;
+
+  @include media(medium) {
+    max-width: 70rem;
+    margin: 0 auto calc(var(--size-L) * 1px);
+  }
+}
+
+.TeaserGroup .Headline--3 {
+  color: $hex-blue-gray-ultra-dark;
+  font-family: "museo_sans300";
   @include media(medium) {
     position: absolute;
     top: calc(var(--size-3XL) * 1px);
     right: 0;
     left: 0;
   }
-}
-
-.TeaserGroup .Headline--2 {
-  padding: 0 calc(var(--size-3XL) * 1px);
-  color: $hex-blue-gray-light;
-}
-
-.TeaserGroup .Headline--3 {
-  color: $hex-coral;
-  font-family: "museo_sans300";
 }
 
 @keyframes teaserGroup {
