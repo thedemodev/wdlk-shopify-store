@@ -1,6 +1,5 @@
 .Btn {
   display: inline-block;
-  height: $form-base-height - .2;
   padding: 0 $box-base-padding;
   border: 1px solid $btn-bg-color;
   background-color: $btn-bg-color;
@@ -59,8 +58,9 @@
     transition: background-color $button-timing ease;
 
     &:hover {
-        outline-color: $btn-bg-color-hover;
-        background: $btn-bg-color-hover;
+        outline-color: $hex-white;
+        background: $hex-white;
+        color: $hex-blue-gray-ultra-dark;
     }
   }
 
