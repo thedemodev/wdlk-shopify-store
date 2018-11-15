@@ -1,0 +1,118 @@
+.TeaserGroup {
+  --is-animating: 1;
+  --duration: 8000;
+  --delay: var(--duration);
+  --opacity: var(--is-animating);
+  --headline-2-size: 76px;
+
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: $screen-xl;
+  height: calc(100vw * 1.5); //-- 1.5 being the current aspect ratio
+  margin: 0 auto;
+  @include media(medium) {
+    height: auto;
+    padding-bottom: calc(var(--size-3XL) * 2px);
+    line-height: 0;
+    font-size: 0;
+  }
+}
+
+.TeaserGroup .Teaser {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: var(--opacity);
+  width: calc(100vw - (var(--size-3XL) * 2px));
+  padding: 0;
+  margin: auto;
+  animation-name: teaserGroup;
+  animation-duration: calc(var(--duration) * 1ms);
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(1, start);
+  @include media(medium) {
+    position: relative;
+    top: auto;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 33.333%;
+    opacity: 1;
+    line-height: 1.5;
+    animation: none;
+  }
+}
+
+.TeaserGroup .Teaser:nth-of-type(2) {
+  opacity: 0;
+  animation-delay: calc(((var(--duration) * 66.6) / 100) * -1ms);
+  @include media(medium) {
+    opacity: 1;
+  }
+}
+
+.TeaserGroup .Teaser:nth-of-type(3) {
+  animation-delay: calc(((var(--duration) * 33.3) / 100) * -1ms);
+  opacity: 0;
+  @include media(medium) {
+    opacity: 1;
+  }
+}
+
+.TeaserGroup .Link {
+  @include media(medium) {
+    font-size: $copy-size;
+  }
+}
+
+.TeaserGroup .Headline {
+  text-align: center;
+  line-height: 1.5;
+}
+
+.TeaserGroup .Headline--2 {
+  padding: 0 calc(var(--size-3XL) * 1px);
+  color: $hex-blue-gray-ultra-dark;
+
+  @include media(medium) {
+    max-width: 70rem;
+    margin: 0 auto calc(var(--size-L) * 1px);
+  }
+}
+
+.TeaserGroup .Headline--3 {
+  color: $hex-blue-gray-ultra-dark;
+  font-family: "museo_sans300";
+  @include media(medium) {
+    position: absolute;
+    top: calc(var(--size-3XL) * 1px);
+    right: 0;
+    left: 0;
+    z-index: 2;
+  }
+}
+
+.TeaserGroup .Btn {
+  position: absolute;
+  right: 50%;
+  bottom: calc(var(--size-3XL) * 1px);
+  z-index: 2;
+  padding: 0 3rem;
+  transform: translateX(50%);
+}
+
+.TeaserGroup .Link {
+  width: 100%;
+  text-align: center;
+}
+
+@keyframes teaserGroup {
+  0%, 100% {
+    opacity: 1;
+  }
+
+  33%, 66% {
+    opacity: 0;
+  }
+}

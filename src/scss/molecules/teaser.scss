@@ -1,0 +1,35 @@
+.Teaser {
+  display: block;
+  padding: 0 calc(var(--size-3XL) * 1px);
+
+  @include media(medium) {
+    overflow: hidden;
+  }
+}
+
+.Teaser-media {
+  width: 100%;
+  height: auto;
+}
+
+@include media(medium) {
+  .Teaser:hover .Teaser-media {
+    transform: scale3d(1, 1, 1);
+  
+    &:hover {
+      transition: transform .5s ease;
+      transform: scale3d(1.2, 1.2, 1);
+    }
+  }
+  .Teaser:hover .Btn {
+      outline-color: $hex-white;
+      background: $hex-white;
+      color: $hex-blue-gray-ultra-dark;
+  }
+}
+
+
+.Teaser .Headline {
+  text-align: center;
+  color: $typo-hex--secondary;
+}

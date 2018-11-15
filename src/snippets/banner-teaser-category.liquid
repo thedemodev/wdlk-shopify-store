@@ -1,0 +1,25 @@
+<article class="TeaserGroup">
+  {% assign categoryHref = collections['shape-effect'].url %}
+  {% assign headline = 'general.teaser.category.first_headline' | t %}
+  {% assign categoryTitle = 'general.teaser.category.cta' | t %}
+
+  {% assign src = 'WDLK_Teaser_Mini_Shape_Mobile.jpg' | asset_url %}
+  {% assign src2 = 'WDLK_Teaser_Mini_Shape_Tablet.jpg' | asset_url %}
+  {% include 'teaser-category' %}
+
+  {% assign categoryHref = collections['movement'].url %}
+  {% assign headline = 'general.teaser.category.second_headline' | t %}
+  {% assign categoryTitle = 'general.teaser.category.cta' | t %}
+
+  {% assign src = 'WDLK_Teaser_Movement_Mobile.jpg' | asset_url %}
+  {% assign src2 = 'WDLK_Teaser_Movement_Tablet.jpg' | asset_url %}
+  {% include 'teaser-category' %}
+
+  {% assign categoryHref = collections['tanning'].url  %}
+  {% assign headline = 'general.teaser.category.third_headline' | t %}
+  {% assign categoryTitle = 'general.teaser.category.cta' | t %}
+
+  {% assign src = 'WDLK_Teaser_Tanning_Mobile.jpg' | asset_url %}
+  {% assign src2 = 'WDLK_Teaser_Tanning_Tablet.jpg' | asset_url %}
+  {% include 'teaser-category' %}
+</article>
