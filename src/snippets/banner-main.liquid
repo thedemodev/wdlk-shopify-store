@@ -1,17 +1,17 @@
 <article class="Banner Banner--main FadeThrough">
   {% comment %}Main Banner Primary{% endcomment %}
   {% assign mainBannerSmart =
-      'WDLK_Main-Banner_Smartphone_1@1x.jpg' | asset_url %}
+      'green-friday-mobile.jpg' | asset_url %}
   {% assign mainBannerSmart2x =
-      'WDLK_Main-Banner_Smartphone_1_retina.jpg' | asset_url  %}
+      'green-friday-mobile@2x.jpg' | asset_url  %}
   {% assign mainBannerMobile =
-      'WDLK_Main-Banner_Tablet_1@1x.jpg' | asset_url %}
+      'green-friday-tablet.jpg' | asset_url %}
   {% assign mainBannerMobile2x =
-      'WDLK_Main-Banner_Tablet_1_retina.jpg' | asset_url %}
+      'green-friday-tablet@2x.jpg' | asset_url %}
   {% assign mainBanner =
-      'WDLK_Main-Banner_Desktop_1@1x.jpg' | asset_url  %}
+      'green-friday-desktop1.jpg' | asset_url %}
   {% assign mainBanner2x =
-      'WDLK_Main-Banner_Desktop_1_retina.jpg' | asset_url  %}
+      'green-friday-desktop@2x.jpg' | asset_url %}
 
   {% comment %}Main Banner Secondary{% endcomment %}
   {% assign mainBannerSmartSecondary =
@@ -27,7 +27,7 @@
   {% assign mainBannerSecondary2x =
       'WDLK_Main-Banner_Desktop_retina.jpg' | asset_url  %}
 
-  <div class="Banner-content">
+  {% comment %} <div class="Banner-content">
       <svg viewbox="0 0 1400 300">
           <title>{{'home_page.sections.main_headline' | t}}</title>
           <desc>
@@ -55,7 +55,7 @@
       <a class="Btn Btn--inversePlain" href="{{ collections['bikinis'].url}}">
           {{'home_page.sections.main_button_copy' | t}}
       </a>
-  </div>
+  </div> {% endcomment %}
   <picture class="Banner-media FadeThrough-media">
     <source
     media="(max-width: 480px)"
