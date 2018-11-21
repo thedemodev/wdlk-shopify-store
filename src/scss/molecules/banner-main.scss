@@ -33,7 +33,22 @@
     }
 
     .Btn {
-      margin-top: calc(var(--size-XL) * 1px);
+      position: absolute;
+      bottom: 70px;
+      left: 50%;
+      z-index: 1;
+      display: none;
+      // margin: calc(var(--size-XL) * 1px);
+      transform: translatex(-50%);
+      outline-color: $hex-dark-asphalt;
+      color: $hex-dark-asphalt;
+      &:hover {
+        outline-color: $hex-white;
+      }
+
+      @include media(medium) {
+        display: block;
+      }
     }
   }
 }
