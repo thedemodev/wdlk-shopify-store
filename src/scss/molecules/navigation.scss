@@ -71,6 +71,7 @@
 
     @include media (large) {
       display: inline-block;
+      padding: #{$size-M}px #{$size-L}px;
 
       > .Navigation-link {
         @include create-pointer(1.5rem, $navi-bg-color) {
