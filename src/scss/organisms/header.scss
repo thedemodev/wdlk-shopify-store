@@ -29,7 +29,7 @@
     transition: transform .4s ease, opacity .4s ease;
   }
 
-  @include media(medium) {
+  @include media(large) {
     height: $nav-height-medium;
     padding: 0 #{$size-XXL}px;
     margin-bottom: -$nav-height-medium;

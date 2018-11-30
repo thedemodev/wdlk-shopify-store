@@ -8,7 +8,7 @@
   text-align: left;
   cursor: pointer;
 
-  @include media (medium) {
+  @include media (large) {
     display: none;
   }
 

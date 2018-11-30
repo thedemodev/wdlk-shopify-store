@@ -50,14 +50,15 @@
     @include grid-cell(1, 2, $base-spacing, large);
 
     position: relative;
-    padding: {
-        bottom: $base-spacing;
-    }
-    text-align: center;
+    padding-bottom: $base-spacing;
     background-color: $background-color;
+    @include media(medium) {
+      @include grid-cell(1, 2, 25vw, large);
+    }
 
     @include media(large) {
-        background-color: $hex-light-sand;
+      @include grid-cell(1, 2, 6vw, large);
+      background-color: $hex-light-sand;
     }
   }
 
@@ -79,7 +80,6 @@
     &::after {
         content: "";
         position: absolute;
-        right: 0;
         bottom: 0;
         left: 0;
         height: .2rem;

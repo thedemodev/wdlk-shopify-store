@@ -7,21 +7,20 @@
   height: calc(100vh - #{$nav-height});
   font-size: 0;
   line-height: 0;
-  text-align: center;
-  opacity: 0;
   background-color: $navi-mobile-bg-color;
   pointer-events: none;
-  transition: opacity .5s ease;
+  transform: translate3d(-100%, 0, 0);
+  transition: transform 500ms cubic-bezier(1.000, 0.000, 0.000, 1.000);
 
-  @include media (medium) {
+  @include media (large) {
     position: static;
     flex-grow: 2;
     width: auto;
     height: 100%;
-    opacity: 1;
     text-align: center;
     background-color: transparent;
     pointer-events: auto;
+    transform: none;
   }
 
   //-- Mobile Navigation Trigger
@@ -30,11 +29,11 @@
 
     &:checked {
       ~ .Navigation {
-        opacity: 1;
+        transform: translate3d(0, 0, 0);
         pointer-events: auto;
 
         .Navigation-list {
-          transform: none;
+          opacity: 1;
         }
       }
     }
@@ -45,13 +44,15 @@
   &-list {
     height: 100%;
     padding-left: 0;
+    padding-top: #{$size-L}px;
     margin: 0 auto;
     list-style: none;
-    transform: scale(.85);
-    transition: transform .3s ease;
+    opacity: 0;
+    transition: opacity 400ms 300ms  ease-in-out;
 
-    @include media (medium) {
-      transform: none;
+    @include media (large) {
+      padding-top: 0;
+      opacity: 1;
 
       > .Navigation-item  {
         padding: 3.2rem 2rem 2.5rem;
@@ -60,16 +61,15 @@
   }
 
   &-item {
-    padding-bottom: #{$size-M}px;
     display: block;
-    padding: #{$size-M}px;
+    padding: 0 0 #{$size-M}px #{$size-L}px;
 
     &:last-child {
       opacity: 1;
       pointer-events: all;
     }
 
-    @include media (medium) {
+    @include media (large) {
       display: inline-block;
 
       > .Navigation-link {
@@ -138,7 +138,7 @@
       color: $hex-blue-gray-dark;
     }
 
-    @include media (medium) {
+    @include media (large) {
       display: inline-block;
       vertical-align: middle;
       @include copy-text($copy-size-m, currentColor);
