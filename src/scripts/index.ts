@@ -3,7 +3,6 @@ import '../scss/index.scss';
 
 import cookieNotification from './modules/cookie-notification';
 import fadeThrough from './modules/fade-through';
-import instagramFeed from './modules/instagram-feed';
 
 import notification from './modules/notification';
 import numberInput from './modules/number-input';
@@ -21,7 +20,6 @@ const init = (): void => {
   fadeThrough();
   initExpander();
   initSmoothScrolling();
-  instagramFeed();
   numberInput();
   trackingCece();
   fbqTracking();
