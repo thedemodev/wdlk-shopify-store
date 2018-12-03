@@ -57,6 +57,9 @@
     {% include 'cookie-notification' %}
     {% comment %} SVG Icon Container Snippet {% endcomment %}
     {% include 'icon-container' %}
+    {% if template == 'index' %}
+      <script src="{{ 'home.js' | asset_url }}" async></script>
+    {% endif %}
     <script src="{{ 'index.js' | asset_url }}" async></script>
     {% comment %}
         If you store has customer accounts disabled, you can remove the following JS file
