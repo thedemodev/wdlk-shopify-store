@@ -34,3 +34,6 @@ body {
     }
 }
 
+.Copy {
+  @include copy-text($copy-size-s, inherit);
+}

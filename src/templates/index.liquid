@@ -1,29 +1,44 @@
-<section class="Slider js_slider">
-  {% assign topline = 'home_page.sections.main_topline_1' | t %}
-  {% assign headline = 'home_page.sections.main_headline_1' | t %}
-  {% assign caption = 'home_page.sections.main_caption_1' | t %}
-  {% assign link = collections['one-pieces'].url %}
+<section class="Slider">
+  <div class="Slider-track js_slider">
+    {% assign topline = 'home_page.sections.main_topline_1' | t %}
+    {% assign headline = 'home_page.sections.main_headline_1' | t %}
+    {% assign caption = 'home_page.sections.main_caption_1' | t %}
+    {% assign link = collections['one-pieces'].url %}
 
-  {% assign srcSet1 = 'WDLK_Main-Banner_Mobile_1@1x.jpg' | asset_url %}
-  {% assign srcSet1@2x = 'WDLK_Main-Banner_Mobile_1@2x.jpg' | asset_url %}
-  {% assign srcSet2 = 'WDLK_Main-Banner_Tablet_1@1x.jpg' | asset_url %}
-  {% assign srcSet2@2x = 'WDLK_Main-Banner_Tablet_1@2x.jpg' | asset_url %}
-  {% assign srcSet3 = 'WDLK_Main-Banner_Desktop_1@1x.jpg' | asset_url %}
-  {% assign srcSet3@2x = 'WDLK_Main-Banner_Desktop_1@2x.jpg' | asset_url %}
-  {% include 'slider-item'%}
+    {% assign srcSet1 = 'WDLK_Main-Banner_Mobile_1@1x.jpg' | asset_url %}
+    {% assign srcSet1@2x = 'WDLK_Main-Banner_Mobile_1@2x.jpg' | asset_url %}
+    {% assign srcSet2 = 'WDLK_Main-Banner_Tablet_1@1x.jpg' | asset_url %}
+    {% assign srcSet2@2x = 'WDLK_Main-Banner_Tablet_1@2x.jpg' | asset_url %}
+    {% assign srcSet3 = 'WDLK_Main-Banner_Desktop_1@1x.jpg' | asset_url %}
+    {% assign srcSet3@2x = 'WDLK_Main-Banner_Desktop_1@2x.jpg' | asset_url %}
+    {% include 'slider-item'%}
 
-  {% assign topline = 'home_page.sections.main_topline_2' | t %}
-  {% assign headline = 'home_page.sections.main_headline_2' | t %}
-  {% assign caption = 'home_page.sections.main_caption_2' | t %}
-  {% assign link = collections['tops'].url %}
+    {% assign topline = 'home_page.sections.main_topline_2' | t %}
+    {% assign headline = 'home_page.sections.main_headline_2' | t %}
+    {% assign caption = 'home_page.sections.main_caption_2' | t %}
+    {% assign link = collections['tops'].url %}
 
-  {% assign srcSet1 = 'WDLK_Main-Banner_Mobile_2@1x.jpg' | asset_url %}
-  {% assign srcSet1@2x = 'WDLK_Main-Banner_Mobile_2@2x.jpg' | asset_url %}
-  {% assign srcSet2 = 'WDLK_Main-Banner_Tablet_2@1x.jpg' | asset_url %}
-  {% assign srcSet2@2x = 'WDLK_Main-Banner_Tablet_2@2x.jpg' | asset_url %}
-  {% assign srcSet3 = 'WDLK_Main-Banner_Desktop_2@1x.jpg' | asset_url %}
-  {% assign srcSet3@2x = 'WDLK_Main-Banner_Desktop_2@2x.jpg' | asset_url %}
-  {% include 'slider-item'%}
+    {% assign srcSet1 = 'WDLK_Main-Banner_Mobile_2@1x.jpg' | asset_url %}
+    {% assign srcSet1@2x = 'WDLK_Main-Banner_Mobile_2@2x.jpg' | asset_url %}
+    {% assign srcSet2 = 'WDLK_Main-Banner_Tablet_2@1x.jpg' | asset_url %}
+    {% assign srcSet2@2x = 'WDLK_Main-Banner_Tablet_2@2x.jpg' | asset_url %}
+    {% assign srcSet3 = 'WDLK_Main-Banner_Desktop_2@1x.jpg' | asset_url %}
+    {% assign srcSet3@2x = 'WDLK_Main-Banner_Desktop_2@2x.jpg' | asset_url %}
+    {% include 'slider-item'%}
+
+    {% assign topline = 'home_page.sections.main_topline_3' | t %}
+    {% assign headline = 'home_page.sections.main_headline_3' | t %}
+    {% assign caption = 'home_page.sections.main_caption_3' | t %}
+    {% assign link = collections['one-pieces'].url %}
+
+    {% assign srcSet1 = 'WDLK_Main-Banner_Mobile_3@1x.jpg' | asset_url %}
+    {% assign srcSet1@2x = 'WDLK_Main-Banner_Mobile_3@2x.jpg' | asset_url %}
+    {% assign srcSet2 = 'WDLK_Main-Banner_Tablet_3@1x.jpg' | asset_url %}
+    {% assign srcSet2@2x = 'WDLK_Main-Banner_Tablet_3@2x.jpg' | asset_url %}
+    {% assign srcSet3 = 'WDLK_Main-Banner_Desktop_3@1x.jpg' | asset_url %}
+    {% assign srcSet3@2x = 'WDLK_Main-Banner_Desktop_3@2x.jpg' | asset_url %}
+    {% include 'slider-item'%}
+  </div>
 </section>
 {% include 'banner-teaser' %}
 {% include 'banner-teaser-category' %}

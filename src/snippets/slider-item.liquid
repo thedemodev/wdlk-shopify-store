@@ -16,19 +16,19 @@ These are the necessary variables examples to correctly initialize the component
 **Do not forget to wrap all item in a HTMLElememt with the classes**
 `class="Slider js_slider"`
 {% endcomment %}
-<div class="Slider-item">
+<div class="Slider-item js_slider-item">
   <div class="Slider-content">
     <small class="Topline">{{ topline }}</small>
     <h2 class="Headline Headline--1 Headline--bold">{{ headline }}</h2>
-    <b class="Copy">{{ caption }}</b>
+    <b class="Headline Headline--4 Headline--complementary">{{ caption }}</b>
     <a class="Btn Btn--inversePlain" href="{{ link }}">
-      Shop {{ Link }}
+      Shop Now {{ Link }}
       <svg class="Icon Icon--right">
           <use xlink:href="#Arrow_right" />
       </svg>
     </a>
   </div>
-  <picture class="Slider-media">
+  <picture>
     <source srcset="{{ srcSet1 }}, {{ srcSet1@2x }} 2x" media="(max-width: 480px)">
     <source srcset="{{ srcSet2 }}, {{ srcSet2@2x }} 2x" media="(max-width: 768px)">
     <source srcset="{{ srcSet3 }}, {{ srcSet3@2x }} 2x" media="(min-width: 770px)">

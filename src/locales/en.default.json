@@ -262,12 +262,15 @@
   },
   "home_page": {
     "sections": {
-        "main_topline_1": "One Pieces",
+        "main_topline_1": "Bikinis",
         "main_topline_2": "Tops",
-        "main_headline_1": "Highest quality",
+        "main_topline_3": "One Pieces",
+        "main_headline_1": "Swim with us",
         "main_headline_2": "Eco-friendly swimwear",
-        "main_caption_1": "For a long love affair with the Ocean",
+        "main_headline_3": "Highest quality",
+        "main_caption_1": "100% sustainable swimwear",
         "main_caption_2": "Premium italian recycled fabric",
+        "main_caption_3": "For a long love affair with the Ocean",
         "main_button_copy": "Shop now",
         "claim_intro": "Respect to nature",
         "claim_html": "Premium swimwear crafted from ocean recovered fishing nets and other recycled materials",
