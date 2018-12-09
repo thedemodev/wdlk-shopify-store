@@ -1,5 +1,11 @@
 {% comment %}
 These are the necessary variables examples to correctly initialize the component:
+
+1. {% assign topline = 'Topline copy' %}
+2. {% assign headline = 'Headline copy' %}
+3. {% assign caption = 'Caption copy' %}
+4. {% assign link = 'link' %}
+
 5. {% assign srcSet1 = 'WDLK_Main_Banner_Mobile_1@1x.jpg' | asset_url %}
 6. {% assign srcSet1@2x = 'WDLK_Main_Banner_Mobile_1@2x.jpg' | asset_url %}
 7. {% assign srcSet2 = 'WDLK_Main_Banner_Tablet_1@1x.jpg' | asset_url %}
@@ -12,11 +18,20 @@ These are the necessary variables examples to correctly initialize the component
 {% endcomment %}
 <div class="Slider-item">
   <div class="Slider-content">
-    <picture>
+    <small class="Topline">{{ topline }}</small>
+    <h2 class="Headline Headline--1 Headline--bold">{{ headline }}</h2>
+    <b class="Copy">{{ caption }}</b>
+    <a class="Btn Btn--inversePlain" href="{{ link }}">
+      Shop {{ Link }}
+      <svg class="Icon Icon--right">
+          <use xlink:href="#Arrow_right" />
+      </svg>
+    </a>
+  </div>
+  <picture class="Slider-media">
     <source srcset="{{ srcSet1 }}, {{ srcSet1@2x }} 2x" media="(max-width: 480px)">
     <source srcset="{{ srcSet2 }}, {{ srcSet2@2x }} 2x" media="(max-width: 768px)">
     <source srcset="{{ srcSet3 }}, {{ srcSet3@2x }} 2x" media="(min-width: 770px)">
-    <img class="Slider-media" src="{{ srcSet2 }}" alt="Woodlike Ocean Eco Swimwear {{ categoryTitle }} Category">
+    <img class="Slider-media" src="{{ srcSet2 }}" alt="{{ headline }}{{ caption }}">
   </picture>
-  </div>
 </div>

@@ -262,12 +262,13 @@
   },
   "home_page": {
     "sections": {
-        "main_banner_description": "Woodlike Ocean sustainable swimwear.",
-        "main_headline": "Swim with us",
-        "main_headline_svg_1": "Swim",
-        "main_headline_svg_2": "with us",
+        "main_topline_1": "One Pieces",
+        "main_topline_2": "Tops",
+        "main_headline_1": "Highest quality",
+        "main_headline_2": "Eco-friendly swimwear",
+        "main_caption_1": "For a long love affair with the Ocean",
+        "main_caption_2": "Premium italian recycled fabric",
         "main_button_copy": "Shop now",
-        "main_scroll_tip": "Scroll down",
         "claim_intro": "Respect to nature",
         "claim_html": "Premium swimwear crafted from ocean recovered fishing nets and other recycled materials",
         "full_banner_1_headline": "Meticulous handcraft meets environmental protection",
