@@ -15,18 +15,25 @@
 
 .Slider-content {
   position: absolute;
-  right: 0;
-  bottom: #{$size-3XL}px;
-  left: 0;
+  bottom: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: auto;
   padding: 0 #{$size-M}px;
+  transform: translateY(80%);
   font-size: 1.4rem;
 
   @media(min-width: 768px) {
-    bottom: 50%;
-    transform: translateY(50%);
+    left: 50%;
+    width: max-content;
+    transform: translate(-50%, 80%);
     font-size: 1.6rem;
   }
+}
+
+.Slider-item:nth-of-type(2) .Slider-content{
+  align-items: flex-start;
 }
 
 .Slider-item {

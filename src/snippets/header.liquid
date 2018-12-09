@@ -1,4 +1,4 @@
-<header class="Header {% if notificationIsActive == blank %}is-sticky {% endif %}js_sticky-nav" role="banner">
+<header class="Header {% if notificationIsActive == blank %}is-sticky {% endif %} {% if template != 'index' %}js_sticky-nav{% endif %} {% if template == 'index' %}is-undocked{% endif %}" role="banner">
     <input type="checkbox" class="Navigation-state" id="navi-mobile">
     <Label class="BurgerBtn" for="navi-mobile">
         <span class="BurgerBtn-line"></span>

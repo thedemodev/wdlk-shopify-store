@@ -18,8 +18,8 @@ These are the necessary variables examples to correctly initialize the component
 {% endcomment %}
 <div class="Slider-item js_slider-item">
   <div class="Slider-content">
-    <small class="Topline">{{ topline }}</small>
-    <h2 class="Headline Headline--1 Headline--bold">{{ headline }}</h2>
+    {% if topline %}<small class="Topline">{{ topline }}</small>{% endif %}
+    <h2 class="Headline--extended">{{ headline }}</h2>
     <b class="Headline Headline--4 Headline--complementary">{{ caption }}</b>
     <a class="Btn Btn--inversePlain" href="{{ link }}">
       Shop Now {{ Link }}

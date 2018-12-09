@@ -1,28 +1,17 @@
 .Headline--extended {
-  --headline-size: 13;
+  --headline-size: 3.3;
 
-  dominant-baseline: hanging;
-  text-anchor: middle;
+  margin: 0;
   font-family: "museo300";
   font-size: calc(var(--headline-size) * 1rem);
-  pointer-events: none;
-  transform: translate3d(-30%, calc(50% + 4rem), 0);
-  transition: opacity .3s ease-out;
+  letter-spacing: 3px;
+  text-transform: uppercase;
 
-  @include media(medium) {
-    --headline-size: 8;
-    transform: translate3d(0, calc(50% - 6rem), 0);
+  @media(min-width: 768px) {
+    --headline-size: 5.3;
   }
-}
 
-.Gradient {
-  &-stop {
-    &:nth-child(1) {
-      stop-color: var(--hsla-yellow);
-    }
-
-    &:nth-child(2) {
-      stop-color: var(--hsla-coral8);
-    }
+  @include media(large) {
+    --headline-size: 7;
   }
 }
