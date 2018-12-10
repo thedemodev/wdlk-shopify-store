@@ -10,7 +10,12 @@
 .Slider-track {
   display: flex;
   flex-direction: row;
-  width: calc((var(--slider-slides) + 1) * 100vw);
+  width: calc(var(--slider-slides) * 100vw);
+  transform: translate3d(calc(var(--moveX, 0) * 1px), 0, 0);
+  transition: var(--transition, none);
+  // transition-property: var(--transition-prop);
+  // transition-duration: 500ms;
+  // transition-timing-function: linear;
 }
 
 .Slider-content {
@@ -19,6 +24,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
+  width: 100%;
   margin: auto;
   padding: 0 #{$size-M}px;
   transform: translateY(80%);
