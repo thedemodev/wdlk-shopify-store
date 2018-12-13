@@ -1,4 +1,4 @@
-interface SliderConfig {
+export interface SliderConfig {
   index: number;
   startX: number;
   startMoveX: number;

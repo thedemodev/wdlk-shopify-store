@@ -65,6 +65,7 @@
     "happypack": "^5.0.0-beta.4",
     "husky": "^0.14.3",
     "jest": "^22.4.4",
+    "jest-dom": "^3.0.0",
     "jest-localstorage-mock": "^2.2.0",
     "mini-css-extract-plugin": "^0.4.3",
     "node-sass": "4.9.3",
