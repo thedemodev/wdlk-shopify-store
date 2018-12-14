@@ -4,6 +4,7 @@ export interface SliderConfig {
   startMoveX: number;
   moveX: number;
 }
+
 interface HandleSliderProps {
   element: Element;
   elementWidth: number;
@@ -19,8 +20,10 @@ interface SliderInitProps {
   onMove(onMoveInit: HandleSliderProps): (e: TouchEvent) => SliderConfig;
   onEnd(onEndInit: HandleSliderProps): (e: TouchEvent) => SliderConfig;
 }
+
 export const getElWidth = (el: Element): number =>
   el.getBoundingClientRect().width;
+
 export const Config = {
   sliderInit: {
     index: 0,
@@ -73,8 +76,10 @@ export const handleEnd = ({
   if (!elementWidth || !itemLength || !slider || !element) {
     return;
   }
+
   const slideWidth = elementWidth / itemLength;
   const absMove = Math.abs(slider.index * slideWidth - slider.moveX);
+
   if (absMove > slideWidth / 3) {
     if (
       slider.moveX > slider.index * slideWidth &&
@@ -85,6 +90,7 @@ export const handleEnd = ({
       slider.index--;
     }
   }
+
   (element as HTMLElement).style.setProperty(
     '--transition',
     'transform 300ms ease-out'
@@ -104,6 +110,7 @@ export const init = (sliderInit: SliderInitProps): void => {
     slide.addEventListener('touchstart', onStart(initConfig), {
       passive: true
     });
+
     slide.addEventListener(
       'touchmove',
       onMove({
@@ -114,6 +121,7 @@ export const init = (sliderInit: SliderInitProps): void => {
       }),
       { passive: true }
     );
+
     slide.addEventListener(
       'touchend',
       onEnd({

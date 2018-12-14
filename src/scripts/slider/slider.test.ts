@@ -12,6 +12,7 @@ function generateMockHTML(): {
     </div>
   </section>
 `;
+
   return {
     track: document.querySelector('.js_slider'),
     slides: [...document.querySelectorAll('.js_slider-item')]
@@ -36,15 +37,16 @@ test('execute handleStart for the first time and return new config', () => {
     startX: 0,
     startMoveX: 0
   };
+
   const mockTouch = {
     clientX: 100
   };
+
   // tslint:disable-next-line:no-object-literal-type-assertion
   const mockEvent = ({
     touches: [mockTouch]
   } as unknown) as TouchEvent;
 
-  // tslint:disable-next-line:no-empty
   expect(Slider.handleStart(mockSliderConfig)(mockEvent)).toEqual({
     index: 0,
     moveX: 0,
@@ -66,14 +68,16 @@ test('execute handleMove and return adjusted slider config', () => {
       startMoveX: 300
     }
   };
+
   const mockTouch = {
     clientX: 300
   };
+
   // tslint:disable-next-line:no-object-literal-type-assertion
   const mockEvent = ({
     touches: [mockTouch]
   } as unknown) as TouchEvent;
-  // tslint:disable-next-line:no-empty
+
   expect(Slider.handleMove(handleMoveInit)(mockEvent)).toEqual({
     index: 2,
     moveX: 1736,
@@ -95,14 +99,16 @@ test('execute handleEnd and return adjusted slider config', () => {
       startMoveX: 300
     }
   };
+
   const mockTouch = {
     clientX: 500
   };
+
   // tslint:disable-next-line:no-object-literal-type-assertion
   const mockEvent = ({
     touches: [mockTouch]
   } as unknown) as TouchEvent;
-  // tslint:disable-next-line:no-empty
+
   expect(Slider.handleEnd(handleMoveInit)(mockEvent)).toEqual({
     index: 1,
     moveX: 300,
