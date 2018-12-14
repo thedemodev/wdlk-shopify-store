@@ -3,19 +3,23 @@ import * as Slider from './slider';
 function generateMockHTML(): {
   track: Element;
   slides: Element[];
+  buttons: Element[];
 } {
   document.body.innerHTML = `
   <section class="Slider">
+    <button class="Slider-btn js_slider-btn"></button>
     <div class="Slider-track js_slider">
       <div class="Slider-item js_slider-item"></div>
       <div class="Slider-item js_slider-item"></div>
     </div>
+    <button class="Slider-btn js_slider-btn"></button>
   </section>
 `;
 
   return {
     track: document.querySelector('.js_slider'),
-    slides: [...document.querySelectorAll('.js_slider-item')]
+    slides: [...document.querySelectorAll('.js_slider-item')],
+    buttons: [...document.querySelectorAll('.js_slider-btn')]
   };
 }
 
@@ -31,7 +35,7 @@ test('create slider configuration object', () => {
 });
 
 test('execute handleStart for the first time and return new config', () => {
-  const mockSliderConfig = {
+  const handleMoveStartConfig: Slider.SliderConfig = {
     index: 0,
     moveX: 0,
     startX: 0,
@@ -47,7 +51,7 @@ test('execute handleStart for the first time and return new config', () => {
     touches: [mockTouch]
   } as unknown) as TouchEvent;
 
-  expect(Slider.handleStart(mockSliderConfig)(mockEvent)).toEqual({
+  expect(Slider.handleStart(handleMoveStartConfig)(mockEvent)).toEqual({
     index: 0,
     moveX: 0,
     startX: 100,
@@ -57,7 +61,7 @@ test('execute handleStart for the first time and return new config', () => {
 
 test('execute handleMove and return adjusted slider config', () => {
   const sliderMock = generateMockHTML();
-  const handleMoveInit = {
+  const handleMoveInit: Slider.HandleTouchProps = {
     element: sliderMock.track,
     elementWidth: 2304,
     itemLength: 3,
@@ -88,7 +92,7 @@ test('execute handleMove and return adjusted slider config', () => {
 
 test('execute handleEnd and return adjusted slider config', () => {
   const sliderMock = generateMockHTML();
-  const handleMoveInit = {
+  const handleMoveEndInit: Slider.HandleTouchProps = {
     element: sliderMock.track,
     elementWidth: 2304,
     itemLength: 3,
@@ -109,7 +113,7 @@ test('execute handleEnd and return adjusted slider config', () => {
     touches: [mockTouch]
   } as unknown) as TouchEvent;
 
-  expect(Slider.handleEnd(handleMoveInit)(mockEvent)).toEqual({
+  expect(Slider.handleEnd(handleMoveEndInit)(mockEvent)).toEqual({
     index: 1,
     moveX: 300,
     startX: 500,

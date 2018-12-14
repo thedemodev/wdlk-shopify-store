@@ -5,20 +5,26 @@ export interface SliderConfig {
   moveX: number;
 }
 
-interface HandleSliderProps {
+export interface HandleTouchProps {
   element: Element;
   elementWidth: number;
   itemLength: number;
   slider: SliderConfig;
 }
 
-interface SliderInitProps {
+export interface HandleMouseProps {
+  element: Element;
+  buttons: Element[];
+  slider: SliderConfig;
+}
+
+export interface SliderInitProps {
   slider: Element;
   slides: Element[];
   initConfig: SliderConfig;
   onStart(slider: SliderConfig): (e: TouchEvent) => SliderConfig;
-  onMove(onMoveInit: HandleSliderProps): (e: TouchEvent) => SliderConfig;
-  onEnd(onEndInit: HandleSliderProps): (e: TouchEvent) => SliderConfig;
+  onMove(onMoveInit: HandleTouchProps): (e: TouchEvent) => SliderConfig;
+  onEnd(onEndInit: HandleTouchProps): (e: TouchEvent) => SliderConfig;
 }
 
 export const getElWidth = (el: Element): number =>
@@ -50,7 +56,7 @@ export const handleMove = ({
   elementWidth,
   itemLength,
   slider
-}: HandleSliderProps) => (e: TouchEvent): SliderConfig => {
+}: HandleTouchProps) => (e: TouchEvent): SliderConfig => {
   if (!elementWidth || !itemLength || !slider || !element) {
     return;
   }
@@ -72,7 +78,7 @@ export const handleEnd = ({
   elementWidth,
   itemLength,
   slider
-}: HandleSliderProps) => (e: TouchEvent) => {
+}: HandleTouchProps) => (e: TouchEvent) => {
   if (!elementWidth || !itemLength || !slider || !element) {
     return;
   }
