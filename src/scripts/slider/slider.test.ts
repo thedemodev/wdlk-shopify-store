@@ -120,3 +120,18 @@ test('execute handleEnd and return adjusted slider config', () => {
     startMoveX: 300
   });
 });
+
+test('execute handleNext and return the slider config', () => {
+  const sliderMock = generateMockHTML();
+  const handleNextClickInit: Slider.HandleMouseProps = {
+    element: sliderMock.track,
+    buttons: sliderMock.buttons,
+    slider: {
+      index: 2,
+      moveX: 300,
+      startX: 500,
+      startMoveX: 300
+    }
+  };
+  console.log(sliderMock.buttons);
+});
