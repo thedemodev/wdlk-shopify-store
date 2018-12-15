@@ -42,6 +42,8 @@ export const Config = {
   }
 };
 
+console.log('its working');
+
 export const handleStart = (slider: SliderConfig) => (
   e: TouchEvent
 ): SliderConfig => {
