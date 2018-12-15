@@ -1,4 +1,5 @@
 import * as Slider from './slider';
+import * as Types from '../types';
 
 function generateMockHTML(): {
   track: Element;
@@ -35,7 +36,7 @@ test('create slider configuration object', () => {
 });
 
 test('execute handleStart for the first time and return new config', () => {
-  const handleMoveStartConfig: Slider.SliderConfig = {
+  const handleMoveStartConfig: Types.SliderConfig = {
     index: 0,
     moveX: 0,
     startX: 0,
@@ -61,7 +62,7 @@ test('execute handleStart for the first time and return new config', () => {
 
 test('execute handleMove and return adjusted slider config', () => {
   const sliderMock = generateMockHTML();
-  const handleMoveInit: Slider.HandleTouchProps = {
+  const handleMoveInit: Types.HandleTouchProps = {
     element: sliderMock.track,
     elementWidth: 2304,
     itemLength: 3,
@@ -92,7 +93,7 @@ test('execute handleMove and return adjusted slider config', () => {
 
 test('execute handleEnd and return adjusted slider config', () => {
   const sliderMock = generateMockHTML();
-  const handleMoveEndInit: Slider.HandleTouchProps = {
+  const handleMoveEndInit: Types.HandleTouchProps = {
     element: sliderMock.track,
     elementWidth: 2304,
     itemLength: 3,
@@ -123,15 +124,46 @@ test('execute handleEnd and return adjusted slider config', () => {
 
 test('execute handleNext and return the slider config', () => {
   const sliderMock = generateMockHTML();
-  const handleNextClickInit: Slider.HandleMouseProps = {
+  const handleNextClickInit: Types.HandleMouseProps = {
     element: sliderMock.track,
-    buttons: sliderMock.buttons,
+    elementWidth: 3840,
+    itemLength: 5,
     slider: {
-      index: 2,
-      moveX: 300,
-      startX: 500,
-      startMoveX: 300
+      index: 1,
+      moveX: 768,
+      startX: 0,
+      startMoveX: 0
     }
   };
-  console.log(sliderMock.buttons);
+  // tslint:disable-next-line:no-object-literal-type-assertion
+  const mockClickEv = ({} as unknown) as MouseEvent;
+  expect(Slider.handleNext(handleNextClickInit)(mockClickEv)).toEqual({
+    index: 2,
+    moveX: 1536,
+    startX: 0,
+    startMoveX: 0
+  });
+});
+
+test('execute handlePrev and return the slider config', () => {
+  const sliderMock = generateMockHTML();
+  const handlePrevClickInit: Types.HandleMouseProps = {
+    element: sliderMock.track,
+    elementWidth: 3840,
+    itemLength: 5,
+    slider: {
+      index: 3,
+      moveX: 2304,
+      startX: 0,
+      startMoveX: 0
+    }
+  };
+  // tslint:disable-next-line:no-object-literal-type-assertion
+  const mockClickEv = ({} as unknown) as MouseEvent;
+  expect(Slider.handlePrev(handlePrevClickInit)(mockClickEv)).toEqual({
+    index: 2,
+    moveX: 1536,
+    startX: 0,
+    startMoveX: 0
+  });
 });
