@@ -72,7 +72,9 @@
   max-width: 500px;
   z-index: 2;
   display: none;
+  padding: 0;
   border: none;
+  outline: none;
   pointer-events: none;
   background-color: transparent;
   @include media(large) {
@@ -92,6 +94,8 @@
 
 .Slider-pointer {
   position: absolute;
+  top: 0;
+  left: 0;
   display: none;
   flex-direction: row;
   justify-content: center;
@@ -100,11 +104,19 @@
   width: calc(var(--size-3XL) * 1px);
   height: calc(var(--size-3XL) * 1px);
   border-radius: 50%;
+  overflow: hidden;
   color: $hex-white-smoke;
-  opacity: 1;
   background-color: #ce6152;
-  transform: scale(.4) translate3d(0, 0, 0);
+
   @include media(large) {
     display: inline-flex;
+    opacity: var(--active, 0);
+    transform: scale(var(--active, .2))
+    translate3d(
+      calc(var(--x, 0) * 1px),
+      calc(var(--y, 0) * 1px),
+      0
+    );
+    transition: opacity 400ms ease-in-out, transform 100ms linear;
   }
 }

@@ -1,7 +1,5 @@
 import * as Types from '../types';
-
-export const getElWidth = (el: Element): number =>
-  el.getBoundingClientRect().width;
+import * as Utils from '../utils';
 
 export const Config = {
   sliderInit: {
@@ -129,12 +127,52 @@ export const handlePrev = ({
   return slider;
 };
 
-export const init = (sliderInit: Types.SliderInitProps): void => {
+export const handleMouseMove = (init: Types.HandleMouseMoveProps) => (
+  e: MouseEvent
+): void => {
+  const { isNext, sliderEl, slideWidth } = init;
+  const { currentTarget, clientX, clientY } = e;
+  const btnElWidth = Utils.getElWidth(currentTarget as HTMLElement);
+  const btnElHeight = Utils.getElHeight(sliderEl);
+
+  const normalizedX = isNext
+    ? Utils.normalize(clientX, slideWidth - btnElWidth, slideWidth)
+    : Utils.normalize(clientX, 0, btnElWidth);
+
+  const normalizedY = Utils.normalize(
+    clientY - Utils.getElTopPosition(sliderEl),
+    0,
+    btnElHeight
+  );
+  const x = normalizedX * btnElWidth;
+  const y = normalizedY * btnElHeight;
+
+  (currentTarget as HTMLElement).parentElement.style.setProperty(
+    '--x',
+    `${Utils.lerp(3e-2, x, normalizedX)}`
+  );
+  (currentTarget as HTMLElement).parentElement.style.setProperty(
+    '--y',
+    `${Utils.lerp(2e-2, y, normalizedY)}`
+  );
+  (currentTarget as HTMLElement).style.setProperty('--active', '1');
+  window.requestAnimationFrame(() => handleMouseMove(init));
+};
+
+export const handleMouseLeave = (e: MouseEvent): void => {
+  const { currentTarget } = e;
+  const el = currentTarget as HTMLElement;
+  el.parentElement.style.setProperty('--x', '0');
+  el.parentElement.style.setProperty('--y', '0');
+  el.style.setProperty('--active', '0');
+};
+
+export const initTouch = (sliderInit: Types.SliderInitProps): void => {
   const { slider, slides, initConfig, onStart, onMove, onEnd } = sliderInit;
   if (!slider) {
     return;
   }
-  const sliderWidth = getElWidth(slider);
+  const sliderWidth = Utils.getElWidth(slider);
 
   if (Array.isArray(slides) && slides.length > 1) {
     slides.forEach((slide: HTMLElement) => {
@@ -167,36 +205,63 @@ export const init = (sliderInit: Types.SliderInitProps): void => {
   }
 };
 
-export const initDesktop = (sliderInit: Types.SliderDesktopInit): void => {
-  const { slider, slides, buttons, initConfig, onNext, onPrev } = sliderInit;
-  if (!slider) {
+export const initDesktop = (init: Types.SliderDesktopInit): void => {
+  if (!init.slider) {
     return;
   }
-  const sliderWidth = getElWidth(slider);
-  if (Array.isArray(buttons) && buttons.length > 1) {
-    buttons.forEach((btn: HTMLElement, i: number): void => {
+  const sliderWidth = Utils.getElWidth(init.slider);
+  const slideWidth = sliderWidth / init.slides.length;
+  if (Array.isArray(init.buttons) && init.buttons.length > 1) {
+    init.buttons.forEach((btn: HTMLElement, i: number): void => {
+      btn.addEventListener(
+        'mouseenter',
+        init.onMouseMove({
+          isNext: i === 0 ? false : true,
+          sliderEl: init.slider,
+          slideWidth
+        })
+      );
+      btn.addEventListener(
+        'mousemove',
+        init.onMouseMove({
+          isNext: i === 0 ? false : true,
+          sliderEl: init.slider,
+          slideWidth
+        }),
+        {
+          passive: true
+        }
+      );
+      btn.addEventListener('mouseleave', init.onMouseLeave);
       if (i === 0) {
         btn.addEventListener(
           'click',
-          onPrev({
-            element: slider,
+          init.onPrev({
+            element: init.slider,
             elementWidth: sliderWidth,
-            itemLength: slides.length,
-            slider: initConfig
+            itemLength: init.slides.length,
+            slider: init.initConfig
           })
         );
       }
       if (i === 1) {
         btn.addEventListener(
           'click',
-          onNext({
-            element: slider,
+          init.onNext({
+            element: init.slider,
             elementWidth: sliderWidth,
-            itemLength: slides.length,
-            slider: initConfig
+            itemLength: init.slides.length,
+            slider: init.initConfig
           })
         );
       }
+      window.requestAnimationFrame(() =>
+        init.onMouseMove({
+          isNext: i === 0 ? false : true,
+          sliderEl: init.slider,
+          slideWidth
+        })
+      );
     });
   }
 };

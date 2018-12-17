@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src",
     "allowSyntheticDefaultImports": true,
     "declaration": false,
     "lib": [
@@ -10,6 +11,7 @@
     "mapRoot": "./dist/assets",
     "noImplicitAny": true,
     "sourceMap": true,
+    "moduleResolution": "node",
     "target": "es6",
   },
   "include":  [

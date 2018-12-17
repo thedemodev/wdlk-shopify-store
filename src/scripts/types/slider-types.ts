@@ -19,6 +19,12 @@ export interface HandleMouseProps {
   slider: SliderConfig;
 }
 
+export interface HandleMouseMoveProps {
+  isNext: boolean;
+  sliderEl: Element;
+  slideWidth: number;
+}
+
 export interface SliderInitProps {
   slider: Element;
   slides: Element[];
@@ -35,4 +41,6 @@ export interface SliderDesktopInit {
   initConfig: SliderConfig;
   onPrev(slider: HandleMouseProps): (e: MouseEvent) => SliderConfig;
   onNext(slider: HandleMouseProps): (e: MouseEvent) => SliderConfig;
+  onMouseMove(init: HandleMouseMoveProps): (e: MouseEvent) => void;
+  onMouseLeave(e: MouseEvent): void;
 }
