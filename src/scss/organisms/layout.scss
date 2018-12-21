@@ -1,11 +1,18 @@
 .Layout {
-  &-container {
-    position: relative;
-    z-index: 1;
-    background-color: $background-color ;
-  }
-
   @include media(medium) {
     margin-bottom: 603px;
   }
+}
+
+.Layout--main {
+  padding-top: $nav-height;
+  @include media(medium) {
+    padding-top: $nav-height-medium;
+  }
+}
+
+.Layout-container {
+  position: relative;
+  z-index: 1;
+  background-color: $background-color;
 }

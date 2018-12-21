@@ -12,6 +12,7 @@ HappyPack.SERIALIZABLE_OPTIONS = HappyPack.SERIALIZABLE_OPTIONS.concat(['postcss
 module.exports = {
   entry: {
     index: './src/scripts/index',
+    home: './src/scripts/home/index',
     tracking: './src/scripts/tracking/tracking'
   },
   output: {
