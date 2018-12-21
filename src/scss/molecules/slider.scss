@@ -1,6 +1,4 @@
 .Slider {
-  --slider-slides: 3;
-
   position: relative;
   width: 100vw;
   overflow: hidden;
@@ -11,7 +9,7 @@
 .Slider-track {
   display: flex;
   flex-direction: row;
-  width: calc(var(--slider-slides) * 100vw);
+  width: calc(var(--items, 5) * 100vw);
   transform: translate3d(calc(var(--moveX, 0) * 1px), 0, 0);
   transition: var(--transition, none);
 }
@@ -37,7 +35,7 @@
   }
 }
 
-.Slider-item:nth-of-type(2) .Slider-content{
+.Slider-item:nth-of-type(3) .Slider-content{
   align-items: flex-start;
 }
 

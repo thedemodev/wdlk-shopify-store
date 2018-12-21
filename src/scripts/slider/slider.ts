@@ -3,7 +3,7 @@ import * as Utils from '../utils';
 
 export const Config = {
   sliderInit: {
-    index: 0,
+    index: 1,
     moveX: 0,
     startX: 0,
     startMoveX: 0
@@ -20,6 +20,47 @@ export const handleStart = (slider: Types.SliderConfig) => (
     slider.startX = touch.clientX;
     return slider;
   }
+};
+
+const handleInfinite = ({
+  element,
+  elementWidth,
+  itemLength,
+  slider
+}: Types.HandleInfiniteProps) => {
+  if (!elementWidth || !itemLength || !slider) {
+    return;
+  }
+  const slideWidth = elementWidth / itemLength;
+
+  return {
+    prev(): Types.SliderConfig {
+      window.setTimeout(() => {
+        (element as HTMLElement).style.setProperty('--transition', 'none');
+        slider.index = itemLength - 2;
+        slider.moveX = slideWidth * slider.index;
+        (element as HTMLElement).style.setProperty(
+          '--moveX',
+          `${-slider.moveX}`
+        );
+        return slider;
+      }, 500);
+      return slider;
+    },
+    next(): Types.SliderConfig {
+      window.setTimeout(() => {
+        (element as HTMLElement).style.setProperty('--transition', 'none');
+        slider.index = 1;
+        slider.moveX = slideWidth * slider.index;
+        (element as HTMLElement).style.setProperty(
+          '--moveX',
+          `${-slider.moveX}`
+        );
+        return slider;
+      }, 500);
+      return slider;
+    }
+  };
 };
 
 export const handleMove = ({
@@ -56,6 +97,12 @@ export const handleEnd = ({
 
   const slideWidth = elementWidth / itemLength;
   const absMove = Math.abs(slider.index * slideWidth - slider.moveX);
+  const inifinite = handleInfinite({
+    element,
+    elementWidth,
+    itemLength,
+    slider
+  });
 
   if (absMove > slideWidth / 3) {
     if (
@@ -76,6 +123,12 @@ export const handleEnd = ({
     '--moveX',
     `${-slider.index * slideWidth}`
   );
+  if (slider.moveX === 0) {
+    inifinite.prev();
+  }
+  if (slider.moveX >= elementWidth - slideWidth) {
+    inifinite.next();
+  }
   return slider;
 };
 
@@ -100,6 +153,15 @@ export const handleNext = ({
     '--transition',
     'transform 300ms ease-out'
   );
+  if (slider.moveX >= elementWidth - slideWidth) {
+    const inifinite = handleInfinite({
+      element,
+      elementWidth,
+      itemLength,
+      slider
+    });
+    inifinite.next();
+  }
   return slider;
 };
 
@@ -124,6 +186,15 @@ export const handlePrev = ({
     '--transition',
     'transform 300ms ease-out'
   );
+  if (slider.moveX === 0) {
+    const inifinite = handleInfinite({
+      element,
+      elementWidth,
+      itemLength,
+      slider
+    });
+    inifinite.prev();
+  }
   return slider;
 };
 
@@ -133,7 +204,7 @@ export const handleMouseMove = (init: Types.HandleMouseMoveProps) => (
   const { isNext, sliderEl, slideWidth } = init;
   const { currentTarget, clientX, clientY } = e;
   const btnElWidth = Utils.getElWidth(currentTarget as HTMLElement);
-  const btnElHeight = Utils.getElHeight(sliderEl);
+  const btnElHeight = Utils.getElHeight(currentTarget as HTMLElement);
 
   const normalizedX = isNext
     ? Utils.normalize(clientX, slideWidth - btnElWidth, slideWidth)
@@ -165,103 +236,4 @@ export const handleMouseLeave = (e: MouseEvent): void => {
   el.parentElement.style.setProperty('--x', '0');
   el.parentElement.style.setProperty('--y', '0');
   el.style.setProperty('--active', '0');
-};
-
-export const initTouch = (sliderInit: Types.SliderInitProps): void => {
-  const { slider, slides, initConfig, onStart, onMove, onEnd } = sliderInit;
-  if (!slider) {
-    return;
-  }
-  const sliderWidth = Utils.getElWidth(slider);
-
-  if (Array.isArray(slides) && slides.length > 1) {
-    slides.forEach((slide: HTMLElement) => {
-      slide.addEventListener('touchstart', onStart(initConfig), {
-        passive: true
-      });
-
-      slide.addEventListener(
-        'touchmove',
-        onMove({
-          element: slider,
-          elementWidth: sliderWidth,
-          itemLength: slides.length,
-          slider: initConfig
-        }),
-        { passive: true }
-      );
-
-      slide.addEventListener(
-        'touchend',
-        onEnd({
-          element: slider,
-          elementWidth: sliderWidth,
-          itemLength: slides.length,
-          slider: initConfig
-        }),
-        { passive: true }
-      );
-    });
-  }
-};
-
-export const initDesktop = (init: Types.SliderDesktopInit): void => {
-  if (!init.slider) {
-    return;
-  }
-  const sliderWidth = Utils.getElWidth(init.slider);
-  const slideWidth = sliderWidth / init.slides.length;
-  if (Array.isArray(init.buttons) && init.buttons.length > 1) {
-    init.buttons.forEach((btn: HTMLElement, i: number): void => {
-      btn.addEventListener(
-        'mouseenter',
-        init.onMouseMove({
-          isNext: i === 0 ? false : true,
-          sliderEl: init.slider,
-          slideWidth
-        })
-      );
-      btn.addEventListener(
-        'mousemove',
-        init.onMouseMove({
-          isNext: i === 0 ? false : true,
-          sliderEl: init.slider,
-          slideWidth
-        }),
-        {
-          passive: true
-        }
-      );
-      btn.addEventListener('mouseleave', init.onMouseLeave);
-      if (i === 0) {
-        btn.addEventListener(
-          'click',
-          init.onPrev({
-            element: init.slider,
-            elementWidth: sliderWidth,
-            itemLength: init.slides.length,
-            slider: init.initConfig
-          })
-        );
-      }
-      if (i === 1) {
-        btn.addEventListener(
-          'click',
-          init.onNext({
-            element: init.slider,
-            elementWidth: sliderWidth,
-            itemLength: init.slides.length,
-            slider: init.initConfig
-          })
-        );
-      }
-      window.requestAnimationFrame(() =>
-        init.onMouseMove({
-          isNext: i === 0 ? false : true,
-          sliderEl: init.slider,
-          slideWidth
-        })
-      );
-    });
-  }
 };

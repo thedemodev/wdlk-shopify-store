@@ -25,6 +25,20 @@ export interface HandleMouseMoveProps {
   slideWidth: number;
 }
 
+export interface HandleInfiniteProps {
+  element: Element;
+  elementWidth: number;
+  itemLength: number;
+  slider: SliderConfig;
+}
+
+export interface SliderInit {
+  slider: Element;
+  slides: Element[];
+  controls: Element[];
+  initConfig: SliderConfig;
+}
+
 export interface SliderInitProps {
   slider: Element;
   slides: Element[];
@@ -37,7 +51,7 @@ export interface SliderInitProps {
 export interface SliderDesktopInit {
   slider: Element;
   slides: Element[];
-  buttons: Element[];
+  controls: Element[];
   initConfig: SliderConfig;
   onPrev(slider: HandleMouseProps): (e: MouseEvent) => SliderConfig;
   onNext(slider: HandleMouseProps): (e: MouseEvent) => SliderConfig;

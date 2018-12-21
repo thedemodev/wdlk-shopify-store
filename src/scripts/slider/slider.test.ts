@@ -1,5 +1,6 @@
 import * as Slider from './slider';
 import * as Types from '../types';
+import { cloneFirstLast } from './utils';
 
 function generateMockHTML(): {
   track: Element;
@@ -10,6 +11,8 @@ function generateMockHTML(): {
   <section class="Slider">
     <button class="Slider-btn js_slider-btn"></button>
     <div class="Slider-track js_slider">
+      <div class="Slider-item js_slider-item"></div>
+      <div class="Slider-item js_slider-item"></div>
       <div class="Slider-item js_slider-item"></div>
       <div class="Slider-item js_slider-item"></div>
     </div>
@@ -27,7 +30,7 @@ function generateMockHTML(): {
 test('create slider configuration object', () => {
   expect(Slider.Config.create()).toEqual(
     expect.objectContaining({
-      index: 0,
+      index: 1,
       moveX: 0,
       startX: 0,
       startMoveX: 0
@@ -166,4 +169,11 @@ test('execute handlePrev and return the slider config', () => {
     startX: 0,
     startMoveX: 0
   });
+});
+
+test('Reduce an Element array to the first and last elements', () => {
+  const sliderMock = generateMockHTML();
+  // expect(cloneFirstLast(sliderMock.slides)).toContain(sliderMock.slides[0]);
+  // expect(cloneFirstLast(sliderMock.slides)).toContain(sliderMock.slides[3]);
+  expect(cloneFirstLast(sliderMock.slides)).toHaveLength(2);
 });
