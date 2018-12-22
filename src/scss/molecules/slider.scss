@@ -46,6 +46,11 @@
 
 .Slider-media {
   width: 100%;
+  height: calc(100vh - #{$nav-height});
+  object-fit: cover;
+  @include media(large) {
+    height: calc(100vh - #{$nav-height-medium});
+  }
 }
 
 .Slider .Headline {
