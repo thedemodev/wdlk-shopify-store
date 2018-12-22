@@ -7,30 +7,42 @@ import {
   handleNext,
   handlePrev,
   handleMouseMove,
-  handleMouseLeave
+  handleMouseLeave,
+  jumpToSlide
 } from './slider';
 import { cloneFirstLast, sanatizedNodes } from './utils';
 
-export const initTouch = (sliderInit: Types.SliderInitProps): void => {
-  const { slider, slides, initConfig, onStart, onMove, onEnd } = sliderInit;
-  if (!slider) {
+export const initTouch = ({
+  trackEl,
+  dots,
+  slides,
+  slider,
+  duration,
+  onStart,
+  onMove,
+  onEnd
+}: Types.TouchInit): void => {
+  if (!trackEl) {
     return;
   }
-  const sliderWidth = Utils.getElWidth(slider);
+  const trackWidth = Utils.getElWidth(trackEl);
 
   if (Array.isArray(slides) && slides.length > 1) {
-    slides.forEach((slide: HTMLElement) => {
-      slide.addEventListener('touchstart', onStart(initConfig), {
+    slides.forEach((slide: HTMLElement, i: number) => {
+      slide.addEventListener('touchstart', onStart(slider), {
         passive: true
       });
 
       slide.addEventListener(
         'touchmove',
         onMove({
-          element: slider,
-          elementWidth: sliderWidth,
-          itemLength: slides.length,
-          slider: initConfig
+          trackEl,
+          dots,
+          trackWidth,
+          slider,
+          duration,
+          dotIndex: slider.index,
+          itemLength: slides.length
         }),
         { passive: true }
       );
@@ -38,10 +50,13 @@ export const initTouch = (sliderInit: Types.SliderInitProps): void => {
       slide.addEventListener(
         'touchend',
         onEnd({
-          element: slider,
-          elementWidth: sliderWidth,
-          itemLength: slides.length,
-          slider: initConfig
+          trackEl,
+          dots,
+          trackWidth,
+          slider,
+          duration,
+          dotIndex: slider.index,
+          itemLength: slides.length
         }),
         { passive: true }
       );
@@ -49,106 +64,149 @@ export const initTouch = (sliderInit: Types.SliderInitProps): void => {
   }
 };
 
-export const initDesktop = (sliderInit: Types.SliderDesktopInit): void => {
-  if (!sliderInit.slider) {
+export const initMouse = ({
+  trackEl,
+  slides,
+  slider,
+  controls,
+  dots,
+  duration,
+  onMouseMove,
+  onMouseLeave,
+  onNext,
+  onPrev
+}: Types.MouseInit): void => {
+  if (!trackEl) {
     return;
   }
-  const { slider, slides, controls } = sliderInit;
 
-  const sliderWidth = Utils.getElWidth(slider);
-  const slideWidth = sliderWidth / slides.length;
+  const trackWidth = Utils.getElWidth(trackEl);
+  const slideWidth = trackWidth / slides.length;
 
   if (Array.isArray(controls) && controls.length > 1) {
     controls.forEach((btn: HTMLElement, i: number): void => {
       btn.addEventListener(
         'mouseenter',
-        sliderInit.onMouseMove({
+        onMouseMove({
           isNext: i === 0 ? false : true,
-          sliderEl: slider,
+          trackEl,
           slideWidth
         })
       );
       btn.addEventListener(
         'mousemove',
-        sliderInit.onMouseMove({
+        onMouseMove({
           isNext: i === 0 ? false : true,
-          sliderEl: slider,
+          trackEl,
           slideWidth
         }),
         {
           passive: true
         }
       );
-      btn.addEventListener('mouseleave', sliderInit.onMouseLeave);
+      btn.addEventListener('mouseleave', onMouseLeave);
       if (i === 0) {
         btn.addEventListener(
           'click',
-          sliderInit.onPrev({
-            element: slider,
-            elementWidth: sliderWidth,
-            itemLength: slides.length,
-            slider: sliderInit.initConfig
+          onPrev({
+            trackEl,
+            dots,
+            trackWidth,
+            slider,
+            duration,
+            dotIndex: slider.index,
+            itemLength: slides.length
           })
         );
       }
       if (i === 1) {
         btn.addEventListener(
           'click',
-          sliderInit.onNext({
-            element: slider,
-            elementWidth: sliderWidth,
-            itemLength: slides.length,
-            slider: sliderInit.initConfig
+          onNext({
+            trackEl,
+            dots,
+            trackWidth,
+            slider,
+            duration,
+            dotIndex: slider.index,
+            itemLength: slides.length
           })
         );
       }
       window.requestAnimationFrame(() =>
-        sliderInit.onMouseMove({
+        onMouseMove({
           isNext: i === 0 ? false : true,
-          sliderEl: slider,
+          trackEl,
           slideWidth
+        })
+      );
+    });
+  }
+  if (Array.isArray(dots) && dots.length > 1) {
+    dots.forEach((dot: HTMLElement, index: number): void => {
+      dot.addEventListener(
+        'click',
+        jumpToSlide({
+          trackEl,
+          slider,
+          dots,
+          slideWidth,
+          dotIndex: index
         })
       );
     });
   }
 };
 
-export const init = (sliderInit: Types.SliderInit): void => {
-  if (!sliderInit.slider) {
+export const init = ({
+  trackEl,
+  slides,
+  controls,
+  dots,
+  slider,
+  duration
+}: Types.SliderInit): void => {
+  if (!trackEl) {
     return;
   }
-  const { slider, slides, controls, initConfig } = sliderInit;
   const clonedSlides = sanatizedNodes(cloneFirstLast(slides));
-  slider.appendChild(clonedSlides[0]);
-  slider.insertBefore(clonedSlides[1], slides[0]);
+  trackEl.appendChild(clonedSlides[0]);
+  trackEl.insertBefore(clonedSlides[1], slides[0]);
   clonedSlides.forEach((slide: Element, i: number) => {
     slides.push(clonedSlides[i]);
   });
-  initConfig.moveX =
-    initConfig.index * (Utils.getElWidth(slider) / slides.length);
+  slider.moveX = slider.index * (Utils.getElWidth(trackEl) / slides.length);
 
-  (slider as HTMLElement).style.setProperty('--items', `${slides.length}`);
-  (slider as HTMLElement).style.setProperty('--moveX', `${-initConfig.moveX}`);
+  (trackEl as HTMLElement).style.setProperty('--items', `${slides.length}`);
+  (trackEl as HTMLElement).style.setProperty('--moveX', `${-slider.moveX}`);
+  const mouseConfig: Types.MouseInit = {
+    trackEl,
+    slides,
+    controls,
+    dots,
+    slider,
+    duration,
+    jumpToSlide,
+    onNext: handleNext,
+    onPrev: handlePrev,
+    onMouseMove: handleMouseMove,
+    onMouseLeave: handleMouseLeave
+  };
+
+  const touchConfig: Types.TouchInit = {
+    trackEl,
+    slides,
+    slider,
+    dots,
+    duration: duration * 2,
+    onStart: handleStart,
+    onMove: handleMove,
+    onEnd: handleEnd
+  };
 
   if (window.matchMedia('(min-width: 769px)').matches) {
-    initDesktop({
-      slider,
-      slides,
-      controls,
-      initConfig,
-      onNext: handleNext,
-      onPrev: handlePrev,
-      onMouseMove: handleMouseMove,
-      onMouseLeave: handleMouseLeave
-    });
+    initMouse(mouseConfig);
   } else {
-    initTouch({
-      slider,
-      slides,
-      initConfig,
-      onStart: handleStart,
-      onMove: handleMove,
-      onEnd: handleEnd
-    });
+    initTouch(touchConfig);
   }
 };

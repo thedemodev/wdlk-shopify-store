@@ -1,10 +1,14 @@
 import * as Slider from '../slider';
+import * as Types from '../types';
 
-const sliderEl = document.querySelector('.js_slider');
-
-Slider.init({
-  slider: sliderEl,
-  slides: [...sliderEl.querySelectorAll('.js_slider-item')],
+const trackEl = document.querySelector('.js_slider');
+const configuration: Types.SliderInit = {
+  trackEl,
+  slides: [...trackEl.querySelectorAll('.js_slider-item')],
   controls: [...document.querySelectorAll('.js_slider-btn')],
-  initConfig: Slider.Config.create()
-});
+  dots: [...document.querySelectorAll('.js_slider-dot')],
+  slider: Slider.Config.create(),
+  duration: 300
+};
+
+Slider.init(configuration);

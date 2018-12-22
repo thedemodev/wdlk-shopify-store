@@ -23,23 +23,23 @@ export const handleStart = (slider: Types.SliderConfig) => (
 };
 
 const handleInfinite = ({
-  element,
-  elementWidth,
+  trackEl,
+  trackWidth,
   itemLength,
   slider
 }: Types.HandleInfiniteProps) => {
-  if (!elementWidth || !itemLength || !slider) {
+  if (!trackWidth || !itemLength || !slider) {
     return;
   }
-  const slideWidth = elementWidth / itemLength;
+  const slideWidth = trackWidth / itemLength;
 
   return {
     prev(): Types.SliderConfig {
       window.setTimeout(() => {
-        (element as HTMLElement).style.setProperty('--transition', 'none');
+        (trackEl as HTMLElement).style.setProperty('--transition', 'none');
         slider.index = itemLength - 2;
         slider.moveX = slideWidth * slider.index;
-        (element as HTMLElement).style.setProperty(
+        (trackEl as HTMLElement).style.setProperty(
           '--moveX',
           `${-slider.moveX}`
         );
@@ -49,10 +49,10 @@ const handleInfinite = ({
     },
     next(): Types.SliderConfig {
       window.setTimeout(() => {
-        (element as HTMLElement).style.setProperty('--transition', 'none');
+        (trackEl as HTMLElement).style.setProperty('--transition', 'none');
         slider.index = 1;
         slider.moveX = slideWidth * slider.index;
-        (element as HTMLElement).style.setProperty(
+        (trackEl as HTMLElement).style.setProperty(
           '--moveX',
           `${-slider.moveX}`
         );
@@ -63,43 +63,58 @@ const handleInfinite = ({
   };
 };
 
+const updateDots = ({ dots, dotIndex }: Types.UpdateDotsInit): void => {
+  if (!dots) {
+    return;
+  }
+  dots.map((dot: HTMLElement, i: number): void => {
+    if (i === dotIndex) {
+      dot.style.setProperty('--active', '1');
+    } else {
+      dot.style.setProperty('--active', '0');
+    }
+  });
+};
+
 export const handleMove = ({
-  element,
-  elementWidth,
+  trackEl,
+  trackWidth,
   itemLength,
   slider
 }: Types.HandleTouchProps) => (e: TouchEvent): Types.SliderConfig => {
-  if (!elementWidth || !itemLength || !slider || !element) {
+  if (!trackWidth || !itemLength || !slider || !trackEl) {
     return;
   }
-  const currentPosition = elementWidth / itemLength * slider.index;
+  const currentPosition = trackWidth / itemLength * slider.index;
 
   for (const touch of e.touches) {
     slider.startMoveX = touch.clientX;
     slider.moveX = currentPosition + (slider.startX - touch.clientX);
-    (element as HTMLElement).style.setProperty('--transition', 'none');
-    if (slider.moveX > 0 && slider.moveX < elementWidth / 2) {
-      (element as HTMLElement).style.setProperty('--moveX', `${-slider.moveX}`);
+    (trackEl as HTMLElement).style.setProperty('--transition', 'none');
+    if (slider.moveX > 0 && slider.moveX < trackWidth / 2) {
+      (trackEl as HTMLElement).style.setProperty('--moveX', `${-slider.moveX}`);
     }
     return slider;
   }
 };
 
 export const handleEnd = ({
-  element,
-  elementWidth,
+  trackEl,
+  trackWidth,
   itemLength,
-  slider
+  dots,
+  slider,
+  duration
 }: Types.HandleTouchProps) => (e: TouchEvent): Types.SliderConfig => {
-  if (!elementWidth || !itemLength || !slider || !element) {
+  if (!trackWidth || !itemLength || !slider || !trackEl) {
     return;
   }
 
-  const slideWidth = elementWidth / itemLength;
+  const slideWidth = trackWidth / itemLength;
   const absMove = Math.abs(slider.index * slideWidth - slider.moveX);
   const inifinite = handleInfinite({
-    element,
-    elementWidth,
+    trackEl,
+    trackWidth,
     itemLength,
     slider
   });
@@ -110,98 +125,120 @@ export const handleEnd = ({
       slider.index < itemLength - 1
     ) {
       slider.index++;
+      updateDots({
+        dots,
+        dotIndex: slider.index <= dots.length ? slider.index - 1 : 0
+      });
     } else if (slider.moveX < slider.index * slideWidth && slider.index > 0) {
       slider.index--;
+      updateDots({
+        dots,
+        dotIndex: slider.index < 1 ? dots.length - 1 : slider.index - 1
+      });
     }
   }
 
-  (element as HTMLElement).style.setProperty(
+  (trackEl as HTMLElement).style.setProperty(
     '--transition',
-    'transform 300ms ease-out'
+    `transform ${duration}ms ease-out`
   );
-  (element as HTMLElement).style.setProperty(
+  (trackEl as HTMLElement).style.setProperty(
     '--moveX',
     `${-slider.index * slideWidth}`
   );
   if (slider.moveX === 0) {
     inifinite.prev();
   }
-  if (slider.moveX >= elementWidth - slideWidth) {
+  if (slider.moveX >= trackWidth - slideWidth) {
     inifinite.next();
   }
   return slider;
 };
 
 export const handleNext = ({
-  element,
-  elementWidth,
+  trackEl,
+  dots,
+  trackWidth,
   itemLength,
-  slider
+  slider,
+  duration
 }: Types.HandleMouseProps) => (e: MouseEvent): Types.SliderConfig => {
-  if (!elementWidth || !itemLength || !slider) {
+  if (!trackWidth || !itemLength || !slider) {
     return;
   }
-  const slideWidth = elementWidth / itemLength;
+  const slideWidth = trackWidth / itemLength;
+  const inifinite = handleInfinite({
+    trackEl,
+    trackWidth,
+    itemLength,
+    slider
+  });
 
   if (slider.moveX >= slideWidth * (itemLength - 1)) {
     return slider;
   }
+
   slider.index++;
   slider.moveX = slideWidth * slider.index;
-  (element as HTMLElement).style.setProperty('--moveX', `${-slider.moveX}`);
-  (element as HTMLElement).style.setProperty(
+  (trackEl as HTMLElement).style.setProperty('--moveX', `${-slider.moveX}`);
+  (trackEl as HTMLElement).style.setProperty(
     '--transition',
-    'transform 300ms ease-out'
+    `transform ${duration}ms ease-out`
   );
-  if (slider.moveX >= elementWidth - slideWidth) {
-    const inifinite = handleInfinite({
-      element,
-      elementWidth,
-      itemLength,
-      slider
-    });
+  if (slider.moveX >= trackWidth - slideWidth) {
     inifinite.next();
   }
+  updateDots({
+    dots,
+    dotIndex: slider.index <= dots.length ? slider.index - 1 : 0
+  });
   return slider;
 };
 
 export const handlePrev = ({
-  element,
-  elementWidth,
+  trackEl,
+  trackWidth,
   itemLength,
-  slider
+  dots,
+  slider,
+  duration
 }: Types.HandleMouseProps) => (e: MouseEvent): Types.SliderConfig => {
-  if (!elementWidth || !itemLength || !slider) {
+  if (!trackWidth || !itemLength || !slider) {
     return;
   }
-  const slideWidth = elementWidth / itemLength;
+  const slideWidth = trackWidth / itemLength;
+  const inifinite = handleInfinite({
+    trackEl,
+    trackWidth,
+    itemLength,
+    slider
+  });
 
   if (slider.moveX <= 0) {
     return slider;
   }
   slider.index--;
   slider.moveX = slideWidth * slider.index;
-  (element as HTMLElement).style.setProperty('--moveX', `${-slider.moveX}`);
-  (element as HTMLElement).style.setProperty(
+  (trackEl as HTMLElement).style.setProperty('--moveX', `${-slider.moveX}`);
+  (trackEl as HTMLElement).style.setProperty(
     '--transition',
-    'transform 300ms ease-out'
+    `transform ${duration}ms ease-out`
   );
   if (slider.moveX === 0) {
-    const inifinite = handleInfinite({
-      element,
-      elementWidth,
-      itemLength,
-      slider
-    });
     inifinite.prev();
   }
+  updateDots({
+    dots,
+    dotIndex: slider.index < 1 ? dots.length - 1 : slider.index - 1
+  });
   return slider;
 };
 
-export const handleMouseMove = (init: Types.HandleMouseMoveProps) => (
-  e: MouseEvent
-): void => {
-  const { isNext, sliderEl, slideWidth } = init;
+export const handleMouseMove = ({
+  isNext,
+  trackEl,
+  slideWidth
+}: Types.HandleMouseMoveProps) => (e: MouseEvent): void => {
   const { currentTarget, clientX, clientY } = e;
   const btnElWidth = Utils.getElWidth(currentTarget as HTMLElement);
   const btnElHeight = Utils.getElHeight(currentTarget as HTMLElement);
@@ -211,7 +248,7 @@ export const handleMouseMove = (init: Types.HandleMouseMoveProps) => (
     : Utils.normalize(clientX, 0, btnElWidth);
 
   const normalizedY = Utils.normalize(
-    clientY - Utils.getElTopPosition(sliderEl),
+    clientY - Utils.getElTopPosition(trackEl),
     0,
     btnElHeight
   );
@@ -227,7 +264,13 @@ export const handleMouseMove = (init: Types.HandleMouseMoveProps) => (
     `${Utils.lerp(2e-2, y, normalizedY)}`
   );
   (currentTarget as HTMLElement).style.setProperty('--active', '1');
-  window.requestAnimationFrame(() => handleMouseMove(init));
+  window.requestAnimationFrame(() =>
+    handleMouseMove({
+      isNext,
+      trackEl,
+      slideWidth
+    })
+  );
 };
 
 export const handleMouseLeave = (e: MouseEvent): void => {
@@ -236,4 +279,23 @@ export const handleMouseLeave = (e: MouseEvent): void => {
   el.parentElement.style.setProperty('--x', '0');
   el.parentElement.style.setProperty('--y', '0');
   el.style.setProperty('--active', '0');
+};
+
+export const jumpToSlide = ({
+  dots,
+  dotIndex,
+  trackEl,
+  slider,
+  slideWidth
+}: Types.JumpToSlideInit) => (e: MouseEvent): Types.SliderConfig => {
+  if (!trackEl || !dots || !slider) {
+    return;
+  }
+  slider.index = dotIndex + 1;
+  slider.moveX = slideWidth * slider.index;
+
+  (trackEl as HTMLElement).style.setProperty('--moveX', `${-slider.moveX}`);
+  dots.forEach((dot: HTMLElement) => dot.style.setProperty('--active', '0'));
+  (e.currentTarget as HTMLElement).style.setProperty('--active', '1');
+  return slider;
 };

@@ -6,7 +6,7 @@
 
 .Layout--main {
   padding-top: $nav-height;
-  @include media(medium) {
+  @include media(large) {
     padding-top: $nav-height-medium;
   }
 }
