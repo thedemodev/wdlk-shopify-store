@@ -55,6 +55,7 @@
 
 .Slider .Headline {
   margin: 0;
+  pointer-events: none;
 }
 
 .Slider .Btn {
@@ -70,7 +71,7 @@
 .Slider-btn {
   position: absolute;
   top: 0;
-  width: 20vw;
+  width: 30vw;
   height: 100%;
   max-width: 500px;
   z-index: 2;
@@ -109,7 +110,7 @@
   border-radius: 50%;
   overflow: hidden;
   color: $hex-white-smoke;
-  background-color: #ce6152;
+  background-color: $hex-coral;
 
   @include media(large) {
     display: inline-flex;
@@ -121,5 +122,35 @@
       0
     );
     transition: opacity 400ms ease-in-out, transform 100ms linear;
+  }
+}
+
+.Slider-navigation {
+  position: absolute;
+  bottom: calc(var(--size-3XL) * 1px);
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  margin: 0 auto;
+}
+
+.Slider-dot {
+  width: calc(var(--size-M) * 1px);
+  height: calc(var(--size-M) * 1px);
+  border-radius: 50%;
+  border: 2px solid $hex-off-white;
+  margin: calc(var(--size-S) * 1px);
+  background-color: rgba(240, 246, 246, var(--active));
+  transform: scale(calc(
+    1 * var(--active) +
+    0.72 * (1 - var(--active))
+  ));
+  transition: transform 333ms ease-in-out, background 333ms ease;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1);
   }
 }
