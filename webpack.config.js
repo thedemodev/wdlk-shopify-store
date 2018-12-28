@@ -34,7 +34,7 @@ module.exports = {
       }
     ]
   },
-  mode: "production",
+  mode: "development",
   plugins: [
     new Dotenv(),
     new HappyPack({

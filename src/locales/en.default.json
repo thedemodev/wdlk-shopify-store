@@ -376,5 +376,10 @@
   },
   "date_formats": {
     "month_day_year": "%B %d, %Y"
+  },
+  "page": {
+    "sustainability": {
+      "banner_content": "We want to protect what we love. Together we help create healthy oceans with highly sustainable and renewable swimwear."
+    }
   }
 }

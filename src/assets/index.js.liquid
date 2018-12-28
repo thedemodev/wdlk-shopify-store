@@ -66,102 +66,152 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 22);
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/scripts/index.ts");
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */,
-/* 1 */,
-/* 2 */
+/******/ ({
+
+/***/ "./src/scripts/index.ts":
+/*!******************************!*\
+  !*** ./src/scripts/index.ts ***!
+  \******************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports,"__esModule",{value:!0}),exports.initSmoothScrolling=exports.smoothScrolling=void 0;function _toConsumableArray(a){return _arrayWithoutHoles(a)||_iterableToArray(a)||_nonIterableSpread()}function _nonIterableSpread(){throw new TypeError("Invalid attempt to spread non-iterable instance")}function _iterableToArray(a){if(Symbol.iterator in Object(a)||"[object Arguments]"===Object.prototype.toString.call(a))return Array.from(a)}function _arrayWithoutHoles(a){if(Array.isArray(a)){for(var b=0,c=Array(a.length);b<a.length;b++)c[b]=a[b];return c}}var smoothScrolling=function(a){var b=Math.easeInOutExpo,c=1<arguments.length&&void 0!==arguments[1]?arguments[1]:document.querySelectorAll(":root");if(0!==a.length){b=function(a,e,b,c){var d=Math.pow;return(a/=c/2,1>a)?b/2*d(2,10*(a-1))+e:(a--,b/2*(-d(2,-10*a)+2)+e)};var d=function(a,c,d,e){var f=a.scrollTop,g=c.offsetTop-f,h=null;e=e||function(){};var i=function(c){h=null===h?c:h;var j=c-h;return j>=d?e():void(a.scrollTop=b(j,f,g,d),window.requestAnimationFrame(i))};window.requestAnimationFrame(i)};_toConsumableArray(a).filter(function(a){return a.getAttribute("href")}).forEach(function(a){var b=a.getAttribute("href").substr(1)||"",e=document.getElementById("".concat(b));a.addEventListener("click",function b(a){a.preventDefault(),c.forEach(function(a){d(a,e,1618,function(){window.location.hash="#".concat(e.id)})})},!1)})}};exports.smoothScrolling=smoothScrolling;var initSmoothScrolling=function(){smoothScrolling(document.querySelectorAll(".js_scroll"))};exports.initSmoothScrolling=initSmoothScrolling;
+eval("__webpack_require__(/*! ../scss/index.scss */ \"./src/scss/index.scss\");var _cookieNotification=_interopRequireDefault(__webpack_require__(/*! ./modules/cookie-notification */ \"./src/scripts/modules/cookie-notification.ts\")),_fadeThrough=_interopRequireDefault(__webpack_require__(/*! ./modules/fade-through */ \"./src/scripts/modules/fade-through.ts\")),_notification=_interopRequireDefault(__webpack_require__(/*! ./modules/notification */ \"./src/scripts/modules/notification.ts\")),_numberInput=_interopRequireDefault(__webpack_require__(/*! ./modules/number-input */ \"./src/scripts/modules/number-input.ts\")),_expander=__webpack_require__(/*! ./modules/expander */ \"./src/scripts/modules/expander.ts\"),_smoothScrolling=__webpack_require__(/*! ./modules/smooth-scrolling */ \"./src/scripts/modules/smooth-scrolling.ts\"),_stickyNavigation=_interopRequireDefault(__webpack_require__(/*! ./modules/sticky-navigation */ \"./src/scripts/modules/sticky-navigation.ts\")),_trackingProjectCece=_interopRequireDefault(__webpack_require__(/*! ./tracking/tracking-project-cece */ \"./src/scripts/tracking/tracking-project-cece.ts\")),_trackingFacebook=_interopRequireDefault(__webpack_require__(/*! ./tracking/tracking-facebook */ \"./src/scripts/tracking/tracking-facebook.ts\"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}var init=function(){(0,_stickyNavigation.default)(),(0,_cookieNotification.default)(),(0,_notification.default)(),(0,_fadeThrough.default)(),(0,_expander.initExpander)(),(0,_smoothScrolling.initSmoothScrolling)(),(0,_numberInput.default)(),(0,_trackingProjectCece.default)(),(0,_trackingFacebook.default)()};window.addEventListener(\"load\",init);\n\n//# sourceURL=webpack:///./src/scripts/index.ts?");
 
 /***/ }),
-/* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */
+
+/***/ "./src/scripts/modules/cookie-notification.ts":
+/*!****************************************************!*\
+  !*** ./src/scripts/modules/cookie-notification.ts ***!
+  \****************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=fbqTracking;function fbqTracking(){var a=document.querySelector(".js_fbqAddToCart"),b=document.querySelector(".js_fbqNewsLead");if(a){var c=a.querySelector(".js_fbqBtn"),d=a.querySelector(".js_fbqSelect");if(c&&d){var e=parseFloat(d.options[d.selectedIndex].value);c.addEventListener("click",function(){fbq("track","AddToCart",{content_name:c.dataset.name,content_ids:["".concat(e)],content_type:"product",value:parseFloat(c.dataset.value),currency:"EUR"})})}}b&&b.addEventListener("click",function(){fbq("track","Lead")})}
+eval("var _storageVisibilityFactory=_interopRequireDefault(__webpack_require__(/*! ./storage-visibility-factory */ \"./src/scripts/modules/storage-visibility-factory.ts\"));Object.defineProperty(exports,\"__esModule\",{value:!0}),exports.default=void 0;function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}var _default=function(){var a=document.querySelector(\".js-cookieNotification\");if(a){var b=a.querySelector(\".js-cookieNotificationBtn\"),c=(0,_storageVisibilityFactory.default)(\"cookie-notification-visibility\");c.setInitialValue(),c.isVisible&&a.style.setProperty(\"--visibility\",\"0\");var d=function(b){c.handleEvent(b),a.style.setProperty(\"--visibility\",c.isVisible?\"0\":\"100\")};b.addEventListener(\"click\",d,{capture:!0})}};exports.default=_default;\n\n//# sourceURL=webpack:///./src/scripts/modules/cookie-notification.ts?");
 
 /***/ }),
-/* 12 */
+
+/***/ "./src/scripts/modules/expander.ts":
+/*!*****************************************!*\
+  !*** ./src/scripts/modules/expander.ts ***!
+  \*****************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=trackingCece;function trackingCece(){function a(){var a=new Date;a.setTime(a.getTime()+2592000000),document.cookie="refpartner=projce; expires=".concat(a.toUTCString(),"; path=/")}var b=document.referrer;-1<b.indexOf("projectcece.")&&(a(),window.sessionStorage&&sessionStorage.setItem("refpartner","projce")),window.sessionStorage&&sessionStorage.getItem("refpartner")&&0>document.cookie.indexOf("refpartner=projce")&&a()}
+eval("var _smoothScrolling=__webpack_require__(/*! ./smooth-scrolling */ \"./src/scripts/modules/smooth-scrolling.ts\");Object.defineProperty(exports,\"__esModule\",{value:!0}),exports.initExpander=exports.resetState=exports.expander=void 0;function _toConsumableArray(a){return _arrayWithoutHoles(a)||_iterableToArray(a)||_nonIterableSpread()}function _nonIterableSpread(){throw new TypeError(\"Invalid attempt to spread non-iterable instance\")}function _iterableToArray(a){if(Symbol.iterator in Object(a)||\"[object Arguments]\"===Object.prototype.toString.call(a))return Array.from(a)}function _arrayWithoutHoles(a){if(Array.isArray(a)){for(var b=0,c=Array(a.length);b<a.length;b++)c[b]=a[b];return c}}var expander=function(a,b){if(0!==b.length&&0!==a.length){var c=document.querySelector(\":root\");if(!(768<c.offsetWidth)){var d=_toConsumableArray(a).map(function(a){return a.offsetHeight}),e=function(a,b){_toConsumableArray(a).forEach(function(a,c){a.style.setProperty(\"--pane-height\",\"\".concat(b[c]))})};e(b,d)}}};exports.expander=expander;var resetState=function(a,b){if(0!==a.length){var c=function(){b.forEach(function(a){a.scrollTop=0})};_toConsumableArray(a).forEach(function(a){a.addEventListener(\"click\",c)})}};exports.resetState=resetState;var initExpander=function(){var a=document.querySelectorAll(\".js_expander\");resetState(document.querySelectorAll(\".js_state\"),a),expander(document.querySelectorAll(\".js_content\"),a),(0,_smoothScrolling.smoothScrolling)(document.querySelectorAll(\".js_expander_lead\"),a)};exports.initExpander=initExpander;\n\n//# sourceURL=webpack:///./src/scripts/modules/expander.ts?");
 
 /***/ }),
-/* 13 */
+
+/***/ "./src/scripts/modules/fade-through.ts":
+/*!*********************************************!*\
+  !*** ./src/scripts/modules/fade-through.ts ***!
+  \*********************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=stickyNavigation;function stickyNavigation(){var a=document.querySelector(".js_sticky-nav");if(a){var b=document.querySelector(".js_notification"),c={height:a.offsetHeight,scrollPosition:0,ticking:!1},d=function(){a.classList.toggle("is-undocked",window.scrollY>=c.height)};d();var e=function(){return b?b.offsetHeight:0},f=function(){var d=c.scrollPosition;b?(a.classList.toggle("is-sticky",d>=e()),a.classList.toggle("is-undocked",d>=e()-1)):a.classList.toggle("is-undocked",d>=c.height),c.ticking=!1},g=function(){c.ticking||requestAnimationFrame(f),c.ticking=!0},h=function(){c.scrollPosition=window.scrollY,g()};window.addEventListener("scroll",h,{capture:!1,passive:!0})}}
+eval("Object.defineProperty(exports,\"__esModule\",{value:!0}),exports.default=void 0;function _toConsumableArray(a){return _arrayWithoutHoles(a)||_iterableToArray(a)||_nonIterableSpread()}function _nonIterableSpread(){throw new TypeError(\"Invalid attempt to spread non-iterable instance\")}function _iterableToArray(a){if(Symbol.iterator in Object(a)||\"[object Arguments]\"===Object.prototype.toString.call(a))return Array.from(a)}function _arrayWithoutHoles(a){if(Array.isArray(a)){for(var b=0,c=Array(a.length);b<a.length;b++)c[b]=a[b];return c}}var fadeThrough=function(){var a=document.querySelector(\".js_fadeThrough\");if(a){var b=document.querySelectorAll(\".js_fadeThrough-btn\");if(b){var c=!1,d=function(){c=!c,a.style.setProperty(\"--is-visible\",\"\".concat(c?1:0))};_toConsumableArray(b).forEach(function(a){a.addEventListener(\"click\",d)})}}},_default=fadeThrough;exports.default=_default;\n\n//# sourceURL=webpack:///./src/scripts/modules/fade-through.ts?");
 
 /***/ }),
-/* 14 */
+
+/***/ "./src/scripts/modules/notification.ts":
+/*!*********************************************!*\
+  !*** ./src/scripts/modules/notification.ts ***!
+  \*********************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-var _smoothScrolling=__webpack_require__(2);Object.defineProperty(exports,"__esModule",{value:!0}),exports.initExpander=exports.resetState=exports.expander=void 0;function _toConsumableArray(a){return _arrayWithoutHoles(a)||_iterableToArray(a)||_nonIterableSpread()}function _nonIterableSpread(){throw new TypeError("Invalid attempt to spread non-iterable instance")}function _iterableToArray(a){if(Symbol.iterator in Object(a)||"[object Arguments]"===Object.prototype.toString.call(a))return Array.from(a)}function _arrayWithoutHoles(a){if(Array.isArray(a)){for(var b=0,c=Array(a.length);b<a.length;b++)c[b]=a[b];return c}}var expander=function(a,b){if(0!==b.length&&0!==a.length){var c=document.querySelector(":root");if(!(768<c.offsetWidth)){var d=_toConsumableArray(a).map(function(a){return a.offsetHeight}),e=function(a,b){_toConsumableArray(a).forEach(function(a,c){a.style.setProperty("--pane-height","".concat(b[c]))})};e(b,d)}}};exports.expander=expander;var resetState=function(a,b){if(0!==a.length){var c=function(){b.forEach(function(a){a.scrollTop=0})};_toConsumableArray(a).forEach(function(a){a.addEventListener("click",c)})}};exports.resetState=resetState;var initExpander=function(){var a=document.querySelectorAll(".js_expander");resetState(document.querySelectorAll(".js_state"),a),expander(document.querySelectorAll(".js_content"),a),(0,_smoothScrolling.smoothScrolling)(document.querySelectorAll(".js_expander_lead"),a)};exports.initExpander=initExpander;
+eval("Object.defineProperty(exports,\"__esModule\",{value:!0}),exports.default=notification;function notification(){var a=document.querySelector(\".js_notification\");if(a){var b=a.querySelector(\".js_notification-btn\"),c=\"hiddenNotification\",d=\"is-active\";null===JSON.parse(sessionStorage.getItem(c))&&sessionStorage.setItem(c,\"false\"),JSON.parse(sessionStorage.getItem(c))||a.classList.add(d);var e=function(){sessionStorage.setItem(c,\"true\"),a.classList.remove(d)};b.addEventListener(\"click\",e)}}\n\n//# sourceURL=webpack:///./src/scripts/modules/notification.ts?");
 
 /***/ }),
-/* 15 */
+
+/***/ "./src/scripts/modules/number-input.ts":
+/*!*********************************************!*\
+  !*** ./src/scripts/modules/number-input.ts ***!
+  \*********************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=numberInput;function _toConsumableArray(a){return _arrayWithoutHoles(a)||_iterableToArray(a)||_nonIterableSpread()}function _nonIterableSpread(){throw new TypeError("Invalid attempt to spread non-iterable instance")}function _iterableToArray(a){if(Symbol.iterator in Object(a)||"[object Arguments]"===Object.prototype.toString.call(a))return Array.from(a)}function _arrayWithoutHoles(a){if(Array.isArray(a)){for(var b=0,c=Array(a.length);b<a.length;b++)c[b]=a[b];return c}}function numberInput(){var a=document.getElementsByClassName("js_numberInput");if(a){var b=function(a){return parseInt("".concat(a),10)+1},c=function(a){return parseInt("".concat(a),10)-1};_toConsumableArray(a).forEach(function(a){var d=1,e=0,f=a.querySelector(".js_value");f&&(d=parseInt(f.getAttribute("value"),10),e=parseInt(f.getAttribute("min"),10),a.addEventListener("click",function(){if(event.target.classList.contains("js_add")&&(d=b(d),f.setAttribute("value",d.toString())),event.target.classList.contains("js_remove")){if(d<=e)return;d=c(d),f.setAttribute("value",d.toString())}}))})}}
+eval("Object.defineProperty(exports,\"__esModule\",{value:!0}),exports.default=numberInput;function _toConsumableArray(a){return _arrayWithoutHoles(a)||_iterableToArray(a)||_nonIterableSpread()}function _nonIterableSpread(){throw new TypeError(\"Invalid attempt to spread non-iterable instance\")}function _iterableToArray(a){if(Symbol.iterator in Object(a)||\"[object Arguments]\"===Object.prototype.toString.call(a))return Array.from(a)}function _arrayWithoutHoles(a){if(Array.isArray(a)){for(var b=0,c=Array(a.length);b<a.length;b++)c[b]=a[b];return c}}function numberInput(){var a=document.getElementsByClassName(\"js_numberInput\");if(a){var b=function(a){return parseInt(\"\".concat(a),10)+1},c=function(a){return parseInt(\"\".concat(a),10)-1};_toConsumableArray(a).forEach(function(a){var d=1,e=0,f=a.querySelector(\".js_value\");f&&(d=parseInt(f.getAttribute(\"value\"),10),e=parseInt(f.getAttribute(\"min\"),10),a.addEventListener(\"click\",function(){if(event.target.classList.contains(\"js_add\")&&(d=b(d),f.setAttribute(\"value\",d.toString())),event.target.classList.contains(\"js_remove\")){if(d<=e)return;d=c(d),f.setAttribute(\"value\",d.toString())}}))})}}\n\n//# sourceURL=webpack:///./src/scripts/modules/number-input.ts?");
 
 /***/ }),
-/* 16 */
+
+/***/ "./src/scripts/modules/smooth-scrolling.ts":
+/*!*************************************************!*\
+  !*** ./src/scripts/modules/smooth-scrolling.ts ***!
+  \*************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=notification;function notification(){var a=document.querySelector(".js_notification");if(a){var b=a.querySelector(".js_notification-btn"),c="hiddenNotification",d="is-active";null===JSON.parse(sessionStorage.getItem(c))&&sessionStorage.setItem(c,"false"),JSON.parse(sessionStorage.getItem(c))||a.classList.add(d);var e=function(){sessionStorage.setItem(c,"true"),a.classList.remove(d)};b.addEventListener("click",e)}}
+eval("Object.defineProperty(exports,\"__esModule\",{value:!0}),exports.initSmoothScrolling=exports.smoothScrolling=void 0;function _toConsumableArray(a){return _arrayWithoutHoles(a)||_iterableToArray(a)||_nonIterableSpread()}function _nonIterableSpread(){throw new TypeError(\"Invalid attempt to spread non-iterable instance\")}function _iterableToArray(a){if(Symbol.iterator in Object(a)||\"[object Arguments]\"===Object.prototype.toString.call(a))return Array.from(a)}function _arrayWithoutHoles(a){if(Array.isArray(a)){for(var b=0,c=Array(a.length);b<a.length;b++)c[b]=a[b];return c}}var smoothScrolling=function(a){var b=Math.easeInOutExpo,c=1<arguments.length&&void 0!==arguments[1]?arguments[1]:document.querySelectorAll(\":root\");if(0!==a.length){b=function(a,e,b,c){var d=Math.pow;return(a/=c/2,1>a)?b/2*d(2,10*(a-1))+e:(a--,b/2*(-d(2,-10*a)+2)+e)};var d=function(a,c,d,e){var f=a.scrollTop,g=c.offsetTop-f,h=null;e=e||function(){};var i=function(c){h=null===h?c:h;var j=c-h;return j>=d?e():void(a.scrollTop=b(j,f,g,d),window.requestAnimationFrame(i))};window.requestAnimationFrame(i)};_toConsumableArray(a).filter(function(a){return a.getAttribute(\"href\")}).forEach(function(a){var b=a.getAttribute(\"href\").substr(1)||\"\",e=document.getElementById(\"\".concat(b));a.addEventListener(\"click\",function b(a){a.preventDefault(),c.forEach(function(a){d(a,e,1618,function(){window.location.hash=\"#\".concat(e.id)})})},!1)})}};exports.smoothScrolling=smoothScrolling;var initSmoothScrolling=function(){smoothScrolling(document.querySelectorAll(\".js_scroll\"))};exports.initSmoothScrolling=initSmoothScrolling;\n\n//# sourceURL=webpack:///./src/scripts/modules/smooth-scrolling.ts?");
 
 /***/ }),
-/* 17 */
+
+/***/ "./src/scripts/modules/sticky-navigation.ts":
+/*!**************************************************!*\
+  !*** ./src/scripts/modules/sticky-navigation.ts ***!
+  \**************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;function _toConsumableArray(a){return _arrayWithoutHoles(a)||_iterableToArray(a)||_nonIterableSpread()}function _nonIterableSpread(){throw new TypeError("Invalid attempt to spread non-iterable instance")}function _iterableToArray(a){if(Symbol.iterator in Object(a)||"[object Arguments]"===Object.prototype.toString.call(a))return Array.from(a)}function _arrayWithoutHoles(a){if(Array.isArray(a)){for(var b=0,c=Array(a.length);b<a.length;b++)c[b]=a[b];return c}}var fadeThrough=function(){var a=document.querySelector(".js_fadeThrough");if(a){var b=document.querySelectorAll(".js_fadeThrough-btn");if(b){var c=!1,d=function(){c=!c,a.style.setProperty("--is-visible","".concat(c?1:0))};_toConsumableArray(b).forEach(function(a){a.addEventListener("click",d)})}}},_default=fadeThrough;exports.default=_default;
+eval("Object.defineProperty(exports,\"__esModule\",{value:!0}),exports.default=stickyNavigation;function stickyNavigation(){var a=document.querySelector(\".js_sticky-nav\");if(a){var b=document.querySelector(\".js_notification\"),c={height:a.offsetHeight,scrollPosition:0,ticking:!1},d=function(){a.classList.toggle(\"is-undocked\",window.scrollY>=c.height)};d();var e=function(){return b?b.offsetHeight:0},f=function(){var d=c.scrollPosition;b?(a.classList.toggle(\"is-sticky\",d>=e()),a.classList.toggle(\"is-undocked\",d>=e()-1)):a.classList.toggle(\"is-undocked\",d>=c.height),c.ticking=!1},g=function(){c.ticking||requestAnimationFrame(f),c.ticking=!0},h=function(){c.scrollPosition=window.scrollY,g()};window.addEventListener(\"scroll\",h,{capture:!1,passive:!0})}}\n\n//# sourceURL=webpack:///./src/scripts/modules/sticky-navigation.ts?");
 
 /***/ }),
-/* 18 */
+
+/***/ "./src/scripts/modules/storage-visibility-factory.ts":
+/*!***********************************************************!*\
+  !*** ./src/scripts/modules/storage-visibility-factory.ts ***!
+  \***********************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports,"__esModule",{value:!0}),exports.StorageVisibilityFactory=StorageVisibilityFactory,exports.default=void 0;function StorageVisibilityFactory(a){return{isVisible:JSON.parse(localStorage.getItem(a)),setInitialValue:function b(){if(null===JSON.parse(localStorage.getItem(a)))return localStorage.setItem(a,"true"),this.isVisible=!0,this.isVisible},toggleVisibility:function a(){return this.isVisible=!this.isVisible,this.isVisible.toString()},handleEvent:function b(){localStorage.setItem(a,this.toggleVisibility())}}}var _default=StorageVisibilityFactory;exports.default=_default;
+eval("Object.defineProperty(exports,\"__esModule\",{value:!0}),exports.StorageVisibilityFactory=StorageVisibilityFactory,exports.default=void 0;function StorageVisibilityFactory(a){return{isVisible:JSON.parse(localStorage.getItem(a)),setInitialValue:function b(){if(null===JSON.parse(localStorage.getItem(a)))return localStorage.setItem(a,\"true\"),this.isVisible=!0,this.isVisible},toggleVisibility:function a(){return this.isVisible=!this.isVisible,this.isVisible.toString()},handleEvent:function b(){localStorage.setItem(a,this.toggleVisibility())}}}var _default=StorageVisibilityFactory;exports.default=_default;\n\n//# sourceURL=webpack:///./src/scripts/modules/storage-visibility-factory.ts?");
 
 /***/ }),
-/* 19 */
+
+/***/ "./src/scripts/tracking/tracking-facebook.ts":
+/*!***************************************************!*\
+  !*** ./src/scripts/tracking/tracking-facebook.ts ***!
+  \***************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-var _storageVisibilityFactory=_interopRequireDefault(__webpack_require__(18));Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}var _default=function(){var a=document.querySelector(".js-cookieNotification");if(a){var b=a.querySelector(".js-cookieNotificationBtn"),c=(0,_storageVisibilityFactory.default)("cookie-notification-visibility");c.setInitialValue(),c.isVisible&&a.style.setProperty("--visibility","0");var d=function(b){c.handleEvent(b),a.style.setProperty("--visibility",c.isVisible?"0":"100")};b.addEventListener("click",d,{capture:!0})}};exports.default=_default;
+eval("Object.defineProperty(exports,\"__esModule\",{value:!0}),exports.default=fbqTracking;function fbqTracking(){var a=document.querySelector(\".js_fbqAddToCart\"),b=document.querySelector(\".js_fbqNewsLead\");if(a){var c=a.querySelector(\".js_fbqBtn\"),d=a.querySelector(\".js_fbqSelect\");if(c&&d){var e=parseFloat(d.options[d.selectedIndex].value);c.addEventListener(\"click\",function(){fbq(\"track\",\"AddToCart\",{content_name:c.dataset.name,content_ids:[\"\".concat(e)],content_type:\"product\",value:parseFloat(c.dataset.value),currency:\"EUR\"})})}}b&&b.addEventListener(\"click\",function(){fbq(\"track\",\"Lead\")})}\n\n//# sourceURL=webpack:///./src/scripts/tracking/tracking-facebook.ts?");
 
 /***/ }),
-/* 20 */,
-/* 21 */
-/***/ (function(module, exports, __webpack_require__) {
 
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 22 */
+/***/ "./src/scripts/tracking/tracking-project-cece.ts":
+/*!*******************************************************!*\
+  !*** ./src/scripts/tracking/tracking-project-cece.ts ***!
+  \*******************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__(21);var _cookieNotification=_interopRequireDefault(__webpack_require__(19)),_fadeThrough=_interopRequireDefault(__webpack_require__(17)),_notification=_interopRequireDefault(__webpack_require__(16)),_numberInput=_interopRequireDefault(__webpack_require__(15)),_expander=__webpack_require__(14),_smoothScrolling=__webpack_require__(2),_stickyNavigation=_interopRequireDefault(__webpack_require__(13)),_trackingProjectCece=_interopRequireDefault(__webpack_require__(12)),_trackingFacebook=_interopRequireDefault(__webpack_require__(11));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}var init=function(){(0,_stickyNavigation.default)(),(0,_cookieNotification.default)(),(0,_notification.default)(),(0,_fadeThrough.default)(),(0,_expander.initExpander)(),(0,_smoothScrolling.initSmoothScrolling)(),(0,_numberInput.default)(),(0,_trackingProjectCece.default)(),(0,_trackingFacebook.default)()};window.addEventListener("load",init);
+eval("Object.defineProperty(exports,\"__esModule\",{value:!0}),exports.default=trackingCece;function trackingCece(){function a(){var a=new Date;a.setTime(a.getTime()+2592000000),document.cookie=\"refpartner=projce; expires=\".concat(a.toUTCString(),\"; path=/\")}var b=document.referrer;-1<b.indexOf(\"projectcece.\")&&(a(),window.sessionStorage&&sessionStorage.setItem(\"refpartner\",\"projce\")),window.sessionStorage&&sessionStorage.getItem(\"refpartner\")&&0>document.cookie.indexOf(\"refpartner=projce\")&&a()}\n\n//# sourceURL=webpack:///./src/scripts/tracking/tracking-project-cece.ts?");
+
+/***/ }),
+
+/***/ "./src/scss/index.scss":
+/*!*****************************!*\
+  !*** ./src/scss/index.scss ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/scss/index.scss?");
 
 /***/ })
-/******/ ]);
+
+/******/ });

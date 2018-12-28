@@ -1,0 +1,19 @@
+<main class="Box Box--parallax">
+  <figure class="Banner Banner--parallax">
+    <figcaption class="Banner-content">
+      <h1 class="Headline Headline--1">{{ page.title }}</h1>
+      <p class="Copy--l">{{'page.sustainability.banner_content' | t }}</p>
+    </figcaption>
+    {% assign videoWebM =
+      'WDLK_Brand-Video-Bg.webm' | file_url %}
+    {% assign videoMp4 =
+      'WDLK_Brand-Video-Bg.mp4' | file_url %}
+    {% assign videoPoster =
+      'WDLK_Brand-Video-Poster.jpg' | file_img_url %}
+    {% assign mute = true %}
+    {% include 'video' %}
+  </figure>
+  <section class="Box-content">
+    {{ page.content }}
+  </section>
+</main>
