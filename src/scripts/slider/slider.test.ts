@@ -1,12 +1,14 @@
 import * as Slider from './slider';
 import * as Types from '../types';
+import { jumpToSlide } from './mouse-events';
+import { handleStart, handleMove, handleEnd } from './touch-events';
 import { cloneFirstLast } from './utils';
 
 function generateMockHTML(): {
   track: Element;
   slides: Element[];
   buttons: Element[];
-  dots: Element[];
+  dotList: Element[];
 } {
   document.body.innerHTML = `
   <section class="Slider">
@@ -30,17 +32,18 @@ function generateMockHTML(): {
     track: document.querySelector('.js_slider'),
     slides: [...document.querySelectorAll('.js_slider-item')],
     buttons: [...document.querySelectorAll('.js_slider-btn')],
-    dots: [...document.querySelectorAll('.js_slider-dot')]
+    dotList: [...document.querySelectorAll('.js_slider-dot')]
   };
 }
 
 test('create slider configuration object', () => {
-  expect(Slider.Config.create()).toEqual(
+  expect(Slider.Config.create({ transitionDuration: 300 })).toEqual(
     expect.objectContaining({
       index: 1,
       moveX: 0,
       startX: 0,
-      startMoveX: 0
+      startMoveX: 0,
+      transition: 300
     })
   );
 });
@@ -50,7 +53,8 @@ test('execute handleStart for the first time and return new config', () => {
     index: 0,
     moveX: 0,
     startX: 0,
-    startMoveX: 0
+    startMoveX: 0,
+    transition: 300
   };
 
   const mockTouch = {
@@ -62,11 +66,12 @@ test('execute handleStart for the first time and return new config', () => {
     touches: [mockTouch]
   } as unknown) as TouchEvent;
 
-  expect(Slider.handleStart(handleMoveStartConfig)(mockEvent)).toEqual({
+  expect(handleStart(handleMoveStartConfig)(mockEvent)).toEqual({
     index: 0,
     moveX: 0,
     startX: 100,
-    startMoveX: 0
+    startMoveX: 0,
+    transition: 300
   });
 });
 
@@ -76,14 +81,13 @@ test('execute handleMove and return adjusted slider config', () => {
     trackEl: sliderMock.track,
     trackWidth: 2304,
     itemLength: 3,
-    dots: sliderMock.dots,
     dotIndex: 1,
-    duration: 300,
-    slider: {
+    config: {
       index: 2,
       moveX: 100,
       startX: 500,
-      startMoveX: 300
+      startMoveX: 300,
+      transition: 300
     }
   };
 
@@ -96,11 +100,12 @@ test('execute handleMove and return adjusted slider config', () => {
     touches: [mockTouch]
   } as unknown) as TouchEvent;
 
-  expect(Slider.handleMove(handleMoveInit)(mockEvent)).toEqual({
+  expect(handleMove(handleMoveInit)(mockEvent)).toEqual({
     index: 2,
     moveX: 1736,
     startX: 500,
-    startMoveX: 300
+    startMoveX: 300,
+    transition: 300
   });
 });
 
@@ -110,14 +115,13 @@ test('execute handleEnd and return adjusted slider config', () => {
     trackEl: sliderMock.track,
     trackWidth: 2304,
     itemLength: 3,
-    dots: sliderMock.dots,
     dotIndex: 1,
-    duration: 300,
-    slider: {
+    config: {
       index: 2,
       moveX: 300,
       startX: 500,
-      startMoveX: 300
+      startMoveX: 300,
+      transition: 300
     }
   };
 
@@ -130,11 +134,12 @@ test('execute handleEnd and return adjusted slider config', () => {
     touches: [mockTouch]
   } as unknown) as TouchEvent;
 
-  expect(Slider.handleEnd(handleMoveEndInit)(mockEvent)).toEqual({
+  expect(handleEnd(handleMoveEndInit)(mockEvent)).toEqual({
     index: 1,
     moveX: 300,
     startX: 500,
-    startMoveX: 300
+    startMoveX: 300,
+    transition: 300
   });
 });
 
@@ -144,14 +149,14 @@ test('execute handleNext and return the slider config', () => {
     trackEl: sliderMock.track,
     trackWidth: 3840,
     itemLength: 5,
-    dots: sliderMock.dots,
+    dotList: sliderMock.dotList,
     dotIndex: 0,
-    duration: 300,
-    slider: {
+    config: {
       index: 1,
       moveX: 768,
       startX: 0,
-      startMoveX: 0
+      startMoveX: 0,
+      transition: 300
     }
   };
   // tslint:disable-next-line:no-object-literal-type-assertion
@@ -160,7 +165,8 @@ test('execute handleNext and return the slider config', () => {
     index: 2,
     moveX: 1536,
     startX: 0,
-    startMoveX: 0
+    startMoveX: 0,
+    transition: 300
   });
 });
 
@@ -170,14 +176,14 @@ test('execute handlePrev and return the slider config', () => {
     trackEl: sliderMock.track,
     trackWidth: 3840,
     itemLength: 5,
-    dots: sliderMock.dots,
+    dotList: sliderMock.dotList,
     dotIndex: 2,
-    duration: 300,
-    slider: {
+    config: {
       index: 3,
       moveX: 2304,
       startX: 0,
-      startMoveX: 0
+      startMoveX: 0,
+      transition: 300
     }
   };
   // tslint:disable-next-line:no-object-literal-type-assertion
@@ -186,7 +192,8 @@ test('execute handlePrev and return the slider config', () => {
     index: 2,
     moveX: 1536,
     startX: 0,
-    startMoveX: 0
+    startMoveX: 0,
+    transition: 300
   });
 });
 
@@ -199,24 +206,26 @@ test('Receive index and move to the right slider', () => {
   const sliderMock = generateMockHTML();
   const JumpToSlideInit: Types.JumpToSlideInit = {
     trackEl: sliderMock.track,
-    dots: sliderMock.dots,
+    dotList: sliderMock.dotList,
     dotIndex: 1,
     slideWidth: 768,
-    slider: {
+    config: {
       index: 1,
       moveX: 768,
       startX: 0,
-      startMoveX: 0
+      startMoveX: 0,
+      transition: 300
     }
   };
   // tslint:disable-next-line:no-object-literal-type-assertion
   const mockClickEv = ({
-    currentTarget: sliderMock.dots[1]
+    currentTarget: sliderMock.dotList[1]
   } as unknown) as MouseEvent;
-  expect(Slider.jumpToSlide(JumpToSlideInit)(mockClickEv)).toEqual({
+  expect(jumpToSlide(JumpToSlideInit)(mockClickEv)).toEqual({
     index: 2,
     moveX: 1536,
     startX: 0,
-    startMoveX: 0
+    startMoveX: 0,
+    transition: 300
   });
 });

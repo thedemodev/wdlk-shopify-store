@@ -3,26 +3,24 @@ export interface SliderConfig {
   startX: number;
   startMoveX: number;
   moveX: number;
+  transition: number;
 }
 
 export interface HandleTouchProps {
   trackEl: Element;
-  dots: Element[];
   dotIndex: number;
   trackWidth: number;
   itemLength: number;
-  slider: SliderConfig;
-  duration: number;
+  config: SliderConfig;
 }
 
 export interface HandleMouseProps {
   trackEl: Element;
-  dots: Element[];
   dotIndex: number;
+  dotList: Element[];
   trackWidth: number;
   itemLength: number;
-  slider: SliderConfig;
-  duration: number;
+  config: SliderConfig;
 }
 
 export interface HandleMouseMoveProps {
@@ -35,49 +33,43 @@ export interface HandleInfiniteProps {
   trackEl: Element;
   trackWidth: number;
   itemLength: number;
-  slider: SliderConfig;
+  config: SliderConfig;
 }
 
 export interface JumpToSlideInit {
   trackEl: Element;
-  dots: Element[];
+  dotList: Element[];
   dotIndex: number;
-  slider: SliderConfig;
+  config: SliderConfig;
   slideWidth: number;
 }
 
 export interface UpdateDotsInit {
-  dots: Element[];
+  dotList: Element[];
   dotIndex: number;
 }
 
 export interface SliderInit {
+  sliderEl: Element;
   trackEl: Element;
-  slides: Element[];
-  controls: Element[];
-  dots: Element[];
-  slider: SliderConfig;
-  duration: number;
+  config: SliderConfig;
 }
 
 export interface TouchInit {
+  sliderEl: Element;
   trackEl: Element;
-  slides: Element[];
-  dots: Element[];
-  slider: SliderConfig;
-  duration: number;
+  slideList: Element[];
+  config: SliderConfig;
   onStart(slider: SliderConfig): (e: TouchEvent) => SliderConfig;
   onMove(onMoveInit: HandleTouchProps): (e: TouchEvent) => SliderConfig;
   onEnd(onEndInit: HandleTouchProps): (e: TouchEvent) => SliderConfig;
 }
 
 export interface MouseInit {
+  sliderEl: Element;
   trackEl: Element;
-  slides: Element[];
-  controls: Element[];
-  dots: Element[];
-  slider: SliderConfig;
-  duration: number;
+  slideList: Element[];
+  config: SliderConfig;
   onPrev(slider: HandleMouseProps): (e: MouseEvent) => SliderConfig;
   onNext(slider: HandleMouseProps): (e: MouseEvent) => SliderConfig;
   onMouseMove(init: HandleMouseMoveProps): (e: MouseEvent) => void;

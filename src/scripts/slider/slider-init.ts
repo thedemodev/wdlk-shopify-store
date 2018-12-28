@@ -1,23 +1,15 @@
 import * as Types from '../types';
 import * as Utils from '../utils';
-import {
-  handleEnd,
-  handleStart,
-  handleMove,
-  handleNext,
-  handlePrev,
-  handleMouseMove,
-  handleMouseLeave,
-  jumpToSlide
-} from './slider';
+import { handleNext, handlePrev } from './slider';
+import { handleMouseMove, handleMouseLeave, jumpToSlide } from './mouse-events';
+import { handleEnd, handleStart, handleMove } from './touch-events';
 import { cloneFirstLast, sanatizedNodes } from './utils';
 
 export const initTouch = ({
+  sliderEl,
   trackEl,
-  dots,
-  slides,
-  slider,
-  duration,
+  slideList,
+  config,
   onStart,
   onMove,
   onEnd
@@ -27,9 +19,9 @@ export const initTouch = ({
   }
   const trackWidth = Utils.getElWidth(trackEl);
 
-  if (Array.isArray(slides) && slides.length > 1) {
-    slides.forEach((slide: HTMLElement, i: number) => {
-      slide.addEventListener('touchstart', onStart(slider), {
+  if (Array.isArray(slideList) && slideList.length > 1) {
+    slideList.forEach((slide: HTMLElement, i: number) => {
+      slide.addEventListener('touchstart', onStart(config), {
         passive: true
       });
 
@@ -37,12 +29,10 @@ export const initTouch = ({
         'touchmove',
         onMove({
           trackEl,
-          dots,
           trackWidth,
-          slider,
-          duration,
-          dotIndex: slider.index,
-          itemLength: slides.length
+          config,
+          dotIndex: config.index,
+          itemLength: slideList.length
         }),
         { passive: true }
       );
@@ -51,12 +41,10 @@ export const initTouch = ({
         'touchend',
         onEnd({
           trackEl,
-          dots,
           trackWidth,
-          slider,
-          duration,
-          dotIndex: slider.index,
-          itemLength: slides.length
+          config,
+          dotIndex: config.index,
+          itemLength: slideList.length
         }),
         { passive: true }
       );
@@ -65,12 +53,10 @@ export const initTouch = ({
 };
 
 export const initMouse = ({
+  sliderEl,
   trackEl,
-  slides,
-  slider,
-  controls,
-  dots,
-  duration,
+  slideList,
+  config,
   onMouseMove,
   onMouseLeave,
   onNext,
@@ -79,9 +65,13 @@ export const initMouse = ({
   if (!trackEl) {
     return;
   }
-
+  const controls = [...sliderEl.querySelectorAll('.js_slider-btn')];
+  const dotList = [...sliderEl.querySelectorAll('.js_slider-dot')];
+  if (!controls || !dotList) {
+    return;
+  }
   const trackWidth = Utils.getElWidth(trackEl);
-  const slideWidth = trackWidth / slides.length;
+  const slideWidth = trackWidth / slideList.length;
 
   if (Array.isArray(controls) && controls.length > 1) {
     controls.forEach((btn: HTMLElement, i: number): void => {
@@ -110,12 +100,11 @@ export const initMouse = ({
           'click',
           onPrev({
             trackEl,
-            dots,
+            dotList,
             trackWidth,
-            slider,
-            duration,
-            dotIndex: slider.index,
-            itemLength: slides.length
+            config,
+            dotIndex: config.index,
+            itemLength: slideList.length
           })
         );
       }
@@ -124,12 +113,11 @@ export const initMouse = ({
           'click',
           onNext({
             trackEl,
-            dots,
+            dotList,
             trackWidth,
-            slider,
-            duration,
-            dotIndex: slider.index,
-            itemLength: slides.length
+            config,
+            dotIndex: config.index,
+            itemLength: slideList.length
           })
         );
       }
@@ -142,14 +130,14 @@ export const initMouse = ({
       );
     });
   }
-  if (Array.isArray(dots) && dots.length > 1) {
-    dots.forEach((dot: HTMLElement, index: number): void => {
+  if (Array.isArray(dotList) && dotList.length > 1) {
+    dotList.forEach((dot: HTMLElement, index: number): void => {
       dot.addEventListener(
         'click',
         jumpToSlide({
           trackEl,
-          slider,
-          dots,
+          config,
+          dotList,
           slideWidth,
           dotIndex: index
         })
@@ -158,34 +146,26 @@ export const initMouse = ({
   }
 };
 
-export const init = ({
-  trackEl,
-  slides,
-  controls,
-  dots,
-  slider,
-  duration
-}: Types.SliderInit): void => {
+export const init = ({ sliderEl, trackEl, config }: Types.SliderInit): void => {
   if (!trackEl) {
     return;
   }
-  const clonedSlides = sanatizedNodes(cloneFirstLast(slides));
+  const slideList = [...trackEl.querySelectorAll('.js_slider-item')];
+  const clonedSlides = sanatizedNodes(cloneFirstLast(slideList));
   trackEl.appendChild(clonedSlides[0]);
-  trackEl.insertBefore(clonedSlides[1], slides[0]);
+  trackEl.insertBefore(clonedSlides[1], slideList[0]);
   clonedSlides.forEach((slide: Element, i: number) => {
-    slides.push(clonedSlides[i]);
+    slideList.push(clonedSlides[i]);
   });
-  slider.moveX = slider.index * (Utils.getElWidth(trackEl) / slides.length);
+  config.moveX = config.index * (Utils.getElWidth(trackEl) / slideList.length);
 
-  (trackEl as HTMLElement).style.setProperty('--items', `${slides.length}`);
-  (trackEl as HTMLElement).style.setProperty('--moveX', `${-slider.moveX}`);
+  (trackEl as HTMLElement).style.setProperty('--items', `${slideList.length}`);
+  (trackEl as HTMLElement).style.setProperty('--moveX', `${-config.moveX}`);
   const mouseConfig: Types.MouseInit = {
+    sliderEl,
     trackEl,
-    slides,
-    controls,
-    dots,
-    slider,
-    duration,
+    slideList,
+    config,
     jumpToSlide,
     onNext: handleNext,
     onPrev: handlePrev,
@@ -194,11 +174,10 @@ export const init = ({
   };
 
   const touchConfig: Types.TouchInit = {
+    sliderEl,
     trackEl,
-    slides,
-    slider,
-    dots,
-    duration: duration * 2,
+    slideList,
+    config,
     onStart: handleStart,
     onMove: handleMove,
     onEnd: handleEnd
