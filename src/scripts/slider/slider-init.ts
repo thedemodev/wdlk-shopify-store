@@ -9,25 +9,26 @@ export const initTouch = ({
   sliderEl,
   trackEl,
   slideList,
-  config,
-  onStart,
-  onMove,
-  onEnd
+  config
 }: Types.TouchInit): void => {
   if (!trackEl) {
+    return;
+  }
+  const controls = [...sliderEl.querySelectorAll('.js_slider-btn')];
+  if (!controls) {
     return;
   }
   const trackWidth = Utils.getElWidth(trackEl);
 
   if (Array.isArray(slideList) && slideList.length > 1) {
     slideList.forEach((slide: HTMLElement, i: number) => {
-      slide.addEventListener('touchstart', onStart(config), {
+      slide.addEventListener('touchstart', handleStart(config), {
         passive: true
       });
 
       slide.addEventListener(
         'touchmove',
-        onMove({
+        handleMove({
           trackEl,
           trackWidth,
           config,
@@ -39,7 +40,7 @@ export const initTouch = ({
 
       slide.addEventListener(
         'touchend',
-        onEnd({
+        handleEnd({
           trackEl,
           trackWidth,
           config,
@@ -50,17 +51,39 @@ export const initTouch = ({
       );
     });
   }
+  controls.forEach((btn: Element, i: number) => {
+    if (i === 0) {
+      btn.addEventListener(
+        'click',
+        handlePrev({
+          trackEl,
+          trackWidth,
+          config,
+          dotIndex: config.index,
+          itemLength: slideList.length
+        })
+      );
+    }
+    if (i === 1) {
+      btn.addEventListener(
+        'click',
+        handleNext({
+          trackEl,
+          trackWidth,
+          config,
+          dotIndex: config.index,
+          itemLength: slideList.length
+        })
+      );
+    }
+  });
 };
 
 export const initMouse = ({
   sliderEl,
   trackEl,
   slideList,
-  config,
-  onMouseMove,
-  onMouseLeave,
-  onNext,
-  onPrev
+  config
 }: Types.MouseInit): void => {
   if (!trackEl) {
     return;
@@ -77,7 +100,7 @@ export const initMouse = ({
     controls.forEach((btn: HTMLElement, i: number): void => {
       btn.addEventListener(
         'mouseenter',
-        onMouseMove({
+        handleMouseMove({
           isNext: i === 0 ? false : true,
           trackEl,
           slideWidth
@@ -85,7 +108,7 @@ export const initMouse = ({
       );
       btn.addEventListener(
         'mousemove',
-        onMouseMove({
+        handleMouseMove({
           isNext: i === 0 ? false : true,
           trackEl,
           slideWidth
@@ -94,11 +117,11 @@ export const initMouse = ({
           passive: true
         }
       );
-      btn.addEventListener('mouseleave', onMouseLeave);
+      btn.addEventListener('mouseleave', handleMouseLeave);
       if (i === 0) {
         btn.addEventListener(
           'click',
-          onPrev({
+          handlePrev({
             trackEl,
             dotList,
             trackWidth,
@@ -111,7 +134,7 @@ export const initMouse = ({
       if (i === 1) {
         btn.addEventListener(
           'click',
-          onNext({
+          handleNext({
             trackEl,
             dotList,
             trackWidth,
@@ -122,7 +145,7 @@ export const initMouse = ({
         );
       }
       window.requestAnimationFrame(() =>
-        onMouseMove({
+        handleMouseMove({
           isNext: i === 0 ? false : true,
           trackEl,
           slideWidth
@@ -165,22 +188,14 @@ export const init = ({ sliderEl, trackEl, config }: Types.SliderInit): void => {
     sliderEl,
     trackEl,
     slideList,
-    config,
-    jumpToSlide,
-    onNext: handleNext,
-    onPrev: handlePrev,
-    onMouseMove: handleMouseMove,
-    onMouseLeave: handleMouseLeave
+    config
   };
 
   const touchConfig: Types.TouchInit = {
     sliderEl,
     trackEl,
     slideList,
-    config,
-    onStart: handleStart,
-    onMove: handleMove,
-    onEnd: handleEnd
+    config
   };
 
   if (window.matchMedia('(min-width: 769px)').matches) {

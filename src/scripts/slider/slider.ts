@@ -1,5 +1,4 @@
 import * as Types from '../types';
-import * as Utils from '../utils';
 
 export const Config = {
   sliderInit: {
@@ -17,6 +16,19 @@ export const Config = {
     this.sliderInit.transition = transitionDuration;
     return { ...this.sliderInit };
   }
+};
+
+const updateDots = ({ dotList, dotIndex }: Types.UpdateDotsInit): void => {
+  if (!dotList) {
+    return;
+  }
+  dotList.map((dot: HTMLElement, i: number): void => {
+    if (i === dotIndex) {
+      dot.style.setProperty('--active', '1');
+    } else {
+      dot.style.setProperty('--active', '0');
+    }
+  });
 };
 
 export const handleInfinite = ({
@@ -60,19 +72,6 @@ export const handleInfinite = ({
   };
 };
 
-const updateDots = ({ dotList, dotIndex }: Types.UpdateDotsInit): void => {
-  if (!dotList) {
-    return;
-  }
-  dotList.map((dot: HTMLElement, i: number): void => {
-    if (i === dotIndex) {
-      dot.style.setProperty('--active', '1');
-    } else {
-      dot.style.setProperty('--active', '0');
-    }
-  });
-};
-
 export const handleNext = ({
   trackEl,
   dotList,
@@ -105,10 +104,12 @@ export const handleNext = ({
   if (config.moveX >= trackWidth - slideWidth) {
     inifinite.next();
   }
-  updateDots({
-    dotList,
-    dotIndex: config.index <= dotList.length ? config.index - 1 : 0
-  });
+  if (dotList && dotList.length > 1) {
+    updateDots({
+      dotList,
+      dotIndex: config.index <= dotList.length ? config.index - 1 : 0
+    });
+  }
   return config;
 };
 
@@ -143,9 +144,11 @@ export const handlePrev = ({
   if (config.moveX === 0) {
     inifinite.prev();
   }
-  updateDots({
-    dotList,
-    dotIndex: config.index < 1 ? dotList.length - 1 : config.index - 1
-  });
+  if (dotList && dotList.length > 1) {
+    updateDots({
+      dotList,
+      dotIndex: config.index < 1 ? dotList.length - 1 : config.index - 1
+    });
+  }
   return config;
 };

@@ -17,7 +17,7 @@ export interface HandleTouchProps {
 export interface HandleMouseProps {
   trackEl: Element;
   dotIndex: number;
-  dotList: Element[];
+  dotList?: Element[];
   trackWidth: number;
   itemLength: number;
   config: SliderConfig;
@@ -60,9 +60,6 @@ export interface TouchInit {
   trackEl: Element;
   slideList: Element[];
   config: SliderConfig;
-  onStart(slider: SliderConfig): (e: TouchEvent) => SliderConfig;
-  onMove(onMoveInit: HandleTouchProps): (e: TouchEvent) => SliderConfig;
-  onEnd(onEndInit: HandleTouchProps): (e: TouchEvent) => SliderConfig;
 }
 
 export interface MouseInit {
@@ -70,9 +67,4 @@ export interface MouseInit {
   trackEl: Element;
   slideList: Element[];
   config: SliderConfig;
-  onPrev(slider: HandleMouseProps): (e: MouseEvent) => SliderConfig;
-  onNext(slider: HandleMouseProps): (e: MouseEvent) => SliderConfig;
-  onMouseMove(init: HandleMouseMoveProps): (e: MouseEvent) => void;
-  onMouseLeave(e: MouseEvent): void;
-  jumpToSlide(init: JumpToSlideInit): (e: MouseEvent) => void;
 }

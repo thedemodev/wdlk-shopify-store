@@ -3,6 +3,9 @@
     <span class="Slider-pointer">
       {{ 'home_page.sections.main_prev' | t }}
     </span>
+    <svg class="Icon Icon--left">
+      <use xlink:href="#Arrow_left" />
+    </svg>
   </button>
   <div class="Slider-track js_track">
     {% assign headline = 'home_page.sections.main_headline_1' | t %}
@@ -45,6 +48,9 @@
     <span class="Slider-pointer">
       {{ 'home_page.sections.main_next' | t }}
     </span>
+    <svg class="Icon Icon--right">
+        <use xlink:href="#Arrow_right" />
+    </svg>
   </button>
   <div class="Slider-navigation">
     <div class="Slider-dot js_slider-dot" style="--active: 1"></div>
