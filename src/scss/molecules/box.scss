@@ -1,0 +1,33 @@
+.Box {
+  position: relative;
+  line-height: 0;
+}
+
+.Box--parallax {
+  --media-height: 45;
+  --copy-width: 700;
+}
+
+.Box-content {
+  position: relative;
+  max-width: calc(var(--copy-width) * 1px);
+  padding:
+    calc(var(--size-4XL) * 1px)
+    calc(var(--size-3XL) * 1px);
+  margin: auto;
+  line-height: 1.5;
+  background-color: $hex-white;
+}
+
+.Box-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: -1;
+  width: 100vw;
+  height: 100%;
+  transform: translateX(-50%);
+  background-color: inherit;
+}
+

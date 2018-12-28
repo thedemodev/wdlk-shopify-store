@@ -1,0 +1,26 @@
+.Banner--parallax {
+  position: relative;
+  z-index: -2;
+  height: calc(var(--media-height) * 1vh);
+  line-height: 1.5;
+}
+
+.Banner--parallax .Banner-content,
+.Banner--parallax .Headline {
+  max-width: calc(var(--copy-width) * 1px);
+  color: $hex-off-white;
+}
+
+.Banner--parallax .Video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: calc(var(--media-height) * 1vh);
+  width: 100vw;
+  object-fit: cover;
+  object-position: top;
+}
+
+.Banner--parallax .Video-bg {
+  display: block;
+}

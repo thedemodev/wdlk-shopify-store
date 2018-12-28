@@ -376,5 +376,13 @@
   },
   "date_formats": {
     "month_day_year": "%B %d, %Y"
+  },
+  "page": {
+    "sustainability": {
+      "banner_content": "We want to protect what we love. Together we help create healthy oceans with highly sustainable and renewable swimwear."
+    },
+    "about_us": {
+      "banner_content": "We are Sonja and Mauricio Palma, wife - husband duo, partners and creators of Woodlike Ocean. Both of us share a deep love for the ocean, exotic beaches, and a healthy lifestyle."
+    }
   }
 }
