@@ -2,8 +2,15 @@
   <figure class="Banner Banner--parallax">
     <figcaption class="Banner-content">
       <h1 class="Headline Headline--1">{{ page.title }}</h1>
-      <p class="Copy--l">{{'page.sustainability.banner_content' | t }}</p>
+      <p class="Copy--l">
+      {% if page.handle  == 'sustainability' %}
+        {{'page.sustainability.banner_content' | t }}
+      {% elsif page.handle  == 'about-us' %}
+        {{'page.about_us.banner_content' | t }}
+      {% endif %}
+      </p>
     </figcaption>
+    <div>
     {% assign videoWebM =
       'WDLK_Brand-Video-Bg.webm' | file_url %}
     {% assign videoMp4 =
@@ -12,6 +19,7 @@
       'WDLK_Brand-Video-Poster.jpg' | file_img_url %}
     {% assign mute = true %}
     {% include 'video' %}
+    </div>
   </figure>
   <section class="Box-content">
     {{ page.content }}

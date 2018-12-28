@@ -1,5 +1,6 @@
 .Box {
   position: relative;
+  line-height: 0;
 }
 
 .Box--parallax {
@@ -14,6 +15,7 @@
     calc(var(--size-4XL) * 1px)
     calc(var(--size-3XL) * 1px);
   margin: auto;
+  line-height: 1.5;
   background-color: $hex-white;
 }
 

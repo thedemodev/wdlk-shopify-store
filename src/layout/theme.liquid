@@ -38,7 +38,7 @@
   {% comment %}
     Add the page template as a class for easy page or template specific styling.
   {% endcomment %}
-  <body class="Layout{% if customer %} customer-logged-in{% endif %}{% if template == 'index' %} Layout--main js_scroller{% endif %}">
+  <body class="Layout{% if customer %} customer-logged-in{% endif %}{% if template == 'index' %} Layout--main js_scroller{% elsif template == 'page.parallax_banner' %} Layout--parallax{% endif %}">
     <div class="Layout-container {% if template == 'index' %}js_fadeThrough{% endif %}">
       {% comment %} NOTIFICATION TEASER {% endcomment %}
       {% include 'notification-teaser' %}
