@@ -1,5 +1,5 @@
 .Headline--extended {
-  --headline-size: 3.3;
+  --headline-size: 2.8;
 
   margin: 0;
   font-family: "museo300";
@@ -8,7 +8,7 @@
   text-transform: uppercase;
 
   @media(min-width: 768px) {
-    --headline-size: 5.3;
+    --headline-size: 4.3;
   }
 
   @include media(large) {
