@@ -8,7 +8,11 @@
 .Banner--parallax .Banner-content,
 .Banner--parallax .Headline {
   max-width: calc(var(--copy-width) * 1px);
-  color: $hex-off-white;
+  color: $hex-dark-asphalt;
+}
+
+.Banner--parallax .Copy--l {
+  font-weight: bold;
 }
 
 .Banner--parallax .Video {
