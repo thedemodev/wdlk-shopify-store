@@ -184,16 +184,6 @@ export const init = ({ sliderEl, trackEl, config }: Types.SliderInit): void => {
 
   (trackEl as HTMLElement).style.setProperty('--items', `${slideList.length}`);
   (trackEl as HTMLElement).style.setProperty('--moveX', `${-config.moveX}`);
-  window.addEventListener('resize', () => {
-    config.moveX =
-      config.index * (Utils.getElWidth(trackEl) / slideList.length);
-
-    (trackEl as HTMLElement).style.setProperty(
-      '--items',
-      `${slideList.length}`
-    );
-    (trackEl as HTMLElement).style.setProperty('--moveX', `${-config.moveX}`);
-  });
   const mouseConfig: Types.MouseInit = {
     sliderEl,
     trackEl,
@@ -213,4 +203,19 @@ export const init = ({ sliderEl, trackEl, config }: Types.SliderInit): void => {
   } else {
     initTouch(touchConfig);
   }
+  window.addEventListener('resize', () => {
+    config.moveX =
+      config.index * (Utils.getElWidth(trackEl) / slideList.length);
+
+    (trackEl as HTMLElement).style.setProperty(
+      '--items',
+      `${slideList.length}`
+    );
+    (trackEl as HTMLElement).style.setProperty('--moveX', `${-config.moveX}`);
+    if (window.matchMedia('(min-width: 769px)').matches) {
+      initMouse(mouseConfig);
+    } else {
+      initTouch(touchConfig);
+    }
+  });
 };

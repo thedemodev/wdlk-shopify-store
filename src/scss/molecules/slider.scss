@@ -23,7 +23,7 @@
   box-sizing: border-box;
   width: 100%;
   margin: auto;
-  padding: 0 #{$size-M}px;
+  padding: 0 10vw;
   transform: translateY(80%);
   font-size: 1.4rem;
 
@@ -48,12 +48,13 @@
   width: 100%;
   height: calc(100vh - #{$nav-height});
   object-fit: cover;
+  object-position: top;
   @include media(large) {
     height: calc(100vh - #{$nav-height-medium});
   }
 }
 
-.Slider .Headline {
+.Slider-content .Headline {
   margin: 0;
   pointer-events: none;
 }
@@ -65,12 +66,19 @@
 .Slider .Icon {
   width: 1.4rem;
   height: 1.4rem;
+}
+
+.Slider-content .Icon {
   margin-bottom: -2px;
 }
+
 
 .Slider-btn {
   position: absolute;
   top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 10vw;
   height: 100%;
   max-width: 500px;
@@ -80,6 +88,7 @@
   outline: none;
   pointer-events: none;
   background-color: transparent;
+  overflow: visible;
   @include media(medium) {
     width: 30vw;
   }
@@ -87,6 +96,7 @@
     display: block;
     pointer-events: all;
     cursor: pointer;
+    overflow: hidden;
   }
 }
 
@@ -100,12 +110,8 @@
 
 .Slider-btn .Icon {
   display: block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
   margin: auto;
+  padding: 4rem 2.8rem;
   cursor: pointer;
   color: $hex-white-smoke;
   pointer-events: all;
