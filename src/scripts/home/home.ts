@@ -1,3 +1,5 @@
+import * as SDK from '../facebook-sdk';
+// import * as IG from '../instagram';
 import * as Slider from '../slider';
 import * as Types from '../types';
 
@@ -9,3 +11,4 @@ const configuration: Types.SliderInit = {
 };
 
 Slider.init(configuration);
+SDK.init();

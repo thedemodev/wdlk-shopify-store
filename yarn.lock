@@ -852,6 +852,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/facebook-js-sdk@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@types/facebook-js-sdk/-/facebook-js-sdk-3.1.0.tgz#bef7462997f77a2fca05661d90d0c19504d8a885"
+  integrity sha512-oSZbrW0rhfnCS1apYcvVR+mTFb3a3xDLrtQveiuYwXDaxNy4GGp0XRppyF7WUpu/UYF6CXBYtXfJCXAMxQVoiQ==
+
 "@types/facebook-pixel@0.0.19":
   version "0.0.19"
   resolved "https://registry.yarnpkg.com/@types/facebook-pixel/-/facebook-pixel-0.0.19.tgz#37f6b8eeab00ff58b3d3b7a90d7c5d277ff5c5ae"
