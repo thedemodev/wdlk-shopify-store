@@ -71,14 +71,27 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/scripts/facebook-sdk/index.tsx":
-/*!********************************************!*\
-  !*** ./src/scripts/facebook-sdk/index.tsx ***!
-  \********************************************/
+/***/ "./configuration/instagram/graph.ts":
+/*!******************************************!*\
+  !*** ./configuration/instagram/graph.ts ***!
+  \******************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("throw new Error(\"Module build failed: Error: ENOENT: no such file or directory, open '/Users/Palmaswell/Lab/wdlk-shopify-store/src/scripts/facebook-sdk/index.tsx'\");\n\n//# sourceURL=webpack:///./src/scripts/facebook-sdk/index.tsx?");
+"use strict";
+eval("Object.defineProperty(exports,\"__esModule\",{value:!0}),exports.access=void 0;var access={id:17841402066497892,token:\"EAAGpy4D1CoQBAPEBF8wQ2fGewfeE9bJDoW5rPZAiMbuagwlY2tixtk3tPi0C4lptsh2qRbSip5tpmbt6iBy5eietVdv6CZBq2wdPVISHEVG5WfWxPBQBBtcpWwJL00MIEPI9AoGPKnIvQbavfmGgQeDOhbw5m2O048XRjRf4hx5QqECZA6HDiqCP5clwLQZD\"};exports.access=access;\n\n//# sourceURL=webpack:///./configuration/instagram/graph.ts?");
+
+/***/ }),
+
+/***/ "./configuration/instagram/index.ts":
+/*!******************************************!*\
+  !*** ./configuration/instagram/index.ts ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("var _graph=__webpack_require__(/*! ./graph */ \"./configuration/instagram/graph.ts\");Object.defineProperty(exports,\"__esModule\",{value:!0});Object.keys(_graph).forEach(function(a){\"default\"===a||\"__esModule\"===a||Object.defineProperty(exports,a,{enumerable:!0,get:function b(){return _graph[a]}})});\n\n//# sourceURL=webpack:///./configuration/instagram/index.ts?");
 
 /***/ }),
 
@@ -90,7 +103,7 @@ eval("throw new Error(\"Module build failed: Error: ENOENT: no such file or dire
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("var SDK=_interopRequireWildcard(__webpack_require__(/*! ../facebook-sdk */ \"./src/scripts/facebook-sdk/index.tsx\")),Slider=_interopRequireWildcard(__webpack_require__(/*! ../slider */ \"./src/scripts/slider/index.ts\"));function _interopRequireWildcard(a){if(a&&a.__esModule)return a;var b={};if(null!=a)for(var c in a)if(Object.prototype.hasOwnProperty.call(a,c)){var d=Object.defineProperty&&Object.getOwnPropertyDescriptor?Object.getOwnPropertyDescriptor(a,c):{};d.get||d.set?Object.defineProperty(b,c,d):b[c]=a[c]}return b.default=a,b}var sliderEl=document.querySelector(\".js_slider\"),configuration={sliderEl:sliderEl,trackEl:sliderEl.querySelector(\".js_track\"),config:Slider.Config.create({transitionDuration:300})};Slider.init(configuration),SDK.init();\n\n//# sourceURL=webpack:///./src/scripts/home/home.ts?");
+eval("var IG=_interopRequireWildcard(__webpack_require__(/*! ../instagram */ \"./src/scripts/instagram/index.ts\")),Slider=_interopRequireWildcard(__webpack_require__(/*! ../slider */ \"./src/scripts/slider/index.ts\"));function _interopRequireWildcard(a){if(a&&a.__esModule)return a;var b={};if(null!=a)for(var c in a)if(Object.prototype.hasOwnProperty.call(a,c)){var d=Object.defineProperty&&Object.getOwnPropertyDescriptor?Object.getOwnPropertyDescriptor(a,c):{};d.get||d.set?Object.defineProperty(b,c,d):b[c]=a[c]}return b.default=a,b}var sliderEl=document.querySelector(\".js_slider\"),configuration={sliderEl:sliderEl,trackEl:sliderEl.querySelector(\".js_track\"),config:Slider.Config.create({transitionDuration:300})},igFeed=IG.create({mountEl:document.querySelector(\".js_instagramFeed\")});\n\n//# sourceURL=webpack:///./src/scripts/home/home.ts?");
 
 /***/ }),
 
@@ -103,6 +116,30 @@ eval("var SDK=_interopRequireWildcard(__webpack_require__(/*! ../facebook-sdk */
 
 "use strict";
 eval("var _home=__webpack_require__(/*! ./home */ \"./src/scripts/home/home.ts\");Object.defineProperty(exports,\"__esModule\",{value:!0});Object.keys(_home).forEach(function(a){\"default\"===a||\"__esModule\"===a||Object.defineProperty(exports,a,{enumerable:!0,get:function b(){return _home[a]}})});\n\n//# sourceURL=webpack:///./src/scripts/home/index.ts?");
+
+/***/ }),
+
+/***/ "./src/scripts/instagram/index.ts":
+/*!****************************************!*\
+  !*** ./src/scripts/instagram/index.ts ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("var _media=__webpack_require__(/*! ./media */ \"./src/scripts/instagram/media.ts\");Object.defineProperty(exports,\"__esModule\",{value:!0});Object.keys(_media).forEach(function(a){\"default\"===a||\"__esModule\"===a||Object.defineProperty(exports,a,{enumerable:!0,get:function b(){return _media[a]}})});\n\n//# sourceURL=webpack:///./src/scripts/instagram/index.ts?");
+
+/***/ }),
+
+/***/ "./src/scripts/instagram/media.ts":
+/*!****************************************!*\
+  !*** ./src/scripts/instagram/media.ts ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("var Graph=_interopRequireWildcard(__webpack_require__(/*! ../../../configuration/instagram/ */ \"./configuration/instagram/index.ts\"));Object.defineProperty(exports,\"__esModule\",{value:!0}),exports.create=exports.mediaList=void 0;function _interopRequireWildcard(a){if(a&&a.__esModule)return a;var b={};if(null!=a)for(var c in a)if(Object.prototype.hasOwnProperty.call(a,c)){var d=Object.defineProperty&&Object.getOwnPropertyDescriptor?Object.getOwnPropertyDescriptor(a,c):{};d.get||d.set?Object.defineProperty(b,c,d):b[c]=a[c]}return b.default=a,b}var urlMediaList=\"https://graph.facebook.com/v3.2/\".concat(Graph.access.id,\"/media?access_token=\").concat(Graph.access.token),urlMdia=\"https://graph.facebook.com/v3.2/[MEDIA_ID]?access_token=\".concat(Graph.access.token,\"&fields=media_type,media_url,thumbnail_url,permalink,caption;\"),mediaIDList=fetch(urlMediaList).then(function(a){return 200===a.status?a.json().then(function(a){return a}):void console.log(\"There was a problem with IG response. Status code: \".concat(a.status))}).catch(function(a){return console.log(\"IG media fetch error: \".concat(a))}),mediaList=mediaIDList.then(function(a){return console.log(a,\"&&&&&&&&\")});exports.mediaList=mediaList,console.log(mediaList);var create=function(a){var b=a.mountEl;console.log(b,\"this shold be the element\")};exports.create=create;\n\n//# sourceURL=webpack:///./src/scripts/instagram/media.ts?");
 
 /***/ }),
 

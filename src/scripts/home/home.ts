@@ -1,5 +1,4 @@
-import * as SDK from '../facebook-sdk';
-// import * as IG from '../instagram';
+import * as IG from '../instagram';
 import * as Slider from '../slider';
 import * as Types from '../types';
 
@@ -10,5 +9,6 @@ const configuration: Types.SliderInit = {
   config: Slider.Config.create({ transitionDuration: 300 })
 };
 
-Slider.init(configuration);
-SDK.init();
+const igFeed = IG.create({
+  mountEl: document.querySelector('.js_instagramFeed')
+})

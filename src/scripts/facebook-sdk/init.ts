@@ -25,3 +25,6 @@ export function init(): void {
     fjs.parentNode.insertBefore(js, fjs);
   })(document, 'script', 'facebook-jssdk');
 }
+
+const foo = FB.getAuthResponse();
+console.log(foo, '*********');
