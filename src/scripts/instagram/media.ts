@@ -1,26 +1,47 @@
-import * as Graph from "../../../configuration/instagram/";
+import * as Graph from '../../../configuration/instagram/';
 
-export interface IGFeedInit {
+export interface FeedInit {
     mountEl: HTMLElement;
 }
 
-const urlMediaList = `https://graph.facebook.com/v3.2/${Graph.access.id}/media?access_token=${Graph.access.token}`;
-const urlMdia = `https://graph.facebook.com/v3.2/[MEDIA_ID]?access_token=${Graph.access.token}&fields=media_type,media_url,thumbnail_url,permalink,caption;`
-
-
-const mediaIDList = fetch(urlMediaList).then(response => {
-    if (response.status !== 200) {
-        console.log(`There was a problem with IG response. Status code: ${response.status}`);
-        return;
+// tslint:disable-next-line:no-any
+export async function fetchMediaData(id: string): Promise<any> {
+  try {
+    const r = await fetch(`https://graph.facebook.com/v3.2/${id}/?access_token=${Graph.access.token}&fields=media_type,media_url,thumbnail_url,permalink,caption,comments_count,like_count`);
+    const d = await r.json();
+    if (r.status !== 200) {
+      console.log(`There was a problem fetching media data. Status code: ${r.status}`);
+      return;
     }
-    return response.json().then(data => data);
-})
-.catch(error => console.log(`IG media fetch error: ${error}`));
+    return d;
+  } catch (err) {
+    console.log(`IG media data fetch error: ${err}`);
+  }
+}
 
-export const mediaList = mediaIDList.then(data => console.log(data, '&&&&&&&&'));
+// tslint:disable-next-line:no-any
+export async function fetchMedia(url: string): Promise<any> {
+  try {
+    const r = await fetch(url);
+    const ids = await r.json();
 
-console.log(mediaList)
+    if (r.status !== 200) {
+      console.log(`There was a problem fetching the media id's. Status code: ${r.status}`);
+      return;
+    }
 
-export const create = ({ mountEl }: IGFeedInit): void => {
-    console.log(mountEl, 'this shold be the element');
+    const results = await Promise.all(ids.data.map((data: { id: string }) => fetchMediaData(data.id)));
+
+    return results;
+  } catch (err) {
+    console.log(`IG media fetch error: ${err}`);
+  }
+}
+
+const result = fetchMedia(`https://graph.facebook.com/v3.2/${Graph.access.id}/media?access_token=${Graph.access.token}`);
+
+result.then(data => console.log(data, 'getting the data another way'));
+
+export function create({ mountEl }: FeedInit): void {
+  console.log(mountEl, 'this shold be the element');
 }

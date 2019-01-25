@@ -6918,6 +6918,11 @@ immutable@^3.7.6:
   resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"
   integrity sha1-wkOZUUVbs5kT2vKBN28VMOEErfM=
 
+immutable@^4.0.0-rc.12:
+  version "4.0.0-rc.12"
+  resolved "https://registry.yarnpkg.com/immutable/-/immutable-4.0.0-rc.12.tgz#ca59a7e4c19ae8d9bf74a97bdf0f6e2f2a5d0217"
+  integrity sha512-0M2XxkZLx/mi3t8NVwIm1g8nHoEmM9p9UBl/G9k4+hm0kBgOVdMV/B3CY5dQ8qG8qc80NN4gDV4HQv6FTJ5q7A==
+
 import-lazy@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/import-lazy/-/import-lazy-2.1.0.tgz#05698e3d45c88e8d7e9d92cb0584e77f096f3e43"
@@ -11422,6 +11427,11 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
   integrity sha1-gV7R9uvGWSb4ZbMQwHE7yzMVzks=
+
+prettier@1.10.2:
+  version "1.10.2"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.10.2.tgz#1af8356d1842276a99a5b5529c82dd9e9ad3cc93"
+  integrity sha512-TcdNoQIWFoHblurqqU6d1ysopjq7UX0oRcT/hJ8qvBAELiYWn+Ugf0AXdnzISEJ7vuhNnQ98N8jR8Sh53x4IZg==
 
 prettier@^1.5.3:
   version "1.12.1"
