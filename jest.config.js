@@ -16,6 +16,6 @@ module.exports = {
     'json',
     'node'
   ],
-  setupFiles: ['jest-localstorage-mock'],
+  setupFiles: ['jest-localstorage-mock', '<rootDir>/jest.setup.js'],
   verbose: true,
 };

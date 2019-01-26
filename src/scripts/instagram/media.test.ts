@@ -1,15 +1,54 @@
-const MediaListMock = [
+import * as IG from './';
+// tslint:disable-next-line:no-any
+const fetchMock = fetch as any;
+const igMediaListMock = [
   {
-    caption: 'Everyday beach, every day you! Made for real-life experiences and not some made up expectations!!!⠀↵⠀↵The Coral top is reversible, seamless and crafted from ocean recovered fishing nets.⠀↵⠀↵Happy Friday ladies!!!!',
+    caption: 'test',
     comments_count: 3,
     id: '18025572241021954',
     like_count: 86,
     media_type: 'IMAGE',
-    media_url: 'https://scontent.xx.fbcdn.net/v/t51.2885-15/49345937_1997907663656524_2928267074044794081_n.jpg?_nc_cat=106&_nc_ht=scontent.xx&oh=28cd494919bd5dc9dda066fd153a136a&oe=5CBCADB3',
-    permalink: 'https://www.instagram.com/p/BtDam8Pn9mh/',
+    media_url: 'media_url',
+    permalink: 'permalink'
+  },
+  {
+    caption: '2',
+    comments_count: 3,
+    id: '2',
+    like_count: 86,
+    media_type: 'IMAGE',
+    media_url: 'media_url',
+    permalink: 'permalink'
+  },
+  {
+    caption: '3',
+    comments_count: 3,
+    id: '3',
+    like_count: 86,
+    media_type: 'IMAGE',
+    media_url: 'media_url',
+    permalink: 'permalink'
   }
 ];
 
-const mockRequest = jest.fn((url: string) => new Promise((resolve, reject) => {
+beforeEach(() => {
+  fetchMock.resetMocks();
+});
 
-}));
+test('Fetch Instagram Media object', () => {
+  fetchMock.mockResponseOnce(JSON.stringify(igMediaListMock[0]));
+
+  const result = IG.fetchMediaData('url');
+  expect(fetchMock.mock.calls.length).toEqual(1);
+  result.then(d => {
+    expect(d).toEqual({
+      caption: 'test',
+      comments_count: 3,
+      id: '18025572241021954',
+      like_count: 86,
+      media_type: 'IMAGE',
+      media_url: 'media_url',
+      permalink: 'permalink'
+    });
+  });
+});
