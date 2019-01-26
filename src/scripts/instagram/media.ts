@@ -50,7 +50,7 @@ export async function fetchMedia(url: string): Promise<any> {
 
 const result = fetchMedia(`https://graph.facebook.com/v3.2/${Graph.access.id}/media?access_token=${Graph.access.token}`);
 
-// result.then(data => console.log(data, 'getting the data another way###'));
+result.then(data => console.log(data, 'getting the data another way###'));
 
 export function create({ mountEl }: FeedInit): void {
   console.log(mountEl, 'this shold be the element');
