@@ -10,5 +10,5 @@ const configuration: Types.SliderInit = {
 };
 
 const igFeed = IG.create({
-  mountEl: document.querySelector('.js_instagramFeed');
+  mountEl: document.querySelector('.js_instagramFeed')
 });

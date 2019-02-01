@@ -14,6 +14,10 @@ export interface IstagramMedia {
   permalink: string;
 }
 
+export interface InstagramId {
+  id: string;
+}
+
 const getMediaURL = (id: string) => `https://graph.facebook.com/v3.2/${id}/?access_token=${Graph.access.token}&fields=media_type,media_url,thumbnail_url,permalink,caption,comments_count,like_count`;
 
 export async function fetchMediaData(id: string): Promise<IstagramMedia> {
@@ -34,23 +38,23 @@ export async function fetchMediaData(id: string): Promise<IstagramMedia> {
 export async function fetchMedia(url: string): Promise<any> {
   try {
     const r = await fetch(url);
-    const ids = await r.json();
+    const d = await r.json();
 
     if (r.status !== 200) {
       console.log(`There was a problem fetching the media id's. Status code: ${r.status}`);
       return;
     }
-    const results = await Promise.all(ids.data.map((data: { id: string }) => fetchMediaData(data.id)));
 
-    return results;
+    const list = await Promise.all(d.data.map((l: InstagramId) => fetchMediaData(l.id)));
+
+    return list;
   } catch (err) {
     console.log(`IG media fetch error: ${err}`);
   }
 }
 
-const result = fetchMedia(`https://graph.facebook.com/v3.2/${Graph.access.id}/media?access_token=${Graph.access.token}`);
-
-result.then(data => console.log(data, 'getting the data another way###'));
+const media = fetchMedia(`https://graph.facebook.com/v3.2/${Graph.access.id}/media?access_token=${Graph.access.token}`);
+media.then(data => console.log(data[0], '*******'));
 
 export function create({ mountEl }: FeedInit): void {
   console.log(mountEl, 'this shold be the element');
