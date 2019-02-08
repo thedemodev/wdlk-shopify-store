@@ -1,4 +1,5 @@
 import * as Graph from '../../../configuration/instagram/';
+import * as Component from './templates';
 
 export interface FeedInit {
     mountEl: HTMLElement;
@@ -12,13 +13,15 @@ export interface IstagramMedia {
   media_type: string;
   media_url: string;
   permalink: string;
+  thumbnail_url: string;
+  taken_at: number;
 }
 
 export interface InstagramId {
   id: string;
 }
 
-const getMediaURL = (id: string) => `https://graph.facebook.com/v3.2/${id}/?access_token=${Graph.access.token}&fields=media_type,media_url,thumbnail_url,permalink,caption,comments_count,like_count`;
+const getMediaURL = (id: string) => `https://graph.facebook.com/v3.2/${id}/?access_token=${Graph.access.token}&fields=media_type,media_url,thumbnail_url,permalink,caption,comments_count,like_count,taken_at`;
 
 export async function fetchMediaData(id: string): Promise<IstagramMedia> {
   try {
@@ -54,8 +57,28 @@ export async function fetchMedia(url: string): Promise<any> {
 }
 
 const media = fetchMedia(`https://graph.facebook.com/v3.2/${Graph.access.id}/media?access_token=${Graph.access.token}`);
-media.then(data => console.log(data[0], '*******'));
 
 export function create({ mountEl }: FeedInit): void {
-  console.log(mountEl, 'this shold be the element');
+  media.then(data => {
+    mountEl.innerHTML = data.map((post: IstagramMedia, i: number) => (
+      Component.Feed({
+        i,
+        caption: Component.Caption({
+          caption: post.caption,
+          likes: post.like_count,
+          time: post.taken_at,
+          user: 'WDLK'
+        }),
+        media: Component.Media({
+          link: post.permalink,
+          src: post.media_url
+        }),
+        thumbnail: Component.Thumbnail({
+          i,
+          imgURL: post.thumbnail_url || post.media_url,
+          thumbnailURL: post.thumbnail_url || post.media_url
+        })
+      })
+    )).join('');
+  });
 }

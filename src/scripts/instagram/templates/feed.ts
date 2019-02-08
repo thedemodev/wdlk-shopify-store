@@ -2,7 +2,7 @@ export interface FeedProps {
   i: number;
   caption: string;
   media: string;
-  tags: string[];
+  // tags: string[];
   thumbnail: string;
 }
 
@@ -14,9 +14,6 @@ export const Feed = ({thumbnail, media, caption, i}: FeedProps): string => `
       <label class="Lightbox-shim-close" for="lightbox-${i}"></label>
       <figure class="Lightbox-content">
         <header class="Lightbox-header">
-          <h3 class="Headline Headline--6">
-            #${tags}
-          </h3>
           <label class="Lightbox-icon" for="lightbox-${i}"></label>
         </header>
         ${media}

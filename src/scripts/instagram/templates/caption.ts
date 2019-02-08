@@ -1,6 +1,6 @@
 export interface CaptionProps {
-  likes: string;
-  time: number;
+  likes: number;
+  time: string;
   user: string;
   caption: string;
 }
