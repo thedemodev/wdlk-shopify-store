@@ -71,6 +71,30 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./configuration/instagram/graph.ts":
+/*!******************************************!*\
+  !*** ./configuration/instagram/graph.ts ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("Object.defineProperty(exports,\"__esModule\",{value:!0}),exports.access=void 0;var access={id:17841402066497892,token:\"EAAGpy4D1CoQBAPEBF8wQ2fGewfeE9bJDoW5rPZAiMbuagwlY2tixtk3tPi0C4lptsh2qRbSip5tpmbt6iBy5eietVdv6CZBq2wdPVISHEVG5WfWxPBQBBtcpWwJL00MIEPI9AoGPKnIvQbavfmGgQeDOhbw5m2O048XRjRf4hx5QqECZA6HDiqCP5clwLQZD\"};exports.access=access;\n\n//# sourceURL=webpack:///./configuration/instagram/graph.ts?");
+
+/***/ }),
+
+/***/ "./configuration/instagram/index.ts":
+/*!******************************************!*\
+  !*** ./configuration/instagram/index.ts ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("var _graph=__webpack_require__(/*! ./graph */ \"./configuration/instagram/graph.ts\");Object.defineProperty(exports,\"__esModule\",{value:!0});Object.keys(_graph).forEach(function(a){\"default\"===a||\"__esModule\"===a||Object.defineProperty(exports,a,{enumerable:!0,get:function b(){return _graph[a]}})});\n\n//# sourceURL=webpack:///./configuration/instagram/index.ts?");
+
+/***/ }),
+
 /***/ "./src/scripts/home/home.ts":
 /*!**********************************!*\
   !*** ./src/scripts/home/home.ts ***!
@@ -79,7 +103,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("var Slider=_interopRequireWildcard(__webpack_require__(/*! ../slider */ \"./src/scripts/slider/index.ts\"));function _interopRequireWildcard(a){if(a&&a.__esModule)return a;var b={};if(null!=a)for(var c in a)if(Object.prototype.hasOwnProperty.call(a,c)){var d=Object.defineProperty&&Object.getOwnPropertyDescriptor?Object.getOwnPropertyDescriptor(a,c):{};d.get||d.set?Object.defineProperty(b,c,d):b[c]=a[c]}return b.default=a,b}var sliderEl=document.querySelector(\".js_slider\"),configuration={sliderEl:sliderEl,trackEl:sliderEl.querySelector(\".js_track\"),config:Slider.Config.create({transitionDuration:300})};Slider.init(configuration);\n\n//# sourceURL=webpack:///./src/scripts/home/home.ts?");
+eval("var IG=_interopRequireWildcard(__webpack_require__(/*! ../instagram */ \"./src/scripts/instagram/index.ts\")),Slider=_interopRequireWildcard(__webpack_require__(/*! ../slider */ \"./src/scripts/slider/index.ts\"));function _interopRequireWildcard(a){if(a&&a.__esModule)return a;var b={};if(null!=a)for(var c in a)if(Object.prototype.hasOwnProperty.call(a,c)){var d=Object.defineProperty&&Object.getOwnPropertyDescriptor?Object.getOwnPropertyDescriptor(a,c):{};d.get||d.set?Object.defineProperty(b,c,d):b[c]=a[c]}return b.default=a,b}var sliderEl=document.querySelector(\".js_slider\"),configuration={sliderEl:sliderEl,trackEl:sliderEl.querySelector(\".js_track\"),config:Slider.Config.create({transitionDuration:300})},igFeed=IG.create({mountEl:document.querySelector(\".js_instagramFeed\"),postLimit:24});\n\n//# sourceURL=webpack:///./src/scripts/home/home.ts?");
 
 /***/ }),
 
@@ -92,6 +116,90 @@ eval("var Slider=_interopRequireWildcard(__webpack_require__(/*! ../slider */ \"
 
 "use strict";
 eval("var _home=__webpack_require__(/*! ./home */ \"./src/scripts/home/home.ts\");Object.defineProperty(exports,\"__esModule\",{value:!0});Object.keys(_home).forEach(function(a){\"default\"===a||\"__esModule\"===a||Object.defineProperty(exports,a,{enumerable:!0,get:function b(){return _home[a]}})});\n\n//# sourceURL=webpack:///./src/scripts/home/index.ts?");
+
+/***/ }),
+
+/***/ "./src/scripts/instagram/index.ts":
+/*!****************************************!*\
+  !*** ./src/scripts/instagram/index.ts ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("var _media=__webpack_require__(/*! ./media */ \"./src/scripts/instagram/media.ts\");Object.defineProperty(exports,\"__esModule\",{value:!0});Object.keys(_media).forEach(function(a){\"default\"===a||\"__esModule\"===a||Object.defineProperty(exports,a,{enumerable:!0,get:function b(){return _media[a]}})});\n\n//# sourceURL=webpack:///./src/scripts/instagram/index.ts?");
+
+/***/ }),
+
+/***/ "./src/scripts/instagram/media.ts":
+/*!****************************************!*\
+  !*** ./src/scripts/instagram/media.ts ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("Object.defineProperty(exports,\"__esModule\",{value:!0}),exports.fetchMediaData=fetchMediaData,exports.fetchMedia=fetchMedia,exports.create=create;var Graph=_interopRequireWildcard(__webpack_require__(/*! ../../../configuration/instagram/ */ \"./configuration/instagram/index.ts\")),Component=_interopRequireWildcard(__webpack_require__(/*! ./templates */ \"./src/scripts/instagram/templates/index.ts\"));function _interopRequireWildcard(a){if(a&&a.__esModule)return a;var b={};if(null!=a)for(var c in a)if(Object.prototype.hasOwnProperty.call(a,c)){var d=Object.defineProperty&&Object.getOwnPropertyDescriptor?Object.getOwnPropertyDescriptor(a,c):{};d.get||d.set?Object.defineProperty(b,c,d):b[c]=a[c]}return b.default=a,b}var __awaiter=function(a,b,c,d){return new(c||(c=Promise))(function(e,f){function g(a){try{i(d.next(a))}catch(a){f(a)}}function h(a){try{i(d[\"throw\"](a))}catch(a){f(a)}}function i(a){a.done?e(a.value):new c(function(b){b(a.value)}).then(g,h)}i((d=d.apply(a,b||[])).next())})},getMediaURL=function(a){return\"https://graph.facebook.com/v3.2/\".concat(a,\"/?access_token=\").concat(Graph.access.token,\"&fields=media_type,media_url,thumbnail_url,permalink,caption,comments_count,like_count\")};function fetchMediaData(a){return __awaiter(this,void 0,void 0,regeneratorRuntime.mark(function b(){var c,e;return regeneratorRuntime.wrap(function(b){for(;;)switch(b.prev=b.next){case 0:return b.prev=0,b.next=3,fetch(getMediaURL(a));case 3:return c=b.sent,b.next=6,c.json();case 6:if(e=b.sent,200===c.status){b.next=10;break}return console.log(\"There was a problem fetching media data. Status code: \".concat(c.status)),b.abrupt(\"return\");case 10:return b.abrupt(\"return\",e);case 13:b.prev=13,b.t0=b[\"catch\"](0),console.log(\"IG media data fetch error: \".concat(b.t0));case 16:case\"end\":return b.stop();}},b,this,[[0,13]])}))}function fetchMedia(a){return __awaiter(this,void 0,void 0,regeneratorRuntime.mark(function b(){var c,e,f;return regeneratorRuntime.wrap(function(b){for(;;)switch(b.prev=b.next){case 0:return b.prev=0,b.next=3,fetch(a);case 3:return c=b.sent,b.next=6,c.json();case 6:if(e=b.sent,200===c.status){b.next=10;break}return console.log(\"There was a problem fetching the media id's. Status code: \".concat(c.status)),b.abrupt(\"return\");case 10:return b.next=12,Promise.all(e.data.map(function(a){return fetchMediaData(a.id)}));case 12:return f=b.sent,b.abrupt(\"return\",f);case 16:b.prev=16,b.t0=b[\"catch\"](0),console.log(\"IG media fetch error: \".concat(b.t0));case 19:case\"end\":return b.stop();}},b,this,[[0,16]])}))}var media=fetchMedia(\"https://graph.facebook.com/v3.2/\".concat(Graph.access.id,\"/media?access_token=\").concat(Graph.access.token));function create(a){var b=a.mountEl,c=a.postLimit;media.then(function(a){b.innerHTML=a.filter(function(a,b){return b<=c-1}).map(function(a,b){return Component.Feed({i:b,user:\"WDLK\",caption:Component.Caption({caption:a.caption,likes:a.like_count,user:\"WDLK\"}),media:Component.Media({link:a.permalink,src:a.media_url}),thumbnail:Component.Thumbnail({i:b,imgURL:a.thumbnail_url||a.media_url,thumbnailURL:a.thumbnail_url||a.media_url})})}).join(\"\")})}\n\n//# sourceURL=webpack:///./src/scripts/instagram/media.ts?");
+
+/***/ }),
+
+/***/ "./src/scripts/instagram/templates/caption.ts":
+/*!****************************************************!*\
+  !*** ./src/scripts/instagram/templates/caption.ts ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("Object.defineProperty(exports,\"__esModule\",{value:!0}),exports.Caption=void 0;var convertUnixDate=function(a){var b=new Date(parseInt(\"\".concat(a),10));return b.toDateString().slice(0,-4)},Caption=function(a){var b=a.likes,c=a.caption,d=a.user;return\"\\n  <figcaption class=\\\"Feed-caption Lightbox-row\\\">\\n  <strong class=\\\"Feed-highlight\\\">\".concat(b,\" likes</strong>\\n  <p class=\\\"Feed-copy\\\">\\n  <strong>\\n    \").concat(d,\"\\n  </strong>\\n    \").concat(c,\"\\n  </p>\\n  </figcaption>\\n\")};exports.Caption=Caption;\n\n//# sourceURL=webpack:///./src/scripts/instagram/templates/caption.ts?");
+
+/***/ }),
+
+/***/ "./src/scripts/instagram/templates/feed.ts":
+/*!*************************************************!*\
+  !*** ./src/scripts/instagram/templates/feed.ts ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("Object.defineProperty(exports,\"__esModule\",{value:!0}),exports.Feed=void 0;var Feed=function(a){var b=a.thumbnail,c=a.media,d=a.caption,e=a.i,f=a.user;return\"\\n  <li class=\\\"Feed-item Lightbox--row\\\">\\n  \".concat(b,\"\\n    <input class=\\\"Lightbox-state\\\" type=\\\"checkbox\\\" id=\\\"lightbox-\").concat(e,\"\\\" />\\n    <div class=\\\"Lightbox-shim\\\">\\n      <label class=\\\"Lightbox-shim-close\\\" for=\\\"lightbox-\").concat(e,\"\\\"></label>\\n      <figure class=\\\"Lightbox-content\\\">\\n        <header class=\\\"Lightbox-header\\\">\\n          <h3 class=\\\"Headline Headline--6\\\">\\n          \").concat(f,\"\\n          </h3>\\n          <label class=\\\"Lightbox-icon\\\" for=\\\"lightbox-\").concat(e,\"\\\"></label>\\n        </header>\\n        \").concat(c,\"\\n        \").concat(d,\"\\n      </figure>\\n    </div>\\n  </li>\\n\")};exports.Feed=Feed;\n\n//# sourceURL=webpack:///./src/scripts/instagram/templates/feed.ts?");
+
+/***/ }),
+
+/***/ "./src/scripts/instagram/templates/index.ts":
+/*!**************************************************!*\
+  !*** ./src/scripts/instagram/templates/index.ts ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("var _caption=__webpack_require__(/*! ./caption */ \"./src/scripts/instagram/templates/caption.ts\");var _feed=__webpack_require__(/*! ./feed */ \"./src/scripts/instagram/templates/feed.ts\");var _media=__webpack_require__(/*! ./media */ \"./src/scripts/instagram/templates/media.ts\");var _thumbnail=__webpack_require__(/*! ./thumbnail */ \"./src/scripts/instagram/templates/thumbnail.ts\");Object.defineProperty(exports,\"__esModule\",{value:!0});Object.keys(_caption).forEach(function(a){\"default\"===a||\"__esModule\"===a||Object.defineProperty(exports,a,{enumerable:!0,get:function b(){return _caption[a]}})});Object.keys(_feed).forEach(function(a){\"default\"===a||\"__esModule\"===a||Object.defineProperty(exports,a,{enumerable:!0,get:function b(){return _feed[a]}})});Object.keys(_media).forEach(function(a){\"default\"===a||\"__esModule\"===a||Object.defineProperty(exports,a,{enumerable:!0,get:function b(){return _media[a]}})});Object.keys(_thumbnail).forEach(function(a){\"default\"===a||\"__esModule\"===a||Object.defineProperty(exports,a,{enumerable:!0,get:function b(){return _thumbnail[a]}})});\n\n//# sourceURL=webpack:///./src/scripts/instagram/templates/index.ts?");
+
+/***/ }),
+
+/***/ "./src/scripts/instagram/templates/media.ts":
+/*!**************************************************!*\
+  !*** ./src/scripts/instagram/templates/media.ts ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("Object.defineProperty(exports,\"__esModule\",{value:!0}),exports.Media=void 0;var Media=function(a){var b=a.link,c=a.src;return\"\\n  <a class=\\\"Lightbox-row Feed-media\\\" href=\\\"\".concat(b,\"\\\" target=\\\"_blank\\\">\\n    <h4 class=\\\"Headline Headline--5\\\">\\n      Join the journey on Instagram @wdlk\\n    </h4>\\n    <img class=\\\"Feed-img\\\"\\n      src=\\\"\").concat(c,\"\\\"\\n      srcset=\\\"\").concat(c,\" 150w,\\n      \").concat(c,\" 320w,\\n      \").concat(c,\" 640w\\\" />\\n  </a>\\n\")};exports.Media=Media;\n\n//# sourceURL=webpack:///./src/scripts/instagram/templates/media.ts?");
+
+/***/ }),
+
+/***/ "./src/scripts/instagram/templates/thumbnail.ts":
+/*!******************************************************!*\
+  !*** ./src/scripts/instagram/templates/thumbnail.ts ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("Object.defineProperty(exports,\"__esModule\",{value:!0}),exports.Thumbnail=void 0;var Thumbnail=function(a){var b=a.thumbnailURL,c=a.imgURL,d=a.i;return\"\\n  <div class=\\\"Feed-thumbnail\\\">\\n    <label class=\\\"Feed-trigger\\\" for=\\\"lightbox-\".concat(d,\"\\\" style=\\\"background-image: url(\").concat(b,\"), linear-gradient(35deg, #FFCA54, #FF7163 80%)\\\">\\n    </label>\\n    <img class=\\\"Feed-img\\\" src=\\\"\").concat(c,\"\\\" />\\n  </div>\\n\")};exports.Thumbnail=Thumbnail;\n\n//# sourceURL=webpack:///./src/scripts/instagram/templates/thumbnail.ts?");
 
 /***/ }),
 

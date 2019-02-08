@@ -8,7 +8,6 @@
     "delete-meta": "babel-node --presets es2015,stage-0 configuration/shopify-api/utils/delete-metafields.js",
     "instagram-auth": "babel-node --presets es2015,stage-0 configuration/instagram/instagram-auth.js",
     "lint": "tslint --project .",
-    "pretty": "onchange './src/**/*.ts' -- prettier --write {{changed}}",
     "product-meta": "babel-node --presets es2015,stage-0 configuration/shopify-api/product/send-metafields.js",
     "product-meta-global": "babel-node --presets es2015,stage-0 configuration/shopify-api/product/send-global-metafields.js",
     "product-data": "babel-node --presets es2015,stage-0 configuration/shopify-api/product/prepare-metafields.js",
@@ -17,7 +16,7 @@
     "slate:build": "npx slate build",
     "slate:deploy": "npx slate deploy -e production",
     "slate:watch": "npx slate watch -e development",
-    "dev": "concurrently -k -p \"[{name}]\" -n \"WEBPACK,SHOPIFY,PRETTIER\" \" yarn slate:watch\" \"yarn webpack -w\" \"yarn pretty\"",
+    "dev": "concurrently -k -p \"[{name}]\" -n \"WEBPACK,SHOPIFY\" \" yarn slate:watch\" \"yarn webpack -w\"",
     "test": "jest --watchAll",
     "webpack": "NODE_ENV=development webpack --config ./webpack.config.js",
     "webpack:production": "NODE_ENV=production npx yarn webpack -p",
@@ -49,6 +48,7 @@
     "@shopify/slate": "^0.13.0",
     "@shopify/slate-tools": "0.13.0",
     "@types/dotenv": "^4.0.3",
+    "@types/facebook-js-sdk": "^3.1.0",
     "@types/facebook-pixel": "0.0.19",
     "@types/jest": "^22.2.3",
     "@types/jsonp": "^0.2.0",
@@ -67,6 +67,7 @@
     "husky": "^0.14.3",
     "jest": "^22.4.4",
     "jest-dom": "^3.0.0",
+    "jest-fetch-mock": "^2.1.0",
     "jest-localstorage-mock": "^2.2.0",
     "mini-css-extract-plugin": "^0.4.3",
     "node-sass": "4.9.3",
@@ -92,6 +93,7 @@
   },
   "dependencies": {
     "autoprefixer": "^7.2.3",
+    "immutable": "^4.0.0-rc.12",
     "jsonp": "^0.2.1"
   }
 }

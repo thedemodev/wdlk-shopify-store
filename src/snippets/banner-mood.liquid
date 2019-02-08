@@ -1,0 +1,12 @@
+<article class="Banner Banner--full Banner--principles Banner--informative">
+  <a href="{{ pages['sustainability'].url }}">
+    {% assign videoWebM =
+      'WDLK_Mood-Video.webm' | file_url %}
+    {% assign videoMp4 =
+      'WDLK_Mood-Video.mp4' | file_url %}
+    {% assign videoPoster =
+      'WDLK_Mood-Video-Poster.jpg' | file_img_url %}
+    {% assign mute = true %}
+    {% include 'video' %}
+  </a>
+</article>

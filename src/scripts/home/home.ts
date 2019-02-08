@@ -1,3 +1,4 @@
+import * as IG from '../instagram';
 import * as Slider from '../slider';
 import * as Types from '../types';
 
@@ -8,4 +9,7 @@ const configuration: Types.SliderInit = {
   config: Slider.Config.create({ transitionDuration: 300 })
 };
 
-Slider.init(configuration);
+const igFeed = IG.create({
+  mountEl: document.querySelector('.js_instagramFeed'),
+  postLimit: 24
+});
