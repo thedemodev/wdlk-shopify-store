@@ -3,6 +3,7 @@ import * as Component from './templates';
 
 export interface FeedInit {
     mountEl: HTMLElement;
+    postLimit?: number;
 }
 
 export interface IstagramMedia {
@@ -58,9 +59,11 @@ export async function fetchMedia(url: string): Promise<any> {
 
 const media = fetchMedia(`https://graph.facebook.com/v3.2/${Graph.access.id}/media?access_token=${Graph.access.token}`);
 
-export function create({ mountEl }: FeedInit): void {
+export function create({ mountEl, postLimit }: FeedInit): void {
   media.then(data => {
-    mountEl.innerHTML = data.map((post: IstagramMedia, i: number) => (
+    mountEl.innerHTML = data
+      .filter((post: IstagramMedia, i: number) => i <= postLimit - 1)
+      .map((post: IstagramMedia, i: number) => (
       Component.Feed({
         i,
         user: 'WDLK',
