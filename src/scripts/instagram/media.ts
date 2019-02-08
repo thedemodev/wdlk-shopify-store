@@ -21,7 +21,7 @@ export interface InstagramId {
   id: string;
 }
 
-const getMediaURL = (id: string) => `https://graph.facebook.com/v3.2/${id}/?access_token=${Graph.access.token}&fields=media_type,media_url,thumbnail_url,permalink,caption,comments_count,like_count,taken_at`;
+const getMediaURL = (id: string) => `https://graph.facebook.com/v3.2/${id}/?access_token=${Graph.access.token}&fields=media_type,media_url,thumbnail_url,permalink,caption,comments_count,like_count`;
 
 export async function fetchMediaData(id: string): Promise<IstagramMedia> {
   try {
@@ -63,10 +63,10 @@ export function create({ mountEl }: FeedInit): void {
     mountEl.innerHTML = data.map((post: IstagramMedia, i: number) => (
       Component.Feed({
         i,
+        user: 'WDLK',
         caption: Component.Caption({
           caption: post.caption,
           likes: post.like_count,
-          time: post.taken_at,
           user: 'WDLK'
         }),
         media: Component.Media({
