@@ -13,5 +13,5 @@ Slider.init(configuration);
 
 IG.create({
   mountEl: document.querySelector('.js_instagramFeed'),
-  postLimit: 24
+  postLimit: 18
 });
