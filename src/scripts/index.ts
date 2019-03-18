@@ -10,7 +10,6 @@ import numberInput from './modules/number-input';
 import { initExpander } from './modules/expander';
 import { initSmoothScrolling } from './modules/smooth-scrolling';
 import stickyNavigation from './modules/sticky-navigation';
-import trackingCece from './tracking/tracking-project-cece';
 import fbqTracking from './tracking/tracking-facebook';
 
 const init = (): void => {
@@ -21,7 +20,6 @@ const init = (): void => {
   initExpander();
   initSmoothScrolling();
   numberInput();
-  trackingCece();
   fbqTracking();
 };
 

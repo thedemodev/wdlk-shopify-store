@@ -79,7 +79,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__(/*! ../scss/index.scss */ \"./src/scss/index.scss\");var _cookieNotification=_interopRequireDefault(__webpack_require__(/*! ./modules/cookie-notification */ \"./src/scripts/modules/cookie-notification.ts\")),_fadeThrough=_interopRequireDefault(__webpack_require__(/*! ./modules/fade-through */ \"./src/scripts/modules/fade-through.ts\")),_notification=_interopRequireDefault(__webpack_require__(/*! ./modules/notification */ \"./src/scripts/modules/notification.ts\")),_numberInput=_interopRequireDefault(__webpack_require__(/*! ./modules/number-input */ \"./src/scripts/modules/number-input.ts\")),_expander=__webpack_require__(/*! ./modules/expander */ \"./src/scripts/modules/expander.ts\"),_smoothScrolling=__webpack_require__(/*! ./modules/smooth-scrolling */ \"./src/scripts/modules/smooth-scrolling.ts\"),_stickyNavigation=_interopRequireDefault(__webpack_require__(/*! ./modules/sticky-navigation */ \"./src/scripts/modules/sticky-navigation.ts\")),_trackingProjectCece=_interopRequireDefault(__webpack_require__(/*! ./tracking/tracking-project-cece */ \"./src/scripts/tracking/tracking-project-cece.ts\")),_trackingFacebook=_interopRequireDefault(__webpack_require__(/*! ./tracking/tracking-facebook */ \"./src/scripts/tracking/tracking-facebook.ts\"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}var init=function(){(0,_stickyNavigation.default)(),(0,_cookieNotification.default)(),(0,_notification.default)(),(0,_fadeThrough.default)(),(0,_expander.initExpander)(),(0,_smoothScrolling.initSmoothScrolling)(),(0,_numberInput.default)(),(0,_trackingProjectCece.default)(),(0,_trackingFacebook.default)()};window.addEventListener(\"load\",init);\n\n//# sourceURL=webpack:///./src/scripts/index.ts?");
+eval("__webpack_require__(/*! ../scss/index.scss */ \"./src/scss/index.scss\");var _cookieNotification=_interopRequireDefault(__webpack_require__(/*! ./modules/cookie-notification */ \"./src/scripts/modules/cookie-notification.ts\")),_fadeThrough=_interopRequireDefault(__webpack_require__(/*! ./modules/fade-through */ \"./src/scripts/modules/fade-through.ts\")),_notification=_interopRequireDefault(__webpack_require__(/*! ./modules/notification */ \"./src/scripts/modules/notification.ts\")),_numberInput=_interopRequireDefault(__webpack_require__(/*! ./modules/number-input */ \"./src/scripts/modules/number-input.ts\")),_expander=__webpack_require__(/*! ./modules/expander */ \"./src/scripts/modules/expander.ts\"),_smoothScrolling=__webpack_require__(/*! ./modules/smooth-scrolling */ \"./src/scripts/modules/smooth-scrolling.ts\"),_stickyNavigation=_interopRequireDefault(__webpack_require__(/*! ./modules/sticky-navigation */ \"./src/scripts/modules/sticky-navigation.ts\")),_trackingFacebook=_interopRequireDefault(__webpack_require__(/*! ./tracking/tracking-facebook */ \"./src/scripts/tracking/tracking-facebook.ts\"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}var init=function(){(0,_stickyNavigation.default)(),(0,_cookieNotification.default)(),(0,_notification.default)(),(0,_fadeThrough.default)(),(0,_expander.initExpander)(),(0,_smoothScrolling.initSmoothScrolling)(),(0,_numberInput.default)(),(0,_trackingFacebook.default)()};window.addEventListener(\"load\",init);\n\n//# sourceURL=webpack:///./src/scripts/index.ts?");
 
 /***/ }),
 
@@ -188,18 +188,6 @@ eval("Object.defineProperty(exports,\"__esModule\",{value:!0}),exports.StorageVi
 
 "use strict";
 eval("Object.defineProperty(exports,\"__esModule\",{value:!0}),exports.default=fbqTracking;function fbqTracking(){var a=document.querySelector(\".js_fbqAddToCart\"),b=document.querySelector(\".js_fbqNewsLead\");if(a){var c=a.querySelector(\".js_fbqBtn\"),d=a.querySelector(\".js_fbqSelect\");if(c&&d){var e=parseFloat(d.options[d.selectedIndex].value);c.addEventListener(\"click\",function(){fbq(\"track\",\"AddToCart\",{content_name:c.dataset.name,content_ids:[\"\".concat(e)],content_type:\"product\",value:parseFloat(c.dataset.value),currency:\"EUR\"})})}}b&&b.addEventListener(\"click\",function(){fbq(\"track\",\"Lead\")})}\n\n//# sourceURL=webpack:///./src/scripts/tracking/tracking-facebook.ts?");
-
-/***/ }),
-
-/***/ "./src/scripts/tracking/tracking-project-cece.ts":
-/*!*******************************************************!*\
-  !*** ./src/scripts/tracking/tracking-project-cece.ts ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("Object.defineProperty(exports,\"__esModule\",{value:!0}),exports.default=trackingCece;function trackingCece(){function a(){var a=new Date;a.setTime(a.getTime()+2592000000),document.cookie=\"refpartner=projce; expires=\".concat(a.toUTCString(),\"; path=/\")}var b=document.referrer;-1<b.indexOf(\"projectcece.\")&&(a(),window.sessionStorage&&sessionStorage.setItem(\"refpartner\",\"projce\")),window.sessionStorage&&sessionStorage.getItem(\"refpartner\")&&0>document.cookie.indexOf(\"refpartner=projce\")&&a()}\n\n//# sourceURL=webpack:///./src/scripts/tracking/tracking-project-cece.ts?");
 
 /***/ }),
 
