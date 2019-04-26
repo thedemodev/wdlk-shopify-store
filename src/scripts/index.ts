@@ -11,6 +11,7 @@ import { initExpander } from './modules/expander';
 import { initSmoothScrolling } from './modules/smooth-scrolling';
 import stickyNavigation from './modules/sticky-navigation';
 import fbqTracking from './tracking/tracking-facebook';
+import trackingCece from './tracking/tracking-project-cece';
 
 const init = (): void => {
   stickyNavigation();
@@ -21,6 +22,7 @@ const init = (): void => {
   initSmoothScrolling();
   numberInput();
   fbqTracking();
+  trackingCece();
 };
 
 window.addEventListener('load', init);
