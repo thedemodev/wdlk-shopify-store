@@ -180,7 +180,7 @@ export const init = ({ sliderEl, trackEl, config }: Types.SliderInit): void => {
   clonedSlides.forEach((slide: Element, i: number) => {
     slideList.push(clonedSlides[i]);
   });
-  config.moveX = config.index * (Utils.getElWidth(trackEl) / slideList.length);
+  config.moveX = config.index * Utils.getElWidth(sliderEl);
 
   (trackEl as HTMLElement).style.setProperty('--items', `${slideList.length}`);
   (trackEl as HTMLElement).style.setProperty('--moveX', `${-config.moveX}`);
@@ -204,8 +204,7 @@ export const init = ({ sliderEl, trackEl, config }: Types.SliderInit): void => {
     initTouch(touchConfig);
   }
   window.addEventListener('resize', () => {
-    config.moveX =
-      config.index * (Utils.getElWidth(trackEl) / slideList.length);
+    config.moveX = config.index * Utils.getElWidth(sliderEl);
 
     (trackEl as HTMLElement).style.setProperty(
       '--items',
