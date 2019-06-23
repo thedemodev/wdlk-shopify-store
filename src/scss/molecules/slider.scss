@@ -26,11 +26,12 @@
   padding: 0 10vw;
   transform: translateY(80%);
   font-size: 1.4rem;
+  text-shadow: 0 0 3px $hex-blue-gray-dark;
 
   @media(min-width: 768px) {
     left: 50%;
     width: max-content;
-    transform: translate(-50%, 80%);
+    transform: translate(-50%, 90%);
     font-size: 1.6rem;
   }
 }

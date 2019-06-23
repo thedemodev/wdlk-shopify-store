@@ -17,7 +17,7 @@
     "slate:deploy": "npx slate deploy -e production",
     "slate:watch": "npx slate watch -e development",
     "dev": "concurrently -k -p \"[{name}]\" -n \"WEBPACK,SHOPIFY\" \" yarn slate:watch\" \"yarn webpack -w\"",
-    "test": "jest --watchAll",
+    "test": "jest",
     "webpack": "NODE_ENV=development webpack --config ./webpack.config.js",
     "webpack:production": "NODE_ENV=production npx yarn webpack -p",
     "watch": "babel-node --presets es2015,stage-0 configuration/watch.js"
