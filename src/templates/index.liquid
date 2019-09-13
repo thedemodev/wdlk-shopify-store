@@ -9,7 +9,7 @@
   </button>
   <div class="Slider-track js_track">
 
-    {% assign headline = 'home_page.sections.main_headline_0' | t %}
+    {% comment %} {% assign headline = 'home_page.sections.main_headline_0' | t %}
     {% assign caption = 'home_page.sections.main_caption_0' | t %}
     {% assign link = collections['bikinis'].url %}
 
@@ -19,7 +19,7 @@
     {% assign srcSet2@2x = 'WDLK_Main-Banner_Tablet_restock_steph@2x.jpg' | asset_url %}
     {% assign srcSet3 = 'WDLK_Main-Banner_Desktop_restock_steph.jpg' | asset_url %}
     {% assign srcSet3@2x = 'WDLK_Main-Banner_Desktop_restock_steph@2x.jpg' | asset_url %}
-    {% include 'slider-item'%}
+    {% include 'slider-item'%} {% endcomment %}
 
     {% assign headline = 'home_page.sections.main_headline_1' | t %}
     {% assign caption = 'home_page.sections.main_caption_1' | t %}
@@ -69,7 +69,7 @@
     <div class="Slider-dot js_slider-dot" style="--active: 1"></div>
     <div class="Slider-dot js_slider-dot" style="--active: 0"></div>
     <div class="Slider-dot js_slider-dot" style="--active: 0"></div>
-    <div class="Slider-dot js_slider-dot" style="--active: 0"></div>
+    {% comment %} <div class="Slider-dot js_slider-dot" style="--active: 0"></div> {% endcomment %}
   </div>
 </section>
 {% include 'banner-teaser' %}
