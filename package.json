@@ -1,6 +1,6 @@
 {
   "name": "wdlk-ocean-store",
-  "version": "4.2.0",
+  "version": "4.3.0",
   "description": "WDLK Ocean Shopify Store",
   "scripts": {
     "commit": "commit",
