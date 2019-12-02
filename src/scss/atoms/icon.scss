@@ -6,6 +6,10 @@
     height: 2rem;
     width: 2rem;
     margin: 0 $base-spacing;
-    vertical-align: bottom;
+    vertical-align: middle;
+  }
+  &--one-percent {
+    width: 7rem;
+    height: 3rem;
   }
 }
