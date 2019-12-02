@@ -3,5 +3,5 @@
   "tslint.exclude": [
     "**/facebook-pixel.ts"
   ],
-  "editor.fontSize": 13,
+  "editor.fontSize": 16,
 }
