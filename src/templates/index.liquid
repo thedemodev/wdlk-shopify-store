@@ -20,9 +20,23 @@
     {% assign srcSet3 = 'WDLK_Main-Banner_Desktop_restock_steph.jpg' | asset_url %}
     {% assign srcSet3@2x = 'WDLK_Main-Banner_Desktop_restock_steph@2x.jpg' | asset_url %}
     {% include 'slider-item'%} {% endcomment %}
+    {% assign headline = 'home_page.sections.main_headline_sale' | t %}
+    {% assign caption = 'home_page.sections.main_caption_sale' | t %}
+    {% assign sublineAvailable = true %}
+    {% assign subline = 'home_page.sections.main_subline_sale' | t %}
+    {% assign link = collections['bikinis'].url %}
+
+    {% assign srcSet1 = 'WDLK_Main-Banner_Mobile_sale.jpg' | asset_url %}
+    {% assign srcSet1@2x = 'WDLK_Main-Banner_Mobile_sale@2x.jpg' | asset_url %}
+    {% assign srcSet2 = 'WDLK_Main-Banner_Tablet_sale.jpg' | asset_url %}
+    {% assign srcSet2@2x = 'WDLK_Main-Banner_Tablet_sale@2x.jpg' | asset_url %}
+    {% assign srcSet3 = 'WDLK_Main-Banner_Desktop_sale.jpg' | asset_url %}
+    {% assign srcSet3@2x = 'WDLK_Main-Banner_Desktop_sale@2x.jpg' | asset_url %}
+    {% include 'slider-item'%}
 
     {% assign headline = 'home_page.sections.main_headline_1' | t %}
     {% assign caption = 'home_page.sections.main_caption_1' | t %}
+    {% assign sublineAvailable = false %}
     {% assign link = collections['bikinis'].url %}
 
     {% assign srcSet1 = 'WDLK_Main-Banner_Mobile_1_steph.jpg' | asset_url %}
@@ -35,6 +49,7 @@
 
     {% assign headline = 'home_page.sections.main_headline_2' | t %}
     {% assign caption = 'home_page.sections.main_caption_2' | t %}
+    {% assign sublineAvailable = false %}
     {% assign link = collections['tops'].url %}
 
     {% assign srcSet1 = 'WDLK_Main-Banner_Mobile_2_ana.jpg' | asset_url %}
@@ -47,6 +62,7 @@
 
     {% assign headline = 'home_page.sections.main_headline_3' | t %}
     {% assign caption = 'home_page.sections.main_caption_3' | t %}
+    {% assign sublineAvailable = false %}
     {% assign link = collections['one-pieces'].url %}
 
     {% assign srcSet1 = 'WDLK_Main-Banner_Mobile_1@1x.jpg' | asset_url %}
@@ -69,7 +85,7 @@
     <div class="Slider-dot js_slider-dot" style="--active: 1"></div>
     <div class="Slider-dot js_slider-dot" style="--active: 0"></div>
     <div class="Slider-dot js_slider-dot" style="--active: 0"></div>
-    {% comment %} <div class="Slider-dot js_slider-dot" style="--active: 0"></div> {% endcomment %}
+    <div class="Slider-dot js_slider-dot" style="--active: 0"></div>
   </div>
 </section>
 {% include 'banner-teaser' %}

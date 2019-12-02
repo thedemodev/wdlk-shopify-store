@@ -262,13 +262,17 @@
   },
   "home_page": {
     "sections": {
+        "main_subline_sale": "Applies only to products currently not on sale",
+        "main_topline_sale": "Bikinis",
         "main_topline_1": "Bikinis",
         "main_topline_2": "Tops",
         "main_topline_3": "One Pieces",
+        "main_headline_sale": "25% off sale",
         "main_headline_0": "Yes, we are back!",
         "main_headline_1": "Swim with us",
         "main_headline_2": "Eco-friendly swimwear",
         "main_headline_3": "Highest quality",
+        "main_caption_sale": "Use the code: DecemberSALE",
         "main_caption_0": "We restocked several styles for you.",
         "main_caption_1": "100% sustainable swimwear",
         "main_caption_2": "Premium italian recycled fabric",
@@ -330,7 +334,7 @@
       "linklist_title": "Quick Links",
       "social_title": "Get Connected",
       "accepted_payments": "Accepted Payments",
-      "copyright": "© WOODLIKE 2017"
+      "copyright": "© WOODLIKE 2019"
     }
   },
   "products": {
